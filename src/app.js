@@ -1301,6 +1301,14 @@
       var step = lessonEngine.currentStep();
       var total = lesson.steps.length;
 
+      if (step.type === "demonstration" && step.visualTarget) {
+        state.learningHighlightSelector = step.visualTarget;
+      } else if (step.type === "exercise" && active.hintLevel >= 4 && step.visualTarget) {
+        state.learningHighlightSelector = step.visualTarget;
+      } else {
+        state.learningHighlightSelector = null;
+      }
+
       var meta = document.createElement("div");
       meta.className = "learning-meta";
       meta.textContent = moduleLabel(lesson.moduleId) + " • Steg " + (active.stepIndex + 1) + " av " + total;
