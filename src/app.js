@@ -1067,7 +1067,13 @@
       scenariosButton.textContent = "🧪";
       scenariosButton.addEventListener("click", function (e) {
         e.stopPropagation();
-        state.scenarioPanelOpen = !state.scenarioPanelOpen;
+
+        if (scenarioEngine.active()) {
+          state.scenarioPanelOpen = true;
+        } else {
+          state.scenarioPanelOpen = !state.scenarioPanelOpen;
+        }
+
         renderScenarioPanel();
       });
       el.taskbar.appendChild(scenariosButton);
@@ -1202,6 +1208,7 @@
         stop.addEventListener("click", function (e) {
           e.stopPropagation();
           scenarioEngine.stop();
+          state.scenarioPanelOpen = false;
           render();
         });
 
@@ -1230,6 +1237,7 @@
         b.addEventListener("click", function (e) {
           e.stopPropagation();
           scenarioEngine.load(scenario.id, runtimeApi);
+          state.scenarioPanelOpen = true;
           render();
         });
 
@@ -1398,6 +1406,7 @@
 
       if (
         state.scenarioPanelOpen &&
+        !scenarioEngine.active() &&
         !e.target.closest(".scenario-panel") &&
         !e.target.closest('[aria-label="Scenarier"]')
       ) {
@@ -1428,7 +1437,7 @@
       }
       if (state.context) closeContext();
       if (state.startOpen) setStart(false);
-      if (state.scenarioPanelOpen) {
+      if (state.scenarioPanelOpen && !scenarioEngine.active()) {
         state.scenarioPanelOpen = false;
         renderScenarioPanel();
       }
@@ -1441,13 +1450,20 @@
       on: on,
       scenarios: scenarioEngine,
       loadScenario: function (id) {
-        return scenarioEngine.load(id, runtimeApi);
+        var result = scenarioEngine.load(id, runtimeApi);
+        state.scenarioPanelOpen = true;
+        render();
+        return result;
       },
       resetScenario: function () {
-        return scenarioEngine.reset(runtimeApi);
+        var result = scenarioEngine.reset(runtimeApi);
+        state.scenarioPanelOpen = true;
+        render();
+        return result;
       },
       stopScenario: function () {
         scenarioEngine.stop();
+        state.scenarioPanelOpen = false;
         render();
       },
       resetVfs: function () {
