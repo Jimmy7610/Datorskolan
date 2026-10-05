@@ -270,8 +270,13 @@
           e.stopPropagation();
           state.selected = item.id;
           state.context = null;
+
+          el.desktop.querySelectorAll(".desktop-item.selected").forEach(function (node) {
+            node.classList.remove("selected");
+          });
+          b.classList.add("selected");
+
           emit("desktop.item.selected", { itemId: item.id });
-          render();
         });
 
         b.addEventListener("dblclick", function (e) {
