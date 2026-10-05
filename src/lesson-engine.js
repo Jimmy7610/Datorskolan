@@ -57,11 +57,25 @@
       this._progress.introduceSkill(skillId);
     }, this);
 
+    var profile = this._progress.profile ? this._progress.profile() : { mode: "standard" };
+    var alreadyStrong = lesson.skills.length > 0 && lesson.skills.every(function (skillId) {
+      var skill = this._progress.skill(skillId);
+      return skill.status === "independent" || skill.status === "mastered";
+    }, this);
+
+    var startIndex = 0;
+    if (profile.mode === "fast" || alreadyStrong) {
+      var firstExercise = lesson.steps.findIndex(function (step) {
+        return step.type === "exercise";
+      });
+      if (firstExercise >= 0) startIndex = firstExercise;
+    }
+
     this._active = {
       id: lesson.id,
       title: lesson.title,
       moduleId: lesson.moduleId,
-      stepIndex: 0,
+      stepIndex: startIndex,
       hintLevel: 0,
       attemptsOnStep: 0,
       validatorPassed: false,
@@ -70,10 +84,14 @@
       startedAt: Date.now()
     };
 
+    if (startIndex > 0) {
+      this._progress.setLessonStep(lesson.id, startIndex);
+    }
+
     this._progress.recordEvent({
       type: "lesson.started",
       lessonId: lesson.id,
-      metadata: { scenarioId: lesson.scenarioId || null }
+      metadata: { scenarioId: lesson.scenarioId || null, adaptiveSkip: startIndex > 0 }
     });
 
     this._notify();
