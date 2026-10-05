@@ -14,6 +14,7 @@
 
   try {
     var vfs = new window.VirtualFileSystem();
+    var scenarioEngine = new window.DatorskolanScenarioEngine(window.DatorskolanScenarios || []);
 
     var state = {
       items: [
@@ -44,7 +45,8 @@
       notepadDraft: "",
       notepadDirty: false,
       photoFileId: null,
-      photoZoom: 1
+      photoZoom: 1,
+      scenarioPanelOpen: false
     };
 
     var listeners = {};
@@ -52,6 +54,10 @@
     function emit(type, payload) {
       console.debug("[FakeWindows]", type, payload || {});
       (listeners[type] || []).forEach(function (fn) { fn(payload || {}); });
+
+      if (scenarioEngine && runtimeApi) {
+        scenarioEngine.observe(type, payload || {}, runtimeApi);
+      }
     }
 
     function on(type, fn) {
@@ -160,6 +166,50 @@
       emit("recycleBin.emptied", {});
       render();
     }
+
+    function resetForScenario() {
+      vfs.reset();
+
+      state.selected = null;
+      state.startOpen = false;
+      state.windows = [];
+      state.activeWindowId = null;
+      state.context = null;
+      state.nextWindow = 1;
+      state.nextZ = 10;
+
+      state.explorer.folderId = "home";
+      state.explorer.selectedId = null;
+      state.explorer.clipboard = null;
+
+      state.dialog = null;
+      state.calculator.display = "0";
+      state.calculator.stored = null;
+      state.calculator.operator = null;
+      state.calculator.waiting = false;
+
+      state.notepadFileId = null;
+      state.notepadDraft = "";
+      state.notepadDirty = false;
+      state.photoFileId = null;
+      state.photoZoom = 1;
+
+      render();
+    }
+
+    function setExplorerFolder(folderId) {
+      if (vfs.get(folderId)) {
+        state.explorer.folderId = folderId;
+        state.explorer.selectedId = null;
+      }
+      render();
+    }
+
+    var runtimeApi = {
+      vfs: vfs,
+      resetForScenario: resetForScenario,
+      setExplorerFolder: setExplorerFolder
+    };
 
     function renderExplorer() {
       var wrapper = document.createElement("div");
@@ -593,6 +643,7 @@
       '<div class="start" hidden></div>' +
       '<div class="context-layer"></div>' +
       '<div class="dialog-layer"></div>' +
+      '<aside class="scenario-panel" hidden></aside>' +
       '<nav class="taskbar" aria-label="Aktivitetsfält"></nav>';
 
     root.replaceChildren(shell);
@@ -605,6 +656,7 @@
       start: shell.querySelector(".start"),
       context: shell.querySelector(".context-layer"),
       dialog: shell.querySelector(".dialog-layer"),
+      scenario: shell.querySelector(".scenario-panel"),
       taskbar: shell.querySelector(".taskbar")
     };
 
@@ -1006,6 +1058,19 @@
 
       el.taskbar.appendChild(start);
 
+      var scenariosButton = document.createElement("button");
+      scenariosButton.type = "button";
+      scenariosButton.className = "tb" + (scenarioEngine.active() ? " running" : "");
+      scenariosButton.title = "Scenarier";
+      scenariosButton.setAttribute("aria-label", "Scenarier");
+      scenariosButton.textContent = "🧪";
+      scenariosButton.addEventListener("click", function (e) {
+        e.stopPropagation();
+        state.scenarioPanelOpen = !state.scenarioPanelOpen;
+        renderScenarioPanel();
+      });
+      el.taskbar.appendChild(scenariosButton);
+
       var ids = ["explorer", "calculator"];
       state.windows.forEach(function (w) {
         if (ids.indexOf(w.appId) === -1) ids.push(w.appId);
@@ -1087,6 +1152,88 @@
 
       el.start.appendChild(h);
       el.start.appendChild(grid);
+    }
+
+    function renderScenarioPanel() {
+      el.scenario.hidden = !state.scenarioPanelOpen;
+      el.scenario.replaceChildren();
+
+      if (!state.scenarioPanelOpen) return;
+
+      var heading = document.createElement("div");
+      heading.className = "scenario-heading";
+      heading.innerHTML = "<strong>Scenario Engine</strong><span>v0.4</span>";
+      el.scenario.appendChild(heading);
+
+      var active = scenarioEngine.active();
+
+      if (active) {
+        var card = document.createElement("div");
+        card.className = "scenario-active " + (active.status === "completed" ? "completed" : "");
+
+        var title = document.createElement("h3");
+        title.textContent = active.title;
+
+        var desc = document.createElement("p");
+        desc.textContent = active.description;
+
+        var status = document.createElement("div");
+        status.className = "scenario-status";
+        status.textContent = active.status === "completed"
+          ? "✓ Scenario klart"
+          : "Pågår • " + active.eventLog.length + " händelser";
+
+        var actions = document.createElement("div");
+        actions.className = "scenario-actions";
+
+        var reset = document.createElement("button");
+        reset.type = "button";
+        reset.textContent = "Återställ";
+        reset.addEventListener("click", function (e) {
+          e.stopPropagation();
+          scenarioEngine.reset(runtimeApi);
+          render();
+        });
+
+        var stop = document.createElement("button");
+        stop.type = "button";
+        stop.textContent = "Avsluta";
+        stop.addEventListener("click", function (e) {
+          e.stopPropagation();
+          scenarioEngine.stop();
+          render();
+        });
+
+        actions.appendChild(reset);
+        actions.appendChild(stop);
+
+        card.appendChild(title);
+        card.appendChild(desc);
+        card.appendChild(status);
+        card.appendChild(actions);
+        el.scenario.appendChild(card);
+      }
+
+      var listTitle = document.createElement("h4");
+      listTitle.textContent = active ? "Byt scenario" : "Välj scenario";
+      el.scenario.appendChild(listTitle);
+
+      scenarioEngine.list().forEach(function (scenario) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "scenario-option";
+        b.innerHTML = "<strong></strong><span></span>";
+        b.querySelector("strong").textContent = scenario.title;
+        b.querySelector("span").textContent = scenario.description;
+
+        b.addEventListener("click", function (e) {
+          e.stopPropagation();
+          scenarioEngine.load(scenario.id, runtimeApi);
+          render();
+        });
+
+        el.scenario.appendChild(b);
+      });
     }
 
     function renderContext() {
@@ -1232,6 +1379,7 @@
       renderWindows();
       renderTaskbar();
       renderStart();
+      renderScenarioPanel();
       renderContext();
       renderDialog();
     }
@@ -1246,6 +1394,15 @@
       if (e.button !== 0) return;
 
       if (!e.target.closest(".context") && state.context) closeContext();
+
+      if (
+        state.scenarioPanelOpen &&
+        !e.target.closest(".scenario-panel") &&
+        !e.target.closest('[aria-label="Scenarier"]')
+      ) {
+        state.scenarioPanelOpen = false;
+        renderScenarioPanel();
+      }
 
       if (
         !e.target.closest(".start") &&
@@ -1270,6 +1427,10 @@
       }
       if (state.context) closeContext();
       if (state.startOpen) setStart(false);
+      if (state.scenarioPanelOpen) {
+        state.scenarioPanelOpen = false;
+        renderScenarioPanel();
+      }
     });
 
     window.__datorskolanSimulator = {
@@ -1277,14 +1438,26 @@
       vfs: vfs,
       openApp: openApp,
       on: on,
-      resetVfs: function () {
-        vfs.reset();
-        state.explorer.folderId = "home";
-        state.explorer.selectedId = null;
-        state.explorer.clipboard = null;
+      scenarios: scenarioEngine,
+      loadScenario: function (id) {
+        return scenarioEngine.load(id, runtimeApi);
+      },
+      resetScenario: function () {
+        return scenarioEngine.reset(runtimeApi);
+      },
+      stopScenario: function () {
+        scenarioEngine.stop();
         render();
+      },
+      resetVfs: function () {
+        scenarioEngine.stop();
+        resetForScenario();
       }
     };
+
+    scenarioEngine.onChange(function () {
+      if (el && el.scenario) renderScenarioPanel();
+    });
 
     render();
   } catch (error) {
