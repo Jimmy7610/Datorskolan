@@ -1,0 +1,1 @@
+export class EventBus{#m=new Map();on(t,h){if(!this.#m.has(t))this.#m.set(t,new Set());this.#m.get(t).add(h);return()=>this.off(t,h)}off(t,h){this.#m.get(t)?.delete(h)}emit(t,p={}){const e=Object.freeze({type:t,payload:p,timestamp:Date.now()});this.#m.get(t)?.forEach(h=>h(e));this.#m.get("*")?.forEach(h=>h(e));return e}}
