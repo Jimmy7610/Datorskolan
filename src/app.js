@@ -15,6 +15,8 @@
   try {
     var vfs = new window.VirtualFileSystem();
     var scenarioEngine = new window.DatorskolanScenarioEngine(window.DatorskolanScenarios || []);
+    var progressStore = new window.DatorskolanProgressStore(window.localStorage);
+    var lessonEngine = new window.DatorskolanLessonEngine(window.DatorskolanLessons || [], progressStore);
 
     var state = {
       items: [
@@ -46,7 +48,9 @@
       notepadDirty: false,
       photoFileId: null,
       photoZoom: 1,
-      scenarioPanelOpen: false
+      scenarioPanelOpen: false,
+      learningPanelOpen: false,
+      learningHighlightSelector: null
     };
 
     var listeners = {};
@@ -57,6 +61,10 @@
 
       if (scenarioEngine && runtimeApi) {
         scenarioEngine.observe(type, payload || {}, runtimeApi);
+      }
+
+      if (lessonEngine && learningRuntimeApi) {
+        lessonEngine.observe(type, payload || {});
       }
     }
 
@@ -210,6 +218,27 @@
       resetForScenario: resetForScenario,
       setExplorerFolder: setExplorerFolder,
       openApp: openApp
+    };
+
+    function setLearningHighlight(selector) {
+      state.learningHighlightSelector = selector || null;
+      applyLearningHighlight();
+    }
+
+    function loadScenarioForLesson(id) {
+      var result = scenarioEngine.load(id, runtimeApi);
+      state.scenarioPanelOpen = false;
+      render();
+      return result;
+    }
+
+    var learningRuntimeApi = {
+      loadScenario: loadScenarioForLesson,
+      getScenarioStatus: function () {
+        var active = scenarioEngine.active();
+        return active ? active.status : null;
+      },
+      setLearningHighlight: setLearningHighlight
     };
 
     function renderExplorer() {
@@ -644,6 +673,7 @@
       '<div class="start" hidden></div>' +
       '<div class="context-layer"></div>' +
       '<div class="dialog-layer"></div>' +
+      '<aside class="learning-panel" hidden></aside>' +
       '<aside class="scenario-panel" hidden></aside>' +
       '<nav class="taskbar" aria-label="Aktivitetsfält"></nav>';
 
@@ -657,6 +687,7 @@
       start: shell.querySelector(".start"),
       context: shell.querySelector(".context-layer"),
       dialog: shell.querySelector(".dialog-layer"),
+      learning: shell.querySelector(".learning-panel"),
       scenario: shell.querySelector(".scenario-panel"),
       taskbar: shell.querySelector(".taskbar")
     };
@@ -1059,6 +1090,23 @@
 
       el.taskbar.appendChild(start);
 
+      var learningButton = document.createElement("button");
+      learningButton.type = "button";
+      learningButton.className = "tb" + (lessonEngine.active() ? " running" : "");
+      learningButton.title = "Datorskolan";
+      learningButton.setAttribute("aria-label", "Datorskolan");
+      learningButton.textContent = "🎓";
+      learningButton.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (lessonEngine.active()) {
+          state.learningPanelOpen = true;
+        } else {
+          state.learningPanelOpen = !state.learningPanelOpen;
+        }
+        renderLearningPanel();
+      });
+      el.taskbar.appendChild(learningButton);
+
       var scenariosButton = document.createElement("button");
       scenariosButton.type = "button";
       scenariosButton.className = "tb" + (scenarioEngine.active() ? " running" : "");
@@ -1161,9 +1209,226 @@
       el.start.appendChild(grid);
     }
 
+    function moduleLabel(moduleId) {
+      var labels = {
+        files: "Filer och mappar",
+        programs: "Program",
+        mouse: "Mus",
+        keyboard: "Tangentbord",
+        windows: "Windows"
+      };
+      return labels[moduleId] || moduleId;
+    }
+
+    function applyLearningHighlight() {
+      if (!el || !el.sim) return;
+      el.sim.querySelectorAll(".learning-highlight").forEach(function (node) {
+        node.classList.remove("learning-highlight");
+      });
+
+      if (!state.learningHighlightSelector) return;
+
+      try {
+        var target = el.sim.querySelector(state.learningHighlightSelector);
+        if (target) target.classList.add("learning-highlight");
+      } catch (error) {
+        console.warn("[LessonEngine] Ogiltig highlight-selector", state.learningHighlightSelector);
+      }
+    }
+
+    function renderLearningPanel() {
+      var active = lessonEngine.active();
+      var shouldShow = !!active || state.learningPanelOpen;
+
+      el.learning.hidden = !shouldShow;
+      el.learning.replaceChildren();
+
+      if (!shouldShow) return;
+      if (active) state.learningPanelOpen = true;
+
+      var header = document.createElement("div");
+      header.className = "learning-header";
+      header.innerHTML = "<div><strong>Datorskolan</strong><span>Lesson Engine</span></div><span class='learning-version'>Fas 2</span>";
+      el.learning.appendChild(header);
+
+      if (!active) {
+        var intro = document.createElement("p");
+        intro.className = "learning-intro";
+        intro.textContent = "Välj en lektion. Dina framsteg sparas automatiskt på den här enheten.";
+        el.learning.appendChild(intro);
+
+        var summaries = progressStore.moduleSummary(lessonEngine.list());
+        summaries.forEach(function (summary) {
+          var row = document.createElement("div");
+          row.className = "learning-progress-row";
+          row.innerHTML = "<div><strong></strong><span></span></div><div class='learning-progress-track'><i></i></div>";
+          row.querySelector("strong").textContent = moduleLabel(summary.moduleId);
+          row.querySelector("span").textContent = summary.percent + "%";
+          row.querySelector("i").style.width = summary.percent + "%";
+          el.learning.appendChild(row);
+        });
+
+        var listTitle = document.createElement("h4");
+        listTitle.textContent = "Lektioner";
+        el.learning.appendChild(listTitle);
+
+        lessonEngine.list().forEach(function (lesson) {
+          var progress = progressStore.lesson(lesson.id);
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "lesson-option";
+          b.innerHTML = "<div><strong></strong><span class='lesson-module'></span></div><p></p><em></em>";
+          b.querySelector("strong").textContent = lesson.title;
+          b.querySelector(".lesson-module").textContent = moduleLabel(lesson.moduleId);
+          b.querySelector("p").textContent = lesson.summary;
+          b.querySelector("em").textContent = progress.status === "completed" ? "✓ Klar" : "Starta";
+
+          b.addEventListener("click", function (e) {
+            e.stopPropagation();
+            lessonEngine.start(lesson.id, learningRuntimeApi);
+            state.learningPanelOpen = true;
+            state.scenarioPanelOpen = false;
+            render();
+          });
+
+          el.learning.appendChild(b);
+        });
+
+        return;
+      }
+
+      var lesson = lessonEngine.get(active.id);
+      var step = lessonEngine.currentStep();
+      var total = lesson.steps.length;
+
+      var meta = document.createElement("div");
+      meta.className = "learning-meta";
+      meta.textContent = moduleLabel(lesson.moduleId) + " • Steg " + (active.stepIndex + 1) + " av " + total;
+      el.learning.appendChild(meta);
+
+      var progressTrack = document.createElement("div");
+      progressTrack.className = "lesson-step-progress";
+      var progressBar = document.createElement("i");
+      progressBar.style.width = Math.round((active.stepIndex + 1) / total * 100) + "%";
+      progressTrack.appendChild(progressBar);
+      el.learning.appendChild(progressTrack);
+
+      var card = document.createElement("section");
+      card.className = "learning-step learning-step-" + step.type;
+
+      var typeBadge = document.createElement("span");
+      typeBadge.className = "learning-step-type";
+      var typeNames = {
+        instruction: "Förklaring",
+        demonstration: "Visa",
+        exercise: "Övning",
+        quiz: "Fråga",
+        simulation: "Simulering",
+        reflection: "Reflektion",
+        checkpoint: "Kontroll",
+        completion: "Klart"
+      };
+      typeBadge.textContent = typeNames[step.type] || step.type;
+
+      var title = document.createElement("h3");
+      title.textContent = step.title || lesson.title;
+
+      var textNode = document.createElement("p");
+      textNode.textContent = step.text || "";
+
+      card.appendChild(typeBadge);
+      card.appendChild(title);
+      card.appendChild(textNode);
+
+      if (active.feedback) {
+        var feedback = document.createElement("div");
+        feedback.className = "learning-feedback " + active.feedback.kind;
+        feedback.textContent = active.feedback.kind === "hint"
+          ? "Hjälp " + active.feedback.level + "/5: " + active.feedback.text
+          : active.feedback.text;
+        card.appendChild(feedback);
+      }
+
+      el.learning.appendChild(card);
+
+      var actions = document.createElement("div");
+      actions.className = "learning-actions";
+
+      var back = document.createElement("button");
+      back.type = "button";
+      back.textContent = "← Tillbaka";
+      back.disabled = active.stepIndex === 0;
+      back.addEventListener("click", function (e) {
+        e.stopPropagation();
+        lessonEngine.previous();
+        setLearningHighlight(null);
+        render();
+      });
+      actions.appendChild(back);
+
+      if (step.type === "exercise" && active.status !== "completed") {
+        var hint = document.createElement("button");
+        hint.type = "button";
+        hint.className = "learning-help";
+        hint.textContent = active.hintLevel >= 5 ? "Full hjälp visad" : "Hjälp";
+        hint.disabled = active.hintLevel >= 5;
+        hint.addEventListener("click", function (e) {
+          e.stopPropagation();
+          lessonEngine.requestHint();
+          renderLearningPanel();
+          applyLearningHighlight();
+        });
+        actions.appendChild(hint);
+      }
+
+      var next = document.createElement("button");
+      next.type = "button";
+      next.className = "learning-primary";
+
+      if (active.status === "completed") {
+        next.textContent = "Till lektionerna";
+        next.addEventListener("click", function (e) {
+          e.stopPropagation();
+          lessonEngine.stop();
+          scenarioEngine.stop();
+          state.learningHighlightSelector = null;
+          state.learningPanelOpen = true;
+          render();
+        });
+      } else {
+        next.textContent = step.type === "exercise" ? "Kontrollera" : "Fortsätt";
+        next.addEventListener("click", function (e) {
+          e.stopPropagation();
+          lessonEngine.next();
+          render();
+        });
+      }
+
+      actions.appendChild(next);
+      el.learning.appendChild(actions);
+
+      var footer = document.createElement("div");
+      footer.className = "learning-footer";
+
+      var stop = document.createElement("button");
+      stop.type = "button";
+      stop.textContent = "Avsluta lektion";
+      stop.addEventListener("click", function (e) {
+        e.stopPropagation();
+        lessonEngine.stop();
+        scenarioEngine.stop();
+        state.learningHighlightSelector = null;
+        state.learningPanelOpen = false;
+        render();
+      });
+
+      footer.appendChild(stop);
+      el.learning.appendChild(footer);
+    }
+
     function renderScenarioPanel() {
       var active = scenarioEngine.active();
-      var shouldShow = !!active || state.scenarioPanelOpen;
+      var shouldShow = !lessonEngine.active() && (!!active || state.scenarioPanelOpen);
 
       el.scenario.hidden = !shouldShow;
       el.scenario.replaceChildren();
@@ -1391,9 +1656,11 @@
       renderWindows();
       renderTaskbar();
       renderStart();
+      renderLearningPanel();
       renderScenarioPanel();
       renderContext();
       renderDialog();
+      applyLearningHighlight();
     }
 
     el.sim.addEventListener("contextmenu", function (e) {
@@ -1406,6 +1673,16 @@
       if (e.button !== 0) return;
 
       if (!e.target.closest(".context") && state.context) closeContext();
+
+      if (
+        state.learningPanelOpen &&
+        !lessonEngine.active() &&
+        !e.target.closest(".learning-panel") &&
+        !e.target.closest('[aria-label="Datorskolan"]')
+      ) {
+        state.learningPanelOpen = false;
+        renderLearningPanel();
+      }
 
       if (
         state.scenarioPanelOpen &&
@@ -1440,6 +1717,10 @@
       }
       if (state.context) closeContext();
       if (state.startOpen) setStart(false);
+      if (state.learningPanelOpen && !lessonEngine.active()) {
+        state.learningPanelOpen = false;
+        renderLearningPanel();
+      }
       if (state.scenarioPanelOpen && !scenarioEngine.active()) {
         state.scenarioPanelOpen = false;
         renderScenarioPanel();
@@ -1452,6 +1733,21 @@
       openApp: openApp,
       on: on,
       scenarios: scenarioEngine,
+      lessons: lessonEngine,
+      progress: progressStore,
+      startLesson: function (id) {
+        var result = lessonEngine.start(id, learningRuntimeApi);
+        state.learningPanelOpen = true;
+        state.scenarioPanelOpen = false;
+        render();
+        return result;
+      },
+      stopLesson: function () {
+        lessonEngine.stop();
+        scenarioEngine.stop();
+        state.learningHighlightSelector = null;
+        render();
+      },
       loadScenario: function (id) {
         var result = scenarioEngine.load(id, runtimeApi);
         state.scenarioPanelOpen = true;
@@ -1477,6 +1773,11 @@
 
     scenarioEngine.onChange(function () {
       if (el && el.scenario) renderScenarioPanel();
+      if (lessonEngine.active() && el && el.learning) renderLearningPanel();
+    });
+
+    lessonEngine.onChange(function () {
+      if (el && el.learning) renderLearningPanel();
     });
 
     render();
