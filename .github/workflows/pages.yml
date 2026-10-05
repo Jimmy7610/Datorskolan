@@ -28,6 +28,8 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check src/vfs.js
+          node --check src/scenarios.js
+          node --check src/scenario-engine.js
           node --check src/app.js
 
       - name: Setup Pages
