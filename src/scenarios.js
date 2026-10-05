@@ -7,7 +7,8 @@
       title: "Skapa mappen Semester",
       description: "Öppna Documents och skapa en ny mapp som heter Semester.",
       start: {
-        explorerFolderId: "documents"
+        explorerFolderId: "documents",
+        openApps: ["explorer"]
       },
       fixtures: [],
       goal: {
@@ -22,7 +23,8 @@
       title: "Spara plan.txt",
       description: "Skapa eller öppna Anteckningar, skriv något och spara filen som plan.txt i Documents.",
       start: {
-        explorerFolderId: "documents"
+        explorerFolderId: "documents",
+        openApps: ["explorer"]
       },
       fixtures: [],
       goal: {
@@ -37,7 +39,8 @@
       title: "Radera och återställ",
       description: "Radera Övningsfil.txt och återställ den sedan från Papperskorgen.",
       start: {
-        explorerFolderId: "documents"
+        explorerFolderId: "documents",
+        openApps: ["explorer"]
       },
       fixtures: [
         {
