@@ -3,11 +3,292 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Datorskolan – Fake Windows</title>
+  <meta name="description" content="Datorskolan lär ut Windows från grunden i en trygg, interaktiv simulator direkt i webbläsaren.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Datorskolan – Lär dig datorn från grunden</title>
   <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/landing.css">
 </head>
-<body>
-  <main id="app" aria-label="Simulerad Windows-miljö"></main>
+<body class="landing-mode">
+  <div id="landing" class="landing-page">
+    <header class="landing-header">
+      <a class="brand" href="#" aria-label="Datorskolan startsida">
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span class="brand-copy">
+          <strong>Datorskolan</strong>
+          <small>Från första klicket till självständig</small>
+        </span>
+      </a>
+
+      <nav class="landing-nav" aria-label="Huvudmeny">
+        <button type="button" data-scroll-target="#how">Så fungerar det</button>
+        <button type="button" data-scroll-target="#course">Innehåll</button>
+        <button type="button" data-scroll-target="#safe">Tryggt att öva</button>
+      </nav>
+
+      <button class="header-cta" type="button" data-launch-school>
+        <span data-cta-text>Starta Datorskolan</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            Interaktiv Windows-träning för absoluta nybörjare
+          </div>
+
+          <h1>Lär dig datorn.<br><span>I din egen takt.</span></h1>
+
+          <p class="hero-lead">
+            Datorskolan förklarar allt från första musklicket till filer, internet och e-post —
+            steg för steg, utan stress och utan att förutsätta att du redan kan.
+          </p>
+
+          <div class="hero-actions">
+            <button class="primary-cta" type="button" data-launch-school>
+              <span data-cta-text>Starta Datorskolan</span>
+              <span class="cta-arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="secondary-cta" type="button" data-scroll-target="#course">
+              Se vad du lär dig
+            </button>
+          </div>
+
+          <p class="resume-note" data-resume-note hidden></p>
+
+          <div class="trust-row" aria-label="Fördelar">
+            <div><span>✓</span> Ingen installation</div>
+            <div><span>✓</span> Sparar dina framsteg</div>
+            <div><span>✓</span> Trygg simulator</div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Förhandsvisning av Datorskolans Windows-simulator">
+          <div class="glow glow-one" aria-hidden="true"></div>
+          <div class="glow glow-two" aria-hidden="true"></div>
+
+          <div class="product-window">
+            <div class="product-window-top">
+              <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="product-window-title">Datorskolan</div>
+              <div class="product-badge">TRYGG ÖVNING</div>
+            </div>
+
+            <div class="product-screen">
+              <aside class="coach-card">
+                <div class="coach-kicker">Steg 3 av 5</div>
+                <div class="coach-progress"><i></i></div>
+                <span class="coach-label">ÖVNING</span>
+                <h3>Skapa en mapp</h3>
+                <p>Klicka på <strong>+ Ny mapp</strong> och döp den till Semester.</p>
+                <div class="coach-actions">
+                  <button type="button" tabindex="-1">Hjälp</button>
+                  <button type="button" tabindex="-1">Kontrollera</button>
+                </div>
+              </aside>
+
+              <div class="desktop-preview">
+                <div class="desktop-icon icon-doc"><span>📁</span><small>Documents</small></div>
+                <div class="desktop-icon icon-pic"><span>🖼️</span><small>Pictures</small></div>
+
+                <div class="explorer-preview">
+                  <div class="explorer-titlebar">
+                    <span>📁 File Explorer</span>
+                    <span class="preview-controls">— □ ×</span>
+                  </div>
+                  <div class="explorer-body">
+                    <div class="explorer-side">
+                      <b>Home</b><b class="active">Documents</b><b>Pictures</b><b>Downloads</b>
+                    </div>
+                    <div class="explorer-content">
+                      <div class="explorer-tools">
+                        <span>←</span><strong>+ Ny mapp</strong><span>Byt namn</span>
+                      </div>
+                      <div class="explorer-path">Home › Documents</div>
+                      <div class="preview-files">
+                        <div><span>📄</span><small>Välkommen.txt</small></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="preview-taskbar">
+                  <span>⊞</span><span>🎓</span><span>📁</span><span>🧮</span>
+                  <i></i><small>10:42<br>2026-10-06</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-proof proof-one">
+            <span class="proof-icon">✓</span>
+            <div><strong>Rätt!</strong><small>Du klarade uppgiften</small></div>
+          </div>
+
+          <div class="floating-proof proof-two">
+            <strong>Hjälp i 5 nivåer</strong>
+            <div class="proof-levels"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-strip" aria-label="Datorskolans styrkor">
+        <div><strong>En sak i taget</strong><span>Inga hopp över grunderna</span></div>
+        <div><strong>Öva på riktigt</strong><span>Inte bara läsa instruktioner</span></div>
+        <div><strong>Tryggt att göra fel</strong><span>Inget påverkar din riktiga dator</span></div>
+        <div><strong>Din egen takt</strong><span>Ta hjälp när du behöver</span></div>
+      </section>
+
+      <section class="section how-section" id="how">
+        <div class="section-heading">
+          <span class="section-kicker">SÅ FUNGERAR DET</span>
+          <h2>Från “jag kan ingenting” till “jag klarar det själv”.</h2>
+          <p>Datorskolan bygger varje färdighet på samma lugna, tydliga sätt.</p>
+        </div>
+
+        <div class="how-grid">
+          <article>
+            <span class="step-number">01</span>
+            <div class="how-icon">👀</div>
+            <h3>Vi förklarar</h3>
+            <p>Du får veta vad saken är och varför den används — med vanliga ord.</p>
+          </article>
+          <article>
+            <span class="step-number">02</span>
+            <div class="how-icon">✨</div>
+            <h3>Vi visar</h3>
+            <p>Rätt område markeras visuellt så du ser exakt var du ska titta.</p>
+          </article>
+          <article>
+            <span class="step-number">03</span>
+            <div class="how-icon">🖱️</div>
+            <h3>Du provar</h3>
+            <p>Du gör uppgiften själv i den simulerade Windows-miljön.</p>
+          </article>
+          <article>
+            <span class="step-number">04</span>
+            <div class="how-icon">✓</div>
+            <h3>Du lär dig på riktigt</h3>
+            <p>Kunskapen återkommer senare tills du kan använda den självständigt.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section course-section" id="course">
+        <div class="section-heading section-heading-left">
+          <span class="section-kicker">HELA VÄGEN</span>
+          <h2>Allt du behöver för att känna dig hemma vid datorn.</h2>
+          <p>Kursen börjar från noll och bygger vidare först när grunden sitter.</p>
+        </div>
+
+        <div class="course-grid">
+          <article class="course-card featured">
+            <span class="course-icon">🖱️</span>
+            <div>
+              <small>GRUNDEN</small>
+              <h3>Mus</h3>
+              <p>Klicka, dubbelklicka, högerklicka, scrolla och dra.</p>
+            </div>
+            <span class="course-status">Nästa fas</span>
+          </article>
+
+          <article class="course-card">
+            <span class="course-icon">⌨️</span>
+            <div><small>GRUNDEN</small><h3>Tangentbord</h3><p>Skriv, redigera och lär dig de viktigaste tangenterna.</p></div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-icon">⊞</span>
+            <div><small>WINDOWS</small><h3>Windows</h3><p>Start-menyn, fönster, aktivitetsfält och program.</p></div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-icon">📁</span>
+            <div><small>ORDNING</small><h3>Filer & mappar</h3><p>Skapa, spara, flytta, kopiera, radera och hitta filer.</p></div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-icon">🌐</span>
+            <div><small>ONLINE</small><h3>Internet</h3><p>Webbläsare, länkar, flikar, sökning och nedladdningar.</p></div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-icon">✉️</span>
+            <div><small>KOMMUNIKATION</small><h3>E-post</h3><p>Läsa, svara, skicka och använda bilagor tryggt.</p></div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-icon">🛡️</span>
+            <div><small>TRYGGHET</small><h3>Säkerhet</h3><p>Lär dig känna igen bluffar, phishing och riskabla länkar.</p></div>
+          </article>
+
+          <article class="course-card">
+            <span class="course-icon">🏁</span>
+            <div><small>MÅLET</small><h3>Självständighet</h3><p>Kombinera flera färdigheter i verklighetsnära uppdrag.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section safe-section" id="safe">
+        <div class="safe-card">
+          <div class="safe-copy">
+            <span class="section-kicker light">TRYGGT ATT ÖVA</span>
+            <h2>Det ser ut som Windows.<br>Men du kan inte förstöra något.</h2>
+            <p>
+              Datorskolans träningsmiljö är helt simulerad. Du kan skapa, flytta,
+              radera och återställa filer utan att en enda riktig fil på datorn påverkas.
+            </p>
+            <ul>
+              <li><span>✓</span> Inga riktiga filer läses eller ändras</li>
+              <li><span>✓</span> Inga program installeras</li>
+              <li><span>✓</span> Övningar kan återställas och göras om</li>
+              <li><span>✓</span> Dina kursframsteg sparas lokalt på enheten</li>
+            </ul>
+          </div>
+
+          <div class="safe-visual" aria-hidden="true">
+            <div class="shield-orbit orbit-one"></div>
+            <div class="shield-orbit orbit-two"></div>
+            <div class="shield-core">🛡️</div>
+            <span class="safe-chip chip-one">Virtuella filer</span>
+            <span class="safe-chip chip-two">Ingen installation</span>
+            <span class="safe-chip chip-three">Reset när du vill</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta-section">
+        <div class="final-cta-card">
+          <span class="section-kicker">REDO NÄR DU ÄR</span>
+          <h2>Du behöver inte kunna något innan du börjar.</h2>
+          <p>Det är hela poängen.</p>
+          <button class="primary-cta large" type="button" data-launch-school>
+            <span data-cta-text>Starta Datorskolan</span>
+            <span class="cta-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="landing-footer">
+      <a class="brand footer-brand" href="#">
+        <span class="brand-mark" aria-hidden="true">D</span>
+        <span class="brand-copy"><strong>Datorskolan</strong><small>Lär dig datorn från grunden</small></span>
+      </a>
+      <p>Byggd för nybörjare. Öva tryggt direkt i webbläsaren.</p>
+    </footer>
+  </div>
+
+  <main id="app" hidden aria-label="Simulerad Windows-miljö"></main>
+
+  <button id="product-shell-home" class="product-shell-home" type="button" hidden aria-label="Tillbaka till Datorskolans startsida">
+    <span aria-hidden="true">←</span>
+    <span>Startsidan</span>
+  </button>
+
   <script defer src="./src/vfs.js"></script>
   <script defer src="./src/scenarios.js"></script>
   <script defer src="./src/scenario-engine.js"></script>
@@ -15,5 +296,6 @@
   <script defer src="./src/lessons.js"></script>
   <script defer src="./src/lesson-engine.js"></script>
   <script defer src="./src/app.js"></script>
+  <script defer src="./src/product-shell.js"></script>
 </body>
 </html>
