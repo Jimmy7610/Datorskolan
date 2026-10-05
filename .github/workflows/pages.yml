@@ -36,6 +36,7 @@ jobs:
           node --check src/product-shell.js
           node --check src/app.js
           node --check tests/lesson-engine-smoke.js
+          node --check tests/mouse-module-smoke.js
 
       - name: Smoke test scenario engine
         run: |
@@ -43,6 +44,9 @@ jobs:
 
       - name: Smoke test Lesson Engine
         run: node tests/lesson-engine-smoke.js
+
+      - name: Smoke test Mouse module
+        run: node tests/mouse-module-smoke.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
