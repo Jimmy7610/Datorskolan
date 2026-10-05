@@ -259,10 +259,29 @@
     function refresh(){ var fresh=renderBrowser(ctx); root.replaceWith(fresh); }
 
     s.tabs.forEach(function(tab){
-      var b=el("button",tab.id===s.activeTabId?"active":"","");
+      var wrap=el("div","browser-tab"+(tab.id===s.activeTabId?" active":""));
+      var b=el("button","browser-tab-select","");
       b.textContent=tab.title;
       b.addEventListener("click",function(){s.activeTabId=tab.id;refresh();});
-      tabs.appendChild(b);
+      wrap.appendChild(b);
+
+      if(s.tabs.length>1){
+        var closeTab=el("button","browser-tab-close","×");
+        closeTab.setAttribute("aria-label","Stäng flik");
+        closeTab.addEventListener("click",function(e){
+          e.stopPropagation();
+          var index=s.tabs.findIndex(function(t){return t.id===tab.id;});
+          s.tabs=s.tabs.filter(function(t){return t.id!==tab.id;});
+          if(s.activeTabId===tab.id){
+            var fallback=s.tabs[Math.max(0,index-1)]||s.tabs[0];
+            s.activeTabId=fallback.id;
+          }
+          ctx.emit("browser.tabClosed",{tabId:tab.id});
+          refresh();
+        });
+        wrap.appendChild(closeTab);
+      }
+      tabs.appendChild(wrap);
     });
     var plus=el("button","browser-new-tab","+");
     plus.addEventListener("click",function(){
