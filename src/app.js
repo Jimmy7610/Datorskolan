@@ -125,7 +125,7 @@
         .sort(function (a, b) { return b.z - a.z; })[0] || null;
     }
 
-    function focusWindow(id) {
+    function focusWindow(id, renderNow) {
       var win = state.windows.find(function (w) { return w.id === id; });
       if (!win || win.mode === "minimized") return;
       if (state.activeWindowId === id) return;
@@ -134,7 +134,7 @@
       win.z = state.nextZ++;
       state.activeWindowId = id;
       emit("window.focused", { windowId: id });
-      render();
+      if (renderNow !== false) render();
     }
 
     function openApp(appId) {
@@ -359,7 +359,10 @@
         var drag = null;
         titlebar.addEventListener("pointerdown", function (e) {
           if (e.button !== 0 || e.target.closest(".controls") || w.mode !== "normal") return;
-          focusWindow(w.id);
+          focusWindow(w.id, false);
+          el.windows.querySelectorAll(".app-window.active").forEach(function (node) { node.classList.remove("active"); });
+          win.classList.add("active");
+          win.style.zIndex = String(w.z);
           drag = { pointerId: e.pointerId, ox: e.clientX - w.x, oy: e.clientY - w.y };
           titlebar.setPointerCapture(e.pointerId);
         });
