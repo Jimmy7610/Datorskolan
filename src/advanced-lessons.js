@@ -120,6 +120,11 @@
 
     interactive("mail-007-forward","mail","Vidarebefordra mejl","Skicka ett befintligt meddelande vidare till en annan mottagare.",["mail.forward"],"mail-forward-01","Öppna ett mejl, välj Vidarebefordra, skriv en mottagare och skicka.",null,".fake-mail"),
 
+    interactive("windows-011-search","windows","Sök efter program","Använd sökrutan i Start-menyn.",["windows.search"],"windows-search-01","Öppna Start och skriv Kalkylator i sökfältet.",null,".start-search"),
+    interactive("files-011-drag","files","Dra fil mellan mappar","Flytta en fil genom att dra den till en mapp i sidofältet.",["files.drag-drop"],"files-drag-01","Dra Dra mig.txt till Downloads.",null,".explorer-v2"),
+    interactive("internet-012-refresh","internet","Uppdatera sida","Ladda om den aktuella webbsidan.",["internet.refresh"],"internet-refresh-01","Klicka på uppdateringsknappen ↻.",null,".browser-bar"),
+    interactive("internet-013-close-tab","internet","Stäng flik","Öppna en extra flik och stäng den igen.",["internet.close-tab"],"internet-close-tab-01","Öppna en ny flik med + och stäng den med ×.",null,".browser-tabs"),
+
     interactive("final-001-independent","final","Självständighetsprovet","Kombinera webbläsare, filer och e-post utan detaljerade steg.",["internet.download","files.rename","mail.attachment","mail.send"],"final-independent-01","Ladda ner guide.txt, byt namn på en fil, öppna E-post, bifoga en fil och skicka ett meddelande.",["Fundera på vilket program som behövs först.","Börja i webbläsaren och fortsätt sedan i Utforskaren.","Efter filhanteringen använder du E-post.","De relevanta apparna finns i Start-menyn.","Webbläsare: ladda ner → Utforskaren: byt namn → E-post: bifoga och skicka."],".sim")
   ];
 
