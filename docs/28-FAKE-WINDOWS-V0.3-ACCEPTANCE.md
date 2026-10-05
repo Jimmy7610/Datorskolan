@@ -4,62 +4,69 @@ v0.3 är godkänd först när följande fungerar i den publicerade GitHub Pages-
 
 ## Calculator
 
-- [ ] Öppna Calculator från Start eller taskbar.
-- [ ] Skriv `12 + 7 =`.
-- [ ] Resultatet blir `19`.
-- [ ] Testa subtraktion.
-- [ ] Testa multiplikation.
-- [ ] Testa division.
-- [ ] Decimal fungerar.
-- [ ] `C` återställer kalkylatorn.
-- [ ] Backspace fungerar.
-- [ ] Division med noll ger `Error`.
-- [ ] Eventet `calculator.result` skrivs i konsolen.
+- [x] Öppna Calculator från Start eller taskbar.
+- [x] Skriv `12 + 7 =`.
+- [x] Resultatet blir `19`.
+- [x] Testa subtraktion.
+- [x] Testa multiplikation.
+- [x] Testa division.
+- [x] Decimal fungerar.
+- [x] `C` återställer kalkylatorn.
+- [x] Backspace fungerar.
+- [x] Division med noll ger `Error`.
+- [x] Eventet `calculator.result` skrivs i konsolen.
 
 ## Notepad
 
-- [ ] Öppna Notepad från Start.
-- [ ] Skriv text.
-- [ ] Status visar att dokumentet är osparat.
-- [ ] Klicka `Spara`.
-- [ ] För ett nytt dokument visas `Spara som`.
-- [ ] Spara som `test.txt`.
-- [ ] Filen skapas virtuellt i Documents.
-- [ ] Öppna `test.txt` från Explorer.
-- [ ] Rätt text visas i Notepad.
-- [ ] Ändra text och klicka `Spara`.
-- [ ] Stäng och öppna filen igen.
-- [ ] Den ändrade texten finns kvar.
-- [ ] `Ny` skapar ett tomt osparat dokument.
-- [ ] `Spara som` skapar en ny separat fil.
-- [ ] Eventet `notepad.saved` skrivs i konsolen.
+- [x] Öppna Notepad från Start.
+- [x] Skriv text.
+- [x] Status visar att dokumentet är osparat.
+- [x] Klicka `Spara`.
+- [x] För ett nytt dokument visas `Spara som`.
+- [x] Spara som `test.txt`.
+- [x] Filen skapas virtuellt i Documents.
+- [x] Öppna `test.txt` från Explorer.
+- [x] Rätt text visas i Notepad.
+- [x] Ändra text och klicka `Spara`.
+- [x] Stäng och öppna filen igen.
+- [x] Den ändrade texten finns kvar.
+- [x] `Ny` skapar ett tomt osparat dokument.
+- [x] `Spara som` skapar en ny separat fil.
+- [x] Eventet `notepad.saved` skrivs i konsolen.
 
 ## Photos
 
-- [ ] Öppna Pictures.
-- [ ] Det finns minst två simulerade bildfiler.
-- [ ] Dubbelklicka en bild.
-- [ ] Photos öppnas med rätt filnamn.
-- [ ] Högerpil visar nästa bild.
-- [ ] Vänsterpil visar föregående bild.
-- [ ] `+` zoomar in.
-- [ ] `−` zoomar ut.
-- [ ] Zoom hålls inom rimliga gränser.
-- [ ] Events `photos.changed` och `photos.zoom` skrivs i konsolen.
+- [x] Öppna Pictures.
+- [x] Det finns minst två simulerade bildfiler.
+- [x] Dubbelklicka en bild.
+- [x] Photos öppnas med rätt filnamn.
+- [x] Högerpil visar nästa bild.
+- [x] Vänsterpil visar föregående bild.
+- [x] `+` zoomar in.
+- [x] `−` zoomar ut.
+- [x] Zoom hålls inom rimliga gränser.
+- [x] Events `photos.changed` och `photos.zoom` skrivs i konsolen.
 
 ## File Explorer
 
-- [ ] `+ Ny textfil` finns.
-- [ ] Ny textfil kan namnges.
-- [ ] Den nya textfilen kan dubbelklickas.
-- [ ] Den öppnas i Notepad.
-- [ ] v0.2-operationerna fungerar fortfarande: skapa mapp, rename, copy, cut, paste, delete, restore.
+- [x] `+ Ny textfil` finns.
+- [x] Ny textfil kan namnges.
+- [x] Den nya textfilen kan dubbelklickas.
+- [x] Den öppnas i Notepad.
+- [x] v0.2-operationerna fungerar fortfarande: skapa mapp, rename, copy, cut, paste, delete, restore.
 
 ## Regression
 
-- [ ] Desktop dubbelklick fungerar fortfarande.
-- [ ] Window drag fungerar fortfarande.
-- [ ] Minimize/maximize/restore fungerar fortfarande.
-- [ ] Start-menyn fungerar fortfarande.
-- [ ] Inga console errors under normal användning.
-- [ ] GitHub Pages-deployens JavaScript syntax-check är grön.
+- [x] Desktop dubbelklick fungerar fortfarande.
+- [x] Window drag fungerar fortfarande.
+- [x] Minimize/maximize/restore fungerar fortfarande.
+- [x] Start-menyn fungerar fortfarande.
+- [x] Inga console errors under normal användning.
+- [x] GitHub Pages-deployens JavaScript syntax-check är grön.
+
+
+## Resultat
+
+Manuellt verifierad i den publicerade GitHub Pages-versionen av användaren.
+
+Status: **GODKÄND**
