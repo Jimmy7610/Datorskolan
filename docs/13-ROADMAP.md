@@ -30,7 +30,7 @@
 - Papperskorgen
 - återställning
 
-### v0.3 – Core Apps
+### v0.3 – Core Apps ✅
 - Utforskaren
 - Anteckningar
 - Kalkylator
