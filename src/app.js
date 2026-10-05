@@ -208,7 +208,8 @@
     var runtimeApi = {
       vfs: vfs,
       resetForScenario: resetForScenario,
-      setExplorerFolder: setExplorerFolder
+      setExplorerFolder: setExplorerFolder,
+      openApp: openApp
     };
 
     function renderExplorer() {
