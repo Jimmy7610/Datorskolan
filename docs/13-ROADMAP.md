@@ -43,7 +43,7 @@
 - deterministic state
 - scenario-events
 
-## Fas 2 – Lesson Engine
+## Fas 2 – Lesson Engine ✅
 - instruktioner
 - demonstrationer
 - övningar
