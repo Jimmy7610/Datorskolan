@@ -27,3 +27,21 @@
 .dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
 .dialog-actions button{min-width:82px;height:34px;border:1px solid #cbd5e1;border-radius:6px;background:#fff}
 .dialog-actions button.primary{background:#2563eb;border-color:#2563eb;color:#fff}
+
+.calc-v3{display:flex;flex-direction:column;height:100%;gap:8px}
+.calc-v3 .display{min-height:96px;background:#fff;border:1px solid #d9dee5;border-radius:8px;overflow:hidden;word-break:break-all}
+.calc-grid{grid-template-columns:repeat(4,1fr)}
+.calc-grid .calc-equals{grid-column:span 4;background:#2563eb;color:#fff;border-color:#2563eb}
+.notepad-app{height:100%;display:flex;flex-direction:column;background:#fff}
+.notepad-toolbar{min-height:42px;display:flex;align-items:center;gap:6px;padding:5px 8px;border-bottom:1px solid var(--border);background:#f8fafc}
+.notepad-toolbar button{height:30px;border:1px solid #d7dce2;border-radius:5px;background:#fff;padding:0 10px}
+.notepad-toolbar button:hover{background:#eef2f7}
+.notepad-status{margin-left:auto;padding-right:6px;font-size:12px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notepad-app .notepad{flex:1;min-height:0}
+.photo-viewer-v3{display:flex;flex-direction:column}
+.photos-toolbar{height:44px;flex:0 0 44px;width:100%;display:flex;align-items:center;gap:6px;padding:6px 10px;background:#1f2937;border-bottom:1px solid #334155}
+.photos-toolbar button{width:34px;height:30px;border:1px solid #475569;border-radius:5px;background:#334155;color:#fff}
+.photos-toolbar button:hover{background:#475569}
+.photos-toolbar span{margin-left:6px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.photo-stage{flex:1;display:grid;place-items:center;overflow:hidden}
+.photo-stage .photo-placeholder{transition:transform .12s ease;transform-origin:center}
