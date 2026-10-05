@@ -236,7 +236,9 @@
         activeTabId:1,
         history:["home"],
         historyIndex:0,
-        zoom:100
+        zoom:100,
+        bookmarks:[],
+        cookieAccepted:false
       };
     }
     return state.browser;
@@ -272,6 +274,7 @@
     var bar=el("div","browser-bar");
     var back=el("button","","←"); var forward=el("button","","→"); var reload=el("button","","↻");
     var address=el("input","browser-address"); address.value=activeTab().page==="home"?"datorskolan.local":activeTab().page;
+    var bookmark=el("button","browser-bookmark","☆");
     var go=el("button","browser-go","Gå");
     back.disabled=s.historyIndex<=0;forward.disabled=s.historyIndex>=s.history.length-1;
     back.addEventListener("click",function(){if(s.historyIndex>0){s.historyIndex--;activeTab().page=s.history[s.historyIndex];ctx.emit("browser.back",{});refresh();}});
@@ -279,19 +282,25 @@
     reload.addEventListener("click",function(){ctx.emit("browser.refreshed",{page:activeTab().page});});
     function goAddress(){var value=address.value.trim();ctx.emit("browser.addressUsed",{value:value});navigate(value.indexOf("saker")>=0?"search":value.indexOf("form")>=0?"form":"info");}
     go.addEventListener("click",goAddress);address.addEventListener("keydown",function(e){if(e.key==="Enter")goAddress();});
-    [back,forward,reload,address,go].forEach(function(x){bar.appendChild(x);});
+    bookmark.addEventListener("click",function(){
+      var pageId=activeTab().page;
+      if(s.bookmarks.indexOf(pageId)<0)s.bookmarks.push(pageId);
+      bookmark.textContent="★";
+      ctx.emit("browser.bookmarked",{page:pageId});
+    });
+    [back,forward,reload,address,bookmark,go].forEach(function(x){bar.appendChild(x);});
     root.appendChild(bar);
 
     var page=el("div","browser-page");
     var p=activeTab().page;
     if(p==="home"){
-      page.innerHTML="<div class='browser-home'><h2>Övningswebben</h2><p>Det här är en helt simulerad webbläsare.</p><div class='browser-links'><button data-page='info'>Vad är internet?</button><button data-page='search'>Sökresultat</button><button data-page='form'>Formulär</button></div></div>";
+      page.innerHTML="<div class='browser-home'><h2>Övningswebben</h2><p>Det här är en helt simulerad webbläsare.</p><div class='browser-links'><button data-page='info'>Vad är internet?</button><button data-page='search'>Sökresultat</button><button data-page='form'>Formulär</button></div></div>" + (s.cookieAccepted ? "" : "<div class='browser-cookie'><strong>Cookies</strong><span>Den här övningssidan använder simulerade cookies.</span><button>Godkänn</button></div>");
     } else if(p==="search"){
       page.innerHTML="<h2>Sökresultat</h2><div class='browser-result'><button data-page='info'>Lär dig om säkra länkar</button><p>datorskolan.local/info</p></div><div class='browser-result'><button data-page='download'>Övningsfil att ladda ner</button><p>datorskolan.local/download</p></div>";
     } else if(p==="download"){
       page.innerHTML="<h2>Hämta en övningsfil</h2><p>Den här filen är simulerad.</p><button class='browser-download'>Ladda ner guide.txt</button>";
     } else if(p==="form"){
-      page.innerHTML="<h2>Formulär</h2><label>Namn <input class='browser-form-name'></label><label><input type='checkbox' class='browser-check'> Jag har läst texten</label><button class='browser-submit'>Skicka</button>";
+      page.innerHTML="<h2>Formulär</h2><label>Namn <input class='browser-form-name'></label><label><input type='checkbox' class='browser-check'> Jag har läst texten</label><fieldset><legend>Kontakt</legend><label><input type='radio' name='contact' value='mail' checked> E-post</label><label><input type='radio' name='contact' value='phone'> Telefon</label></fieldset><label>Ämne <select class='browser-select'><option>Fråga</option><option>Support</option></select></label><button class='browser-upload'>Välj fil för uppladdning</button><span class='browser-upload-name'></span><button class='browser-submit'>Skicka</button>";
     } else {
       page.innerHTML="<h2>Vad är internet?</h2><p>Internet är nätverket. Webbläsaren är programmet du använder för att besöka webbsidor.</p><button data-page='search'>Gå till sökresultat</button>";
     }
@@ -304,6 +313,18 @@
       ctx.emit("browser.downloaded",{name:"guide.txt"});
       dl.textContent="✓ Nedladdad";
     });
+    var cookie=page.querySelector(".browser-cookie button");
+    if(cookie)cookie.addEventListener("click",function(){
+      s.cookieAccepted=true;ctx.emit("browser.cookieAccepted",{});refresh();
+    });
+    var upload=page.querySelector(".browser-upload");
+    if(upload)upload.addEventListener("click",function(){
+      var docs=ctx.vfs.list("documents").filter(function(n){return n.type==="file";});
+      var chosen=docs[0];
+      page.querySelector(".browser-upload-name").textContent=chosen?"📎 "+chosen.name:"Ingen fil hittades";
+      if(chosen)ctx.emit("browser.uploaded",{name:chosen.name});
+    });
+
     var submit=page.querySelector(".browser-submit");
     if(submit)submit.addEventListener("click",function(){
       var name=page.querySelector(".browser-form-name").value.trim();
@@ -358,21 +379,28 @@
     function renderComposer(replyTo){
       main.replaceChildren();
       var form=el("div","mail-form");
-      form.innerHTML="<label>Till <input class='mail-to'></label><label>Ämne <input class='mail-subject'></label><textarea class='mail-body'></textarea><div class='mail-form-actions'><button class='mail-attach'>Bifoga plan.txt</button><span class='mail-attachment'></span><button class='mail-send'>Skicka</button></div>";
+      form.innerHTML="<label>Till <input class='mail-to'></label><label>Ämne <input class='mail-subject'></label><textarea class='mail-body'></textarea><div class='mail-form-actions'><button class='mail-attach'>Bifoga fil</button><span class='mail-attachment'></span><button class='mail-send'>Skicka</button></div>";
       if(replyTo){
         form.querySelector(".mail-to").value=replyTo.from;
         form.querySelector(".mail-subject").value="Sv: "+replyTo.subject;
       }
       var attached=false;
+      var attachedName=null;
       form.querySelector(".mail-attach").addEventListener("click",function(e){
-        e.preventDefault();attached=true;form.querySelector(".mail-attachment").textContent="📎 plan.txt";
-        ctx.emit("mail.attachmentAdded",{name:"plan.txt"});
+        e.preventDefault();
+        var candidates=ctx.vfs.list("downloads").concat(ctx.vfs.list("documents")).filter(function(n){return n.type==="file";});
+        var chosen=candidates[0];
+        if(!chosen)return;
+        attached=true;
+        attachedName=chosen.name;
+        form.querySelector(".mail-attachment").textContent="📎 "+chosen.name;
+        ctx.emit("mail.attachmentAdded",{name:chosen.name});
       });
       form.querySelector(".mail-send").addEventListener("click",function(e){
         e.preventDefault();
         var to=form.querySelector(".mail-to").value.trim();
         if(!to)return;
-        ctx.emit(replyTo?"mail.replied":"mail.sent",{to:to,attachment:attached});
+        ctx.emit(replyTo?"mail.replied":"mail.sent",{to:to,attachment:attached,attachmentName:attachedName});
         form.querySelector(".mail-send").textContent="✓ Skickat";
       });
       main.appendChild(form);
@@ -384,12 +412,20 @@
       main.innerHTML="<div class='mail-empty'><span>✉️</span><h3>Inkorg</h3><p>Välj ett meddelande till vänster.</p></div>";
     } else {
       var message=el("article","mail-message");
-      message.innerHTML="<header><div><strong></strong><span></span></div><button class='mail-reply'>Svara</button></header><h2></h2><p></p><div class='mail-actions'></div>";
+      message.innerHTML="<header><div><strong></strong><span></span></div><div class='mail-head-actions'><button class='mail-reply'>Svara</button><button class='mail-forward'>Vidarebefordra</button></div></header><h2></h2><p></p><div class='mail-actions'></div>";
       message.querySelector("strong").textContent=selected.from;
       message.querySelector("span").textContent=selected.safe?"Känd avsändare":"Okänd avsändare";
       message.querySelector("h2").textContent=selected.subject;
       message.querySelector("p").textContent=selected.body;
       message.querySelector(".mail-reply").addEventListener("click",function(){renderComposer(selected);});
+      message.querySelector(".mail-forward").addEventListener("click",function(){
+        renderComposer(null);
+        var subject=main.querySelector(".mail-subject");
+        var body=main.querySelector(".mail-body");
+        if(subject)subject.value="VB: "+selected.subject;
+        if(body)body.value="Vidarebefordrat meddelande:\n\n"+selected.body;
+        ctx.emit("mail.forwardStarted",{id:selected.id});
+      });
       var actions=message.querySelector(".mail-actions");
       if(selected.attachment){
         var download=el("button","mail-download","📎 "+selected.attachment+" – Ladda ner");
