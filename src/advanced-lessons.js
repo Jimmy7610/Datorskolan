@@ -125,6 +125,17 @@
     interactive("internet-012-refresh","internet","Uppdatera sida","Ladda om den aktuella webbsidan.",["internet.refresh"],"internet-refresh-01","Klicka på uppdateringsknappen ↻.",null,".browser-bar"),
     interactive("internet-013-close-tab","internet","Stäng flik","Öppna en extra flik och stäng den igen.",["internet.close-tab"],"internet-close-tab-01","Öppna en ny flik med + och stäng den med ×.",null,".browser-tabs"),
 
+    interactive("windows-012-desktop","windows","Skrivbord och ikoner","Öppna något direkt från skrivbordet.",["windows.desktop-icon"],"windows-desktop-open-01","Dubbelklicka på Documents-ikonen.",null,".desktop"),
+    basic("windows-013-taskbar","windows","Aktivitetsfält och klocka","Förstå aktivitetsfältet, öppna program och klockan.","windows.taskbar","Aktivitetsfältet visar Start, öppna och fästa program samt klockan. Ett program kan återställas därifrån efter att det minimerats."),
+
+    interactive("internet-014-search","internet","Sökmotor","Sök efter information med en sökruta.",["internet.search"],"internet-search-01","Skriv något i sökrutan på Övningswebben och sök.",null,".browser-search"),
+
+    basic("security-004-mfa","security","Tvåstegsverifiering","Förstå varför en extra verifiering skyddar kontot.","security.mfa","Tvåstegsverifiering innebär att ett lösenord inte räcker ensamt. Du bekräftar även på ett annat sätt, till exempel med en kod eller en app."),
+    basic("security-005-https","security","Webbadresser och HTTPS","Läs webbadressen innan du lämnar känslig information.","security.https","Kontrollera alltid vilken webbplats du faktiskt är på. HTTPS betyder att anslutningen är krypterad, men det betyder inte automatiskt att sidan är ärlig."),
+    basic("security-006-updates","security","Uppdateringar och antivirus","Håll dator och program uppdaterade.","security.updates","Uppdateringar täpper till säkerhetshål. Windows inbyggda säkerhet och antivirus ska normalt vara aktiva och uppdaterade."),
+    basic("security-007-wifi","security","Offentligt Wi-Fi","Var försiktig på öppna nätverk.","security.public-wifi","På offentliga nätverk bör du undvika känsliga aktiviteter om du inte vet att anslutningen är trygg."),
+    basic("security-008-support-scam","security","Falsk teknisk support","Känn igen någon som påstår att datorn är infekterad och vill få fjärråtkomst.","security.support-scam","Riktiga företag ringer inte oväntat och kräver att du installerar fjärrstyrning eller betalar för att ta bort ett påhittat virus."),
+
     interactive("final-001-independent","final","Självständighetsprovet","Kombinera webbläsare, filer och e-post utan detaljerade steg.",["internet.download","files.rename","mail.attachment","mail.send"],"final-independent-01","Ladda ner guide.txt, byt namn på en fil, öppna E-post, bifoga en fil och skicka ett meddelande.",["Fundera på vilket program som behövs först.","Börja i webbläsaren och fortsätt sedan i Utforskaren.","Efter filhanteringen använder du E-post.","De relevanta apparna finns i Start-menyn.","Webbläsare: ladda ner → Utforskaren: byt namn → E-post: bifoga och skicka."],".sim")
   ];
 
