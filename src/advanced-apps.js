@@ -313,7 +313,7 @@
     var page=el("div","browser-page");
     var p=activeTab().page;
     if(p==="home"){
-      page.innerHTML="<div class='browser-home'><h2>Övningswebben</h2><p>Det här är en helt simulerad webbläsare.</p><div class='browser-links'><button data-page='info'>Vad är internet?</button><button data-page='search'>Sökresultat</button><button data-page='form'>Formulär</button></div></div>" + (s.cookieAccepted ? "" : "<div class='browser-cookie'><strong>Cookies</strong><span>Den här övningssidan använder simulerade cookies.</span><button>Godkänn</button></div>");
+      page.innerHTML="<div class='browser-home'><h2>Övningswebben</h2><p>Det här är en helt simulerad webbläsare.</p><div class='browser-search'><input placeholder='Sök på övningswebben'><button>Sök</button></div><div class='browser-links'><button data-page='info'>Vad är internet?</button><button data-page='search'>Sökresultat</button><button data-page='form'>Formulär</button></div></div>" + (s.cookieAccepted ? "" : "<div class='browser-cookie'><strong>Cookies</strong><span>Den här övningssidan använder simulerade cookies.</span><button>Godkänn</button></div>");
     } else if(p==="search"){
       page.innerHTML="<h2>Sökresultat</h2><div class='browser-result'><button data-page='info'>Lär dig om säkra länkar</button><p>datorskolan.local/info</p></div><div class='browser-result'><button data-page='download'>Övningsfil att ladda ner</button><p>datorskolan.local/download</p></div>";
     } else if(p==="download"){
@@ -326,6 +326,17 @@
     page.querySelectorAll("[data-page]").forEach(function(b){
       b.addEventListener("click",function(){ctx.emit("browser.linkOpened",{page:b.getAttribute("data-page")});navigate(b.getAttribute("data-page"));});
     });
+    var searchButton=page.querySelector(".browser-search button");
+    var searchInput=page.querySelector(".browser-search input");
+    function runSearch(){
+      if(!searchInput)return;
+      var query=searchInput.value.trim();
+      if(!query)return;
+      ctx.emit("browser.searched",{query:query});
+      navigate("search");
+    }
+    if(searchButton)searchButton.addEventListener("click",runSearch);
+    if(searchInput)searchInput.addEventListener("keydown",function(e){if(e.key==="Enter")runSearch();});
     var dl=page.querySelector(".browser-download");
     if(dl)dl.addEventListener("click",function(){
       try{ctx.vfs.createFile("downloads","guide.txt","text","Övningsfil från webbläsaren.");}catch(e){}
