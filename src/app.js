@@ -33,278 +33,37 @@
         selectedId: null,
         clipboard: null
       },
-      dialog: null
-    };
-
-    var listeners = {};
-
-    function emit(type, payload) {
-      console.debug("[FakeWindows]", type, payload || {});
-      (listeners[type] || []).forEach(function (fn) { fn(payload || {}); });
-    }
-
-    function on(type, fn) {
-      (listeners[type] || (listeners[type] = [])).push(fn);
-    }
-
-    function iconForNode(node) {
-      if (node.type === "folder") return "📁";
-      if (node.fileType === "image") return "🖼️";
-      return "📄";
-    }
-
-    function showTextDialog(title, value, onConfirm) {
-      state.dialog = { title: title, value: value || "", onConfirm: onConfirm };
-      renderDialog();
-    }
-
-    function navigateFolder(folderId) {
-      var folder = vfs.get(folderId);
-      if (!folder || folder.type !== "folder") return;
-      state.explorer.folderId = folderId;
-      state.explorer.selectedId = null;
-      render();
-      emit("folder.opened", { folderId: folderId, path: vfs.path(folderId) });
-    }
-
-    function selectedVfsNode() {
-      return state.explorer.selectedId ? vfs.get(state.explorer.selectedId) : null;
-    }
-
-    function createFolder() {
-      var node = vfs.createFolder(state.explorer.folderId, "Ny mapp");
-      state.explorer.selectedId = node.id;
-      emit("folder.created", { id: node.id, name: node.name, parentId: node.parentId });
-      render();
-      showTextDialog("Byt namn på mappen", node.name, function (value) {
-        var renamed = vfs.rename(node.id, value);
-        if (renamed) emit("file.renamed", { id: renamed.id, name: renamed.name });
-        render();
-      });
-    }
-
-    function renameSelected() {
-      var node = selectedVfsNode();
-      if (!node || node.system) return;
-      showTextDialog("Byt namn", node.name, function (value) {
-        var renamed = vfs.rename(node.id, value);
-        if (renamed) emit("file.renamed", { id: renamed.id, name: renamed.name });
-        render();
-      });
-    }
-
-    function copySelected(mode) {
-      var node = selectedVfsNode();
-      if (!node || node.system) return;
-      state.explorer.clipboard = { mode: mode, id: node.id };
-      emit(mode === "cut" ? "file.cut" : "file.copiedToClipboard", { id: node.id });
-      render();
-    }
-
-    function pasteClipboard() {
-      var clip = state.explorer.clipboard;
-      if (!clip) return;
-
-      var result = null;
-      if (clip.mode === "copy") {
-        result = vfs.copy(clip.id, state.explorer.folderId);
-        if (result) emit("file.copied", { sourceId: clip.id, newId: result.id, parentId: state.explorer.folderId });
-      } else {
-        result = vfs.move(clip.id, state.explorer.folderId);
-        if (result) {
-          emit("file.moved", { id: result.id, parentId: state.explorer.folderId });
-          state.explorer.clipboard = null;
-        }
-      }
-
-      if (result) state.explorer.selectedId = result.id;
-      render();
-    }
-
-    function deleteSelected() {
-      var node = selectedVfsNode();
-      if (!node || node.system) return;
-      var deleted = vfs.delete(node.id);
-      if (deleted) {
-        emit("file.deleted", { id: deleted.id, name: deleted.name });
-        state.explorer.selectedId = null;
-      }
-      render();
-    }
-
-    function restoreSelected() {
-      var node = selectedVfsNode();
-      if (!node) return;
-      var restored = vfs.restore(node.id);
-      if (restored) {
-        emit("recycleBin.restored", { id: restored.id, parentId: restored.parentId });
-        state.explorer.selectedId = null;
-      }
-      render();
-    }
-
-    function emptyRecycleBin() {
-      vfs.emptyRecycleBin();
-      state.explorer.selectedId = null;
-      emit("recycleBin.emptied", {});
-      render();
-    }
-
-    function renderExplorer() {
-      var wrapper = document.createElement("div");
-      wrapper.className = "explorer-v2";
-
-      var sidebar = document.createElement("aside");
-      sidebar.className = "explorer-sidebar";
-
-      [
-        ["home", "🏠", "Home"],
-        ["documents", "📄", "Documents"],
-        ["pictures", "🖼️", "Pictures"],
-        ["downloads", "⬇️", "Downloads"],
-        ["recycle-bin", "🗑️", "Recycle Bin"]
-      ].forEach(function (entry) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.className = "explorer-side-button" + (state.explorer.folderId === entry[0] ? " active" : "");
-        b.textContent = entry[1] + " " + entry[2];
-        b.addEventListener("click", function (e) {
-          e.stopPropagation();
-          navigateFolder(entry[0]);
-        });
-        sidebar.appendChild(b);
-      });
-
-      var main = document.createElement("section");
-      main.className = "explorer-main-v2";
-
-      var toolbar = document.createElement("div");
-      toolbar.className = "explorer-toolbar";
-
-      function addTool(label, action, disabled) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.textContent = label;
-        b.disabled = !!disabled;
-        b.addEventListener("click", function (e) {
-          e.stopPropagation();
-          action();
-        });
-        toolbar.appendChild(b);
-      }
-
-      var current = vfs.get(state.explorer.folderId);
-      var selected = selectedVfsNode();
-      var inRecycle = state.explorer.folderId === "recycle-bin";
-
-      addTool("←", function () {
-        if (current && current.parentId) navigateFolder(current.parentId);
-      }, !current || !current.parentId);
-
-      if (inRecycle) {
-        addTool("Återställ", restoreSelected, false);
-        addTool("Töm Papperskorgen", emptyRecycleBin, vfs.list("recycle-bin").length === 0);
-      } else {
-        addTool("+ Ny mapp", createFolder, false);
-        addTool("Byt namn", renameSelected, false);
-        addTool("Kopiera", function () { copySelected("copy"); }, false);
-        addTool("Klipp ut", function () { copySelected("cut"); }, false);
-        addTool("Klistra in", pasteClipboard, !state.explorer.clipboard);
-        addTool("Ta bort", deleteSelected, false);
-      }
-
-      var address = document.createElement("div");
-      address.className = "explorer-address";
-      address.textContent = vfs.path(state.explorer.folderId);
-
-      var grid = document.createElement("div");
-      grid.className = "vfs-grid";
-
-      var nodes = vfs.list(state.explorer.folderId);
-
-      if (nodes.length === 0) {
-        var empty = document.createElement("div");
-        empty.className = "explorer-empty";
-        empty.textContent = inRecycle ? "Papperskorgen är tom." : "Den här mappen är tom.";
-        grid.appendChild(empty);
-      }
-
-      nodes.forEach(function (node) {
-        var item = document.createElement("button");
-        item.type = "button";
-        item.className = "vfs-item" + (state.explorer.selectedId === node.id ? " selected" : "");
-        item.dataset.nodeId = node.id;
-        item.innerHTML =
-          '<span class="vfs-icon" aria-hidden="true">' + iconForNode(node) + '</span>' +
-          '<span class="vfs-name"></span>';
-        item.querySelector(".vfs-name").textContent = node.name;
-
-        item.addEventListener("click", function (e) {
-          e.stopPropagation();
-          state.explorer.selectedId = node.id;
-          grid.querySelectorAll(".vfs-item.selected").forEach(function (el) { el.classList.remove("selected"); });
-          item.classList.add("selected");
-          emit("file.selected", { id: node.id, type: node.type });
-        });
-
-        item.addEventListener("dblclick", function (e) {
-          e.stopPropagation();
-          if (node.type === "folder") {
-            navigateFolder(node.id);
-          } else {
-            emit("file.opened", { id: node.id, name: node.name, fileType: node.fileType });
-            if (node.fileType === "text") {
-              state.notepadFileId = node.id;
-              openApp("notepad");
-            } else if (node.fileType === "image") {
-              state.photoFileId = node.id;
-              openApp("photos");
-            }
-          }
-        });
-
-        item.addEventListener("contextmenu", function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          state.explorer.selectedId = node.id;
-          grid.querySelectorAll(".vfs-item.selected").forEach(function (el) { el.classList.remove("selected"); });
-          item.classList.add("selected");
-        });
-
-        grid.appendChild(item);
-      });
-
-      main.appendChild(toolbar);
-      main.appendChild(address);
-      main.appendChild(grid);
-
-      wrapper.appendChild(sidebar);
-      wrapper.appendChild(main);
-      return wrapper;
-    }
-
-    var apps = {
-      explorer: {
-        title: "File Explorer",
-        icon: "📁",
-        w: 820,
-        h: 520,
-        render: renderExplorer
-      },
-
+      dialog: null,
       calculator: {
         title: "Calculator",
         icon: "🧮",
-        w: 350,
-        h: 480,
+        w: 360,
+        h: 500,
         render: function () {
           var el = document.createElement("div");
-          el.className = "calc";
-          var keys = ["%","CE","C","⌫","7","8","9","÷","4","5","6","×","1","2","3","−","±","0",".","+"];
-          el.innerHTML =
-            '<div class="display">0</div><div class="grid">' +
-            keys.map(function (v) { return '<button tabindex="-1">' + v + '</button>'; }).join("") +
-            '</div>';
+          el.className = "calc calc-v3";
+
+          var display = document.createElement("div");
+          display.className = "display";
+          display.textContent = state.calculator.display;
+
+          var grid = document.createElement("div");
+          grid.className = "grid calc-grid";
+
+          ["%","CE","C","⌫","7","8","9","÷","4","5","6","×","1","2","3","−","±","0",".","+","="].forEach(function (key) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.textContent = key;
+            if (key === "=") b.className = "calc-equals";
+            b.addEventListener("click", function (e) {
+              e.stopPropagation();
+              calculatorInput(key);
+            });
+            grid.appendChild(b);
+          });
+
+          el.appendChild(display);
+          el.appendChild(grid);
           return el;
         }
       },
@@ -312,39 +71,110 @@
       notepad: {
         title: "Notepad",
         icon: "📝",
-        w: 620,
-        h: 430,
+        w: 660,
+        h: 460,
         render: function () {
+          var wrap = document.createElement("div");
+          wrap.className = "notepad-app";
+
+          var toolbar = document.createElement("div");
+          toolbar.className = "notepad-toolbar";
+
+          [
+            ["Ny", newNotepadDocument],
+            ["Spara", function () { saveNotepad(false); }],
+            ["Spara som", function () { saveNotepad(true); }]
+          ].forEach(function (entry) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.textContent = entry[0];
+            b.addEventListener("click", function (e) {
+              e.stopPropagation();
+              entry[1]();
+            });
+            toolbar.appendChild(b);
+          });
+
+          var status = document.createElement("span");
+          status.className = "notepad-status";
+          var node = state.notepadFileId ? vfs.get(state.notepadFileId) : null;
+          status.textContent = (node ? node.name : "Nytt dokument") + (state.notepadDirty ? " • osparad" : "");
+          toolbar.appendChild(status);
+
           var area = document.createElement("textarea");
           area.className = "notepad";
           area.setAttribute("aria-label", "Anteckningsyta");
-
-          var node = state.notepadFileId ? vfs.get(state.notepadFileId) : null;
-          area.value = node && node.type === "file" ? node.content || "" : "";
+          area.value = state.notepadDraft || "";
           area.placeholder = "Skriv här…";
 
           area.addEventListener("pointerdown", function (e) { e.stopPropagation(); });
           area.addEventListener("input", function () {
-            if (node) node.content = area.value;
+            state.notepadDraft = area.value;
+            state.notepadDirty = true;
+            status.textContent = (node ? node.name : "Nytt dokument") + " • osparad";
           });
 
-          return area;
+          wrap.appendChild(toolbar);
+          wrap.appendChild(area);
+          return wrap;
         }
       },
 
       photos: {
         title: "Photos",
         icon: "🖼️",
-        w: 650,
-        h: 430,
+        w: 680,
+        h: 460,
         render: function () {
+          var images = pictureNodes();
+          if (!state.photoFileId && images.length) state.photoFileId = images[0].id;
+
           var node = state.photoFileId ? vfs.get(state.photoFileId) : null;
           var el = document.createElement("div");
-          el.className = "photo-viewer";
-          el.innerHTML =
-            '<div class="photo-placeholder">🖼️</div>' +
-            '<h3></h3><p>Simulerad bildfil</p>';
-          el.querySelector("h3").textContent = node ? node.name : "Photos";
+          el.className = "photo-viewer photo-viewer-v3";
+
+          var toolbar = document.createElement("div");
+          toolbar.className = "photos-toolbar";
+
+          [
+            ["←", function () { movePhoto(-1); }],
+            ["→", function () { movePhoto(1); }],
+            ["−", function () {
+              state.photoZoom = Math.max(0.5, state.photoZoom - 0.25);
+              emit("photos.zoom", { zoom: state.photoZoom });
+              renderWindows();
+            }],
+            ["+", function () {
+              state.photoZoom = Math.min(3, state.photoZoom + 0.25);
+              emit("photos.zoom", { zoom: state.photoZoom });
+              renderWindows();
+            }]
+          ].forEach(function (entry) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.textContent = entry[0];
+            b.addEventListener("click", function (e) {
+              e.stopPropagation();
+              entry[1]();
+            });
+            toolbar.appendChild(b);
+          });
+
+          var label = document.createElement("span");
+          label.textContent = node ? node.name : "Inga bilder";
+          toolbar.appendChild(label);
+
+          var stage = document.createElement("div");
+          stage.className = "photo-stage";
+
+          var picture = document.createElement("div");
+          picture.className = "photo-placeholder";
+          picture.style.transform = "scale(" + state.photoZoom + ")";
+          picture.textContent = "🖼️";
+
+          stage.appendChild(picture);
+          el.appendChild(toolbar);
+          el.appendChild(stage);
           return el;
         }
       },
