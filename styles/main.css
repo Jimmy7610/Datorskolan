@@ -279,3 +279,9 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
 .start-search-empty{grid-column:1/-1;padding:18px;text-align:center;color:#64748b;font-size:12px}
 .explorer-side-button.drop-target{background:#dbeafe!important;outline:2px solid #60a5fa}
 .vfs-item.dragging{opacity:.45}
+
+.browser-tab{height:31px;min-width:120px;max-width:190px;display:grid;grid-template-columns:1fr auto;align-items:center;border-radius:8px 8px 0 0;background:#d9e0e8;overflow:hidden}
+.browser-tab.active{background:#fff}
+.browser-tab .browser-tab-select{min-width:0!important;width:100%;height:31px!important;border-radius:0!important;background:transparent!important;text-align:left;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser-tab .browser-tab-close{min-width:28px!important;width:28px;height:31px!important;border-radius:0!important;background:transparent!important}
+.browser-tab .browser-tab-close:hover{background:#fecaca!important;color:#991b1b}
