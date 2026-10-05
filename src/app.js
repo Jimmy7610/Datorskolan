@@ -51,6 +51,7 @@
       scenarioPanelOpen: false,
       learningPanelOpen: false,
       learningHighlightSelector: null,
+      learningSelectedModule: null,
       mouseLab: {
         mode: "move",
         distance: 0,
@@ -1639,31 +1640,137 @@
           el.learning.appendChild(row);
         });
 
-        var listTitle = document.createElement("h4");
-        listTitle.textContent = "Lektioner";
-        el.learning.appendChild(listTitle);
+        var lessons = lessonEngine.list();
+        var moduleMap = {};
 
-        lessonEngine.list().forEach(function (lesson) {
-          var progress = progressStore.lesson(lesson.id);
-          var b = document.createElement("button");
-          b.type = "button";
-          b.className = "lesson-option";
-          b.innerHTML = "<div><strong></strong><span class='lesson-module'></span></div><p></p><em></em>";
-          b.querySelector("strong").textContent = lesson.title;
-          b.querySelector(".lesson-module").textContent = moduleLabel(lesson.moduleId);
-          b.querySelector("p").textContent = lesson.summary;
-          b.querySelector("em").textContent = progress.status === "completed" ? "✓ Klar" : "Starta";
+        lessons.forEach(function (lesson) {
+          if (!moduleMap[lesson.moduleId]) {
+            moduleMap[lesson.moduleId] = {
+              id: lesson.moduleId,
+              title: moduleLabel(lesson.moduleId),
+              lessons: [],
+              completed: 0
+            };
+          }
 
-          b.addEventListener("click", function (e) {
+          moduleMap[lesson.moduleId].lessons.push(lesson);
+
+          if (progressStore.lesson(lesson.id).status === "completed") {
+            moduleMap[lesson.moduleId].completed += 1;
+          }
+        });
+
+        var modules = Object.keys(moduleMap).map(function (id) {
+          return moduleMap[id];
+        });
+
+        if (!state.learningSelectedModule && modules.length) {
+          var firstIncomplete = modules.find(function (module) {
+            return module.completed < module.lessons.length;
+          });
+          state.learningSelectedModule = (firstIncomplete || modules[0]).id;
+        }
+
+        var modulesTitle = document.createElement("h4");
+        modulesTitle.textContent = "Moduler";
+        el.learning.appendChild(modulesTitle);
+
+        var moduleGrid = document.createElement("div");
+        moduleGrid.className = "learning-module-list";
+
+        modules.forEach(function (module) {
+          var moduleButton = document.createElement("button");
+          moduleButton.type = "button";
+          moduleButton.className =
+            "learning-module-card" +
+            (state.learningSelectedModule === module.id ? " active" : "") +
+            (module.completed === module.lessons.length ? " complete" : "");
+
+          var percent = module.lessons.length
+            ? Math.round(module.completed / module.lessons.length * 100)
+            : 0;
+
+          moduleButton.innerHTML =
+            "<div class='learning-module-card-head'><strong></strong><span></span></div>" +
+            "<div class='learning-module-card-progress'><i></i></div>" +
+            "<small></small>";
+
+          moduleButton.querySelector("strong").textContent = module.title;
+          moduleButton.querySelector("span").textContent =
+            module.completed + "/" + module.lessons.length;
+          moduleButton.querySelector("i").style.width = percent + "%";
+          moduleButton.querySelector("small").textContent =
+            module.completed === module.lessons.length
+              ? "✓ Modulen är klar"
+              : percent + "% klart";
+
+          moduleButton.addEventListener("click", function (e) {
             e.stopPropagation();
-            lessonEngine.start(lesson.id, learningRuntimeApi);
-            state.learningPanelOpen = true;
-            state.scenarioPanelOpen = false;
-            render();
+            state.learningSelectedModule =
+              state.learningSelectedModule === module.id ? null : module.id;
+            renderLearningPanel();
           });
 
-          el.learning.appendChild(b);
+          moduleGrid.appendChild(moduleButton);
         });
+
+        el.learning.appendChild(moduleGrid);
+
+        if (state.learningSelectedModule && moduleMap[state.learningSelectedModule]) {
+          var selectedModule = moduleMap[state.learningSelectedModule];
+
+          var selectedHead = document.createElement("div");
+          selectedHead.className = "learning-selected-module-head";
+
+          var selectedTitle = document.createElement("h4");
+          selectedTitle.textContent = selectedModule.title;
+
+          var closeModule = document.createElement("button");
+          closeModule.type = "button";
+          closeModule.textContent = "Dölj";
+          closeModule.addEventListener("click", function (e) {
+            e.stopPropagation();
+            state.learningSelectedModule = null;
+            renderLearningPanel();
+          });
+
+          selectedHead.appendChild(selectedTitle);
+          selectedHead.appendChild(closeModule);
+          el.learning.appendChild(selectedHead);
+
+          var lessonList = document.createElement("div");
+          lessonList.className = "learning-lesson-list";
+
+          selectedModule.lessons.forEach(function (lesson, lessonIndex) {
+            var progress = progressStore.lesson(lesson.id);
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "lesson-option compact";
+            b.innerHTML =
+              "<span class='lesson-number'></span>" +
+              "<div><strong></strong><p></p></div>" +
+              "<em></em>";
+
+            b.querySelector(".lesson-number").textContent = String(lessonIndex + 1);
+            b.querySelector("strong").textContent = lesson.title;
+            b.querySelector("p").textContent = lesson.summary;
+            b.querySelector("em").textContent =
+              progress.status === "completed" ? "✓ Klar" :
+              progress.status === "in_progress" ? "Fortsätt" : "Starta";
+
+            b.addEventListener("click", function (e) {
+              e.stopPropagation();
+              lessonEngine.start(lesson.id, learningRuntimeApi);
+              state.learningPanelOpen = true;
+              state.scenarioPanelOpen = false;
+              render();
+            });
+
+            lessonList.appendChild(b);
+          });
+
+          el.learning.appendChild(lessonList);
+        }
 
         return;
       }
