@@ -1162,17 +1162,20 @@
     }
 
     function renderScenarioPanel() {
-      el.scenario.hidden = !state.scenarioPanelOpen;
+      var active = scenarioEngine.active();
+      var shouldShow = !!active || state.scenarioPanelOpen;
+
+      el.scenario.hidden = !shouldShow;
       el.scenario.replaceChildren();
 
-      if (!state.scenarioPanelOpen) return;
+      if (!shouldShow) return;
+
+      if (active) state.scenarioPanelOpen = true;
 
       var heading = document.createElement("div");
       heading.className = "scenario-heading";
       heading.innerHTML = "<strong>Scenario Engine</strong><span>v0.4</span>";
       el.scenario.appendChild(heading);
-
-      var active = scenarioEngine.active();
 
       if (active) {
         var card = document.createElement("div");
