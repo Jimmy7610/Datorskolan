@@ -32,6 +32,7 @@
 
     this.createFile("documents", "Välkommen.txt", "text", "Det här är en virtuell fil i Datorskolan.");
     this.createFile("pictures", "Semesterbild.jpg", "image", "");
+    this.createFile("pictures", "Familjefoto.png", "image", "");
     this.createFile("downloads", "Läs mig.txt", "text", "Allt här är simulerat och påverkar inte din riktiga dator.");
   };
 
