@@ -313,9 +313,13 @@
 
         b.addEventListener("pointerup", function (e) {
           if (!drag || e.pointerId !== drag.pointerId) return;
-          if (drag.moved) emit("desktop.item.moved", { itemId: item.id, x: item.x, y: item.y });
+          var moved = drag.moved;
           drag = null;
-          render();
+
+          if (moved) {
+            emit("desktop.item.moved", { itemId: item.id, x: item.x, y: item.y });
+            render();
+          }
         });
 
         el.desktop.appendChild(b);
