@@ -1685,20 +1685,45 @@
         intro.textContent = "Välj en lektion. Dina framsteg sparas automatiskt på den här enheten.";
         el.learning.appendChild(intro);
 
-        var summaries = progressStore.moduleSummary(lessonEngine.list());
-        summaries.forEach(function (summary) {
-          var row = document.createElement("div");
-          row.className = "learning-progress-row";
-          row.innerHTML = "<div><strong></strong><span></span></div><div class='learning-progress-track'><i></i></div>";
-          row.querySelector("strong").textContent = moduleLabel(summary.moduleId);
-          row.querySelector("span").textContent = summary.percent + "%";
-          row.querySelector("i").style.width = summary.percent + "%";
-          el.learning.appendChild(row);
-        });
+        progressStore.refreshReviewStatus(14);
 
         var lessons = lessonEngine.list();
-        var moduleMap = {};
+        var profile = progressStore.profile();
+        var modeRow = document.createElement("div");
+        modeRow.className = "learning-mode-row";
+        modeRow.innerHTML = "<span>Läge</span><div><button data-mode='standard'>Vuxen</button><button data-mode='child'>Barn</button><button data-mode='fast'>Snabb</button></div>";
+        modeRow.querySelectorAll("button").forEach(function (button) {
+          var mode = button.getAttribute("data-mode");
+          if (profile.mode === mode) button.classList.add("active");
+          button.addEventListener("click", function (e) {
+            e.stopPropagation();
+            progressStore.setMode(mode);
+            el.sim.classList.toggle("child-mode", mode === "child");
+            el.sim.classList.toggle("fast-mode", mode === "fast");
+            renderLearningPanel();
+          });
+        });
+        el.learning.appendChild(modeRow);
 
+        var recommended = progressStore.recommendLesson(lessons);
+        if (recommended && !state.learningSelectedModule) {
+          var recommendation = document.createElement("button");
+          recommendation.type = "button";
+          recommendation.className = "learning-recommendation";
+          recommendation.innerHTML = "<span>NÄSTA REKOMMENDERADE</span><strong></strong><small></small><em>Fortsätt →</em>";
+          recommendation.querySelector("strong").textContent = recommended.title;
+          recommendation.querySelector("small").textContent = moduleLabel(recommended.moduleId) + " • " + recommended.summary;
+          recommendation.addEventListener("click", function (e) {
+            e.stopPropagation();
+            lessonEngine.start(recommended.id, learningRuntimeApi);
+            state.learningPanelOpen = true;
+            state.scenarioPanelOpen = false;
+            render();
+          });
+          el.learning.appendChild(recommendation);
+        }
+
+        var moduleMap = {};
         lessons.forEach(function (lesson) {
           if (!moduleMap[lesson.moduleId]) {
             moduleMap[lesson.moduleId] = {
@@ -1708,9 +1733,7 @@
               completed: 0
             };
           }
-
           moduleMap[lesson.moduleId].lessons.push(lesson);
-
           if (progressStore.lesson(lesson.id).status === "completed") {
             moduleMap[lesson.moduleId].completed += 1;
           }
@@ -1720,82 +1743,40 @@
           return moduleMap[id];
         });
 
-        if (!state.learningSelectedModule && modules.length) {
-          var firstIncomplete = modules.find(function (module) {
-            return module.completed < module.lessons.length;
-          });
-          state.learningSelectedModule = (firstIncomplete || modules[0]).id;
+        function startDashboardLesson(lesson) {
+          lessonEngine.start(lesson.id, learningRuntimeApi);
+          state.learningPanelOpen = true;
+          state.scenarioPanelOpen = false;
+          render();
         }
-
-        var modulesTitle = document.createElement("h4");
-        modulesTitle.textContent = "Moduler";
-        el.learning.appendChild(modulesTitle);
-
-        var moduleGrid = document.createElement("div");
-        moduleGrid.className = "learning-module-list";
-
-        modules.forEach(function (module) {
-          var moduleButton = document.createElement("button");
-          moduleButton.type = "button";
-          moduleButton.className =
-            "learning-module-card" +
-            (state.learningSelectedModule === module.id ? " active" : "") +
-            (module.completed === module.lessons.length ? " complete" : "");
-
-          var percent = module.lessons.length
-            ? Math.round(module.completed / module.lessons.length * 100)
-            : 0;
-
-          moduleButton.innerHTML =
-            "<div class='learning-module-card-head'><strong></strong><span></span></div>" +
-            "<div class='learning-module-card-progress'><i></i></div>" +
-            "<small></small>";
-
-          moduleButton.querySelector("strong").textContent = module.title;
-          moduleButton.querySelector("span").textContent =
-            module.completed + "/" + module.lessons.length;
-          moduleButton.querySelector("i").style.width = percent + "%";
-          moduleButton.querySelector("small").textContent =
-            module.completed === module.lessons.length
-              ? "✓ Modulen är klar"
-              : percent + "% klart";
-
-          moduleButton.addEventListener("click", function (e) {
-            e.stopPropagation();
-            state.learningSelectedModule =
-              state.learningSelectedModule === module.id ? null : module.id;
-            renderLearningPanel();
-          });
-
-          moduleGrid.appendChild(moduleButton);
-        });
-
-        el.learning.appendChild(moduleGrid);
 
         if (state.learningSelectedModule && moduleMap[state.learningSelectedModule]) {
           var selectedModule = moduleMap[state.learningSelectedModule];
 
           var selectedHead = document.createElement("div");
-          selectedHead.className = "learning-selected-module-head";
+          selectedHead.className = "learning-module-view-head";
 
-          var selectedTitle = document.createElement("h4");
-          selectedTitle.textContent = selectedModule.title;
-
-          var closeModule = document.createElement("button");
-          closeModule.type = "button";
-          closeModule.textContent = "Dölj";
-          closeModule.addEventListener("click", function (e) {
+          var backModules = document.createElement("button");
+          backModules.type = "button";
+          backModules.textContent = "← Alla moduler";
+          backModules.addEventListener("click", function (e) {
             e.stopPropagation();
             state.learningSelectedModule = null;
             renderLearningPanel();
           });
 
+          var selectedTitle = document.createElement("div");
+          selectedTitle.innerHTML = "<strong></strong><span></span>";
+          selectedTitle.querySelector("strong").textContent = selectedModule.title;
+          selectedTitle.querySelector("span").textContent =
+            selectedModule.completed + " av " + selectedModule.lessons.length + " lektioner klara";
+
+          selectedHead.appendChild(backModules);
           selectedHead.appendChild(selectedTitle);
-          selectedHead.appendChild(closeModule);
           el.learning.appendChild(selectedHead);
 
           var lessonList = document.createElement("div");
-          lessonList.className = "learning-lesson-list";
+          lessonList.className = "learning-lesson-list module-view";
 
           selectedModule.lessons.forEach(function (lesson, lessonIndex) {
             var progress = progressStore.lesson(lesson.id);
@@ -1807,26 +1788,80 @@
               "<div><strong></strong><p></p></div>" +
               "<em></em>";
 
-            b.querySelector(".lesson-number").textContent = String(lessonIndex + 1);
+            b.querySelector(".lesson-number").textContent =
+              progress.status === "completed" ? "✓" : String(lessonIndex + 1);
             b.querySelector("strong").textContent = lesson.title;
             b.querySelector("p").textContent = lesson.summary;
             b.querySelector("em").textContent =
-              progress.status === "completed" ? "✓ Klar" :
+              progress.status === "completed" ? "Klar" :
               progress.status === "in_progress" ? "Fortsätt" : "Starta";
-
             b.addEventListener("click", function (e) {
               e.stopPropagation();
-              lessonEngine.start(lesson.id, learningRuntimeApi);
-              state.learningPanelOpen = true;
-              state.scenarioPanelOpen = false;
-              render();
+              startDashboardLesson(lesson);
             });
-
             lessonList.appendChild(b);
           });
 
           el.learning.appendChild(lessonList);
+          return;
         }
+
+        var summaries = progressStore.moduleSummary(lessons);
+        var overallCompleted = summaries.reduce(function(sum, item){ return sum + item.completed; },0);
+        var overallLessons = summaries.reduce(function(sum, item){ return sum + item.lessons; },0);
+        var overall = document.createElement("div");
+        overall.className = "learning-overall";
+        overall.innerHTML = "<div><strong>Din kurs</strong><span></span></div><div class='learning-progress-track'><i></i></div>";
+        var overallPct = overallLessons ? Math.round(overallCompleted / overallLessons * 100) : 0;
+        overall.querySelector("span").textContent = overallCompleted + "/" + overallLessons + " • " + overallPct + "%";
+        overall.querySelector("i").style.width = overallPct + "%";
+        el.learning.appendChild(overall);
+
+        var modulesTitle = document.createElement("h4");
+        modulesTitle.textContent = "Moduler";
+        el.learning.appendChild(modulesTitle);
+
+        var moduleGrid = document.createElement("div");
+        moduleGrid.className = "learning-module-list dashboard-grid";
+
+        var moduleIcons = {
+          basics:"💻", mouse:"🖱️", keyboard:"⌨️", windows:"⊞", files:"📁",
+          programs:"📝", internet:"🌐", mail:"✉️", security:"🛡️", final:"🏁"
+        };
+
+        modules.forEach(function (module) {
+          var moduleButton = document.createElement("button");
+          moduleButton.type = "button";
+          moduleButton.className =
+            "learning-module-card dashboard-card" +
+            (module.completed === module.lessons.length ? " complete" : "");
+
+          var percent = module.lessons.length
+            ? Math.round(module.completed / module.lessons.length * 100)
+            : 0;
+
+          moduleButton.innerHTML =
+            "<span class='module-icon'></span>" +
+            "<div class='learning-module-card-head'><strong></strong><span></span></div>" +
+            "<div class='learning-module-card-progress'><i></i></div>" +
+            "<small></small>";
+
+          moduleButton.querySelector(".module-icon").textContent = moduleIcons[module.id] || "📘";
+          moduleButton.querySelector("strong").textContent = module.title;
+          moduleButton.querySelector(".learning-module-card-head span").textContent =
+            module.completed + "/" + module.lessons.length;
+          moduleButton.querySelector("i").style.width = percent + "%";
+          moduleButton.querySelector("small").textContent =
+            module.completed === module.lessons.length ? "✓ Klar" : percent + "% klart";
+          moduleButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            state.learningSelectedModule = module.id;
+            renderLearningPanel();
+          });
+          moduleGrid.appendChild(moduleButton);
+        });
+
+        el.learning.appendChild(moduleGrid);
 
         return;
       }
