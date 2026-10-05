@@ -650,6 +650,29 @@
           e.stopPropagation();
           navigateFolder(entry[0]);
         });
+
+        if (entry[0] !== "recycle-bin") {
+          b.addEventListener("dragover", function (e) {
+            if (!e.dataTransfer.types.includes("application/x-datorskolan-node")) return;
+            e.preventDefault();
+            b.classList.add("drop-target");
+          });
+          b.addEventListener("dragleave", function () {
+            b.classList.remove("drop-target");
+          });
+          b.addEventListener("drop", function (e) {
+            e.preventDefault();
+            b.classList.remove("drop-target");
+            var nodeId = e.dataTransfer.getData("application/x-datorskolan-node");
+            var moved = vfs.move(nodeId, entry[0]);
+            if (moved) {
+              state.explorer.selectedId = null;
+              emit("file.moved", { id: moved.id, name: moved.name, parentId: moved.parentId, via: "drag-drop" });
+              render();
+            }
+          });
+        }
+
         sidebar.appendChild(b);
       });
 
@@ -736,6 +759,7 @@
         item.type = "button";
         item.className = "vfs-item" + (state.explorer.selectedId === node.id ? " selected" : "");
         item.dataset.nodeId = node.id;
+        item.draggable = !node.system;
         item.innerHTML =
           '<span class="vfs-icon" aria-hidden="true">' + iconForNode(node) + '</span>' +
           '<span class="vfs-name"></span>';
@@ -774,6 +798,21 @@
           state.explorer.selectedId = node.id;
           grid.querySelectorAll(".vfs-item.selected").forEach(function (el) { el.classList.remove("selected"); });
           item.classList.add("selected");
+        });
+
+        item.addEventListener("dragstart", function (e) {
+          if (node.system) {
+            e.preventDefault();
+            return;
+          }
+          e.dataTransfer.setData("application/x-datorskolan-node", node.id);
+          e.dataTransfer.effectAllowed = "move";
+          item.classList.add("dragging");
+          emit("file.dragStarted", { id: node.id, name: node.name });
+        });
+
+        item.addEventListener("dragend", function () {
+          item.classList.remove("dragging");
         });
 
         grid.appendChild(item);
@@ -1669,30 +1708,58 @@
       if (!state.startOpen) return;
 
       var h = document.createElement("h2");
-      h.textContent = "Pinned";
+      h.textContent = "Start";
+
+      var search = document.createElement("input");
+      search.type = "search";
+      search.className = "start-search";
+      search.placeholder = "Sök efter program";
+      search.setAttribute("aria-label", "Sök efter program");
 
       var grid = document.createElement("div");
       grid.className = "apps";
 
-      ["explorer", "calculator", "notepad", "browser", "mail"].forEach(function (id) {
-        var app = apps[id];
-        var b = document.createElement("button");
+      var startApps = ["explorer", "calculator", "notepad", "browser", "mail"];
 
-        b.type = "button";
-        b.className = "start-app";
-        b.innerHTML =
-          '<span style="font-size:30px">' + app.icon + '</span>' +
-          '<span>' + app.title + "</span>";
+      function drawApps(query) {
+        grid.replaceChildren();
+        var normalized = String(query || "").trim().toLocaleLowerCase("sv");
 
-        b.addEventListener("click", function () {
-          openApp(id);
+        startApps.forEach(function (id) {
+          var app = apps[id];
+          if (normalized && app.title.toLocaleLowerCase("sv").indexOf(normalized) < 0) return;
+
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "start-app";
+          b.innerHTML =
+            '<span style="font-size:30px">' + app.icon + '</span>' +
+            '<span>' + app.title + "</span>";
+
+          b.addEventListener("click", function () {
+            openApp(id);
+          });
+
+          grid.appendChild(b);
         });
 
-        grid.appendChild(b);
+        if (!grid.children.length) {
+          var empty = document.createElement("div");
+          empty.className = "start-search-empty";
+          empty.textContent = "Inga program hittades.";
+          grid.appendChild(empty);
+        }
+      }
+
+      search.addEventListener("input", function () {
+        emit("startMenu.searched", { query: search.value });
+        drawApps(search.value);
       });
 
       el.start.appendChild(h);
+      el.start.appendChild(search);
       el.start.appendChild(grid);
+      drawApps("");
     }
 
     function moduleLabel(moduleId) {
