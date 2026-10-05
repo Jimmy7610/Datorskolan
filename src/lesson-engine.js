@@ -96,9 +96,18 @@
   LessonEngine.prototype.currentStep = function () {
     if (!this._active) return null;
     var lesson = this._definitions[this._active.id];
-    return lesson && lesson.steps[this._active.stepIndex]
-      ? clone(lesson.steps[this._active.stepIndex])
-      : null;
+    if (!lesson || !lesson.steps[this._active.stepIndex]) return null;
+
+    var step = clone(lesson.steps[this._active.stepIndex]);
+    var profile = this._progress && this._progress.profile ? this._progress.profile() : { mode: "standard" };
+    var mode = profile.mode || "standard";
+
+    if (mode === "child" && step.childText) step.text = step.childText;
+    if (mode === "fast" && step.fastText) step.text = step.fastText;
+    if (mode === "child" && step.childTitle) step.title = step.childTitle;
+    if (mode === "fast" && step.fastTitle) step.title = step.fastTitle;
+
+    return step;
   };
 
   LessonEngine.prototype.next = function () {
