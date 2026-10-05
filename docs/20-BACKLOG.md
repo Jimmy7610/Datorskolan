@@ -104,3 +104,18 @@
 - [x] responsive design
 - [x] accessibility pass
 - [x] visual polish and branding
+
+
+## EPIC 7 – Mouse module
+- [x] pointer movement
+- [x] target precision
+- [x] left click
+- [x] double click
+- [x] right click
+- [x] scroll
+- [x] click and hold
+- [x] drag and drop
+- [x] combined final mission
+- [x] mouse mastery skills
+- [x] Mouse Lab app
+- [x] Mouse module smoke test
