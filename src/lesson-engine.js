@@ -137,9 +137,12 @@
 
     if (step.type === "exercise" && !this._isCurrentExerciseComplete()) {
       this._active.attemptsOnStep += 1;
+      var retryProfile = this._progress.profile ? this._progress.profile() : { mode: "standard" };
       this._active.feedback = {
         kind: "try-again",
-        text: "Inte riktigt än. Försök igen eller använd Hjälp."
+        text: retryProfile.mode === "child"
+          ? "Nästan! Prova en gång till eller tryck på Hjälp."
+          : "Inte riktigt än. Försök igen eller använd Hjälp."
       };
 
       lesson.skills.forEach(function (skillId) {
@@ -334,9 +337,12 @@
   LessonEngine.prototype._completeLesson = function () {
     var lesson = this._definitions[this._active.id];
     this._active.status = "completed";
+    var completionProfile = this._progress.profile ? this._progress.profile() : { mode: "standard" };
     this._active.feedback = {
       kind: "lesson-complete",
-      text: "Lektionen är klar."
+      text: completionProfile.mode === "child"
+        ? "Bra jobbat! Uppdraget är klart."
+        : "Lektionen är klar."
     };
 
     this._progress.completeLesson(lesson.id);
