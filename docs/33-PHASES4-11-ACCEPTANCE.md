@@ -11,7 +11,8 @@ Fas 4–11 är implementerade men markeras inte som slutligt godkända förrän 
 - [ ] Shift och Caps Lock registreras.
 - [ ] Alla fyra piltangenter registreras.
 - [ ] Tab och Esc registreras.
-- [ ] Ctrl, Alt och Windows-tangenten registreras.
+- [ ] Ctrl och Alt registreras praktiskt.
+- [ ] Windows-tangenten förklaras som OS-reserverad tangent.
 - [ ] Ctrl+A, Ctrl+C och Ctrl+V registreras.
 - [ ] Specialtecken registreras.
 - [ ] Slutuppdraget kräver flera tangentbordsfärdigheter.
@@ -27,7 +28,8 @@ Fas 4–11 är implementerade men markeras inte som slutligt godkända förrän 
 - [ ] Fönster kan maximeras och återställas.
 - [ ] Fönster kan stängas.
 - [ ] Fönster kan ändra storlek med resize-handtaget.
-- [ ] Alt+Tab växlar mellan två öppna program.
+- [ ] Växling mellan två öppna program via aktivitetsfältet fungerar.
+- [ ] Alt+Tab förklaras som riktigt Windows-kortkommando.
 - [ ] Högerklicksmeny fungerar.
 - [ ] Windows-slutuppdraget kräver flera fönsterhandlingar.
 
