@@ -1,0 +1,1 @@
+import{Simulator}from"./simulator.js";const root=document.querySelector("#app");const simulator=new Simulator(root);simulator.mount();window.__datorskolanSimulator=simulator;
