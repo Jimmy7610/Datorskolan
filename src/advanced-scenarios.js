@@ -81,6 +81,11 @@
 
     { id:"mail-forward-01", title:"Vidarebefordra mejl", description:"Vidarebefordra ett meddelande och skicka det.", start:{mailReset:true,openApps:["mail"]}, fixtures:[], goal:{type:"event",eventType:"mail.forwarded"} },
 
+    { id:"windows-search-01", title:"Sök i Start", description:"Sök efter Kalkylatorn i Start-menyn.", start:{}, fixtures:[], goal:{type:"event",eventType:"startMenu.searched",payload:{query:"Kalkylator"}} },
+    { id:"files-drag-01", title:"Dra fil till annan mapp", description:"Dra Dra mig.txt till Downloads.", start:{explorerFolderId:"documents",openApps:["explorer"]}, fixtures:[{kind:"file",parentId:"documents",name:"Dra mig.txt",fileType:"text",content:"Dra mig"}], goal:{type:"event",eventType:"file.moved",payload:{via:"drag-drop"}} },
+    { id:"internet-refresh-01", title:"Uppdatera sida", description:"Uppdatera den aktuella webbsidan.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"event",eventType:"browser.refreshed"} },
+    { id:"internet-close-tab-01", title:"Stäng flik", description:"Öppna och stäng en extra flik.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"all",goals:[{type:"event-seen",eventType:"browser.tabOpened"},{type:"event-seen",eventType:"browser.tabClosed"}]} },
+
     { id:"final-independent-01", title:"Självständighetsprov", description:"Kombinera webbläsare, filer och e-post.", start:{browserReset:true,mailReset:true,openApps:["browser"]}, fixtures:[{kind:"file",parentId:"documents",name:"plan.txt",fileType:"text",content:"Min plan"}], goal:{type:"all",goals:[
       {type:"event-seen",eventType:"browser.downloaded"},
       {type:"event-seen",eventType:"file.renamed"},
