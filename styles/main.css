@@ -188,3 +188,74 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
 .lesson-option.compact>div{display:block}
 .lesson-option.compact p{grid-column:auto;margin:2px 0 0;font-size:10px;line-height:1.35}
 .lesson-option.compact em{grid-column:auto;grid-row:auto;align-self:center}
+
+.learning-panel{width:min(520px,calc(100% - 20px))}
+.learning-mode-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;margin-bottom:10px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc}
+.learning-mode-row>span{font-size:11px;font-weight:700;color:#64748b}
+.learning-mode-row>div{display:flex;gap:4px}
+.learning-mode-row button{border:0;border-radius:7px;background:transparent;padding:6px 8px;font-size:10px;color:#64748b}
+.learning-mode-row button.active{background:#2563eb;color:#fff}
+.learning-recommendation{position:relative;width:100%;padding:13px 14px;margin-bottom:12px;border:1px solid #bfdbfe;border-radius:12px;background:linear-gradient(135deg,#eff6ff,#f5f3ff);text-align:left}
+.learning-recommendation>span{display:block;font-size:9px;font-weight:900;letter-spacing:.08em;color:#2563eb}
+.learning-recommendation strong{display:block;margin-top:5px;font-size:15px}
+.learning-recommendation small{display:block;margin-top:3px;padding-right:70px;font-size:10px;line-height:1.4;color:#64748b}
+.learning-recommendation em{position:absolute;right:12px;bottom:12px;font-style:normal;font-size:10px;font-weight:800;color:#2563eb}
+.learning-overall{padding:10px 0 2px}
+.learning-overall>div:first-child{display:flex;align-items:center;justify-content:space-between;font-size:11px}
+.learning-overall span{color:#64748b}
+.learning-module-list.dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.learning-module-card.dashboard-card{position:relative;min-height:112px;padding:11px}
+.learning-module-card.dashboard-card .module-icon{display:block;font-size:22px;margin-bottom:7px}
+.learning-module-card.dashboard-card .learning-module-card-head strong{font-size:12px}
+.learning-module-card.dashboard-card small{font-size:9px}
+.learning-module-view-head{display:grid;gap:10px;margin:8px 0 12px}
+.learning-module-view-head>button{justify-self:start;border:0;background:transparent;padding:0;color:#2563eb;font-size:11px;font-weight:700}
+.learning-module-view-head>div{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.learning-module-view-head strong{font-size:17px}
+.learning-module-view-head span{font-size:10px;color:#64748b}
+.learning-lesson-list.module-view{max-height:58vh;overflow:auto;padding-right:3px}
+.child-mode .learning-panel{font-size:1.05em}
+.child-mode .learning-module-card.dashboard-card{min-height:126px}
+.child-mode .learning-step{border-width:2px}
+.fast-mode .learning-step p{font-size:12px}
+.fast-mode .learning-panel{width:min(470px,calc(100% - 20px))}
+
+.keyboard-lab{height:100%;display:flex;flex-direction:column;background:#f8fafc}
+.keyboard-lab-head{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #e2e8f0;background:#fff}
+.keyboard-lab-head>div{display:flex;align-items:center;gap:9px}
+.keyboard-lab-head span{font-size:22px}.keyboard-lab-head strong{font-size:14px}
+.keyboard-lab-head em{font-style:normal;font-size:11px;font-weight:700;color:#64748b;background:#f1f5f9;padding:5px 8px;border-radius:999px}
+.keyboard-stage{position:relative;flex:1;margin:14px;padding:70px 50px 30px;border:2px dashed #cbd5e1;border-radius:16px;background:linear-gradient(180deg,#fff,#f8fafc);overflow:auto;outline:0}
+.keyboard-copy{position:absolute;left:22px;right:22px;top:18px;text-align:center}.keyboard-copy h3{margin:0 0 4px;font-size:16px}.keyboard-copy p{margin:0;color:#64748b;font-size:11px}
+.keyboard-input,.keyboard-textarea,.keyboard-final{width:min(560px,100%);display:block;margin:50px auto 0;border:2px solid #cbd5e1;border-radius:12px;background:#fff;font-size:26px;padding:14px;outline:0}
+.keyboard-input:focus,.keyboard-textarea:focus,.keyboard-final:focus{border-color:#2563eb;box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+.keyboard-textarea,.keyboard-final{min-height:150px;resize:none;font-size:18px}
+.keyboard-checklist{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:18px auto}
+.keyboard-checklist span{padding:6px 9px;border-radius:999px;background:#f1f5f9;color:#64748b;font-size:10px;font-weight:700}.keyboard-checklist span.done{background:#dcfce7;color:#166534}
+.keyboard-key-output{margin:80px auto 0;width:max-content;padding:18px 24px;border-radius:12px;background:#eff6ff;color:#1d4ed8;font-weight:800}
+.keyboard-arrow-field{position:relative;width:320px;height:220px;margin:40px auto;border:1px solid #dbe3ec;border-radius:14px;background:#fff}
+.keyboard-arrow-token{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:13px;display:grid;place-items:center;background:#2563eb;color:#fff}
+.keyboard-focus-row{display:flex;gap:12px;justify-content:center;margin-top:50px}.keyboard-focus-row button{min-width:110px;height:46px;border:1px solid #cbd5e1;border-radius:9px;background:#fff}
+.keyboard-mini-modal{margin:24px auto 0;width:max-content;padding:16px 20px;border:1px solid #fed7aa;border-radius:10px;background:#fff7ed;color:#9a3412;font-weight:700}
+
+.fake-browser{height:100%;display:flex;flex-direction:column;background:#fff}
+.browser-tabs{height:42px;display:flex;align-items:flex-end;gap:4px;padding:6px 8px 0;background:#e9eef5}
+.browser-tabs button{height:31px;min-width:120px;max-width:180px;border:0;border-radius:8px 8px 0 0;background:#d9e0e8;font-size:11px}.browser-tabs button.active{background:#fff}.browser-tabs .browser-new-tab{min-width:34px;width:34px}
+.browser-bar{height:48px;display:flex;align-items:center;gap:5px;padding:7px 9px;border-bottom:1px solid #e2e8f0}
+.browser-bar button{height:32px;min-width:34px;border:1px solid #d7dce2;border-radius:7px;background:#fff}
+.browser-address{flex:1;height:34px;border:1px solid #cbd5e1;border-radius:8px;padding:0 10px;font-size:12px}.browser-go{padding:0 12px!important}
+.browser-page{flex:1;overflow:auto;padding:28px 34px;color:#1f2937}.browser-page h2{margin:0 0 12px}.browser-page p{color:#64748b;line-height:1.55}
+.browser-home{text-align:center;padding-top:45px}.browser-links{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.browser-links button,.browser-result button,.browser-download,.browser-submit{border:1px solid #bfdbfe;border-radius:8px;background:#eff6ff;color:#1d4ed8;padding:9px 12px;font-weight:700}
+.browser-result{padding:13px 0;border-bottom:1px solid #eef2f7}.browser-result p{margin:4px 0 0;font-size:10px;color:#16a34a}
+.browser-page label{display:block;margin:12px 0;font-size:12px}.browser-page label input[type=text],.browser-form-name{height:36px;border:1px solid #cbd5e1;border-radius:7px;padding:0 9px}
+.browser-footer{height:36px;display:flex;justify-content:flex-end;align-items:center;gap:7px;padding:0 10px;border-top:1px solid #e2e8f0;background:#f8fafc}.browser-footer button{width:28px;height:26px;border:1px solid #d7dce2;border-radius:6px;background:#fff}.browser-footer span{font-size:10px;color:#64748b}
+
+.fake-mail{height:100%;display:grid;grid-template-columns:250px 1fr;background:#fff}
+.mail-side{border-right:1px solid #e2e8f0;background:#f8fafc;padding:10px}.mail-compose{width:100%;height:38px;border:0;border-radius:9px;background:#2563eb;color:#fff;font-weight:700}
+.mail-inbox{display:grid;gap:5px;margin-top:10px}.mail-item{padding:9px;border:1px solid transparent;border-radius:8px;background:transparent;text-align:left;display:grid}.mail-item:hover,.mail-item.active{background:#eef2f7}.mail-item strong{font-size:11px}.mail-item span{font-size:10px;color:#475569;margin-top:2px}.mail-item small{font-size:9px;color:#b45309;margin-top:3px}
+.mail-main{min-width:0;padding:22px;overflow:auto}.mail-empty{text-align:center;color:#64748b;padding-top:100px}.mail-empty span{font-size:44px}.mail-empty h3{margin:8px 0 4px}
+.mail-message header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eef2f7;padding-bottom:12px}.mail-message header div{display:flex;flex-direction:column}.mail-message header strong{font-size:13px}.mail-message header span{font-size:10px;color:#64748b}.mail-message header button{height:32px;border:1px solid #cbd5e1;border-radius:7px;background:#fff}
+.mail-message h2{font-size:20px;margin:18px 0 10px}.mail-message p{color:#475569;line-height:1.6}.mail-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.mail-actions button{height:34px;border:1px solid #cbd5e1;border-radius:7px;background:#fff;padding:0 10px}.mail-actions .mail-phishing{border-color:#fdba74;background:#fff7ed;color:#9a3412}
+.mail-form{display:grid;gap:9px}.mail-form label{display:grid;grid-template-columns:60px 1fr;align-items:center;font-size:11px;color:#64748b}.mail-form input{height:34px;border:1px solid #cbd5e1;border-radius:7px;padding:0 8px}.mail-form textarea{min-height:210px;border:1px solid #cbd5e1;border-radius:9px;padding:10px;resize:none}.mail-form-actions{display:flex;align-items:center;gap:8px}.mail-form-actions button{height:34px;border:1px solid #cbd5e1;border-radius:7px;background:#fff}.mail-form-actions .mail-send{margin-left:auto;background:#2563eb;border-color:#2563eb;color:#fff;padding:0 16px}.mail-attachment{font-size:10px;color:#64748b}
+@media(max-width:900px){.learning-module-list.dashboard-grid{grid-template-columns:1fr}.fake-mail{grid-template-columns:190px 1fr}}
