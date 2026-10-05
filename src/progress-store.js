@@ -157,6 +157,13 @@
     return this._state.skills[skillId];
   };
 
+  ProgressStore.prototype.introduceSkill = function (skillId) {
+    var skill = this._ensureSkill(skillId);
+    if (skill.status === "locked") skill.status = "introduced";
+    this._save();
+    return clone(skill);
+  };
+
   ProgressStore.prototype.recordSkillAttempt = function (skillId, options) {
     options = options || {};
     var skill = this._ensureSkill(skillId);
