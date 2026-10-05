@@ -70,11 +70,11 @@
 - [x] Photos
 
 ## EPIC 4 – Scenario Engine
-- [ ] schema
-- [ ] loader
-- [ ] reset
-- [ ] deterministic fixtures
-- [ ] event observation
+- [x] schema
+- [x] loader
+- [x] reset
+- [x] deterministic fixtures
+- [x] event observation
 
 ## EPIC 5 – Learning Layer
 Startar först när simulatorbasen är stabil.
