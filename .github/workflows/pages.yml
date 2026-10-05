@@ -33,6 +33,7 @@ jobs:
           node --check src/progress-store.js
           node --check src/lessons.js
           node --check src/lesson-engine.js
+          node --check src/product-shell.js
           node --check src/app.js
           node --check tests/lesson-engine-smoke.js
 
