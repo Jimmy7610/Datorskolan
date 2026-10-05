@@ -35,6 +35,395 @@
       },
       dialog: null,
       calculator: {
+        display: "0",
+        stored: null,
+        operator: null,
+        waiting: false
+      },
+      notepadFileId: null,
+      notepadDraft: "",
+      notepadDirty: false,
+      photoFileId: null,
+      photoZoom: 1
+    };
+
+    var listeners = {};
+
+    function emit(type, payload) {
+      console.debug("[FakeWindows]", type, payload || {});
+      (listeners[type] || []).forEach(function (fn) { fn(payload || {}); });
+    }
+
+    function on(type, fn) {
+      (listeners[type] || (listeners[type] = [])).push(fn);
+    }
+
+    function iconForNode(node) {
+      if (node.type === "folder") return "📁";
+      if (node.fileType === "image") return "🖼️";
+      return "📄";
+    }
+
+    function showTextDialog(title, value, onConfirm) {
+      state.dialog = { title: title, value: value || "", onConfirm: onConfirm };
+      renderDialog();
+    }
+
+    function navigateFolder(folderId) {
+      var folder = vfs.get(folderId);
+      if (!folder || folder.type !== "folder") return;
+      state.explorer.folderId = folderId;
+      state.explorer.selectedId = null;
+      render();
+      emit("folder.opened", { folderId: folderId, path: vfs.path(folderId) });
+    }
+
+    function selectedVfsNode() {
+      return state.explorer.selectedId ? vfs.get(state.explorer.selectedId) : null;
+    }
+
+    function createFolder() {
+      var node = vfs.createFolder(state.explorer.folderId, "Ny mapp");
+      state.explorer.selectedId = node.id;
+      emit("folder.created", { id: node.id, name: node.name, parentId: node.parentId });
+      render();
+      showTextDialog("Byt namn på mappen", node.name, function (value) {
+        var renamed = vfs.rename(node.id, value);
+        if (renamed) emit("file.renamed", { id: renamed.id, name: renamed.name });
+        render();
+      });
+    }
+
+    function renameSelected() {
+      var node = selectedVfsNode();
+      if (!node || node.system) return;
+      showTextDialog("Byt namn", node.name, function (value) {
+        var renamed = vfs.rename(node.id, value);
+        if (renamed) emit("file.renamed", { id: renamed.id, name: renamed.name });
+        render();
+      });
+    }
+
+    function copySelected(mode) {
+      var node = selectedVfsNode();
+      if (!node || node.system) return;
+      state.explorer.clipboard = { mode: mode, id: node.id };
+      emit(mode === "cut" ? "file.cut" : "file.copiedToClipboard", { id: node.id });
+      render();
+    }
+
+    function pasteClipboard() {
+      var clip = state.explorer.clipboard;
+      if (!clip) return;
+
+      var result = null;
+      if (clip.mode === "copy") {
+        result = vfs.copy(clip.id, state.explorer.folderId);
+        if (result) emit("file.copied", { sourceId: clip.id, newId: result.id, parentId: state.explorer.folderId });
+      } else {
+        result = vfs.move(clip.id, state.explorer.folderId);
+        if (result) {
+          emit("file.moved", { id: result.id, parentId: state.explorer.folderId });
+          state.explorer.clipboard = null;
+        }
+      }
+
+      if (result) state.explorer.selectedId = result.id;
+      render();
+    }
+
+    function deleteSelected() {
+      var node = selectedVfsNode();
+      if (!node || node.system) return;
+      var deleted = vfs.delete(node.id);
+      if (deleted) {
+        emit("file.deleted", { id: deleted.id, name: deleted.name });
+        state.explorer.selectedId = null;
+      }
+      render();
+    }
+
+    function restoreSelected() {
+      var node = selectedVfsNode();
+      if (!node) return;
+      var restored = vfs.restore(node.id);
+      if (restored) {
+        emit("recycleBin.restored", { id: restored.id, parentId: restored.parentId });
+        state.explorer.selectedId = null;
+      }
+      render();
+    }
+
+    function emptyRecycleBin() {
+      vfs.emptyRecycleBin();
+      state.explorer.selectedId = null;
+      emit("recycleBin.emptied", {});
+      render();
+    }
+
+    function renderExplorer() {
+      var wrapper = document.createElement("div");
+      wrapper.className = "explorer-v2";
+
+      var sidebar = document.createElement("aside");
+      sidebar.className = "explorer-sidebar";
+
+      [
+        ["home", "🏠", "Home"],
+        ["documents", "📄", "Documents"],
+        ["pictures", "🖼️", "Pictures"],
+        ["downloads", "⬇️", "Downloads"],
+        ["recycle-bin", "🗑️", "Recycle Bin"]
+      ].forEach(function (entry) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "explorer-side-button" + (state.explorer.folderId === entry[0] ? " active" : "");
+        b.textContent = entry[1] + " " + entry[2];
+        b.addEventListener("click", function (e) {
+          e.stopPropagation();
+          navigateFolder(entry[0]);
+        });
+        sidebar.appendChild(b);
+      });
+
+      var main = document.createElement("section");
+      main.className = "explorer-main-v2";
+
+      var toolbar = document.createElement("div");
+      toolbar.className = "explorer-toolbar";
+
+      function addTool(label, action, disabled) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.textContent = label;
+        b.disabled = !!disabled;
+        b.addEventListener("click", function (e) {
+          e.stopPropagation();
+          action();
+        });
+        toolbar.appendChild(b);
+      }
+
+      var current = vfs.get(state.explorer.folderId);
+      var selected = selectedVfsNode();
+      var inRecycle = state.explorer.folderId === "recycle-bin";
+
+      addTool("←", function () {
+        if (current && current.parentId) navigateFolder(current.parentId);
+      }, !current || !current.parentId);
+
+      if (inRecycle) {
+        addTool("Återställ", restoreSelected, false);
+        addTool("Töm Papperskorgen", emptyRecycleBin, vfs.list("recycle-bin").length === 0);
+      } else {
+        addTool("+ Ny mapp", createFolder, false);
+        addTool("+ Ny textfil", createTextFile, false);
+        addTool("Byt namn", renameSelected, false);
+        addTool("Kopiera", function () { copySelected("copy"); }, false);
+        addTool("Klipp ut", function () { copySelected("cut"); }, false);
+        addTool("Klistra in", pasteClipboard, !state.explorer.clipboard);
+        addTool("Ta bort", deleteSelected, false);
+      }
+
+      var address = document.createElement("div");
+      address.className = "explorer-address";
+      address.textContent = vfs.path(state.explorer.folderId);
+
+      var grid = document.createElement("div");
+      grid.className = "vfs-grid";
+
+      var nodes = vfs.list(state.explorer.folderId);
+
+      if (nodes.length === 0) {
+        var empty = document.createElement("div");
+        empty.className = "explorer-empty";
+        empty.textContent = inRecycle ? "Papperskorgen är tom." : "Den här mappen är tom.";
+        grid.appendChild(empty);
+      }
+
+      nodes.forEach(function (node) {
+        var item = document.createElement("button");
+        item.type = "button";
+        item.className = "vfs-item" + (state.explorer.selectedId === node.id ? " selected" : "");
+        item.dataset.nodeId = node.id;
+        item.innerHTML =
+          '<span class="vfs-icon" aria-hidden="true">' + iconForNode(node) + '</span>' +
+          '<span class="vfs-name"></span>';
+        item.querySelector(".vfs-name").textContent = node.name;
+
+        item.addEventListener("click", function (e) {
+          e.stopPropagation();
+          state.explorer.selectedId = node.id;
+          grid.querySelectorAll(".vfs-item.selected").forEach(function (el) { el.classList.remove("selected"); });
+          item.classList.add("selected");
+          emit("file.selected", { id: node.id, type: node.type });
+        });
+
+        item.addEventListener("dblclick", function (e) {
+          e.stopPropagation();
+          if (node.type === "folder") {
+            navigateFolder(node.id);
+          } else {
+            emit("file.opened", { id: node.id, name: node.name, fileType: node.fileType });
+            if (node.fileType === "text") {
+              state.notepadFileId = node.id;
+              state.notepadDraft = node.content || "";
+              state.notepadDirty = false;
+              openApp("notepad");
+            } else if (node.fileType === "image") {
+              state.photoFileId = node.id;
+              state.photoZoom = 1;
+              openApp("photos");
+            }
+          }
+        });
+
+        item.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          state.explorer.selectedId = node.id;
+          grid.querySelectorAll(".vfs-item.selected").forEach(function (el) { el.classList.remove("selected"); });
+          item.classList.add("selected");
+        });
+
+        grid.appendChild(item);
+      });
+
+      main.appendChild(toolbar);
+      main.appendChild(address);
+      main.appendChild(grid);
+
+      wrapper.appendChild(sidebar);
+      wrapper.appendChild(main);
+      return wrapper;
+    }
+
+    function createTextFile() {
+      showTextDialog("Ny textfil", "Nytt dokument.txt", function (value) {
+        var name = value.toLowerCase().endsWith(".txt") ? value : value + ".txt";
+        var node = vfs.createFile(state.explorer.folderId, name, "text", "");
+        state.explorer.selectedId = node.id;
+        emit("file.created", { id: node.id, name: node.name, parentId: node.parentId });
+        render();
+      });
+    }
+
+    function saveNotepad(saveAs) {
+      var node = state.notepadFileId ? vfs.get(state.notepadFileId) : null;
+
+      if (node && !saveAs) {
+        node.content = state.notepadDraft;
+        state.notepadDirty = false;
+        emit("notepad.saved", { id: node.id, name: node.name });
+        render();
+        return;
+      }
+
+      showTextDialog("Spara som", node ? node.name : "Nytt dokument.txt", function (value) {
+        var name = value.toLowerCase().endsWith(".txt") ? value : value + ".txt";
+        var parentId = node ? node.parentId : "documents";
+        var created = vfs.createFile(parentId, name, "text", state.notepadDraft);
+        state.notepadFileId = created.id;
+        state.notepadDirty = false;
+        emit("notepad.saved", { id: created.id, name: created.name, saveAs: true });
+        render();
+      });
+    }
+
+    function newNotepadDocument() {
+      state.notepadFileId = null;
+      state.notepadDraft = "";
+      state.notepadDirty = false;
+      emit("notepad.new", {});
+      render();
+    }
+
+    function calculatorInput(key) {
+      var calc = state.calculator;
+
+      if (/^\d$/.test(key)) {
+        if (calc.waiting || calc.display === "0") {
+          calc.display = key;
+          calc.waiting = false;
+        } else {
+          calc.display += key;
+        }
+      } else if (key === ".") {
+        if (calc.waiting) {
+          calc.display = "0.";
+          calc.waiting = false;
+        } else if (calc.display.indexOf(".") === -1) {
+          calc.display += ".";
+        }
+      } else if (key === "C" || key === "CE") {
+        calc.display = "0";
+        if (key === "C") {
+          calc.stored = null;
+          calc.operator = null;
+        }
+        calc.waiting = false;
+      } else if (key === "⌫") {
+        if (!calc.waiting) calc.display = calc.display.length > 1 ? calc.display.slice(0, -1) : "0";
+      } else if (key === "±") {
+        calc.display = String(parseFloat(calc.display || "0") * -1);
+      } else if (key === "%") {
+        calc.display = String(parseFloat(calc.display || "0") / 100);
+      } else if (["+", "−", "×", "÷"].indexOf(key) !== -1) {
+        calc.stored = parseFloat(calc.display || "0");
+        calc.operator = key;
+        calc.waiting = true;
+      } else if (key === "=" && calc.operator !== null && calc.stored !== null) {
+        var right = parseFloat(calc.display || "0");
+        var result = calc.stored;
+
+        if (calc.operator === "+") result += right;
+        if (calc.operator === "−") result -= right;
+        if (calc.operator === "×") result *= right;
+        if (calc.operator === "÷") result = right === 0 ? NaN : result / right;
+
+        calc.display = Number.isFinite(result)
+          ? String(Math.round((result + Number.EPSILON) * 1000000000) / 1000000000)
+          : "Error";
+
+        emit("calculator.result", { result: calc.display, operator: calc.operator });
+        calc.stored = null;
+        calc.operator = null;
+        calc.waiting = true;
+      }
+
+      renderWindows();
+    }
+
+    function pictureNodes() {
+      return vfs.list("pictures").filter(function (node) {
+        return node.type === "file" && node.fileType === "image";
+      });
+    }
+
+    function movePhoto(direction) {
+      var images = pictureNodes();
+      if (!images.length) return;
+
+      var index = images.findIndex(function (node) { return node.id === state.photoFileId; });
+      if (index < 0) index = 0;
+      index = (index + direction + images.length) % images.length;
+
+      state.photoFileId = images[index].id;
+      state.photoZoom = 1;
+      emit("photos.changed", { id: state.photoFileId });
+      renderWindows();
+    }
+
+    var apps = {
+      explorer: {
+        title: "File Explorer",
+        icon: "📁",
+        w: 820,
+        h: 520,
+        render: renderExplorer
+      },
+
+      calculator: {
         title: "Calculator",
         icon: "🧮",
         w: 360,
