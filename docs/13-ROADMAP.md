@@ -52,7 +52,7 @@
 - feedback
 - mastery
 
-## Fas 3 – Mus
+## Fas 3 – Mus ✅
 Musutbildningen använder Fake Windows som träningsmiljö.
 
 ## Fas 4 – Tangentbord
