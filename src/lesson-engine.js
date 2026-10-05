@@ -213,15 +213,21 @@
   LessonEngine.prototype.observe = function (type, payload) {
     if (!this._active || this._active.status !== "running") return;
 
-    if (type === "scenario.completed") {
-      var step = this.currentStep();
-      if (step && step.type === "exercise" && step.validator && step.validator.type === "scenario-complete") {
-        this._active.feedback = {
-          kind: "success",
-          text: "Rätt. Uppgiften är klar."
-        };
-        this._notify();
-      }
+    var step = this.currentStep();
+    if (
+      step &&
+      step.type === "exercise" &&
+      step.validator &&
+      step.validator.type === "scenario-complete" &&
+      this._runtime &&
+      this._runtime.getScenarioStatus &&
+      this._runtime.getScenarioStatus() === "completed"
+    ) {
+      this._active.feedback = {
+        kind: "success",
+        text: "Rätt. Uppgiften är klar."
+      };
+      this._notify();
     }
 
     this._progress.recordEvent({
