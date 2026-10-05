@@ -64,10 +64,10 @@
 - [x] recycle bin/restore
 
 ## EPIC 3 – Core Apps
-- [ ] Explorer
-- [ ] Calculator
-- [ ] Notepad
-- [ ] Photos
+- [x] Explorer
+- [x] Calculator
+- [x] Notepad
+- [x] Photos
 
 ## EPIC 4 – Scenario Engine
 - [ ] schema
