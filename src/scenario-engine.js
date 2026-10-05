@@ -73,6 +73,12 @@
       runtime.setExplorerFolder(scenario.start.explorerFolderId);
     }
 
+    if (scenario.start && Array.isArray(scenario.start.openApps)) {
+      scenario.start.openApps.forEach(function (appId) {
+        if (typeof runtime.openApp === "function") runtime.openApp(appId);
+      });
+    }
+
     this._active = {
       id: scenario.id,
       title: scenario.title,
