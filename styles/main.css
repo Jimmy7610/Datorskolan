@@ -166,3 +166,25 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
 .mouse-final-progress span{font-size:9px;font-weight:700;color:#64748b;background:#f1f5f9;border-radius:999px;padding:4px 7px}
 .mouse-final-progress span.done{color:#166534;background:#dcfce7}
 @media (prefers-reduced-motion:reduce){.mouse-hold-meter i.filling{animation:none;width:100%}}
+
+.learning-module-list{display:grid;grid-template-columns:1fr;gap:8px}
+.learning-module-card{width:100%;border:1px solid #e2e8f0;border-radius:10px;background:#fff;padding:11px 12px;text-align:left}
+.learning-module-card:hover{background:#f8fafc;border-color:#bfdbfe}
+.learning-module-card.active{border-color:#93c5fd;background:#eff6ff}
+.learning-module-card.complete{border-color:#bbf7d0}
+.learning-module-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.learning-module-card-head strong{font-size:13px}
+.learning-module-card-head span{font-size:10px;color:#64748b}
+.learning-module-card-progress{height:6px;margin-top:8px;background:#e2e8f0;border-radius:999px;overflow:hidden}
+.learning-module-card-progress i{display:block;height:100%;background:#2563eb;border-radius:inherit}
+.learning-module-card.complete .learning-module-card-progress i{background:#16a34a}
+.learning-module-card small{display:block;margin-top:6px;font-size:10px;color:#64748b}
+.learning-selected-module-head{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+.learning-selected-module-head h4{margin:0!important}
+.learning-selected-module-head button{border:0;background:transparent;color:#64748b;font-size:11px}
+.learning-lesson-list{display:grid;gap:7px;margin-top:7px}
+.lesson-option.compact{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:9px;padding:9px 10px;margin-top:0}
+.lesson-option.compact .lesson-number{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:#f1f5f9;color:#475569;font-size:11px;font-weight:800}
+.lesson-option.compact>div{display:block}
+.lesson-option.compact p{grid-column:auto;margin:2px 0 0;font-size:10px;line-height:1.35}
+.lesson-option.compact em{grid-column:auto;grid-row:auto;align-self:center}
