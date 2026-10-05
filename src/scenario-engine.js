@@ -77,6 +77,10 @@
       runtime.setMouseMode(scenario.start.mouseMode);
     }
 
+    if (scenario.start && typeof runtime.applyStartState === "function") {
+      runtime.applyStartState(scenario.start);
+    }
+
     if (scenario.start && Array.isArray(scenario.start.openApps)) {
       scenario.start.openApps.forEach(function (appId) {
         if (typeof runtime.openApp === "function") runtime.openApp(appId);
@@ -128,39 +132,69 @@
     }) || null;
   };
 
-  ScenarioEngine.prototype._checkGoal = function (runtime, eventEntry) {
-    if (!this._active) return false;
+  ScenarioEngine.prototype._eventMatches = function (entry, goal, runtime) {
+    if (!entry || entry.type !== goal.eventType) return false;
 
-    var scenario = this._definitions[this._active.id];
-    var goal = scenario.goal;
-    var complete = false;
+    if (goal.nodeName) {
+      var node = entry.payload && entry.payload.id ? runtime.vfs.get(entry.payload.id) : null;
+      if (!node || node.name.toLocaleLowerCase("sv") !== goal.nodeName.toLocaleLowerCase("sv")) return false;
+    }
 
-    if (!goal) {
-      complete = false;
-    } else if (goal.type === "node-exists") {
-      complete = !!this._findNode(runtime, goal);
-    } else if (goal.type === "text-file-exists") {
+    var expected = goal.payload || {};
+    var payload = entry.payload || {};
+    return Object.keys(expected).every(function (key) {
+      return payload[key] === expected[key];
+    });
+  };
+
+  ScenarioEngine.prototype._goalComplete = function (goal, runtime, eventEntry) {
+    if (!goal) return false;
+
+    if (goal.type === "node-exists") {
+      return !!this._findNode(runtime, goal);
+    }
+
+    if (goal.type === "text-file-exists") {
       var node = this._findNode(runtime, {
         parentId: goal.parentId,
         nodeType: "file",
         name: goal.name
       });
-      complete = !!node &&
+      return !!node &&
         node.fileType === "text" &&
         (!goal.requireContent || String(node.content || "").trim().length > 0);
-    } else if (goal.type === "event" && eventEntry) {
-      if (eventEntry.type === goal.eventType) {
-        if (!goal.nodeName) {
-          complete = true;
-        } else {
-          var eventNode = eventEntry.payload && eventEntry.payload.id
-            ? runtime.vfs.get(eventEntry.payload.id)
-            : null;
-          complete = !!eventNode &&
-            eventNode.name.toLocaleLowerCase("sv") === goal.nodeName.toLocaleLowerCase("sv");
-        }
-      }
     }
+
+    if (goal.type === "event") {
+      return this._eventMatches(eventEntry, goal, runtime);
+    }
+
+    if (goal.type === "event-seen") {
+      return this._active.eventLog.some(function (entry) {
+        return this._eventMatches(entry, goal, runtime);
+      }, this);
+    }
+
+    if (goal.type === "all") {
+      return (goal.goals || []).every(function (childGoal) {
+        return this._goalComplete(childGoal, runtime, eventEntry);
+      }, this);
+    }
+
+    if (goal.type === "any") {
+      return (goal.goals || []).some(function (childGoal) {
+        return this._goalComplete(childGoal, runtime, eventEntry);
+      }, this);
+    }
+
+    return false;
+  };
+
+  ScenarioEngine.prototype._checkGoal = function (runtime, eventEntry) {
+    if (!this._active) return false;
+
+    var scenario = this._definitions[this._active.id];
+    var complete = this._goalComplete(scenario.goal, runtime, eventEntry);
 
     if (complete && this._active.status !== "completed") {
       this._active.status = "completed";
