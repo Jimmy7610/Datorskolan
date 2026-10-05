@@ -50,7 +50,25 @@
       photoZoom: 1,
       scenarioPanelOpen: false,
       learningPanelOpen: false,
-      learningHighlightSelector: null
+      learningHighlightSelector: null,
+      mouseLab: {
+        mode: "move",
+        distance: 0,
+        lastX: null,
+        lastY: null,
+        targetHits: 0,
+        scrollDown: false,
+        scrollUp: false,
+        completed: false,
+        finalFlags: {
+          move: false,
+          click: false,
+          double: false,
+          right: false,
+          scroll: false,
+          drag: false
+        }
+      }
     };
 
     var listeners = {};
@@ -202,6 +220,23 @@
       state.photoFileId = null;
       state.photoZoom = 1;
 
+      state.mouseLab.mode = "move";
+      state.mouseLab.distance = 0;
+      state.mouseLab.lastX = null;
+      state.mouseLab.lastY = null;
+      state.mouseLab.targetHits = 0;
+      state.mouseLab.scrollDown = false;
+      state.mouseLab.scrollUp = false;
+      state.mouseLab.completed = false;
+      state.mouseLab.finalFlags = {
+        move: false,
+        click: false,
+        double: false,
+        right: false,
+        scroll: false,
+        drag: false
+      };
+
       render();
     }
 
@@ -213,10 +248,338 @@
       render();
     }
 
+    function resetMouseLab(mode) {
+      state.mouseLab.mode = mode || "move";
+      state.mouseLab.distance = 0;
+      state.mouseLab.lastX = null;
+      state.mouseLab.lastY = null;
+      state.mouseLab.targetHits = 0;
+      state.mouseLab.scrollDown = false;
+      state.mouseLab.scrollUp = false;
+      state.mouseLab.completed = false;
+      state.mouseLab.finalFlags = {
+        move: false,
+        click: false,
+        double: false,
+        right: false,
+        scroll: false,
+        drag: false
+      };
+    }
+
+    function setMouseMode(mode) {
+      resetMouseLab(mode);
+      render();
+    }
+
+    function mouseModeTitle(mode) {
+      var titles = {
+        move: "Flytta muspekaren",
+        target: "Träffa mål",
+        click: "Vänsterklick",
+        double: "Dubbelklick",
+        right: "Högerklick",
+        scroll: "Scrolla",
+        hold: "Klicka och håll",
+        drag: "Dra och släpp",
+        final: "Slutuppdrag"
+      };
+      return titles[mode] || "Musträning";
+    }
+
+    function completeMouseEvent(type, payload) {
+      if (state.mouseLab.completed && state.mouseLab.mode !== "final") return;
+      if (state.mouseLab.mode !== "final") state.mouseLab.completed = true;
+      emit(type, payload || {});
+    }
+
+    function checkMouseFinalComplete() {
+      var flags = state.mouseLab.finalFlags;
+      if (flags.move && flags.click && flags.double && flags.right && flags.scroll && flags.drag) {
+        if (!state.mouseLab.completed) {
+          state.mouseLab.completed = true;
+          emit("mouse.final.complete", { flags: Object.assign({}, flags) });
+        }
+      }
+    }
+
+    function markFinalFlag(name) {
+      if (state.mouseLab.mode !== "final") return;
+      state.mouseLab.finalFlags[name] = true;
+      checkMouseFinalComplete();
+    }
+
+    function renderMouseLab() {
+      var mode = state.mouseLab.mode;
+      var lab = document.createElement("div");
+      lab.className = "mouse-lab mouse-mode-" + mode;
+
+      var head = document.createElement("div");
+      head.className = "mouse-lab-head";
+      head.innerHTML = "<div><span>🖱️</span><strong></strong></div><em></em>";
+      head.querySelector("strong").textContent = mouseModeTitle(mode);
+      head.querySelector("em").textContent = state.mouseLab.completed ? "✓ Klar" : "Träningsyta";
+      lab.appendChild(head);
+
+      var stage = document.createElement("div");
+      stage.className = "mouse-lab-stage";
+      lab.appendChild(stage);
+
+      function status(text) {
+        var node = stage.querySelector(".mouse-lab-status");
+        if (node) node.textContent = text;
+      }
+
+      function createTarget(className, label) {
+        var target = document.createElement("button");
+        target.type = "button";
+        target.className = "mouse-target " + (className || "");
+        target.textContent = label || "Mål";
+        return target;
+      }
+
+      if (mode === "move") {
+        stage.innerHTML = '<div class="mouse-lab-instruction">Flytta muspekaren runt inne i ytan.</div><div class="mouse-distance"><i></i></div><div class="mouse-lab-status">0%</div>';
+        stage.addEventListener("pointermove", function (e) {
+          if (state.mouseLab.lastX !== null) {
+            var dx = e.clientX - state.mouseLab.lastX;
+            var dy = e.clientY - state.mouseLab.lastY;
+            state.mouseLab.distance += Math.sqrt(dx * dx + dy * dy);
+          }
+          state.mouseLab.lastX = e.clientX;
+          state.mouseLab.lastY = e.clientY;
+          var pct = Math.min(100, Math.round(state.mouseLab.distance / 1.6));
+          stage.querySelector(".mouse-distance i").style.width = pct + "%";
+          status(pct + "%");
+          if (state.mouseLab.distance >= 160) completeMouseEvent("mouse.move.complete", { distance: Math.round(state.mouseLab.distance) });
+        });
+      }
+
+      if (mode === "target") {
+        stage.innerHTML = '<div class="mouse-lab-instruction">För pekaren till målen i ordning.</div><div class="mouse-target-field"></div><div class="mouse-lab-status">Mål 1 av 3</div>';
+        var field = stage.querySelector(".mouse-target-field");
+        ["1","2","3"].forEach(function (label, index) {
+          var t = createTarget("target-" + (index + 1), label);
+          if (index !== 0) t.classList.add("locked");
+          t.addEventListener("pointerenter", function () {
+            if (state.mouseLab.targetHits !== index) return;
+            state.mouseLab.targetHits += 1;
+            t.classList.add("hit");
+            var next = field.querySelector(".target-" + (index + 2));
+            if (next) next.classList.remove("locked");
+            status(state.mouseLab.targetHits >= 3 ? "Alla mål träffade" : "Mål " + (state.mouseLab.targetHits + 1) + " av 3");
+            if (state.mouseLab.targetHits >= 3) completeMouseEvent("mouse.target.complete", { hits: 3 });
+          });
+          field.appendChild(t);
+        });
+      }
+
+      if (mode === "click") {
+        stage.innerHTML = '<div class="mouse-lab-instruction">Klicka EN gång med vänster musknapp.</div><div class="mouse-centered"></div><div class="mouse-lab-status">Väntar på ett enkelklick</div>';
+        var clickTarget = createTarget("big-target", "Klicka här");
+        var clickTimer = null;
+        clickTarget.addEventListener("click", function (e) {
+          if (e.detail !== 1) return;
+          clearTimeout(clickTimer);
+          clickTimer = setTimeout(function () {
+            status("Bra – ett klick");
+            completeMouseEvent("mouse.click.complete", {});
+          }, 280);
+        });
+        clickTarget.addEventListener("dblclick", function () {
+          clearTimeout(clickTimer);
+          status("Det blev två klick. Prova ett enda klick.");
+          emit("mouse.click.double-error", {});
+        });
+        stage.querySelector(".mouse-centered").appendChild(clickTarget);
+      }
+
+      if (mode === "double") {
+        stage.innerHTML = '<div class="mouse-lab-instruction">Dubbelklicka på målet.</div><div class="mouse-centered"></div><div class="mouse-lab-status">Två snabba klick på samma mål</div>';
+        var doubleTarget = createTarget("big-target", "Dubbelklicka");
+        doubleTarget.addEventListener("dblclick", function (e) {
+          e.preventDefault();
+          status("Bra – dubbelklick");
+          completeMouseEvent("mouse.double.complete", {});
+        });
+        stage.querySelector(".mouse-centered").appendChild(doubleTarget);
+      }
+
+      if (mode === "right") {
+        stage.innerHTML = '<div class="mouse-lab-instruction">Använd HÖGER musknapp på målet.</div><div class="mouse-centered"></div><div class="mouse-lab-status">Väntar på högerklick</div>';
+        var rightTarget = createTarget("big-target", "Högerklicka");
+        rightTarget.addEventListener("click", function () {
+          status("Det var vänster musknapp. Prova den andra.");
+          emit("mouse.right.left-error", {});
+        });
+        rightTarget.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          status("Bra – högerklick");
+          completeMouseEvent("mouse.right.complete", {});
+        });
+        stage.querySelector(".mouse-centered").appendChild(rightTarget);
+      }
+
+      if (mode === "scroll") {
+        stage.innerHTML = '<div class="mouse-lab-instruction">Scrolla först nedåt och sedan uppåt.</div><div class="mouse-scroll-box"><div class="mouse-scroll-content"></div></div><div class="mouse-lab-status">1. Scrolla nedåt</div>';
+        var content = stage.querySelector(".mouse-scroll-content");
+        for (var si = 1; si <= 18; si++) {
+          var line = document.createElement("div");
+          line.textContent = "Rad " + si;
+          content.appendChild(line);
+        }
+        var scrollBox = stage.querySelector(".mouse-scroll-box");
+        scrollBox.addEventListener("wheel", function (e) {
+          if (e.deltaY > 0) state.mouseLab.scrollDown = true;
+          if (e.deltaY < 0 && state.mouseLab.scrollDown) state.mouseLab.scrollUp = true;
+          status(state.mouseLab.scrollDown ? (state.mouseLab.scrollUp ? "Bra – båda riktningarna" : "2. Scrolla uppåt") : "1. Scrolla nedåt");
+          if (state.mouseLab.scrollDown && state.mouseLab.scrollUp) {
+            completeMouseEvent("mouse.scroll.complete", {});
+          }
+        }, { passive: true });
+      }
+
+      if (mode === "hold") {
+        stage.innerHTML = '<div class="mouse-lab-instruction">Tryck ned vänster musknapp och håll kvar.</div><div class="mouse-centered"></div><div class="mouse-hold-meter"><i></i></div><div class="mouse-lab-status">Håll i ungefär en sekund</div>';
+        var holdTarget = createTarget("big-target", "Håll ned");
+        var holdTimer = null;
+        var holdStart = 0;
+        holdTarget.addEventListener("pointerdown", function (e) {
+          if (e.button !== 0) return;
+          holdStart = Date.now();
+          holdTarget.setPointerCapture(e.pointerId);
+          stage.querySelector(".mouse-hold-meter i").classList.add("filling");
+          holdTimer = setTimeout(function () {
+            status("Bra – du höll kvar");
+            completeMouseEvent("mouse.hold.complete", { durationMs: Date.now() - holdStart });
+          }, 900);
+        });
+        function releaseHold() {
+          clearTimeout(holdTimer);
+          if (!state.mouseLab.completed) {
+            stage.querySelector(".mouse-hold-meter i").classList.remove("filling");
+            status("Lite längre. Håll knappen nere tills mätaren är full.");
+          }
+        }
+        holdTarget.addEventListener("pointerup", releaseHold);
+        holdTarget.addEventListener("pointercancel", releaseHold);
+        stage.querySelector(".mouse-centered").appendChild(holdTarget);
+      }
+
+      if (mode === "drag") {
+        stage.innerHTML = '<div class="mouse-lab-instruction">Dra den blå rutan till målområdet.</div><div class="mouse-drag-field"><div class="mouse-drag-token" draggable="true">Dra mig</div><div class="mouse-drop-zone">Släpp här</div></div><div class="mouse-lab-status">Klicka, håll, dra och släpp</div>';
+        var token = stage.querySelector(".mouse-drag-token");
+        var drop = stage.querySelector(".mouse-drop-zone");
+        token.addEventListener("dragstart", function () {
+          token.classList.add("dragging");
+        });
+        token.addEventListener("dragend", function () {
+          token.classList.remove("dragging");
+        });
+        drop.addEventListener("dragover", function (e) {
+          e.preventDefault();
+          drop.classList.add("over");
+        });
+        drop.addEventListener("dragleave", function () {
+          drop.classList.remove("over");
+        });
+        drop.addEventListener("drop", function (e) {
+          e.preventDefault();
+          drop.classList.remove("over");
+          token.classList.add("dropped");
+          status("Bra – objektet är på rätt plats");
+          completeMouseEvent("mouse.drag.complete", {});
+        });
+      }
+
+      if (mode === "final") {
+        stage.innerHTML =
+          '<div class="mouse-final-intro">Klara alla sex momenten. Du väljer själv ordning.</div>' +
+          '<div class="mouse-final-grid">' +
+            '<div class="final-move"><strong>Flytta</strong><span>Rör pekaren tydligt här</span></div>' +
+            '<button class="final-click" type="button"><strong>Klick</strong><span>Ett vänsterklick</span></button>' +
+            '<button class="final-double" type="button"><strong>Dubbelklick</strong><span>Två snabba klick</span></button>' +
+            '<button class="final-right" type="button"><strong>Högerklick</strong><span>Använd höger knapp</span></button>' +
+            '<div class="final-scroll"><strong>Scroll</strong><span>Rulla ned och upp</span></div>' +
+            '<div class="final-drag"><div class="final-drag-token" draggable="true">Dra</div><div class="final-drop">Släpp</div></div>' +
+          '</div>' +
+          '<div class="mouse-final-progress"></div>';
+        var finalMove = stage.querySelector(".final-move");
+        var finalLast = null;
+        var finalDistance = 0;
+        finalMove.addEventListener("pointermove", function (e) {
+          if (finalLast) {
+            var fdx = e.clientX - finalLast.x;
+            var fdy = e.clientY - finalLast.y;
+            finalDistance += Math.sqrt(fdx * fdx + fdy * fdy);
+          }
+          finalLast = { x: e.clientX, y: e.clientY };
+          if (finalDistance >= 100 && !state.mouseLab.finalFlags.move) {
+            markFinalFlag("move");
+            finalMove.classList.add("done");
+            renderFinalProgress();
+          }
+        });
+        stage.querySelector(".final-click").addEventListener("click", function () {
+          markFinalFlag("click");
+          this.classList.add("done");
+          renderFinalProgress();
+        });
+        stage.querySelector(".final-double").addEventListener("dblclick", function () {
+          markFinalFlag("double");
+          this.classList.add("done");
+          renderFinalProgress();
+        });
+        stage.querySelector(".final-right").addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          markFinalFlag("right");
+          this.classList.add("done");
+          renderFinalProgress();
+        });
+        var finalScroll = stage.querySelector(".final-scroll");
+        var fsDown = false;
+        finalScroll.addEventListener("wheel", function (e) {
+          if (e.deltaY > 0) fsDown = true;
+          if (fsDown && e.deltaY < 0) {
+            markFinalFlag("scroll");
+            finalScroll.classList.add("done");
+            renderFinalProgress();
+          }
+        }, { passive: true });
+        var finalToken = stage.querySelector(".final-drag-token");
+        var finalDrop = stage.querySelector(".final-drop");
+        finalDrop.addEventListener("dragover", function (e) { e.preventDefault(); });
+        finalDrop.addEventListener("drop", function (e) {
+          e.preventDefault();
+          markFinalFlag("drag");
+          finalDrop.classList.add("done");
+          finalToken.classList.add("done");
+          renderFinalProgress();
+        });
+
+        function renderFinalProgress() {
+          var flags = state.mouseLab.finalFlags;
+          var names = [["move","Flytta"],["click","Klick"],["double","Dubbel"],["right","Höger"],["scroll","Scroll"],["drag","Dra"]];
+          var progress = stage.querySelector(".mouse-final-progress");
+          progress.replaceChildren();
+          names.forEach(function (entry) {
+            var chip = document.createElement("span");
+            chip.className = flags[entry[0]] ? "done" : "";
+            chip.textContent = (flags[entry[0]] ? "✓ " : "") + entry[1];
+            progress.appendChild(chip);
+          });
+        }
+        renderFinalProgress();
+      }
+
+      return lab;
+    }
+
     var runtimeApi = {
       vfs: vfs,
       resetForScenario: resetForScenario,
       setExplorerFolder: setExplorerFolder,
+      setMouseMode: setMouseMode,
       openApp: openApp
     };
 
@@ -646,6 +1009,14 @@
           el.appendChild(stage);
           return el;
         }
+      },
+
+      "mouse-lab": {
+        title: "Mouse Lab",
+        icon: "🖱️",
+        w: 760,
+        h: 560,
+        render: renderMouseLab
       },
 
       "recycle-bin": {
@@ -1739,6 +2110,7 @@
       state: state,
       vfs: vfs,
       openApp: openApp,
+      setMouseMode: setMouseMode,
       on: on,
       scenarios: scenarioEngine,
       lessons: lessonEngine,
