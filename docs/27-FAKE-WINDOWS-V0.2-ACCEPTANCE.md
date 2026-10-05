@@ -4,53 +4,53 @@ v0.2 är godkänd först när följande fungerar i den publicerade GitHub Pages-
 
 ## Utforskaren
 
-- [ ] Öppna Documents från skrivbordet.
-- [ ] Utforskaren visar innehållet i Documents.
-- [ ] Gå till Home via vänsterpanelen.
-- [ ] Öppna Documents igen.
-- [ ] Dubbelklicka en textfil.
-- [ ] Textfilen öppnas i Notepad.
+- [x] Öppna Documents från skrivbordet.
+- [x] Utforskaren visar innehållet i Documents.
+- [x] Gå till Home via vänsterpanelen.
+- [x] Öppna Documents igen.
+- [x] Dubbelklicka en textfil.
+- [x] Textfilen öppnas i Notepad.
 
 ## Mappar
 
-- [ ] Klicka på `+ Ny mapp`.
-- [ ] Namnge mappen `Semester`.
-- [ ] Dubbelklicka `Semester`.
-- [ ] Gå tillbaka med bakåtknappen.
-- [ ] Byt namn på `Semester` till `Semester 2027`.
+- [x] Klicka på `+ Ny mapp`.
+- [x] Namnge mappen `Semester`.
+- [x] Dubbelklicka `Semester`.
+- [x] Gå tillbaka med bakåtknappen.
+- [x] Byt namn på `Semester` till `Semester 2027`.
 
 ## Clipboard
 
-- [ ] Markera en fil.
-- [ ] Klicka `Kopiera`.
-- [ ] Öppna en annan mapp.
-- [ ] Klicka `Klistra in`.
-- [ ] En kopia finns i målmappen.
-- [ ] Markera en fil.
-- [ ] Klicka `Klipp ut`.
-- [ ] Öppna en annan mapp.
-- [ ] Klicka `Klistra in`.
-- [ ] Filen har flyttats.
+- [x] Markera en fil.
+- [x] Klicka `Kopiera`.
+- [x] Öppna en annan mapp.
+- [x] Klicka `Klistra in`.
+- [x] En kopia finns i målmappen.
+- [x] Markera en fil.
+- [x] Klicka `Klipp ut`.
+- [x] Öppna en annan mapp.
+- [x] Klicka `Klistra in`.
+- [x] Filen har flyttats.
 
 ## Papperskorgen
 
-- [ ] Markera en fil eller mapp.
-- [ ] Klicka `Ta bort`.
-- [ ] Objektet försvinner från ursprungsmappen.
-- [ ] Öppna Recycle Bin.
-- [ ] Objektet finns där.
-- [ ] Klicka `Återställ`.
-- [ ] Objektet återgår till sin ursprungliga mapp.
-- [ ] Ta bort ett objekt igen.
-- [ ] Klicka `Töm Papperskorgen`.
-- [ ] Papperskorgen blir tom.
+- [x] Markera en fil eller mapp.
+- [x] Klicka `Ta bort`.
+- [x] Objektet försvinner från ursprungsmappen.
+- [x] Öppna Recycle Bin.
+- [x] Objektet finns där.
+- [x] Klicka `Återställ`.
+- [x] Objektet återgår till sin ursprungliga mapp.
+- [x] Ta bort ett objekt igen.
+- [x] Klicka `Töm Papperskorgen`.
+- [x] Papperskorgen blir tom.
 
 ## Säkerhet
 
-- [ ] Inga riktiga filer skapas.
-- [ ] Inga riktiga filer ändras.
-- [ ] Ingen browser-download används för simulerade filer.
-- [ ] Ingen File System Access API används.
+- [x] Inga riktiga filer skapas.
+- [x] Inga riktiga filer ändras.
+- [x] Ingen browser-download används för simulerade filer.
+- [x] Ingen File System Access API används.
 
 ## Events
 
@@ -63,3 +63,10 @@ Kontrollera i DevTools att relevanta events skrivs en gång per handling:
 - `file.deleted`
 - `recycleBin.restored`
 - `recycleBin.emptied`
+
+
+## Resultat
+
+Manuellt verifierad i den publicerade GitHub Pages-versionen av användaren.
+
+Status: **GODKÄND**
