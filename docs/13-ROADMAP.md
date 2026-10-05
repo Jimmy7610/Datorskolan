@@ -10,7 +10,7 @@
 - design tokens
 - testgrund
 
-## Fas 1 – Fake Windows Engine
+## Fas 1 – Fake Windows Engine ✅
 
 ### v0.1 – The Desktop ✅
 - skrivbord
@@ -36,7 +36,7 @@
 - Kalkylator
 - Bilder
 
-### v0.4 – Scenario Engine
+### v0.4 – Scenario Engine ✅
 - scenariofiler
 - definierade startlägen
 - reset
