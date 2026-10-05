@@ -34,7 +34,8 @@
       explorer: {
         folderId: "home",
         selectedId: null,
-        clipboard: null
+        clipboard: null,
+        search: ""
       },
       dialog: null,
       calculator: {
@@ -216,6 +217,7 @@
       state.explorer.folderId = "home";
       state.explorer.selectedId = null;
       state.explorer.clipboard = null;
+      state.explorer.search = "";
 
       state.dialog = null;
       state.calculator.display = "0";
@@ -690,14 +692,37 @@
         addTool("Ta bort", deleteSelected, false);
       }
 
+      var addressRow = document.createElement("div");
+      addressRow.className = "explorer-address-row";
+
       var address = document.createElement("div");
       address.className = "explorer-address";
       address.textContent = vfs.path(state.explorer.folderId);
+
+      var search = document.createElement("input");
+      search.type = "search";
+      search.className = "explorer-search";
+      search.placeholder = "Sök i mappen";
+      search.value = state.explorer.search || "";
+      search.addEventListener("input", function (e) {
+        state.explorer.search = e.target.value;
+        emit("file.search", { query: state.explorer.search, folderId: state.explorer.folderId });
+        renderWindows();
+      });
+
+      addressRow.appendChild(address);
+      addressRow.appendChild(search);
 
       var grid = document.createElement("div");
       grid.className = "vfs-grid";
 
       var nodes = vfs.list(state.explorer.folderId);
+      var query = String(state.explorer.search || "").trim().toLocaleLowerCase("sv");
+      if (query) {
+        nodes = nodes.filter(function (node) {
+          return node.name.toLocaleLowerCase("sv").indexOf(query) >= 0;
+        });
+      }
 
       if (nodes.length === 0) {
         var empty = document.createElement("div");
@@ -755,7 +780,7 @@
       });
 
       main.appendChild(toolbar);
-      main.appendChild(address);
+      main.appendChild(addressRow);
       main.appendChild(grid);
 
       wrapper.appendChild(sidebar);
