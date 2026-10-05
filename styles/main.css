@@ -65,3 +65,49 @@
 .scenario-option:hover{background:#f8fafc}
 .scenario-option strong{font-size:13px}
 .scenario-option span{font-size:11px;line-height:1.4;color:#64748b}
+
+.learning-panel{position:absolute;left:10px;bottom:calc(var(--taskbar) + 10px);width:min(410px,calc(100% - 20px));max-height:calc(100% - var(--taskbar) - 30px);overflow:auto;padding:16px;background:rgba(255,255,255,.985);border:1px solid var(--border);border-radius:14px;box-shadow:0 22px 70px rgba(15,23,42,.34);z-index:9600}
+.learning-panel[hidden]{display:none}
+.learning-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.learning-header>div{display:flex;flex-direction:column}
+.learning-header strong{font-size:18px;line-height:1.2}
+.learning-header>div span{font-size:11px;color:#64748b;margin-top:2px}
+.learning-version{font-size:11px;font-weight:700;color:#1d4ed8;background:#dbeafe;padding:4px 8px;border-radius:999px}
+.learning-intro{font-size:13px;line-height:1.5;color:#475569;margin:0 0 14px}
+.learning-panel h4{margin:16px 0 7px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.06em}
+.learning-progress-row{margin:9px 0}
+.learning-progress-row>div:first-child{display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.learning-progress-row>div:first-child span{color:#64748b}
+.learning-progress-track,.lesson-step-progress{height:7px;background:#e2e8f0;border-radius:999px;overflow:hidden}
+.learning-progress-track{margin-top:5px}
+.learning-progress-track i,.lesson-step-progress i{display:block;height:100%;background:#2563eb;border-radius:inherit}
+.lesson-option{width:100%;margin-top:7px;padding:11px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;text-align:left;display:grid;grid-template-columns:1fr auto;gap:4px 10px}
+.lesson-option:hover{border-color:#93c5fd;background:#f8fbff}
+.lesson-option>div{display:flex;flex-direction:column;gap:2px}
+.lesson-option strong{font-size:13px}
+.lesson-module{font-size:10px;color:#64748b}
+.lesson-option p{grid-column:1/2;margin:4px 0 0;font-size:11px;line-height:1.45;color:#64748b}
+.lesson-option em{grid-column:2;grid-row:1/3;align-self:center;font-style:normal;font-size:11px;font-weight:700;color:#2563eb;background:#eff6ff;padding:5px 8px;border-radius:999px}
+.learning-meta{font-size:11px;font-weight:600;color:#64748b;margin-bottom:7px}
+.lesson-step-progress{margin-bottom:13px}
+.learning-step{border:1px solid #dbeafe;border-radius:12px;background:linear-gradient(180deg,#f8fbff,#fff);padding:14px}
+.learning-step-type{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#1d4ed8;background:#dbeafe;padding:4px 7px;border-radius:999px}
+.learning-step h3{margin:10px 0 7px;font-size:17px}
+.learning-step p{margin:0;font-size:13px;line-height:1.55;color:#334155}
+.learning-step-exercise{border-color:#c4b5fd;background:linear-gradient(180deg,#faf5ff,#fff)}
+.learning-step-exercise .learning-step-type{color:#6d28d9;background:#ede9fe}
+.learning-step-completion{border-color:#86efac;background:linear-gradient(180deg,#f0fdf4,#fff)}
+.learning-step-completion .learning-step-type{color:#15803d;background:#dcfce7}
+.learning-feedback{margin-top:12px;padding:10px;border-radius:8px;font-size:12px;line-height:1.45}
+.learning-feedback.hint{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}
+.learning-feedback.success,.learning-feedback.lesson-complete{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}
+.learning-feedback.try-again{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}
+.learning-actions{display:flex;gap:7px;margin-top:12px}
+.learning-actions button,.learning-footer button{height:36px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;padding:0 11px;font-size:12px}
+.learning-actions button:disabled{opacity:.4}
+.learning-actions .learning-help{border-color:#f59e0b;color:#92400e;background:#fffbeb}
+.learning-actions .learning-primary{margin-left:auto;border-color:#2563eb;background:#2563eb;color:#fff;font-weight:700}
+.learning-footer{display:flex;justify-content:flex-end;margin-top:9px;padding-top:9px;border-top:1px solid #eef2f7}
+.learning-footer button{height:30px;border:0;background:transparent;color:#64748b;padding:0 4px}
+.learning-highlight{position:relative;outline:4px solid #f59e0b!important;outline-offset:4px!important;box-shadow:0 0 0 8px rgba(245,158,11,.2)!important;z-index:2}
+@media (prefers-reduced-motion:no-preference){.learning-highlight{animation:learning-pulse 1.4s ease-in-out infinite}@keyframes learning-pulse{50%{box-shadow:0 0 0 13px rgba(245,158,11,.08)}}}
