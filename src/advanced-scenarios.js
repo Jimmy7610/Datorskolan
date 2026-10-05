@@ -70,6 +70,17 @@
       {type:"event-seen",eventType:"mail.replied"}
     ]} },
 
+    { id:"windows-resize-01", title:"Ändra fönsterstorlek", description:"Ändra storleken på Kalkylatorns fönster.", start:{openApps:["calculator"]}, fixtures:[], goal:{type:"event",eventType:"window.resized"} },
+    { id:"windows-switch-01", title:"Växla mellan program", description:"Använd Alt+Tab för att växla mellan två öppna program.", start:{openApps:["calculator","notepad"]}, fixtures:[], goal:{type:"event",eventType:"window.switched"} },
+
+    { id:"files-search-01", title:"Sök efter fil", description:"Sök efter Hitta mig.txt.", start:{explorerFolderId:"documents",openApps:["explorer"]}, fixtures:[{kind:"file",parentId:"documents",name:"Hitta mig.txt",fileType:"text",content:"Här är jag"}], goal:{type:"event",eventType:"file.search",payload:{query:"Hitta"}} },
+
+    { id:"internet-bookmark-01", title:"Bokmärke", description:"Spara den aktuella sidan som bokmärke.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"event",eventType:"browser.bookmarked"} },
+    { id:"internet-cookie-01", title:"Cookies", description:"Hantera cookie-dialogen.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"event",eventType:"browser.cookieAccepted"} },
+    { id:"internet-upload-01", title:"Ladda upp fil", description:"Välj en virtuell fil i formuläret.", start:{browserReset:true,openApps:["browser"]}, fixtures:[{kind:"file",parentId:"documents",name:"profil.txt",fileType:"text",content:"Profil"}], goal:{type:"event",eventType:"browser.uploaded"} },
+
+    { id:"mail-forward-01", title:"Vidarebefordra mejl", description:"Vidarebefordra ett meddelande och skicka det.", start:{mailReset:true,openApps:["mail"]}, fixtures:[], goal:{type:"event",eventType:"mail.forwarded"} },
+
     { id:"final-independent-01", title:"Självständighetsprov", description:"Kombinera webbläsare, filer och e-post.", start:{browserReset:true,mailReset:true,openApps:["browser"]}, fixtures:[{kind:"file",parentId:"documents",name:"plan.txt",fileType:"text",content:"Min plan"}], goal:{type:"all",goals:[
       {type:"event-seen",eventType:"browser.downloaded"},
       {type:"event-seen",eventType:"file.renamed"},
