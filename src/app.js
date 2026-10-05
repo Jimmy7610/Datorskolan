@@ -52,6 +52,14 @@
       learningPanelOpen: false,
       learningHighlightSelector: null,
       learningSelectedModule: null,
+      keyboardLab: {
+        mode: "letters",
+        completed: false,
+        flags: {},
+        clipboard: ""
+      },
+      browser: null,
+      mail: null,
       mouseLab: {
         mode: "move",
         distance: 0,
@@ -220,6 +228,9 @@
       state.notepadDirty = false;
       state.photoFileId = null;
       state.photoZoom = 1;
+      state.keyboardLab = { mode: "letters", completed: false, flags: {}, clipboard: "" };
+      state.browser = null;
+      state.mail = null;
 
       state.mouseLab.mode = "move";
       state.mouseLab.distance = 0;
@@ -576,11 +587,21 @@
       return lab;
     }
 
+    function applyStartState(start) {
+      start = start || {};
+      if (start.keyboardMode) {
+        state.keyboardLab = { mode: start.keyboardMode, completed: false, flags: {}, clipboard: "" };
+      }
+      if (start.browserReset) state.browser = null;
+      if (start.mailReset) state.mail = null;
+    }
+
     var runtimeApi = {
       vfs: vfs,
       resetForScenario: resetForScenario,
       setExplorerFolder: setExplorerFolder,
       setMouseMode: setMouseMode,
+      applyStartState: applyStartState,
       openApp: openApp
     };
 
