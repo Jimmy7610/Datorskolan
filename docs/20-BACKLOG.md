@@ -96,11 +96,11 @@
 - [x] Lesson Engine smoke test
 
 ## EPIC 6 – Landing page / Product shell
-- [ ] full landing page
-- [ ] hero section
-- [ ] feature presentation
-- [ ] course/module overview
-- [ ] clear start/resume CTA
-- [ ] responsive design
-- [ ] accessibility pass
-- [ ] visual polish and branding
+- [x] full landing page
+- [x] hero section
+- [x] feature presentation
+- [x] course/module overview
+- [x] clear start/resume CTA
+- [x] responsive design
+- [x] accessibility pass
+- [x] visual polish and branding
