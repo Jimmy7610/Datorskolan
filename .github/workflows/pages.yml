@@ -30,11 +30,18 @@ jobs:
           node --check src/vfs.js
           node --check src/scenarios.js
           node --check src/scenario-engine.js
+          node --check src/progress-store.js
+          node --check src/lessons.js
+          node --check src/lesson-engine.js
           node --check src/app.js
+          node --check tests/lesson-engine-smoke.js
 
       - name: Smoke test scenario engine
         run: |
           node -e "global.window={}; require('./src/scenarios.js'); require('./src/scenario-engine.js'); const e=new window.DatorskolanScenarioEngine(window.DatorskolanScenarios); if(e.list().length!==3) process.exit(1);"
+
+      - name: Smoke test Lesson Engine
+        run: node tests/lesson-engine-smoke.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
