@@ -55,14 +55,20 @@
 ## Fas 3 – Mus ✅
 Musutbildningen använder Fake Windows som träningsmiljö.
 
-## Fas 4 – Tangentbord
-## Fas 5 – Windows-grunder
-## Fas 6 – Filer och mappar
-## Fas 7 – Internet och webbläsare
-## Fas 8 – E-post
-## Fas 9 – Adaptiv progression
-## Fas 10 – Barnläge
-## Fas 11 – Fullständig kurs och självständighetsprov
+## Fas 4 – Tangentbord 🧪
+## Fas 5 – Windows-grunder 🧪
+## Fas 6 – Filer och mappar 🧪
+## Fas 7 – Internet och webbläsare 🧪
+## Fas 8 – E-post 🧪
+## Fas 9 – Adaptiv progression 🧪
+## Fas 10 – Barnläge 🧪
+## Fas 11 – Fullständig kurs och självständighetsprov 🧪
 
 ## Viktig ordningsregel
 Vi går inte vidare från Fake Windows v0.1 till v0.2 förrän alla acceptanskriterier i `25-FAKE-WINDOWS-V0.1-SPEC.md` är verifierade.
+
+
+## Statussymboler
+
+- ✅ = manuellt verifierad och godkänd
+- 🧪 = implementerad och automatiskt testad, väntar på full manuell acceptans
