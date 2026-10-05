@@ -1033,6 +1033,36 @@
         }
       },
 
+      "keyboard-lab": {
+        title: "Keyboard Lab",
+        icon: "⌨️",
+        w: 760,
+        h: 560,
+        render: function () {
+          return window.DatorskolanAdvancedApps.renderKeyboard({ state: state, emit: emit, vfs: vfs });
+        }
+      },
+
+      browser: {
+        title: "Webbläsare",
+        icon: "🌐",
+        w: 900,
+        h: 620,
+        render: function () {
+          return window.DatorskolanAdvancedApps.renderBrowser({ state: state, emit: emit, vfs: vfs });
+        }
+      },
+
+      mail: {
+        title: "E-post",
+        icon: "✉️",
+        w: 900,
+        h: 620,
+        render: function () {
+          return window.DatorskolanAdvancedApps.renderMail({ state: state, emit: emit, vfs: vfs });
+        }
+      },
+
       "mouse-lab": {
         title: "Mouse Lab",
         icon: "🖱️",
@@ -1581,7 +1611,7 @@
       var grid = document.createElement("div");
       grid.className = "apps";
 
-      ["explorer", "calculator", "notepad"].forEach(function (id) {
+      ["explorer", "calculator", "notepad", "browser", "mail"].forEach(function (id) {
         var app = apps[id];
         var b = document.createElement("button");
 
@@ -1608,7 +1638,12 @@
         programs: "Program",
         mouse: "Mus",
         keyboard: "Tangentbord",
-        windows: "Windows"
+        windows: "Windows",
+        internet: "Internet och webbläsare",
+        mail: "E-post",
+        security: "Säkerhet",
+        final: "Självständighetsprov",
+        basics: "Datorgrunder"
       };
       return labels[moduleId] || moduleId;
     }
@@ -2239,6 +2274,10 @@
       vfs: vfs,
       openApp: openApp,
       setMouseMode: setMouseMode,
+      setKeyboardMode: function (mode) {
+        applyStartState({ keyboardMode: mode });
+        render();
+      },
       on: on,
       scenarios: scenarioEngine,
       lessons: lessonEngine,
