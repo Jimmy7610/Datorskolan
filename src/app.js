@@ -1419,6 +1419,44 @@
           win.appendChild(titlebar);
           win.appendChild(body);
 
+          if (w.mode === "normal") {
+            var resizeHandle = document.createElement("div");
+            resizeHandle.className = "window-resize-handle";
+            var resizeDrag = null;
+
+            resizeHandle.addEventListener("pointerdown", function (e) {
+              if (e.button !== 0) return;
+              e.stopPropagation();
+              focusWindow(w.id, false);
+              resizeDrag = {
+                pointerId: e.pointerId,
+                sx: e.clientX,
+                sy: e.clientY,
+                sw: w.width,
+                sh: w.height
+              };
+              resizeHandle.setPointerCapture(e.pointerId);
+            });
+
+            resizeHandle.addEventListener("pointermove", function (e) {
+              if (!resizeDrag || e.pointerId !== resizeDrag.pointerId) return;
+              var workspaceRect = el.workspace.getBoundingClientRect();
+              w.width = Math.max(280, Math.min(workspaceRect.width - w.x, resizeDrag.sw + (e.clientX - resizeDrag.sx)));
+              w.height = Math.max(180, Math.min(workspaceRect.height - w.y, resizeDrag.sh + (e.clientY - resizeDrag.sy)));
+              win.style.width = w.width + "px";
+              win.style.height = w.height + "px";
+            });
+
+            resizeHandle.addEventListener("pointerup", function (e) {
+              if (!resizeDrag || e.pointerId !== resizeDrag.pointerId) return;
+              resizeDrag = null;
+              emit("window.resized", { windowId: w.id, width: Math.round(w.width), height: Math.round(w.height) });
+              render();
+            });
+
+            win.appendChild(resizeHandle);
+          }
+
           win.addEventListener("pointerdown", function () {
             focusWindow(w.id);
           });
@@ -2286,6 +2324,18 @@
     });
 
     document.addEventListener("keydown", function (e) {
+      if (e.altKey && e.key === "Tab") {
+        e.preventDefault();
+        var visibleWindows = state.windows.filter(function (w) { return w.mode !== "minimized"; });
+        if (visibleWindows.length > 1) {
+          var activeIndex = visibleWindows.findIndex(function (w) { return w.id === state.activeWindowId; });
+          var next = visibleWindows[(activeIndex + 1 + visibleWindows.length) % visibleWindows.length];
+          focusWindow(next.id);
+          emit("window.switched", { windowId: next.id, appId: next.appId });
+        }
+        return;
+      }
+
       if (e.key !== "Escape") return;
       if (state.dialog) {
         state.dialog = null;
