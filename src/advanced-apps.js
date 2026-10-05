@@ -153,18 +153,17 @@
     }
 
     if (mode === "modifiers") {
-      title("Ctrl, Alt och Windows","Tryck på de tre modifierartangenterna en i taget.");
+      title("Ctrl och Alt","Tryck på Ctrl och Alt en i taget.");
       var checklistM=el("div","keyboard-checklist");
-      checklistM.innerHTML="<span data-k='ctrl'>Ctrl</span><span data-k='alt'>Alt</span><span data-k='meta'>Windows</span>";
+      checklistM.innerHTML="<span data-k='ctrl'>Ctrl</span><span data-k='alt'>Alt</span>";
       stage.appendChild(checklistM);
       var m={};
       stage.tabIndex=0;
       stage.addEventListener("keydown",function(e){
         if(e.key==="Control") m.ctrl=true;
         if(e.key==="Alt") m.alt=true;
-        if(e.key==="Meta") m.meta=true;
         Object.keys(m).forEach(function(k){checklistM.querySelector("[data-k='"+k+"']").classList.add("done");});
-        if(m.ctrl&&m.alt&&m.meta) complete("keyboard.modifiers.complete",{});
+        if(m.ctrl&&m.alt) complete("keyboard.modifiers.complete",{});
       });
       setTimeout(function(){ stage.focus(); },0);
     }
