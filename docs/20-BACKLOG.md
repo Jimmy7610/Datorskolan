@@ -119,3 +119,104 @@
 - [x] mouse mastery skills
 - [x] Mouse Lab app
 - [x] Mouse module smoke test
+
+
+## EPIC 8 – Keyboard module
+- [x] letters
+- [x] numbers
+- [x] Space / Enter / Backspace / Delete
+- [x] Shift / Caps Lock
+- [x] arrow keys
+- [x] Tab / Esc
+- [x] Ctrl / Alt / Windows key
+- [x] Ctrl+A / Ctrl+C / Ctrl+V
+- [x] special characters
+- [x] final keyboard mission
+- [x] Keyboard Lab
+
+## EPIC 9 – Windows basics
+- [x] desktop and icons
+- [x] Start menu
+- [x] Start search
+- [x] taskbar and clock
+- [x] open apps
+- [x] move windows
+- [x] minimize / restore
+- [x] maximize / restore
+- [x] resize windows
+- [x] close windows
+- [x] context menu
+- [x] Alt+Tab switching
+- [x] final Windows mission
+
+## EPIC 10 – Files course
+- [x] file / folder concepts
+- [x] create folder and text file
+- [x] rename
+- [x] copy
+- [x] cut / paste / move
+- [x] drag and drop between folders
+- [x] delete / recycle / restore
+- [x] save / save as
+- [x] Documents / Downloads / Pictures
+- [x] Explorer search
+- [x] final files mission
+
+## EPIC 11 – Internet / Browser
+- [x] fake browser
+- [x] address bar
+- [x] simulated search
+- [x] links
+- [x] tabs
+- [x] close tab
+- [x] back / forward
+- [x] refresh
+- [x] bookmarks
+- [x] download
+- [x] upload
+- [x] forms
+- [x] cookies
+- [x] zoom
+- [x] final internet mission
+
+## EPIC 12 – Mail and security
+- [x] fake inbox
+- [x] open mail
+- [x] reply
+- [x] compose
+- [x] forward
+- [x] attachments
+- [x] download attachment
+- [x] phishing exercise
+- [x] passwords / passphrases
+- [x] MFA
+- [x] HTTPS / URLs
+- [x] updates / antivirus
+- [x] public Wi-Fi
+- [x] support scams
+- [x] final mail mission
+
+## EPIC 13 – Adaptation and learner modes
+- [x] next lesson recommendation
+- [x] in-progress lesson priority
+- [x] weak-skill review priority
+- [x] needs_review aging
+- [x] retention checks
+- [x] fast mode
+- [x] adaptive skip to exercise
+- [x] child mode
+- [x] child-friendly progress and feedback
+- [x] Learning Dashboard 2.0
+
+## EPIC 14 – Full course / independence
+- [x] computer basics
+- [x] mouse
+- [x] keyboard
+- [x] Windows
+- [x] files
+- [x] programs
+- [x] internet
+- [x] mail
+- [x] security
+- [x] multi-app independent final exam
+- [x] full-course smoke test
