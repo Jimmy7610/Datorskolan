@@ -77,4 +77,30 @@
 - [x] event observation
 
 ## EPIC 5 – Learning Layer
-Startar först när simulatorbasen är stabil.
+- [x] data-driven lesson definitions
+- [x] instruction steps
+- [x] demonstration steps
+- [x] exercise steps
+- [x] scenario validators
+- [x] generic event validators
+- [x] 5-level hint ladder
+- [x] visual help/highlight
+- [x] neutral retry feedback
+- [x] success/completion feedback
+- [x] lesson progress
+- [x] skill progress
+- [x] mastery score/status
+- [x] versioned localStorage
+- [x] module progress summary
+- [x] starter lessons
+- [x] Lesson Engine smoke test
+
+## EPIC 6 – Landing page / Product shell
+- [ ] full landing page
+- [ ] hero section
+- [ ] feature presentation
+- [ ] course/module overview
+- [ ] clear start/resume CTA
+- [ ] responsive design
+- [ ] accessibility pass
+- [ ] visual polish and branding
