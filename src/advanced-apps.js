@@ -376,7 +376,7 @@
 
     var main=el("div","mail-main");
     function refresh(){var fresh=renderMail(ctx);root.replaceWith(fresh);}
-    function renderComposer(replyTo){
+    function renderComposer(replyTo, forwardFrom){
       main.replaceChildren();
       var form=el("div","mail-form");
       form.innerHTML="<label>Till <input class='mail-to'></label><label>Ämne <input class='mail-subject'></label><textarea class='mail-body'></textarea><div class='mail-form-actions'><button class='mail-attach'>Bifoga fil</button><span class='mail-attachment'></span><button class='mail-send'>Skicka</button></div>";
@@ -400,12 +400,12 @@
         e.preventDefault();
         var to=form.querySelector(".mail-to").value.trim();
         if(!to)return;
-        ctx.emit(replyTo?"mail.replied":"mail.sent",{to:to,attachment:attached,attachmentName:attachedName});
+        ctx.emit(forwardFrom?"mail.forwarded":(replyTo?"mail.replied":"mail.sent"),{to:to,attachment:attached,attachmentName:attachedName});
         form.querySelector(".mail-send").textContent="✓ Skickat";
       });
       main.appendChild(form);
     }
-    compose.addEventListener("click",function(){renderComposer(null);ctx.emit("mail.composeOpened",{});});
+    compose.addEventListener("click",function(){renderComposer(null,null);ctx.emit("mail.composeOpened",{});});
 
     var selected=s.inbox.find(function(m){return m.id===s.selectedId;});
     if(!selected){
@@ -417,9 +417,9 @@
       message.querySelector("span").textContent=selected.safe?"Känd avsändare":"Okänd avsändare";
       message.querySelector("h2").textContent=selected.subject;
       message.querySelector("p").textContent=selected.body;
-      message.querySelector(".mail-reply").addEventListener("click",function(){renderComposer(selected);});
+      message.querySelector(".mail-reply").addEventListener("click",function(){renderComposer(selected,null);});
       message.querySelector(".mail-forward").addEventListener("click",function(){
-        renderComposer(null);
+        renderComposer(null,selected);
         var subject=main.querySelector(".mail-subject");
         var body=main.querySelector(".mail-body");
         if(subject)subject.value="VB: "+selected.subject;
