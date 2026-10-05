@@ -1806,7 +1806,7 @@
 
       var header = document.createElement("div");
       header.className = "learning-header";
-      header.innerHTML = "<div><strong>Datorskolan</strong><span>Lesson Engine</span></div><span class='learning-version'>Fas 2</span>";
+      header.innerHTML = "<div><strong>Datorskolan</strong><span>Din kurs</span></div><span class='learning-version'>LIVE</span>";
       el.learning.appendChild(header);
 
       if (!active) {
@@ -2359,6 +2359,10 @@
     }
 
     function render() {
+      var currentProfile = progressStore.profile();
+      el.sim.classList.toggle("child-mode", currentProfile.mode === "child");
+      el.sim.classList.toggle("fast-mode", currentProfile.mode === "fast");
+
       renderDesktop();
       renderWindows();
       renderTaskbar();
