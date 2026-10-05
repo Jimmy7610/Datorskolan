@@ -1,0 +1,1 @@
+export class Store{#s;#subs=new Set();constructor(s){this.#s=structuredClone(s)}getState(){return this.#s}update(fn){this.#s=fn(structuredClone(this.#s));this.#subs.forEach(f=>f(this.#s));return this.#s}subscribe(f){this.#subs.add(f);return()=>this.#subs.delete(f)}}
