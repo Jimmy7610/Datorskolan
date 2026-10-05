@@ -77,6 +77,13 @@
     return clone(this._state.userProfile);
   };
 
+  ProgressStore.prototype.setMode = function (mode) {
+    if (["standard","child","fast"].indexOf(mode) < 0) mode = "standard";
+    this._state.userProfile.mode = mode;
+    this._save();
+    return this.profile();
+  };
+
   ProgressStore.prototype.updateSettings = function (patch) {
     Object.keys(patch || {}).forEach(function (key) {
       this._state.userProfile.settings[key] = patch[key];
@@ -218,6 +225,75 @@
 
     this._save();
     return clone(item);
+  };
+
+  ProgressStore.prototype.recommendLesson = function (lessons) {
+    lessons = lessons || [];
+
+    var reviewCandidate = null;
+    Object.keys(this._state.skills).forEach(function (skillId) {
+      var skill = this._state.skills[skillId];
+      if (
+        !reviewCandidate &&
+        skill &&
+        (skill.status === "needs_review" || (skill.attempts >= 2 && skill.masteryScore < 0.55))
+      ) {
+        reviewCandidate = lessons.find(function (lesson) {
+          return (lesson.skills || []).indexOf(skillId) >= 0;
+        }) || null;
+      }
+    }, this);
+
+    if (reviewCandidate) return clone(reviewCandidate);
+
+    var inProgress = lessons.find(function (lesson) {
+      var progress = this._state.lessons[lesson.id];
+      return progress && progress.status === "in_progress";
+    }, this);
+    if (inProgress) return clone(inProgress);
+
+    var next = lessons.find(function (lesson) {
+      var progress = this._state.lessons[lesson.id];
+      return !progress || progress.status !== "completed";
+    }, this);
+
+    return next ? clone(next) : null;
+  };
+
+  ProgressStore.prototype.refreshReviewStatus = function (maxAgeDays) {
+    var maxAgeMs = (maxAgeDays || 14) * 24 * 60 * 60 * 1000;
+    var now = Date.now();
+
+    Object.keys(this._state.skills).forEach(function (skillId) {
+      var skill = this._state.skills[skillId];
+      if (!skill || !skill.lastPracticedAt) return;
+
+      var age = now - new Date(skill.lastPracticedAt).getTime();
+      if (
+        age > maxAgeMs &&
+        (skill.status === "independent" || skill.status === "mastered")
+      ) {
+        skill.status = "needs_review";
+      }
+    }, this);
+
+    this._save();
+    return this.snapshot();
+  };
+
+  ProgressStore.prototype.recordRetentionSuccess = function (skillId) {
+    var skill = this._ensureSkill(skillId);
+    skill.retentionChecks = (skill.retentionChecks || 0) + 1;
+    skill.lastPracticedAt = nowIso();
+
+    if (skill.retentionChecks >= 2 && skill.masteryScore >= 0.75) {
+      skill.status = "mastered";
+    } else if (skill.status === "needs_review") {
+      skill.status = "independent";
+    }
+
+    this._save();
+    return clone(skill);
   };
 
   ProgressStore.prototype.moduleSummary = function (lessons) {
