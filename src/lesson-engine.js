@@ -54,10 +54,7 @@
 
     this._progress.startLesson(lessonId);
     lesson.skills.forEach(function (skillId) {
-      var skill = this._progress.skill(skillId);
-      if (skill.status === "locked") {
-        this._progress.recordSkillAttempt(skillId, { success: false, hintLevel: 0 });
-      }
+      this._progress.introduceSkill(skillId);
     }, this);
 
     this._active = {
