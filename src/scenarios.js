@@ -57,5 +57,78 @@
         nodeName: "Övningsfil.txt"
       }
     }
+,
+    {
+      id: "mouse-move-01",
+      title: "Flytta muspekaren",
+      description: "Flytta muspekaren en tydlig sträcka inne i träningsytan.",
+      start: { mouseMode: "move", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.move.complete" }
+    },
+    {
+      id: "mouse-target-01",
+      title: "Träffa mål",
+      description: "För muspekaren till tre mål i ordning.",
+      start: { mouseMode: "target", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.target.complete" }
+    },
+    {
+      id: "mouse-click-01",
+      title: "Vänsterklick",
+      description: "Klicka en gång med vänster musknapp på målet.",
+      start: { mouseMode: "click", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.click.complete" }
+    },
+    {
+      id: "mouse-double-01",
+      title: "Dubbelklick",
+      description: "Dubbelklicka på målet.",
+      start: { mouseMode: "double", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.double.complete" }
+    },
+    {
+      id: "mouse-right-01",
+      title: "Högerklick",
+      description: "Högerklicka på målet.",
+      start: { mouseMode: "right", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.right.complete" }
+    },
+    {
+      id: "mouse-scroll-01",
+      title: "Scrolla",
+      description: "Scrolla nedåt och sedan uppåt i träningsrutan.",
+      start: { mouseMode: "scroll", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.scroll.complete" }
+    },
+    {
+      id: "mouse-hold-01",
+      title: "Klicka och håll",
+      description: "Håll vänster musknapp nedtryckt tills mätaren är full.",
+      start: { mouseMode: "hold", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.hold.complete" }
+    },
+    {
+      id: "mouse-drag-01",
+      title: "Dra och släpp",
+      description: "Dra objektet till målområdet och släpp.",
+      start: { mouseMode: "drag", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.drag.complete" }
+    },
+    {
+      id: "mouse-final-01",
+      title: "Mus – slutuppdrag",
+      description: "Klara alla musmoment i följd utan steg-för-steg-instruktioner.",
+      start: { mouseMode: "final", openApps: ["mouse-lab"] },
+      fixtures: [],
+      goal: { type: "event", eventType: "mouse.final.complete" }
+    }
   ];
 })();
