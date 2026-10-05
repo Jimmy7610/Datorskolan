@@ -111,3 +111,58 @@
 .learning-footer button{height:30px;border:0;background:transparent;color:#64748b;padding:0 4px}
 .learning-highlight{position:relative;outline:4px solid #f59e0b!important;outline-offset:4px!important;box-shadow:0 0 0 8px rgba(245,158,11,.2)!important;z-index:2}
 @media (prefers-reduced-motion:no-preference){.learning-highlight{animation:learning-pulse 1.4s ease-in-out infinite}@keyframes learning-pulse{50%{box-shadow:0 0 0 13px rgba(245,158,11,.08)}}}
+
+.mouse-lab{height:100%;display:flex;flex-direction:column;background:#f8fafc;color:#0f172a}
+.mouse-lab-head{height:56px;flex:0 0 56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #e2e8f0;background:#fff}
+.mouse-lab-head>div{display:flex;align-items:center;gap:9px}
+.mouse-lab-head>div>span{font-size:22px}
+.mouse-lab-head strong{font-size:14px}
+.mouse-lab-head em{font-style:normal;font-size:11px;font-weight:700;color:#64748b;background:#f1f5f9;padding:5px 8px;border-radius:999px}
+.mouse-lab-stage{position:relative;flex:1;min-height:0;margin:14px;border:2px dashed #cbd5e1;border-radius:16px;background:
+radial-gradient(circle at 20% 20%,rgba(37,99,235,.07),transparent 24%),
+linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
+.mouse-lab-instruction,.mouse-final-intro{position:absolute;left:18px;top:16px;right:18px;text-align:center;font-size:13px;font-weight:700;color:#475569}
+.mouse-lab-status{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-size:12px;font-weight:700;color:#475569;background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:6px 10px;white-space:nowrap}
+.mouse-distance{position:absolute;left:18%;right:18%;bottom:58px;height:10px;background:#e2e8f0;border-radius:999px;overflow:hidden}
+.mouse-distance i{display:block;width:0;height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed);border-radius:inherit}
+.mouse-target-field{position:absolute;inset:64px 35px 55px}
+.mouse-target{border:0;cursor:default;user-select:none}
+.mouse-target-field .mouse-target{position:absolute;width:72px;height:72px;border-radius:50%;background:#2563eb;color:#fff;font-size:20px;font-weight:900;box-shadow:0 12px 28px rgba(37,99,235,.25)}
+.mouse-target-field .target-1{left:8%;top:58%}
+.mouse-target-field .target-2{left:46%;top:12%}
+.mouse-target-field .target-3{right:8%;top:54%}
+.mouse-target.locked{opacity:.25;filter:grayscale(1)}
+.mouse-target.hit{background:#16a34a;opacity:1;filter:none}
+.mouse-centered{position:absolute;inset:60px 20px 68px;display:grid;place-items:center}
+.big-target{min-width:180px;min-height:92px;border-radius:20px;background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;font-size:16px;font-weight:800;box-shadow:0 18px 38px rgba(37,99,235,.25)}
+.big-target:active{transform:scale(.98)}
+.mouse-scroll-box{position:absolute;left:18%;right:18%;top:66px;bottom:62px;overflow:auto;border:1px solid #cbd5e1;border-radius:12px;background:#fff}
+.mouse-scroll-content{padding:8px}
+.mouse-scroll-content div{height:42px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid #eef2f7;font-size:12px;color:#475569}
+.mouse-scroll-content div:nth-child(odd){background:#f8fafc}
+.mouse-hold-meter{position:absolute;left:25%;right:25%;bottom:60px;height:12px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+.mouse-hold-meter i{display:block;width:0;height:100%;background:#22c55e;border-radius:inherit}
+.mouse-hold-meter i.filling{animation:mouse-hold-fill .9s linear forwards}
+@keyframes mouse-hold-fill{to{width:100%}}
+.mouse-drag-field{position:absolute;inset:70px 40px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.mouse-drag-token{width:120px;height:82px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;font-size:14px;font-weight:800;box-shadow:0 16px 32px rgba(37,99,235,.25);cursor:grab}
+.mouse-drag-token.dragging{opacity:.5}
+.mouse-drag-token.dropped{background:#16a34a}
+.mouse-drop-zone{width:170px;height:130px;border:3px dashed #94a3b8;border-radius:18px;display:grid;place-items:center;color:#64748b;font-size:14px;font-weight:800;background:#f8fafc}
+.mouse-drop-zone.over{border-color:#2563eb;background:#eff6ff;color:#1d4ed8}
+.mouse-final-intro{font-size:12px}
+.mouse-final-grid{position:absolute;inset:58px 24px 70px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:10px}
+.mouse-final-grid>div,.mouse-final-grid>button{border:1px solid #dbe3ec;border-radius:13px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#0f172a;font:inherit}
+.mouse-final-grid>button{cursor:default}
+.mouse-final-grid strong{font-size:13px}
+.mouse-final-grid span{font-size:10px;color:#64748b}
+.mouse-final-grid .done{border-color:#86efac;background:#f0fdf4}
+.final-scroll{overflow:hidden}
+.final-drag{flex-direction:row!important;gap:12px!important;padding:8px}
+.final-drag-token,.final-drop{width:64px;height:52px;border-radius:9px;display:grid;place-items:center;font-size:10px;font-weight:800}
+.final-drag-token{background:#2563eb;color:#fff;cursor:grab}
+.final-drop{border:2px dashed #94a3b8;color:#64748b}
+.mouse-final-progress{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:center;gap:5px;flex-wrap:wrap}
+.mouse-final-progress span{font-size:9px;font-weight:700;color:#64748b;background:#f1f5f9;border-radius:999px;padding:4px 7px}
+.mouse-final-progress span.done{color:#166534;background:#dcfce7}
+@media (prefers-reduced-motion:reduce){.mouse-hold-meter i.filling{animation:none;width:100%}}
