@@ -53,15 +53,15 @@
 ### Quality
 - [x] keyboard baseline
 - [x] aria labels
-- [ ] no console errors
+- [x] no console errors
 - [x] GitHub Pages paths
-- [ ] 20-step acceptance test
+- [x] 20-step acceptance test
 
 ## EPIC 2 – Fake Windows v0.2
-- [ ] virtual filesystem
-- [ ] folders/files
-- [ ] rename/copy/cut/paste/move/delete
-- [ ] recycle bin/restore
+- [x] virtual filesystem
+- [x] folders/files
+- [x] rename/copy/cut/paste/move/delete
+- [x] recycle bin/restore
 
 ## EPIC 3 – Core Apps
 - [ ] Explorer
