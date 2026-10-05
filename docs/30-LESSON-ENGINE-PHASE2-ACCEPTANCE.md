@@ -4,96 +4,103 @@ Fas 2 är godkänd först när följande fungerar i den publicerade GitHub Pages
 
 ## Learning UI
 
-- [ ] 🎓-knappen finns i aktivitetsfältet.
-- [ ] Klick på 🎓 öppnar Datorskolan-panelen.
-- [ ] Panelen visar modulprogress.
-- [ ] Panelen visar tillgängliga lektioner.
-- [ ] En aktiv lektion hålls synlig under arbetet.
-- [ ] Panelen visar aktuellt steg och antal steg.
-- [ ] Progress bar uppdateras när användaren går vidare.
+- [x] 🎓-knappen finns i aktivitetsfältet.
+- [x] Klick på 🎓 öppnar Datorskolan-panelen.
+- [x] Panelen visar modulprogress.
+- [x] Panelen visar tillgängliga lektioner.
+- [x] En aktiv lektion hålls synlig under arbetet.
+- [x] Panelen visar aktuellt steg och antal steg.
+- [x] Progress bar uppdateras när användaren går vidare.
 
 ## Instruktioner och demonstrationer
 
-- [ ] Instruction-steg visar tydlig rubrik och text.
-- [ ] Demonstration-steg visar tydlig rubrik och text.
-- [ ] Relevant simulatorområde markeras visuellt under demonstration.
-- [ ] Tillbaka och Fortsätt fungerar.
-- [ ] Fokusmarkering och text är läsbara.
+- [x] Instruction-steg visar tydlig rubrik och text.
+- [x] Demonstration-steg visar tydlig rubrik och text.
+- [x] Relevant simulatorområde markeras visuellt under demonstration.
+- [x] Tillbaka och Fortsätt fungerar.
+- [x] Fokusmarkering och text är läsbara.
 
 ## Exercises och validators
 
-- [ ] Exercise-steg visar uppgiften.
-- [ ] Kontrollera går inte vidare om uppgiften inte är klar.
-- [ ] Användaren får begriplig feedback vid ofärdig uppgift.
-- [ ] Scenario-validator känner av korrekt simulatorstate.
-- [ ] Generisk event-validator finns i Lesson Engine.
-- [ ] Rätt utförd uppgift ger success-feedback.
-- [ ] Exercise success registreras exakt en gång när steget lämnas.
+- [x] Exercise-steg visar uppgiften.
+- [x] Kontrollera går inte vidare om uppgiften inte är klar.
+- [x] Användaren får begriplig feedback vid ofärdig uppgift.
+- [x] Scenario-validator känner av korrekt simulatorstate.
+- [x] Generisk event-validator finns i Lesson Engine.
+- [x] Rätt utförd uppgift ger success-feedback.
+- [x] Exercise success registreras exakt en gång när steget lämnas.
 
 ## Hjälptrappa
 
-- [ ] Hjälp börjar på nivå 1.
-- [ ] Varje klick ökar nivån till maximalt 5.
-- [ ] Nivå 1 ger generell ledtråd.
-- [ ] Nivå 2 ger riktning.
-- [ ] Nivå 3 ger konkret instruktion.
-- [ ] Nivå 4 ger visuell markering.
-- [ ] Nivå 5 ger full steg-för-steg-hjälp.
-- [ ] Använd hjälp registreras i progressdata.
+- [x] Hjälp börjar på nivå 1.
+- [x] Varje klick ökar nivån till maximalt 5.
+- [x] Nivå 1 ger generell ledtråd.
+- [x] Nivå 2 ger riktning.
+- [x] Nivå 3 ger konkret instruktion.
+- [x] Nivå 4 ger visuell markering.
+- [x] Nivå 5 ger full steg-för-steg-hjälp.
+- [x] Använd hjälp registreras i progressdata.
 
 ## Feedback
 
-- [ ] Try-again-feedback är neutral och begriplig.
-- [ ] Success-feedback visas när uppgiften är klar.
-- [ ] Lektionen avslutas med tydlig completion.
-- [ ] Ingen negativ poäng eller skammande formulering används.
+- [x] Try-again-feedback är neutral och begriplig.
+- [x] Success-feedback visas när uppgiften är klar.
+- [x] Lektionen avslutas med tydlig completion.
+- [x] Ingen negativ poäng eller skammande formulering används.
 
 ## Progress och localStorage
 
-- [ ] Startad lektion får status in_progress.
-- [ ] Slutförd lektion får status completed.
-- [ ] Progress finns kvar efter omladdning.
-- [ ] Skill attempts registreras.
-- [ ] Skill successes registreras.
-- [ ] Independent successes registreras när hintLevel = 0.
-- [ ] hintLevelMax registreras.
-- [ ] masteryScore räknas mellan 0 och 1.
-- [ ] mastery-status kan gå från introduced/practicing till independent/mastered.
-- [ ] Data använder versionerad localStorage-nyckel.
+- [x] Startad lektion får status in_progress.
+- [x] Slutförd lektion får status completed.
+- [x] Progress finns kvar efter omladdning.
+- [x] Skill attempts registreras.
+- [x] Skill successes registreras.
+- [x] Independent successes registreras när hintLevel = 0.
+- [x] hintLevelMax registreras.
+- [x] masteryScore räknas mellan 0 och 1.
+- [x] mastery-status kan gå från introduced/practicing till independent/mastered.
+- [x] Data använder versionerad localStorage-nyckel.
 
 ## Starter lessons
 
 ### Skapa en mapp
-- [ ] Startar scenario files-create-folder-01.
-- [ ] Instruktion → demonstration → exercise → checkpoint → completion fungerar.
-- [ ] Mappen Semester godkänner exercise.
+- [x] Startar scenario files-create-folder-01.
+- [x] Instruktion → demonstration → exercise → checkpoint → completion fungerar.
+- [x] Mappen Semester godkänner exercise.
 
 ### Skriv och spara en textfil
-- [ ] Startar scenario notepad-save-file-01.
-- [ ] plan.txt med innehåll godkänner exercise.
-- [ ] Completion registreras.
+- [x] Startar scenario notepad-save-file-01.
+- [x] plan.txt med innehåll godkänner exercise.
+- [x] Completion registreras.
 
 ### Återställ från Papperskorgen
-- [ ] Startar scenario recycle-restore-01.
-- [ ] Övningsfil.txt finns i startläget.
-- [ ] Radera + återställ godkänner exercise.
-- [ ] Completion registreras.
+- [x] Startar scenario recycle-restore-01.
+- [x] Övningsfil.txt finns i startläget.
+- [x] Radera + återställ godkänner exercise.
+- [x] Completion registreras.
 
 ## API
 
-- [ ] window.__datorskolanSimulator.lessons finns.
-- [ ] window.__datorskolanSimulator.progress finns.
-- [ ] startLesson(id) fungerar.
-- [ ] stopLesson() fungerar.
-- [ ] progress.snapshot() fungerar.
+- [x] window.__datorskolanSimulator.lessons finns.
+- [x] window.__datorskolanSimulator.progress finns.
+- [x] startLesson(id) fungerar.
+- [x] stopLesson() fungerar.
+- [x] progress.snapshot() fungerar.
 
 ## Regression
 
-- [ ] Fake Windows v0.1 fungerar.
-- [ ] VFS v0.2 fungerar.
-- [ ] Core Apps v0.3 fungerar.
-- [ ] Scenario Engine v0.4 fungerar.
-- [ ] Rå Scenario Engine-panel visas inte ovanpå en aktiv lektion.
-- [ ] Inga console errors under normal användning.
-- [ ] GitHub Actions syntax-check är grön.
-- [ ] Lesson Engine smoke test är grön.
+- [x] Fake Windows v0.1 fungerar.
+- [x] VFS v0.2 fungerar.
+- [x] Core Apps v0.3 fungerar.
+- [x] Scenario Engine v0.4 fungerar.
+- [x] Rå Scenario Engine-panel visas inte ovanpå en aktiv lektion.
+- [x] Inga console errors under normal användning.
+- [x] GitHub Actions syntax-check är grön.
+- [x] Lesson Engine smoke test är grön.
+
+
+## Resultat
+
+Manuellt verifierad i den publicerade GitHub Pages-versionen av användaren.
+
+Status: **GODKÄND**
