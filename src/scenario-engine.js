@@ -73,6 +73,10 @@
       runtime.setExplorerFolder(scenario.start.explorerFolderId);
     }
 
+    if (scenario.start && scenario.start.mouseMode && typeof runtime.setMouseMode === "function") {
+      runtime.setMouseMode(scenario.start.mouseMode);
+    }
+
     if (scenario.start && Array.isArray(scenario.start.openApps)) {
       scenario.start.openApps.forEach(function (appId) {
         if (typeof runtime.openApp === "function") runtime.openApp(appId);
