@@ -64,6 +64,7 @@
       stepIndex: 0,
       hintLevel: 0,
       attemptsOnStep: 0,
+      validatorPassed: false,
       feedback: null,
       status: "running",
       startedAt: Date.now()
@@ -147,6 +148,7 @@
     this._active.stepIndex += 1;
     this._active.hintLevel = 0;
     this._active.attemptsOnStep = 0;
+    this._active.validatorPassed = false;
     this._active.feedback = null;
     this._progress.setLessonStep(lesson.id, this._active.stepIndex);
 
@@ -164,6 +166,7 @@
     if (this._active.stepIndex > 0) {
       this._active.stepIndex -= 1;
       this._active.hintLevel = 0;
+      this._active.validatorPassed = false;
       this._active.feedback = null;
       this._progress.setLessonStep(this._active.id, this._active.stepIndex);
       this._notify();
