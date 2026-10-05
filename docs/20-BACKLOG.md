@@ -3,58 +3,58 @@
 ## EPIC 1 – Fake Windows v0.1
 
 ### Core
-- [ ] app shell
-- [ ] CSS tokens
-- [ ] event bus
-- [ ] state store
-- [ ] simulator state
+- [x] app shell
+- [x] CSS tokens
+- [x] event bus
+- [x] state store
+- [x] simulator state
 
 ### Desktop
-- [ ] Documents
-- [ ] Pictures
-- [ ] Recycle Bin
-- [ ] selection/deselection
-- [ ] double click
-- [ ] icon dragging
+- [x] Documents
+- [x] Pictures
+- [x] Recycle Bin
+- [x] selection/deselection
+- [x] double click
+- [x] icon dragging
 
 ### Window Manager
-- [ ] open
-- [ ] focus
-- [ ] z-index
-- [ ] drag
-- [ ] minimize
-- [ ] maximize
-- [ ] restore
-- [ ] close
-- [ ] viewport bounds
+- [x] open
+- [x] focus
+- [x] z-index
+- [x] drag
+- [x] minimize
+- [x] maximize
+- [x] restore
+- [x] close
+- [x] viewport bounds
 
 ### Taskbar
-- [ ] Start button
-- [ ] pinned apps
-- [ ] running apps
-- [ ] active indicator
-- [ ] restore minimized
+- [x] Start button
+- [x] pinned apps
+- [x] running apps
+- [x] active indicator
+- [x] restore minimized
 
 ### Start Menu
-- [ ] open/close
-- [ ] click outside
-- [ ] Escape
-- [ ] Explorer
-- [ ] Calculator
-- [ ] Notepad
+- [x] open/close
+- [x] click outside
+- [x] Escape
+- [x] Explorer
+- [x] Calculator
+- [x] Notepad
 
 ### Context Menu
-- [ ] desktop
-- [ ] item
-- [ ] pointer position
-- [ ] viewport bounds
-- [ ] close logic
+- [x] desktop
+- [x] item
+- [x] pointer position
+- [x] viewport bounds
+- [x] close logic
 
 ### Quality
-- [ ] keyboard baseline
-- [ ] aria labels
+- [x] keyboard baseline
+- [x] aria labels
 - [ ] no console errors
-- [ ] GitHub Pages paths
+- [x] GitHub Pages paths
 - [ ] 20-step acceptance test
 
 ## EPIC 2 – Fake Windows v0.2
