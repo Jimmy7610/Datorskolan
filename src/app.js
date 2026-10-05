@@ -1819,6 +1819,13 @@
 
         var lessons = lessonEngine.list();
         var profile = progressStore.profile();
+
+        if (profile.mode === "child") {
+          intro.textContent = "Välj ett uppdrag. Vi tar en sak i taget och du kan alltid be om hjälp.";
+        } else if (profile.mode === "fast") {
+          intro.textContent = "Snabbläge: kända moment hoppar direkt till övningen.";
+        }
+
         var modeRow = document.createElement("div");
         modeRow.className = "learning-mode-row";
         modeRow.innerHTML = "<span>Läge</span><div><button data-mode='standard'>Vuxen</button><button data-mode='child'>Barn</button><button data-mode='fast'>Snabb</button></div>";
@@ -1840,7 +1847,8 @@
           var recommendation = document.createElement("button");
           recommendation.type = "button";
           recommendation.className = "learning-recommendation";
-          recommendation.innerHTML = "<span>NÄSTA REKOMMENDERADE</span><strong></strong><small></small><em>Fortsätt →</em>";
+          recommendation.innerHTML = "<span></span><strong></strong><small></small><em>Fortsätt →</em>";
+          recommendation.querySelector("span").textContent = profile.mode === "child" ? "NÄSTA UPPDRAG" : "NÄSTA REKOMMENDERADE";
           recommendation.querySelector("strong").textContent = recommended.title;
           recommendation.querySelector("small").textContent = moduleLabel(recommended.moduleId) + " • " + recommended.summary;
           recommendation.addEventListener("click", function (e) {
@@ -1982,7 +1990,11 @@
             module.completed + "/" + module.lessons.length;
           moduleButton.querySelector("i").style.width = percent + "%";
           moduleButton.querySelector("small").textContent =
-            module.completed === module.lessons.length ? "✓ Klar" : percent + "% klart";
+            profile.mode === "child"
+              ? (module.completed === module.lessons.length
+                  ? "★★★★★ Klar!"
+                  : "★".repeat(Math.round(percent / 20)) + "☆".repeat(5 - Math.round(percent / 20)))
+              : (module.completed === module.lessons.length ? "✓ Klar" : percent + "% klart");
           moduleButton.addEventListener("click", function (e) {
             e.stopPropagation();
             state.learningSelectedModule = module.id;
