@@ -273,3 +273,9 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
 .browser-page fieldset{border:1px solid #e2e8f0;border-radius:8px;margin:12px 0;padding:8px 10px}.browser-page legend{font-size:10px;color:#64748b}.browser-select{height:34px;border:1px solid #cbd5e1;border-radius:7px;padding:0 8px}
 .mail-head-actions{display:flex;gap:6px}.mail-head-actions button{height:32px;border:1px solid #cbd5e1;border-radius:7px;background:#fff}
 @media(max-width:760px){.explorer-address-row{grid-template-columns:1fr}.browser-cookie{grid-template-columns:1fr}.browser-cookie button{justify-self:start}}
+
+.start-search{width:100%;height:38px;margin:0 0 12px;border:1px solid #cbd5e1;border-radius:8px;padding:0 10px;font:inherit;font-size:12px;user-select:text}
+.start-search:focus{outline:3px solid rgba(37,99,235,.2);border-color:#2563eb}
+.start-search-empty{grid-column:1/-1;padding:18px;text-align:center;color:#64748b;font-size:12px}
+.explorer-side-button.drop-target{background:#dbeafe!important;outline:2px solid #60a5fa}
+.vfs-item.dragging{opacity:.45}
