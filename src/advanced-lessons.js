@@ -109,6 +109,17 @@
     basic("security-002-personal","security","Personuppgifter och okända länkar","Lär dig vara försiktig med personuppgifter och okända länkar.","security.personal-data","Lämna inte ut lösenord eller känsliga uppgifter bara för att en sida eller ett mejl ber om det. Kontrollera avsändare och adress först."),
     interactive("security-003-phishing","security","Bluffmejl och phishing","Identifiera ett misstänkt mejl utan att följa instruktionerna.",["security.phishing"],"security-phishing-01","Öppna bluffmejlet och markera det som bluff.",["Leta efter ett mejl som försöker stressa dig.","Kontrollera avsändare och språk.","Öppna meddelandet men följ inte bluffens instruktioner.","Använd knappen som markerar bluff.","Öppna AKUT-mejlet från Support Center och välj Markera som bluff."],".fake-mail"),
 
+    interactive("windows-009-resize","windows","Ändra fönsterstorlek","Gör ett programfönster större eller mindre.",["windows.resize"],"windows-resize-01","Dra i handtaget nere till höger på Kalkylatorn.",null,".window-resize-handle"),
+    interactive("windows-010-switch","windows","Växla program med Alt+Tab","Växla snabbt mellan öppna program.",["windows.alt-tab"],"windows-switch-01","Tryck Alt+Tab för att byta till det andra öppna programmet.",["Håll Alt nere.","Tryck Tab medan Alt är nere.","Du ska se ett annat öppet program bli aktivt.","De två programmen är redan öppna.","Håll Alt och tryck Tab en gång."],".sim"),
+
+    interactive("files-010-search","files","Sök efter en fil","Använd sökfältet i Utforskaren.",["files.search"],"files-search-01","Skriv Hitta i sökfältet.",null,".explorer-search"),
+
+    interactive("internet-009-bookmark","internet","Bokmärken","Spara en sida så att den går att hitta igen.",["internet.bookmark"],"internet-bookmark-01","Klicka på stjärnan i adressraden.",null,".browser-bookmark"),
+    interactive("internet-010-cookie","internet","Cookies","Hantera en cookie-dialog på en webbsida.",["internet.cookie"],"internet-cookie-01","Godkänn cookie-dialogen på startsidan.",null,".browser-cookie"),
+    interactive("internet-011-upload","internet","Ladda upp fil","Välj en virtuell fil i ett webbformulär.",["internet.upload"],"internet-upload-01","Gå till Formulär och välj en fil för uppladdning.",null,".browser-page"),
+
+    interactive("mail-007-forward","mail","Vidarebefordra mejl","Skicka ett befintligt meddelande vidare till en annan mottagare.",["mail.forward"],"mail-forward-01","Öppna ett mejl, välj Vidarebefordra, skriv en mottagare och skicka.",null,".fake-mail"),
+
     interactive("final-001-independent","final","Självständighetsprovet","Kombinera webbläsare, filer och e-post utan detaljerade steg.",["internet.download","files.rename","mail.attachment","mail.send"],"final-independent-01","Ladda ner guide.txt, byt namn på en fil, öppna E-post, bifoga en fil och skicka ett meddelande.",["Fundera på vilket program som behövs först.","Börja i webbläsaren och fortsätt sedan i Utforskaren.","Efter filhanteringen använder du E-post.","De relevanta apparna finns i Start-menyn.","Webbläsare: ladda ner → Utforskaren: byt namn → E-post: bifoga och skicka."],".sim")
   ];
 
