@@ -227,6 +227,29 @@
       this._notify();
     }
 
+    if (
+      step &&
+      step.type === "exercise" &&
+      step.validator &&
+      step.validator.type === "event" &&
+      type === step.validator.eventType
+    ) {
+      var matches = true;
+      var expected = step.validator.payload || {};
+      Object.keys(expected).forEach(function (key) {
+        if (!payload || payload[key] !== expected[key]) matches = false;
+      });
+
+      if (matches) {
+        this._active.validatorPassed = true;
+        this._active.feedback = {
+          kind: "success",
+          text: "Rätt. Uppgiften är klar."
+        };
+        this._notify();
+      }
+    }
+
     this._progress.recordEvent({
       type: "simulator." + type,
       lessonId: this._active.id,
