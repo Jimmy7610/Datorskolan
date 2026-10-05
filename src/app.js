@@ -202,15 +202,15 @@
       }, !current || !current.parentId);
 
       if (inRecycle) {
-        addTool("Återställ", restoreSelected, !selected);
+        addTool("Återställ", restoreSelected, false);
         addTool("Töm Papperskorgen", emptyRecycleBin, vfs.list("recycle-bin").length === 0);
       } else {
         addTool("+ Ny mapp", createFolder, false);
-        addTool("Byt namn", renameSelected, !selected || selected.system);
-        addTool("Kopiera", function () { copySelected("copy"); }, !selected || selected.system);
-        addTool("Klipp ut", function () { copySelected("cut"); }, !selected || selected.system);
+        addTool("Byt namn", renameSelected, false);
+        addTool("Kopiera", function () { copySelected("copy"); }, false);
+        addTool("Klipp ut", function () { copySelected("cut"); }, false);
         addTool("Klistra in", pasteClipboard, !state.explorer.clipboard);
-        addTool("Ta bort", deleteSelected, !selected || selected.system);
+        addTool("Ta bort", deleteSelected, false);
       }
 
       var address = document.createElement("div");
@@ -245,7 +245,6 @@
           grid.querySelectorAll(".vfs-item.selected").forEach(function (el) { el.classList.remove("selected"); });
           item.classList.add("selected");
           emit("file.selected", { id: node.id, type: node.type });
-          renderWindows();
         });
 
         item.addEventListener("dblclick", function (e) {
@@ -268,7 +267,8 @@
           e.preventDefault();
           e.stopPropagation();
           state.explorer.selectedId = node.id;
-          renderWindows();
+          grid.querySelectorAll(".vfs-item.selected").forEach(function (el) { el.classList.remove("selected"); });
+          item.classList.add("selected");
         });
 
         grid.appendChild(item);
