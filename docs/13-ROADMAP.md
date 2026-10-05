@@ -12,7 +12,7 @@
 
 ## Fas 1 – Fake Windows Engine
 
-### v0.1 – The Desktop
+### v0.1 – The Desktop ✅
 - skrivbord
 - skrivbordsikoner
 - aktivitetsfält
@@ -24,7 +24,7 @@
 - flytta, minimera, maximera, återställa och stänga fönster
 - event-bus
 
-### v0.2 – Virtual File System
+### v0.2 – Virtual File System ✅
 - simulerade filer och mappar
 - skapa, byta namn, kopiera, klippa ut, klistra in, flytta och radera
 - Papperskorgen
