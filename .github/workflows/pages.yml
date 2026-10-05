@@ -25,6 +25,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Check JavaScript syntax
+        run: |
+          node --check src/vfs.js
+          node --check src/app.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
