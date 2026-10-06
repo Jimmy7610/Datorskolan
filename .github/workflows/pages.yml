@@ -42,6 +42,7 @@ jobs:
           node --check tests/mouse-module-smoke.js
           node --check tests/full-course-smoke.js
           node --check tests/event-contract-smoke.js
+          node --check tests/phases5-11-smoke.js
 
       - name: Smoke test scenario engine
         run: |
@@ -58,6 +59,9 @@ jobs:
 
       - name: Smoke test scenario event contracts
         run: node tests/event-contract-smoke.js
+
+      - name: Smoke test phases 5 through 11
+        run: node tests/phases5-11-smoke.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
