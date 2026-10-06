@@ -1661,8 +1661,33 @@
 
           titlebar.addEventListener("pointerup", function (e) {
             if (!drag || e.pointerId !== drag.pointerId) return;
+
+            var workspaceRect = el.workspace.getBoundingClientRect();
+            var snapSide = null;
+            var edgeThreshold = 26;
+
+            if (e.clientX <= workspaceRect.left + edgeThreshold) {
+              snapSide = "left";
+              w.x = 0;
+              w.y = 0;
+              w.width = Math.floor(workspaceRect.width / 2);
+              w.height = workspaceRect.height;
+            } else if (e.clientX >= workspaceRect.right - edgeThreshold) {
+              snapSide = "right";
+              w.x = Math.floor(workspaceRect.width / 2);
+              w.y = 0;
+              w.width = Math.ceil(workspaceRect.width / 2);
+              w.height = workspaceRect.height;
+            }
+
             drag = null;
-            emit("window.moved", { windowId: w.id });
+
+            if (snapSide) {
+              emit("window.snapped", { windowId: w.id, appId: w.appId, side: snapSide });
+            } else {
+              emit("window.moved", { windowId: w.id });
+            }
+
             render();
           });
 
