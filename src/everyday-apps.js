@@ -134,19 +134,6 @@
       save.addEventListener("click",function(){if(state.flags.snap)complete("everyday.screenshot.complete",{name:"Skärmbild.png"});});
     }
 
-    if (mode === "cloud") {
-      title("Molnlagring","Flytta dokumentet till den simulerade molnmappen.");
-      var cloud=el("div","everyday-cloud");
-      cloud.innerHTML="<div>💻 På den här datorn<br><button data-a='local'>rapport.docx</button></div><div>☁️ Molnet<br><div class='cloud-target'>Släpp här</div></div>";
-      stage.appendChild(cloud);
-      cloud.querySelector("[data-a=local]").addEventListener("click",function(){state.flags.selected=true;});
-      cloud.querySelector(".cloud-target").addEventListener("click",function(){
-        if(!state.flags.selected)return;
-        this.textContent="✅ rapport.docx synkroniserad";
-        complete("everyday.cloud.complete",{});
-      });
-    }
-
     if (mode === "dialogs") {
       title("Vanliga dialogrutor","Läs frågan innan du väljer knapp.");
       var dialog=el("div","everyday-dialog");
