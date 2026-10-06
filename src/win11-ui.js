@@ -30,7 +30,18 @@
     snipping: "cut.svg",
     onedrive: "cloud.svg",
     "usb-drive": "usb-plug.svg",
-    "this-pc": "laptop.svg"
+    "this-pc": "laptop.svg",
+    desktop: "desktop.svg",
+    bluetooth: "bluetooth.svg",
+    globe: "globe.svg",
+    "apps-list": "apps-list.svg",
+    shield: "shield.svg",
+    sync: "sync.svg",
+    headphones: "headphones.svg",
+    save: "save.svg",
+    timer: "timer.svg",
+    add: "add.svg",
+    crop: "crop.svg"
   };
 
   function esc(value) {
