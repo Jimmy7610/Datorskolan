@@ -91,3 +91,28 @@ Den ursprungliga kursen med 81 lektioner är manuellt genomförd och godkänd.
 Kursen har därefter byggts ut till 120 lektioner med Fas 12 – Vardagsdatorn och djupare förståelse.
 
 Status: **Fas 12 implementerad, väntar på manuell acceptans**
+
+
+## Fas 13 – Windows 11 realism 🧪
+- centralt Windows 11-likt SVG-ikonsystem
+- centrerat aktivitetsfält och Start-meny
+- systemfält med nätverk, ljud, batteri, klocka och snabbinställningar
+- riktig pin/unpin-state för Start och aktivitetsfält
+- Google Chrome som riktig FakeWin-app
+- Windows-lik Inställningar-app
+- riktig fönstersnappning
+- Windows-lik Utforskaren med filsnabbmenyer
+- ZIP-extrahering i Utforskaren
+- USB-enhet med säker utmatning
+- OneDrive-lik molnplats
+- PDF-visare och Skriv ut till PDF
+- installationsguide och avinstallation via Inställningar
+- Skärmklippverktyg
+- riktiga Ctrl+Z / Ctrl+Y och osparad-dialog i Anteckningar
+- riktig textkopiering Chrome → Anteckningar
+- realistiska felmeddelanden och program som inte svarar
+- pedagogiska specialknappar för dessa vardagsmoment borttagna
+
+Status: **IMPLEMENTERAD – väntar på manuell acceptans**
+
+Se `docs/35-WINDOWS11-REALISM-ACCEPTANCE.md`.
