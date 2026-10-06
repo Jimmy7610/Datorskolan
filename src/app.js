@@ -73,6 +73,7 @@
       settings: null,
       pdfViewer: null,
       installer: null,
+      snipping: null,
       software: { exerciseProgramInstalled: false },
       shell: win11.loadShellState(window.localStorage),
       mouseLab: {
@@ -298,6 +299,7 @@
       state.settings = null;
       state.pdfViewer = null;
       state.installer = null;
+      state.snipping = null;
       state.software = { exerciseProgramInstalled: false };
 
       state.mouseLab.mode = "move";
@@ -1232,6 +1234,17 @@
         }
       },
 
+      snipping: {
+        title: "Skärmklippverktyget",
+        iconKey: "snipping",
+        icon: win11.icon("snipping", 18),
+        w: 760,
+        h: 540,
+        render: function () {
+          return window.DatorskolanSnippingApp.render({ state: state, emit: emit, vfs: vfs });
+        }
+      },
+
       installer: {
         title: "Installera Övningsprogram",
         iconKey: "settings",
@@ -2012,7 +2025,7 @@
       grid.className = "apps win11-pinned-apps";
 
       function visibleAppIds(query) {
-        var all = ["explorer","browser","calculator","notepad","mail","photos","settings"];
+        var all = ["explorer","browser","calculator","notepad","mail","photos","settings","snipping"];
         var normalized = String(query || "").trim().toLocaleLowerCase("sv");
         if (!normalized) return state.shell.pinnedStart.filter(function (id) { return apps[id]; });
 
