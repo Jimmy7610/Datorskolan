@@ -10,6 +10,9 @@
   var resetConfirm = document.querySelector("[data-reset-confirm]");
   var progressKey = "datorskolan.progress.v1";
   var resetReturnFocus = null;
+  var landingTabButtons = Array.prototype.slice.call(document.querySelectorAll("[data-landing-tab]"));
+  var landingPanels = Array.prototype.slice.call(document.querySelectorAll("[data-landing-panel]"));
+  var activeLandingTab = "overview";
 
   function readProgress() {
     try {
@@ -62,6 +65,75 @@
     });
   }
 
+  function selectLandingTab(tabId, focusTab) {
+    if (!tabId) tabId = "overview";
+
+    var targetPanel = landingPanels.find(function (panel) {
+      return panel.getAttribute("data-landing-panel") === tabId;
+    });
+
+    if (!targetPanel) {
+      tabId = "overview";
+      targetPanel = landingPanels.find(function (panel) {
+        return panel.getAttribute("data-landing-panel") === tabId;
+      });
+    }
+
+    activeLandingTab = tabId;
+
+    landingPanels.forEach(function (panel) {
+      var active = panel === targetPanel;
+      panel.hidden = !active;
+      panel.classList.toggle("active", active);
+    });
+
+    landingTabButtons.forEach(function (button) {
+      var active = button.getAttribute("data-landing-tab") === tabId;
+      if (button.getAttribute("role") === "tab") {
+        button.setAttribute("aria-selected", active ? "true" : "false");
+        button.setAttribute("tabindex", active ? "0" : "-1");
+      }
+    });
+
+    if (focusTab) {
+      var selected = landingTabButtons.find(function (button) {
+        return button.getAttribute("role") === "tab" &&
+          button.getAttribute("data-landing-tab") === tabId;
+      });
+      if (selected) selected.focus();
+    }
+  }
+
+  function bindLandingTabs() {
+    landingTabButtons.forEach(function (button) {
+      button.addEventListener("click", function (event) {
+        if (button.tagName === "A") event.preventDefault();
+        selectLandingTab(button.getAttribute("data-landing-tab"), false);
+      });
+
+      if (button.getAttribute("role") === "tab") {
+        button.addEventListener("keydown", function (event) {
+          if (["ArrowLeft","ArrowRight","Home","End"].indexOf(event.key) < 0) return;
+
+          var tabs = landingTabButtons.filter(function (candidate) {
+            return candidate.getAttribute("role") === "tab";
+          });
+          var index = tabs.indexOf(button);
+          if (index < 0) return;
+
+          event.preventDefault();
+
+          if (event.key === "Home") index = 0;
+          else if (event.key === "End") index = tabs.length - 1;
+          else if (event.key === "ArrowLeft") index = (index - 1 + tabs.length) % tabs.length;
+          else index = (index + 1) % tabs.length;
+
+          selectLandingTab(tabs[index].getAttribute("data-landing-tab"), true);
+        });
+      }
+    });
+  }
+
   function showSchool() {
     landing.hidden = true;
     app.hidden = false;
@@ -81,7 +153,7 @@
     document.body.classList.remove("school-mode");
     document.body.classList.add("landing-mode");
     updateCtas();
-    window.scrollTo(0, 0);
+    selectLandingTab(activeLandingTab || "overview", false);
   }
 
   function openResetDialog(button) {
@@ -171,19 +243,14 @@
     });
   });
 
-  document.querySelectorAll("[data-scroll-target]").forEach(function (button) {
-    button.addEventListener("click", function () {
-      var selector = button.getAttribute("data-scroll-target");
-      var target = selector ? document.querySelector(selector) : null;
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-
+  bindLandingTabs();
+  selectLandingTab("overview", false);
   updateCtas();
   window.DatorskolanProductShell = {
     showSchool: showSchool,
     showLanding: showLanding,
     updateCtas: updateCtas,
+    selectLandingTab: selectLandingTab,
     openResetDialog: openResetDialog,
     resetAllProgress: resetAllProgress
   };
