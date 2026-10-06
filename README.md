@@ -144,3 +144,17 @@ python -m http.server 8080
 Öppna sedan `http://localhost:8080`.
 
 Fake Windows läser eller skriver inte riktiga Windows-filer och startar inga riktiga program. All simulatorinteraktion sker inne i webbsidan.
+
+
+## Ikonkällor
+
+FakeWins generiska systemikoner använder **Microsoft Fluent UI System Icons** från Microsofts officiella repository.
+
+- importerade SVG-filer: `assets/icons/fluent/`
+- licens: MIT, se `assets/icons/fluent/LICENSE`
+- källhänvisning och importerad source commit: `assets/icons/fluent/SOURCE.md`
+- ikonerna lagras lokalt så simulatorn inte är beroende av ett externt CDN
+
+Microsoft Fluent UI System Icons ska inte blandas ihop med proprietära resurser extraherade ur Windows system-DLL:er. Sådana Windows-resurser återdistribueras inte i projektet.
+
+Google Chrome är produktbranding och hanteras separat från Microsofts Fluent-systemikoner.
