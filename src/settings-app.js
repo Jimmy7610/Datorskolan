@@ -46,16 +46,16 @@
     sidebar.appendChild(search);
 
     [
-      ["system","System","🖥"],
-      ["bluetooth","Bluetooth och enheter","⌁"],
-      ["network","Nätverk och internet","◉"],
-      ["apps","Appar","▦"],
-      ["privacy","Sekretess och säkerhet","⌾"],
-      ["update","Windows Update","↻"]
+      ["system","System","desktop"],
+      ["bluetooth","Bluetooth och enheter","bluetooth"],
+      ["network","Nätverk och internet","globe"],
+      ["apps","Appar","apps-list"],
+      ["privacy","Sekretess och säkerhet","shield"],
+      ["update","Windows Update","sync"]
     ].forEach(function(item){
       var b=el("button","settings-nav"+(s.page===item[0]?" active":""));
       b.type="button";
-      b.innerHTML="<span>"+item[2]+"</span><strong></strong>";
+      b.innerHTML="<span>"+window.DatorskolanWindows11.icon(item[2],18)+"</span><strong></strong>";
       b.querySelector("strong").textContent=item[1];
       b.addEventListener("click",function(){s.page=item[0];refresh();});
       sidebar.appendChild(b);
@@ -193,21 +193,25 @@
       btToggle.addEventListener("click",function(){s.bluetoothEnabled=!s.bluetoothEnabled;refresh();});
       bluetooth.appendChild(btToggle);
 
-      var add=el("button","settings-add-device","+ Lägg till enhet");
+      var add=el("button","settings-add-device");
+      add.innerHTML=window.DatorskolanWindows11.icon("add",16)+"<span>Lägg till enhet</span>";
       add.type="button";
       add.disabled=!s.bluetoothEnabled;
       main.appendChild(add);
 
       var devices=el("div","settings-device-list");
       if(s.bluetoothDevice){
-        var connected=el("div","settings-device-row","🎧 "+s.bluetoothDevice+"  •  Ansluten");
+        var connected=el("div","settings-device-row");
+        connected.innerHTML="<span class='settings-inline-icon'>"+window.DatorskolanWindows11.icon("headphones",18)+"</span><span></span>";
+        connected.querySelector("span:last-child").textContent=s.bluetoothDevice+" • Ansluten";
         devices.appendChild(connected);
       }
 
       add.addEventListener("click",function(){
         var chooser=el("div","settings-device-chooser");
         chooser.innerHTML="<strong>Lägg till en enhet</strong><p>Se till att enheten är påslagen och kan identifieras.</p>";
-        var headset=el("button","","🎧 Headset");
+        var headset=el("button","");
+        headset.innerHTML=window.DatorskolanWindows11.icon("headphones",18)+"<span>Headset</span>";
         headset.type="button";
         headset.addEventListener("click",function(){
           s.bluetoothDevice="Headset";
