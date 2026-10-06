@@ -26,10 +26,17 @@
         <button type="button" data-scroll-target="#safe">Tryggt att öva</button>
       </nav>
 
-      <button class="header-cta" type="button" data-launch-school>
-        <span data-cta-text>Starta Datorskolan</span>
-        <span aria-hidden="true">→</span>
-      </button>
+      <div class="landing-header-actions">
+        <button class="header-reset" type="button" data-reset-school hidden>
+          <span aria-hidden="true">↻</span>
+          <span>Starta om</span>
+        </button>
+
+        <button class="header-cta" type="button" data-launch-school>
+          <span data-cta-text>Starta Datorskolan</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
     </header>
 
     <main>
@@ -280,6 +287,24 @@
       </a>
       <p>Byggd för nybörjare. Öva tryggt direkt i webbläsaren.</p>
     </footer>
+  </div>
+
+  <div class="reset-dialog-backdrop" data-reset-dialog hidden>
+    <section class="reset-dialog" role="dialog" aria-modal="true" aria-labelledby="reset-dialog-title" aria-describedby="reset-dialog-description">
+      <div class="reset-dialog-icon" aria-hidden="true">↻</div>
+      <h2 id="reset-dialog-title">Starta om Datorskolan?</h2>
+      <p id="reset-dialog-description">
+        Alla dina sparade framsteg på den här enheten kommer att raderas.
+        Alla klara lektioner, kursprogress och inställningar återställs och du börjar om från början.
+      </p>
+      <div class="reset-dialog-warning">
+        <strong>Detta går inte att ångra.</strong>
+      </div>
+      <div class="reset-dialog-actions">
+        <button type="button" class="reset-cancel" data-reset-cancel>Avbryt</button>
+        <button type="button" class="reset-confirm" data-reset-confirm>Ja, radera allt och börja om</button>
+      </div>
+    </section>
   </div>
 
   <main id="app" hidden aria-label="Simulerad Windows-miljö"></main>
