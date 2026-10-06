@@ -28,6 +28,7 @@
     this._add({ id: "documents", name: "Documents", type: "folder", parentId: "home", system: true });
     this._add({ id: "pictures", name: "Pictures", type: "folder", parentId: "home", system: true });
     this._add({ id: "downloads", name: "Downloads", type: "folder", parentId: "home", system: true });
+    this._add({ id: "onedrive", name: "OneDrive", type: "folder", parentId: null, system: true, cloud: true });
     this._add({ id: "recycle-bin", name: "Recycle Bin", type: "folder", parentId: null, system: true, recycleBin: true });
 
     this.createFile("documents", "Välkommen.txt", "text", "Det här är en virtuell fil i Datorskolan.");
