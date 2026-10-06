@@ -56,7 +56,10 @@ function runtime(){
 [
   {
     id:"everyday-copy-paste-01",
-    events:[["everyday.copyPaste.complete",{}]]
+    events:[
+      ["browser.textCopied",{text:"Telefon: 070-123 45 67"}],
+      ["notepad.pasted",{text:"Telefon: 070-123 45 67"}]
+    ]
   },
   {
     id:"everyday-pdf-01",
