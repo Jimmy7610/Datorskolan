@@ -85,7 +85,9 @@ completeScenarioWithEvents("internet-final-01", [
   ["browser.addressUsed", {}],
   ["browser.linkOpened", {}],
   ["browser.tabOpened", {}],
-  ["browser.downloaded", {}]
+  ["browser.back", {}],
+  ["browser.forward", {}],
+  ["browser.downloaded", { name: "guide.txt" }]
 ]);
 
 completeScenarioWithEvents("internet-close-tab-01", [
@@ -96,9 +98,9 @@ completeScenarioWithEvents("internet-close-tab-01", [
 // Phase 8 - Mail and security.
 completeScenarioWithEvents("mail-final-01", [
   ["mail.opened", {}],
-  ["mail.attachmentDownloaded", {}],
-  ["mail.attachmentAdded", {}],
-  ["mail.replied", {}]
+  ["mail.attachmentDownloaded", { name: "utflykt.jpg" }],
+  ["mail.attachmentAdded", { name: "utflykt.jpg" }],
+  ["mail.replied", { attachment: true }]
 ]);
 
 completeScenarioWithEvents("security-phishing-01", [
@@ -141,12 +143,51 @@ lessonEngine.start("internet-001-address", lessonRuntime);
 assert(loadedScenario === "internet-address-01", "Lesson did not load scenario");
 assert(lessonEngine.currentStep().type === "exercise", "Fast mode should skip to exercise");
 
+// Persistence and review aging.
+function memoryStorage(initial) {
+  const data = Object.assign({}, initial || {});
+  return {
+    getItem: function (key) { return Object.prototype.hasOwnProperty.call(data,key) ? data[key] : null; },
+    setItem: function (key,value) { data[key] = String(value); },
+    removeItem: function (key) { delete data[key]; },
+    dump: function () { return Object.assign({},data); }
+  };
+}
+
+const persistentStorage = memoryStorage();
+const persistentStore = new window.DatorskolanProgressStore(persistentStorage);
+persistentStore.setMode("child");
+persistentStore.startLesson("internet-001-address");
+persistentStore.completeLesson("internet-001-address");
+
+const reloadedStore = new window.DatorskolanProgressStore(persistentStorage);
+assert(reloadedStore.profile().mode === "child", "Learner mode did not persist");
+assert(reloadedStore.lesson("internet-001-address").status === "completed", "Lesson progress did not persist");
+
+const staleState = reloadedStore.snapshot();
+staleState.skills["review.skill"] = {
+  skillId: "review.skill",
+  status: "independent",
+  attempts: 3,
+  successes: 3,
+  independentSuccesses: 3,
+  hintLevelMax: 0,
+  lastPracticedAt: "2020-01-01T00:00:00.000Z",
+  retentionChecks: 0,
+  masteryScore: 1
+};
+persistentStorage.setItem(window.DatorskolanProgressStore.STORAGE_KEY, JSON.stringify(staleState));
+
+const agingStore = new window.DatorskolanProgressStore(persistentStorage);
+agingStore.refreshReviewStatus(14);
+assert(agingStore.skill("review.skill").status === "needs_review", "Old independent skill was not marked needs_review");
+
 // Phase 11 - independent final exam.
 completeScenarioWithEvents("final-independent-01", [
   ["browser.downloaded", { name: "guide.txt" }],
-  ["file.renamed", { name: "guide-renamed.txt" }],
-  ["mail.attachmentAdded", { name: "guide-renamed.txt" }],
-  ["mail.sent", { to: "anna@example.test" }]
+  ["file.renamed", { name: "guide-klar.txt" }],
+  ["mail.attachmentAdded", { name: "guide-klar.txt" }],
+  ["mail.sent", { to: "anna@example.test", attachment: true, attachmentName: "guide-klar.txt" }]
 ]);
 
 assert(lesson("final-001-independent"), "Independent final lesson missing");
