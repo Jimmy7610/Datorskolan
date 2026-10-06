@@ -73,7 +73,7 @@
     { id:"windows-resize-01", title:"Ändra fönsterstorlek", description:"Ändra storleken på Kalkylatorns fönster.", start:{openApps:["calculator"]}, fixtures:[], goal:{type:"event",eventType:"window.resized"} },
     { id:"windows-switch-01", title:"Växla mellan program", description:"Växla till ett annat öppet program via aktivitetsfältet.", start:{openApps:["calculator","notepad"]}, fixtures:[], goal:{type:"event",eventType:"app.focused"} },
 
-    { id:"files-search-01", title:"Sök efter fil", description:"Sök efter Hitta mig.txt.", start:{explorerFolderId:"documents",openApps:["explorer"]}, fixtures:[{kind:"file",parentId:"documents",name:"Hitta mig.txt",fileType:"text",content:"Här är jag"}], goal:{type:"event",eventType:"file.search",payload:{query:"Hitta"}} },
+    { id:"files-search-01", title:"Sök efter fil", description:"Sök efter Hitta mig.txt.", start:{explorerFolderId:"documents",openApps:["explorer"]}, fixtures:[{kind:"file",parentId:"documents",name:"Hitta mig.txt",fileType:"text",content:"Här är jag"}], goal:{type:"event",eventType:"file.search"} },
 
     { id:"internet-bookmark-01", title:"Bokmärke", description:"Spara den aktuella sidan som bokmärke.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"event",eventType:"browser.bookmarked"} },
     { id:"internet-cookie-01", title:"Cookies", description:"Hantera cookie-dialogen.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"event",eventType:"browser.cookieAccepted"} },
@@ -81,7 +81,7 @@
 
     { id:"mail-forward-01", title:"Vidarebefordra mejl", description:"Vidarebefordra ett meddelande och skicka det.", start:{mailReset:true,openApps:["mail"]}, fixtures:[], goal:{type:"event",eventType:"mail.forwarded"} },
 
-    { id:"windows-search-01", title:"Sök i Start", description:"Sök efter Kalkylatorn i Start-menyn.", start:{}, fixtures:[], goal:{type:"event",eventType:"startMenu.searched",payload:{query:"Kalkylator"}} },
+    { id:"windows-search-01", title:"Sök i Start", description:"Sök efter Kalkylatorn i Start-menyn.", start:{}, fixtures:[], goal:{type:"event",eventType:"startMenu.searched"} },
     { id:"files-drag-01", title:"Dra fil till annan mapp", description:"Dra Dra mig.txt till Downloads.", start:{explorerFolderId:"documents",openApps:["explorer"]}, fixtures:[{kind:"file",parentId:"documents",name:"Dra mig.txt",fileType:"text",content:"Dra mig"}], goal:{type:"event",eventType:"file.moved",payload:{via:"drag-drop"}} },
     { id:"internet-refresh-01", title:"Uppdatera sida", description:"Uppdatera den aktuella webbsidan.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"event",eventType:"browser.refreshed"} },
     { id:"internet-close-tab-01", title:"Stäng flik", description:"Öppna och stäng en extra flik.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"all",goals:[{type:"event-seen",eventType:"browser.tabOpened"},{type:"event-seen",eventType:"browser.tabClosed"}]} },
