@@ -29,6 +29,7 @@
       ],
       selected: null,
       startOpen: false,
+      quickSettingsOpen: false,
       windows: [],
       activeWindowId: null,
       context: null,
@@ -1422,6 +1423,7 @@
     function setStart(open) {
       if (state.startOpen === open) return;
       state.startOpen = open;
+      state.quickSettingsOpen = false;
       state.context = null;
       emit(open ? "startMenu.opened" : "startMenu.closed", {});
       render();
@@ -1429,6 +1431,7 @@
 
     function openContext(kind, clientX, clientY, itemId) {
       var r = el.sim.getBoundingClientRect();
+      state.quickSettingsOpen = false;
       state.context = {
         kind: kind,
         itemId: itemId || null,
@@ -1821,6 +1824,23 @@
       var right = document.createElement("div");
       right.className = "taskbar-right";
 
+      var systemTray = document.createElement("button");
+      systemTray.type = "button";
+      systemTray.className = "system-tray" + (state.quickSettingsOpen ? " active" : "");
+      systemTray.title = "Snabbinställningar";
+      systemTray.setAttribute("aria-label", "Snabbinställningar");
+      systemTray.innerHTML =
+        '<span>' + win11.icon("wifi", 16) + '</span>' +
+        '<span>' + win11.icon("speaker", 16) + '</span>' +
+        '<span>' + win11.icon("battery", 18) + '</span>';
+      systemTray.addEventListener("click", function (e) {
+        e.stopPropagation();
+        state.quickSettingsOpen = !state.quickSettingsOpen;
+        state.context = null;
+        state.startOpen = false;
+        render();
+      });
+
       var homeButton = document.createElement("button");
       homeButton.type = "button";
       homeButton.className = "tb product-home-taskbar";
@@ -1841,6 +1861,7 @@
         "<div>" + now.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" }) + "</div>" +
         "<div>" + now.toLocaleDateString("sv-SE") + "</div>";
 
+      right.appendChild(systemTray);
       right.appendChild(homeButton);
       right.appendChild(clock);
 
@@ -2537,6 +2558,67 @@
 
     function renderContext() {
       el.context.replaceChildren();
+
+      if (!state.context && state.quickSettingsOpen) {
+        var quick = document.createElement("section");
+        quick.className = "quick-settings";
+
+        var quickGrid = document.createElement("div");
+        quickGrid.className = "quick-settings-grid";
+
+        [
+          ["Wi‑Fi","wifi",true],
+          ["Bluetooth","settings",true],
+          ["Flygplansläge","settings",false]
+        ].forEach(function (item) {
+          var tile = document.createElement("button");
+          tile.type = "button";
+          tile.className = "quick-tile" + (item[2] ? " on" : "");
+          tile.innerHTML = '<span>' + win11.icon(item[1], 20) + '</span><strong></strong>';
+          tile.querySelector("strong").textContent = item[0];
+
+          if (item[0] === "Wi‑Fi") {
+            tile.addEventListener("click", function () {
+              state.quickSettingsOpen = false;
+              state.settings = state.settings || {};
+              state.settings.page = "network";
+              openApp("settings");
+            });
+          } else if (item[0] === "Bluetooth") {
+            tile.addEventListener("click", function () {
+              state.quickSettingsOpen = false;
+              state.settings = state.settings || {};
+              state.settings.page = "bluetooth";
+              openApp("settings");
+            });
+          }
+          quickGrid.appendChild(tile);
+        });
+
+        var volume = document.createElement("div");
+        volume.className = "quick-volume";
+        volume.innerHTML = '<span>' + win11.icon("speaker", 18) + '</span><input type="range" min="0" max="100" value="55">';
+
+        var quickFooter = document.createElement("div");
+        quickFooter.className = "quick-settings-footer";
+        quickFooter.innerHTML = '<span>🔋 83 %</span>';
+
+        var settingsButton = document.createElement("button");
+        settingsButton.type = "button";
+        settingsButton.textContent = "⚙ Inställningar";
+        settingsButton.addEventListener("click", function () {
+          state.quickSettingsOpen = false;
+          openApp("settings");
+        });
+        quickFooter.appendChild(settingsButton);
+
+        quick.appendChild(quickGrid);
+        quick.appendChild(volume);
+        quick.appendChild(quickFooter);
+        el.context.appendChild(quick);
+        return;
+      }
+
       if (!state.context) return;
 
       var menu = document.createElement("div");
@@ -2764,6 +2846,15 @@
       if (!e.target.closest(".context") && state.context) closeContext();
 
       if (
+        state.quickSettingsOpen &&
+        !e.target.closest(".quick-settings") &&
+        !e.target.closest(".system-tray")
+      ) {
+        state.quickSettingsOpen = false;
+        renderContext();
+      }
+
+      if (
         state.learningPanelOpen &&
         !lessonEngine.active() &&
         !e.target.closest(".learning-panel") &&
@@ -2817,6 +2908,10 @@
         return;
       }
       if (state.context) closeContext();
+      if (state.quickSettingsOpen) {
+        state.quickSettingsOpen = false;
+        renderContext();
+      }
       if (state.startOpen) setStart(false);
       if (state.learningPanelOpen && !lessonEngine.active()) {
         state.learningPanelOpen = false;
