@@ -724,7 +724,7 @@
   }
 
   (window.DatorskolanLessons || []).forEach(function (lesson) {
-    var detail = specific(lesson) || moduleDefault(lesson);
+    var detail = lesson.detail || specific(lesson) || moduleDefault(lesson);
     if (!Array.isArray(detail.everyday) || !detail.everyday.length) {
       detail.everyday = everydayExamples(lesson);
     }
