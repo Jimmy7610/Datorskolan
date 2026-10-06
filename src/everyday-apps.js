@@ -123,21 +123,6 @@
       stage.appendChild(choices);
     }
 
-    if (mode === "pdf") {
-      title("PDF-filer","Öppna PDF:en, zooma in och spara en kopia.");
-      var pdf = el("div","everyday-pdf");
-      pdf.innerHTML="<div class='pdf-toolbar'><button data-a='open'>Öppna PDF</button><button data-a='zoom'>Zoom +</button><button data-a='save'>Spara kopia</button></div><div class='pdf-page'>FAKTURA<br><small>Det här är en simulerad PDF.</small></div>";
-      stage.appendChild(pdf);
-      var pdfBox=checklist([["open","Öppna"],["zoom","Zooma"],["save","Spara kopia"]]);
-      pdf.querySelectorAll("button").forEach(function(b){
-        b.addEventListener("click",function(){
-          var key=b.dataset.a;state.flags[key]=true;mark(pdfBox,key);
-          if(key==="zoom") pdf.querySelector(".pdf-page").classList.add("zoomed");
-          if(state.flags.open&&state.flags.zoom&&state.flags.save) complete("everyday.pdf.complete",{});
-        });
-      });
-    }
-
     if (mode === "screenshot") {
       title("Skärmdump","Ta en simulerad skärmdump och spara den.");
       var preview=el("div","everyday-screen-preview","Det här området ska fångas");
@@ -192,19 +177,6 @@
         if(!state.flags.installed)return;
         status.textContent="📦 Övningsprogram • Avinstallerat";
         complete("everyday.install.complete",{});
-      });
-    }
-
-    if (mode === "print-pdf") {
-      title("Skriv ut och Skriv ut till PDF","Välj PDF-skrivaren och spara dokumentet.");
-      var select=el("select","everyday-select");
-      ["Välj skrivare","Kontorsskrivare","Microsoft Print to PDF"].forEach(function(name){
-        var option=el("option","",name);select.appendChild(option);
-      });
-      var print=el("button","everyday-primary","Skriv ut");
-      stage.appendChild(select);stage.appendChild(print);
-      print.addEventListener("click",function(){
-        if(select.value==="Microsoft Print to PDF") complete("everyday.printPdf.complete",{printer:select.value});
       });
     }
 
