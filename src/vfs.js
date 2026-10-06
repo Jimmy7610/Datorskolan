@@ -36,6 +36,29 @@
     this.createFile("downloads", "Läs mig.txt", "text", "Allt här är simulerat och påverkar inte din riktiga dator.");
   };
 
+  VirtualFileSystem.prototype.mountDrive = function (id, name) {
+    id = id || "usb-drive";
+    if (this.get(id)) return this.get(id);
+    return this._add({
+      id: id,
+      name: name || "USB-enhet",
+      type: "folder",
+      parentId: null,
+      system: true,
+      removable: true
+    });
+  };
+
+  VirtualFileSystem.prototype.unmountDrive = function (id) {
+    var drive = this.get(id);
+    if (!drive || !drive.removable) return false;
+    this.list(id).forEach(function (node) {
+      this.permanentDelete(node.id);
+    }, this);
+    delete this._nodes[id];
+    return true;
+  };
+
   VirtualFileSystem.prototype.get = function (id) {
     return this._nodes[id] || null;
   };
