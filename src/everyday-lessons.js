@@ -387,19 +387,25 @@
 
     interactive(
       "everyday-020-snap","everyday","Två fönster sida vid sida",
-      "Arbeta med information från två program samtidigt.",
+      "Använd Windows fönstersnappning i stället för en särskild övningsknapp.",
       ["everyday.snap"],
       "everyday-snap-01",
-      "Placera Webbläsaren och Anteckningar sida vid sida.",
-      null,".everyday-lab",
+      "Dra Google Chrome hela vägen till vänster skärmkant tills det fyller vänster halva. Dra sedan Anteckningar till höger skärmkant.",
+      [
+        "Ta tag i namnlisten högst upp på Google Chrome-fönstret.",
+        "Håll musknappen nere och dra hela vägen till vänster kant.",
+        "Släpp när pekaren är vid kanten.",
+        "Gör samma sak med Anteckningar men dra till höger kant.",
+        "Chrome → vänster kant. Anteckningar → höger kant."
+      ],".app-window",
       detail(
-        "Windows kan ordna två fönster bredvid varandra så båda syns samtidigt.",
-        "Varje program tar då en del av skärmen, ofta vänster och höger halva.",
-        "Det är mycket användbart när du läser på ett ställe och skriver på ett annat.",
-        "Ha en webbsida till vänster och skriv anteckningar till höger.",
-        [],
+        "Windows kan automatiskt placera ett fönster på halva skärmen när du drar det mot vänster eller höger skärmkant.",
+        "Fönstret ändrar storlek och fyller en halva av arbetsytan. Det kallas ofta Snap.",
+        "Det är mycket användbart när du läser på ett ställe och skriver eller jämför på ett annat.",
+        "Ha Google Chrome på vänster halva och Anteckningar på höger halva.",
+        ["Dra Chrome i namnlisten till vänster skärmkant och släpp.","Dra Anteckningar i namnlisten till höger skärmkant och släpp."],
         ["Jämföra två dokument.","Kopiera information från webben till mejl eller anteckningar."],
-        ["Att maximera båda fönstren och sedan växla fram och tillbaka i onödan.","Att göra fönstren så små att texten blir svår att läsa."]
+        ["Att maximera båda fönstren och växla fram och tillbaka i onödan.","Att släppa fönstret innan pekaren nått skärmkanten."]
       )
     ),
 
