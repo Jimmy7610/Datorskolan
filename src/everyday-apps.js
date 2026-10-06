@@ -178,50 +178,6 @@
       stage.appendChild(buttons);
     }
 
-    if (mode === "wifi") {
-      title("Anslut till Wi‑Fi","Välj hemnätverket och skriv rätt lösenord.");
-      var networks=el("div","everyday-network-list");
-      ["Grannens WiFi","HemmaNet","Free_Public"].forEach(function(name){
-        var b=el("button","",name);
-        b.addEventListener("click",function(){
-          state.flags.network=name;
-          networks.querySelectorAll("button").forEach(function(x){x.classList.remove("selected");});
-          b.classList.add("selected");
-        });
-        networks.appendChild(b);
-      });
-      var password=el("input","everyday-input");
-      password.type="password";password.placeholder="Wi‑Fi-lösenord";
-      var connect=el("button","everyday-primary","Anslut");
-      stage.appendChild(networks);stage.appendChild(password);stage.appendChild(connect);
-      connect.addEventListener("click",function(){
-        if(state.flags.network==="HemmaNet"&&password.value==="datorskolan"){
-          complete("everyday.wifi.complete",{network:"HemmaNet"});
-        }
-      });
-    }
-
-    if (mode === "bluetooth") {
-      title("Bluetooth","Para ihop datorn med ett headset.");
-      var device=el("div","everyday-device-card","🎧 Headset");
-      var pair=el("button","everyday-primary","Anslut");
-      stage.appendChild(device);stage.appendChild(pair);
-      pair.addEventListener("click",function(){device.textContent="🎧 Headset • Ansluten";complete("everyday.bluetooth.complete",{});});
-    }
-
-    if (mode === "audio-camera") {
-      title("Ljud, mikrofon och kamera","Ställ volymen och kontrollera mikrofon/kamera.");
-      var audio=el("div","everyday-settings");
-      audio.innerHTML="<label>Volym <input type='range' min='0' max='100' value='20'></label><label><input type='checkbox' data-k='mic'> Mikrofon på</label><label><input type='checkbox' data-k='camera'> Kamera på</label>";
-      stage.appendChild(audio);
-      audio.addEventListener("input",function(){
-        var volume=Number(audio.querySelector("input[type=range]").value);
-        var mic=audio.querySelector("[data-k=mic]").checked;
-        var camera=audio.querySelector("[data-k=camera]").checked;
-        if(volume>=40&&mic&&camera) complete("everyday.audioCamera.complete",{volume:volume});
-      });
-    }
-
     if (mode === "install") {
       title("Installera och avinstallera","Installera Övningsprogrammet och ta sedan bort det igen.");
       var status=el("div","everyday-app-card","📦 Övningsprogram • Inte installerat");
@@ -281,20 +237,6 @@
       error.querySelector("[data-a=retry]").addEventListener("click",function(){complete("everyday.errorRead.complete",{});});
     }
 
-    if (mode === "restart-update") {
-      title("Starta om och uppdatera","Välj rätt alternativ när Windows behöver installera en uppdatering.");
-      var power=el("div","everyday-choice-grid");
-      [["shutdown","Stäng av"],["restart","Starta om"],["update","Uppdatera och starta om"]].forEach(function(item){
-        var b=el("button","",item[1]);
-        b.addEventListener("click",function(){
-          if(item[0]==="update"){b.classList.add("correct");complete("everyday.restart.complete",{choice:"update"});}
-          else b.classList.add("wrong");
-        });
-        power.appendChild(b);
-      });
-      stage.appendChild(power);
-    }
-
     if (mode === "recovery") {
       title("När ett program hängt sig","Prova den säkra ordningen innan du ger upp.");
       var recoveryBox=checklist([["wait","Vänta"],["close","Försök stänga"],["restart","Starta om programmet"]]);
@@ -310,23 +252,6 @@
         actions.appendChild(b);
       });
       stage.appendChild(actions);
-    }
-
-    if (mode === "pin-taskbar") {
-      title("Fäst ett program","Fäst Kalkylatorn så att den är lätt att hitta igen.");
-      var app=el("div","everyday-app-card","🧮 Kalkylator");
-      var pin=el("button","everyday-primary","Fäst i aktivitetsfältet");
-      stage.appendChild(app);stage.appendChild(pin);
-      pin.addEventListener("click",function(){app.textContent="🧮 Kalkylator • 📌 Fäst";complete("everyday.pinTaskbar.complete",{});});
-    }
-
-    if (mode === "snap") {
-      title("Två fönster bredvid varandra","Placera webbläsaren och Anteckningar sida vid sida.");
-      var snap=el("div","everyday-snap");
-      snap.innerHTML="<button data-a='browser'>🌐 Webbläsare</button><button data-a='notepad'>📝 Anteckningar</button><div class='snap-left'></div><div class='snap-right'></div>";
-      stage.appendChild(snap);
-      snap.querySelector("[data-a=browser]").addEventListener("click",function(){state.flags.browser=true;snap.querySelector(".snap-left").textContent="🌐 Webbläsare";});
-      snap.querySelector("[data-a=notepad]").addEventListener("click",function(){state.flags.notepad=true;snap.querySelector(".snap-right").textContent="📝 Anteckningar";if(state.flags.browser)complete("everyday.snap.complete",{});});
     }
 
     return root;
