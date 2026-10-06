@@ -45,6 +45,7 @@ jobs:
           node --check tests/event-contract-smoke.js
           node --check tests/phases5-11-smoke.js
           node --check tests/beginner-content-smoke.js
+          node --check tests/reset-progress-smoke.js
 
       - name: Smoke test scenario engine
         run: |
@@ -67,6 +68,9 @@ jobs:
 
       - name: Smoke test beginner lesson content
         run: node tests/beginner-content-smoke.js
+
+      - name: Smoke test restart progress
+        run: node tests/reset-progress-smoke.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
