@@ -461,10 +461,27 @@
       });
       form.querySelector(".mail-send").addEventListener("click",function(e){
         e.preventDefault();
+
         var to=form.querySelector(".mail-to").value.trim();
-        if(!to)return;
-        ctx.emit(forwardFrom?"mail.forwarded":(replyTo?"mail.replied":"mail.sent"),{to:to,attachment:attached,attachmentName:attachedName});
-        form.querySelector(".mail-send").textContent="✓ Skickat";
+        var subject=form.querySelector(".mail-subject").value.trim();
+        var body=form.querySelector(".mail-body").value.trim();
+        var sendButton=form.querySelector(".mail-send");
+
+        var existingError=form.querySelector(".mail-form-error");
+        if(existingError)existingError.remove();
+
+        if(!to || !subject || !body){
+          var error=el("div","mail-form-error","Fyll i mottagare, ämne och meddelande innan du skickar.");
+          form.insertBefore(error,form.querySelector(".mail-form-actions"));
+          sendButton.textContent="Skicka";
+          return;
+        }
+
+        ctx.emit(
+          forwardFrom?"mail.forwarded":(replyTo?"mail.replied":"mail.sent"),
+          {to:to,subject:subject,bodyLength:body.length,attachment:attached,attachmentName:attachedName}
+        );
+        sendButton.textContent="✓ Skickat";
       });
       main.appendChild(form);
     }
