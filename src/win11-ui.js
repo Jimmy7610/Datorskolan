@@ -52,17 +52,13 @@
       .replace(/"/g,"&quot;");
   }
 
+  var CHROME_LOGO_URL = "https://www.google.com/chrome/static/images/chrome-logo-m100.svg";
+
   function chromeIcon(size, className) {
-    return '<svg class="win11-icon brand-icon ' + esc(className || "") + '" width="' + size +
-      '" height="' + size + '" viewBox="0 0 48 48" aria-hidden="true" focusable="false" ' +
-      'xmlns="http://www.w3.org/2000/svg">' +
-      '<circle cx="24" cy="24" r="21" fill="#fff"/>' +
-      '<path d="M24 24L7 24A21 21 0 0 1 38 7z" fill="#ea4335"/>' +
-      '<path d="M24 24l14-17A21 21 0 0 1 39 39z" fill="#fbbc05"/>' +
-      '<path d="M24 24l15 15A21 21 0 0 1 7 24z" fill="#34a853"/>' +
-      '<circle cx="24" cy="24" r="9" fill="#4285f4"/>' +
-      '<circle cx="24" cy="24" r="6" fill="#8ab4f8"/>' +
-      '</svg>';
+    return '<img class="win11-icon brand-icon ' + esc(className || "") +
+      '" src="' + CHROME_LOGO_URL +
+      '" width="' + size + '" height="' + size +
+      '" alt="" aria-hidden="true" draggable="false">';
   }
 
   function icon(name, size, className) {
@@ -131,6 +127,7 @@
   window.DatorskolanWindows11 = {
     STORAGE_KEY: STORAGE_KEY,
     FLUENT_ROOT: FLUENT_ROOT,
+    CHROME_LOGO_URL: CHROME_LOGO_URL,
     fluentIcons: fluentIcons,
     icon: icon,
     defaultShellState: defaultShellState,
