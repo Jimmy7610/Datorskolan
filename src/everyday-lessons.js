@@ -414,8 +414,8 @@
       "Öppna, kopiera från och mata ut ett USB-minne säkert.",
       ["devices.usb"],
       "everyday-usb-01",
-      "Öppna USB-minnet, kopiera rapport.pdf och mata sedan ut enheten.",
-      null,".everyday-lab",
+      "I Utforskaren: öppna USB-enhet (E:), markera rapport.pdf och klicka Kopiera. Öppna Documents och klicka Klistra in. Högerklicka sedan på USB-enhet (E:) i vänsterspalten och välj Mata ut.",
+      ["USB-enhet (E:) syns i Utforskarens vänsterspalt.","Öppna USB-enheten och markera rapport.pdf.","Klicka Kopiera, öppna Documents och klicka Klistra in.","När kopian finns i Documents: högerklicka på USB-enhet (E:).","Välj Mata ut."],".explorer-v2",
       detail(
         "Ett USB-minne är en liten lagringsenhet som ansluts fysiskt till datorn.",
         "När det är anslutet visas det ofta som en egen enhet i Utforskaren.",
