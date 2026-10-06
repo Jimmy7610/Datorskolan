@@ -601,8 +601,136 @@
     return null;
   }
 
+  function everydayExamples(lesson) {
+    var moduleId = lesson.moduleId;
+
+    var defaults = {
+      basics: [
+        "När du startar datorn, kopplar in något eller försöker förstå vad som finns framför dig.",
+        "När någon hjälper dig och använder ord som skärm, program, USB eller internet."
+      ],
+      mouse: [
+        "När du klickar på knappar, väljer filer, scrollar på webbsidor eller flyttar saker.",
+        "Nästan allt grafiskt arbete i Windows använder mus eller styrplatta."
+      ],
+      keyboard: [
+        "När du skriver mejl, söker på webben, fyller i formulär eller redigerar dokument.",
+        "Kortkommandon sparar mycket tid när samma sak görs ofta."
+      ],
+      windows: [
+        "När flera program är öppna samtidigt och du behöver byta mellan dem.",
+        "När du vill hitta ett program, flytta ett fönster eller få undan något utan att stänga."
+      ],
+      files: [
+        "När du laddar ner en fil, sparar ett dokument eller försöker hitta något du gjorde igår.",
+        "När du skickar en bilaga och måste veta var filen ligger."
+      ],
+      programs: [
+        "När du väljer rätt verktyg för en uppgift: webbläsare för webben, Anteckningar för text, Kalkylator för uträkningar.",
+        "När du behöver förstå skillnaden mellan ett program och en fil."
+      ],
+      internet: [
+        "När du söker information, loggar in på en tjänst, laddar ner en fil eller öppnar flera sidor.",
+        "När du behöver avgöra om en länk eller webbadress ser rimlig ut."
+      ],
+      mail: [
+        "När du kontaktar företag, vård, skola, arbete, föreningar eller privatpersoner.",
+        "När du skickar eller tar emot dokument och bilder som bilagor."
+      ],
+      security: [
+        "När något oväntat ber dig klicka, logga in, betala eller lämna ut information.",
+        "När du installerar, laddar ner eller använder ett konto."
+      ],
+      final: [
+        "När en riktig uppgift kräver flera steg och flera program i följd.",
+        "När du inte får en detaljerad instruktion utan själv behöver välja rätt verktyg."
+      ],
+      everyday: [
+        "Det här är en sådan uppgift som återkommer ofta i vanligt datoranvändande.",
+        "Du kan behöva göra samma sak i arbete, föreningar, myndighetstjänster eller hemma."
+      ],
+      devices: [
+        "När du ansluter tillbehör, nätverk, ljud, kamera eller externa lagringsenheter.",
+        "När något fysiskt ska kopplas ihop med datorn."
+      ],
+      troubleshooting: [
+        "När något inte fungerar som du förväntar dig och du behöver lösa problemet lugnt.",
+        "När ett program hängt sig, ett meddelande visas eller datorn behöver startas om."
+      ]
+    };
+
+    return defaults[moduleId] || defaults.everyday;
+  }
+
+  function commonMistakes(lesson) {
+    var moduleId = lesson.moduleId;
+
+    var defaults = {
+      basics: [
+        "Att blanda ihop datorn, internet och ett program som om de vore samma sak.",
+        "Att klicka bort ett meddelande utan att först läsa vad det faktiskt säger."
+      ],
+      mouse: [
+        "Att dubbelklicka på sådant som bara behöver ett klick.",
+        "Att flytta musen samtidigt som man försöker dubbelklicka eller högerklicka."
+      ],
+      keyboard: [
+        "Att tro att Backspace och Delete alltid gör samma sak.",
+        "Att Caps Lock råkar vara på och gör att all text blir stor."
+      ],
+      windows: [
+        "Att stänga ett program när man egentligen bara ville minimera det.",
+        "Att tro att ett minimerat program har försvunnit."
+      ],
+      files: [
+        "Att inte veta vilken mapp filen sparades eller laddades ner till.",
+        "Att byta filnamn utan att förstå filändelsen eller råka skapa flera kopior."
+      ],
+      programs: [
+        "Att försöka öppna en fil i fel typ av program.",
+        "Att tro att en webbsida och ett installerat program är samma sak."
+      ],
+      internet: [
+        "Att skriva en sökfråga där man egentligen tänkte skriva en exakt webbadress, eller tvärtom.",
+        "Att klicka på första bästa länk utan att kontrollera adress eller avsändare."
+      ],
+      mail: [
+        "Att glömma bilagan trots att texten säger att en fil är bifogad.",
+        "Att skriva känslig information till fel mottagare."
+      ],
+      security: [
+        "Att reagera på brådska innan man kontrollerat vem som faktiskt kontaktar en.",
+        "Att återanvända samma lösenord på flera viktiga konton."
+      ],
+      final: [
+        "Att börja klicka utan att först fundera på vilken ordning momenten behöver göras.",
+        "Att tappa bort var en fil hamnade mellan två program."
+      ],
+      everyday: [
+        "Att klicka vidare snabbt utan att kontrollera vad som faktiskt är markerat eller aktivt.",
+        "Att glömma var informationen kom ifrån eller var den sparades."
+      ],
+      devices: [
+        "Att tro att en enhet är trasig när den egentligen bara inte är ansluten eller vald.",
+        "Att dra ur lagringsenheter medan filer fortfarande skrivs till dem."
+      ],
+      troubleshooting: [
+        "Att panikklicka på flera saker samtidigt och göra problemet svårare att förstå.",
+        "Att starta om hela datorn innan man först provat den enklaste säkra lösningen."
+      ]
+    };
+
+    return defaults[moduleId] || defaults.everyday;
+  }
+
   (window.DatorskolanLessons || []).forEach(function (lesson) {
     var detail = specific(lesson) || moduleDefault(lesson);
+    if (!Array.isArray(detail.everyday) || !detail.everyday.length) {
+      detail.everyday = everydayExamples(lesson);
+    }
+    if (!Array.isArray(detail.mistakes) || !detail.mistakes.length) {
+      detail.mistakes = commonMistakes(lesson);
+    }
     lesson.detail = detail;
   });
 })();
