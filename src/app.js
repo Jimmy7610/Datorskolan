@@ -670,6 +670,12 @@
         state.settings = state.settings || {};
         state.settings.page = start.settingsPage;
       }
+      if (start.usbMounted) {
+        vfs.mountDrive("usb-drive", "USB-enhet (E:)");
+        if (!vfs.list("usb-drive").some(function (node) { return node.name === "rapport.pdf"; })) {
+          vfs.createFile("usb-drive", "rapport.pdf", "pdf", "");
+        }
+      }
       if (start.browserReset) state.browser = null;
       if (start.mailReset) state.mail = null;
     }
@@ -711,13 +717,20 @@
       var sidebar = document.createElement("aside");
       sidebar.className = "explorer-sidebar";
 
-      [
+      var explorerEntries = [
         ["home", "home", "Home"],
         ["documents", "folder-documents", "Documents"],
         ["pictures", "pictures", "Pictures"],
-        ["downloads", "download", "Downloads"],
-        ["recycle-bin", "recycle", "Papperskorgen"]
-      ].forEach(function (entry) {
+        ["downloads", "download", "Downloads"]
+      ];
+
+      if (vfs.get("usb-drive")) {
+        explorerEntries.push(["usb-drive", "usb-drive", "USB-enhet (E:)"]);
+      }
+
+      explorerEntries.push(["recycle-bin", "recycle", "Papperskorgen"]);
+
+      explorerEntries.forEach(function (entry) {
         var b = document.createElement("button");
         b.type = "button";
         b.className = "explorer-side-button" + (state.explorer.folderId === entry[0] ? " active" : "");
@@ -727,6 +740,14 @@
           e.stopPropagation();
           navigateFolder(entry[0]);
         });
+
+        if (entry[0] === "usb-drive") {
+          b.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openContext("removable-drive", e.clientX, e.clientY, "usb-drive");
+          });
+        }
 
         if (entry[0] !== "recycle-bin") {
           b.addEventListener("dragover", function (e) {
@@ -2657,6 +2678,14 @@
           [isPinnedToStart(appId) ? "unpin-start" : "pin-start",
             isPinnedToStart(appId) ? "Lossa från Start" : "Fäst på Start",false]
         ];
+      } else if (kind === "removable-drive") {
+        entries = [
+          ["open-drive","Öppna",false],
+          ["sep"],
+          ["eject-drive","Mata ut",false],
+          ["sep"],
+          ["properties","Egenskaper",true]
+        ];
       } else if (kind === "vfs-item") {
         var contextNode = vfs.get(appId);
         var protectedNode = !contextNode || !!contextNode.system;
@@ -2710,6 +2739,22 @@
           if (action === "unpin-taskbar" && appId) unpinFromTaskbar(appId);
           if (action === "pin-start" && appId) pinToStart(appId);
           if (action === "unpin-start" && appId) unpinFromStart(appId);
+
+          if (kind === "removable-drive" && appId === "usb-drive") {
+            if (action === "open-drive") {
+              navigateFolder("usb-drive");
+            }
+            if (action === "eject-drive") {
+              if (state.explorer.folderId === "usb-drive") {
+                state.explorer.folderId = "home";
+                state.explorer.selectedId = null;
+              }
+              if (vfs.unmountDrive("usb-drive")) {
+                emit("device.usbEjected", { id: "usb-drive" });
+                render();
+              }
+            }
+          }
 
           if (kind === "vfs-item" && appId) {
             state.explorer.selectedId = appId;
