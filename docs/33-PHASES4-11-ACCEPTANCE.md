@@ -4,18 +4,23 @@ Fas 4–11 är implementerade men markeras inte som slutligt godkända förrän 
 
 ## Fas 4 – Tangentbord
 
-- [ ] Keyboard Lab öppnas från tangentbordslektionerna.
-- [ ] Bokstäver fungerar.
-- [ ] Siffror fungerar.
-- [ ] Mellanslag, Enter, Backspace och Delete registreras.
-- [ ] Shift och Caps Lock registreras.
-- [ ] Alla fyra piltangenter registreras.
-- [ ] Tab och Esc registreras.
-- [ ] Ctrl och Alt registreras praktiskt.
-- [ ] Windows-tangenten förklaras som OS-reserverad tangent.
-- [ ] Ctrl+A, Ctrl+C och Ctrl+V registreras.
-- [ ] Specialtecken registreras.
-- [ ] Slutuppdraget kräver flera tangentbordsfärdigheter.
+- [x] Keyboard Lab öppnas från tangentbordslektionerna.
+- [x] Bokstäver fungerar.
+- [x] Siffror fungerar.
+- [x] Mellanslag, Enter, Backspace och Delete registreras.
+- [x] Shift och Caps Lock registreras.
+- [x] Alla fyra piltangenter registreras.
+- [x] Tab och Esc registreras.
+- [x] Ctrl och Alt registreras praktiskt.
+- [x] Windows-tangenten förklaras som OS-reserverad tangent.
+- [x] Ctrl+A, Ctrl+C och Ctrl+V registreras.
+- [x] Specialtecken registreras.
+- [x] Slutuppdraget kräver flera tangentbordsfärdigheter.
+
+
+Manuellt verifierad i publicerad GitHub Pages-version av användaren.
+
+Status: **GODKÄND**
 
 ## Fas 5 – Windows-grunder
 
