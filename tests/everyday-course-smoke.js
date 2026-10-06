@@ -54,20 +54,54 @@ function runtime(){
 }
 
 [
-  ["everyday-copy-paste-01","everyday.copyPaste.complete",{}],
-  ["everyday-pdf-01","everyday.pdf.complete",{}],
-  ["everyday-wifi-01","settings.wifiConnected",{network:"HemmaNet"}],
-  ["everyday-bluetooth-01","settings.bluetoothPaired",{device:"Headset"}],
-  ["everyday-audio-camera-01","settings.audioConfigured",{volume:50,microphone:true,camera:true}],
-  ["everyday-restart-01","settings.updateRestarted",{}],
-  ["everyday-error-01","everyday.errorRead.complete",{}],
-  ["everyday-recovery-01","everyday.recovery.complete",{}]
-].forEach(function(entry){
+  {
+    id:"everyday-copy-paste-01",
+    events:[["everyday.copyPaste.complete",{}]]
+  },
+  {
+    id:"everyday-pdf-01",
+    events:[
+      ["file.opened",{id:"file-pdf"}],
+      ["pdf.zoomChanged",{zoom:110}],
+      ["pdf.savedCopy",{name:"faktura-kopia.pdf"}]
+    ],
+    vfsGet:function(id){
+      return id==="file-pdf" ? {id:"file-pdf",name:"faktura.pdf",type:"file",fileType:"pdf"} : null;
+    }
+  },
+  {
+    id:"everyday-wifi-01",
+    events:[["settings.wifiConnected",{network:"HemmaNet"}]]
+  },
+  {
+    id:"everyday-bluetooth-01",
+    events:[["settings.bluetoothPaired",{device:"Headset"}]]
+  },
+  {
+    id:"everyday-audio-camera-01",
+    events:[["settings.audioConfigured",{volume:50,microphone:true,camera:true}]]
+  },
+  {
+    id:"everyday-restart-01",
+    events:[["settings.updateRestarted",{}]]
+  },
+  {
+    id:"everyday-error-01",
+    events:[["everyday.errorRead.complete",{}]]
+  },
+  {
+    id:"everyday-recovery-01",
+    events:[["everyday.recovery.complete",{}]]
+  }
+].forEach(function(sample){
   const engine=new window.DatorskolanScenarioEngine(scenarios);
   const rt=runtime();
-  engine.load(entry[0],rt);
-  engine.observe(entry[1],entry[2]||{},rt);
-  assert(engine.active().status==="completed","Scenario did not complete: "+entry[0]);
+  if(sample.vfsGet) rt.vfs.get=sample.vfsGet;
+  engine.load(sample.id,rt);
+  sample.events.forEach(function(entry){
+    engine.observe(entry[0],entry[1]||{},rt);
+  });
+  assert(engine.active().status==="completed","Scenario did not complete: "+sample.id);
 });
 
 console.log("Everyday course smoke test passed:",lessons.length,"lessons,",interactive.length,"new interactive lessons");
