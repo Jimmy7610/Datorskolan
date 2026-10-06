@@ -301,3 +301,41 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
 .product-home-taskbar:hover{
   background:rgba(15,23,42,.1);
 }
+
+.keyboard-final-target{
+  width:min(560px,100%);
+  margin:34px auto 0;
+  padding:14px 16px;
+  border:1px solid #bfdbfe;
+  border-radius:12px;
+  background:linear-gradient(135deg,#eff6ff,#f8fafc);
+  text-align:left;
+}
+.keyboard-final-target span{
+  display:block;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.08em;
+  color:#2563eb;
+}
+.keyboard-final-target strong{
+  display:block;
+  margin-top:4px;
+  font-size:24px;
+  color:#0f172a;
+}
+.keyboard-final-target small{
+  display:block;
+  margin-top:4px;
+  font-size:10px;
+  color:#64748b;
+}
+.keyboard-final-target + .keyboard-final{
+  margin-top:12px;
+}
+.keyboard-final-checklist{
+  max-width:620px;
+}
+.keyboard-final-checklist span{
+  white-space:nowrap;
+}
