@@ -280,3 +280,56 @@ textarea{
     grid-template-columns:1fr;
   }
 }
+
+
+/* Course content is instructional content: keep it comfortably readable. */
+.learning-intro,
+.learning-step p,
+.learning-feedback,
+.lesson-option p,
+.learning-meta,
+.learning-header>div span{
+  font-size:1rem !important;
+  line-height:1.55 !important;
+}
+
+.learning-step-type,
+.lesson-module,
+.learning-version,
+.learning-panel h4{
+  font-size:.875rem !important;
+}
+
+.lesson-option strong{
+  font-size:1rem !important;
+}
+
+.learning-actions button,
+.learning-footer button{
+  min-height:44px !important;
+  font-size:1rem !important;
+  padding-inline:1rem !important;
+}
+
+/* Keep password help visible and associated with its input. */
+.settings-password-box input{grid-column:1}
+.settings-password-box button{grid-column:2;grid-row:1}
+.settings-password-help{
+  grid-column:1/-1;
+  grid-row:2;
+  color:#475569;
+  font-size:.875rem !important;
+  line-height:1.4;
+}
+
+/* The simulator is spatial content. At high zoom, make the full spatial canvas reachable instead of clipping it. */
+@media(max-width:800px){
+  body.school-mode{
+    overflow:auto !important;
+  }
+
+  body.school-mode #app{
+    min-width:760px;
+    min-height:500px;
+  }
+}
