@@ -132,8 +132,8 @@
       "Lär dig att alltid veta var en fil hamnar.",
       ["everyday.save-location"],
       "everyday-save-location-01",
-      "Välj den mapp där en vanlig webbnedladdning normalt hamnar.",
-      null,".everyday-lab",
+      "I Google Chrome: gå till Nedladdning och ladda ner guide.txt. Öppna sedan Utforskaren från aktivitetsfältet och öppna Downloads för att hitta filen.",
+      ["Börja i Chrome och öppna genvägen Nedladdning.","Klicka Ladda ner guide.txt.","Öppna Utforskaren från aktivitetsfältet.","Klicka Downloads i vänsterspalten.","Kontrollera att guide.txt ligger där."],".sim",
       detail(
         "Varje fil ligger på en bestämd plats, till exempel Documents, Downloads eller Pictures. Att veta platsen är lika viktigt som att veta filnamnet.",
         "Utforskaren visar sökvägen och mapparna. Webbläsare sparar vanligtvis hämtade filer i Downloads om du inte valt något annat.",
