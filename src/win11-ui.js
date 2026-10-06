@@ -192,6 +192,14 @@
         className);
     }
 
+    if (name === "snipping") {
+      return svg(size,
+        '<circle cx="16" cy="16" r="6" fill="none" stroke="#e55062" stroke-width="3"/>' +
+        '<circle cx="16" cy="32" r="6" fill="none" stroke="#e55062" stroke-width="3"/>' +
+        '<path d="M20 20l18 18M20 28L38 10" stroke="#6b7280" stroke-width="3" stroke-linecap="round"/>',
+        className);
+    }
+
     if (name === "onedrive") {
       return svg(size,
         '<path d="M18 31c-5 0-9-3-9-7 0-3 2-6 6-7 1-6 6-10 12-10 6 0 10 3 12 8 5 0 8 3 8 8 0 4-4 8-9 8H18z" fill="#1683d8"/>' +
