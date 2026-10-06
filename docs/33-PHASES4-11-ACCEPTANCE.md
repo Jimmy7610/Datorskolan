@@ -24,19 +24,24 @@ Status: **GODKÄND**
 
 ## Fas 5 – Windows-grunder
 
-- [ ] Start-menyn öppnas.
-- [ ] Start-sökning filtrerar program.
-- [ ] Program kan startas från Start.
-- [ ] Skrivbordsikon kan dubbelklickas.
-- [ ] Fönster kan flyttas.
-- [ ] Fönster kan minimeras och återställas.
-- [ ] Fönster kan maximeras och återställas.
-- [ ] Fönster kan stängas.
-- [ ] Fönster kan ändra storlek med resize-handtaget.
-- [ ] Växling mellan två öppna program via aktivitetsfältet fungerar.
-- [ ] Alt+Tab förklaras som riktigt Windows-kortkommando.
-- [ ] Högerklicksmeny fungerar.
-- [ ] Windows-slutuppdraget kräver flera fönsterhandlingar.
+- [x] Start-menyn öppnas.
+- [x] Start-sökning filtrerar program.
+- [x] Program kan startas från Start.
+- [x] Skrivbordsikon kan dubbelklickas.
+- [x] Fönster kan flyttas.
+- [x] Fönster kan minimeras och återställas.
+- [x] Fönster kan maximeras och återställas.
+- [x] Fönster kan stängas.
+- [x] Fönster kan ändra storlek med resize-handtaget.
+- [x] Växling mellan två öppna program via aktivitetsfältet fungerar.
+- [x] Alt+Tab förklaras som riktigt Windows-kortkommando.
+- [x] Högerklicksmeny fungerar.
+- [x] Windows-slutuppdraget kräver flera fönsterhandlingar.
+
+
+Manuellt verifierad i publicerad GitHub Pages-version av användaren.
+
+Status: **GODKÄND**
 
 ## Fas 6 – Filer och mappar
 
