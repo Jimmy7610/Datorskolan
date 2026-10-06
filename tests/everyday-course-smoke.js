@@ -56,7 +56,10 @@ function runtime(){
 [
   ["everyday-copy-paste-01","everyday.copyPaste.complete"],
   ["everyday-pdf-01","everyday.pdf.complete"],
-  ["everyday-wifi-01","everyday.wifi.complete"],
+  ["everyday-wifi-01","settings.wifiConnected"],
+  ["everyday-bluetooth-01","settings.bluetoothPaired"],
+  ["everyday-audio-camera-01","settings.audioConfigured"],
+  ["everyday-restart-01","settings.updateRestarted"],
   ["everyday-error-01","everyday.errorRead.complete"],
   ["everyday-recovery-01","everyday.recovery.complete"]
 ].forEach(function(entry){
