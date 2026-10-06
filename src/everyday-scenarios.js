@@ -19,7 +19,7 @@
     {id:"everyday-error-01",title:"Felmeddelanden",description:"Läs felet och välj säker åtgärd.",start:{everydayMode:"error-message",openApps:["everyday-lab"]},fixtures:[],goal:{type:"event",eventType:"everyday.errorRead.complete"}},
     {id:"everyday-restart-01",title:"Starta om och uppdatera",description:"Välj rätt omstartsalternativ.",start:{everydayMode:"restart-update",openApps:["everyday-lab"]},fixtures:[],goal:{type:"event",eventType:"everyday.restart.complete"}},
     {id:"everyday-recovery-01",title:"Programmet svarar inte",description:"Lös ett hängt program i trygg ordning.",start:{everydayMode:"recovery",openApps:["everyday-lab"]},fixtures:[],goal:{type:"event",eventType:"everyday.recovery.complete"}},
-    {id:"everyday-pin-taskbar-01",title:"Fäst program",description:"Fäst ett program i aktivitetsfältet.",start:{everydayMode:"pin-taskbar",openApps:["everyday-lab"]},fixtures:[],goal:{type:"event",eventType:"everyday.pinTaskbar.complete"}},
+    {id:"everyday-pin-taskbar-01",title:"Fäst program",description:"Fäst Google Chrome i aktivitetsfältet via Start-menyn.",start:{pinnedTaskbar:["explorer"],pinnedStart:["explorer","browser","calculator","notepad","mail"],openApps:[]},fixtures:[],goal:{type:"event",eventType:"shell.taskbarPinned",payload:{appId:"browser"}}},
     {id:"everyday-snap-01",title:"Fönster sida vid sida",description:"Placera två program bredvid varandra.",start:{everydayMode:"snap",openApps:["everyday-lab"]},fixtures:[],goal:{type:"event",eventType:"everyday.snap.complete"}}
   ];
 
