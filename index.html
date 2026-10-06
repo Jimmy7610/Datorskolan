@@ -8,8 +8,10 @@
   <title>Datorskolan – Lär dig Windows genom att göra det på riktigt</title>
   <link rel="stylesheet" href="./styles/main.css">
   <link rel="stylesheet" href="./styles/landing.css">
+  <link rel="stylesheet" href="./styles/accessibility.css">
 </head>
 <body class="landing-mode">
+  <a class="skip-link" href="#landing-main">Hoppa till huvudinnehållet</a>
   <div id="landing" class="landing-page">
     <div class="landing-ambient ambient-a" aria-hidden="true"></div>
     <div class="landing-ambient ambient-b" aria-hidden="true"></div>
@@ -23,11 +25,11 @@
         </span>
       </a>
 
-      <nav class="landing-tabs" role="tablist" aria-label="Datorskolan">
-        <button type="button" role="tab" aria-selected="true" data-landing-tab="overview">Översikt</button>
-        <button type="button" role="tab" aria-selected="false" data-landing-tab="how">Så fungerar det</button>
-        <button type="button" role="tab" aria-selected="false" data-landing-tab="course">Kursen</button>
-        <button type="button" role="tab" aria-selected="false" data-landing-tab="safe">Tryggt att öva</button>
+      <nav class="landing-tabs" role="tablist" aria-label="Information om Datorskolan">
+        <button id="tab-overview" type="button" role="tab" aria-selected="true" aria-controls="panel-overview" tabindex="0" data-landing-tab="overview">Översikt</button>
+        <button id="tab-how" type="button" role="tab" aria-selected="false" aria-controls="panel-how" tabindex="-1" data-landing-tab="how">Så fungerar det</button>
+        <button id="tab-course" type="button" role="tab" aria-selected="false" aria-controls="panel-course" tabindex="-1" data-landing-tab="course">Kursen</button>
+        <button id="tab-safe" type="button" role="tab" aria-selected="false" aria-controls="panel-safe" tabindex="-1" data-landing-tab="safe">Tryggt att öva</button>
       </nav>
 
       <div class="landing-header-actions">
@@ -42,8 +44,8 @@
       </div>
     </header>
 
-    <main class="landing-stage">
-      <section class="landing-panel overview-panel active" data-landing-panel="overview" role="tabpanel">
+    <main id="landing-main" class="landing-stage" tabindex="-1">
+      <section id="panel-overview" class="landing-panel overview-panel active" data-landing-panel="overview" role="tabpanel" aria-labelledby="tab-overview">
         <div class="overview-copy">
           <div class="eyebrow"><span class="eyebrow-dot"></span>Interaktiv Windows-träning direkt i webbläsaren</div>
           <h1>Lär dig datorn.<br><span>Genom att faktiskt använda den.</span></h1>
@@ -75,7 +77,7 @@
           </div>
         </div>
 
-        <div class="overview-visual" aria-label="Förhandsvisning av FakeWin">
+        <div class="overview-visual" aria-hidden="true">
           <div class="visual-orbit orbit-blue"></div>
           <div class="visual-orbit orbit-violet"></div>
 
@@ -129,7 +131,7 @@
         </div>
       </section>
 
-      <section class="landing-panel how-panel" data-landing-panel="how" role="tabpanel" hidden>
+      <section id="panel-how" class="landing-panel how-panel" data-landing-panel="how" role="tabpanel" aria-labelledby="tab-how" hidden>
         <div class="panel-heading">
           <span class="section-kicker">PEDAGOGIK SOM BYGGER SJÄLVSTÄNDIGHET</span>
           <h2>Förstå först. Gör sedan själv.</h2>
@@ -184,7 +186,7 @@
         </div>
       </section>
 
-      <section class="landing-panel course-panel" data-landing-panel="course" role="tabpanel" hidden>
+      <section id="panel-course" class="landing-panel course-panel" data-landing-panel="course" role="tabpanel" aria-labelledby="tab-course" hidden>
         <div class="course-topline">
           <div>
             <span class="section-kicker">120 LEKTIONER • 13 KURSOMRÅDEN</span>
@@ -220,7 +222,7 @@
         </div>
       </section>
 
-      <section class="landing-panel safe-panel" data-landing-panel="safe" role="tabpanel" hidden>
+      <section id="panel-safe" class="landing-panel safe-panel" data-landing-panel="safe" role="tabpanel" aria-labelledby="tab-safe" hidden>
         <div class="safe-layout">
           <div class="safe-copy">
             <span class="section-kicker">TRYGGT ATT GÖRA FEL</span>
