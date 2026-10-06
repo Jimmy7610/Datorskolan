@@ -2384,3 +2384,13 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
   content:"⚠ ";
   color:#c47b00;
 }
+
+.fluent-icon{
+  display:block;
+  object-fit:contain;
+  flex:0 0 auto;
+}
+.brand-icon{
+  display:block;
+  flex:0 0 auto;
+}
