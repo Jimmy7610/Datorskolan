@@ -4,10 +4,12 @@ global.window = {};
 
 require("../src/scenarios.js");
 require("../src/advanced-scenarios.js");
+require("../src/everyday-scenarios.js");
 require("../src/scenario-engine.js");
 require("../src/progress-store.js");
 require("../src/lessons.js");
 require("../src/advanced-lessons.js");
+require("../src/everyday-lessons.js");
 require("../src/lesson-engine.js");
 
 function assert(condition, message) {
@@ -24,6 +26,9 @@ var requiredModules = [
   "internet",
   "mail",
   "security",
+  "everyday",
+  "devices",
+  "troubleshooting",
   "final"
 ];
 
@@ -67,6 +72,10 @@ assert(
   lessons.filter(function (lesson) { return lesson.moduleId === "mail"; }).length >= 7,
   "Mail module incomplete"
 );
+assert(lessons.length >= 120, "Expanded course must contain at least 120 lessons");
+assert(lessons.filter(function (lesson) { return lesson.moduleId === "everyday"; }).length >= 20, "Everyday module incomplete");
+assert(lessons.filter(function (lesson) { return lesson.moduleId === "devices"; }).length >= 8, "Devices module incomplete");
+assert(lessons.filter(function (lesson) { return lesson.moduleId === "troubleshooting"; }).length >= 8, "Troubleshooting module incomplete");
 
 var progress = new window.DatorskolanProgressStore(null);
 progress.setMode("child");
