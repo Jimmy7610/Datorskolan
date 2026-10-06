@@ -85,3 +85,23 @@ Undvik att förutsätta att användaren redan vet:
 - var knappar sitter eller hur de ser ut.
 
 Om ett nytt ord behövs: förklara ordet innan användaren förväntas agera på det.
+
+
+## Vardagsförståelse
+
+Varje publicerad lektion ska dessutom innehålla:
+
+6. **Vanligt i vardagen** – minst två konkreta situationer där användaren faktiskt använder kunskapen.
+7. **Vanliga misstag** – minst två typiska nybörjarfel som hjälper användaren förstå vad som kan gå fel.
+
+Exempel för Kopiera/Klistra in:
+
+**Vanligt i vardagen**
+- kopiera ett telefonnummer från en webbsida till ett mejl,
+- kopiera ett ordernummer från ett mejl till ett formulär.
+
+**Vanliga misstag**
+- kopiera utan att först markera rätt text,
+- klistra in på fel plats eftersom textmarkören står i fel fält.
+
+Målet är inte bara att användaren ska klara en övning. Användaren ska förstå **när kunskapen är användbar, hur den känns igen och vilka fel som är vanliga**.
