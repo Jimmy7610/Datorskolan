@@ -3,7 +3,6 @@
 
   var landing = document.getElementById("landing");
   var app = document.getElementById("app");
-  var home = document.getElementById("product-shell-home");
   var launchButtons = Array.prototype.slice.call(document.querySelectorAll("[data-launch-school]"));
   var progressKey = "datorskolan.progress.v1";
 
@@ -57,7 +56,6 @@
   function showSchool() {
     landing.hidden = true;
     app.hidden = false;
-    home.hidden = false;
     document.body.classList.remove("landing-mode");
     document.body.classList.add("school-mode");
     window.scrollTo(0, 0);
@@ -71,7 +69,6 @@
   function showLanding() {
     app.hidden = true;
     landing.hidden = false;
-    home.hidden = true;
     document.body.classList.remove("school-mode");
     document.body.classList.add("landing-mode");
     updateCtas();
@@ -91,12 +88,6 @@
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
-
-  if (home) {
-    home.addEventListener("click", function () {
-      showLanding();
-    });
-  }
 
   updateCtas();
   window.DatorskolanProductShell = {
