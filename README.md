@@ -158,3 +158,8 @@ FakeWins generiska systemikoner använder **Microsoft Fluent UI System Icons** f
 Microsoft Fluent UI System Icons ska inte blandas ihop med proprietära resurser extraherade ur Windows system-DLL:er. Sådana Windows-resurser återdistribueras inte i projektet.
 
 Google Chrome är produktbranding och hanteras separat från Microsofts Fluent-systemikoner.
+
+Chrome-ikonen laddas från Googles egen officiella Chrome-asset:
+`https://www.google.com/chrome/static/images/chrome-logo-m100.svg`
+
+Den används oförändrad i FakeWin för Start, aktivitetsfält och Chrome-appens identitet.
