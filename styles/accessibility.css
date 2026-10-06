@@ -333,3 +333,9 @@ textarea{
     min-height:500px;
   }
 }
+
+
+/* Contrast correction for small status text on the dark landing background. */
+.landing-statusbar{
+  color:#71839a !important;
+}
