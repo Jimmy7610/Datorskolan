@@ -86,21 +86,6 @@
       });
     }
 
-    if (mode === "undo-redo") {
-      title("Ångra och gör om","Skriv något, ångra med Ctrl+Z och gör sedan om med Ctrl+Y.");
-      var editor = el("textarea","everyday-textarea");
-      editor.placeholder = "Skriv några ord här...";
-      stage.appendChild(editor);
-      var undoBox = checklist([["type","Skriv text"],["undo","Ctrl+Z"],["redo","Ctrl+Y"]]);
-      editor.addEventListener("input",function(){ if(editor.value){state.flags.type=true;mark(undoBox,"type");} });
-      editor.addEventListener("keydown",function(e){
-        if(e.ctrlKey && e.key.toLowerCase()==="z"){state.flags.undo=true;mark(undoBox,"undo");}
-        if(e.ctrlKey && e.key.toLowerCase()==="y"){state.flags.redo=true;mark(undoBox,"redo");}
-        if(state.flags.type&&state.flags.undo&&state.flags.redo) complete("everyday.undoRedo.complete",{});
-      });
-      setTimeout(function(){editor.focus();},0);
-    }
-
     if (mode === "save-location") {
       title("Var hamnar filen?","Välj rätt mapp för ett nedladdat dokument.");
       var choices = el("div","everyday-choice-grid");
@@ -121,14 +106,6 @@
         choices.appendChild(b);
       });
       stage.appendChild(choices);
-    }
-
-    if (mode === "dialogs") {
-      title("Vanliga dialogrutor","Läs frågan innan du väljer knapp.");
-      var dialog=el("div","everyday-dialog");
-      dialog.innerHTML="<strong>Spara ändringar?</strong><p>Du har ändringar som inte är sparade.</p><div><button data-a='discard'>Spara inte</button><button data-a='cancel'>Avbryt</button><button data-a='save'>Spara</button></div>";
-      stage.appendChild(dialog);
-      dialog.querySelector("[data-a=save]").addEventListener("click",function(){complete("everyday.dialog.complete",{choice:"save"});});
     }
 
     if (mode === "error-message") {
