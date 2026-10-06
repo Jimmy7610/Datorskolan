@@ -1608,7 +1608,8 @@
           win.className =
             "app-window" +
             (w.active ? " active" : "") +
-            (w.mode === "maximized" ? " maximized" : "");
+            (w.mode === "maximized" ? " maximized" : "") +
+            (w.appId === "browser" ? " chrome-window" : "");
 
           win.style.zIndex = String(w.z);
 
@@ -1766,6 +1767,74 @@
             if (w.mode === "maximized") restoreWindow(w.id);
             else maximizeWindow(w.id);
           });
+
+          if (w.appId === "browser") {
+            var chromeDragHandle = body.querySelector(".chrome-tabs-row");
+
+            if (chromeDragHandle) {
+              var chromeDrag = null;
+
+              chromeDragHandle.addEventListener("pointerdown", function (e) {
+                if (
+                  e.button !== 0 ||
+                  e.target.closest("button") ||
+                  e.target.closest(".chrome-tab") ||
+                  w.mode !== "normal"
+                ) return;
+
+                focusWindow(w.id, false);
+
+                chromeDrag = {
+                  pointerId: e.pointerId,
+                  ox: e.clientX - w.x,
+                  oy: e.clientY - w.y
+                };
+
+                chromeDragHandle.setPointerCapture(e.pointerId);
+              });
+
+              chromeDragHandle.addEventListener("pointermove", function (e) {
+                if (!chromeDrag || e.pointerId !== chromeDrag.pointerId) return;
+
+                var workspaceRect = el.workspace.getBoundingClientRect();
+                w.x = Math.min(
+                  Math.max(-w.width + 120, e.clientX - workspaceRect.left - chromeDrag.ox),
+                  Math.max(0, workspaceRect.width - 120)
+                );
+                w.y = Math.min(
+                  Math.max(0, e.clientY - workspaceRect.top - chromeDrag.oy),
+                  Math.max(0, workspaceRect.height - 40)
+                );
+
+                win.style.left = w.x + "px";
+                win.style.top = w.y + "px";
+              });
+
+              chromeDragHandle.addEventListener("pointerup", function (e) {
+                if (!chromeDrag || e.pointerId !== chromeDrag.pointerId) return;
+
+                var workspaceRect = el.workspace.getBoundingClientRect();
+                var side = null;
+
+                if (e.clientX <= workspaceRect.left + 26) side = "left";
+                if (e.clientX >= workspaceRect.right - 26) side = "right";
+
+                chromeDrag = null;
+
+                if (side) {
+                  w.x = side === "left" ? 0 : Math.floor(workspaceRect.width / 2);
+                  w.y = 0;
+                  w.width = side === "left" ? Math.floor(workspaceRect.width / 2) : Math.ceil(workspaceRect.width / 2);
+                  w.height = workspaceRect.height;
+                  emit("window.snapped", { windowId: w.id, appId: w.appId, side: side });
+                } else {
+                  emit("window.moved", { windowId: w.id });
+                }
+
+                render();
+              });
+            }
+          }
 
           titlebar.querySelector(".min").addEventListener("click", function (e) {
             e.stopPropagation();
