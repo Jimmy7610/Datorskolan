@@ -13,6 +13,7 @@
   var landingTabButtons = Array.prototype.slice.call(document.querySelectorAll("[data-landing-tab]"));
   var landingPanels = Array.prototype.slice.call(document.querySelectorAll("[data-landing-panel]"));
   var activeLandingTab = "overview";
+  var skipLink = document.querySelector(".skip-link");
 
   function readProgress() {
     try {
@@ -137,6 +138,10 @@
   function showSchool() {
     landing.hidden = true;
     app.hidden = false;
+    if (skipLink) {
+      skipLink.setAttribute("href", "#app");
+      skipLink.textContent = "Hoppa till Datorskolan";
+    }
     document.body.classList.remove("landing-mode");
     document.body.classList.add("school-mode");
     window.scrollTo(0, 0);
@@ -144,12 +149,17 @@
     window.setTimeout(function () {
       var learningButton = app.querySelector('[aria-label="Datorskolan"]');
       if (learningButton) learningButton.click();
+      if (app && typeof app.focus === "function") app.focus({ preventScroll: true });
     }, 80);
   }
 
   function showLanding() {
     app.hidden = true;
     landing.hidden = false;
+    if (skipLink) {
+      skipLink.setAttribute("href", "#landing-main");
+      skipLink.textContent = "Hoppa till huvudinnehållet";
+    }
     document.body.classList.remove("school-mode");
     document.body.classList.add("landing-mode");
     updateCtas();
@@ -160,6 +170,8 @@
     if (!resetDialog) return;
     resetReturnFocus = button || document.activeElement;
     resetDialog.hidden = false;
+    if (landing) landing.inert = true;
+    if (app) app.inert = true;
     document.body.classList.add("reset-dialog-open");
     window.setTimeout(function () {
       if (resetCancel) resetCancel.focus();
@@ -169,6 +181,8 @@
   function closeResetDialog() {
     if (!resetDialog) return;
     resetDialog.hidden = true;
+    if (landing) landing.inert = false;
+    if (app) app.inert = false;
     document.body.classList.remove("reset-dialog-open");
 
     if (resetReturnFocus && typeof resetReturnFocus.focus === "function") {
@@ -231,9 +245,37 @@
 
   document.addEventListener("keydown", function (event) {
     if (!resetDialog || resetDialog.hidden) return;
+
     if (event.key === "Escape") {
       event.preventDefault();
       closeResetDialog();
+      return;
+    }
+
+    if (event.key === "Tab") {
+      var focusable = Array.prototype.slice.call(
+        resetDialog.querySelectorAll(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter(function (node) {
+        return !node.hidden && node.offsetParent !== null;
+      });
+
+      if (!focusable.length) {
+        event.preventDefault();
+        return;
+      }
+
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   });
 
