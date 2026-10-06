@@ -2181,3 +2181,48 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
   font-size:10px;
 }
 .settings-app-menu button:hover{background:#eef2f6}
+
+
+/* Chrome window integrates tabs with native window controls. */
+.chrome-window{
+  background:#fff;
+}
+.chrome-window>.titlebar{
+  position:absolute;
+  top:0;
+  right:0;
+  z-index:40;
+  width:138px;
+  height:40px;
+  flex-basis:auto;
+  padding:0;
+  border:0;
+  background:transparent;
+  pointer-events:none;
+}
+.chrome-window>.titlebar .title{
+  display:none;
+}
+.chrome-window>.titlebar .controls{
+  width:138px;
+  height:40px;
+  margin-left:auto;
+  pointer-events:auto;
+}
+.chrome-window>.titlebar .ctrl{
+  width:46px;
+  height:40px;
+}
+.chrome-window>.content{
+  height:100%;
+  flex:1 1 100%;
+}
+.chrome-window .chrome-tabs-row{
+  padding-right:146px;
+}
+.chrome-window.maximized{
+  border-radius:0;
+}
+.chrome-window.maximized .chrome-tabs-row{
+  padding-right:146px;
+}
