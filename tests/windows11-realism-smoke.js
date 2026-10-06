@@ -39,7 +39,9 @@ assert(ui.FLUENT_ROOT==="./assets/icons/fluent/","Unexpected Fluent asset root")
 });
 
 var chrome=ui.icon("chrome",24);
-assert(chrome.indexOf("<svg")>=0,"Chrome brand icon missing");
+assert(ui.CHROME_LOGO_URL==="https://www.google.com/chrome/static/images/chrome-logo-m100.svg","Chrome logo must use Google's official asset URL");
+assert(chrome.indexOf("<img")>=0,"Chrome brand icon must be file-backed");
+assert(chrome.indexOf(ui.CHROME_LOGO_URL)>=0,"Chrome icon does not use Google's official Chrome logo");
 assert(chrome.indexOf("assets/icons/fluent/")<0,"Chrome must not pretend to be a Microsoft Fluent icon");
 
 assert(fs.existsSync("assets/icons/fluent/LICENSE"),"Fluent license missing");
