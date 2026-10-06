@@ -34,6 +34,7 @@ jobs:
           node --check src/progress-store.js
           node --check src/lessons.js
           node --check src/advanced-lessons.js
+          node --check src/lesson-enrichment.js
           node --check src/lesson-engine.js
           node --check src/advanced-apps.js
           node --check src/product-shell.js
@@ -43,6 +44,7 @@ jobs:
           node --check tests/full-course-smoke.js
           node --check tests/event-contract-smoke.js
           node --check tests/phases5-11-smoke.js
+          node --check tests/beginner-content-smoke.js
 
       - name: Smoke test scenario engine
         run: |
@@ -62,6 +64,9 @@ jobs:
 
       - name: Smoke test phases 5 through 11
         run: node tests/phases5-11-smoke.js
+
+      - name: Smoke test beginner lesson content
+        run: node tests/beginner-content-smoke.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
