@@ -50,6 +50,7 @@ assert(html.includes("data-reset-school"),"Landing page reset button missing");
 assert(html.includes("data-reset-dialog"),"Reset confirmation dialog missing");
 assert(html.includes("data-reset-confirm"),"Reset confirm control missing");
 assert(shell.includes("window.localStorage.removeItem(progressKey)"),"Product shell must remove persisted progress");
+assert(shell.includes("window.DatorskolanWindows11.STORAGE_KEY"),"Product shell must also reset Windows shell state");
 assert(shell.includes("window.location.reload()"),"Product shell must reload after reset");
 
 console.log("Reset progress smoke test passed");
