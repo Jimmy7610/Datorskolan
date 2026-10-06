@@ -2611,6 +2611,9 @@
       if (active.feedback) {
         var feedback = document.createElement("div");
         feedback.className = "learning-feedback " + active.feedback.kind;
+        feedback.setAttribute("role","status");
+        feedback.setAttribute("aria-live","polite");
+        feedback.setAttribute("aria-atomic","true");
         feedback.textContent = active.feedback.kind === "hint"
           ? "Hjälp " + active.feedback.level + "/5: " + active.feedback.text
           : active.feedback.text;
