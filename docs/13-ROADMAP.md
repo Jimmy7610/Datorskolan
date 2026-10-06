@@ -64,6 +64,16 @@ Musutbildningen använder Fake Windows som träningsmiljö.
 ## Fas 10 – Barnläge ✅
 ## Fas 11 – Fullständig kurs och självständighetsprov ✅
 
+## Fas 12 – Vardagsdatorn och djupare förståelse 🧪
+- kursen utökad från 81 till 120 lektioner
+- Vardagsdatorn
+- Enheter & anslutningar
+- När något krånglar
+- Everyday Lab
+- Vanligt i vardagen i varje lektion
+- Vanliga misstag i varje lektion
+- praktiska moment för PDF, ZIP, skärmdump, USB, Wi‑Fi, Bluetooth, utskrift, moln och felsökning
+
 ## Viktig ordningsregel
 Vi går inte vidare från Fake Windows v0.1 till v0.2 förrän alla acceptanskriterier i `25-FAKE-WINDOWS-V0.1-SPEC.md` är verifierade.
 
@@ -76,6 +86,8 @@ Vi går inte vidare från Fake Windows v0.1 till v0.2 förrän alla acceptanskri
 
 ## Release readiness
 
-Den kompletta första kursversionen är implementerad, automatiskt testad och manuellt genomförd till 100 %.
+Den ursprungliga kursen med 81 lektioner är manuellt genomförd och godkänd.
 
-Status: **Redo för releasekandidat**
+Kursen har därefter byggts ut till 120 lektioner med Fas 12 – Vardagsdatorn och djupare förståelse.
+
+Status: **Fas 12 implementerad, väntar på manuell acceptans**
