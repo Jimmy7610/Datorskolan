@@ -6,8 +6,10 @@ global.window = {};
 
 require("../src/scenarios.js");
 require("../src/advanced-scenarios.js");
+require("../src/everyday-scenarios.js");
 require("../src/lessons.js");
 require("../src/advanced-lessons.js");
+require("../src/everyday-lessons.js");
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -62,7 +64,8 @@ scenarios.forEach(function (scenario) {
 
 const sourceText = [
   fs.readFileSync("src/app.js", "utf8"),
-  fs.readFileSync("src/advanced-apps.js", "utf8")
+  fs.readFileSync("src/advanced-apps.js", "utf8"),
+  fs.readFileSync("src/everyday-apps.js", "utf8")
 ].join("\n");
 
 // Capture every event-like string literal from runtime sources. This intentionally
@@ -87,6 +90,7 @@ const knownApps = new Set([
   "recycle-bin",
   "mouse-lab",
   "keyboard-lab",
+  "everyday-lab",
   "browser",
   "mail"
 ]);
