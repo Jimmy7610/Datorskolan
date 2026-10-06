@@ -447,8 +447,8 @@
       "Välj rätt trådlöst nätverk och anslut med lösenord.",
       ["devices.wifi"],
       "everyday-wifi-01",
-      "Välj HemmaNet, skriv lösenordet datorskolan och anslut.",
-      null,".everyday-lab",
+      "I Inställningar under Nätverk och internet: välj HemmaNet, klicka Anslut, skriv lösenordet datorskolan och klicka Nästa.",
+      ["Du är redan på sidan Nätverk och internet.","Leta efter Wi‑Fi och listan med nätverk.","Välj HemmaNet och klicka Anslut.","Skriv datorskolan som nätverkssäkerhetsnyckel.","HemmaNet → Anslut → datorskolan → Nästa."],".settings-app",
       detail(
         "Wi‑Fi är ett trådlöst sätt att ansluta datorn till ett lokalt nätverk och ofta internet.",
         "Windows visar en lista med nätverksnamn, även kallade SSID.",
@@ -465,8 +465,8 @@
       "Anslut trådlösa tillbehör på kort avstånd.",
       ["devices.bluetooth"],
       "everyday-bluetooth-01",
-      "Anslut det simulerade headsetet.",
-      null,".everyday-lab",
+      "I Inställningar under Bluetooth och enheter: klicka Lägg till enhet och välj Headset.",
+      ["Du är redan på Bluetooth och enheter.","Kontrollera att Bluetooth är På.","Klicka + Lägg till enhet.","Välj Headset i listan.","Lägg till enhet → Headset."],".settings-app",
       detail(
         "Bluetooth är en trådlös teknik för tillbehör på kort avstånd.",
         "Du hittar den i Windows Inställningar och ser en lista över enheter som kan paras ihop.",
@@ -483,8 +483,8 @@
       "Kontrollera de viktigaste inställningarna inför ett videosamtal.",
       ["devices.audio","devices.microphone","devices.camera"],
       "everyday-audio-camera-01",
-      "Höj volymen till minst 40 och slå på mikrofon och kamera.",
-      null,".everyday-lab",
+      "I Inställningar under System: höj volymen till minst 40 och slå på både mikrofon och kamera.",
+      ["Du är redan på System.","Öppna eller använd Ljud-kortet.","Höj volymreglaget till minst 40.","Markera Mikrofon tillåten och Kamera tillåten.","Volym ≥ 40 + mikrofon + kamera."],".settings-app",
       detail(
         "Datorn kan ha flera ljudenheter, mikrofoner och kameror. Program behöver använda rätt enhet och ha behörighet.",
         "Ljudsymbolen finns ofta vid klockan. Mikrofon och kamera visas ofta med 🎤 och 📷.",
@@ -564,8 +564,8 @@
       "Förstå skillnaden mellan de vanligaste strömalternativen.",
       ["troubleshooting.restart"],
       "everyday-restart-01",
-      "Välj Uppdatera och starta om.",
-      null,".everyday-lab",
+      "I Windows Update: läs informationen om den väntande uppdateringen och klicka Starta om nu.",
+      ["Du är redan på Windows Update.","Läs meddelandet om att en uppdatering väntar på omstart.","Kontrollera att du förstår att arbete bör sparas först.","Klicka Starta om nu.","Windows Update → Starta om nu."],".settings-app",
       detail(
         "Starta om stänger Windows och startar det igen. Stäng av lämnar datorn avstängd. Uppdatera och starta om installerar väntande uppdateringar under omstarten.",
         "Alternativen finns normalt under strömknappen i Start-menyn.",
