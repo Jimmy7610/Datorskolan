@@ -66,8 +66,8 @@
       "Flytta information från ett ställe till ett annat utan att skriva om den.",
       ["everyday.select-text","everyday.copy-text","everyday.paste-text"],
       "everyday-copy-paste-01",
-      "Markera telefonnumret, kopiera det och klistra in det i den tomma rutan.",
-      null,".everyday-lab",
+      "I Chrome: öppna Vad är internet? och markera raden Telefon: 070-123 45 67. Tryck Ctrl+C. Växla sedan till Anteckningar och tryck Ctrl+V.",
+      ["I Chrome öppnar du genvägen Vad är internet?.","Dra över hela telefonraden så den blir markerad.","Tryck Ctrl+C.","Växla till Anteckningar via aktivitetsfältet.","Klicka i textytan och tryck Ctrl+V."],".sim",
       detail(
         "När du markerar text väljer du exakt vilken del datorn ska arbeta med. Kopiera lägger en tillfällig kopia i urklippet och Klistra in placerar den där markören står.",
         "Markerad text får normalt en färgad bakgrund. Ctrl+C betyder Kopiera och Ctrl+V betyder Klistra in.",
