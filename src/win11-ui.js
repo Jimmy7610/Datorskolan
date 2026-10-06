@@ -192,6 +192,15 @@
         className);
     }
 
+    if (name === "usb-drive") {
+      return svg(size,
+        '<rect x="13" y="8" width="22" height="29" rx="4" fill="#dce8f5" stroke="#65788b" stroke-width="2"/>' +
+        '<rect x="18" y="4" width="12" height="8" rx="2" fill="#8799aa"/>' +
+        '<rect x="20" y="6" width="3" height="4" fill="#dfe8ef"/><rect x="25" y="6" width="3" height="4" fill="#dfe8ef"/>' +
+        '<circle cx="24" cy="29" r="4" fill="#4b91d1"/>',
+        className);
+    }
+
     if (name === "this-pc") {
       return svg(size,
         '<rect x="7" y="8" width="34" height="24" rx="3" fill="#72b7ef" stroke="#3d7fb3" stroke-width="1.5"/>' +
