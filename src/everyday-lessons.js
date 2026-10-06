@@ -644,6 +644,51 @@
     ),
 
     basic(
+      "everyday-021-link-actions","everyday","Kopiera länk och öppna i ny flik",
+      "Förstå att en länk kan användas på fler sätt än att bara vänsterklickas.",
+      "everyday.link-actions",
+      detail(
+        "En länk har en adress bakom den. Du kan ofta kopiera adressen eller öppna länken i en ny flik utan att lämna sidan du redan är på.",
+        "Högerklick på en länk visar ofta val som Kopiera länkadress eller Öppna länk i ny flik.",
+        "Det är användbart när du vill spara en adress, skicka den till någon eller behålla den aktuella sidan öppen.",
+        "Högerklicka på en artikel och öppna den i ny flik medan sökresultatet ligger kvar.",
+        [],
+        ["Skicka en webbadress i mejl eller chatt.","Öppna flera sökresultat utan att tappa resultatsidan."],
+        ["Att kopiera den synliga texten i stället för själva länkadressen.","Att öppna så många flikar att du tappar överblicken."]
+      )
+    ),
+
+    basic(
+      "devices-009-hotspot","devices","Mobildelning och hotspot",
+      "Förstå hur en telefon kan dela sin internetanslutning med datorn.",
+      "devices.hotspot",
+      detail(
+        "En mobil hotspot gör telefonen till ett tillfälligt Wi‑Fi-nätverk som datorn kan ansluta till.",
+        "Telefonen visar ett nätverksnamn och lösenord. Datorn ser nätverket i vanliga Wi‑Fi-listan.",
+        "Det är praktiskt när vanligt Wi‑Fi saknas men mobiltelefonen har internet.",
+        "På tåget delar du telefonens internet och ansluter den bärbara datorn till telefonens hotspot.",
+        [],
+        ["Tillfälligt internet vid resor.","Reservlösning när hemnätverket ligger nere."],
+        ["Att glömma att hotspot använder mobil data.","Att lämna hotspot på med ett enkelt lösenord längre än nödvändigt."]
+      )
+    ),
+
+    basic(
+      "trouble-009-before-support","troubleshooting","Innan du ber om hjälp",
+      "Samla rätt information så att någon annan lättare kan hjälpa dig.",
+      "troubleshooting.support-info",
+      detail(
+        "Bra felsökning handlar också om att kunna beskriva problemet tydligt: vad du gjorde, vad du förväntade dig och vad som faktiskt hände.",
+        "Skriv gärna ned exakt felmeddelande, vilket program du använde och om problemet händer varje gång.",
+        "Det sparar mycket tid när du kontaktar support eller ber en vän om hjälp.",
+        "Säg hellre 'När jag klickar Spara i Anteckningar står det Åtkomst nekad' än bara 'Datorn fungerar inte'.",
+        [],
+        ["Skicka skärmdump och feltext till support.","Förklara ett återkommande problem för en kollega."],
+        ["Att säga att inget fungerar utan att beskriva vad som faktiskt händer.","Att lämna ut lösenord eller andra hemligheter när någon försöker hjälpa."]
+      )
+    ),
+
+    basic(
       "trouble-008-backup","troubleshooting","Backup och flera kopior",
       "Förstå varför viktiga filer inte bör finnas på bara ett ställe.",
       "troubleshooting.backup",
