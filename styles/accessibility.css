@@ -1,0 +1,282 @@
+/* Datorskolan accessibility layer – WCAG 2.2 AA baseline */
+
+html{
+  font-size:100%;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+body{
+  line-height:1.5;
+}
+
+.skip-link{
+  position:fixed;
+  left:1rem;
+  top:.75rem;
+  z-index:20000;
+  transform:translateY(-160%);
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  padding:.65rem 1rem;
+  border-radius:.5rem;
+  background:#fff;
+  color:#111827;
+  font-size:1rem;
+  font-weight:700;
+  box-shadow:0 8px 30px rgba(0,0,0,.3);
+}
+
+.skip-link:focus{
+  transform:none;
+}
+
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:3px solid #fbbf24 !important;
+  outline-offset:3px !important;
+  box-shadow:0 0 0 2px #111827 !important;
+}
+
+:where(button,input,select,textarea){
+  min-width:24px;
+  min-height:24px;
+}
+
+:where(input,select,textarea){
+  font-size:1rem;
+}
+
+::placeholder{
+  opacity:1;
+}
+
+/* Landing: all meaningful text remains readable. Tiny FakeWin preview text is decorative. */
+.landing-page{
+  font-size:1rem;
+}
+
+.brand-copy strong{font-size:1rem}
+.brand-copy small{font-size:.875rem}
+.landing-tabs button{font-size:.9375rem;min-height:44px}
+.header-cta,
+.header-reset{font-size:.9375rem;min-height:44px}
+.eyebrow,
+.section-kicker{font-size:.8125rem;line-height:1.35}
+.hero-lead{font-size:1rem;line-height:1.65}
+.primary-cta,
+.secondary-cta{font-size:1rem;min-height:44px}
+.resume-note{font-size:.875rem}
+.hero-facts span{font-size:.8125rem}
+.overview-trust{font-size:.875rem}
+.panel-heading p,
+.course-topline p,
+.safe-copy>p{font-size:1rem;line-height:1.65}
+.how-card h3{font-size:1.125rem}
+.how-card p{font-size:.9375rem;line-height:1.55}
+.realism-card h3{font-size:1.25rem}
+.realism-pills span{font-size:.875rem;min-height:36px}
+.flow-step span{font-size:.8125rem}
+.module-grid small{font-size:.75rem}
+.module-grid b{font-size:.9375rem}
+.module-grid em{font-size:.8125rem}
+.course-bottom>span{font-size:.8125rem;min-height:36px}
+.compact-cta{font-size:.875rem;min-height:40px}
+.safety-list b{font-size:.9375rem}
+.safety-list small{font-size:.8125rem;line-height:1.45}
+.safe-matrix b{font-size:.9375rem}
+.safe-matrix small{font-size:.8125rem;line-height:1.45}
+.landing-statusbar{font-size:.75rem}
+
+/* Functional FakeWin / course UI: never depend on miniature text. */
+.learning-panel,
+.scenario-panel{
+  font-size:1rem;
+}
+
+.learning-panel :where(p,span,small,label,button,input,select,textarea),
+.scenario-panel :where(p,span,small,label,button,input,select,textarea){
+  font-size:.875rem !important;
+  line-height:1.45;
+}
+
+.learning-panel :where(button,input,select,textarea),
+.scenario-panel :where(button,input,select,textarea){
+  min-height:40px;
+}
+
+.learning-header strong{font-size:1.125rem !important}
+.learning-recommendation strong{font-size:1rem !important}
+
+.desktop-item .label,
+.clock,
+.title,
+.context button,
+.explorer-side-button,
+.explorer-address,
+.start-search{
+  font-size:.875rem !important;
+}
+
+.context button,
+.explorer-side-button{
+  min-height:36px;
+}
+
+.start-search{
+  min-height:40px;
+}
+
+.settings-app,
+.chrome-app,
+.pdf-app,
+.installer-app,
+.snipping-app,
+.trouble-app{
+  font-size:.875rem;
+}
+
+.settings-app :where(p,small,label,button,input,select),
+.chrome-app :where(p,small,label,button,input,select),
+.pdf-app :where(p,small,label,button,input,select),
+.installer-app :where(p,small,label,button,input,select),
+.snipping-app :where(p,small,label,button,input,select),
+.trouble-app :where(p,small,label,button,input,select){
+  font-size:.875rem !important;
+  line-height:1.45;
+}
+
+.settings-app :where(button,input,select),
+.chrome-app :where(button,input,select),
+.pdf-app :where(button,input,select),
+.installer-app :where(button,input,select),
+.snipping-app :where(button,input,select),
+.trouble-app :where(button,input,select){
+  min-height:36px;
+}
+
+.settings-heading h2,
+.pdf-app h2,
+.installer-app h2,
+.snipping-app h2,
+.trouble-app h2{
+  font-size:1.25rem !important;
+}
+
+.notepad{
+  font-size:1rem;
+  line-height:1.55;
+}
+
+/* Text-spacing compatibility (WCAG 1.4.12). */
+p,
+li,
+label,
+button,
+input,
+select,
+textarea{
+  max-width:100%;
+}
+
+/* Reduced motion – not only landing animations. */
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+}
+
+/*
+  Normal desktop keeps the one-screen product experience.
+  Narrow/zoomed layouts must reflow instead of clipping content.
+  200% zoom on common desktop widths falls into this mode.
+*/
+@media(max-width:1100px){
+  body.landing-mode{
+    height:auto;
+    min-height:100dvh;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+  }
+
+  .landing-page{
+    height:auto;
+    min-height:100dvh;
+    overflow:visible;
+  }
+
+  .landing-header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(7,16,29,.97);
+  }
+
+  .landing-stage{
+    height:auto;
+    min-height:calc(100dvh - var(--lp-header));
+    overflow:visible;
+  }
+
+  .landing-panel{
+    position:relative;
+    inset:auto;
+    min-height:calc(100dvh - var(--lp-header) - var(--lp-status));
+    overflow:visible;
+  }
+
+  .landing-statusbar{
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    width:calc(100% - 1rem);
+    margin:0 auto;
+  }
+
+  .how-bento,
+  .module-grid{
+    height:auto;
+    grid-template-rows:none;
+  }
+
+  .safe-showcase{
+    height:auto;
+    min-height:24rem;
+  }
+}
+
+@media(max-width:520px){
+  .landing-tabs{
+    overflow-x:auto;
+    grid-template-columns:none;
+    display:flex;
+    scrollbar-width:thin;
+  }
+
+  .landing-tabs button{
+    flex:0 0 auto;
+    min-width:8.5rem;
+  }
+
+  .overview-panel,
+  .safe-layout{
+    grid-template-columns:1fr;
+  }
+
+  .module-grid,
+  .how-bento,
+  .safety-list,
+  .safe-matrix{
+    grid-template-columns:1fr;
+  }
+
+  .realism-card{
+    grid-template-columns:1fr;
+  }
+}
