@@ -729,7 +729,11 @@
       search.value = state.explorer.search || "";
       search.addEventListener("input", function (e) {
         state.explorer.search = e.target.value;
-        emit("file.search", { query: state.explorer.search, folderId: state.explorer.folderId });
+        emit("file.search", {
+          query: state.explorer.search,
+          queryNormalized: String(state.explorer.search || "").trim().toLocaleLowerCase("sv"),
+          folderId: state.explorer.folderId
+        });
         renderWindows();
       });
 
@@ -1769,7 +1773,10 @@
       }
 
       search.addEventListener("input", function () {
-        emit("startMenu.searched", { query: search.value });
+        emit("startMenu.searched", {
+          query: search.value,
+          queryNormalized: String(search.value || "").trim().toLocaleLowerCase("sv")
+        });
         drawApps(search.value);
       });
 
