@@ -162,6 +162,22 @@
         className);
     }
 
+    if (name === "download") {
+      return svg(size,
+        '<path d="M24 6v23" stroke="#3977c2" stroke-width="4" stroke-linecap="round"/>' +
+        '<path d="M15 22l9 9 9-9" fill="none" stroke="#3977c2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<path d="M9 39h30" stroke="#69798a" stroke-width="3" stroke-linecap="round"/>',
+        className);
+    }
+
+    if (name === "this-pc") {
+      return svg(size,
+        '<rect x="7" y="8" width="34" height="24" rx="3" fill="#72b7ef" stroke="#3d7fb3" stroke-width="1.5"/>' +
+        '<rect x="11" y="12" width="26" height="16" rx="1.5" fill="#dff2ff"/>' +
+        '<path d="M18 38h12M24 32v6" stroke="#667788" stroke-width="3" stroke-linecap="round"/>',
+        className);
+    }
+
     return svg(size,
       '<rect x="8" y="8" width="32" height="32" rx="8" fill="#dbeafe"/>' +
       '<circle cx="24" cy="24" r="6" fill="#3b82f6"/>',
