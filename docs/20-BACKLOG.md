@@ -220,3 +220,51 @@
 - [x] security
 - [x] multi-app independent final exam
 - [x] full-course smoke test
+
+
+## EPIC 15 – Everyday computer expansion
+- [x] expand course from 81 to 120 lessons
+- [x] Everyday Lab
+- [x] Vardagsdatorn module
+- [x] Devices & connections module
+- [x] Troubleshooting module
+- [x] text selection / copy / paste
+- [x] undo / redo
+- [x] clipboard concepts
+- [x] file extensions
+- [x] save location awareness
+- [x] PDF basics
+- [x] screenshots
+- [x] ZIP extraction
+- [x] web vs installed app
+- [x] login / logout
+- [x] password manager concept
+- [x] install / uninstall
+- [x] print to PDF
+- [x] cloud storage
+- [x] common dialog boxes
+- [x] notifications
+- [x] recent files
+- [x] pin to taskbar
+- [x] snap windows side by side
+- [x] USB
+- [x] ports
+- [x] Wi-Fi
+- [x] Bluetooth
+- [x] volume / microphone / camera
+- [x] printers
+- [x] battery
+- [x] external displays
+- [x] mobile hotspot
+- [x] error messages
+- [x] restart / shutdown / update
+- [x] frozen app recovery
+- [x] Task Manager concepts
+- [x] internet troubleshooting
+- [x] sound troubleshooting
+- [x] storage troubleshooting
+- [x] backup concepts
+- [x] support-ready problem descriptions
+- [x] everyday examples for every lesson
+- [x] common mistakes for every lesson
+- [x] everyday course smoke test
