@@ -146,23 +146,6 @@
       });
     }
 
-    if (mode === "install") {
-      title("Installera och avinstallera","Installera Övningsprogrammet och ta sedan bort det igen.");
-      var status=el("div","everyday-app-card","📦 Övningsprogram • Inte installerat");
-      var install=el("button","everyday-primary","Installera");
-      var uninstall=el("button","everyday-secondary","Avinstallera");
-      uninstall.disabled=true;
-      stage.appendChild(status);stage.appendChild(install);stage.appendChild(uninstall);
-      install.addEventListener("click",function(){
-        state.flags.installed=true;status.textContent="✅ Övningsprogram • Installerat";install.disabled=true;uninstall.disabled=false;
-      });
-      uninstall.addEventListener("click",function(){
-        if(!state.flags.installed)return;
-        status.textContent="📦 Övningsprogram • Avinstallerat";
-        complete("everyday.install.complete",{});
-      });
-    }
-
     if (mode === "cloud") {
       title("Molnlagring","Flytta dokumentet till den simulerade molnmappen.");
       var cloud=el("div","everyday-cloud");
