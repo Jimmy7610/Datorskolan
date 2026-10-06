@@ -192,6 +192,13 @@
         className);
     }
 
+    if (name === "onedrive") {
+      return svg(size,
+        '<path d="M18 31c-5 0-9-3-9-7 0-3 2-6 6-7 1-6 6-10 12-10 6 0 10 3 12 8 5 0 8 3 8 8 0 4-4 8-9 8H18z" fill="#1683d8"/>' +
+        '<path d="M15 18c2-1 4-1 6 0 3-5 9-7 14-4-2-4-5-6-10-6-5 0-9 4-10 10z" fill="#55aef0"/>',
+        className);
+    }
+
     if (name === "usb-drive") {
       return svg(size,
         '<rect x="13" y="8" width="22" height="29" rx="4" fill="#dce8f5" stroke="#65788b" stroke-width="2"/>' +
