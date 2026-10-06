@@ -230,6 +230,12 @@
   ProgressStore.prototype.recommendLesson = function (lessons) {
     lessons = lessons || [];
 
+    var inProgress = lessons.find(function (lesson) {
+      var progress = this._state.lessons[lesson.id];
+      return progress && progress.status === "in_progress";
+    }, this);
+    if (inProgress) return clone(inProgress);
+
     var reviewCandidate = null;
     Object.keys(this._state.skills).forEach(function (skillId) {
       var skill = this._state.skills[skillId];
@@ -245,12 +251,6 @@
     }, this);
 
     if (reviewCandidate) return clone(reviewCandidate);
-
-    var inProgress = lessons.find(function (lesson) {
-      var progress = this._state.lessons[lesson.id];
-      return progress && progress.status === "in_progress";
-    }, this);
-    if (inProgress) return clone(inProgress);
 
     var next = lessons.find(function (lesson) {
       var progress = this._state.lessons[lesson.id];
