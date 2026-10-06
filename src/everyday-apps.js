@@ -123,17 +123,6 @@
       stage.appendChild(choices);
     }
 
-    if (mode === "screenshot") {
-      title("Skärmdump","Ta en simulerad skärmdump och spara den.");
-      var preview=el("div","everyday-screen-preview","Det här området ska fångas");
-      var snap=el("button","everyday-primary","Ta skärmdump");
-      var save=el("button","everyday-secondary","Spara bild");
-      save.disabled=true;
-      stage.appendChild(preview);stage.appendChild(snap);stage.appendChild(save);
-      snap.addEventListener("click",function(){state.flags.snap=true;preview.classList.add("captured");save.disabled=false;});
-      save.addEventListener("click",function(){if(state.flags.snap)complete("everyday.screenshot.complete",{name:"Skärmbild.png"});});
-    }
-
     if (mode === "dialogs") {
       title("Vanliga dialogrutor","Läs frågan innan du väljer knapp.");
       var dialog=el("div","everyday-dialog");
