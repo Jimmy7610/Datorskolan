@@ -1154,6 +1154,14 @@
             if (key === "y") emit("notepad.redo", {});
           });
 
+          area.addEventListener("paste", function (e) {
+            var text = "";
+            try {
+              text = e.clipboardData ? e.clipboardData.getData("text/plain") : "";
+            } catch (error) {}
+            emit("notepad.pasted", { text: text });
+          });
+
           wrap.appendChild(toolbar);
           wrap.appendChild(area);
           return wrap;
