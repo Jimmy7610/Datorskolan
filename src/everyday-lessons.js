@@ -649,18 +649,27 @@
       )
     ),
 
-    basic(
+    interactive(
       "everyday-021-link-actions","everyday","Kopiera länk och öppna i ny flik",
-      "Förstå att en länk kan användas på fler sätt än att bara vänsterklickas.",
-      "everyday.link-actions",
+      "Använd en länks riktiga högerklicksmeny i Chrome.",
+      ["everyday.link-actions"],
+      "everyday-link-actions-01",
+      "I Google Chrome: öppna Sökresultat. Högerklicka på en länk och välj Kopiera länkadress. Högerklicka sedan på en länk igen och välj Öppna länk i ny flik.",
+      [
+        "Använd Chrome-fönstret som redan är öppet.",
+        "Gå till Sökresultat från startsidan.",
+        "Högerklicka på den blå länktexten, inte bredvid länken.",
+        "Välj först Kopiera länkadress. Öppna högerklicksmenyn igen och välj Öppna länk i ny flik.",
+        "Sökresultat → högerklick på blå länk → Kopiera länkadress → högerklick igen → Öppna länk i ny flik."
+      ],".chrome-page",
       detail(
-        "En länk har en adress bakom den. Du kan ofta kopiera adressen eller öppna länken i en ny flik utan att lämna sidan du redan är på.",
-        "Högerklick på en länk visar ofta val som Kopiera länkadress eller Öppna länk i ny flik.",
-        "Det är användbart när du vill spara en adress, skicka den till någon eller behålla den aktuella sidan öppen.",
-        "Högerklicka på en artikel och öppna den i ny flik medan sökresultatet ligger kvar.",
-        [],
+        "En länk har en adress bakom den. Du kan kopiera själva adressen eller öppna länken i en ny flik utan att lämna sidan du redan är på.",
+        "I Chrome visar högerklick på en länk en snabbmeny med länk-kommandon. Länken är ofta blå och pekaren blir normalt en hand över den.",
+        "Det är användbart när du vill skicka en adress till någon eller öppna flera resultat utan att förlora resultatsidan.",
+        "På en söksida kan du högerklicka på ett resultat, kopiera länkadressen och sedan öppna ett annat resultat i ny flik.",
+        ["Öppna Sökresultat.","Högerklicka direkt på en blå länk.","Välj Kopiera länkadress.","Högerklicka på en länk igen.","Välj Öppna länk i ny flik."],
         ["Skicka en webbadress i mejl eller chatt.","Öppna flera sökresultat utan att tappa resultatsidan."],
-        ["Att kopiera den synliga texten i stället för själva länkadressen.","Att öppna så många flikar att du tappar överblicken."]
+        ["Att kopiera den synliga texten i stället för själva länkadressen.","Att vänsterklicka och lämna sidan när du egentligen ville behålla den öppen."]
       )
     ),
 
