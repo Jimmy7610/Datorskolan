@@ -223,8 +223,48 @@
 
     if(s.page==="apps"){
       header("Appar","Installerade appar och standardappar.");
+
       var installed=card("Installerade appar","Hantera appar som finns på datorn.");
-      installed.classList.add("settings-passive");
+      var list=el("div","settings-installed-list");
+
+      [
+        {id:"chrome",name:"Google Chrome",installed:true},
+        {id:"notepad",name:"Anteckningar",installed:true},
+        {id:"calculator",name:"Kalkylator",installed:true},
+        {id:"exercise-program",name:"Övningsprogram",installed:!!(ctx.state.software&&ctx.state.software.exerciseProgramInstalled)}
+      ].filter(function(item){return item.installed;}).forEach(function(item){
+        var row=el("div","settings-installed-row");
+        row.innerHTML="<div><strong></strong><small></small></div>";
+        row.querySelector("strong").textContent=item.name;
+        row.querySelector("small").textContent=item.id==="exercise-program"?"Installerad av Datorskolan":"System/app";
+
+        var actions=el("button","settings-app-actions","⋯");
+        actions.type="button";
+        actions.title="Fler alternativ";
+
+        if(item.id==="exercise-program"){
+          actions.addEventListener("click",function(){
+            var menu=el("div","settings-app-menu");
+            var uninstall=el("button","","Avinstallera");
+            uninstall.type="button";
+            uninstall.addEventListener("click",function(){
+              ctx.state.software.exerciseProgramInstalled=false;
+              ctx.emit("software.uninstalled",{appId:"exercise-program",name:"Övningsprogram"});
+              refresh();
+            });
+            menu.appendChild(uninstall);
+            row.appendChild(menu);
+          });
+        } else {
+          actions.disabled=true;
+        }
+
+        row.appendChild(actions);
+        list.appendChild(row);
+      });
+
+      installed.appendChild(list);
+
       var defaults=card("Standardappar","Välj vilket program som öppnar olika filtyper.");
       defaults.classList.add("settings-passive");
     }
