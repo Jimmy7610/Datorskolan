@@ -119,10 +119,16 @@
       }
 
       window.localStorage.removeItem(progressKey);
+      if (window.DatorskolanWindows11 && window.DatorskolanWindows11.STORAGE_KEY) {
+        window.localStorage.removeItem(window.DatorskolanWindows11.STORAGE_KEY);
+      }
     } catch (error) {
       console.warn("[Datorskolan] Kunde inte återställa progress via simulatorn", error);
       try {
         window.localStorage.removeItem(progressKey);
+        if (window.DatorskolanWindows11 && window.DatorskolanWindows11.STORAGE_KEY) {
+          window.localStorage.removeItem(window.DatorskolanWindows11.STORAGE_KEY);
+        }
       } catch (storageError) {
         console.warn("[Datorskolan] Kunde inte radera localStorage", storageError);
       }
