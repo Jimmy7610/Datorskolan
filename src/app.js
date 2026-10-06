@@ -845,6 +845,7 @@
       search.type = "search";
       search.className = "explorer-search";
       search.placeholder = "Sök i mappen";
+      search.setAttribute("aria-label", "Sök i aktuell mapp");
       search.value = state.explorer.search || "";
       search.addEventListener("input", function (e) {
         state.explorer.search = e.target.value;
