@@ -11,8 +11,11 @@
 </head>
 <body class="landing-mode">
   <div id="landing" class="landing-page">
+    <div class="landing-ambient ambient-a" aria-hidden="true"></div>
+    <div class="landing-ambient ambient-b" aria-hidden="true"></div>
+
     <header class="landing-header">
-      <a class="brand" href="#" aria-label="Datorskolan startsida">
+      <a class="brand" href="#" data-landing-tab="overview" aria-label="Datorskolan – översikt">
         <span class="brand-mark" aria-hidden="true">D</span>
         <span class="brand-copy">
           <strong>Datorskolan</strong>
@@ -20,11 +23,11 @@
         </span>
       </a>
 
-      <nav class="landing-nav" aria-label="Huvudmeny">
-        <button type="button" data-scroll-target="#how">Så fungerar det</button>
-        <button type="button" data-scroll-target="#course">Kursen</button>
-        <button type="button" data-scroll-target="#realistic">Träna på riktigt</button>
-        <button type="button" data-scroll-target="#safe">Trygg miljö</button>
+      <nav class="landing-tabs" role="tablist" aria-label="Datorskolan">
+        <button type="button" role="tab" aria-selected="true" data-landing-tab="overview">Översikt</button>
+        <button type="button" role="tab" aria-selected="false" data-landing-tab="how">Så fungerar det</button>
+        <button type="button" role="tab" aria-selected="false" data-landing-tab="course">Kursen</button>
+        <button type="button" role="tab" aria-selected="false" data-landing-tab="safe">Tryggt att öva</button>
       </nav>
 
       <div class="landing-header-actions">
@@ -32,7 +35,6 @@
           <span aria-hidden="true">↻</span>
           <span>Starta om</span>
         </button>
-
         <button class="header-cta" type="button" data-launch-school>
           <span data-cta-text>Starta Datorskolan</span>
           <span aria-hidden="true">→</span>
@@ -40,75 +42,57 @@
       </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <div class="eyebrow">
-            <span class="eyebrow-dot" aria-hidden="true"></span>
-            Interaktiv Windows-träning direkt i webbläsaren
-          </div>
-
-          <h1>Lär dig datorn<br><span>genom att faktiskt använda den.</span></h1>
-
+    <main class="landing-stage">
+      <section class="landing-panel overview-panel active" data-landing-panel="overview" role="tabpanel">
+        <div class="overview-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span>Interaktiv Windows-träning direkt i webbläsaren</div>
+          <h1>Lär dig datorn.<br><span>Genom att faktiskt använda den.</span></h1>
           <p class="hero-lead">
-            Datorskolan är byggd för dig som vill förstå Windows från grunden.
-            Du tränar i en realistisk FakeWin-miljö med Start-menyn, Google Chrome,
-            Utforskaren, Inställningar, filer, USB, Wi‑Fi, PDF och vanliga problem —
-            utan att riskera något på din riktiga dator.
+            Från första musklicket till Chrome, filer, USB, Wi‑Fi, PDF och felsökning.
+            Du tränar i en realistisk FakeWin-miljö utan att riskera något på din riktiga dator.
           </p>
 
           <div class="hero-actions">
             <button class="primary-cta" type="button" data-launch-school>
               <span data-cta-text>Starta Datorskolan</span>
-              <span class="cta-arrow" aria-hidden="true">→</span>
+              <span class="cta-arrow">→</span>
             </button>
-            <button class="secondary-cta" type="button" data-scroll-target="#course">
-              Se hela kursen
-            </button>
+            <button class="secondary-cta" type="button" data-landing-tab="course">Se kursen</button>
           </div>
 
           <p class="resume-note" data-resume-note hidden></p>
 
-          <div class="hero-facts" aria-label="Kursfakta">
+          <div class="hero-facts">
             <div><strong>120</strong><span>lektioner</span></div>
             <div><strong>13</strong><span>kursområden</span></div>
-            <div><strong>100%</strong><span>trygg simulator</span></div>
+            <div><strong>0</strong><span>risk för dina filer</span></div>
+          </div>
+
+          <div class="overview-trust">
+            <span><b>✓</b> Ingen installation</span>
+            <span><b>✓</b> Sparar framsteg</span>
+            <span><b>✓</b> Hjälp när du behöver</span>
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Förhandsvisning av Datorskolans FakeWin-miljö">
-          <div class="hero-halo halo-one" aria-hidden="true"></div>
-          <div class="hero-halo halo-two" aria-hidden="true"></div>
+        <div class="overview-visual" aria-label="Förhandsvisning av FakeWin">
+          <div class="visual-orbit orbit-blue"></div>
+          <div class="visual-orbit orbit-violet"></div>
 
-          <div class="fakewin-preview">
-            <div class="fakewin-desktop">
+          <div class="fakewin-device">
+            <div class="fakewin-screen">
               <div class="preview-desktop-icons">
-                <div class="preview-desktop-icon">
-                  <img src="./assets/icons/fluent/folder.svg" alt="">
-                  <span>Documents</span>
-                </div>
-                <div class="preview-desktop-icon">
-                  <img src="./assets/icons/fluent/image-multiple.svg" alt="">
-                  <span>Pictures</span>
-                </div>
-                <div class="preview-desktop-icon">
-                  <img src="./assets/icons/fluent/delete.svg" alt="">
-                  <span>Papperskorgen</span>
-                </div>
+                <div><img src="./assets/icons/fluent/folder.svg" alt=""><small>Documents</small></div>
+                <div><img src="./assets/icons/fluent/image-multiple.svg" alt=""><small>Pictures</small></div>
+                <div><img src="./assets/icons/fluent/delete.svg" alt=""><small>Papperskorgen</small></div>
               </div>
 
               <div class="preview-start-menu">
-                <div class="preview-search">
-                  <span>⌕</span>
-                  <span>Skriv här för att söka</span>
-                </div>
-                <div class="preview-start-head">
-                  <strong>Fäst</strong>
-                  <span>Alla appar ›</span>
-                </div>
+                <div class="preview-search"><span>⌕</span><span>Skriv här för att söka</span></div>
+                <div class="preview-start-head"><strong>Fäst</strong><span>Alla appar ›</span></div>
                 <div class="preview-app-grid">
                   <div><img src="./assets/icons/fluent/folder.svg" alt=""><small>Utforskaren</small></div>
-                  <div><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><small>Google Chrome</small></div>
+                  <div><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><small>Chrome</small></div>
                   <div><img src="./assets/icons/fluent/calculator.svg" alt=""><small>Kalkylator</small></div>
                   <div><img src="./assets/icons/fluent/notepad.svg" alt=""><small>Anteckningar</small></div>
                   <div><img src="./assets/icons/fluent/mail.svg" alt=""><small>E-post</small></div>
@@ -116,16 +100,9 @@
                 </div>
                 <div class="preview-recommended">
                   <strong>Rekommenderat</strong>
-                  <div>
-                    <img src="./assets/icons/fluent/graduation.svg" alt="">
-                    <span><b>Kom igång</b><small>Datorskolan – trygg Windows-träning</small></span>
-                  </div>
+                  <div><img src="./assets/icons/fluent/graduation.svg" alt=""><span><b>Kom igång</b><small>Datorskolan – trygg Windows-träning</small></span></div>
                 </div>
-                <div class="preview-start-footer">
-                  <span class="preview-avatar">J</span>
-                  <strong>Jimmy</strong>
-                  <span class="preview-power">⏻</span>
-                </div>
+                <div class="preview-start-footer"><span class="preview-avatar">J</span><strong>Jimmy</strong><span>⏻</span></div>
               </div>
 
               <div class="preview-taskbar">
@@ -146,281 +123,147 @@
             </div>
           </div>
 
-          <div class="floating-proof proof-one">
-            <span class="proof-icon">✓</span>
-            <div><strong>Riktiga handlingar</strong><small>Högerklicka, fäst, flytta, skriv och öppna</small></div>
-          </div>
-
-          <div class="floating-proof proof-two">
-            <img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt="">
-            <div><strong>Google Chrome</strong><small>Flikar, länkar, adressfält och nedladdningar</small></div>
-          </div>
+          <div class="visual-chip chip-real"><span class="chip-dot"></span><div><strong>Realistisk FakeWin</strong><small>Windows-lika flöden, inte quizknappar</small></div></div>
+          <div class="visual-chip chip-chrome"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><div><strong>Google Chrome</strong><small>Flikar, länkar och nedladdningar</small></div></div>
+          <div class="visual-chip chip-progress"><strong>120</strong><span>lektioner</span></div>
         </div>
       </section>
 
-      <section class="proof-strip" aria-label="Datorskolans styrkor">
-        <div>
-          <img src="./assets/icons/fluent/graduation.svg" alt="">
-          <span><strong>Från absolut nybörjare</strong><small>Vi förutsätter inte att du redan kan</small></span>
-        </div>
-        <div>
-          <img src="./assets/icons/fluent/desktop.svg" alt="">
-          <span><strong>Öva genom att göra</strong><small>Inte bara läsa om hur datorn fungerar</small></span>
-        </div>
-        <div>
-          <img src="./assets/icons/fluent/shield.svg" alt="">
-          <span><strong>Trygg FakeWin-miljö</strong><small>Din riktiga dator och dina filer påverkas inte</small></span>
-        </div>
-        <div>
-          <img src="./assets/icons/fluent/sync.svg" alt="">
-          <span><strong>Kunskapen återkommer</strong><small>Träna tills momenten sitter på riktigt</small></span>
-        </div>
-      </section>
-
-      <section class="section how-section" id="how">
-        <div class="section-heading">
-          <span class="section-kicker">SÅ LÄR DU DIG</span>
+      <section class="landing-panel how-panel" data-landing-panel="how" role="tabpanel" hidden>
+        <div class="panel-heading">
+          <span class="section-kicker">PEDAGOGIK SOM BYGGER SJÄLVSTÄNDIGHET</span>
           <h2>Förstå först. Gör sedan själv.</h2>
-          <p>
-            Varje moment är byggt för någon som kanske aldrig tidigare har använt en dator.
-            Du får veta vad något är, hur det ser ut, varför det används och sedan utför du uppgiften själv.
-          </p>
+          <p>Varje färdighet byggs i små steg och återkommer senare i nya situationer.</p>
         </div>
 
-        <div class="how-grid">
-          <article>
+        <div class="how-bento">
+          <article class="how-card emphasis">
             <span class="step-number">01</span>
-            <div class="how-icon"><img src="./assets/icons/fluent/document-text.svg" alt=""></div>
-            <h3>Förstå</h3>
-            <p>Vi förklarar ord, symboler, knappar och sammanhang med vardagligt språk.</p>
+            <div class="card-icon"><img src="./assets/icons/fluent/document-text.svg" alt=""></div>
+            <h3>Vi förklarar från noll</h3>
+            <p>Vad är en länk? Vad är ett fönster? Varför finns mappar? Inga grundkunskaper förutsätts.</p>
           </article>
-          <article>
+          <article class="how-card">
             <span class="step-number">02</span>
-            <div class="how-icon"><img src="./assets/icons/fluent/image.svg" alt=""></div>
-            <h3>Känn igen</h3>
-            <p>Du lär dig hur saker ser ut och var de normalt finns i Windows.</p>
+            <div class="card-icon"><img src="./assets/icons/fluent/image.svg" alt=""></div>
+            <h3>Du lär dig känna igen</h3>
+            <p>Symboler, platser, menyer och mönster visas i sitt riktiga sammanhang.</p>
           </article>
-          <article>
+          <article class="how-card">
             <span class="step-number">03</span>
-            <div class="how-icon"><img src="./assets/icons/fluent/desktop.svg" alt=""></div>
-            <h3>Gör själv</h3>
-            <p>Du klickar, skriver, drar, högerklickar och löser uppgiften i FakeWin.</p>
+            <div class="card-icon"><img src="./assets/icons/fluent/desktop.svg" alt=""></div>
+            <h3>Du gör uppgiften</h3>
+            <p>Klicka, högerklicka, dra, skriv, öppna och välj i själva FakeWin.</p>
           </article>
-          <article>
+          <article class="how-card">
             <span class="step-number">04</span>
-            <div class="how-icon"><img src="./assets/icons/fluent/sync.svg" alt=""></div>
-            <h3>Återanvänd</h3>
-            <p>Färdigheten dyker upp igen i nya situationer tills den blir självklar.</p>
+            <div class="card-icon"><img src="./assets/icons/fluent/sync.svg" alt=""></div>
+            <h3>Kunskapen återkommer</h3>
+            <p>Momentet dyker upp igen tills du kan använda det utan steg-för-steg-hjälp.</p>
+          </article>
+
+          <article class="realism-card">
+            <div class="realism-card-copy">
+              <span class="section-kicker">TRÄNA PÅ DET RIKTIGA SÄTTET</span>
+              <h3>Inga låtsasknappar när Windows redan har ett riktigt flöde.</h3>
+              <div class="realism-pills">
+                <span><img src="./assets/icons/fluent/apps.svg" alt="">Fäst från Start</span>
+                <span><img src="./assets/icons/fluent/folder.svg" alt="">ZIP i Utforskaren</span>
+                <span><img src="./assets/icons/fluent/settings.svg" alt="">Wi‑Fi i Inställningar</span>
+                <span><img src="./assets/icons/fluent/usb-plug.svg" alt="">Mata ut USB</span>
+              </div>
+            </div>
+            <div class="mini-flow">
+              <div class="flow-step"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><span>Chrome</span></div>
+              <i>→</i>
+              <div class="flow-step"><img src="./assets/icons/fluent/folder.svg" alt=""><span>Downloads</span></div>
+              <i>→</i>
+              <div class="flow-step"><img src="./assets/icons/fluent/document-text.svg" alt=""><span>Fil</span></div>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="section realism-section" id="realistic">
-        <div class="realism-layout">
-          <div class="realism-copy">
-            <span class="section-kicker">TRÄNA PÅ RÄTT SÄTT</span>
-            <h2>Inga låtsasknappar när Windows redan har ett riktigt sätt.</h2>
-            <p>
-              Datorskolan tränar nu handlingarna där de faktiskt hör hemma.
-              Du högerklickar på Chrome i Start för att fästa det, drar fönster till skärmkanten,
-              öppnar ZIP-filer i Utforskaren och ändrar Wi‑Fi i Inställningar.
-            </p>
-
-            <div class="real-action-list">
-              <div><img src="./assets/icons/fluent/apps.svg" alt=""><span><b>Start & aktivitetsfält</b><small>Fäst och lossa appar med riktiga snabbmenyer.</small></span></div>
-              <div><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><span><b>Google Chrome</b><small>Flikar, länkar, adressfält, sökning och nedladdningar.</small></span></div>
-              <div><img src="./assets/icons/fluent/folder.svg" alt=""><span><b>Utforskaren</b><small>Filer, mappar, ZIP, USB, OneDrive och Papperskorgen.</small></span></div>
-              <div><img src="./assets/icons/fluent/settings.svg" alt=""><span><b>Inställningar</b><small>Wi‑Fi, Bluetooth, ljud, kamera, appar och Windows Update.</small></span></div>
-            </div>
+      <section class="landing-panel course-panel" data-landing-panel="course" role="tabpanel" hidden>
+        <div class="course-topline">
+          <div>
+            <span class="section-kicker">120 LEKTIONER • 13 KURSOMRÅDEN</span>
+            <h2>Hela vägen från första klicket till självständighet.</h2>
           </div>
+          <p>Välj en modul i Datorskolan och träna i din egen takt. Framstegen sparas lokalt.</p>
+        </div>
 
-          <div class="realism-demo">
-            <div class="demo-window chrome-demo">
-              <div class="demo-chrome-tabs">
-                <div class="demo-tab"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><span>Datorskolan</span><b>×</b></div>
-                <span class="demo-plus">+</span>
-                <div class="demo-controls">— □ ×</div>
-              </div>
-              <div class="demo-chrome-bar">
-                <span>‹</span><span>›</span><span>↻</span>
-                <div>datorskolan.local/internet</div>
-                <span>☆</span>
-              </div>
-              <div class="demo-webpage">
-                <small>ÖVNINGSWEBBEN</small>
-                <h3>Vad är internet?</h3>
-                <p>Internet är nätverket som gör att datorer och tjänster kan kommunicera.</p>
-                <a>Öppna nästa sida</a>
-              </div>
-            </div>
+        <div class="module-grid">
+          <article><img src="./assets/icons/fluent/desktop.svg" alt=""><span><small>STARTEN</small><b>Datorgrunder</b><em>4 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/crop.svg" alt=""><span><small>GRUNDEN</small><b>Mus</b><em>9 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/notepad.svg" alt=""><span><small>GRUNDEN</small><b>Tangentbord</b><em>11 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/apps.svg" alt=""><span><small>WINDOWS</small><b>Windows</b><em>14 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/folder.svg" alt=""><span><small>ORDNING</small><b>Filer & mappar</b><em>12 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/apps-list.svg" alt=""><span><small>PROGRAM</small><b>Program</b><em>1 lektion</em></span></article>
+          <article class="brand-module"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><span><small>ONLINE</small><b>Internet & Chrome</b><em>14 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/mail.svg" alt=""><span><small>KOMMUNIKATION</small><b>E-post</b><em>7 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/shield.svg" alt=""><span><small>TRYGGHET</small><b>Säkerhet</b><em>8 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/document-pdf.svg" alt=""><span><small>VARDAGEN</small><b>Vardagsdatorn</b><em>20 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/usb-plug.svg" alt=""><span><small>ANSLUTNINGAR</small><b>Enheter</b><em>8 lektioner</em></span></article>
+          <article><img src="./assets/icons/fluent/sync.svg" alt=""><span><small>PROBLEMLÖSNING</small><b>När något krånglar</b><em>11 lektioner</em></span></article>
+          <article class="final-module"><img src="./assets/icons/fluent/graduation.svg" alt=""><span><small>MÅLET</small><b>Självständighetsprov</b><em>1 slutuppdrag</em></span></article>
+        </div>
 
-            <div class="demo-window settings-demo">
-              <div class="demo-settings-side">
-                <img src="./assets/icons/fluent/settings.svg" alt="">
-                <b>Inställningar</b>
-                <span class="active">Nätverk och internet</span>
-                <span>Bluetooth och enheter</span>
-                <span>Windows Update</span>
-              </div>
-              <div class="demo-settings-main">
-                <small>NÄTVERK OCH INTERNET</small>
-                <h3>Wi‑Fi</h3>
-                <div class="network-card">
-                  <span><b>HemmaNet</b><small>Säkert nätverk</small></span>
-                  <button tabindex="-1">Anslut</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="course-bottom">
+          <span><img src="./assets/icons/fluent/document-pdf.svg" alt="">PDF & utskrift</span>
+          <span><img src="./assets/icons/fluent/folder-zip.svg" alt="">ZIP</span>
+          <span><img src="./assets/icons/fluent/cloud.svg" alt="">OneDrive</span>
+          <span><img src="./assets/icons/fluent/wifi.svg" alt="">Wi‑Fi</span>
+          <span><img src="./assets/icons/fluent/bluetooth.svg" alt="">Bluetooth</span>
+          <span><img src="./assets/icons/fluent/cut.svg" alt="">Skärmklipp</span>
+          <button type="button" class="compact-cta" data-launch-school><span data-cta-text>Starta Datorskolan</span> →</button>
         </div>
       </section>
 
-      <section class="section course-section" id="course">
-        <div class="section-heading section-heading-left">
-          <span class="section-kicker">120 LEKTIONER • 13 KURSOMRÅDEN</span>
-          <h2>Från första musklicket till vardagen vid en Windows-dator.</h2>
-          <p>
-            Kursen börjar på noll och går hela vägen till vanliga uppgifter,
-            anslutningar, säkerhet, felsökning och självständiga uppdrag.
-          </p>
-        </div>
-
-        <div class="course-grid">
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/desktop.svg" alt=""></span>
-            <div><small>STARTEN</small><h3>Datorgrunder</h3><p>Skärm, pekare, program, filer och vad en dator faktiskt gör.</p></div>
-          </article>
-
-          <article class="course-card featured">
-            <span class="course-icon"><img src="./assets/icons/fluent/crop.svg" alt=""></span>
-            <div><small>GRUNDEN</small><h3>Mus</h3><p>Flytta, klicka, dubbelklicka, högerklicka, scrolla och dra.</p></div>
-            <span class="course-status">Interaktiv träning</span>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/notepad.svg" alt=""></span>
-            <div><small>GRUNDEN</small><h3>Tangentbord</h3><p>Skriv, redigera, Shift, Caps Lock, Ctrl och vanliga kortkommandon.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/apps.svg" alt=""></span>
-            <div><small>WINDOWS</small><h3>Windows</h3><p>Start, aktivitetsfält, fönster, Snap, sökning och appar.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/folder.svg" alt=""></span>
-            <div><small>ORDNING</small><h3>Filer & mappar</h3><p>Skapa, döp, kopiera, flytta, radera, återställ och hitta.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/apps-list.svg" alt=""></span>
-            <div><small>PROGRAM</small><h3>Program</h3><p>Starta, stäng, installera och avinstallera program.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""></span>
-            <div><small>ONLINE</small><h3>Internet & Chrome</h3><p>Adressfält, länkar, flikar, sökning, formulär och nedladdningar.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/mail.svg" alt=""></span>
-            <div><small>KOMMUNIKATION</small><h3>E-post</h3><p>Läsa, svara, skriva, bilagor och vanliga e-postrisker.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/shield.svg" alt=""></span>
-            <div><small>TRYGGHET</small><h3>Säkerhet</h3><p>Phishing, bluffar, lösenord, länkar och säkrare beslut.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/document-pdf.svg" alt=""></span>
-            <div><small>VARDAGEN</small><h3>Vardagsdatorn</h3><p>PDF, ZIP, kopiera text, skärmklipp, utskrift, moln och dialogrutor.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/usb-plug.svg" alt=""></span>
-            <div><small>ANSLUTNINGAR</small><h3>Enheter & anslutningar</h3><p>USB, Wi‑Fi, Bluetooth, ljud, mikrofon, kamera och batteri.</p></div>
-          </article>
-
-          <article class="course-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/sync.svg" alt=""></span>
-            <div><small>PROBLEMLÖSNING</small><h3>När något krånglar</h3><p>Felmeddelanden, hängt program, omstart, uppdatering, lagring och backup.</p></div>
-          </article>
-
-          <article class="course-card goal-card">
-            <span class="course-icon"><img src="./assets/icons/fluent/graduation.svg" alt=""></span>
-            <div><small>MÅLET</small><h3>Självständighetsprov</h3><p>Kombinera flera färdigheter utan steg-för-steg-hjälp.</p></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section everyday-section">
-        <div class="section-heading">
-          <span class="section-kicker">DET DU FAKTISKT BEHÖVER</span>
-          <h2>Vanliga saker som nya datoranvändare ofta fastnar på.</h2>
-          <p>Datorskolan stannar inte vid “så här klickar man”. Du tränar också det som händer i vardagen.</p>
-        </div>
-
-        <div class="everyday-grid">
-          <div><img src="./assets/icons/fluent/document-pdf.svg" alt=""><span><b>PDF & utskrift</b><small>Öppna, zooma, spara kopia och skriv ut till PDF.</small></span></div>
-          <div><img src="./assets/icons/fluent/folder-zip.svg" alt=""><span><b>ZIP-filer</b><small>Högerklicka och använd Extrahera alla…</small></span></div>
-          <div><img src="./assets/icons/fluent/usb-plug.svg" alt=""><span><b>USB-minne</b><small>Kopiera filer och mata ut enheten säkert.</small></span></div>
-          <div><img src="./assets/icons/fluent/cloud.svg" alt=""><span><b>OneDrive</b><small>Förstå molnlagring och flytta filer dit.</small></span></div>
-          <div><img src="./assets/icons/fluent/cut.svg" alt=""><span><b>Skärmklipp</b><small>Ta ett område av skärmen och spara bilden.</small></span></div>
-          <div><img src="./assets/icons/fluent/bluetooth.svg" alt=""><span><b>Bluetooth</b><small>Lägg till och para ett headset.</small></span></div>
-          <div><img src="./assets/icons/fluent/wifi.svg" alt=""><span><b>Wi‑Fi</b><small>Hitta nätverket och anslut på rätt ställe.</small></span></div>
-          <div><img src="./assets/icons/fluent/settings.svg" alt=""><span><b>När något inte svarar</b><small>Vänta, stäng programmet och starta om på ett tryggt sätt.</small></span></div>
-        </div>
-      </section>
-
-      <section class="section safe-section" id="safe">
-        <div class="safe-card">
+      <section class="landing-panel safe-panel" data-landing-panel="safe" role="tabpanel" hidden>
+        <div class="safe-layout">
           <div class="safe-copy">
-            <span class="section-kicker light">TRYGGT ATT GÖRA FEL</span>
-            <h2>Det känns som en dator.<br>Men övningarna stannar i webbläsaren.</h2>
-            <p>
-              FakeWin är en virtuell träningsmiljö. När du flyttar en fil, installerar ett
-              övningsprogram eller matar ut ett USB-minne sker allt inne i simulatorn.
-            </p>
-            <ul>
-              <li><span>✓</span> Inga riktiga personliga filer öppnas eller ändras</li>
-              <li><span>✓</span> FakeWin installerar inga riktiga program i Windows</li>
-              <li><span>✓</span> Övningar kan återställas och göras om</li>
-              <li><span>✓</span> Kursprogress sparas lokalt på den här enheten</li>
-            </ul>
+            <span class="section-kicker">TRYGGT ATT GÖRA FEL</span>
+            <h2>Det känns som en dator.<br><span>Men övningen stannar i webbläsaren.</span></h2>
+            <p>FakeWin är en virtuell träningsmiljö. Du kan prova, göra fel, återställa och prova igen utan att röra dina riktiga filer.</p>
+
+            <div class="safety-list">
+              <div><span class="safety-check">✓</span><span><b>Inga personliga filer läses</b><small>FakeWin använder ett eget virtuellt filsystem.</small></span></div>
+              <div><span class="safety-check">✓</span><span><b>Inga riktiga program installeras</b><small>Installationsövningar sker endast i simulatorn.</small></span></div>
+              <div><span class="safety-check">✓</span><span><b>Du kan återställa allt</b><small>Starta om kursen och börja från noll när du vill.</small></span></div>
+              <div><span class="safety-check">✓</span><span><b>Framsteg sparas lokalt</b><small>Din kursprogress stannar på den här enheten.</small></span></div>
+            </div>
           </div>
 
-          <div class="safe-visual" aria-hidden="true">
-            <div class="shield-orbit orbit-one"></div>
-            <div class="shield-orbit orbit-two"></div>
-            <div class="shield-core"><img src="./assets/icons/fluent/shield.svg" alt=""></div>
-            <span class="safe-chip chip-one">Virtuella filer</span>
-            <span class="safe-chip chip-two">Trygg FakeWin</span>
-            <span class="safe-chip chip-three">Återställ när du vill</span>
-          </div>
-        </div>
-      </section>
+          <div class="safe-showcase">
+            <div class="shield-scene">
+              <div class="shield-ring ring-one"></div>
+              <div class="shield-ring ring-two"></div>
+              <div class="shield-core"><img src="./assets/icons/fluent/shield.svg" alt=""></div>
+            </div>
 
-      <section class="final-cta-section">
-        <div class="final-cta-card">
-          <span class="section-kicker">DU BEHÖVER INTE KUNNA NÅGOT INNAN</span>
-          <h2>Börja med första klicket. Bygg därifrån.</h2>
-          <p>120 lektioner väntar — och du tar dem i din egen takt.</p>
-          <button class="primary-cta large" type="button" data-launch-school>
-            <span data-cta-text>Starta Datorskolan</span>
-            <span class="cta-arrow" aria-hidden="true">→</span>
-          </button>
+            <div class="safe-matrix">
+              <article><img src="./assets/icons/fluent/folder.svg" alt=""><span><b>Virtuella filer</b><small>Skapa, flytta, radera och återställ.</small></span></article>
+              <article><img src="./assets/icons/fluent/usb-plug.svg" alt=""><span><b>Simulerad USB</b><small>Kopiera och mata ut säkert.</small></span></article>
+              <article><img src="./assets/icons/fluent/settings.svg" alt=""><span><b>Simulerade inställningar</b><small>Wi‑Fi, Bluetooth och uppdatering.</small></span></article>
+              <article><img src="./assets/icons/fluent/sync.svg" alt=""><span><b>Gör om direkt</b><small>Ingen tidspress och inga verkliga konsekvenser.</small></span></article>
+            </div>
+
+            <button class="primary-cta safe-cta" type="button" data-launch-school>
+              <span data-cta-text>Starta Datorskolan</span><span class="cta-arrow">→</span>
+            </button>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="landing-footer">
-      <a class="brand footer-brand" href="#">
-        <span class="brand-mark" aria-hidden="true">D</span>
-        <span class="brand-copy"><strong>Datorskolan</strong><small>Interaktiv Windows-träning från grunden</small></span>
-      </a>
-      <p>120 lektioner • 13 kursområden • realistisk FakeWin-miljö</p>
-    </footer>
+    <div class="landing-statusbar" aria-hidden="true">
+      <span><i></i> FakeWin redo</span>
+      <span>120 lektioner</span>
+      <span>13 kursområden</span>
+      <span class="status-spacer"></span>
+      <span>Öva tryggt • direkt i webbläsaren</span>
+    </div>
   </div>
 
   <div class="reset-dialog-backdrop" data-reset-dialog hidden>
