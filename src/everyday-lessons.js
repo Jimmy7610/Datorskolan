@@ -546,8 +546,8 @@
       "Lär dig använda texten i ett fel för att förstå nästa säkra steg.",
       ["troubleshooting.error"],
       "everyday-error-01",
-      "Läs felmeddelandet och välj den säkra åtgärden.",
-      null,".everyday-lab",
+      "I Rapportvisaren: klicka på rapport.pdf. Läs hela felmeddelandet. Välj Stäng när du har förstått att filen används av ett annat program.",
+      ["Klicka rapport.pdf i Rapportvisaren.","Läs rubriken och hela förklaringen i felrutan.","Lägg märke till att felet berättar vad som orsakar problemet.","Välj Stäng i stället för att panikklicka eller ta bort filen.","Målet är att använda informationen i felet innan du agerar."],".trouble-app",
       detail(
         "Ett felmeddelande beskriver ofta vad som gick fel och ibland vad du kan göra åt det.",
         "Det visas som en ruta eller text med rubrik, förklaring och knappar.",
@@ -582,8 +582,8 @@
       "Lös ett hängt program i lugn och säker ordning.",
       ["troubleshooting.frozen-app"],
       "everyday-recovery-01",
-      "Vänta först, försök sedan stänga programmet och starta det igen.",
-      null,".everyday-lab",
+      "Rapportvisaren svarar inte. Klicka × i fönstret. Välj först Vänta på programmet. När programmet fortfarande inte svarar, klicka × igen och välj Stäng programmet. Öppna sedan Start, sök efter Rapportvisaren och starta programmet igen.",
+      ["Klicka × högst upp till höger på Rapportvisaren.","I Windows-frågan väljer du först Vänta på programmet.","Om programmet fortfarande inte svarar: klicka × igen.","Välj Stäng programmet.","Öppna Start, sök Rapportvisaren och starta det igen."],".sim",
       detail(
         "Ett program kan tillfälligt sluta svara utan att hela datorn är trasig.",
         "Fönstret kan bli vitt, visa Inte svarar eller sluta reagera på klick.",
