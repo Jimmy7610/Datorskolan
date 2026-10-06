@@ -1832,3 +1832,203 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
   font-size:10px;
 }
 .quick-settings-footer button:hover{background:#e7edf4}
+
+
+.pdf-app{
+  position:relative;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#d8dde3;
+  overflow:hidden;
+}
+.pdf-toolbar-real{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:6px 10px;
+  border-bottom:1px solid #d8dee6;
+  background:#fff;
+}
+.pdf-file-label{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.pdf-file-label span{display:grid;place-items:center}
+.pdf-file-label strong{
+  max-width:250px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:11px;
+}
+.pdf-tools{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.pdf-tools button{
+  min-height:32px;
+  border:0;
+  border-radius:4px;
+  padding:0 9px;
+  background:transparent;
+  color:#334155;
+  font-size:11px;
+}
+.pdf-tools button:hover{background:#eef2f6}
+.pdf-zoom{
+  min-width:42px;
+  text-align:center;
+  color:#64748b;
+  font-size:10px;
+}
+.pdf-workspace{
+  flex:1;
+  min-height:0;
+  overflow:auto;
+  padding:28px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+.pdf-real-page{
+  width:520px;
+  min-height:690px;
+  padding:52px;
+  transform-origin:top center;
+  background:#fff;
+  box-shadow:0 5px 18px rgba(15,23,42,.22);
+  color:#1f2937;
+}
+.pdf-real-page header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  padding-bottom:18px;
+  border-bottom:2px solid #334155;
+}
+.pdf-real-page header strong{font-size:28px}
+.pdf-real-page header span{font-size:11px}
+.pdf-real-page section{
+  margin:30px 0;
+  font-size:12px;
+  line-height:1.6;
+}
+.pdf-real-page table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+}
+.pdf-real-page th,
+.pdf-real-page td{
+  padding:10px;
+  border-bottom:1px solid #dbe2e8;
+  text-align:left;
+}
+.pdf-real-page th:last-child,
+.pdf-real-page td:last-child{text-align:right}
+.pdf-real-page footer{
+  margin-top:90px;
+  color:#94a3b8;
+  font-size:10px;
+  text-align:center;
+}
+.print-overlay{
+  position:absolute;
+  inset:0;
+  z-index:50;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(15,23,42,.28);
+}
+.print-dialog-real{
+  width:min(760px,100%);
+  max-height:90%;
+  overflow:auto;
+  border:1px solid #d6dce4;
+  border-radius:8px;
+  background:#fff;
+  box-shadow:0 20px 70px rgba(15,23,42,.32);
+}
+.print-dialog-real>header{
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 14px 0 18px;
+  border-bottom:1px solid #e1e5ea;
+}
+.print-dialog-real h2{
+  margin:0;
+  font-size:18px;
+  font-weight:600;
+}
+.print-close{
+  width:32px;height:32px;
+  border:0;border-radius:4px;
+  background:transparent;
+  font-size:18px;
+}
+.print-close:hover{background:#eef2f6}
+.print-dialog-body{
+  display:grid;
+  grid-template-columns:1fr 270px;
+  min-height:430px;
+}
+.print-preview{
+  margin:24px;
+  padding:50px 34px;
+  white-space:pre-line;
+  background:#fff;
+  border:1px solid #d5dce4;
+  box-shadow:0 3px 12px rgba(15,23,42,.10);
+  font-size:16px;
+  font-weight:700;
+}
+.print-options{
+  padding:20px;
+  border-left:1px solid #e1e5ea;
+  background:#fafbfc;
+}
+.print-options label{
+  display:grid;
+  gap:5px;
+  margin-bottom:15px;
+  color:#475569;
+  font-size:10px;
+}
+.print-options select,
+.print-options input{
+  height:36px;
+  border:1px solid #cbd5e1;
+  border-radius:4px;
+  background:#fff;
+  padding:0 8px;
+  font:inherit;
+}
+.print-options .invalid{border-color:#c2410c}
+.print-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:7px;
+  margin-top:24px;
+}
+.print-actions button{
+  min-height:36px;
+  border:1px solid #cbd5e1;
+  border-radius:4px;
+  padding:0 12px;
+  background:#fff;
+  font-size:11px;
+}
+.print-actions button.primary{
+  border-color:#0b6ccf;
+  background:#0b6ccf;
+  color:#fff;
+}
