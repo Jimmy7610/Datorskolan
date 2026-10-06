@@ -134,18 +134,6 @@
       save.addEventListener("click",function(){if(state.flags.snap)complete("everyday.screenshot.complete",{name:"Skärmbild.png"});});
     }
 
-    if (mode === "zip") {
-      title("ZIP och komprimerade mappar","Packa upp filerna innan du försöker använda dem.");
-      var zip=el("div","everyday-file-card","🗜️ Bilder.zip");
-      var extract=el("button","everyday-primary","Extrahera alla");
-      var result=el("div","everyday-result","");
-      stage.appendChild(zip);stage.appendChild(extract);stage.appendChild(result);
-      extract.addEventListener("click",function(){
-        result.textContent="📁 Bilder  →  🖼️ foto1.jpg  🖼️ foto2.jpg";
-        complete("everyday.zip.complete",{});
-      });
-    }
-
     if (mode === "cloud") {
       title("Molnlagring","Flytta dokumentet till den simulerade molnmappen.");
       var cloud=el("div","everyday-cloud");
