@@ -349,3 +349,63 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
   font-size:10px;
   line-height:1.4;
 }
+
+.learning-detail{
+  margin:10px 0;
+  border:1px solid #c7d2fe;
+  border-radius:12px;
+  background:linear-gradient(180deg,#f8faff,#ffffff);
+  overflow:hidden;
+}
+.learning-detail summary{
+  list-style:none;
+  cursor:pointer;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  user-select:none;
+}
+.learning-detail summary::-webkit-details-marker{display:none}
+.learning-detail summary>span{font-size:16px}
+.learning-detail summary strong{font-size:11px;color:#1e3a8a}
+.learning-detail summary em{font-style:normal;font-size:9px;color:#64748b}
+.learning-detail[open] summary{border-bottom:1px solid #e2e8f0;background:#eef4ff}
+.learning-detail-content{display:grid;gap:0}
+.learning-detail-row,
+.learning-detail-steps{padding:9px 12px;border-bottom:1px solid #eef2f7}
+.learning-detail-row:last-child,
+.learning-detail-steps:last-child{border-bottom:0}
+.learning-detail-row>strong,
+.learning-detail-steps>strong{
+  display:block;
+  margin-bottom:3px;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  color:#475569;
+}
+.learning-detail-row p{
+  margin:0;
+  font-size:10.5px;
+  line-height:1.5;
+  color:#334155;
+}
+.learning-detail-steps ol{
+  margin:5px 0 0;
+  padding-left:18px;
+}
+.learning-detail-steps li{
+  margin:3px 0;
+  font-size:10.5px;
+  line-height:1.4;
+  color:#334155;
+}
+.child-mode .learning-detail-row p,
+.child-mode .learning-detail-steps li{
+  font-size:11.5px;
+  line-height:1.55;
+}
+.child-mode .learning-detail summary strong{font-size:12px}
