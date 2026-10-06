@@ -69,6 +69,7 @@
       },
       browser: null,
       mail: null,
+      settings: null,
       shell: win11.loadShellState(window.localStorage),
       mouseLab: {
         mode: "move",
@@ -289,6 +290,7 @@
       state.keyboardLab = { mode: "letters", completed: false, flags: {}, clipboard: "" };
       state.browser = null;
       state.mail = null;
+      state.settings = null;
 
       state.mouseLab.mode = "move";
       state.mouseLab.distance = 0;
@@ -660,6 +662,10 @@
       if (Array.isArray(start.pinnedStart)) {
         state.shell.pinnedStart = start.pinnedStart.slice();
         saveShellState();
+      }
+      if (start.settingsPage) {
+        state.settings = state.settings || {};
+        state.settings.page = start.settingsPage;
       }
       if (start.browserReset) state.browser = null;
       if (start.mailReset) state.mail = null;
@@ -1193,6 +1199,17 @@
         h: 560,
         render: function () {
           return window.DatorskolanAdvancedApps.renderKeyboard({ state: state, emit: emit, vfs: vfs });
+        }
+      },
+
+      settings: {
+        title: "Inställningar",
+        iconKey: "settings",
+        icon: win11.icon("settings", 18),
+        w: 900,
+        h: 620,
+        render: function () {
+          return window.DatorskolanSettingsApp.render({ state: state, emit: emit, vfs: vfs });
         }
       },
 
@@ -1854,7 +1871,7 @@
       grid.className = "apps win11-pinned-apps";
 
       function visibleAppIds(query) {
-        var all = ["explorer","browser","calculator","notepad","mail","photos"];
+        var all = ["explorer","browser","calculator","notepad","mail","photos","settings"];
         var normalized = String(query || "").trim().toLocaleLowerCase("sv");
         if (!normalized) return state.shell.pinnedStart.filter(function (id) { return apps[id]; });
 
