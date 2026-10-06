@@ -43,3 +43,22 @@ Varje övning ska beskriva:
 ## Varianttexter
 
 Samma lektion kan ha childText, standardText och fastText. Färdigheten och valideringen ska normalt vara samma.
+
+
+## Nybörjardetaljer
+
+Produktionslektioner ska även ha ett `detail`-objekt:
+
+```json
+{
+  "detail": {
+    "what": "Vad saken är.",
+    "recognize": "Hur användaren känner igen den på skärmen.",
+    "use": "Vad den används till.",
+    "example": "Ett konkret exempel.",
+    "steps": ["Valfria konkreta steg."]
+  }
+}
+```
+
+Fälten `what`, `recognize`, `use` och `example` är obligatoriska i publicerat kursinnehåll.
