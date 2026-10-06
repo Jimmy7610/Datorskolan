@@ -43,6 +43,7 @@
     var search=el("input","settings-search");
     search.type="search";
     search.placeholder="Sök efter en inställning";
+    search.setAttribute("aria-label","Sök efter en inställning");
     sidebar.appendChild(search);
 
     [
@@ -157,6 +158,10 @@
               var input=el("input","");
               input.type="password";
               input.placeholder="Ange nätverkssäkerhetsnyckeln";
+              input.setAttribute("aria-label","Nätverkssäkerhetsnyckel för HemmaNet");
+              input.setAttribute("aria-describedby","wifi-password-help");
+              var help=el("span","settings-password-help","Skriv lösenordet till nätverket HemmaNet.");
+              help.id="wifi-password-help";
               var ok=el("button","","Nästa");
               ok.type="button";
 
@@ -171,6 +176,7 @@
               });
 
               form.appendChild(input);
+              form.appendChild(help);
               form.appendChild(ok);
               row.appendChild(form);
               input.focus();
