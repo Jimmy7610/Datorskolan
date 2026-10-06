@@ -703,16 +703,17 @@
       sidebar.className = "explorer-sidebar";
 
       [
-        ["home", "🏠", "Home"],
-        ["documents", "📄", "Documents"],
-        ["pictures", "🖼️", "Pictures"],
-        ["downloads", "⬇️", "Downloads"],
-        ["recycle-bin", "🗑️", "Recycle Bin"]
+        ["home", "home", "Home"],
+        ["documents", "folder-documents", "Documents"],
+        ["pictures", "pictures", "Pictures"],
+        ["downloads", "download", "Downloads"],
+        ["recycle-bin", "recycle", "Papperskorgen"]
       ].forEach(function (entry) {
         var b = document.createElement("button");
         b.type = "button";
         b.className = "explorer-side-button" + (state.explorer.folderId === entry[0] ? " active" : "");
-        b.textContent = entry[1] + " " + entry[2];
+        b.innerHTML = '<span class="explorer-side-icon">' + win11.icon(entry[1], 19) + '</span><span class="explorer-side-label"></span>';
+        b.querySelector(".explorer-side-label").textContent = entry[2];
         b.addEventListener("click", function (e) {
           e.stopPropagation();
           navigateFolder(entry[0]);
@@ -869,6 +870,7 @@
           state.explorer.selectedId = node.id;
           grid.querySelectorAll(".vfs-item.selected").forEach(function (el) { el.classList.remove("selected"); });
           item.classList.add("selected");
+          openContext("vfs-item", e.clientX, e.clientY, node.id);
         });
 
         item.addEventListener("dragstart", function (e) {
@@ -2518,6 +2520,19 @@
           [isPinnedToStart(appId) ? "unpin-start" : "pin-start",
             isPinnedToStart(appId) ? "Lossa från Start" : "Fäst på Start",false]
         ];
+      } else if (kind === "vfs-item") {
+        var contextNode = vfs.get(appId);
+        var protectedNode = !contextNode || !!contextNode.system;
+        entries = [
+          ["open-vfs","Öppna",false],
+          ["sep"],
+          ["copy-vfs","Kopiera",protectedNode],
+          ["cut-vfs","Klipp ut",protectedNode],
+          ["rename-vfs","Byt namn",protectedNode],
+          ["delete-vfs","Ta bort",protectedNode],
+          ["sep"],
+          ["properties","Egenskaper",true]
+        ];
       } else if (kind === "item") {
         entries = [
           ["open","Öppna",false],
@@ -2558,6 +2573,33 @@
           if (action === "unpin-taskbar" && appId) unpinFromTaskbar(appId);
           if (action === "pin-start" && appId) pinToStart(appId);
           if (action === "unpin-start" && appId) unpinFromStart(appId);
+
+          if (kind === "vfs-item" && appId) {
+            state.explorer.selectedId = appId;
+            var node = vfs.get(appId);
+
+            if (action === "open-vfs" && node) {
+              if (node.type === "folder") {
+                navigateFolder(node.id);
+              } else {
+                emit("file.opened", { id: node.id, name: node.name, fileType: node.fileType });
+                if (node.fileType === "text") {
+                  state.notepadFileId = node.id;
+                  state.notepadDraft = node.content || "";
+                  state.notepadDirty = false;
+                  openApp("notepad");
+                } else if (node.fileType === "image") {
+                  state.photoFileId = node.id;
+                  state.photoZoom = 1;
+                  openApp("photos");
+                }
+              }
+            }
+            if (action === "copy-vfs") copySelected("copy");
+            if (action === "cut-vfs") copySelected("cut");
+            if (action === "rename-vfs") renameSelected();
+            if (action === "delete-vfs") deleteSelected();
+          }
 
           if (action === "open" && state.context.itemId) {
             var item = state.items.find(function (x) { return x.id === state.context.itemId; });
