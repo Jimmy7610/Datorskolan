@@ -66,7 +66,8 @@ const sourceText = [
   fs.readFileSync("src/app.js", "utf8"),
   fs.readFileSync("src/advanced-apps.js", "utf8"),
   fs.readFileSync("src/everyday-apps.js", "utf8"),
-  fs.readFileSync("src/chrome-app.js", "utf8")
+  fs.readFileSync("src/chrome-app.js", "utf8"),
+  fs.readFileSync("src/settings-app.js", "utf8")
 ].join("\n");
 
 // Capture every event-like string literal from runtime sources. This intentionally
@@ -93,6 +94,7 @@ const knownApps = new Set([
   "keyboard-lab",
   "everyday-lab",
   "browser",
+  "settings",
   "mail"
 ]);
 
