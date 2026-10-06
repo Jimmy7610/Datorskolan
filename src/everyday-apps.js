@@ -146,23 +146,6 @@
       });
     }
 
-    if (mode === "usb") {
-      title("USB-minne","Öppna USB-minnet, kopiera en fil och mata ut enheten säkert.");
-      var usbBox=checklist([["open","Öppna USB"],["copy","Kopiera fil"],["eject","Mata ut"]]);
-      var buttons=el("div","everyday-action-row");
-      [["open","Öppna USB"],["copy","Kopiera rapport.pdf"],["eject","Mata ut säkert"]].forEach(function(item){
-        var b=el("button","",item[1]);
-        b.addEventListener("click",function(){
-          if(item[0]==="copy"&&!state.flags.open)return;
-          if(item[0]==="eject"&&!state.flags.copy)return;
-          state.flags[item[0]]=true;mark(usbBox,item[0]);
-          if(state.flags.open&&state.flags.copy&&state.flags.eject) complete("everyday.usb.complete",{});
-        });
-        buttons.appendChild(b);
-      });
-      stage.appendChild(buttons);
-    }
-
     if (mode === "install") {
       title("Installera och avinstallera","Installera Övningsprogrammet och ta sedan bort det igen.");
       var status=el("div","everyday-app-card","📦 Övningsprogram • Inte installerat");
