@@ -726,7 +726,8 @@
         ["home", "home", "Home"],
         ["documents", "folder-documents", "Documents"],
         ["pictures", "pictures", "Pictures"],
-        ["downloads", "download", "Downloads"]
+        ["downloads", "download", "Downloads"],
+        ["onedrive", "onedrive", "OneDrive"]
       ];
 
       if (vfs.get("usb-drive")) {
