@@ -54,6 +54,8 @@
       {type:"event-seen",eventType:"browser.addressUsed"},
       {type:"event-seen",eventType:"browser.linkOpened"},
       {type:"event-seen",eventType:"browser.tabOpened"},
+      {type:"event-seen",eventType:"browser.back"},
+      {type:"event-seen",eventType:"browser.forward"},
       {type:"event-seen",eventType:"browser.downloaded"}
     ]} },
 
@@ -67,7 +69,7 @@
       {type:"event-seen",eventType:"mail.opened"},
       {type:"event-seen",eventType:"mail.attachmentDownloaded"},
       {type:"event-seen",eventType:"mail.attachmentAdded"},
-      {type:"event-seen",eventType:"mail.replied"}
+      {type:"event-seen",eventType:"mail.replied",payload:{attachment:true}}
     ]} },
 
     { id:"windows-resize-01", title:"Ändra fönsterstorlek", description:"Ändra storleken på Kalkylatorns fönster.", start:{openApps:["calculator"]}, fixtures:[], goal:{type:"event",eventType:"window.resized"} },
@@ -89,11 +91,11 @@
     { id:"windows-desktop-open-01", title:"Öppna ikon från skrivbordet", description:"Dubbelklicka på Documents.", start:{}, fixtures:[], goal:{type:"event",eventType:"desktop.item.doubleClicked",payload:{itemId:"documents"}} },
     { id:"internet-search-01", title:"Sök på webben", description:"Använd sökrutan på övningswebben.", start:{browserReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"event",eventType:"browser.searched"} },
 
-    { id:"final-independent-01", title:"Självständighetsprov", description:"Kombinera webbläsare, filer och e-post.", start:{browserReset:true,mailReset:true,openApps:["browser"]}, fixtures:[{kind:"file",parentId:"documents",name:"plan.txt",fileType:"text",content:"Min plan"}], goal:{type:"all",goals:[
-      {type:"event-seen",eventType:"browser.downloaded"},
-      {type:"event-seen",eventType:"file.renamed"},
-      {type:"event-seen",eventType:"mail.attachmentAdded"},
-      {type:"event-seen",eventType:"mail.sent"}
+    { id:"final-independent-01", title:"Självständighetsprov", description:"Kombinera webbläsare, filer och e-post.", start:{browserReset:true,mailReset:true,openApps:["browser"]}, fixtures:[], goal:{type:"all",goals:[
+      {type:"event-seen",eventType:"browser.downloaded",payload:{name:"guide.txt"}},
+      {type:"event-seen",eventType:"file.renamed",payload:{name:"guide-klar.txt"}},
+      {type:"event-seen",eventType:"mail.attachmentAdded",payload:{name:"guide-klar.txt"}},
+      {type:"event-seen",eventType:"mail.sent",payload:{attachment:true,attachmentName:"guide-klar.txt"}}
     ]} }
   ];
 
