@@ -37,7 +37,7 @@
 
       var file=el("button","trouble-file");
       file.type="button";
-      file.innerHTML="<span>📄</span><div><strong>rapport.pdf</strong><small>Documents</small></div>";
+      file.innerHTML="<span>"+window.DatorskolanWindows11.icon("pdf",28)+"</span><div><strong>rapport.pdf</strong><small>Documents</small></div>";
       file.addEventListener("click",function(){
         s.errorOpen=true;
         ctx.emit("troubleshooting.errorOpened",{code:"FILE_IN_USE"});
