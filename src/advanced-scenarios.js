@@ -71,7 +71,7 @@
     ]} },
 
     { id:"windows-resize-01", title:"Ändra fönsterstorlek", description:"Ändra storleken på Kalkylatorns fönster.", start:{openApps:["calculator"]}, fixtures:[], goal:{type:"event",eventType:"window.resized"} },
-    { id:"windows-switch-01", title:"Växla mellan program", description:"Växla till ett annat öppet program via aktivitetsfältet.", start:{openApps:["calculator","notepad"]}, fixtures:[], goal:{type:"event",eventType:"app.focused"} },
+    { id:"windows-switch-01", title:"Växla mellan program", description:"Växla till ett annat öppet program via aktivitetsfältet.", start:{openApps:["calculator","notepad"]}, fixtures:[], goal:{type:"event",eventType:"window.focused"} },
 
     { id:"files-search-01", title:"Sök efter fil", description:"Sök efter Hitta mig.txt.", start:{explorerFolderId:"documents",openApps:["explorer"]}, fixtures:[{kind:"file",parentId:"documents",name:"Hitta mig.txt",fileType:"text",content:"Här är jag"}], goal:{type:"event",eventType:"file.search"} },
 
