@@ -2113,6 +2113,42 @@
           detailContent.appendChild(stepsBlock);
         }
 
+        if (Array.isArray(lesson.detail.everyday) && lesson.detail.everyday.length) {
+          var everydayBlock = document.createElement("div");
+          everydayBlock.className = "learning-detail-list learning-detail-everyday";
+
+          var everydayTitle = document.createElement("strong");
+          everydayTitle.textContent = "Vanligt i vardagen";
+          everydayBlock.appendChild(everydayTitle);
+
+          var everydayList = document.createElement("ul");
+          lesson.detail.everyday.forEach(function (item) {
+            var li = document.createElement("li");
+            li.textContent = item;
+            everydayList.appendChild(li);
+          });
+          everydayBlock.appendChild(everydayList);
+          detailContent.appendChild(everydayBlock);
+        }
+
+        if (Array.isArray(lesson.detail.mistakes) && lesson.detail.mistakes.length) {
+          var mistakesBlock = document.createElement("div");
+          mistakesBlock.className = "learning-detail-list learning-detail-mistakes";
+
+          var mistakesTitle = document.createElement("strong");
+          mistakesTitle.textContent = "Vanliga misstag";
+          mistakesBlock.appendChild(mistakesTitle);
+
+          var mistakesList = document.createElement("ul");
+          lesson.detail.mistakes.forEach(function (item) {
+            var li = document.createElement("li");
+            li.textContent = item;
+            mistakesList.appendChild(li);
+          });
+          mistakesBlock.appendChild(mistakesList);
+          detailContent.appendChild(mistakesBlock);
+        }
+
         detailBox.appendChild(detailContent);
         el.learning.appendChild(detailBox);
       }
