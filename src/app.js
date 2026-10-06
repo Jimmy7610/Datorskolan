@@ -2774,8 +2774,14 @@
       } else if (kind === "vfs-item") {
         var contextNode = vfs.get(appId);
         var protectedNode = !contextNode || !!contextNode.system;
+        var isZipNode = !!contextNode && (contextNode.fileType === "zip" || /\.zip$/i.test(contextNode.name || ""));
         entries = [
-          ["open-vfs","Öppna",false],
+          ["open-vfs","Öppna",false]
+        ];
+        if (isZipNode) {
+          entries.push(["extract-vfs","Extrahera alla…",false]);
+        }
+        entries = entries.concat([
           ["sep"],
           ["copy-vfs","Kopiera",protectedNode],
           ["cut-vfs","Klipp ut",protectedNode],
@@ -2783,7 +2789,7 @@
           ["delete-vfs","Ta bort",protectedNode],
           ["sep"],
           ["properties","Egenskaper",true]
-        ];
+        ]);
       } else if (kind === "item") {
         entries = [
           ["open","Öppna",false],
@@ -2867,17 +2873,25 @@
                 } else if (node.fileType === "installer" || /\.exe$/i.test(node.name || "")) {
                   state.installer = { step: "welcome", accepted: false, installed: false };
                   openApp("installer");
-                } else if (node.fileType === "installer" || /\.exe$/i.test(node.name || "")) {
-                  state.installer = { step: "welcome", accepted: false, installed: false };
-                  openApp("installer");
-                } else if (node.fileType === "pdf" || /\.pdf$/i.test(node.name || "")) {
-                  state.pdfViewer = state.pdfViewer || {};
-                  state.pdfViewer.fileName = node.name;
-                  state.pdfViewer.zoom = state.pdfViewer.zoom || 100;
-                  openApp("pdf");
                 }
               }
             }
+
+            if (action === "extract-vfs" && node) {
+              var folderName = String(node.name || "Arkiv").replace(/\.zip$/i, "") || "Arkiv";
+              var extractedFolder = vfs.createFolder(node.parentId, folderName);
+              vfs.createFile(extractedFolder.id, "foto1.jpg", "image", "");
+              vfs.createFile(extractedFolder.id, "foto2.jpg", "image", "");
+              state.explorer.selectedId = extractedFolder.id;
+              emit("archive.extracted", {
+                sourceId: node.id,
+                sourceName: node.name,
+                folderId: extractedFolder.id,
+                folderName: extractedFolder.name
+              });
+              render();
+            }
+
             if (action === "copy-vfs") copySelected("copy");
             if (action === "cut-vfs") copySelected("cut");
             if (action === "rename-vfs") renameSelected();
