@@ -168,8 +168,8 @@
       "Spara en bild av det som visas på skärmen.",
       ["everyday.screenshot"],
       "everyday-screenshot-01",
-      "Ta en simulerad skärmdump och spara den.",
-      null,".everyday-lab",
+      "I Skärmklippverktyget: klicka Nytt, dra en rektangel över en tydlig del av ytan och klicka sedan Spara.",
+      ["Klicka ＋ Nytt.","En genomskinlig fångstyta visas.","Tryck ned musknappen och dra en rektangel som är minst några centimeter stor.","Släpp musknappen för att ta skärmklippet.","Klicka Spara. Bilden sparas som Skärmbild.png i Pictures."],".snipping-app",
       detail(
         "En skärmdump är en bild av hela eller en del av det som visas på skärmen.",
         "I Windows används ofta Print Screen eller verktyget Skärmklippverktyget. Resultatet blir en bild.",
