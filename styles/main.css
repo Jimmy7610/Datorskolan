@@ -1484,3 +1484,21 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
   .start{min-height:520px}
   .chrome-tab{width:160px}
 }
+
+.explorer-side-button{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.explorer-side-icon{
+  width:21px;
+  height:21px;
+  display:grid;
+  place-items:center;
+  flex:0 0 21px;
+}
+.explorer-side-label{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
