@@ -187,7 +187,7 @@
   function defaultShellState() {
     return {
       pinnedTaskbar: ["explorer","browser"],
-      pinnedStart: ["explorer","browser","calculator","notepad","mail"],
+      pinnedStart: ["explorer","browser","calculator","notepad","mail","settings"],
       version: 1
     };
   }
