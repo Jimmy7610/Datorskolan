@@ -55,7 +55,7 @@
 ## Fas 3 – Mus ✅
 Musutbildningen använder Fake Windows som träningsmiljö.
 
-## Fas 4 – Tangentbord 🧪
+## Fas 4 – Tangentbord ✅
 ## Fas 5 – Windows-grunder 🧪
 ## Fas 6 – Filer och mappar 🧪
 ## Fas 7 – Internet och webbläsare 🧪
