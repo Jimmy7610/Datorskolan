@@ -58,6 +58,7 @@ jobs:
           node --check tests/reset-progress-smoke.js
           node --check tests/everyday-course-smoke.js
           node --check tests/windows11-realism-smoke.js
+          node --check tests/realism-scenarios-smoke.js
 
       - name: Smoke test scenario engine
         run: |
@@ -89,6 +90,9 @@ jobs:
 
       - name: Smoke test Windows 11 realism
         run: node tests/windows11-realism-smoke.js
+
+      - name: Smoke test realistic course scenarios
+        run: node tests/realism-scenarios-smoke.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
