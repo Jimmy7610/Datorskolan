@@ -69,6 +69,7 @@ const sourceText = [
   fs.readFileSync("src/chrome-app.js", "utf8"),
   fs.readFileSync("src/settings-app.js", "utf8"),
   fs.readFileSync("src/installer-app.js", "utf8"),
+  fs.readFileSync("src/snipping-app.js", "utf8"),
   fs.readFileSync("src/pdf-app.js", "utf8")
 ].join("\n");
 
@@ -99,6 +100,7 @@ const knownApps = new Set([
   "settings",
   "pdf",
   "installer",
+  "snipping",
   "mail"
 ]);
 
