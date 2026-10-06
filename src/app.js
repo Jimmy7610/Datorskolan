@@ -53,6 +53,11 @@
       learningPanelOpen: false,
       learningHighlightSelector: null,
       learningSelectedModule: null,
+      everydayLab: {
+        mode: "copy-paste",
+        completed: false,
+        flags: {}
+      },
       keyboardLab: {
         mode: "letters",
         completed: false,
@@ -230,6 +235,7 @@
       state.notepadDirty = false;
       state.photoFileId = null;
       state.photoZoom = 1;
+      state.everydayLab = { mode: "copy-paste", completed: false, flags: {} };
       state.keyboardLab = { mode: "letters", completed: false, flags: {}, clipboard: "" };
       state.browser = null;
       state.mail = null;
@@ -593,6 +599,9 @@
       start = start || {};
       if (start.keyboardMode) {
         state.keyboardLab = { mode: start.keyboardMode, completed: false, flags: {}, clipboard: "" };
+      }
+      if (start.everydayMode) {
+        state.everydayLab = { mode: start.everydayMode, completed: false, flags: {} };
       }
       if (start.browserReset) state.browser = null;
       if (start.mailReset) state.mail = null;
@@ -1098,6 +1107,16 @@
           el.appendChild(toolbar);
           el.appendChild(stage);
           return el;
+        }
+      },
+
+      "everyday-lab": {
+        title: "Vardagsdatorn",
+        icon: "🧰",
+        w: 820,
+        h: 600,
+        render: function () {
+          return window.DatorskolanEverydayApps.render({ state: state, emit: emit, vfs: vfs });
         }
       },
 
@@ -1796,6 +1815,9 @@
         internet: "Internet och webbläsare",
         mail: "E-post",
         security: "Säkerhet",
+        everyday: "Vardagsdatorn",
+        devices: "Enheter & anslutningar",
+        troubleshooting: "När något krånglar",
         final: "Självständighetsprov",
         basics: "Datorgrunder"
       };
@@ -1988,7 +2010,8 @@
 
         var moduleIcons = {
           basics:"💻", mouse:"🖱️", keyboard:"⌨️", windows:"⊞", files:"📁",
-          programs:"📝", internet:"🌐", mail:"✉️", security:"🛡️", final:"🏁"
+          programs:"📝", internet:"🌐", mail:"✉️", security:"🛡️",
+          everyday:"🧰", devices:"🔌", troubleshooting:"🛠️", final:"🏁"
         };
 
         modules.forEach(function (module) {
