@@ -1923,8 +1923,30 @@
           }
         });
 
+        var moduleOrder = [
+          "basics",
+          "mouse",
+          "keyboard",
+          "windows",
+          "files",
+          "programs",
+          "internet",
+          "mail",
+          "security",
+          "everyday",
+          "devices",
+          "troubleshooting",
+          "final"
+        ];
+
         var modules = Object.keys(moduleMap).map(function (id) {
           return moduleMap[id];
+        }).sort(function (a, b) {
+          var ai = moduleOrder.indexOf(a.id);
+          var bi = moduleOrder.indexOf(b.id);
+          if (ai < 0) ai = moduleOrder.length;
+          if (bi < 0) bi = moduleOrder.length;
+          return ai - bi;
         });
 
         function startDashboardLesson(lesson) {
