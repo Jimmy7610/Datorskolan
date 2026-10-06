@@ -20,7 +20,9 @@ Status: **IMPLEMENTERAD – väntar på manuell acceptans**
 
 ## Ikoner
 
-- [ ] Start har korrekt igenkännbar Windows-symbol.
+- [ ] FakeWins systemikoner laddas från officiella Microsoft Fluent UI System Icons i `assets/icons/fluent/`.
+- [ ] Fluent-assetkatalogen innehåller Microsofts MIT-licens och källhänvisning.
+- [ ] Start använder en officiell Microsoft Fluent app-grid-symbol.
 - [ ] Utforskaren har mapp/Explorer-lik ikon.
 - [ ] Mappar använder konsekvent mappikon.
 - [ ] Pictures/Foton har bildikon.
@@ -32,7 +34,9 @@ Status: **IMPLEMENTERAD – väntar på manuell acceptans**
 - [ ] Google Chrome har korrekt igenkännbar Chrome-identitet.
 - [ ] PDF, ZIP, bild och textfiler har separata filtypsikoner.
 - [ ] USB-enhet, OneDrive, nätverk, ljud och batteri har egna systemikoner.
-- [ ] Ikoner används konsekvent på skrivbord, Start, aktivitetsfält, Utforskaren och fönster.
+- [ ] Ikoner används konsekvent på skrivbord, Start, aktivitetsfält, Utforskaren, Inställningar, Skärmklippverktyget och fönster.
+- [ ] Inga egenritade ersättnings-SVG:er används för systemikoner där en Fluent-asset är mappad.
+- [ ] Chrome hanteras separat som produktbranding och utges inte för att vara en Microsoft Fluent-ikon.
 
 ## Riktig fästning
 
