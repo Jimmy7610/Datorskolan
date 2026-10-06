@@ -85,31 +85,6 @@
       stage.appendChild(choices);
     }
 
-    if (mode === "error-message") {
-      title("Läs felmeddelandet","Läs vad som står och välj den säkra åtgärden.");
-      var error=el("div","everyday-error");
-      error.innerHTML="<strong>Kan inte öppna filen</strong><p>Filen rapport.pdf används av ett annat program. Stäng programmet och försök igen.</p><div><button data-a='delete'>Ta bort fil</button><button data-a='retry'>Försök igen senare</button></div>";
-      stage.appendChild(error);
-      error.querySelector("[data-a=retry]").addEventListener("click",function(){complete("everyday.errorRead.complete",{});});
-    }
-
-    if (mode === "recovery") {
-      title("När ett program hängt sig","Prova den säkra ordningen innan du ger upp.");
-      var recoveryBox=checklist([["wait","Vänta"],["close","Försök stänga"],["restart","Starta om programmet"]]);
-      var actions=el("div","everyday-action-row");
-      [["wait","Vänta några sekunder"],["close","Stäng programmet"],["restart","Starta programmet igen"]].forEach(function(item){
-        var b=el("button","",item[1]);
-        b.addEventListener("click",function(){
-          if(item[0]==="close"&&!state.flags.wait)return;
-          if(item[0]==="restart"&&!state.flags.close)return;
-          state.flags[item[0]]=true;mark(recoveryBox,item[0]);
-          if(state.flags.wait&&state.flags.close&&state.flags.restart) complete("everyday.recovery.complete",{});
-        });
-        actions.appendChild(b);
-      });
-      stage.appendChild(actions);
-    }
-
     return root;
   }
 
