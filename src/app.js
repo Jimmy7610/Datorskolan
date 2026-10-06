@@ -1144,6 +1144,14 @@
             state.notepadDraft = area.value;
             state.notepadDirty = true;
             status.textContent = (node ? node.name : "Nytt dokument") + " • osparad";
+            emit("notepad.input", { length: area.value.length });
+          });
+
+          area.addEventListener("keydown", function (e) {
+            if (!e.ctrlKey) return;
+            var key = e.key.toLowerCase();
+            if (key === "z") emit("notepad.undo", {});
+            if (key === "y") emit("notepad.redo", {});
           });
 
           wrap.appendChild(toolbar);
@@ -1467,7 +1475,7 @@
       render();
     }
 
-    function closeWindow(id) {
+    function forceCloseWindow(id) {
       var win = state.windows.find(function (w) { return w.id === id; });
       if (!win) return;
 
@@ -1482,6 +1490,29 @@
 
       emit("window.closed", { windowId: id, appId: appId });
       render();
+    }
+
+    function closeWindow(id) {
+      var win = state.windows.find(function (w) { return w.id === id; });
+      if (!win) return;
+
+      if (win.appId === "notepad" && state.notepadDirty) {
+        state.dialog = {
+          kind: "unsaved-notepad",
+          windowId: id,
+          title: "Anteckningar",
+          message: "Vill du spara ändringarna i " +
+            (state.notepadFileId && vfs.get(state.notepadFileId)
+              ? vfs.get(state.notepadFileId).name
+              : "Nytt dokument") +
+            "?"
+        };
+        emit("dialog.unsavedOpened", { appId: "notepad", windowId: id });
+        renderDialog();
+        return;
+      }
+
+      forceCloseWindow(id);
     }
 
     function setStart(open) {
@@ -2941,6 +2972,79 @@
     function renderDialog() {
       el.dialog.replaceChildren();
       if (!state.dialog) return;
+
+      var overlay = document.createElement("div");
+      overlay.className = "dialog-overlay";
+
+      if (state.dialog.kind === "unsaved-notepad") {
+        var unsaved = document.createElement("section");
+        unsaved.className = "sim-dialog windows-confirm-dialog";
+
+        var unsavedTitle = document.createElement("h3");
+        unsavedTitle.textContent = state.dialog.title || "Anteckningar";
+
+        var unsavedMessage = document.createElement("p");
+        unsavedMessage.textContent = state.dialog.message || "Vill du spara ändringarna?";
+
+        var unsavedActions = document.createElement("div");
+        unsavedActions.className = "dialog-actions three-actions";
+
+        var saveButton = document.createElement("button");
+        saveButton.type = "button";
+        saveButton.className = "primary";
+        saveButton.textContent = "Spara";
+
+        var discardButton = document.createElement("button");
+        discardButton.type = "button";
+        discardButton.textContent = "Spara inte";
+
+        var cancelButton = document.createElement("button");
+        cancelButton.type = "button";
+        cancelButton.textContent = "Avbryt";
+
+        saveButton.addEventListener("click", function () {
+          var windowId = state.dialog && state.dialog.windowId;
+          if (state.notepadFileId) {
+            var node = vfs.get(state.notepadFileId);
+            if (node) {
+              node.content = state.notepadDraft;
+              state.notepadDirty = false;
+              emit("notepad.saved", { id: node.id, name: node.name });
+            }
+            state.dialog = null;
+            emit("dialog.unsavedChoice", { choice: "save" });
+            forceCloseWindow(windowId);
+          } else {
+            state.dialog = null;
+            emit("dialog.unsavedChoice", { choice: "save-as-required" });
+            saveNotepad(true);
+          }
+        });
+
+        discardButton.addEventListener("click", function () {
+          var windowId = state.dialog && state.dialog.windowId;
+          state.notepadDirty = false;
+          state.dialog = null;
+          emit("dialog.unsavedChoice", { choice: "discard" });
+          forceCloseWindow(windowId);
+        });
+
+        cancelButton.addEventListener("click", function () {
+          state.dialog = null;
+          emit("dialog.unsavedChoice", { choice: "cancel" });
+          renderDialog();
+        });
+
+        unsavedActions.appendChild(saveButton);
+        unsavedActions.appendChild(discardButton);
+        unsavedActions.appendChild(cancelButton);
+        unsaved.appendChild(unsavedTitle);
+        unsaved.appendChild(unsavedMessage);
+        unsaved.appendChild(unsavedActions);
+        overlay.appendChild(unsaved);
+        el.dialog.appendChild(overlay);
+        return;
+      }
 
       var overlay = document.createElement("div");
       overlay.className = "dialog-overlay";
