@@ -63,29 +63,6 @@
       if (chip) chip.classList.add("done");
     }
 
-    if (mode === "copy-paste") {
-      title("Kopiera och klistra text","Markera texten, kopiera den och klistra in den i den tomma rutan.");
-      var source = el("textarea","everyday-textarea");
-      source.value = "Telefon: 070-123 45 67";
-      var target = el("textarea","everyday-textarea");
-      target.placeholder = "Klistra in här";
-      var box = checklist([["select","Markera"],["copy","Kopiera"],["paste","Klistra in"]]);
-      stage.appendChild(source);
-      stage.appendChild(target);
-      source.addEventListener("select",function(){
-        if(source.selectionStart !== source.selectionEnd){state.flags.select=true;mark(box,"select");}
-      });
-      source.addEventListener("copy",function(){state.flags.copy=true;mark(box,"copy");});
-      target.addEventListener("paste",function(){
-        state.flags.paste=true;mark(box,"paste");
-        setTimeout(function(){
-          if(state.flags.select&&state.flags.copy&&target.value.indexOf("070-123 45 67")>=0){
-            complete("everyday.copyPaste.complete",{});
-          }
-        },0);
-      });
-    }
-
     if (mode === "save-location") {
       title("Var hamnar filen?","Välj rätt mapp för ett nedladdat dokument.");
       var choices = el("div","everyday-choice-grid");
