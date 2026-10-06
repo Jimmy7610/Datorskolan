@@ -2032,3 +2032,152 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
   background:#0b6ccf;
   color:#fff;
 }
+
+
+.installer-app{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  color:#1f2937;
+}
+.installer-hero{
+  min-height:86px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 20px;
+  border-bottom:1px solid #e2e8f0;
+  background:linear-gradient(180deg,#f8fafc,#f3f6f9);
+}
+.installer-logo{
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border-radius:11px;
+  background:#0b6ccf;
+  color:#fff;
+  font-size:24px;
+  font-weight:800;
+}
+.installer-hero strong,
+.installer-hero small{display:block}
+.installer-hero strong{font-size:15px}
+.installer-hero small{margin-top:3px;color:#64748b;font-size:10px}
+.installer-body{
+  flex:1;
+  min-height:0;
+  overflow:auto;
+  padding:24px 28px;
+}
+.installer-body h2{
+  margin:0 0 14px;
+  font-size:19px;
+  font-weight:600;
+}
+.installer-body p{
+  color:#64748b;
+  font-size:11px;
+  line-height:1.6;
+}
+.installer-license{
+  min-height:130px;
+  padding:12px;
+  border:1px solid #d9e0e7;
+  background:#fafafa;
+  color:#475569;
+  font-size:10px;
+  line-height:1.55;
+}
+.installer-check{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  font-size:11px;
+}
+.installer-path{
+  margin:12px 0;
+  padding:10px 12px;
+  border:1px solid #d9e0e7;
+  border-radius:4px;
+  background:#f8fafc;
+  font-family:Consolas,monospace;
+  font-size:11px;
+}
+.installer-actions{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:7px;
+  padding:10px 16px;
+  border-top:1px solid #e2e8f0;
+  background:#f8fafc;
+}
+.installer-actions button{
+  min-width:88px;
+  height:34px;
+  border:1px solid #cbd5e1;
+  border-radius:4px;
+  background:#fff;
+  font-size:11px;
+}
+.installer-actions button.primary{
+  border-color:#0b6ccf;
+  background:#0b6ccf;
+  color:#fff;
+}
+.installer-actions button:disabled{opacity:.45}
+
+.settings-installed-list{
+  width:100%;
+  display:grid;
+  gap:5px;
+  margin-top:12px;
+}
+.settings-installed-row{
+  position:relative;
+  min-height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 10px;
+  border:1px solid #e2e7ec;
+  border-radius:5px;
+  background:#fafbfc;
+}
+.settings-installed-row strong,
+.settings-installed-row small{display:block}
+.settings-installed-row strong{font-size:11px}
+.settings-installed-row small{margin-top:2px;color:#64748b;font-size:9px}
+.settings-app-actions{
+  width:30px;height:30px;
+  border:0;border-radius:4px;
+  background:transparent;
+  font-size:18px;
+}
+.settings-app-actions:hover:not(:disabled){background:#e9eef4}
+.settings-app-menu{
+  position:absolute;
+  right:8px;
+  top:38px;
+  z-index:5;
+  min-width:130px;
+  padding:4px;
+  border:1px solid #d7dee6;
+  border-radius:5px;
+  background:#fff;
+  box-shadow:0 8px 20px rgba(15,23,42,.16);
+}
+.settings-app-menu button{
+  width:100%;
+  height:32px;
+  border:0;
+  border-radius:3px;
+  background:transparent;
+  text-align:left;
+  padding:0 8px;
+  font-size:10px;
+}
+.settings-app-menu button:hover{background:#eef2f6}
