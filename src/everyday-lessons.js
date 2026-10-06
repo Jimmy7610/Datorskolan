@@ -150,8 +150,8 @@
       "Öppna, zooma och spara dokument i PDF-format.",
       ["everyday.pdf"],
       "everyday-pdf-01",
-      "Öppna den simulerade PDF-filen, zooma in och spara en kopia.",
-      null,".everyday-lab",
+      "I Utforskaren: dubbelklicka på faktura.pdf. I PDF-visaren: zooma in minst en gång och välj Spara en kopia.",
+      ["Dubbelklicka på faktura.pdf i Documents.","PDF-filen öppnas i ett eget programfönster.","Klicka + i PDF-visaren för att zooma in.","Klicka Spara en kopia.","Utforskaren → faktura.pdf → + → Spara en kopia."],".pdf-app",
       detail(
         "PDF är ett dokumentformat som är gjort för att se likadant ut på olika datorer. Det används mycket för fakturor, blanketter, kvitton och myndighetsdokument.",
         "Filnamnet slutar med .pdf. När den öppnas ser du ofta sidor och verktyg för zoom, utskrift och spara.",
@@ -267,8 +267,8 @@
       "Förstå skrivardialogen och hur ett dokument kan sparas som PDF.",
       ["everyday.print"],
       "everyday-print-pdf-01",
-      "Välj Microsoft Print to PDF och skriv ut dokumentet.",
-      null,".everyday-lab",
+      "I PDF-visaren: klicka Skriv ut. Välj Microsoft Print to PDF som skrivare och klicka sedan Skriv ut.",
+      ["Klicka Skriv ut i PDF-visarens verktygsrad.","Utskriftsdialogen öppnas.","Öppna listan Skrivare och välj Microsoft Print to PDF.","Kontrollera att rätt skrivare är vald.","Klicka Skriv ut."],".print-dialog-real",
       detail(
         "Skriv ut skickar ett dokument till en vald skrivare. En virtuell PDF-skrivare skapar i stället en PDF-fil.",
         "Skrivardialogen visar vald skrivare och ofta antal kopior, sidor, stående/liggande och andra val.",
