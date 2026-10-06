@@ -4,6 +4,7 @@ global.window = {};
 
 require("../src/lessons.js");
 require("../src/advanced-lessons.js");
+require("../src/everyday-lessons.js");
 require("../src/lesson-enrichment.js");
 
 function assert(condition, message) {
@@ -21,6 +22,9 @@ lessons.forEach(function (lesson) {
       "Weak or missing " + key + " explanation: " + lesson.id
     );
   });
+
+  assert(Array.isArray(lesson.detail.everyday) && lesson.detail.everyday.length >= 2, "Missing everyday examples: " + lesson.id);
+  assert(Array.isArray(lesson.detail.mistakes) && lesson.detail.mistakes.length >= 2, "Missing common mistakes: " + lesson.id);
 
   if (lesson.moduleId === "internet" && lesson.title === "Länkar") {
     assert(
