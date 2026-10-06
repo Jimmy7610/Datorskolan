@@ -186,8 +186,8 @@
       "Packa upp flera filer som levererats tillsammans.",
       ["everyday.zip"],
       "everyday-zip-01",
-      "Extrahera innehållet i Bilder.zip.",
-      null,".everyday-lab",
+      "I Downloads: högerklicka på Bilder.zip och välj Extrahera alla…. Kontrollera sedan att mappen Bilder skapas.",
+      ["Bilder.zip ligger i Downloads.","Högerklicka direkt på Bilder.zip.","Välj Extrahera alla… i snabbmenyn.","En vanlig mapp med namnet Bilder skapas bredvid ZIP-filen.","Öppna gärna mappen och se de uppackade bilderna."],".explorer-v2",
       detail(
         "En ZIP-fil är en komprimerad behållare som kan samla flera filer i ett mindre paket.",
         "Den slutar med .zip och kan se ut som en mapp med dragkedja eller arkivsymbol.",
