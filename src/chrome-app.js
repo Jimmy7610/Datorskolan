@@ -352,7 +352,7 @@
 
     if(p==="info"){
       var article=el("article","chrome-article");
-      article.innerHTML="<h1>Vad är internet?</h1><p>Internet är nätverket som gör att datorer och tjänster kan kommunicera. Webbläsaren är programmet du använder för att öppna webbsidor.</p>";
+      article.innerHTML="<h1>Vad är internet?</h1><p>Internet är nätverket som gör att datorer och tjänster kan kommunicera. Webbläsaren är programmet du använder för att öppna webbsidor.</p><div class='chrome-contact-card'><strong>Övningskontakt</strong><p class='chrome-copy-source'>Telefon: 070-123 45 67</p><small>Markera telefonraden om du behöver kopiera den.</small></div>";
       article.appendChild(linkButton("Gå till sökresultat","search"));
       page.appendChild(article);
     }
@@ -427,6 +427,14 @@
     }
 
     root.appendChild(page);
+
+    root.addEventListener("copy",function(){
+      var selected="";
+      try { selected=String(window.getSelection ? window.getSelection().toString() : "").trim(); } catch(error) {}
+      if(!selected) return;
+      s.copiedText=selected;
+      ctx.emit("browser.textCopied",{text:selected});
+    });
 
     var status=el("div","chrome-statusbar");
     var zoomMinus=el("button","","−");
