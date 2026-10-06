@@ -74,6 +74,7 @@
       pdfViewer: null,
       installer: null,
       snipping: null,
+      troubleDemo: null,
       software: { exerciseProgramInstalled: false },
       shell: win11.loadShellState(window.localStorage),
       mouseLab: {
@@ -300,6 +301,7 @@
       state.pdfViewer = null;
       state.installer = null;
       state.snipping = null;
+      state.troubleDemo = null;
       state.software = { exerciseProgramInstalled: false };
 
       state.mouseLab.mode = "move";
@@ -676,6 +678,17 @@
       if (start.settingsPage) {
         state.settings = state.settings || {};
         state.settings.page = start.settingsPage;
+      }
+      if (start.troubleMode) {
+        state.troubleDemo = {
+          mode: start.troubleMode,
+          errorOpen: false,
+          errorHandled: false,
+          frozen: start.troubleMode === "frozen",
+          waited: false,
+          closedAfterFreeze: false,
+          restarted: false
+        };
       }
       if (start.usbMounted) {
         vfs.mountDrive("usb-drive", "USB-enhet (E:)");
@@ -1250,6 +1263,17 @@
         }
       },
 
+      "trouble-demo": {
+        title: "Rapportvisaren",
+        iconKey: "text-file",
+        icon: win11.icon("text-file", 18),
+        w: 680,
+        h: 460,
+        render: function () {
+          return window.DatorskolanTroubleApp.render({ state: state, emit: emit, vfs: vfs });
+        }
+      },
+
       snipping: {
         title: "Skärmklippverktyget",
         iconKey: "snipping",
@@ -1390,6 +1414,18 @@
     }
 
     function openApp(appId) {
+      if (
+        appId === "trouble-demo" &&
+        state.troubleDemo &&
+        state.troubleDemo.closedAfterFreeze
+      ) {
+        state.troubleDemo.mode = "normal";
+        state.troubleDemo.frozen = false;
+        state.troubleDemo.restarted = true;
+        state.troubleDemo.closedAfterFreeze = false;
+        emit("troubleshooting.restarted", { appId: "trouble-demo" });
+      }
+
       var app = apps[appId];
       if (!app) return;
 
@@ -1503,6 +1539,21 @@
     function closeWindow(id) {
       var win = state.windows.find(function (w) { return w.id === id; });
       if (!win) return;
+
+      if (
+        win.appId === "trouble-demo" &&
+        state.troubleDemo &&
+        state.troubleDemo.mode === "frozen"
+      ) {
+        state.dialog = {
+          kind: "app-not-responding",
+          windowId: id,
+          title: "Rapportvisaren svarar inte"
+        };
+        emit("troubleshooting.notRespondingDialog", { appId: "trouble-demo" });
+        renderDialog();
+        return;
+      }
 
       if (win.appId === "notepad" && state.notepadDirty) {
         state.dialog = {
@@ -2065,6 +2116,7 @@
 
       function visibleAppIds(query) {
         var all = ["explorer","browser","calculator","notepad","mail","photos","settings","snipping"];
+        if (state.troubleDemo) all.push("trouble-demo");
         var normalized = String(query || "").trim().toLocaleLowerCase("sv");
         if (!normalized) return state.shell.pinnedStart.filter(function (id) { return apps[id]; });
 
@@ -2983,6 +3035,55 @@
 
       var overlay = document.createElement("div");
       overlay.className = "dialog-overlay";
+
+      if (state.dialog.kind === "app-not-responding") {
+        var frozenDialog = document.createElement("section");
+        frozenDialog.className = "sim-dialog windows-confirm-dialog not-responding-dialog";
+
+        var frozenTitle = document.createElement("h3");
+        frozenTitle.textContent = state.dialog.title || "Programmet svarar inte";
+
+        var frozenMessage = document.createElement("p");
+        frozenMessage.textContent = "Om du stänger programmet kan information som inte har sparats gå förlorad.";
+
+        var frozenActions = document.createElement("div");
+        frozenActions.className = "dialog-actions two-actions";
+
+        var waitButton = document.createElement("button");
+        waitButton.type = "button";
+        waitButton.textContent = "Vänta på programmet";
+
+        var closeProgramButton = document.createElement("button");
+        closeProgramButton.type = "button";
+        closeProgramButton.className = "primary";
+        closeProgramButton.textContent = "Stäng programmet";
+
+        waitButton.addEventListener("click", function () {
+          if (state.troubleDemo) state.troubleDemo.waited = true;
+          state.dialog = null;
+          emit("troubleshooting.waited", { appId: "trouble-demo" });
+          renderDialog();
+        });
+
+        closeProgramButton.addEventListener("click", function () {
+          var windowId = state.dialog && state.dialog.windowId;
+          if (state.troubleDemo) {
+            state.troubleDemo.closedAfterFreeze = true;
+          }
+          state.dialog = null;
+          emit("troubleshooting.closedFrozen", { appId: "trouble-demo" });
+          forceCloseWindow(windowId);
+        });
+
+        frozenActions.appendChild(waitButton);
+        frozenActions.appendChild(closeProgramButton);
+        frozenDialog.appendChild(frozenTitle);
+        frozenDialog.appendChild(frozenMessage);
+        frozenDialog.appendChild(frozenActions);
+        overlay.appendChild(frozenDialog);
+        el.dialog.appendChild(overlay);
+        return;
+      }
 
       if (state.dialog.kind === "unsaved-notepad") {
         var unsaved = document.createElement("section");
