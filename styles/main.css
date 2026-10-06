@@ -2394,3 +2394,28 @@ linear-gradient(180deg,#ffffff,#f8fafc);overflow:hidden}
   display:block;
   flex:0 0 auto;
 }
+
+.settings-nav>span,
+.settings-inline-icon{
+  display:grid;
+  place-items:center;
+}
+.settings-add-device,
+.settings-device-chooser button,
+.snipping-toolbar button{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+}
+.settings-device-row{
+  justify-content:flex-start;
+}
+.settings-device-row .settings-inline-icon{
+  width:24px;
+  height:24px;
+  flex:0 0 24px;
+}
+.snipping-scissors{
+  display:grid;
+  place-items:center;
+}
