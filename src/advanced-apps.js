@@ -201,27 +201,61 @@
     }
 
     if (mode === "final") {
-      title("Tangentbord – slutuppdrag","Klara alla momenten utan steg-för-steg-hjälp.");
+      title("Tangentbord – slutuppdrag","Gör momenten i listan. Varje klart moment får en bock.");
+
+      var target=el("div","keyboard-final-target");
+      target.innerHTML="<span>SKRIV EXAKT</span><strong>Dator 2026!</strong><small>Texten ligger kvar här medan du skriver.</small>";
+      stage.appendChild(target);
+
       var final=el("textarea","keyboard-final");
-      final.placeholder="Skriv: Dator 2026!";
+      final.placeholder="Skriv här...";
+      final.setAttribute("aria-label","Skriv Dator 2026!");
       stage.appendChild(final);
-      var list=el("div","keyboard-checklist");
-      list.innerHTML="<span data-k='text'>Text</span><span data-k='shift'>Shift</span><span data-k='enter'>Enter</span><span data-k='back'>Backspace</span><span data-k='arrow'>Piltangent</span><span data-k='shortcut'>Ctrl+A</span>";
+
+      var list=el("div","keyboard-checklist keyboard-final-checklist");
+      list.innerHTML=
+        "<span data-k='text'>1. Skriv Dator 2026!</span>"+
+        "<span data-k='enter'>2. Enter</span>"+
+        "<span data-k='back'>3. Backspace</span>"+
+        "<span data-k='arrow'>4. Piltangent</span>"+
+        "<span data-k='shortcut'>5. Ctrl+A</span>";
       stage.appendChild(list);
-      var f={};
+
+      var f={ text:false, enter:false, back:false, arrow:false, shortcut:false };
+
+      function updateFinalChecklist(){
+        Object.keys(f).forEach(function(k){
+          var n=list.querySelector("[data-k='"+k+"']");
+          if(!n)return;
+          n.classList.toggle("done",!!f[k]);
+          if(f[k]&&!n.textContent.startsWith("✓ ")) n.textContent="✓ "+n.textContent;
+        });
+
+        if(f.text&&f.enter&&f.back&&f.arrow&&f.shortcut){
+          complete("keyboard.final.complete",{
+            text:"Dator 2026!",
+            enter:true,
+            backspace:true,
+            arrow:true,
+            selectAll:true
+          });
+        }
+      }
+
       final.addEventListener("keydown",function(e){
-        if(e.shiftKey&&e.key.length===1) f.shift=true;
         if(e.key==="Enter") f.enter=true;
         if(e.key==="Backspace") f.back=true;
         if(/^Arrow/.test(e.key)) f.arrow=true;
         if(e.ctrlKey&&e.key.toLowerCase()==="a") f.shortcut=true;
-        if(final.value.length>=5) f.text=true;
-        Object.keys(f).forEach(function(k){var n=list.querySelector("[data-k='"+k+"']");if(n)n.classList.add("done");});
-        if(f.text&&f.shift&&f.enter&&f.back&&f.arrow&&f.shortcut) complete("keyboard.final.complete",{});
+        updateFinalChecklist();
       });
+
       final.addEventListener("input",function(){
-        if(final.value.length>=5){f.text=true;var n=list.querySelector("[data-k='text']");if(n)n.classList.add("done");}
+        var normalized=final.value.replace(/\r/g,"").split("\n")[0].trim();
+        if(normalized==="Dator 2026!") f.text=true;
+        updateFinalChecklist();
       });
+
       setTimeout(function(){ final.focus(); },0);
     }
 
