@@ -1697,7 +1697,24 @@
           now.toLocaleDateString("sv-SE") +
         "</div>";
 
+      var homeButton = document.createElement("button");
+      homeButton.type = "button";
+      homeButton.className = "tb product-home-taskbar";
+      homeButton.title = "Till Datorskolans startsida";
+      homeButton.setAttribute("aria-label", "Till Datorskolans startsida");
+      homeButton.textContent = "⌂";
+      homeButton.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (
+          window.DatorskolanProductShell &&
+          typeof window.DatorskolanProductShell.showLanding === "function"
+        ) {
+          window.DatorskolanProductShell.showLanding();
+        }
+      });
+
       el.taskbar.appendChild(spacer);
+      el.taskbar.appendChild(homeButton);
       el.taskbar.appendChild(clock);
     }
 
