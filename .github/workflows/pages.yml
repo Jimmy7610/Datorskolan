@@ -60,6 +60,7 @@ jobs:
           node --check tests/windows11-realism-smoke.js
           node --check tests/realism-scenarios-smoke.js
           node --check tests/landing-product-smoke.js
+          node --check tests/accessibility-smoke.js
 
       - name: Smoke test scenario engine
         run: |
@@ -97,6 +98,9 @@ jobs:
 
       - name: Smoke test landing product truth
         run: node tests/landing-product-smoke.js
+
+      - name: Smoke test accessibility
+        run: node tests/accessibility-smoke.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
