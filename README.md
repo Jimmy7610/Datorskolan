@@ -11,7 +11,7 @@ Projektet ska fungera för flera målgrupper:
 - personer som vill träna vissa moment,
 - personer som redan kan lite och vill hoppa över sådant de behärskar.
 
-Målet är inte att skapa en traditionell manual. Användaren ska lära sig genom att faktiskt göra uppgifter.
+Målet är inte att skapa en traditionell manual. Användaren ska lära sig genom att förstå, känna igen och faktiskt göra vanliga datoruppgifter i en trygg simulator.
 
 Exempel:
 - flytta muspekaren,
@@ -25,6 +25,53 @@ Exempel:
 - använda webbläsare,
 - använda e-post,
 - förstå säkerhet.
+
+## Kursens omfattning
+
+Den publicerade kursen innehåller nu **120 lektioner** fördelade över bland annat:
+
+- datorgrunder,
+- mus och tangentbord,
+- Windows,
+- filer och mappar,
+- program,
+- internet och webbläsare,
+- e-post och säkerhet,
+- Vardagsdatorn,
+- Enheter & anslutningar,
+- När något krånglar,
+- självständighetsprov.
+
+Varje lektion ska förklara:
+- vad saken är,
+- hur användaren känner igen den,
+- vad den används till,
+- ett konkret exempel,
+- vanligt användande i vardagen,
+- vanliga nybörjarmisstag.
+
+### Vardagsmoment
+
+Utbyggnaden tränar även sådant som ofta saknas i enklare datorkurser:
+
+- markera, kopiera och klistra text,
+- ångra/gör om,
+- PDF,
+- filändelser,
+- skärmdump,
+- ZIP,
+- installation/avinstallation,
+- utskrift till PDF,
+- molnlagring,
+- USB,
+- Wi‑Fi,
+- Bluetooth,
+- ljud, mikrofon och kamera,
+- batteri och externa skärmar,
+- felmeddelanden,
+- omstart/uppdatering,
+- hängt program,
+- lagring och backup.
 
 ## Grundprincip
 
@@ -75,18 +122,20 @@ Kod ska följa dokumentationen. Om kod och dokumentation skiljer sig ska skillna
 1. rättas i koden, eller
 2. dokumenteras som ett medvetet designbeslut.
 
-## Aktuell utvecklingsordning
-Första utvecklingsmålet är **Fake Windows v0.1 – The Desktop**.
+## Aktuell status
 
-Utbildningsmotorn byggs ovanpå simulatorn först när desktop, taskbar, Start-menyn och Window Manager är verifierade.
+Fake Windows, Lesson Engine och den ursprungliga 81-lektionskursen är manuellt godkända.
+
+Fas 12 – **Vardagsdatorn och djupare förståelse** är implementerad och utökar kursen till 120 lektioner. Den väntar på full manuell acceptans i den publicerade GitHub Pages-versionen.
 
 Se:
-- `docs/25-FAKE-WINDOWS-V0.1-SPEC.md`
-- `docs/26-FAKE-WINDOWS-V0.1-IMPLEMENTATION-PLAN.md`
+- `docs/13-ROADMAP.md`
+- `docs/20-BACKLOG.md`
+- `docs/34-EVERYDAY-COMPUTER-ACCEPTANCE.md`
 
 ## Kör Fake Windows lokalt
 
-Projektet använder ES modules och bör köras via en lokal webbserver.
+Projektet är en statisk webbapp och bör köras via en lokal webbserver vid lokal utveckling.
 
 ```bash
 python -m http.server 8080
