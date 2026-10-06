@@ -285,8 +285,8 @@
       "Förstå skillnaden mellan en fil på datorn och en fil som synkroniseras till molnet.",
       ["everyday.cloud"],
       "everyday-cloud-01",
-      "Markera rapport.docx och flytta den till den simulerade molnmappen.",
-      null,".everyday-lab",
+      "I Documents: markera rapport.docx och välj Klipp ut. Öppna OneDrive i vänsterspalten och välj Klistra in.",
+      ["rapport.docx ligger i Documents.","Markera filen och klicka Klipp ut.","Öppna OneDrive i Utforskarens vänsterspalt.","Klicka Klistra in.","Kontrollera att rapport.docx nu ligger i OneDrive."],".explorer-v2",
       detail(
         "Molnlagring betyder att filer lagras på en tjänsts servrar och kan synkroniseras mellan dina enheter.",
         "Tjänster som OneDrive och Google Drive visar ofta en molnsymbol och mappar som ser ut ungefär som vanliga mappar.",
