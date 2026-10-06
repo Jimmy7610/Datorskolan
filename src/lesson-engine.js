@@ -316,10 +316,15 @@
     var durationMs = Date.now() - this._active.startedAt;
 
     lesson.skills.forEach(function (skillId) {
+      var before = this._progress.skill(skillId);
       this._progress.recordSkillAttempt(skillId, {
         success: true,
         hintLevel: this._active.hintLevel
       });
+
+      if (before.status === "needs_review" && this._progress.recordRetentionSuccess) {
+        this._progress.recordRetentionSuccess(skillId);
+      }
     }, this);
 
     this._progress.recordEvent({
