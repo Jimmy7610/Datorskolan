@@ -363,19 +363,25 @@
 
     interactive(
       "everyday-019-pin-taskbar","everyday","Fäst program i aktivitetsfältet",
-      "Gör program du använder ofta lättare att hitta.",
+      "Gör program du använder ofta lättare att hitta på samma sätt som i Windows 11.",
       ["everyday.pin-taskbar"],
       "everyday-pin-taskbar-01",
-      "Fäst Kalkylatorn i aktivitetsfältet.",
-      null,".everyday-lab",
+      "Öppna Start. Högerklicka på Google Chrome och välj Fäst i aktivitetsfältet.",
+      [
+        "Öppna Start med Windows-symbolen nere i aktivitetsfältet.",
+        "Leta upp Google Chrome bland de fästa apparna.",
+        "Högerklicka på Google Chrome.",
+        "I snabbmenyn finns valet Fäst i aktivitetsfältet.",
+        "Start → högerklicka Google Chrome → Fäst i aktivitetsfältet."
+      ],".start",
       detail(
         "Att fästa ett program betyder att dess ikon ligger kvar i aktivitetsfältet även när programmet är stängt.",
-        "En fäst app visas som en permanent ikon i aktivitetsfältet.",
-        "Det ger snabb åtkomst till program du använder ofta.",
-        "Du kan fästa webbläsaren, Utforskaren eller Kalkylatorn.",
-        [],
-        ["Program du använder varje arbetsdag.","Snabb åtkomst utan att söka i Start."],
-        ["Att tro att en fäst app alltid körs.","Att fylla aktivitetsfältet med program du nästan aldrig använder."]
+        "I Windows 11 görs detta från appens snabbmeny, till exempel genom att högerklicka på appen i Start och välja Fäst i aktivitetsfältet.",
+        "Det ger snabb åtkomst till program du använder ofta utan att du måste söka efter dem varje gång.",
+        "Google Chrome kan ligga permanent bredvid Utforskaren i aktivitetsfältet även när Chrome är stängt.",
+        ["Öppna Start.","Högerklicka på Google Chrome.","Välj Fäst i aktivitetsfältet.","Kontrollera att Chrome-ikonen nu syns kvar i aktivitetsfältet."],
+        ["Fäst webbläsaren du använder varje dag.","Fäst ett arbetsprogram du ofta behöver."],
+        ["Att tro att en fäst app alltid är igång bara för att ikonen syns.","Att använda en särskild övningsknapp i stället för Windows riktiga högerklicksmeny."]
       )
     ),
 
