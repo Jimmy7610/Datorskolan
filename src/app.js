@@ -2056,6 +2056,67 @@
       progressTrack.appendChild(progressBar);
       el.learning.appendChild(progressTrack);
 
+      if (lesson.detail) {
+        var detailBox = document.createElement("details");
+        detailBox.className = "learning-detail";
+        detailBox.open = active.stepIndex === 0 || step.type === "instruction";
+
+        var detailSummary = document.createElement("summary");
+        detailSummary.innerHTML = "<span>💡</span><strong>Förstå först</strong><em></em>";
+        detailSummary.querySelector("em").textContent = detailBox.open ? "Dölj" : "Visa";
+        detailBox.appendChild(detailSummary);
+
+        detailBox.addEventListener("toggle", function () {
+          var label = detailSummary.querySelector("em");
+          if (label) label.textContent = detailBox.open ? "Dölj" : "Visa";
+        });
+
+        var detailContent = document.createElement("div");
+        detailContent.className = "learning-detail-content";
+
+        [
+          ["Vad är det?", lesson.detail.what],
+          ["Hur känner jag igen det?", lesson.detail.recognize],
+          ["Vad används det till?", lesson.detail.use],
+          ["Exempel", lesson.detail.example]
+        ].forEach(function (entry) {
+          if (!entry[1]) return;
+          var row = document.createElement("div");
+          row.className = "learning-detail-row";
+
+          var rowTitle = document.createElement("strong");
+          rowTitle.textContent = entry[0];
+
+          var rowText = document.createElement("p");
+          rowText.textContent = entry[1];
+
+          row.appendChild(rowTitle);
+          row.appendChild(rowText);
+          detailContent.appendChild(row);
+        });
+
+        if (Array.isArray(lesson.detail.steps) && lesson.detail.steps.length) {
+          var stepsBlock = document.createElement("div");
+          stepsBlock.className = "learning-detail-steps";
+
+          var stepsTitle = document.createElement("strong");
+          stepsTitle.textContent = "Så gör du";
+          stepsBlock.appendChild(stepsTitle);
+
+          var stepsList = document.createElement("ol");
+          lesson.detail.steps.forEach(function (item) {
+            var li = document.createElement("li");
+            li.textContent = item;
+            stepsList.appendChild(li);
+          });
+          stepsBlock.appendChild(stepsList);
+          detailContent.appendChild(stepsBlock);
+        }
+
+        detailBox.appendChild(detailContent);
+        el.learning.appendChild(detailBox);
+      }
+
       var card = document.createElement("section");
       card.className = "learning-step learning-step-" + step.type;
 
