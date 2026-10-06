@@ -17,12 +17,15 @@
     var scenarioEngine = new window.DatorskolanScenarioEngine(window.DatorskolanScenarios || []);
     var progressStore = new window.DatorskolanProgressStore(window.localStorage);
     var lessonEngine = new window.DatorskolanLessonEngine(window.DatorskolanLessons || [], progressStore);
+    var win11 = window.DatorskolanWindows11;
+
+    if (!win11) throw new Error("Windows 11 UI-lagret saknas");
 
     var state = {
       items: [
-        { id: "documents", label: "Documents", icon: "📁", x: 18, y: 18, appId: "explorer", folderId: "documents" },
-        { id: "pictures", label: "Pictures", icon: "🖼️", x: 18, y: 112, appId: "explorer", folderId: "pictures" },
-        { id: "recycle-bin", label: "Recycle Bin", icon: "🗑️", x: 18, y: 206, appId: "recycle-bin", folderId: "recycle-bin" }
+        { id: "documents", label: "Documents", iconKey: "folder-documents", x: 18, y: 18, appId: "explorer", folderId: "documents" },
+        { id: "pictures", label: "Pictures", iconKey: "pictures", x: 18, y: 112, appId: "explorer", folderId: "pictures" },
+        { id: "recycle-bin", label: "Papperskorgen", iconKey: "recycle", x: 18, y: 206, appId: "recycle-bin", folderId: "recycle-bin" }
       ],
       selected: null,
       startOpen: false,
@@ -66,6 +69,7 @@
       },
       browser: null,
       mail: null,
+      shell: win11.loadShellState(window.localStorage),
       mouseLab: {
         mode: "move",
         distance: 0,
@@ -106,9 +110,55 @@
     }
 
     function iconForNode(node) {
-      if (node.type === "folder") return "📁";
-      if (node.fileType === "image") return "🖼️";
-      return "📄";
+      if (node.type === "folder") return win11.icon("folder", 42);
+      if (node.fileType === "image") return win11.icon("image-file", 42);
+      if (/\.pdf$/i.test(node.name || "")) return win11.icon("pdf", 42);
+      if (/\.zip$/i.test(node.name || "")) return win11.icon("zip", 42);
+      return win11.icon("text-file", 42);
+    }
+
+    function saveShellState() {
+      state.shell = win11.saveShellState(state.shell, window.localStorage);
+    }
+
+    function isPinnedToTaskbar(appId) {
+      return state.shell.pinnedTaskbar.indexOf(appId) >= 0;
+    }
+
+    function isPinnedToStart(appId) {
+      return state.shell.pinnedStart.indexOf(appId) >= 0;
+    }
+
+    function pinToTaskbar(appId) {
+      if (!apps[appId] || isPinnedToTaskbar(appId)) return;
+      state.shell.pinnedTaskbar.push(appId);
+      saveShellState();
+      emit("shell.taskbarPinned", { appId: appId });
+      render();
+    }
+
+    function unpinFromTaskbar(appId) {
+      if (!apps[appId] || !isPinnedToTaskbar(appId)) return;
+      state.shell.pinnedTaskbar = state.shell.pinnedTaskbar.filter(function (id) { return id !== appId; });
+      saveShellState();
+      emit("shell.taskbarUnpinned", { appId: appId });
+      render();
+    }
+
+    function pinToStart(appId) {
+      if (!apps[appId] || isPinnedToStart(appId)) return;
+      state.shell.pinnedStart.push(appId);
+      saveShellState();
+      emit("shell.startPinned", { appId: appId });
+      render();
+    }
+
+    function unpinFromStart(appId) {
+      if (!apps[appId] || !isPinnedToStart(appId)) return;
+      state.shell.pinnedStart = state.shell.pinnedStart.filter(function (id) { return id !== appId; });
+      saveShellState();
+      emit("shell.startUnpinned", { appId: appId });
+      render();
     }
 
     function showTextDialog(title, value, onConfirm) {
@@ -603,6 +653,14 @@
       if (start.everydayMode) {
         state.everydayLab = { mode: start.everydayMode, completed: false, flags: {} };
       }
+      if (Array.isArray(start.pinnedTaskbar)) {
+        state.shell.pinnedTaskbar = start.pinnedTaskbar.slice();
+        saveShellState();
+      }
+      if (Array.isArray(start.pinnedStart)) {
+        state.shell.pinnedStart = start.pinnedStart.slice();
+        saveShellState();
+      }
       if (start.browserReset) state.browser = null;
       if (start.mailReset) state.mail = null;
     }
@@ -958,16 +1016,18 @@
 
     var apps = {
       explorer: {
-        title: "File Explorer",
-        icon: "📁",
+        title: "Utforskaren",
+        iconKey: "explorer",
+        icon: win11.icon("explorer", 18),
         w: 820,
         h: 520,
         render: renderExplorer
       },
 
       calculator: {
-        title: "Calculator",
-        icon: "🧮",
+        title: "Kalkylator",
+        iconKey: "calculator",
+        icon: win11.icon("calculator", 18),
         w: 360,
         h: 500,
         render: function () {
@@ -1000,8 +1060,9 @@
       },
 
       notepad: {
-        title: "Notepad",
-        icon: "📝",
+        title: "Anteckningar",
+        iconKey: "notepad",
+        icon: win11.icon("notepad", 18),
         w: 660,
         h: 460,
         render: function () {
@@ -1052,8 +1113,9 @@
       },
 
       photos: {
-        title: "Photos",
-        icon: "🖼️",
+        title: "Foton",
+        iconKey: "photos",
+        icon: win11.icon("photos", 18),
         w: 680,
         h: 460,
         render: function () {
@@ -1112,7 +1174,8 @@
 
       "everyday-lab": {
         title: "Vardagsdatorn",
-        icon: "🧰",
+        iconKey: "settings",
+        icon: win11.icon("settings", 18),
         w: 820,
         h: 600,
         render: function () {
@@ -1122,7 +1185,8 @@
 
       "keyboard-lab": {
         title: "Keyboard Lab",
-        icon: "⌨️",
+        iconKey: "notepad",
+        icon: win11.icon("notepad", 18),
         w: 760,
         h: 560,
         render: function () {
@@ -1131,18 +1195,20 @@
       },
 
       browser: {
-        title: "Webbläsare",
-        icon: "🌐",
-        w: 900,
-        h: 620,
+        title: "Google Chrome",
+        iconKey: "chrome",
+        icon: win11.icon("chrome", 18),
+        w: 960,
+        h: 650,
         render: function () {
-          return window.DatorskolanAdvancedApps.renderBrowser({ state: state, emit: emit, vfs: vfs });
+          return window.DatorskolanChromeApp.render({ state: state, emit: emit, vfs: vfs });
         }
       },
 
       mail: {
         title: "E-post",
-        icon: "✉️",
+        iconKey: "mail",
+        icon: win11.icon("mail", 18),
         w: 900,
         h: 620,
         render: function () {
@@ -1159,8 +1225,9 @@
       },
 
       "recycle-bin": {
-        title: "Recycle Bin",
-        icon: "🗑️",
+        title: "Papperskorgen",
+        iconKey: "recycle",
+        icon: win11.icon("recycle", 18),
         w: 760,
         h: 470,
         render: function () {
@@ -1371,7 +1438,7 @@
         b.style.left = item.x + "px";
         b.style.top = item.y + "px";
         b.innerHTML =
-          '<span class="icon">' + item.icon + '</span>' +
+          '<span class="icon">' + win11.icon(item.iconKey || "folder", 46) + '</span>' +
           '<span class="label">' + item.label + '</span>';
 
         var drag = null;
@@ -1488,7 +1555,7 @@
           var titlebar = document.createElement("div");
           titlebar.className = "titlebar";
           titlebar.innerHTML =
-            '<div class="title">' + app.icon + " " + w.title + '</div>' +
+            '<div class="title"><span class="window-app-icon">' + win11.icon(app.iconKey || "settings", 17) + '</span><span>' + w.title + '</span></div>' +
             '<div class="controls">' +
               '<button class="ctrl min" aria-label="Minimera">—</button>' +
               '<button class="ctrl max" aria-label="' +
@@ -1626,55 +1693,50 @@
     function renderTaskbar() {
       el.taskbar.replaceChildren();
 
+      var center = document.createElement("div");
+      center.className = "taskbar-center";
+
       var start = document.createElement("button");
       start.type = "button";
-      start.className = "tb";
+      start.className = "tb start-button" + (state.startOpen ? " active" : "");
       start.setAttribute("aria-label", "Start");
-      start.textContent = "⊞";
+      start.title = "Start";
+      start.innerHTML = win11.icon("start", 24);
       start.addEventListener("click", function (e) {
         e.stopPropagation();
         setStart(!state.startOpen);
       });
-
-      el.taskbar.appendChild(start);
+      center.appendChild(start);
 
       var learningButton = document.createElement("button");
       learningButton.type = "button";
       learningButton.className = "tb" + (lessonEngine.active() ? " running" : "");
       learningButton.title = "Datorskolan";
       learningButton.setAttribute("aria-label", "Datorskolan");
-      learningButton.textContent = "🎓";
+      learningButton.innerHTML = win11.icon("school", 25);
       learningButton.addEventListener("click", function (e) {
         e.stopPropagation();
-        if (lessonEngine.active()) {
-          state.learningPanelOpen = true;
-        } else {
-          state.learningPanelOpen = !state.learningPanelOpen;
-        }
+        if (lessonEngine.active()) state.learningPanelOpen = true;
+        else state.learningPanelOpen = !state.learningPanelOpen;
         renderLearningPanel();
       });
-      el.taskbar.appendChild(learningButton);
+      center.appendChild(learningButton);
 
       var scenariosButton = document.createElement("button");
       scenariosButton.type = "button";
       scenariosButton.className = "tb" + (scenarioEngine.active() ? " running" : "");
       scenariosButton.title = "Scenarier";
       scenariosButton.setAttribute("aria-label", "Scenarier");
-      scenariosButton.textContent = "🧪";
+      scenariosButton.innerHTML = win11.icon("flask", 24);
       scenariosButton.addEventListener("click", function (e) {
         e.stopPropagation();
-
-        if (scenarioEngine.active()) {
-          state.scenarioPanelOpen = true;
-        } else {
-          state.scenarioPanelOpen = !state.scenarioPanelOpen;
-        }
-
+        if (scenarioEngine.active()) state.scenarioPanelOpen = true;
+        else state.scenarioPanelOpen = !state.scenarioPanelOpen;
         renderScenarioPanel();
       });
-      el.taskbar.appendChild(scenariosButton);
+      center.appendChild(scenariosButton);
 
-      var ids = ["explorer", "calculator"];
+      var ids = state.shell.pinnedTaskbar.slice();
       state.windows.forEach(function (w) {
         if (ids.indexOf(w.appId) === -1) ids.push(w.appId);
       });
@@ -1685,15 +1747,16 @@
 
         var w = state.windows.find(function (x) { return x.appId === id; });
         var b = document.createElement("button");
-
         b.type = "button";
         b.className =
-          "tb" +
+          "tb taskbar-app" +
           (w ? " running" : "") +
-          (w && w.active ? " active" : "");
-
+          (w && w.active ? " active" : "") +
+          (isPinnedToTaskbar(id) ? " pinned" : "");
+        b.dataset.appId = id;
         b.title = app.title;
-        b.textContent = app.icon;
+        b.setAttribute("aria-label", app.title);
+        b.innerHTML = win11.icon(app.iconKey || "settings", 26);
 
         b.addEventListener("click", function () {
           if (!w) openApp(id);
@@ -1702,82 +1765,100 @@
           else focusWindow(w.id);
         });
 
-        el.taskbar.appendChild(b);
+        b.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openContext("taskbar-app", e.clientX, e.clientY, id);
+        });
+
+        center.appendChild(b);
       });
 
-      var spacer = document.createElement("div");
-      spacer.className = "spacer";
-
-      var clock = document.createElement("div");
-      clock.className = "clock";
-
-      var now = new Date();
-      clock.innerHTML =
-        "<div>" +
-          now.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" }) +
-        "</div>" +
-        "<div>" +
-          now.toLocaleDateString("sv-SE") +
-        "</div>";
+      var right = document.createElement("div");
+      right.className = "taskbar-right";
 
       var homeButton = document.createElement("button");
       homeButton.type = "button";
       homeButton.className = "tb product-home-taskbar";
       homeButton.title = "Till Datorskolans startsida";
       homeButton.setAttribute("aria-label", "Till Datorskolans startsida");
-      homeButton.textContent = "⌂";
+      homeButton.innerHTML = win11.icon("home", 20);
       homeButton.addEventListener("click", function (e) {
         e.stopPropagation();
-        if (
-          window.DatorskolanProductShell &&
-          typeof window.DatorskolanProductShell.showLanding === "function"
-        ) {
+        if (window.DatorskolanProductShell && typeof window.DatorskolanProductShell.showLanding === "function") {
           window.DatorskolanProductShell.showLanding();
         }
       });
 
-      el.taskbar.appendChild(spacer);
-      el.taskbar.appendChild(homeButton);
-      el.taskbar.appendChild(clock);
-    }
+      var clock = document.createElement("div");
+      clock.className = "clock";
+      var now = new Date();
+      clock.innerHTML =
+        "<div>" + now.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" }) + "</div>" +
+        "<div>" + now.toLocaleDateString("sv-SE") + "</div>";
 
+      right.appendChild(homeButton);
+      right.appendChild(clock);
+
+      el.taskbar.appendChild(center);
+      el.taskbar.appendChild(right);
+    }
     function renderStart() {
       el.start.hidden = !state.startOpen;
       el.start.replaceChildren();
-
       if (!state.startOpen) return;
 
-      var h = document.createElement("h2");
-      h.textContent = "Start";
+      var searchWrap = document.createElement("div");
+      searchWrap.className = "win11-start-search";
+      searchWrap.innerHTML = '<span class="search-glyph">⌕</span>';
 
       var search = document.createElement("input");
       search.type = "search";
       search.className = "start-search";
-      search.placeholder = "Sök efter program";
+      search.placeholder = "Skriv här för att söka";
       search.setAttribute("aria-label", "Sök efter program");
+      searchWrap.appendChild(search);
+
+      var header = document.createElement("div");
+      header.className = "start-section-head";
+      header.innerHTML = "<strong>Fäst</strong><span>Alla appar ›</span>";
 
       var grid = document.createElement("div");
-      grid.className = "apps";
+      grid.className = "apps win11-pinned-apps";
 
-      var startApps = ["explorer", "calculator", "notepad", "browser", "mail"];
+      function visibleAppIds(query) {
+        var all = ["explorer","browser","calculator","notepad","mail","photos"];
+        var normalized = String(query || "").trim().toLocaleLowerCase("sv");
+        if (!normalized) return state.shell.pinnedStart.filter(function (id) { return apps[id]; });
+
+        return all.filter(function (id) {
+          var app = apps[id];
+          return app && app.title.toLocaleLowerCase("sv").indexOf(normalized) >= 0;
+        });
+      }
 
       function drawApps(query) {
         grid.replaceChildren();
-        var normalized = String(query || "").trim().toLocaleLowerCase("sv");
 
-        startApps.forEach(function (id) {
+        visibleAppIds(query).forEach(function (id) {
           var app = apps[id];
-          if (normalized && app.title.toLocaleLowerCase("sv").indexOf(normalized) < 0) return;
-
           var b = document.createElement("button");
           b.type = "button";
           b.className = "start-app";
+          b.dataset.appId = id;
           b.innerHTML =
-            '<span style="font-size:30px">' + app.icon + '</span>' +
-            '<span>' + app.title + "</span>";
+            '<span class="start-app-icon">' + win11.icon(app.iconKey || "settings", 32) + '</span>' +
+            '<span class="start-app-name"></span>';
+          b.querySelector(".start-app-name").textContent = app.title;
 
           b.addEventListener("click", function () {
             openApp(id);
+          });
+
+          b.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openContext("start-app", e.clientX, e.clientY, id);
           });
 
           grid.appendChild(b);
@@ -1786,7 +1867,7 @@
         if (!grid.children.length) {
           var empty = document.createElement("div");
           empty.className = "start-search-empty";
-          empty.textContent = "Inga program hittades.";
+          empty.textContent = "Inga appar hittades.";
           grid.appendChild(empty);
         }
       }
@@ -1799,12 +1880,24 @@
         drawApps(search.value);
       });
 
-      el.start.appendChild(h);
-      el.start.appendChild(search);
+      var recommended = document.createElement("div");
+      recommended.className = "start-recommended";
+      recommended.innerHTML =
+        "<div class='start-section-head'><strong>Rekommenderat</strong><span>Mer ›</span></div>" +
+        "<div class='recommended-row'><span class='recommended-icon'></span><div><strong>Kom igång</strong><small>Datorskolan – trygg Windows-träning</small></div></div>";
+      recommended.querySelector(".recommended-icon").innerHTML = win11.icon("school", 28);
+
+      var footer = document.createElement("div");
+      footer.className = "start-footer";
+      footer.innerHTML = "<div class='start-user'><span>J</span><strong>Jimmy</strong></div><button type='button' class='start-power' aria-label='Ström'>⏻</button>";
+
+      el.start.appendChild(searchWrap);
+      el.start.appendChild(header);
       el.start.appendChild(grid);
+      el.start.appendChild(recommended);
+      el.start.appendChild(footer);
       drawApps("");
     }
-
     function moduleLabel(moduleId) {
       var labels = {
         files: "Filer och mappar",
@@ -2403,25 +2496,46 @@
       if (!state.context) return;
 
       var menu = document.createElement("div");
-      menu.className = "context";
+      menu.className = "context win11-context";
 
-      var entries =
-        state.context.kind === "item"
-          ? [
-              ["open", "Open", false],
-              ["sep"],
-              ["rename", "Rename", true],
-              ["delete", "Delete", true],
-              ["sep"],
-              ["properties", "Properties", true]
-            ]
-          : [
-              ["view", "View", true],
-              ["sort", "Sort by", true],
-              ["refresh", "Refresh", false],
-              ["sep"],
-              ["new", "New", true]
-            ];
+      var kind = state.context.kind;
+      var appId = state.context.itemId;
+      var entries;
+
+      if (kind === "taskbar-app") {
+        entries = [
+          ["open-app", state.windows.some(function (w) { return w.appId === appId; }) ? "Visa fönster" : "Öppna", false],
+          ["sep"],
+          [isPinnedToTaskbar(appId) ? "unpin-taskbar" : "pin-taskbar",
+            isPinnedToTaskbar(appId) ? "Lossa från aktivitetsfältet" : "Fäst i aktivitetsfältet", false]
+        ];
+      } else if (kind === "start-app") {
+        entries = [
+          ["open-app","Öppna",false],
+          ["sep"],
+          [isPinnedToTaskbar(appId) ? "unpin-taskbar" : "pin-taskbar",
+            isPinnedToTaskbar(appId) ? "Lossa från aktivitetsfältet" : "Fäst i aktivitetsfältet",false],
+          [isPinnedToStart(appId) ? "unpin-start" : "pin-start",
+            isPinnedToStart(appId) ? "Lossa från Start" : "Fäst på Start",false]
+        ];
+      } else if (kind === "item") {
+        entries = [
+          ["open","Öppna",false],
+          ["sep"],
+          ["rename","Byt namn",true],
+          ["delete","Ta bort",true],
+          ["sep"],
+          ["properties","Egenskaper",true]
+        ];
+      } else {
+        entries = [
+          ["view","Visa",true],
+          ["sort","Sortera efter",true],
+          ["refresh","Uppdatera",false],
+          ["sep"],
+          ["new","Nytt",true]
+        ];
+      }
 
       entries.forEach(function (entry) {
         if (entry[0] === "sep") {
@@ -2437,11 +2551,16 @@
         b.disabled = entry[2];
 
         b.addEventListener("click", function () {
-          if (entry[0] === "open" && state.context.itemId) {
-            var item = state.items.find(function (x) {
-              return x.id === state.context.itemId;
-            });
+          var action = entry[0];
 
+          if (action === "open-app" && appId) openApp(appId);
+          if (action === "pin-taskbar" && appId) pinToTaskbar(appId);
+          if (action === "unpin-taskbar" && appId) unpinFromTaskbar(appId);
+          if (action === "pin-start" && appId) pinToStart(appId);
+          if (action === "unpin-start" && appId) unpinFromStart(appId);
+
+          if (action === "open" && state.context.itemId) {
+            var item = state.items.find(function (x) { return x.id === state.context.itemId; });
             if (item) {
               if (item.folderId) {
                 state.explorer.folderId = item.folderId;
@@ -2451,6 +2570,7 @@
             }
           }
 
+          if (action === "refresh") emit("desktop.refreshed", {});
           closeContext();
         });
 
@@ -2462,13 +2582,9 @@
       var mr = menu.getBoundingClientRect();
       var vr = el.sim.getBoundingClientRect();
 
-      menu.style.left =
-        Math.max(4, Math.min(state.context.x, vr.width - mr.width - 6)) + "px";
-
-      menu.style.top =
-        Math.max(4, Math.min(state.context.y, vr.height - mr.height - 6)) + "px";
+      menu.style.left = Math.max(4, Math.min(state.context.x, vr.width - mr.width - 6)) + "px";
+      menu.style.top = Math.max(4, Math.min(state.context.y, vr.height - mr.height - 6)) + "px";
     }
-
     function renderDialog() {
       el.dialog.replaceChildren();
       if (!state.dialog) return;
