@@ -162,6 +162,28 @@
         className);
     }
 
+    if (name === "wifi") {
+      return svg(size,
+        '<path d="M8 20c9-8 23-8 32 0M13 26c6-6 16-6 22 0M19 32c3-3 7-3 10 0" fill="none" stroke="#283746" stroke-width="3" stroke-linecap="round"/>' +
+        '<circle cx="24" cy="38" r="2.8" fill="#283746"/>',
+        className);
+    }
+
+    if (name === "speaker") {
+      return svg(size,
+        '<path d="M9 21h8l9-8v22l-9-8H9V21z" fill="#283746"/>' +
+        '<path d="M31 19c3 3 3 7 0 10M35 15c6 6 6 14 0 20" fill="none" stroke="#283746" stroke-width="2.5" stroke-linecap="round"/>',
+        className);
+    }
+
+    if (name === "battery") {
+      return svg(size,
+        '<rect x="7" y="15" width="31" height="18" rx="3" fill="none" stroke="#283746" stroke-width="2.4"/>' +
+        '<rect x="39" y="20" width="3" height="8" rx="1" fill="#283746"/>' +
+        '<rect x="10" y="18" width="22" height="12" rx="1.5" fill="#55a66f"/>',
+        className);
+    }
+
     if (name === "download") {
       return svg(size,
         '<path d="M24 6v23" stroke="#3977c2" stroke-width="4" stroke-linecap="round"/>' +
