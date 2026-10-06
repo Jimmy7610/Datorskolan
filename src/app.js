@@ -72,6 +72,8 @@
       mail: null,
       settings: null,
       pdfViewer: null,
+      installer: null,
+      software: { exerciseProgramInstalled: false },
       shell: win11.loadShellState(window.localStorage),
       mouseLab: {
         mode: "move",
@@ -116,6 +118,7 @@
       if (node.type === "folder") return win11.icon("folder", 42);
       if (node.fileType === "image") return win11.icon("image-file", 42);
       if (/\.pdf$/i.test(node.name || "")) return win11.icon("pdf", 42);
+      if (/\.exe$/i.test(node.name || "") || node.fileType === "installer") return win11.icon("settings", 42);
       if (/\.zip$/i.test(node.name || "")) return win11.icon("zip", 42);
       return win11.icon("text-file", 42);
     }
@@ -294,6 +297,8 @@
       state.mail = null;
       state.settings = null;
       state.pdfViewer = null;
+      state.installer = null;
+      state.software = { exerciseProgramInstalled: false };
 
       state.mouseLab.mode = "move";
       state.mouseLab.distance = 0;
@@ -1223,6 +1228,17 @@
         h: 560,
         render: function () {
           return window.DatorskolanAdvancedApps.renderKeyboard({ state: state, emit: emit, vfs: vfs });
+        }
+      },
+
+      installer: {
+        title: "Installera Övningsprogram",
+        iconKey: "settings",
+        icon: win11.icon("settings", 18),
+        w: 620,
+        h: 470,
+        render: function () {
+          return window.DatorskolanInstallerApp.render({ state: state, emit: emit, vfs: vfs });
         }
       },
 
@@ -2779,6 +2795,12 @@
                   state.pdfViewer.fileName = node.name;
                   state.pdfViewer.zoom = state.pdfViewer.zoom || 100;
                   openApp("pdf");
+                } else if (node.fileType === "installer" || /\.exe$/i.test(node.name || "")) {
+                  state.installer = { step: "welcome", accepted: false, installed: false };
+                  openApp("installer");
+                } else if (node.fileType === "installer" || /\.exe$/i.test(node.name || "")) {
+                  state.installer = { step: "welcome", accepted: false, installed: false };
+                  openApp("installer");
                 } else if (node.fileType === "pdf" || /\.pdf$/i.test(node.name || "")) {
                   state.pdfViewer = state.pdfViewer || {};
                   state.pdfViewer.fileName = node.name;
