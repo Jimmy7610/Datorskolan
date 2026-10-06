@@ -90,14 +90,14 @@
     basic("files-008-locations","files","Documents, Downloads och Pictures","Lär dig de vanligaste mapparna.","files.locations","Documents används ofta för dokument, Downloads för sådant du hämtar och Pictures för bilder."),
     interactive("files-009-final","files","Filer – slutuppdrag","Kombinera skapa, byta namn, flytta, radera och återställa.",["files.create-folder","files.rename","files.move","files.delete","files.recycle-restore"],"files-final-01","Gör fem saker: skapa en ny mapp, byt namn på Projekt.txt, flytta filen till en annan mapp, radera filen och återställ den från Papperskorgen.",["Börja med att skapa en ny mapp i Documents.","Byt sedan namn på Projekt.txt.","Flytta den omdöpta filen till en annan mapp.","Radera filen och öppna sedan Papperskorgen.","Skapa mapp → byt namn på Projekt.txt → flytta filen → radera → återställ."],".explorer-v2"),
 
-    interactive("internet-001-address","internet","Adressfält och webbadress","Skriv en webbadress i adressfältet.",["internet.address"],"internet-address-01","Skriv en adress och tryck Gå eller Enter.",null,".browser-address"),
-    interactive("internet-002-links","internet","Länkar","Öppna en länk på en webbsida.",["internet.link"],"internet-link-01","Klicka på en länk i webbläsaren.",null,".browser-page"),
-    interactive("internet-003-tabs","internet","Flikar","Öppna en ny flik.",["internet.tab"],"internet-tab-01","Öppna en ny flik med +.",null,".browser-tabs"),
-    interactive("internet-004-history","internet","Bakåt och framåt","Navigera i webbläsarens historik.",["internet.back","internet.forward"],"internet-history-01","Besök en sida och använd sedan Bakåt och Framåt.",null,".browser-bar"),
-    interactive("internet-005-download","internet","Nedladdning","Ladda ner en virtuell fil.",["internet.download"],"internet-download-01","Navigera till nedladdningssidan och ladda ner guide.txt.",null,".browser-page"),
-    interactive("internet-006-form","internet","Formulär","Fyll i text, checkbox och skicka.",["internet.form"],"internet-form-01","Öppna formuläret, fyll i namnet, kryssa i rutan och skicka.",null,".browser-page"),
-    interactive("internet-007-zoom","internet","Zoom","Gör webbsidan större eller mindre.",["internet.zoom"],"internet-zoom-01","Ändra webbläsarens zoom.",null,".browser-footer"),
-    interactive("internet-008-final","internet","Internet – slutuppdrag","Navigera, öppna flik, använda historik och ladda ner själv.",["internet.address","internet.link","internet.tab","internet.back","internet.forward","internet.download"],"internet-final-01","Gör följande i webbläsaren: använd adressfältet, öppna en länk, öppna en ny flik, använd Bakåt och Framåt och ladda ner guide.txt.",["Börja med adressfältet.","Öppna sedan en länk på sidan.","Öppna en ny flik med +.","Besök en sida och använd Bakåt och Framåt.","Avsluta genom att gå till nedladdningssidan och ladda ner guide.txt."],".fake-browser"),
+    interactive("internet-001-address","internet","Adressfält och webbadress","Skriv en webbadress i adressfältet.",["internet.address"],"internet-address-01","Skriv en adress och tryck Gå eller Enter.",null,".chrome-omnibox"),
+    interactive("internet-002-links","internet","Länkar","Öppna en länk på en webbsida.",["internet.link"],"internet-link-01","Klicka på en länk i webbläsaren.",null,".chrome-page"),
+    interactive("internet-003-tabs","internet","Flikar","Öppna en ny flik.",["internet.tab"],"internet-tab-01","Öppna en ny flik med +.",null,".chrome-tabs-row"),
+    interactive("internet-004-history","internet","Bakåt och framåt","Navigera i webbläsarens historik.",["internet.back","internet.forward"],"internet-history-01","Besök en sida och använd sedan Bakåt och Framåt.",null,".chrome-toolbar"),
+    interactive("internet-005-download","internet","Nedladdning","Ladda ner en virtuell fil.",["internet.download"],"internet-download-01","Navigera till nedladdningssidan och ladda ner guide.txt.",null,".chrome-page"),
+    interactive("internet-006-form","internet","Formulär","Fyll i text, checkbox och skicka.",["internet.form"],"internet-form-01","Öppna formuläret, fyll i namnet, kryssa i rutan och skicka.",null,".chrome-page"),
+    interactive("internet-007-zoom","internet","Zoom","Gör webbsidan större eller mindre.",["internet.zoom"],"internet-zoom-01","Ändra webbläsarens zoom.",null,".chrome-statusbar"),
+    interactive("internet-008-final","internet","Internet – slutuppdrag","Navigera, öppna flik, använda historik och ladda ner själv.",["internet.address","internet.link","internet.tab","internet.back","internet.forward","internet.download"],"internet-final-01","Gör följande i webbläsaren: använd adressfältet, öppna en länk, öppna en ny flik, använd Bakåt och Framåt och ladda ner guide.txt.",["Börja med adressfältet.","Öppna sedan en länk på sidan.","Öppna en ny flik med +.","Besök en sida och använd Bakåt och Framåt.","Avsluta genom att gå till nedladdningssidan och ladda ner guide.txt."],".chrome-app"),
 
     interactive("mail-001-open","mail","Inkorgen","Öppna ett mejl i inkorgen.",["mail.open"],"mail-open-01","Öppna valfritt mejl.",null,".mail-inbox"),
     interactive("mail-002-reply","mail","Svara på mejl","Svara på ett meddelande.",["mail.reply"],"mail-reply-01","Öppna ett vanligt mejl, klicka Svara och skicka svaret.",null,".fake-mail"),
@@ -116,21 +116,21 @@
 
     interactive("files-010-search","files","Sök efter en fil","Använd sökfältet i Utforskaren.",["files.search"],"files-search-01","Skriv Hitta i sökfältet.",null,".explorer-search"),
 
-    interactive("internet-009-bookmark","internet","Bokmärken","Spara en sida så att den går att hitta igen.",["internet.bookmark"],"internet-bookmark-01","Klicka på stjärnan i adressraden.",null,".browser-bookmark"),
-    interactive("internet-010-cookie","internet","Cookies","Hantera en cookie-dialog på en webbsida.",["internet.cookie"],"internet-cookie-01","Godkänn cookie-dialogen på startsidan.",null,".browser-cookie"),
-    interactive("internet-011-upload","internet","Ladda upp fil","Välj en virtuell fil i ett webbformulär.",["internet.upload"],"internet-upload-01","Gå till Formulär och välj en fil för uppladdning.",null,".browser-page"),
+    interactive("internet-009-bookmark","internet","Bokmärken","Spara en sida så att den går att hitta igen.",["internet.bookmark"],"internet-bookmark-01","Klicka på stjärnan i adressraden.",null,".chrome-bookmark"),
+    interactive("internet-010-cookie","internet","Cookies","Hantera en cookie-dialog på en webbsida.",["internet.cookie"],"internet-cookie-01","Godkänn cookie-dialogen på startsidan.",null,".chrome-cookie"),
+    interactive("internet-011-upload","internet","Ladda upp fil","Välj en virtuell fil i ett webbformulär.",["internet.upload"],"internet-upload-01","Gå till Formulär och välj en fil för uppladdning.",null,".chrome-page"),
 
     interactive("mail-007-forward","mail","Vidarebefordra mejl","Skicka ett befintligt meddelande vidare till en annan mottagare.",["mail.forward"],"mail-forward-01","Öppna ett mejl, välj Vidarebefordra, skriv en mottagare och skicka.",null,".fake-mail"),
 
     interactive("windows-011-search","windows","Sök efter program","Använd sökrutan i Start-menyn.",["windows.search"],"windows-search-01","Öppna Start och skriv Kalkylator i sökfältet.",null,".start-search"),
     interactive("files-011-drag","files","Dra fil mellan mappar","Flytta en fil genom att dra den till en mapp i sidofältet.",["files.drag-drop"],"files-drag-01","Dra Dra mig.txt till Downloads.",null,".explorer-v2"),
-    interactive("internet-012-refresh","internet","Uppdatera sida","Ladda om den aktuella webbsidan.",["internet.refresh"],"internet-refresh-01","Klicka på uppdateringsknappen ↻.",null,".browser-bar"),
-    interactive("internet-013-close-tab","internet","Stäng flik","Öppna en extra flik och stäng den igen.",["internet.close-tab"],"internet-close-tab-01","Öppna en ny flik med + och stäng den med ×.",null,".browser-tabs"),
+    interactive("internet-012-refresh","internet","Uppdatera sida","Ladda om den aktuella webbsidan.",["internet.refresh"],"internet-refresh-01","Klicka på uppdateringsknappen ↻.",null,".chrome-toolbar"),
+    interactive("internet-013-close-tab","internet","Stäng flik","Öppna en extra flik och stäng den igen.",["internet.close-tab"],"internet-close-tab-01","Öppna en ny flik med + och stäng den med ×.",null,".chrome-tabs-row"),
 
     interactive("windows-012-desktop","windows","Skrivbord och ikoner","Öppna något direkt från skrivbordet.",["windows.desktop-icon"],"windows-desktop-open-01","Dubbelklicka på Documents-ikonen.",null,".desktop"),
     basic("windows-013-taskbar","windows","Aktivitetsfält och klocka","Förstå aktivitetsfältet, öppna program och klockan.","windows.taskbar","Aktivitetsfältet visar Start, öppna och fästa program samt klockan. Ett program kan återställas därifrån efter att det minimerats."),
 
-    interactive("internet-014-search","internet","Sökmotor","Sök efter information med en sökruta.",["internet.search"],"internet-search-01","Skriv något i sökrutan på Övningswebben och sök.",null,".browser-search"),
+    interactive("internet-014-search","internet","Sökmotor","Sök efter information med en sökruta.",["internet.search"],"internet-search-01","Skriv något i sökrutan på Övningswebben och sök.",null,".chrome-search-box"),
 
     basic("security-004-mfa","security","Tvåstegsverifiering","Förstå varför en extra verifiering skyddar kontot.","security.mfa","Tvåstegsverifiering innebär att ett lösenord inte räcker ensamt. Du bekräftar även på ett annat sätt, till exempel med en kod eller en app."),
     basic("security-005-https","security","Webbadresser och HTTPS","Läs webbadressen innan du lämnar känslig information.","security.https","Kontrollera alltid vilken webbplats du faktiskt är på. HTTPS betyder att anslutningen är krypterad, men det betyder inte automatiskt att sidan är ärlig."),
