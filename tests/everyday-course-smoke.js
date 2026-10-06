@@ -87,11 +87,18 @@ function runtime(){
   },
   {
     id:"everyday-error-01",
-    events:[["everyday.errorRead.complete",{}]]
+    events:[
+      ["troubleshooting.errorOpened",{code:"FILE_IN_USE"}],
+      ["troubleshooting.errorHandled",{choice:"close",code:"FILE_IN_USE"}]
+    ]
   },
   {
     id:"everyday-recovery-01",
-    events:[["everyday.recovery.complete",{}]]
+    events:[
+      ["troubleshooting.waited",{appId:"trouble-demo"}],
+      ["troubleshooting.closedFrozen",{appId:"trouble-demo"}],
+      ["troubleshooting.restarted",{appId:"trouble-demo"}]
+    ]
   }
 ].forEach(function(sample){
   const engine=new window.DatorskolanScenarioEngine(scenarios);
