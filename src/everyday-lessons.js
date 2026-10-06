@@ -84,8 +84,8 @@
       "Rätta ett misstag utan att behöva börja om.",
       ["everyday.undo","everyday.redo"],
       "everyday-undo-redo-01",
-      "Skriv något, använd Ctrl+Z för att ångra och Ctrl+Y för att göra om.",
-      null,".everyday-lab",
+      "I Anteckningar: skriv en kort mening. Tryck Ctrl+Z för att ångra det du nyss skrev och Ctrl+Y för att göra om.",
+      ["Klicka i Anteckningars textyta.","Skriv några ord.","Håll Ctrl nere och tryck Z.","Kontrollera att den senaste ändringen ångras.","Håll Ctrl nere och tryck Y för att göra om."],".notepad-app",
       detail(
         "Ångra går tillbaka ett steg i det du nyss gjorde. Gör om återställer ett steg som du precis ångrade.",
         "Vanliga kortkommandon är Ctrl+Z för Ångra och Ctrl+Y för Gör om. Många program har också böjda pilknappar.",
@@ -303,8 +303,8 @@
       "Lär dig läsa dialogrutor innan du väljer.",
       ["everyday.dialogs"],
       "everyday-dialog-01",
-      "Läs dialogrutan och välj Spara.",
-      null,".everyday-lab",
+      "Skriv något i ett nytt Anteckningar-dokument och klicka sedan × för att stänga fönstret. Läs frågan som visas och välj Spara inte.",
+      ["Skriv några ord i Anteckningar så dokumentet blir osparat.","Klicka × högst upp till höger i Anteckningar-fönstret.","Läs hela dialogrutan innan du väljer.","Välj Spara inte i den här övningen.","Lägg märke till skillnaden mellan Spara, Spara inte och Avbryt."],".windows-confirm-dialog",
       detail(
         "En dialogruta är en liten ruta som stoppar upp arbetet och ber dig välja eller bekräfta något.",
         "Den har ofta en fråga och knappar som OK, Avbryt, Ja, Nej, Spara eller Spara inte.",
