@@ -71,6 +71,7 @@
       browser: null,
       mail: null,
       settings: null,
+      pdfViewer: null,
       shell: win11.loadShellState(window.localStorage),
       mouseLab: {
         mode: "move",
@@ -292,6 +293,7 @@
       state.browser = null;
       state.mail = null;
       state.settings = null;
+      state.pdfViewer = null;
 
       state.mouseLab.mode = "move";
       state.mouseLab.distance = 0;
@@ -1200,6 +1202,17 @@
         h: 560,
         render: function () {
           return window.DatorskolanAdvancedApps.renderKeyboard({ state: state, emit: emit, vfs: vfs });
+        }
+      },
+
+      pdf: {
+        title: "PDF",
+        iconKey: "pdf",
+        icon: win11.icon("pdf", 18),
+        w: 880,
+        h: 620,
+        render: function () {
+          return window.DatorskolanPdfApp.render({ state: state, emit: emit, vfs: vfs });
         }
       },
 
@@ -2716,6 +2729,16 @@
                   state.photoFileId = node.id;
                   state.photoZoom = 1;
                   openApp("photos");
+                } else if (node.fileType === "pdf" || /\.pdf$/i.test(node.name || "")) {
+                  state.pdfViewer = state.pdfViewer || {};
+                  state.pdfViewer.fileName = node.name;
+                  state.pdfViewer.zoom = state.pdfViewer.zoom || 100;
+                  openApp("pdf");
+                } else if (node.fileType === "pdf" || /\.pdf$/i.test(node.name || "")) {
+                  state.pdfViewer = state.pdfViewer || {};
+                  state.pdfViewer.fileName = node.name;
+                  state.pdfViewer.zoom = state.pdfViewer.zoom || 100;
+                  openApp("pdf");
                 }
               }
             }
