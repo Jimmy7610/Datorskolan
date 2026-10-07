@@ -154,20 +154,17 @@ body{
 .primary-cta,
 .compact-cta{
   border-color:rgba(198,162,74,.46);
-  background:
-    linear-gradient(180deg,rgba(194,184,168,.08),transparent),
-    linear-gradient(135deg,var(--arcane-violet),var(--arcane-red));
-  color:var(--arcane-parchment);
+  background:linear-gradient(135deg,var(--arcane-gold),var(--arcane-lilac));
+  color:var(--arcane-black);
   box-shadow:0 14px 32px rgba(106,90,138,.24),inset 0 1px rgba(194,184,168,.13);
 }
 
 .header-cta:hover,
 .primary-cta:hover,
 .compact-cta:hover{
-  background:
-    linear-gradient(180deg,rgba(194,184,168,.12),transparent),
-    linear-gradient(135deg,#6A5A8A,#7A2E3E);
-  border-color:var(--arcane-gold);
+  background:var(--arcane-gold);
+  border-color:var(--arcane-parchment);
+  color:var(--arcane-black);
 }
 
 .header-reset,
@@ -536,15 +533,16 @@ button.primary,
 .trouble-app button.primary,
 .browser-submit,
 .mail-compose-send{
-  border-color:var(--arcane-violet) !important;
-  background:var(--arcane-violet) !important;
-  color:var(--arcane-parchment) !important;
+  border-color:var(--arcane-gold) !important;
+  background:var(--arcane-gold) !important;
+  color:var(--arcane-black) !important;
 }
 
 button.primary:hover,
 .learning-primary:hover{
-  border-color:var(--arcane-gold) !important;
-  background:var(--arcane-red) !important;
+  border-color:var(--arcane-parchment) !important;
+  background:var(--arcane-lilac) !important;
+  color:var(--arcane-black) !important;
 }
 
 .invalid,
