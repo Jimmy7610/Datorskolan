@@ -11,7 +11,8 @@
   --lp-violet:#7667ff;
   --lp-green:#42d79a;
   --lp-header:72px;
-  --lp-status:28px;
+  --lp-status:52px;
+  --lp-gutter:32px;
 }
 
 body.landing-mode{
@@ -83,9 +84,10 @@ body.school-mode{overflow:hidden}
 .landing-header{
   position:relative;
   z-index:30;
-  width:min(1440px,calc(100% - 32px));
+  width:min(1440px,calc(100% - (var(--lp-gutter) * 2)));
   height:var(--lp-header);
   margin:0 auto;
+  padding:0 6px;
   display:grid;
   grid-template-columns:minmax(190px,auto) 1fr auto;
   align-items:center;
@@ -238,7 +240,7 @@ body.school-mode{overflow:hidden}
 
 .landing-stage{
   position:relative;
-  width:min(1440px,calc(100% - 32px));
+  width:min(1440px,calc(100% - (var(--lp-gutter) * 2)));
   height:calc(100dvh - var(--lp-header) - var(--lp-status));
   margin:0 auto;
   overflow:hidden;
@@ -1148,15 +1150,18 @@ body.school-mode{overflow:hidden}
 
 .landing-statusbar{
   position:absolute;
-  left:16px;
-  right:16px;
-  bottom:0;
+  left:var(--lp-gutter);
+  right:var(--lp-gutter);
+  bottom:12px;
   z-index:25;
-  height:var(--lp-status);
+  height:32px;
   display:flex;
   align-items:center;
   gap:13px;
-  border-top:1px solid rgba(148,163,184,.08);
+  padding:0 12px;
+  border:1px solid rgba(148,163,184,.12);
+  border-radius:10px;
+  background:rgba(255,255,255,.018);
   color:#61738b;
   font-size:7px;
   letter-spacing:.02em;
@@ -1268,7 +1273,7 @@ body.reset-dialog-open{overflow:hidden!important}
 .reset-confirm:hover{background:#dc2626}
 
 @media(max-height:800px){
-  :root{--lp-header:64px;--lp-status:24px}
+  :root{--lp-header:64px;--lp-status:44px}
 
   .brand-mark{width:34px;height:34px;flex-basis:34px}
   .landing-tabs button{min-height:31px;padding-inline:11px}
@@ -1324,10 +1329,10 @@ body.reset-dialog-open{overflow:hidden!important}
 }
 
 @media(max-width:900px){
-  :root{--lp-header:105px;--lp-status:24px}
+  :root{--lp-header:105px;--lp-status:42px}
 
   .landing-header{
-    width:min(100% - 20px,1440px);
+    width:min(100% - 28px,1440px);
     grid-template-columns:1fr auto;
     grid-template-rows:55px 50px;
     grid-template-areas:
@@ -1353,7 +1358,7 @@ body.reset-dialog-open{overflow:hidden!important}
   }
 
   .landing-stage{
-    width:min(100% - 20px,1440px);
+    width:min(100% - 28px,1440px);
   }
 
   .overview-panel{
@@ -1692,9 +1697,12 @@ body.reset-dialog-open{overflow:hidden!important}
   }
 
   .landing-statusbar{
-    left:8px;
-    right:8px;
+    left:12px;
+    right:12px;
+    bottom:8px;
+    height:26px;
     gap:8px;
+    padding-inline:9px;
     font-size:6px;
   }
 
@@ -1705,7 +1713,7 @@ body.reset-dialog-open{overflow:hidden!important}
 }
 
 @media(max-height:560px){
-  :root{--lp-header:58px;--lp-status:20px}
+  :root{--lp-header:58px;--lp-status:34px}
 
   .landing-header{
     grid-template-rows:none;
