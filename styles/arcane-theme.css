@@ -716,12 +716,20 @@ button.primary:hover,
   color:var(--arcane-lilac) !important;
 }
 
-.dialog-layer,
+.dialog-overlay,
 .print-overlay,
 .reset-dialog-backdrop,
 .trouble-modal-layer{
   background:rgba(30,30,30,.64) !important;
   backdrop-filter:blur(10px);
+}
+
+/* The dialog host is always mounted over FakeWin. It must stay fully transparent;
+   otherwise backdrop-filter blurs the whole simulator even when no dialog is open. */
+.dialog-layer{
+  background:transparent !important;
+  backdrop-filter:none !important;
+  filter:none !important;
 }
 
 .reset-dialog-warning{
@@ -1205,3 +1213,21 @@ option{
   outline-offset:3px !important;
   box-shadow:0 0 0 2px var(--theme-bg) !important;
 }
+
+/* ---------- Rendering guard ----------
+   The normal school view must always remain crisp. Blur is reserved for an
+   actually visible modal overlay, never for persistent host layers. */
+body.school-mode #app,
+body.school-mode .sim,
+body.school-mode .workspace,
+body.school-mode .desktop,
+body.school-mode .learning-panel,
+body.school-mode .scenario-panel{
+  filter:none !important;
+}
+
+body.school-mode .dialog-layer:empty{
+  background:transparent !important;
+  backdrop-filter:none !important;
+}
+
