@@ -747,3 +747,461 @@ button.primary:hover,
     forced-color-adjust:auto;
   }
 }
+
+
+/* ---------- App-wide palette + typography enforcement ----------
+   Keep every Datorskolan surface on the project palette and Cooper Hewitt.
+   This layer intentionally comes last so feature-specific CSS cannot fall
+   back to the old blue/white design as new lessons and apps are opened.
+*/
+
+:root{
+  --theme-bg:var(--arcane-black);
+  --theme-panel:#262329;
+  --theme-panel-2:#312b36;
+  --theme-surface:var(--arcane-parchment);
+  --theme-surface-soft:#d0c7b9;
+  --theme-ink:var(--arcane-black);
+  --theme-text:var(--arcane-parchment);
+  --theme-muted:var(--arcane-lilac);
+  --theme-accent:var(--arcane-violet);
+  --theme-accent-soft:rgba(106,90,138,.18);
+  --theme-highlight:var(--arcane-gold);
+  --theme-danger:var(--arcane-red);
+  --theme-line:rgba(168,154,194,.34);
+}
+
+html,
+body,
+body *,
+body *::before,
+body *::after,
+button,
+input,
+select,
+textarea,
+option{
+  font-family:"Cooper Hewitt","Segoe UI",system-ui,sans-serif !important;
+}
+
+/* Course dashboard / learning navigation */
+.learning-module-card,
+.learning-detail,
+.learning-detail-row,
+.learning-detail-list,
+.learning-detail-steps,
+.learning-mode-row,
+.learning-overall,
+.learning-module-view-head,
+.learning-selected-module-head,
+.scenario-active{
+  border-color:var(--theme-line) !important;
+  background:var(--theme-accent-soft) !important;
+  color:var(--theme-text) !important;
+}
+
+.learning-module-card:hover,
+.learning-module-card.active,
+.learning-module-card.dashboard-card:hover,
+.learning-detail-row:hover{
+  border-color:var(--theme-highlight) !important;
+  background:rgba(106,90,138,.27) !important;
+}
+
+.learning-module-card.complete,
+.learning-module-card.complete .learning-module-card-progress{
+  border-color:rgba(198,162,74,.58) !important;
+}
+
+.learning-module-card-head span,
+.learning-module-card small,
+.learning-detail p,
+.learning-detail span,
+.learning-module-view-head span,
+.learning-selected-module-head button,
+.learning-overall span{
+  color:var(--theme-muted) !important;
+}
+
+.learning-module-card-progress,
+.mouse-final-progress span,
+.keyboard-checklist,
+.everyday-checklist{
+  background:rgba(168,154,194,.18) !important;
+}
+
+.learning-module-card-progress i,
+.learning-module-card.complete .learning-module-card-progress i{
+  background:linear-gradient(90deg,var(--theme-accent),var(--theme-highlight)) !important;
+}
+
+/* Mouse + keyboard training */
+.mouse-final-grid>div,
+.mouse-final-grid>button,
+.mouse-scroll-box,
+.mouse-scroll-content div,
+.mouse-drop-zone,
+.keyboard-lab,
+.keyboard-lab-head,
+.keyboard-copy,
+.keyboard-textarea,
+.keyboard-checklist,
+.keyboard-final,
+.keyboard-final-target{
+  border-color:var(--theme-line) !important;
+  background:var(--theme-surface) !important;
+  color:var(--theme-ink) !important;
+}
+
+.mouse-scroll-content div:nth-child(odd),
+.keyboard-final-target.done,
+.mouse-final-grid .done{
+  background:rgba(168,154,194,.20) !important;
+}
+
+.mouse-target-field .mouse-target,
+.big-target,
+.mouse-drag-token,
+.final-drag-token{
+  background:linear-gradient(135deg,var(--theme-accent),var(--theme-danger)) !important;
+  color:var(--theme-text) !important;
+}
+
+.mouse-target.hit,
+.mouse-drag-token.dropped{
+  background:var(--theme-highlight) !important;
+  color:var(--theme-ink) !important;
+}
+
+/* Browser + mail lessons */
+.browser-app,
+.browser-page,
+.browser-tabs,
+.browser-tab,
+.browser-result,
+.browser-search,
+.browser-cookie,
+.browser-footer,
+.mail-app,
+.mail-head,
+.mail-item,
+.mail-message,
+.mail-empty,
+.mail-form,
+.mail-actions,
+.mail-form-actions{
+  border-color:var(--theme-line) !important;
+  color:var(--theme-ink) !important;
+}
+
+.browser-page,
+.browser-result,
+.browser-search,
+.browser-cookie,
+.mail-message,
+.mail-empty,
+.mail-form{
+  background:var(--theme-surface) !important;
+}
+
+.browser-tabs,
+.browser-footer,
+.mail-head,
+.mail-actions,
+.mail-form-actions{
+  background:var(--theme-surface-soft) !important;
+}
+
+.browser-tab,
+.mail-item{
+  background:rgba(168,154,194,.24) !important;
+}
+
+.browser-tab.active,
+.mail-item.active,
+.mail-item:hover{
+  background:rgba(106,90,138,.24) !important;
+  box-shadow:inset 0 -2px var(--theme-highlight);
+}
+
+.browser-page a,
+.browser-result a,
+.mail-message a{
+  color:var(--theme-danger) !important;
+  text-decoration-color:var(--theme-highlight) !important;
+}
+
+/* Everyday labs */
+.everyday-lab-head,
+.everyday-copy,
+.everyday-choice-grid,
+.everyday-dialog,
+.everyday-action-row,
+.everyday-network-list,
+.everyday-settings,
+.everyday-cloud,
+.everyday-error{
+  border-color:var(--theme-line) !important;
+}
+
+.everyday-lab-head,
+.everyday-dialog,
+.everyday-settings,
+.everyday-cloud{
+  background:var(--theme-surface) !important;
+  color:var(--theme-ink) !important;
+}
+
+.everyday-primary{
+  border-color:var(--theme-highlight) !important;
+  background:var(--theme-highlight) !important;
+  color:var(--theme-ink) !important;
+}
+
+.everyday-secondary{
+  border-color:var(--theme-accent) !important;
+  background:rgba(106,90,138,.15) !important;
+  color:var(--theme-ink) !important;
+}
+
+.everyday-error{
+  background:rgba(122,46,62,.16) !important;
+  color:var(--theme-danger) !important;
+}
+
+/* Windows 11 shell details */
+.win11-start-search,
+.win11-context,
+.quick-settings,
+.quick-tile,
+.quick-volume,
+.quick-settings-footer,
+.system-tray,
+.recommended-row{
+  border-color:var(--theme-line) !important;
+}
+
+.win11-start-search,
+.win11-context,
+.quick-settings{
+  background:rgba(194,184,168,.985) !important;
+  color:var(--theme-ink) !important;
+}
+
+.quick-tile,
+.recommended-row{
+  background:rgba(168,154,194,.20) !important;
+  color:var(--theme-ink) !important;
+}
+
+.quick-tile.on,
+.quick-tile:hover,
+.recommended-row:hover{
+  background:rgba(106,90,138,.30) !important;
+}
+
+.system-tray,
+.quick-settings-footer{
+  background:rgba(194,184,168,.94) !important;
+  color:var(--theme-ink) !important;
+}
+
+/* Chrome menus, forms and secondary pages */
+.chrome-nav,
+.chrome-profile,
+.chrome-menu,
+.chrome-search-box,
+.chrome-shortcut,
+.chrome-download-page,
+.chrome-downloads-page,
+.chrome-form-page,
+.chrome-cookie,
+.chrome-statusbar,
+.chrome-link-menu,
+.chrome-result{
+  border-color:var(--theme-line) !important;
+  color:var(--theme-ink) !important;
+}
+
+.chrome-menu,
+.chrome-search-box,
+.chrome-download-page,
+.chrome-downloads-page,
+.chrome-form-page,
+.chrome-cookie,
+.chrome-result{
+  background:var(--theme-surface) !important;
+}
+
+.chrome-nav,
+.chrome-statusbar{
+  background:var(--theme-surface-soft) !important;
+}
+
+.chrome-shortcut,
+.chrome-link-menu{
+  background:rgba(168,154,194,.18) !important;
+}
+
+.chrome-link,
+.chrome-result a{
+  color:var(--theme-danger) !important;
+  text-decoration-color:var(--theme-highlight) !important;
+}
+
+/* Settings */
+.settings-card,
+.settings-profile,
+.settings-network-row,
+.settings-installed-row,
+.settings-device-row,
+.settings-device-chooser,
+.settings-password-box,
+.settings-audio,
+.settings-add-device,
+.settings-app-menu{
+  border-color:var(--theme-line) !important;
+  background:rgba(194,184,168,.82) !important;
+  color:var(--theme-ink) !important;
+}
+
+.settings-card:hover,
+.settings-network-row:hover,
+.settings-installed-row:hover,
+.settings-device-row:hover{
+  background:rgba(168,154,194,.30) !important;
+}
+
+.settings-toggle{
+  border-color:var(--theme-accent) !important;
+  background:rgba(106,90,138,.20) !important;
+}
+
+.settings-toggle.on{
+  background:var(--theme-accent) !important;
+}
+
+.settings-toggle.on::after{
+  background:var(--theme-highlight) !important;
+}
+
+/* PDF / print */
+.pdf-real-page,
+.pdf-tools,
+.pdf-file-label,
+.print-options,
+.print-actions,
+.print-dialog-real{
+  border-color:var(--theme-line) !important;
+}
+
+.pdf-tools,
+.print-actions{
+  background:var(--theme-surface-soft) !important;
+  color:var(--theme-ink) !important;
+}
+
+.pdf-real-page,
+.print-options{
+  background:var(--theme-surface) !important;
+  color:var(--theme-ink) !important;
+}
+
+/* Installer + troubleshooting */
+.installer-body,
+.trouble-normal,
+.trouble-file,
+.trouble-frozen-body,
+.trouble-error-actions{
+  border-color:var(--theme-line) !important;
+  color:var(--theme-ink) !important;
+}
+
+.installer-body,
+.trouble-normal,
+.trouble-file{
+  background:var(--theme-surface) !important;
+}
+
+.trouble-frozen-body{
+  background:rgba(122,46,62,.16) !important;
+}
+
+.trouble-error-actions{
+  background:var(--theme-surface-soft) !important;
+}
+
+/* Generic simulator dialogs + controls */
+.sim-dialog,
+.dialog-actions,
+.notepad-toolbar,
+.photos-toolbar,
+.vfs-item{
+  border-color:var(--theme-line) !important;
+}
+
+.sim-dialog,
+.vfs-item{
+  background:var(--theme-surface) !important;
+  color:var(--theme-ink) !important;
+}
+
+.notepad-toolbar{
+  background:var(--theme-surface-soft) !important;
+  color:var(--theme-ink) !important;
+}
+
+.photos-toolbar{
+  background:var(--theme-bg) !important;
+  color:var(--theme-text) !important;
+}
+
+.vfs-item:hover,
+.vfs-item.selected{
+  background:rgba(106,90,138,.22) !important;
+  border-color:var(--theme-highlight) !important;
+}
+
+/* Never let native-looking secondary buttons reintroduce blue. */
+:is(
+  .dialog-actions button,
+  .scenario-actions button,
+  .notepad-toolbar button,
+  .photos-toolbar button,
+  .print-actions button,
+  .chrome-menu button,
+  .mail-actions button,
+  .mail-form-actions button
+){
+  border-color:var(--theme-line) !important;
+  background:rgba(168,154,194,.16) !important;
+  color:inherit !important;
+}
+
+:is(
+  .dialog-actions button,
+  .scenario-actions button,
+  .notepad-toolbar button,
+  .photos-toolbar button,
+  .print-actions button,
+  .chrome-menu button,
+  .mail-actions button,
+  .mail-form-actions button
+):hover{
+  background:rgba(106,90,138,.24) !important;
+}
+
+/* Product shell / bottom navigation */
+.product-shell-home,
+.product-home-taskbar{
+  border-color:rgba(168,154,194,.28) !important;
+  background:var(--theme-bg) !important;
+  color:var(--theme-text) !important;
+}
+
+/* Preserve high contrast focus in every mode. */
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:3px solid var(--theme-highlight) !important;
+  outline-offset:3px !important;
+  box-shadow:0 0 0 2px var(--theme-bg) !important;
+}
