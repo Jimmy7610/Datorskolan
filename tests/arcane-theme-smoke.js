@@ -11,15 +11,21 @@ const css=fs.readFileSync("styles/arcane-theme.css","utf8");
 const source=fs.readFileSync("assets/fonts/SOURCE.md","utf8");
 const license=fs.readFileSync("assets/fonts/CooperHewitt-OFL.txt","utf8");
 
+/* Standard, conventional web palette. */
 [
-  "#1E1E1E",
-  "#6A5A8A",
-  "#A89AC2",
-  "#C6A24A",
-  "#C2B8A8",
-  "#7A2E3E"
+  "#f8fafc",
+  "#f1f5f9",
+  "#ffffff",
+  "#e2e8f0",
+  "#0f172a",
+  "#475569",
+  "#2563eb",
+  "#1d4ed8",
+  "#16a34a",
+  "#d97706",
+  "#dc2626"
 ].forEach(function(color){
-  assert(css.indexOf(color)>=0,"Arcane palette color missing: "+color);
+  assert(css.toLowerCase().indexOf(color)>=0,"Standard web palette color missing: "+color);
 });
 
 assert(css.indexOf('font-family:"Cooper Hewitt"')>=0,"Cooper Hewitt font family missing");
@@ -35,13 +41,13 @@ assert(
 );
 
 assert(
-  html.indexOf('<meta name="theme-color" content="#1E1E1E">')>=0,
-  "Browser theme color is not Witch's Velvet Black"
+  html.toLowerCase().indexOf('<meta name="theme-color" content="#f8fafc">')>=0,
+  "Browser theme color is not the light page background"
 );
 
 const a11yIndex=html.indexOf("./styles/accessibility.css");
 const themeIndex=html.indexOf("./styles/arcane-theme.css");
-assert(a11yIndex>=0&&themeIndex>a11yIndex,"Arcane theme must load after accessibility base");
+assert(a11yIndex>=0&&themeIndex>a11yIndex,"Final theme must load after accessibility base");
 
 assert(source.indexOf("SIL Open Font License")>=0,"Cooper Hewitt source documentation missing license");
 assert(license.indexOf("SIL OPEN FONT LICENSE Version 1.1")>=0,"Cooper Hewitt OFL text missing");
@@ -61,4 +67,9 @@ assert(license.indexOf("SIL OPEN FONT LICENSE Version 1.1")>=0,"Cooper Hewitt OF
   assert(css.indexOf(selector)>=0,"Whole-app theme selector missing: "+selector);
 });
 
-console.log("Arcane Study theme smoke test passed");
+assert(
+  css.indexOf(".dialog-layer")>=0 && css.indexOf("backdrop-filter:none")>=0,
+  "Persistent dialog host must not blur the simulator"
+);
+
+console.log("Standard web theme smoke test passed");
