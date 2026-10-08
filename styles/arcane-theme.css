@@ -912,3 +912,249 @@ body.school-mode .scenario-panel{
 @media(forced-colors:active){
   *{forced-color-adjust:auto}
 }
+
+
+/* ---------- FakeWin realism cleanup ----------
+   The public website keeps the conventional web palette above.
+   Inside FakeWin we intentionally follow familiar Windows 11 visual patterns
+   so beginners see a desktop that looks and behaves like a real PC.
+*/
+
+.sim{
+  background:
+    radial-gradient(circle at 72% 34%,rgba(255,255,255,.22),transparent 24%),
+    radial-gradient(circle at 58% 48%,rgba(255,255,255,.10),transparent 30%),
+    linear-gradient(135deg,#2469a8 0%,#2f7fbe 38%,#4a94cc 68%,#75b4e3 100%) !important;
+}
+
+/* Desktop icons should look like Windows shortcuts, not website cards. */
+.desktop-item{
+  width:92px !important;
+  min-height:86px !important;
+  padding:7px 4px !important;
+  background:transparent !important;
+  border:1px solid transparent !important;
+  border-radius:4px !important;
+  color:#fff !important;
+}
+
+.desktop-item .icon{
+  width:48px !important;
+  height:48px !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.28)) !important;
+}
+
+.desktop-item .label{
+  max-width:88px !important;
+  padding:1px 3px !important;
+  border:0 !important;
+  border-radius:2px !important;
+  background:transparent !important;
+  color:#fff !important;
+  font-weight:500 !important;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.96),
+    0 0 3px rgba(0,0,0,.78) !important;
+}
+
+.desktop-item:hover{
+  background:rgba(255,255,255,.13) !important;
+  border-color:rgba(255,255,255,.24) !important;
+}
+
+.desktop-item.selected{
+  background:rgba(37,99,235,.26) !important;
+  border-color:rgba(219,234,254,.72) !important;
+}
+
+/* Familiar light Windows 11 taskbar. */
+.taskbar{
+  height:48px !important;
+  padding:4px 8px !important;
+  background:rgba(243,247,251,.94) !important;
+  border-top:1px solid rgba(255,255,255,.82) !important;
+  box-shadow:0 -1px 8px rgba(15,23,42,.08) !important;
+  backdrop-filter:blur(22px) saturate(135%) !important;
+}
+
+.tb{
+  background:transparent !important;
+  color:#172033 !important;
+}
+
+.tb:hover,
+.tb.active,
+.start-button.active{
+  background:rgba(15,23,42,.07) !important;
+}
+
+.tb.running:after,
+.tb.active:after{
+  background:#2563eb !important;
+}
+
+.taskbar-right{
+  right:8px !important;
+  gap:2px !important;
+}
+
+.system-tray{
+  height:36px !important;
+  padding:0 6px !important;
+  border:0 !important;
+  background:transparent !important;
+  color:#172033 !important;
+}
+
+.system-tray:hover,
+.system-tray.active{
+  background:rgba(15,23,42,.07) !important;
+}
+
+.product-home-taskbar{
+  width:36px !important;
+  height:36px !important;
+  margin:0 1px !important;
+  background:transparent !important;
+  color:#172033 !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+.product-home-taskbar:hover{
+  background:rgba(15,23,42,.07) !important;
+}
+
+.clock{
+  min-width:82px !important;
+  padding:0 5px !important;
+  color:#172033 !important;
+  font-size:11px !important;
+}
+
+/* Start menu: one clean surface, compact search field, no nested input border. */
+.start{
+  left:50% !important;
+  bottom:56px !important;
+  width:min(580px,calc(100% - 28px)) !important;
+  min-height:520px !important;
+  padding:24px 24px 0 !important;
+  transform:translateX(-50%) !important;
+  border:1px solid rgba(203,213,225,.95) !important;
+  border-radius:12px !important;
+  background:rgba(247,249,252,.985) !important;
+  box-shadow:0 18px 55px rgba(15,23,42,.22) !important;
+  backdrop-filter:blur(22px) saturate(125%) !important;
+  color:#111827 !important;
+}
+
+.win11-start-search{
+  height:40px !important;
+  min-height:40px !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  margin:0 0 20px !important;
+  padding:0 12px !important;
+  border:1px solid #cbd5e1 !important;
+  border-bottom:2px solid #2563eb !important;
+  border-radius:6px !important;
+  background:#fff !important;
+  box-shadow:none !important;
+}
+
+.win11-start-search .search-glyph{
+  flex:0 0 auto;
+  color:#64748b !important;
+  font-size:18px !important;
+}
+
+.win11-start-search .start-search{
+  flex:1 !important;
+  width:auto !important;
+  height:36px !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  outline:0 !important;
+  background:transparent !important;
+  color:#111827 !important;
+  box-shadow:none !important;
+  appearance:none !important;
+}
+
+.win11-start-search .start-search:focus,
+.win11-start-search .start-search:focus-visible{
+  border:0 !important;
+  outline:0 !important;
+  box-shadow:none !important;
+}
+
+.apps.win11-pinned-apps{
+  min-height:178px !important;
+  padding:0 8px !important;
+  gap:4px !important;
+}
+
+.start-app{
+  min-height:74px !important;
+  background:transparent !important;
+  color:#111827 !important;
+}
+
+.start-app:hover{
+  background:rgba(15,23,42,.055) !important;
+}
+
+.start-app-name{
+  color:#1f2937 !important;
+}
+
+.start-recommended{
+  border-color:#e2e8f0 !important;
+}
+
+.recommended-row{
+  background:transparent !important;
+  border:0 !important;
+}
+
+.recommended-row:hover{
+  background:rgba(15,23,42,.055) !important;
+}
+
+.start-footer{
+  background:#eef2f6 !important;
+  border-top-color:#dbe2ea !important;
+}
+
+/* The side panels should read as tools, not giant floating website cards. */
+.learning-panel,
+.scenario-panel{
+  border-radius:10px !important;
+  border:1px solid #d7dee8 !important;
+  box-shadow:0 12px 36px rgba(15,23,42,.18) !important;
+}
+
+.scenario-panel{
+  right:12px !important;
+  width:min(360px,calc(100% - 24px)) !important;
+}
+
+.learning-panel{
+  right:12px !important;
+  width:min(500px,calc(100% - 24px)) !important;
+}
+
+/* Avoid the global accessibility focus ring drawing odd brackets inside
+   the composite Windows search control. The wrapper itself remains visible. */
+.win11-start-search:focus-within{
+  border-color:#2563eb !important;
+  box-shadow:0 0 0 1px rgba(37,99,235,.15) !important;
+}
