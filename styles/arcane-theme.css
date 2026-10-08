@@ -1,6 +1,6 @@
-/* Datorskolan Clear UI Theme
-   High-clarity palette for absolute computer beginners.
-   Loaded last so it replaces the previous Arcane palette everywhere.
+/* Datorskolan — Standard Web UI Theme
+   Conventional neutral web palette with clear semantic colors.
+   This file loads last and intentionally overrides earlier visual experiments.
 */
 
 @font-face{
@@ -33,48 +33,48 @@
 }
 
 :root{
-  --ui-bg:#EEF3F8;
-  --ui-bg-2:#E4ECF4;
-  --ui-surface:#FFFFFF;
-  --ui-surface-2:#F7FAFC;
-  --ui-surface-3:#E8EEF5;
+  --web-bg:#f8fafc;
+  --web-bg-alt:#f1f5f9;
+  --web-surface:#ffffff;
+  --web-surface-hover:#f8fafc;
+  --web-border:#e2e8f0;
+  --web-border-strong:#cbd5e1;
 
-  --ui-border:#C5D0DD;
-  --ui-border-strong:#8DA0B5;
+  --web-text:#0f172a;
+  --web-text-muted:#475569;
+  --web-text-soft:#64748b;
 
-  --ui-text:#122033;
-  --ui-text-muted:#46566A;
-  --ui-text-soft:#657589;
+  --web-primary:#2563eb;
+  --web-primary-hover:#1d4ed8;
+  --web-primary-soft:#eff6ff;
 
-  --ui-primary:#0B63CE;
-  --ui-primary-hover:#084EAA;
-  --ui-primary-soft:#DCEBFA;
+  --web-success:#16a34a;
+  --web-success-soft:#f0fdf4;
 
-  --ui-success:#18794E;
-  --ui-success-soft:#E0F3E9;
-  --ui-warning:#9A5B00;
-  --ui-warning-soft:#FFF0CC;
-  --ui-danger:#B42318;
-  --ui-danger-soft:#FDE8E7;
+  --web-warning:#d97706;
+  --web-warning-soft:#fffbeb;
 
-  --ui-focus:#005FCC;
-  --ui-shadow:0 18px 46px rgba(29,50,74,.16);
+  --web-danger:#dc2626;
+  --web-danger-soft:#fef2f2;
 
-  --focus:var(--ui-focus);
-  --border:var(--ui-border);
-  --surface:var(--ui-surface);
+  --web-focus:#2563eb;
+  --web-shadow:0 10px 30px rgba(15,23,42,.10);
 
-  --lp-bg:var(--ui-bg);
-  --lp-bg2:var(--ui-bg-2);
-  --lp-surface:rgba(255,255,255,.88);
-  --lp-surface-strong:#FFFFFF;
-  --lp-border:rgba(141,160,181,.42);
-  --lp-border-strong:rgba(11,99,206,.42);
-  --lp-text:var(--ui-text);
-  --lp-muted:var(--ui-text-muted);
-  --lp-blue:var(--ui-primary);
-  --lp-violet:#5468D4;
-  --lp-green:var(--ui-success);
+  --focus:var(--web-focus);
+  --border:var(--web-border);
+  --surface:var(--web-surface);
+
+  --lp-bg:var(--web-bg);
+  --lp-bg2:var(--web-bg-alt);
+  --lp-surface:var(--web-surface);
+  --lp-surface-strong:var(--web-surface);
+  --lp-border:var(--web-border);
+  --lp-border-strong:var(--web-border-strong);
+  --lp-text:var(--web-text);
+  --lp-muted:var(--web-text-muted);
+  --lp-blue:var(--web-primary);
+  --lp-violet:var(--web-primary);
+  --lp-green:var(--web-success);
 }
 
 html,
@@ -91,123 +91,131 @@ option{
 }
 
 body{
-  color:var(--ui-text);
-  background:var(--ui-bg);
+  color:var(--web-text);
+  background:var(--web-bg);
 }
 
 ::selection{
-  background:var(--ui-primary);
-  color:#fff;
+  background:#bfdbfe;
+  color:var(--web-text);
 }
 
-/* ===================== LANDING ===================== */
+/* ---------- Landing ---------- */
 
 .landing-page{
-  color:var(--ui-text);
+  color:var(--web-text);
   background:
-    radial-gradient(circle at 84% 10%,rgba(11,99,206,.10),transparent 26%),
-    radial-gradient(circle at 14% 86%,rgba(24,121,78,.07),transparent 28%),
-    linear-gradient(145deg,#F7FAFC 0%,#EEF3F8 52%,#E8EFF7 100%);
+    radial-gradient(circle at 85% 8%,rgba(37,99,235,.06),transparent 28%),
+    linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
 }
 
 .landing-page:before{
   background:
-    linear-gradient(rgba(18,32,51,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(18,32,51,.035) 1px,transparent 1px);
+    linear-gradient(rgba(15,23,42,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(15,23,42,.025) 1px,transparent 1px);
 }
 
-.ambient-a{background:#8CC5FF;opacity:.18}
-.ambient-b{background:#A8D9C2;opacity:.14}
+.landing-ambient{
+  opacity:.10;
+  filter:blur(100px);
+}
+
+.ambient-a,
+.ambient-b{
+  background:#93c5fd;
+}
 
 .landing-header{
-  border-color:rgba(141,160,181,.28);
-  background:rgba(247,250,252,.92);
+  background:rgba(255,255,255,.96);
+  border-color:var(--web-border);
 }
 
 .brand-mark{
-  background:linear-gradient(145deg,#0B63CE,#084EAA);
+  background:var(--web-primary);
   color:#fff;
-  box-shadow:0 10px 24px rgba(11,99,206,.22);
+  box-shadow:none;
 }
 
-.brand-copy strong{color:var(--ui-text)}
-.brand-copy small{color:var(--ui-text-muted)}
+.brand-copy strong{color:var(--web-text)}
+.brand-copy small{color:var(--web-text-muted)}
 
 .landing-tabs{
-  border-color:var(--ui-border);
-  background:rgba(255,255,255,.72);
+  background:var(--web-bg-alt);
+  border-color:var(--web-border);
+  box-shadow:none;
 }
 
 .landing-tabs button{
-  color:var(--ui-text-muted);
+  color:var(--web-text-muted);
 }
 
 .landing-tabs button:hover{
-  color:var(--ui-text);
-  background:var(--ui-primary-soft);
+  color:var(--web-text);
+  background:#e2e8f0;
 }
 
 .landing-tabs button[aria-selected="true"]{
   color:#fff;
-  background:var(--ui-primary);
+  background:var(--web-primary);
   box-shadow:none;
 }
 
 .landing-tabs button[aria-selected="true"]:after{
-  background:#084EAA;
+  background:var(--web-primary-hover);
   box-shadow:none;
 }
 
 .header-cta,
 .primary-cta,
 .compact-cta{
-  border-color:var(--ui-primary);
-  background:var(--ui-primary);
+  border-color:var(--web-primary);
+  background:var(--web-primary);
   color:#fff;
-  box-shadow:0 8px 18px rgba(11,99,206,.18);
+  box-shadow:none;
 }
 
 .header-cta:hover,
 .primary-cta:hover,
 .compact-cta:hover{
-  border-color:var(--ui-primary-hover);
-  background:var(--ui-primary-hover);
-  color:#fff;
-}
-
-.header-reset,
-.reset-confirm{
-  border-color:var(--ui-danger);
-  background:var(--ui-danger);
+  border-color:var(--web-primary-hover);
+  background:var(--web-primary-hover);
   color:#fff;
 }
 
 .secondary-cta,
-.reset-cancel{
-  border-color:var(--ui-border-strong);
-  background:var(--ui-surface);
-  color:var(--ui-text);
+.reset-cancel,
+.header-reset{
+  border-color:var(--web-border-strong);
+  background:var(--web-surface);
+  color:var(--web-text);
 }
 
 .secondary-cta:hover,
-.reset-cancel:hover{
-  background:var(--ui-surface-3);
+.reset-cancel:hover,
+.header-reset:hover{
+  background:var(--web-bg-alt);
+}
+
+.reset-confirm{
+  border-color:var(--web-danger);
+  background:var(--web-danger);
+  color:#fff;
 }
 
 .eyebrow,
 .section-kicker{
-  color:var(--ui-primary);
+  color:var(--web-primary);
 }
 
 .eyebrow{
-  border-color:rgba(11,99,206,.28);
-  background:var(--ui-primary-soft);
+  border-color:#bfdbfe;
+  background:var(--web-primary-soft);
 }
 
 .eyebrow-dot,
 .chip-dot,
 .landing-statusbar i{
-  background:var(--ui-success);
+  background:var(--web-success);
   box-shadow:none;
 }
 
@@ -215,14 +223,14 @@ body{
 .safe-copy h2,
 .panel-heading h2,
 .course-topline h2{
-  color:var(--ui-text);
+  color:var(--web-text);
 }
 
 .overview-copy h1 span,
 .safe-copy h2 span{
-  color:var(--ui-primary);
-  background:none;
-  -webkit-text-fill-color:currentColor;
+  background:none !important;
+  color:var(--web-primary) !important;
+  -webkit-text-fill-color:var(--web-primary) !important;
 }
 
 .hero-lead,
@@ -231,7 +239,7 @@ body{
 .panel-heading p,
 .course-topline p,
 .safe-copy>p{
-  color:var(--ui-text-muted);
+  color:var(--web-text-muted);
 }
 
 .hero-facts>div,
@@ -240,16 +248,16 @@ body{
 .module-grid article,
 .safety-list>div,
 .safe-matrix article{
-  border-color:var(--ui-border);
-  background:rgba(255,255,255,.82);
-  color:var(--ui-text);
-  box-shadow:0 6px 18px rgba(29,50,74,.05);
+  background:var(--web-surface);
+  border-color:var(--web-border);
+  color:var(--web-text);
+  box-shadow:0 4px 14px rgba(15,23,42,.04);
 }
 
 .how-card:hover,
 .module-grid article:hover{
-  border-color:var(--ui-primary);
-  background:#fff;
+  border-color:#93c5fd;
+  background:#ffffff;
 }
 
 .hero-facts span,
@@ -259,114 +267,113 @@ body{
 .module-grid em,
 .safety-list small,
 .safe-matrix small{
-  color:var(--ui-text-muted);
+  color:var(--web-text-muted);
 }
 
 .realism-pills span,
 .flow-step,
 .course-bottom>span{
-  border-color:var(--ui-border);
-  background:var(--ui-surface);
-  color:var(--ui-text-muted);
+  background:var(--web-bg-alt);
+  border-color:var(--web-border);
+  color:var(--web-text-muted);
 }
 
 .module-grid article.final-module{
-  border-color:#E1B85B;
-  background:#FFF8E6;
+  background:var(--web-warning-soft);
+  border-color:#fcd34d;
 }
 
 .module-grid article.brand-module{
-  border-color:#8FB8E8;
+  border-color:#93c5fd;
 }
 
 .safety-check{
-  background:var(--ui-success-soft);
-  color:var(--ui-success);
+  background:var(--web-success-soft);
+  color:var(--web-success);
 }
 
 .shield-scene{
-  border-color:var(--ui-border);
-  background:linear-gradient(180deg,#F8FBFE,#ECF3F9);
+  border-color:var(--web-border);
+  background:var(--web-bg-alt);
 }
 
 .shield-core{
-  border-color:#8FB8E8;
-  background:var(--ui-primary-soft);
+  background:var(--web-primary-soft);
+  border-color:#bfdbfe;
 }
 
-.shield-ring{border-color:rgba(11,99,206,.18)}
+.shield-ring{border-color:#cbd5e1}
+
+.fakewin-screen{
+  background:linear-gradient(135deg,#dbeafe 0%,#bfdbfe 55%,#93c5fd 100%);
+}
 
 .preview-start-menu,
 .preview-search,
 .preview-start-footer{
-  color:var(--ui-text);
-}
-
-.fakewin-screen{
-  background:linear-gradient(135deg,#D7E8F7,#BFD8EF 58%,#A9CBE9);
+  color:var(--web-text);
 }
 
 .preview-start-menu{
-  border-color:var(--ui-border);
-  background:rgba(255,255,255,.97);
+  background:#fff;
+  border-color:var(--web-border);
 }
 
 .preview-search{
-  border-color:var(--ui-border-strong);
-  border-bottom-color:var(--ui-primary);
   background:#fff;
+  border-color:var(--web-border-strong);
+  border-bottom-color:var(--web-primary);
 }
 
 .preview-start-footer{
-  background:var(--ui-surface-3);
+  background:var(--web-bg-alt);
 }
 
 .preview-taskbar{
-  background:rgba(255,255,255,.94);
-  border-color:var(--ui-border);
+  background:rgba(255,255,255,.96);
+  border-color:var(--web-border);
 }
 
 .visual-chip{
-  border-color:var(--ui-border);
   background:#fff;
-  color:var(--ui-text);
+  border-color:var(--web-border);
+  color:var(--web-text);
 }
 
-.visual-chip small{color:var(--ui-text-muted)}
-.chip-progress strong{color:var(--ui-primary)}
+.visual-chip small{color:var(--web-text-muted)}
+.chip-progress strong{color:var(--web-primary)}
 
 .landing-statusbar{
-  border-color:var(--ui-border);
-  background:rgba(255,255,255,.86);
-  color:var(--ui-text-muted) !important;
+  background:rgba(255,255,255,.96);
+  border-color:var(--web-border);
+  color:var(--web-text-muted) !important;
 }
 
-/* ===================== FAKEWIN DESKTOP ===================== */
+/* ---------- FakeWin desktop ---------- */
 
 .sim{
-  color:var(--ui-text);
+  color:var(--web-text);
   background:
-    radial-gradient(circle at 80% 18%,rgba(255,255,255,.78),transparent 28%),
-    radial-gradient(circle at 20% 82%,rgba(11,99,206,.10),transparent 30%),
-    linear-gradient(135deg,#D6E7F6 0%,#C5DBEE 44%,#AFCDE8 100%) !important;
+    radial-gradient(circle at 76% 24%,rgba(255,255,255,.72),transparent 28%),
+    linear-gradient(135deg,#cfe8ff 0%,#b7dbfa 48%,#9cc7ef 100%) !important;
 }
 
 .desktop-item{
-  color:var(--ui-text);
+  color:var(--web-text);
   text-shadow:none;
 }
 
 .desktop-item .icon{
-  border:1px solid rgba(141,160,181,.46);
+  border:1px solid rgba(255,255,255,.72);
   border-radius:10px;
-  background:rgba(255,255,255,.74);
-  box-shadow:0 5px 12px rgba(29,50,74,.12);
+  background:rgba(255,255,255,.64);
+  box-shadow:0 4px 12px rgba(15,23,42,.08);
 }
 
 .desktop-item .label{
-  color:#102033 !important;
-  background:rgba(255,255,255,.84);
-  border:1px solid rgba(141,160,181,.34);
+  color:var(--web-text) !important;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(203,213,225,.88);
   border-radius:5px;
   padding:2px 5px;
   font-weight:600;
@@ -374,87 +381,118 @@ body{
 }
 
 .desktop-item:hover{
-  background:rgba(11,99,206,.10);
+  background:rgba(255,255,255,.40);
 }
 
 .desktop-item.selected{
-  background:rgba(11,99,206,.16);
-  border-color:var(--ui-primary);
+  background:rgba(37,99,235,.14);
+  border-color:var(--web-primary);
 }
 
 .taskbar{
-  background:rgba(248,250,252,.95) !important;
-  border-top-color:rgba(141,160,181,.45) !important;
-  color:var(--ui-text) !important;
-  box-shadow:0 -1px 10px rgba(29,50,74,.08);
+  background:rgba(255,255,255,.94) !important;
+  border-top-color:var(--web-border) !important;
+  color:var(--web-text) !important;
+  box-shadow:0 -1px 8px rgba(15,23,42,.05);
 }
 
 .tb:hover,
 .tb.active{
-  background:var(--ui-primary-soft) !important;
+  background:#e2e8f0 !important;
 }
 
 .tb.running:after,
 .tb.active:after{
-  background:var(--ui-primary) !important;
+  background:var(--web-primary) !important;
 }
 
-.clock{color:var(--ui-text) !important}
+.clock{color:var(--web-text) !important}
+
+/* ---------- Shared surfaces ---------- */
 
 .start,
 .context,
-.quick-settings{
-  background:rgba(255,255,255,.985) !important;
-  border-color:var(--ui-border) !important;
-  color:var(--ui-text) !important;
-  box-shadow:var(--ui-shadow) !important;
+.quick-settings,
+.app-window,
+.learning-panel,
+.scenario-panel,
+.sim-dialog,
+.dialog,
+.windows-confirm-dialog,
+.trouble-error-dialog,
+.print-dialog-real,
+.reset-dialog,
+.settings-card,
+.settings-profile,
+.settings-network-row,
+.settings-installed-row,
+.settings-device-row,
+.settings-device-chooser,
+.settings-password-box,
+.settings-audio,
+.settings-add-device,
+.settings-app-menu,
+.pdf-real-page,
+.print-options,
+.everyday-dialog,
+.everyday-settings,
+.everyday-cloud,
+.browser-page,
+.browser-result,
+.browser-search,
+.browser-cookie,
+.mail-message,
+.mail-empty,
+.mail-form{
+  background:var(--web-surface) !important;
+  border-color:var(--web-border) !important;
+  color:var(--web-text) !important;
 }
 
-.start-app:hover,
-.context button:hover:not(:disabled),
-.explorer-side-button:hover{
-  background:var(--ui-primary-soft) !important;
-}
-
-.start-search,
-.explorer-search,
-.settings-search,
-.chrome-address-input,
-input,
-textarea,
-select{
-  border-color:var(--ui-border-strong) !important;
-  background:#fff !important;
-  color:var(--ui-text) !important;
-}
-
-input::placeholder,
-textarea::placeholder{
-  color:var(--ui-text-soft) !important;
-}
-
-/* ===================== WINDOWS / APPS ===================== */
-
-.app-window{
-  border-color:var(--ui-border) !important;
-  background:var(--ui-surface) !important;
-  box-shadow:var(--ui-shadow) !important;
-}
-
-.app-window.active{
-  border-color:var(--ui-primary) !important;
-  box-shadow:0 18px 50px rgba(29,50,74,.19) !important;
+.start,
+.context,
+.quick-settings,
+.app-window,
+.learning-panel,
+.scenario-panel,
+.sim-dialog,
+.dialog,
+.windows-confirm-dialog,
+.trouble-error-dialog,
+.print-dialog-real,
+.reset-dialog{
+  box-shadow:var(--web-shadow) !important;
 }
 
 .titlebar,
-.chrome-window>.titlebar{
-  background:linear-gradient(180deg,#F9FBFD,#EEF3F8) !important;
-  border-bottom-color:var(--ui-border) !important;
-  color:var(--ui-text) !important;
+.chrome-window>.titlebar,
+.explorer-toolbar,
+.explorer-address-row,
+.settings-header,
+.mouse-lab-head,
+.mail-head,
+.installer-hero,
+.installer-actions,
+.trouble-header,
+.snipping-toolbar,
+.notepad-toolbar,
+.browser-tabs,
+.browser-footer,
+.mail-actions,
+.mail-form-actions,
+.pdf-tools,
+.print-actions,
+.quick-settings-footer,
+.system-tray,
+.chrome-tabs-row,
+.chrome-toolbar,
+.chrome-address-row,
+.chrome-nav,
+.chrome-statusbar{
+  background:var(--web-bg-alt) !important;
+  border-color:var(--web-border) !important;
+  color:var(--web-text) !important;
 }
-
-.ctrl:hover{background:var(--ui-surface-3) !important}
-.ctrl.close:hover{background:var(--ui-danger) !important;color:#fff !important}
 
 .content,
 .explorer,
@@ -472,38 +510,76 @@ textarea::placeholder{
 .installer-app,
 .snipping-app,
 .trouble-app,
-.chrome-app{
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
+.chrome-app,
+.chrome-window,
+.chrome-window .content,
+.chrome-page,
+.chrome-article,
+.chrome-search-page,
+.chrome-downloads-page,
+.chrome-download-page,
+.chrome-form-page,
+.chrome-cookie,
+.chrome-result{
+  background:var(--web-surface) !important;
+  color:var(--web-text) !important;
 }
 
 .explorer-sidebar,
 .sidebar,
 .settings-sidebar{
-  background:var(--ui-surface-3) !important;
-  border-color:var(--ui-border) !important;
+  background:var(--web-bg-alt) !important;
+  border-color:var(--web-border) !important;
+}
+
+.explorer-side-button.active,
+.settings-nav.active,
+.browser-tab.active,
+.mail-item.active{
+  background:var(--web-primary-soft) !important;
+  color:var(--web-text) !important;
 }
 
 .explorer-side-button.active,
 .settings-nav.active{
-  background:var(--ui-primary-soft) !important;
-  color:var(--ui-text) !important;
-  box-shadow:inset 3px 0 var(--ui-primary);
+  box-shadow:inset 3px 0 var(--web-primary);
 }
 
-.explorer-toolbar,
-.explorer-address-row,
-.settings-header,
-.mouse-lab-head,
-.mail-head,
-.installer-hero,
-.installer-actions,
-.trouble-header,
-.snipping-toolbar,
-.notepad-toolbar{
-  background:var(--ui-surface-2) !important;
-  border-color:var(--ui-border) !important;
-  color:var(--ui-text) !important;
+.browser-tab.active,
+.mail-item.active{
+  box-shadow:inset 0 -2px var(--web-primary);
+}
+
+.start-app:hover,
+.context button:hover:not(:disabled),
+.explorer-side-button:hover,
+.settings-card:hover,
+.settings-network-row:hover,
+.settings-installed-row:hover,
+.settings-device-row:hover,
+.mail-item:hover,
+.recommended-row:hover,
+.quick-tile:hover{
+  background:var(--web-primary-soft) !important;
+}
+
+/* ---------- Inputs and buttons ---------- */
+
+.start-search,
+.explorer-search,
+.settings-search,
+.chrome-address-input,
+input,
+textarea,
+select{
+  background:#fff !important;
+  border-color:var(--web-border-strong) !important;
+  color:var(--web-text) !important;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:var(--web-text-soft) !important;
 }
 
 .explorer-toolbar button,
@@ -514,10 +590,19 @@ textarea::placeholder{
 .trouble-app button,
 .browser-app button,
 .mail-app button,
-.notepad-toolbar button{
-  border-color:var(--ui-border) !important;
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
+.notepad-toolbar button,
+.learning-actions button,
+.learning-footer button,
+.dialog-actions button,
+.scenario-actions button,
+.photos-toolbar button,
+.print-actions button,
+.chrome-menu button,
+.mail-actions button,
+.mail-form-actions button{
+  background:#fff !important;
+  border-color:var(--web-border) !important;
+  color:var(--web-text) !important;
 }
 
 .explorer-toolbar button:hover,
@@ -528,8 +613,16 @@ textarea::placeholder{
 .trouble-app button:hover,
 .browser-app button:hover,
 .mail-app button:hover,
-.notepad-toolbar button:hover{
-  background:var(--ui-surface-3) !important;
+.notepad-toolbar button:hover,
+.learning-actions button:hover,
+.learning-footer button:hover,
+.dialog-actions button:hover,
+.scenario-actions button:hover,
+.print-actions button:hover,
+.chrome-menu button:hover,
+.mail-actions button:hover,
+.mail-form-actions button:hover{
+  background:var(--web-bg-alt) !important;
 }
 
 button.primary,
@@ -539,30 +632,24 @@ button.primary,
 .installer-app button.primary,
 .trouble-app button.primary,
 .browser-submit,
-.mail-compose-send{
-  border-color:var(--ui-primary) !important;
-  background:var(--ui-primary) !important;
+.mail-compose-send,
+.everyday-primary{
+  background:var(--web-primary) !important;
+  border-color:var(--web-primary) !important;
   color:#fff !important;
 }
 
 button.primary:hover,
 .learning-primary:hover,
 .browser-submit:hover,
-.mail-compose-send:hover{
-  border-color:var(--ui-primary-hover) !important;
-  background:var(--ui-primary-hover) !important;
+.mail-compose-send:hover,
+.everyday-primary:hover{
+  background:var(--web-primary-hover) !important;
+  border-color:var(--web-primary-hover) !important;
   color:#fff !important;
 }
 
-/* ===================== LEARNING PANELS ===================== */
-
-.learning-panel,
-.scenario-panel{
-  background:var(--ui-surface) !important;
-  border-color:var(--ui-border) !important;
-  color:var(--ui-text) !important;
-  box-shadow:var(--ui-shadow) !important;
-}
+/* ---------- Learning UI ---------- */
 
 .learning-header>div span,
 .learning-intro,
@@ -574,15 +661,19 @@ button.primary:hover,
 .scenario-panel span,
 .learning-module-card small,
 .learning-module-card-head span,
-.learning-module-view-head span{
-  color:var(--ui-text-muted) !important;
+.learning-module-view-head span,
+.dialog p,
+.windows-confirm-dialog p,
+.trouble-error-copy p,
+.reset-dialog p{
+  color:var(--web-text-muted) !important;
 }
 
 .learning-version,
 .learning-step-type,
 .lesson-option em{
-  background:var(--ui-primary-soft) !important;
-  color:var(--ui-primary) !important;
+  background:var(--web-primary-soft) !important;
+  color:var(--web-primary) !important;
 }
 
 .lesson-option,
@@ -597,9 +688,9 @@ button.primary:hover,
 .learning-module-view-head,
 .learning-selected-module-head,
 .scenario-active{
-  border-color:var(--ui-border) !important;
-  background:var(--ui-surface-2) !important;
-  color:var(--ui-text) !important;
+  background:var(--web-surface) !important;
+  border-color:var(--web-border) !important;
+  color:var(--web-text) !important;
 }
 
 .lesson-option:hover,
@@ -607,46 +698,36 @@ button.primary:hover,
 .learning-module-card:hover,
 .learning-module-card.active,
 .learning-detail-row:hover{
-  border-color:var(--ui-primary) !important;
-  background:var(--ui-primary-soft) !important;
+  background:var(--web-primary-soft) !important;
+  border-color:#93c5fd !important;
 }
 
 .learning-step-exercise{
-  border-color:#B5BCEB !important;
-  background:#F0F2FF !important;
+  background:#f5f3ff !important;
+  border-color:#c4b5fd !important;
 }
 
 .learning-step-completion,
 .learning-feedback.success,
 .learning-feedback.lesson-complete{
-  border-color:#9ACFB6 !important;
-  background:var(--ui-success-soft) !important;
-  color:#0F5D3B !important;
+  background:var(--web-success-soft) !important;
+  border-color:#86efac !important;
+  color:#166534 !important;
 }
 
 .learning-feedback.hint{
-  border-color:#E8C06D !important;
-  background:var(--ui-warning-soft) !important;
-  color:#704200 !important;
+  background:var(--web-warning-soft) !important;
+  border-color:#fcd34d !important;
+  color:#92400e !important;
 }
 
-.learning-feedback.try-again{
-  border-color:#E8AAA6 !important;
-  background:var(--ui-danger-soft) !important;
-  color:#8E1C14 !important;
-}
-
-.learning-actions button,
-.learning-footer button{
-  border-color:var(--ui-border) !important;
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
-}
-
-.learning-actions .learning-help{
-  border-color:#D49A2B !important;
-  color:#704200 !important;
-  background:var(--ui-warning-soft) !important;
+.learning-feedback.try-again,
+.everyday-error,
+.trouble-frozen-body,
+.reset-dialog-warning{
+  background:var(--web-danger-soft) !important;
+  border-color:#fecaca !important;
+  color:#991b1b !important;
 }
 
 .learning-progress-track,
@@ -655,7 +736,7 @@ button.primary:hover,
 .progress,
 .mouse-distance,
 .mouse-hold-meter{
-  background:#DCE3EB !important;
+  background:#e2e8f0 !important;
 }
 
 .learning-progress-track i,
@@ -664,15 +745,10 @@ button.primary:hover,
 .progress i,
 .mouse-distance i,
 .mouse-hold-meter i{
-  background:var(--ui-primary) !important;
+  background:var(--web-primary) !important;
 }
 
-.learning-highlight{
-  outline-color:#F59E0B !important;
-  box-shadow:0 0 0 8px rgba(245,158,11,.18) !important;
-}
-
-/* ===================== MOUSE / KEYBOARD ===================== */
+/* ---------- Mouse / keyboard ---------- */
 
 .mouse-final-grid>div,
 .mouse-final-grid>button,
@@ -686,214 +762,77 @@ button.primary:hover,
 .keyboard-checklist,
 .keyboard-final,
 .keyboard-final-target{
-  border-color:var(--ui-border) !important;
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
+  background:#fff !important;
+  border-color:var(--web-border) !important;
+  color:var(--web-text) !important;
 }
 
-.mouse-scroll-content div:nth-child(odd),
-.keyboard-final-target.done,
-.mouse-final-grid .done{
-  background:var(--ui-success-soft) !important;
+.mouse-scroll-content div:nth-child(odd){
+  background:var(--web-bg-alt) !important;
 }
 
 .mouse-target-field .mouse-target,
 .big-target,
 .mouse-drag-token,
 .final-drag-token{
-  background:var(--ui-primary) !important;
+  background:var(--web-primary) !important;
   color:#fff !important;
 }
 
 .mouse-target.hit,
-.mouse-drag-token.dropped{
-  background:var(--ui-success) !important;
+.mouse-drag-token.dropped,
+.keyboard-final-target.done,
+.mouse-final-grid .done{
+  background:var(--web-success) !important;
   color:#fff !important;
 }
 
-/* ===================== CHROME / BROWSER ===================== */
+/* ---------- Browser / Chrome / mail ---------- */
 
-.chrome-window,
-.chrome-window .content,
-.chrome-app,
-.chrome-page,
-.chrome-article,
-.chrome-search-page,
-.chrome-downloads-page,
-.chrome-download-page,
-.chrome-form-page,
-.chrome-cookie,
-.chrome-result{
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
-}
-
-.chrome-tabs-row,
-.chrome-toolbar,
-.chrome-address-row,
-.chrome-nav,
-.chrome-statusbar{
-  background:var(--ui-surface-3) !important;
-  border-color:var(--ui-border) !important;
-}
-
-.chrome-tab{
-  background:#DDE5EE !important;
-  color:var(--ui-text-muted) !important;
+.chrome-tab,
+.browser-tab,
+.mail-item,
+.quick-tile,
+.recommended-row{
+  background:var(--web-bg-alt) !important;
+  color:var(--web-text) !important;
 }
 
 .chrome-tab.active{
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
-  box-shadow:inset 0 -2px var(--ui-primary);
+  background:#fff !important;
+  box-shadow:inset 0 -2px var(--web-primary);
 }
 
 .chrome-menu,
 .chrome-search-box,
 .chrome-shortcut,
 .chrome-link-menu{
-  border-color:var(--ui-border) !important;
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
+  background:#fff !important;
+  border-color:var(--web-border) !important;
+  color:var(--web-text) !important;
 }
 
 .chrome-page a,
 .chrome-page button.link-like,
 .chrome-article a,
 .chrome-link,
-.chrome-result a{
-  color:#0757B2 !important;
-  text-decoration-color:#0757B2 !important;
-}
-
-/* ===================== BROWSER / MAIL ===================== */
-
-.browser-app,
-.browser-page,
-.browser-tabs,
-.browser-tab,
-.browser-result,
-.browser-search,
-.browser-cookie,
-.browser-footer,
-.mail-app,
-.mail-head,
-.mail-item,
-.mail-message,
-.mail-empty,
-.mail-form,
-.mail-actions,
-.mail-form-actions{
-  border-color:var(--ui-border) !important;
-  color:var(--ui-text) !important;
-}
-
-.browser-page,
-.browser-result,
-.browser-search,
-.browser-cookie,
-.mail-message,
-.mail-empty,
-.mail-form{
-  background:var(--ui-surface) !important;
-}
-
-.browser-tabs,
-.browser-footer,
-.mail-head,
-.mail-actions,
-.mail-form-actions{
-  background:var(--ui-surface-3) !important;
-}
-
-.browser-tab,
-.mail-item{
-  background:var(--ui-surface-2) !important;
-}
-
-.browser-tab.active,
-.mail-item.active,
-.mail-item:hover{
-  background:var(--ui-primary-soft) !important;
-  box-shadow:inset 0 -2px var(--ui-primary);
-}
-
+.chrome-result a,
 .browser-page a,
 .browser-result a,
 .mail-message a{
-  color:#0757B2 !important;
+  color:#1d4ed8 !important;
+  text-decoration-color:#1d4ed8 !important;
 }
 
-/* ===================== EVERYDAY LABS ===================== */
-
-.everyday-lab-head,
-.everyday-copy,
-.everyday-choice-grid,
-.everyday-dialog,
-.everyday-action-row,
-.everyday-network-list,
-.everyday-settings,
-.everyday-cloud,
-.everyday-error{
-  border-color:var(--ui-border) !important;
-}
-
-.everyday-lab-head,
-.everyday-dialog,
-.everyday-settings,
-.everyday-cloud{
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
-}
-
-.everyday-primary{
-  border-color:var(--ui-primary) !important;
-  background:var(--ui-primary) !important;
-  color:#fff !important;
-}
-
-.everyday-secondary{
-  border-color:var(--ui-border-strong) !important;
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
-}
-
-.everyday-error{
-  background:var(--ui-danger-soft) !important;
-  color:#8E1C14 !important;
-}
-
-/* ===================== SETTINGS ===================== */
-
-.settings-card,
-.settings-profile,
-.settings-network-row,
-.settings-installed-row,
-.settings-device-row,
-.settings-device-chooser,
-.settings-password-box,
-.settings-audio,
-.settings-add-device,
-.settings-app-menu{
-  border-color:var(--ui-border) !important;
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
-}
-
-.settings-card:hover,
-.settings-network-row:hover,
-.settings-installed-row:hover,
-.settings-device-row:hover{
-  background:var(--ui-primary-soft) !important;
-}
+/* ---------- Settings ---------- */
 
 .settings-toggle{
-  border-color:var(--ui-border-strong) !important;
-  background:#CBD5E1 !important;
+  background:#cbd5e1 !important;
+  border-color:#94a3b8 !important;
 }
 
 .settings-toggle.on{
-  background:var(--ui-primary) !important;
+  background:var(--web-primary) !important;
 }
 
 .settings-toggle::after,
@@ -901,76 +840,39 @@ button.primary:hover,
   background:#fff !important;
 }
 
-/* ===================== PDF / PRINT ===================== */
+/* ---------- Photos ---------- */
 
-.pdf-real-page,
-.pdf-tools,
-.pdf-file-label,
-.print-options,
-.print-actions,
-.print-dialog-real{
-  border-color:var(--ui-border) !important;
+.photos-toolbar{
+  background:#1e293b !important;
+  color:#fff !important;
 }
 
-.pdf-tools,
-.print-actions{
-  background:var(--ui-surface-3) !important;
-  color:var(--ui-text) !important;
+.photos-toolbar button{
+  background:#334155 !important;
+  border-color:#475569 !important;
+  color:#fff !important;
 }
 
-.pdf-real-page,
-.print-options,
-.print-dialog-real{
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
+.photos-toolbar button:hover{
+  background:#475569 !important;
 }
 
-/* ===================== INSTALLER / TROUBLESHOOTING ===================== */
+/* ---------- VFS ---------- */
 
-.installer-body,
-.trouble-normal,
-.trouble-file,
-.trouble-frozen-body,
-.trouble-error-actions{
-  border-color:var(--ui-border) !important;
-  color:var(--ui-text) !important;
+.vfs-item{
+  background:transparent !important;
+  border-color:transparent !important;
+  color:var(--web-text) !important;
 }
 
-.installer-body,
-.trouble-normal,
-.trouble-file{
-  background:var(--ui-surface) !important;
+.vfs-item:hover,
+.vfs-item.selected{
+  background:var(--web-primary-soft) !important;
+  border-color:#93c5fd !important;
 }
 
-.trouble-frozen-body{
-  background:var(--ui-danger-soft) !important;
-}
+/* ---------- Dialog overlays ---------- */
 
-.trouble-error-actions{
-  background:var(--ui-surface-3) !important;
-}
-
-/* ===================== DIALOGS ===================== */
-
-.dialog,
-.windows-confirm-dialog,
-.trouble-error-dialog,
-.print-dialog-real,
-.reset-dialog,
-.sim-dialog{
-  background:var(--ui-surface) !important;
-  border-color:var(--ui-border) !important;
-  color:var(--ui-text) !important;
-}
-
-.dialog p,
-.windows-confirm-dialog p,
-.trouble-error-copy p,
-.reset-dialog p{
-  color:var(--ui-text-muted) !important;
-}
-
-/* Persistent host must never blur the simulator. */
 .dialog-layer{
   background:transparent !important;
   backdrop-filter:none !important;
@@ -981,109 +883,20 @@ button.primary:hover,
 .print-overlay,
 .reset-dialog-backdrop,
 .trouble-modal-layer{
-  background:rgba(18,32,51,.48) !important;
-  backdrop-filter:blur(6px);
+  background:rgba(15,23,42,.42) !important;
+  backdrop-filter:blur(4px);
 }
 
-.reset-dialog-warning{
-  border-color:#E8AAA6;
-  background:var(--ui-danger-soft);
-  color:#8E1C14;
-}
-
-/* ===================== WIN11 SMALL SURFACES ===================== */
-
-.win11-start-search,
-.win11-context,
-.quick-settings,
-.quick-tile,
-.quick-volume,
-.quick-settings-footer,
-.system-tray,
-.recommended-row{
-  border-color:var(--ui-border) !important;
-}
-
-.win11-start-search,
-.win11-context,
-.quick-settings{
-  background:rgba(255,255,255,.985) !important;
-  color:var(--ui-text) !important;
-}
-
-.quick-tile,
-.recommended-row{
-  background:var(--ui-surface-2) !important;
-  color:var(--ui-text) !important;
-}
-
-.quick-tile.on,
-.quick-tile:hover,
-.recommended-row:hover{
-  background:var(--ui-primary-soft) !important;
-}
-
-.system-tray,
-.quick-settings-footer{
-  background:var(--ui-surface-3) !important;
-  color:var(--ui-text) !important;
-}
-
-/* ===================== GENERIC CONTROLS ===================== */
-
-:is(
-  .dialog-actions button,
-  .scenario-actions button,
-  .photos-toolbar button,
-  .print-actions button,
-  .chrome-menu button,
-  .mail-actions button,
-  .mail-form-actions button
-){
-  border-color:var(--ui-border) !important;
-  background:var(--ui-surface) !important;
-  color:var(--ui-text) !important;
-}
-
-:is(
-  .dialog-actions button,
-  .scenario-actions button,
-  .photos-toolbar button,
-  .print-actions button,
-  .chrome-menu button,
-  .mail-actions button,
-  .mail-form-actions button
-):hover{
-  background:var(--ui-surface-3) !important;
-}
-
-.photos-toolbar{
-  background:#23364D !important;
-  color:#fff !important;
-}
-
-.vfs-item{
-  border-color:transparent !important;
-  background:transparent !important;
-  color:var(--ui-text) !important;
-}
-
-.vfs-item:hover,
-.vfs-item.selected{
-  background:var(--ui-primary-soft) !important;
-  border-color:var(--ui-primary) !important;
-}
-
-/* ===================== ACCESSIBILITY ===================== */
+/* ---------- Accessibility ---------- */
 
 :where(a,button,input,select,textarea,[tabindex]):focus-visible{
-  outline:3px solid var(--ui-focus) !important;
+  outline:3px solid var(--web-focus) !important;
   outline-offset:3px !important;
   box-shadow:0 0 0 2px #fff !important;
 }
 
 .skip-link{
-  background:var(--ui-primary);
+  background:var(--web-primary);
   color:#fff;
 }
 
