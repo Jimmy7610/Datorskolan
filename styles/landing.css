@@ -1780,3 +1780,73 @@ body.reset-dialog-open{overflow:hidden!important}
   .landing-panel.active{animation:none}
   .primary-cta:hover,.module-grid article:hover{transform:none}
 }
+
+
+/* ---------- Course panel vertical fit fix ----------
+   Keep the whole course tab inside the one-screen landing layout.
+   The module grid now consumes only the space that is actually available,
+   and the utility row always remains fully visible above the status bar.
+*/
+
+.course-panel{
+  display:flex !important;
+  flex-direction:column !important;
+  min-height:0 !important;
+  padding-bottom:10px !important;
+}
+
+.course-topline{
+  flex:0 0 auto !important;
+}
+
+.module-grid{
+  flex:1 1 auto !important;
+  min-height:0 !important;
+  height:auto !important;
+}
+
+.course-bottom{
+  flex:0 0 auto !important;
+  min-height:38px !important;
+  padding-top:8px !important;
+  padding-bottom:0 !important;
+}
+
+/* Keep the last row visibly separated from the utility/status area. */
+.module-grid article{
+  min-height:0 !important;
+}
+
+.landing-statusbar{
+  bottom:10px !important;
+}
+
+/* On shorter desktop viewports, tighten the course area instead of clipping it. */
+@media(max-height:900px){
+  .course-panel{
+    padding-top:14px !important;
+    padding-bottom:8px !important;
+  }
+
+  .course-topline{
+    margin-bottom:8px !important;
+  }
+
+  .course-topline h2{
+    margin-top:6px !important;
+    margin-bottom:5px !important;
+  }
+
+  .module-grid{
+    gap:6px !important;
+  }
+
+  .module-grid article{
+    padding:6px 9px !important;
+  }
+
+  .course-bottom{
+    min-height:34px !important;
+    padding-top:6px !important;
+  }
+}
