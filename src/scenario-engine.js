@@ -61,9 +61,9 @@
 
   ScenarioEngine.prototype.load = function (id, runtime) {
     var scenario = this._definitions[id];
-    if (!scenario) throw new Error("Okänt scenario: " + id);
+    if (!scenario) throw new Error("Unknown scenario: " + id);
     if (!runtime || typeof runtime.resetForScenario !== "function" || !runtime.vfs) {
-      throw new Error("Scenario runtime saknas");
+      throw new Error("Scenario runtime missing");
     }
 
     runtime.resetForScenario();
@@ -128,7 +128,7 @@
   ScenarioEngine.prototype._findNode = function (runtime, goal) {
     return runtime.vfs.list(goal.parentId).find(function (node) {
       return (!goal.nodeType || node.type === goal.nodeType) &&
-        node.name.toLocaleLowerCase("sv") === goal.name.toLocaleLowerCase("sv");
+        node.name.toLocaleLowerCase() === goal.name.toLocaleLowerCase();
     }) || null;
   };
 
@@ -137,7 +137,7 @@
 
     if (goal.nodeName) {
       var node = entry.payload && entry.payload.id ? runtime.vfs.get(entry.payload.id) : null;
-      if (!node || node.name.toLocaleLowerCase("sv") !== goal.nodeName.toLocaleLowerCase("sv")) return false;
+      if (!node || node.name.toLocaleLowerCase() !== goal.nodeName.toLocaleLowerCase()) return false;
     }
 
     var expected = goal.payload || {};
@@ -205,4 +205,4 @@
   };
 
   window.DatorskolanScenarioEngine = ScenarioEngine;
-})(window.DatorskolanScenarios || []);
+})();

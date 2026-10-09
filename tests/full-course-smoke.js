@@ -1,20 +1,7 @@
 "use strict";
 
-global.window = {};
-
-require("../src/scenarios.js");
-require("../src/advanced-scenarios.js");
-require("../src/everyday-scenarios.js");
-require("../src/scenario-engine.js");
-require("../src/progress-store.js");
-require("../src/lessons.js");
-require("../src/advanced-lessons.js");
-require("../src/everyday-lessons.js");
-require("../src/lesson-engine.js");
-
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-}
+const { loadCourse, assert } = require("./helpers/load");
+const course = loadCourse();
 
 var requiredModules = [
   "basics",
@@ -32,8 +19,8 @@ var requiredModules = [
   "final"
 ];
 
-var lessons = window.DatorskolanLessons;
-var scenarios = window.DatorskolanScenarios;
+var lessons = course.lessons("sv");
+var scenarios = course.scenarios("sv");
 var scenarioIds = {};
 scenarios.forEach(function (scenario) { scenarioIds[scenario.id] = true; });
 

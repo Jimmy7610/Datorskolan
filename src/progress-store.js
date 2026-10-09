@@ -53,7 +53,7 @@
       parsed.userProfile.lastSeenAt = nowIso();
       return parsed;
     } catch (error) {
-      console.warn("[ProgressStore] Kunde inte läsa sparad progression", error);
+      console.warn("[ProgressStore] Could not read saved progress", error);
       return emptyState();
     }
   };
@@ -65,7 +65,7 @@
       this._state.userProfile.lastSeenAt = nowIso();
       this._storage.setItem(STORAGE_KEY, JSON.stringify(this._state));
     } catch (error) {
-      console.warn("[ProgressStore] Kunde inte spara progression", error);
+      console.warn("[ProgressStore] Could not save progress", error);
     }
   };
 

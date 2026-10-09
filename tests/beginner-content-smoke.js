@@ -1,38 +1,26 @@
 "use strict";
 
-global.window = {};
+const { loadCourse, assert, LOCALES } = require("./helpers/load");
+const course = loadCourse();
 
-require("../src/lessons.js");
-require("../src/advanced-lessons.js");
-require("../src/everyday-lessons.js");
-require("../src/lesson-enrichment.js");
+// Every lesson explains the concept from scratch, in every language that is complete.
+["sv"].concat(process.env.REQUIRE_ALL_LOCALES === "0" ? [] : LOCALES.filter(function (l) { return l !== "sv"; })).forEach(function (locale) {
+  const lessons = course.lessons(locale);
+  assert(lessons.length === 120, locale + ": expected 120 lessons, got " + lessons.length);
 
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-}
-
-const lessons = window.DatorskolanLessons || [];
-assert(lessons.length > 0, "No lessons loaded");
-
-lessons.forEach(function (lesson) {
-  assert(lesson.detail, "Missing beginner detail: " + lesson.id);
-  ["what","recognize","use","example"].forEach(function (key) {
-    assert(
-      typeof lesson.detail[key] === "string" && lesson.detail[key].trim().length >= 20,
-      "Weak or missing " + key + " explanation: " + lesson.id
-    );
+  lessons.forEach(function (lesson) {
+    assert(lesson.detail, locale + ": missing beginner detail: " + lesson.id);
+    ["what", "recognize", "use", "example"].forEach(function (key) {
+      assert(typeof lesson.detail[key] === "string" && lesson.detail[key].trim().length >= 20,
+        locale + ": weak or missing " + key + " explanation: " + lesson.id);
+    });
+    assert(Array.isArray(lesson.detail.everyday) && lesson.detail.everyday.length >= 2, locale + ": missing everyday examples: " + lesson.id);
+    assert(Array.isArray(lesson.detail.mistakes) && lesson.detail.mistakes.length >= 2, locale + ": missing common mistakes: " + lesson.id);
   });
-
-  assert(Array.isArray(lesson.detail.everyday) && lesson.detail.everyday.length >= 2, "Missing everyday examples: " + lesson.id);
-  assert(Array.isArray(lesson.detail.mistakes) && lesson.detail.mistakes.length >= 2, "Missing common mistakes: " + lesson.id);
-
-  if (lesson.moduleId === "internet" && lesson.title === "Länkar") {
-    assert(
-      lesson.detail.recognize.toLowerCase().indexOf("hand") >= 0 ||
-      lesson.detail.recognize.toLowerCase().indexOf("understr") >= 0,
-      "Link lesson must explain how links are recognized"
-    );
-  }
 });
 
-console.log("Beginner content smoke test passed:", lessons.length, "lessons");
+const links = course.lessons("sv").filter(function (l) { return l.moduleId === "internet" && l.title === "Länkar"; })[0];
+assert(links, "Link lesson missing");
+assert(/hand|understr/i.test(links.detail.recognize), "Link lesson must explain how links are recognised");
+
+console.log("Beginner content smoke test passed: 120 lessons");

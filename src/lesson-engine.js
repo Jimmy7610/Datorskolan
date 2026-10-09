@@ -46,8 +46,8 @@
 
   LessonEngine.prototype.start = function (lessonId, runtime) {
     var lesson = this._definitions[lessonId];
-    if (!lesson) throw new Error("Okänd lektion: " + lessonId);
-    if (!runtime) throw new Error("Lesson runtime saknas");
+    if (!lesson) throw new Error("Unknown lesson: " + lessonId);
+    if (!runtime) throw new Error("Lesson runtime missing");
 
     this._runtime = runtime;
     if (lesson.scenarioId && runtime.loadScenario) runtime.loadScenario(lesson.scenarioId);
@@ -116,16 +116,7 @@
     var lesson = this._definitions[this._active.id];
     if (!lesson || !lesson.steps[this._active.stepIndex]) return null;
 
-    var step = clone(lesson.steps[this._active.stepIndex]);
-    var profile = this._progress && this._progress.profile ? this._progress.profile() : { mode: "standard" };
-    var mode = profile.mode || "standard";
-
-    if (mode === "child" && step.childText) step.text = step.childText;
-    if (mode === "fast" && step.fastText) step.text = step.fastText;
-    if (mode === "child" && step.childTitle) step.title = step.childTitle;
-    if (mode === "fast" && step.fastTitle) step.title = step.fastTitle;
-
-    return step;
+    return clone(lesson.steps[this._active.stepIndex]);
   };
 
   LessonEngine.prototype.next = function () {
@@ -140,9 +131,7 @@
       var retryProfile = this._progress.profile ? this._progress.profile() : { mode: "standard" };
       this._active.feedback = {
         kind: "try-again",
-        text: retryProfile.mode === "child"
-          ? "Nästan! Prova en gång till eller tryck på Hjälp."
-          : "Inte riktigt än. Försök igen eller använd Hjälp."
+        messageKey: retryProfile.mode === "child" ? "learn.feedback.tryAgainChild" : "learn.feedback.tryAgain"
       };
 
       lesson.skills.forEach(function (skillId) {
@@ -255,7 +244,7 @@
     ) {
       this._active.feedback = {
         kind: "success",
-        text: "Rätt. Uppgiften är klar."
+        messageKey: "learn.feedback.success"
       };
       this._notify();
     }
@@ -277,7 +266,7 @@
         this._active.validatorPassed = true;
         this._active.feedback = {
           kind: "success",
-          text: "Rätt. Uppgiften är klar."
+          messageKey: "learn.feedback.success"
         };
         this._notify();
       }
@@ -345,9 +334,7 @@
     var completionProfile = this._progress.profile ? this._progress.profile() : { mode: "standard" };
     this._active.feedback = {
       kind: "lesson-complete",
-      text: completionProfile.mode === "child"
-        ? "Bra jobbat! Uppdraget är klart."
-        : "Lektionen är klar."
+      messageKey: completionProfile.mode === "child" ? "learn.feedback.completeChild" : "learn.feedback.complete"
     };
 
     this._progress.completeLesson(lesson.id);

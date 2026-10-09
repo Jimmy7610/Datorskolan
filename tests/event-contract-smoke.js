@@ -1,22 +1,12 @@
 "use strict";
 
 const fs = require("fs");
+const path = require("path");
+const { loadCourse, assert, ROOT } = require("./helpers/load");
+const course = loadCourse();
 
-global.window = {};
-
-require("../src/scenarios.js");
-require("../src/advanced-scenarios.js");
-require("../src/everyday-scenarios.js");
-require("../src/lessons.js");
-require("../src/advanced-lessons.js");
-require("../src/everyday-lessons.js");
-
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-}
-
-const scenarios = window.DatorskolanScenarios || [];
-const lessons = window.DatorskolanLessons || [];
+const scenarios = course.structure.scenarios;
+const lessons = course.structure.lessons;
 
 function uniqueIds(items, label) {
   const seen = new Set();
@@ -62,17 +52,11 @@ scenarios.forEach(function (scenario) {
   walkGoal(scenario.goal, scenarioEventTypes);
 });
 
-const sourceText = [
-  fs.readFileSync("src/app.js", "utf8"),
-  fs.readFileSync("src/advanced-apps.js", "utf8"),
-  fs.readFileSync("src/everyday-apps.js", "utf8"),
-  fs.readFileSync("src/chrome-app.js", "utf8"),
-  fs.readFileSync("src/settings-app.js", "utf8"),
-  fs.readFileSync("src/installer-app.js", "utf8"),
-  fs.readFileSync("src/snipping-app.js", "utf8"),
-  fs.readFileSync("src/trouble-app.js", "utf8"),
-  fs.readFileSync("src/pdf-app.js", "utf8")
-].join("\n");
+// Every runtime source file (the apps are split across several files).
+const sourceText = fs.readdirSync(path.join(ROOT, "src"))
+  .filter(function (name) { return /\.js$/.test(name); })
+  .map(function (name) { return fs.readFileSync(path.join(ROOT, "src", name), "utf8"); })
+  .join("\n");
 
 // Capture every event-like string literal from runtime sources. This intentionally
 // handles direct emit calls as well as ternary expressions passed to emit().

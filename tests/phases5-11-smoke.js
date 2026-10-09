@@ -1,21 +1,11 @@
 "use strict";
 
-global.window = {};
+const { loadCourse, assert, fakeRuntime } = require("./helpers/load");
+const course = loadCourse();
+const t = function (key) { return window.DatorskolanI18n.dictionary("sv", "ui")[key]; };
 
-require("../src/scenarios.js");
-require("../src/advanced-scenarios.js");
-require("../src/scenario-engine.js");
-require("../src/progress-store.js");
-require("../src/lessons.js");
-require("../src/advanced-lessons.js");
-require("../src/lesson-engine.js");
-
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-}
-
-const scenarios = window.DatorskolanScenarios;
-const lessons = window.DatorskolanLessons;
+const scenarios = course.scenarios("sv");
+const lessons = course.lessons("sv");
 
 function scenario(id) {
   return scenarios.find(function (item) { return item.id === id; });
@@ -23,23 +13,6 @@ function scenario(id) {
 
 function lesson(id) {
   return lessons.find(function (item) { return item.id === id; });
-}
-
-function fakeRuntime() {
-  return {
-    vfs: {
-      reset: function () {},
-      get: function () { return null; },
-      list: function () { return []; },
-      createFile: function () { return {}; },
-      createFolder: function () { return {}; }
-    },
-    resetForScenario: function () {},
-    setExplorerFolder: function () {},
-    setMouseMode: function () {},
-    applyStartState: function () {},
-    openApp: function () {}
-  };
 }
 
 function completeScenarioWithEvents(id, events) {
@@ -87,7 +60,7 @@ completeScenarioWithEvents("internet-final-01", [
   ["browser.tabOpened", {}],
   ["browser.back", {}],
   ["browser.forward", {}],
-  ["browser.downloaded", { name: "guide.txt" }]
+  ["browser.downloaded", { name: t("chrome.download.fileName") }]
 ]);
 
 completeScenarioWithEvents("internet-close-tab-01", [
@@ -98,8 +71,8 @@ completeScenarioWithEvents("internet-close-tab-01", [
 // Phase 8 - Mail and security.
 completeScenarioWithEvents("mail-final-01", [
   ["mail.opened", {}],
-  ["mail.attachmentDownloaded", { name: "utflykt.jpg" }],
-  ["mail.attachmentAdded", { name: "utflykt.jpg" }],
+  ["mail.attachmentDownloaded", { name: t("mail.m1.attachment") }],
+  ["mail.attachmentAdded", { name: t("mail.m1.attachment") }],
   ["mail.replied", { attachment: true }]
 ]);
 
@@ -184,7 +157,7 @@ assert(agingStore.skill("review.skill").status === "needs_review", "Old independ
 
 // Phase 11 - independent final exam.
 completeScenarioWithEvents("final-independent-01", [
-  ["browser.downloaded", { name: "guide.txt" }],
+  ["browser.downloaded", { name: t("chrome.download.fileName") }],
   ["file.renamed", { name: "guide-klar.txt" }],
   ["mail.attachmentAdded", { name: "guide-klar.txt" }],
   ["mail.sent", { to: "anna@example.test", attachment: true, attachmentName: "guide-klar.txt" }]

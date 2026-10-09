@@ -1,117 +1,30 @@
 "use strict";
 
-global.window = {};
+const { loadCourse, assert, LOCALES } = require("./helpers/load");
+const course = loadCourse();
 
-require("../src/scenarios.js");
-require("../src/advanced-scenarios.js");
-require("../src/everyday-scenarios.js");
-require("../src/scenario-engine.js");
-require("../src/lessons.js");
-require("../src/advanced-lessons.js");
-require("../src/everyday-lessons.js");
-require("../src/lesson-enrichment.js");
+const structure = course.structure.lessons;
+const scenarioIds = new Set(course.structure.scenarios.map(function (s) { return s.id; }));
 
-function assert(condition,message){
-  if(!condition) throw new Error(message);
-}
-
-const lessons=window.DatorskolanLessons||[];
-const scenarios=window.DatorskolanScenarios||[];
-const ids=new Set(scenarios.map(function(s){return s.id;}));
-
-["everyday","devices","troubleshooting"].forEach(function(moduleId){
-  assert(lessons.some(function(l){return l.moduleId===moduleId;}),"Missing module: "+moduleId);
+["everyday", "devices", "troubleshooting"].forEach(function (moduleId) {
+  assert(structure.some(function (l) { return l.moduleId === moduleId; }), "Missing module: " + moduleId);
 });
+assert(structure.length === 120, "Expected exactly 120 lessons, got " + structure.length);
 
-assert(lessons.length>=120,"Expected at least 120 lessons, got "+lessons.length);
-
-const interactive=lessons.filter(function(l){
-  return ["everyday","devices","troubleshooting"].indexOf(l.moduleId)>=0 && l.scenarioId;
+const interactive = structure.filter(function (l) {
+  return ["everyday", "devices", "troubleshooting"].indexOf(l.moduleId) >= 0 && l.scenarioId;
 });
+assert(interactive.length >= 20, "Everyday modules must stay hands-on (" + interactive.length + " interactive lessons)");
 
-interactive.forEach(function(lesson){
-  assert(ids.has(lesson.scenarioId),"Missing everyday scenario for "+lesson.id);
-  assert(lesson.detail,"Missing detail for "+lesson.id);
-  assert(Array.isArray(lesson.detail.everyday)&&lesson.detail.everyday.length>=2,"Missing everyday examples: "+lesson.id);
-  assert(Array.isArray(lesson.detail.mistakes)&&lesson.detail.mistakes.length>=2,"Missing common mistakes: "+lesson.id);
-});
-
-function runtime(){
-  return {
-    vfs:{
-      reset:function(){},
-      get:function(){return null;},
-      list:function(){return [];},
-      createFile:function(){return {};},
-      createFolder:function(){return {};}
-    },
-    resetForScenario:function(){},
-    setExplorerFolder:function(){},
-    setMouseMode:function(){},
-    applyStartState:function(){},
-    openApp:function(){}
-  };
-}
-
-[
-  {
-    id:"everyday-copy-paste-01",
-    events:[
-      ["browser.textCopied",{text:"Telefon: 070-123 45 67"}],
-      ["notepad.pasted",{text:"Telefon: 070-123 45 67"}]
-    ]
-  },
-  {
-    id:"everyday-pdf-01",
-    events:[
-      ["file.opened",{id:"file-pdf"}],
-      ["pdf.zoomChanged",{zoom:110}],
-      ["pdf.savedCopy",{name:"faktura-kopia.pdf"}]
-    ],
-    vfsGet:function(id){
-      return id==="file-pdf" ? {id:"file-pdf",name:"faktura.pdf",type:"file",fileType:"pdf"} : null;
-    }
-  },
-  {
-    id:"everyday-wifi-01",
-    events:[["settings.wifiConnected",{network:"HemmaNet"}]]
-  },
-  {
-    id:"everyday-bluetooth-01",
-    events:[["settings.bluetoothPaired",{device:"Headset"}]]
-  },
-  {
-    id:"everyday-audio-camera-01",
-    events:[["settings.audioConfigured",{volume:50,microphone:true,camera:true}]]
-  },
-  {
-    id:"everyday-restart-01",
-    events:[["settings.updateRestarted",{}]]
-  },
-  {
-    id:"everyday-error-01",
-    events:[
-      ["troubleshooting.errorOpened",{code:"FILE_IN_USE"}],
-      ["troubleshooting.errorHandled",{choice:"close",code:"FILE_IN_USE"}]
-    ]
-  },
-  {
-    id:"everyday-recovery-01",
-    events:[
-      ["troubleshooting.waited",{appId:"trouble-demo"}],
-      ["troubleshooting.closedFrozen",{appId:"trouble-demo"}],
-      ["troubleshooting.restarted",{appId:"trouble-demo"}]
-    ]
-  }
-].forEach(function(sample){
-  const engine=new window.DatorskolanScenarioEngine(scenarios);
-  const rt=runtime();
-  if(sample.vfsGet) rt.vfs.get=sample.vfsGet;
-  engine.load(sample.id,rt);
-  sample.events.forEach(function(entry){
-    engine.observe(entry[0],entry[1]||{},rt);
+LOCALES.forEach(function (locale) {
+  const byId = {};
+  course.lessons(locale).forEach(function (l) { byId[l.id] = l; });
+  interactive.forEach(function (lesson) {
+    assert(scenarioIds.has(lesson.scenarioId), "Missing scenario for " + lesson.id);
+    const text = byId[lesson.id];
+    assert(text.detail && text.detail.everyday.length >= 2, locale + ": missing everyday examples: " + lesson.id);
+    assert(text.detail.mistakes.length >= 2, locale + ": missing common mistakes: " + lesson.id);
   });
-  assert(engine.active().status==="completed","Scenario did not complete: "+sample.id);
 });
 
-console.log("Everyday course smoke test passed:",lessons.length,"lessons,",interactive.length,"new interactive lessons");
+console.log("Everyday course smoke test passed: 120 lessons,", interactive.length, "interactive everyday lessons");
