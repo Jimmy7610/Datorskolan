@@ -1,75 +1,80 @@
 "use strict";
 
+/*
+  Windows 11 realism: licensed icons, authentic terminology and behaviour that the course teaches.
+*/
 const fs = require("fs");
+const path = require("path");
+const { load, assert, ROOT } = require("./helpers/load");
 
-global.window = {
-  localStorage: {
-    _data: {},
-    getItem: function (k) { return this._data[k] || null; },
-    setItem: function (k,v) { this._data[k] = String(v); },
-    removeItem: function (k) { delete this._data[k]; }
-  }
+global.localStorage = {
+  _data: {},
+  getItem: function (k) { return this._data[k] || null; },
+  setItem: function (k, v) { this._data[k] = String(v); },
+  removeItem: function (k) { delete this._data[k]; }
 };
+load(["src/win11-ui.js", "src/i18n.js", "locales/sv/ui.js", "locales/sv/fakewin.js", "locales/en/ui.js", "locales/en/fakewin.js"]);
 
-require("../src/win11-ui.js");
+const ui = window.DatorskolanWindows11;
+assert(ui.FLUENT_ROOT === "./assets/icons/fluent/", "Unexpected Fluent asset root");
 
-function assert(condition,message){
-  if(!condition) throw new Error(message);
-}
-
-var ui=window.DatorskolanWindows11;
-assert(ui,"Windows 11 UI registry missing");
-assert(ui.FLUENT_ROOT==="./assets/icons/fluent/","Unexpected Fluent asset root");
-
-[
-  "start","explorer","folder","folder-documents","pictures","recycle",
-  "calculator","notepad","photos","mail","settings","text-file","pdf",
-  "zip","image-file","school","flask","home","wifi","speaker","battery",
-  "download","snipping","onedrive","usb-drive","this-pc","desktop",
-  "bluetooth","globe","apps-list","shield","sync","headphones","save",
-  "timer","add","crop"
-].forEach(function(name){
-  var markup=ui.icon(name,24);
-  assert(markup.indexOf("<img")>=0,"System icon is not file-backed: "+name);
-  assert(markup.indexOf("assets/icons/fluent/")>=0,"System icon is not Fluent-backed: "+name);
-
-  var fileName=ui.fluentIcons[name];
-  assert(fileName,"Missing Fluent mapping: "+name);
-  assert(fs.existsSync("assets/icons/fluent/"+fileName),"Missing Fluent asset file: "+fileName);
+Object.keys(ui.fluentIcons).forEach(function (name) {
+  const markup = ui.icon(name, 24);
+  assert(markup.indexOf("assets/icons/fluent/") >= 0, "System icon is not Fluent-backed: " + name);
+  assert(fs.existsSync(path.join(ROOT, "assets/icons/fluent", ui.fluentIcons[name])), "Missing Fluent asset file: " + ui.fluentIcons[name]);
+  assert(/alt="" aria-hidden="true"/.test(markup), "Icons are decorative and must be hidden from assistive tech: " + name);
 });
 
-var chrome=ui.icon("chrome",24);
-assert(ui.CHROME_LOGO_URL==="https://www.google.com/chrome/static/images/chrome-logo-m100.svg","Chrome logo must use Google's official asset URL");
-assert(chrome.indexOf("<img")>=0,"Chrome brand icon must be file-backed");
-assert(chrome.indexOf(ui.CHROME_LOGO_URL)>=0,"Chrome icon does not use Google's official Chrome logo");
-assert(chrome.indexOf("assets/icons/fluent/")<0,"Chrome must not pretend to be a Microsoft Fluent icon");
+assert(ui.CHROME_LOGO_URL === "https://www.google.com/chrome/static/images/chrome-logo-m100.svg", "Chrome logo must use Google's official asset URL");
+assert(ui.icon("chrome", 24).indexOf("assets/icons/fluent/") < 0, "Chrome must not pretend to be a Microsoft Fluent icon");
+assert(fs.existsSync(path.join(ROOT, "assets/icons/fluent/LICENSE")), "Fluent license missing");
+const source = fs.readFileSync(path.join(ROOT, "assets/icons/fluent/SOURCE.md"), "utf8");
+assert(source.indexOf("microsoft/fluentui-system-icons") >= 0 && source.indexOf("08130c218d6bb87767d6d5616d9afcea651146c7") >= 0, "Fluent provenance not documented");
+assert(fs.existsSync(path.join(ROOT, "docs/38-ASSETS-AND-LICENSES.md")), "Asset and licence inventory missing");
 
-assert(fs.existsSync("assets/icons/fluent/LICENSE"),"Fluent license missing");
-assert(fs.existsSync("assets/icons/fluent/SOURCE.md"),"Fluent source provenance missing");
+// No emoji or ad-hoc Unicode pictographs as icons anywhere in the simulator.
+fs.readdirSync(path.join(ROOT, "src")).filter(function (n) { return /\.js$/.test(n); }).forEach(function (name) {
+  const text = fs.readFileSync(path.join(ROOT, "src", name), "utf8");
+  assert(!/[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u.test(text.replace(/[✓]/g, "")), name + " uses emoji/pictographs as icons");
+});
 
-var source=fs.readFileSync("assets/icons/fluent/SOURCE.md","utf8");
-assert(source.indexOf("microsoft/fluentui-system-icons")>=0,"Fluent source repository not documented");
-assert(source.indexOf("08130c218d6bb87767d6d5616d9afcea651146c7")>=0,"Fluent source commit not pinned");
+// Windows 11 terminology (Swedish and English UI).
+const sv = window.DatorskolanI18n.dictionary("sv", "ui");
+const en = window.DatorskolanI18n.dictionary("en", "ui");
+[
+  ["app.explorer", "Utforskaren", "File Explorer"],
+  ["app.recycleBin", "Papperskorgen", "Recycle Bin"],
+  ["vfs.documents", "Dokument", "Documents"],
+  ["vfs.downloads", "Hämtade filer", "Downloads"],
+  ["vfs.pictures", "Bilder", "Pictures"],
+  ["explorer.new", "Nytt", "New"],
+  ["explorer.newFolderName", "Ny mapp", "New folder"],
+  ["explorer.emptyRecycleBin", "Töm Papperskorgen", "Empty Recycle Bin"],
+  ["settings.page.network", "Nätverk och internet", "Network & internet"],
+  ["start.searchPlaceholder", "Sök efter appar, inställningar och dokument", "Search for apps, settings and documents"]
+].forEach(function (row) {
+  assert(sv[row[0]] === row[1], "Swedish Windows term changed for " + row[0] + ": " + sv[row[0]]);
+  assert(en[row[0]] === row[2], "English Windows term changed for " + row[0] + ": " + en[row[0]]);
+});
 
-var settings=fs.readFileSync("src/settings-app.js","utf8");
-var snipping=fs.readFileSync("src/snipping-app.js","utf8");
-assert(settings.indexOf("🖥")<0,"Settings still contains emoji system icon");
-assert(settings.indexOf("🎧")<0,"Settings still contains emoji device icon");
-assert(snipping.indexOf("💾")<0,"Snipping Tool still contains emoji save icon");
-assert(snipping.indexOf("✂")<0,"Snipping Tool still contains emoji scissors icon");
+// Behaviour the course teaches must exist in the simulator.
+const explorer = fs.readFileSync(path.join(ROOT, "src/explorer-app.js"), "utf8");
+[['key === "F2"', "F2 rename"], ['key === "Delete"', "Delete key"], ['lower === "c"', "Ctrl+C"], ['lower === "x"', "Ctrl+X"], ['lower === "v"', "Ctrl+V"],
+  ['e.shiftKey && lower === "n"', "Ctrl+Shift+N"], ['key === "Enter"', "Enter opens"], ["explorer-rename", "inline rename"]].forEach(function (entry) {
+  assert(explorer.indexOf(entry[0]) >= 0, "Explorer is missing " + entry[1]);
+});
+const app = fs.readFileSync(path.join(ROOT, "src/app.js"), "utf8");
+assert(app.indexOf('e.altKey && e.key === "Tab"') >= 0 && app.indexOf('e.altKey && e.key === "F4"') >= 0, "Alt+Tab / Alt+F4 missing");
+assert(app.indexOf('e.ctrlKey && e.key === "Escape"') >= 0, "Ctrl+Esc must open Start");
+assert(fs.readFileSync(path.join(ROOT, "src/installer-app.js"), "utf8").indexOf("installer.uac.title") >= 0, "Installing must show the UAC prompt");
+assert(fs.readFileSync(path.join(ROOT, "src/pdf-app.js"), "utf8").indexOf("print.saveOutputAs") >= 0, "Print to PDF must ask where to save");
 
-var shell=ui.defaultShellState();
-assert(shell.pinnedTaskbar.indexOf("explorer")>=0,"Explorer should be pinned by default");
-assert(shell.pinnedTaskbar.indexOf("browser")>=0,"Chrome should be pinned by default");
-assert(shell.pinnedStart.indexOf("browser")>=0,"Chrome should appear in Start by default");
+const shell = ui.defaultShellState();
+assert(shell.pinnedTaskbar.indexOf("explorer") >= 0 && shell.pinnedTaskbar.indexOf("browser") >= 0, "Explorer and Chrome should be pinned by default");
+shell.pinnedTaskbar = ["explorer"];
+ui.saveShellState(shell, global.localStorage);
+assert(ui.loadShellState(global.localStorage).pinnedTaskbar.join() === "explorer", "Shell state did not persist");
+ui.resetShellState(global.localStorage);
+assert(ui.loadShellState(global.localStorage).pinnedTaskbar.indexOf("browser") >= 0, "Shell reset did not restore defaults");
 
-shell.pinnedTaskbar=["explorer"];
-ui.saveShellState(shell,window.localStorage);
-var reloaded=ui.loadShellState(window.localStorage);
-assert(reloaded.pinnedTaskbar.length===1 && reloaded.pinnedTaskbar[0]==="explorer","Shell state did not persist");
-
-ui.resetShellState(window.localStorage);
-var reset=ui.loadShellState(window.localStorage);
-assert(reset.pinnedTaskbar.indexOf("browser")>=0,"Shell reset did not restore defaults");
-
-console.log("Windows 11 Fluent icon realism smoke test passed");
+console.log("Windows 11 realism smoke test passed");

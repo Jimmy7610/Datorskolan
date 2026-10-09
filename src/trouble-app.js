@@ -1,113 +1,86 @@
+/*
+  Report Viewer (Rapportvisaren) – a practice program that shows two common problems:
+  an error message ("the file is in use") and a program that stops responding.
+*/
 (function () {
   "use strict";
 
-  function el(tag,className,text){
-    var node=document.createElement(tag);
-    if(className) node.className=className;
-    if(text!==undefined) node.textContent=text;
-    return node;
-  }
-
-  function ensure(state){
-    if(!state.troubleDemo){
-      state.troubleDemo={
-        mode:"error",
-        errorOpen:false,
-        errorHandled:false,
-        frozen:false,
-        waited:false,
-        closedAfterFreeze:false,
-        restarted:false
-      };
+  function ensure(state) {
+    if (!state.troubleDemo) {
+      state.troubleDemo = { mode: "error", errorOpen: false, errorHandled: false, frozen: false, waited: false, closedAfterFreeze: false, restarted: false };
     }
     return state.troubleDemo;
   }
 
-  function render(ctx){
-    var s=ensure(ctx.state);
-    var root=el("div","trouble-app");
+  function windowTitle(ctx) {
+    var s = ensure(ctx.state);
+    return ctx.t("app.troubleDemo") + (s.mode === "frozen" ? " " + ctx.t("trouble.notRespondingSuffix") : "");
+  }
 
-    if(s.mode==="error"){
-      var header=el("div","trouble-header");
-      header.innerHTML="<strong>Rapportvisaren</strong><span>Öppna och visa rapportfiler</span>";
-      root.appendChild(header);
+  function showError(ctx) {
+    var t = ctx.t;
+    var s = ensure(ctx.state);
+    s.errorOpen = true;
+    ctx.emit("troubleshooting.errorOpened", { code: "FILE_IN_USE" });
+    ctx.showDialog({
+      kind: "app-error",
+      icon: "error",
+      title: t("app.troubleDemo"),
+      message: t("trouble.error.text", { name: t("trouble.fileName") }),
+      buttons: [
+        { label: t("trouble.error.retry"), ui: "error-retry", action: function () {
+          ctx.emit("troubleshooting.errorRetried", { code: "FILE_IN_USE" });
+          window.setTimeout(function () { showError(ctx); }, 250);
+        } },
+        { label: t("common.close"), primary: true, cancel: true, ui: "error-close", action: function () {
+          s.errorOpen = false;
+          s.errorHandled = true;
+          ctx.emit("troubleshooting.errorHandled", { choice: "close", code: "FILE_IN_USE" });
+          ctx.refreshApp("trouble-demo");
+        } }
+      ]
+    });
+  }
 
-      var recent=el("section","trouble-recent");
-      recent.innerHTML="<h3>Senaste filer</h3>";
+  function render(ctx) {
+    var t = ctx.t;
+    var h = ctx.h;
+    var s = ensure(ctx.state);
+    var root = h("div", { class: "trouble" + (s.mode === "frozen" ? " is-frozen" : "") });
 
-      var file=el("button","trouble-file");
-      file.type="button";
-      file.innerHTML="<span>"+window.DatorskolanWindows11.icon("pdf",28)+"</span><div><strong>rapport.pdf</strong><small>Documents</small></div>";
-      file.addEventListener("click",function(){
-        s.errorOpen=true;
-        ctx.emit("troubleshooting.errorOpened",{code:"FILE_IN_USE"});
-        refresh();
-      });
-      recent.appendChild(file);
-      root.appendChild(recent);
-
-      if(s.errorOpen){
-        var overlay=el("div","trouble-modal-layer");
-        var dialog=el("section","trouble-error-dialog");
-        dialog.innerHTML=
-          "<div class='trouble-error-icon'>!</div>"+
-          "<div class='trouble-error-copy'><h3>Kan inte öppna filen</h3>"+
-          "<p>Filen <b>rapport.pdf</b> används av ett annat program.</p>"+
-          "<p>Stäng programmet som använder filen och försök sedan igen.</p></div>";
-
-        var actions=el("div","trouble-error-actions");
-        var close=el("button","primary","Stäng");
-        var retry=el("button","","Försök igen");
-
-        close.addEventListener("click",function(){
-          s.errorOpen=false;
-          s.errorHandled=true;
-          ctx.emit("troubleshooting.errorHandled",{choice:"close",code:"FILE_IN_USE"});
-          refresh();
-        });
-
-        retry.addEventListener("click",function(){
-          ctx.emit("troubleshooting.errorRetried",{code:"FILE_IN_USE"});
-          dialog.classList.add("shake");
-          setTimeout(function(){dialog.classList.remove("shake");},250);
-        });
-
-        actions.appendChild(retry);
-        actions.appendChild(close);
-        dialog.appendChild(actions);
-        overlay.appendChild(dialog);
-        root.appendChild(overlay);
-      }
+    if (s.mode === "frozen") {
+      root.setAttribute("aria-busy", "true");
+      root.appendChild(h("div", { class: "trouble-frozen" }, [
+        h("div", { class: "fw-spinner", aria: { hidden: "true" } }),
+        h("p", { text: t("trouble.frozen.title", { name: t("trouble.fileName") }) }),
+        h("small", { text: t("trouble.frozen.text") })
+      ]));
+      return root;
     }
 
-    if(s.mode==="frozen"){
-      root.classList.add("frozen");
-      var frozenHeader=el("div","trouble-header");
-      frozenHeader.innerHTML="<strong>Rapportvisaren</strong><span>Bearbetar stor rapport…</span>";
-      root.appendChild(frozenHeader);
-
-      var frozenBody=el("div","trouble-frozen-body");
-      frozenBody.innerHTML=
-        "<div class='trouble-spinner'></div>"+
-        "<h3>Öppnar rapport.pdf</h3>"+
-        "<p>Programmet svarar inte just nu.</p>"+
-        "<small>Windows kan ibland behöva några sekunder innan ett program svarar igen.</small>";
-      root.appendChild(frozenBody);
+    if (s.mode === "normal") {
+      root.appendChild(h("div", { class: "trouble-ok" }, [
+        h("span", { html: ctx.glyph("check", 32) }),
+        h("h2", { text: t("trouble.normal.title") }),
+        h("p", { text: t("trouble.normal.text") })
+      ]));
+      return root;
     }
 
-    if(s.mode==="normal"){
-      var normal=el("div","trouble-normal");
-      normal.innerHTML="<div class='trouble-ok'>✓</div><h2>Rapportvisaren fungerar</h2><p>Programmet har startats om och svarar normalt igen.</p>";
-      root.appendChild(normal);
-    }
-
-    function refresh(){
-      var fresh=render(ctx);
-      root.replaceWith(fresh);
-    }
-
+    root.appendChild(h("h2", { class: "trouble-heading", text: t("trouble.recent") }));
+    root.appendChild(h("button", {
+      type: "button",
+      class: "trouble-file",
+      data: { ui: "trouble-file" },
+      on: { click: function () { showError(ctx); } }
+    }, [
+      h("span", { html: ctx.icon("pdf", 32) }),
+      h("span", {}, [h("strong", { text: t("trouble.fileName") }), h("small", { text: t("vfs.documents") })])
+    ]));
+    root.appendChild(h("p", { class: "fw-field-help", text: t("trouble.openHint") }));
+    if (s.errorHandled) root.appendChild(h("p", { class: "fw-field-help", role: "status", text: t("trouble.afterError") }));
     return root;
   }
 
-  window.DatorskolanTroubleApp={render:render};
+  window.DatorskolanTroubleApp = { render: render, ensure: ensure, windowTitle: windowTitle };
 })();

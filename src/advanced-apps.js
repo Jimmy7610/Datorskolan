@@ -1,418 +1,236 @@
+/*
+  Mail app (a generic Windows mail client) and the keyboard practice surface.
+*/
 (function () {
   "use strict";
 
-  function el(tag, className, text) {
-    var node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    return node;
-  }
-
-  function ensureKeyboardState(state) {
-    if (!state.keyboardLab) {
-      state.keyboardLab = {
-        mode: "letters",
-        completed: false,
-        flags: {},
-        clipboard: "",
-        capsUsed: false
-      };
-    }
-    return state.keyboardLab;
-  }
+  /* =================================================================
+     Keyboard practice
+     ================================================================= */
 
   function renderKeyboard(ctx) {
-    var state = ensureKeyboardState(ctx.state);
-    var mode = state.mode || "letters";
-    var root = el("div","keyboard-lab");
-    var head = el("div","keyboard-lab-head");
-    head.innerHTML = "<div><span>⌨️</span><strong>Keyboard Lab</strong></div><em></em>";
-    head.querySelector("em").textContent = state.completed ? "✓ Klar" : "Träningsyta";
-    root.appendChild(head);
+    var t = ctx.t;
+    var h = ctx.h;
+    var lab = ctx.state.keyboardLab;
+    var mode = lab.mode || "letters";
 
-    var stage = el("div","keyboard-stage");
+    var root = h("div", { class: "practice keyboard-lab keyboard-mode-" + mode });
+    var badge = h("span", { class: "practice-badge" + (lab.completed ? " is-done" : ""), text: lab.completed ? t("practice.done") : t("practice.inProgress") });
+    root.appendChild(h("header", { class: "practice-head" }, [h("h2", { text: t("keyboard.mode." + mode + ".title") }), badge]));
+    root.appendChild(h("p", { class: "practice-instruction", text: t("keyboard.mode." + mode + ".text") }));
+
+    var stage = h("div", { class: "keyboard-stage", data: { ui: "keyboard-stage" } });
     root.appendChild(stage);
 
     function complete(type, payload) {
-      if (state.completed) return;
-      state.completed = true;
+      if (lab.completed) return;
+      lab.completed = true;
+      badge.textContent = t("practice.done");
+      badge.classList.add("is-done");
       ctx.emit(type, payload || {});
-      head.querySelector("em").textContent = "✓ Klar";
     }
 
-    function title(text, sub) {
-      var h = el("div","keyboard-copy");
-      h.innerHTML = "<h3></h3><p></p>";
-      h.querySelector("h3").textContent = text;
-      h.querySelector("p").textContent = sub;
-      stage.appendChild(h);
+    function focusLater(node) { window.setTimeout(function () { if (document.body.contains(node)) node.focus(); }, 0); }
+
+    function checklist(keys) {
+      var list = h("ul", { class: "practice-checklist" });
+      keys.forEach(function (entry) { list.appendChild(h("li", { data: { k: entry[0] }, text: entry[1] })); });
+      stage.appendChild(list);
+      return function mark(key) {
+        var item = list.querySelector("[data-k='" + key + "']");
+        if (item) item.classList.add("is-done");
+      };
     }
 
-    function inputBox(placeholder) {
-      var input = el("input","keyboard-input");
-      input.type = "text";
-      input.placeholder = placeholder || "";
-      input.autocomplete = "off";
-      input.spellcheck = false;
+    function textInput(label, placeholder) {
+      var input = h("input", { type: "text", class: "keyboard-input", autocomplete: "off", spellcheck: false, placeholder: placeholder || "", aria: { label: label } });
       stage.appendChild(input);
-      setTimeout(function(){ input.focus(); },0);
+      focusLater(input);
       return input;
     }
 
     if (mode === "letters") {
-      title("Skriv ordet dator","Skriv med små bokstäver.");
-      var letters = inputBox("dator");
+      var word = t("keyboard.letters.word");
+      var letters = textInput(t("keyboard.mode.letters.title"), word);
       letters.addEventListener("input", function () {
-        if (letters.value.toLocaleLowerCase("sv") === "dator") complete("keyboard.letters.complete",{value:letters.value});
+        if (ctx.I18n.lower(letters.value) === word) complete("keyboard.letters.complete", { value: letters.value });
       });
     }
 
     if (mode === "numbers") {
-      title("Skriv siffrorna 12345","Använd sifferraden på tangentbordet.");
-      var numbers = inputBox("12345");
+      var numbers = textInput(t("keyboard.mode.numbers.title"), "12345");
       numbers.inputMode = "numeric";
-      numbers.addEventListener("input", function () {
-        if (numbers.value === "12345") complete("keyboard.numbers.complete",{value:numbers.value});
-      });
+      numbers.addEventListener("input", function () { if (numbers.value === "12345") complete("keyboard.numbers.complete", { value: numbers.value }); });
     }
 
     if (mode === "editing") {
-      title("Redigera text","Använd Mellanslag, Backspace, Delete och Enter.");
-      var editor = el("textarea","keyboard-textarea");
-      editor.value = "HejX världen";
+      var editor = h("textarea", { class: "keyboard-textarea", aria: { label: t("keyboard.mode.editing.title") } });
+      editor.value = t("keyboard.editing.start");
       stage.appendChild(editor);
-      var checklist = el("div","keyboard-checklist");
-      checklist.innerHTML = "<span data-k='space'>Mellanslag</span><span data-k='backspace'>Backspace</span><span data-k='delete'>Delete</span><span data-k='enter'>Enter</span>";
-      stage.appendChild(checklist);
+      var markEdit = checklist([["space", t("key.space")], ["backspace", "Backspace"], ["delete", t("key.delete")], ["enter", t("key.enter")]]);
       var flags = {};
       editor.addEventListener("keydown", function (e) {
-        var key = e.key;
-        if (key === " ") flags.space = true;
-        if (key === "Backspace") flags.backspace = true;
-        if (key === "Delete") flags.delete = true;
-        if (key === "Enter") flags.enter = true;
-        Object.keys(flags).forEach(function(k){
-          var chip=checklist.querySelector("[data-k='"+k+"']");
-          if(chip) chip.classList.add("done");
-        });
-        if (flags.space && flags.backspace && flags.delete && flags.enter) complete("keyboard.editing.complete",{});
+        if (e.key === " ") flags.space = true;
+        if (e.key === "Backspace") flags.backspace = true;
+        if (e.key === "Delete") flags.delete = true;
+        if (e.key === "Enter") flags.enter = true;
+        Object.keys(flags).forEach(markEdit);
+        if (flags.space && flags.backspace && flags.delete && flags.enter) complete("keyboard.editing.complete", {});
       });
-      setTimeout(function(){ editor.focus(); },0);
+      focusLater(editor);
     }
 
     if (mode === "shift-caps") {
-      title("Versaler","Gör en stor bokstav med Shift och använd sedan Caps Lock.");
-      var out = el("div","keyboard-key-output","Väntar...");
+      var out = h("p", { class: "keyboard-output", role: "status", aria: { live: "polite" }, text: t("keyboard.waiting") });
+      var capsField = h("input", { type: "text", class: "keyboard-input", aria: { label: t("keyboard.mode.shift-caps.title") } });
+      stage.appendChild(capsField);
       stage.appendChild(out);
-      var shiftOk=false, capsOk=false;
-      stage.tabIndex=0;
-      stage.addEventListener("keydown", function(e){
-        if(e.shiftKey && /^[a-zåäö]$/i.test(e.key) && e.key === e.key.toUpperCase()){
-          shiftOk=true; out.textContent="Shift + bokstav ✓";
-        }
-        if(e.key==="CapsLock"){
-          capsOk=true; out.textContent=shiftOk?"Shift ✓ • Caps Lock ✓":"Caps Lock ✓";
-        }
-        if(shiftOk&&capsOk) complete("keyboard.shiftcaps.complete",{});
+      var shiftOk = false;
+      var capsOk = false;
+      capsField.addEventListener("keydown", function (e) {
+        if (e.shiftKey && /^\p{L}$/u.test(e.key) && e.key === e.key.toUpperCase()) shiftOk = true;
+        if (e.key === "CapsLock" || (e.getModifierState && e.getModifierState("CapsLock") && /^\p{L}$/u.test(e.key))) capsOk = true;
+        out.textContent = (shiftOk ? "Shift ✓" : "Shift …") + "   ·   " + (capsOk ? "Caps Lock ✓" : "Caps Lock …");
+        if (shiftOk && capsOk) complete("keyboard.shiftcaps.complete", {});
       });
-      setTimeout(function(){ stage.focus(); },0);
+      focusLater(capsField);
     }
 
     if (mode === "arrows") {
-      title("Piltangenter","Flytta rutan åt alla fyra håll.");
-      var field=el("div","keyboard-arrow-field");
-      var token=el("div","keyboard-arrow-token","■");
-      field.appendChild(token); stage.appendChild(field);
-      var flagsA={};
-      stage.tabIndex=0;
-      stage.addEventListener("keydown", function(e){
-        var map={ArrowUp:"up",ArrowDown:"down",ArrowLeft:"left",ArrowRight:"right"};
-        if(!map[e.key]) return;
+      var field = h("div", { class: "keyboard-arrow-field", tabindex: "0", aria: { label: t("keyboard.mode.arrows.title") } });
+      var token = h("span", { class: "keyboard-arrow-token", aria: { hidden: "true" } });
+      field.appendChild(token);
+      stage.appendChild(field);
+      var markArrow = checklist([["up", "↑"], ["down", "↓"], ["left", "←"], ["right", "→"]]);
+      var pos = { x: 2, y: 2 };
+      var seen = {};
+      field.addEventListener("keydown", function (e) {
+        var map = { ArrowUp: ["up", 0, -1], ArrowDown: ["down", 0, 1], ArrowLeft: ["left", -1, 0], ArrowRight: ["right", 1, 0] };
+        var move = map[e.key];
+        if (!move) return;
         e.preventDefault();
-        flagsA[map[e.key]]=true;
-        token.dataset.last=map[e.key];
-        if(flagsA.up&&flagsA.down&&flagsA.left&&flagsA.right) complete("keyboard.arrows.complete",{});
+        pos.x = Math.max(0, Math.min(4, pos.x + move[1]));
+        pos.y = Math.max(0, Math.min(4, pos.y + move[2]));
+        token.style.left = (pos.x * 20 + 10) + "%";
+        token.style.top = (pos.y * 20 + 10) + "%";
+        seen[move[0]] = true;
+        markArrow(move[0]);
+        if (seen.up && seen.down && seen.left && seen.right) complete("keyboard.arrows.complete", {});
       });
-      setTimeout(function(){ stage.focus(); },0);
+      focusLater(field);
     }
 
     if (mode === "tab-esc") {
-      title("Tab och Esc","Flytta fokus med Tab och stäng hjälprutan med Esc.");
-      var row=el("div","keyboard-focus-row");
-      var b1=el("button","","Första"); var b2=el("button","","Andra"); var b3=el("button","","Tredje");
-      row.appendChild(b1);row.appendChild(b2);row.appendChild(b3);stage.appendChild(row);
-      var modal=el("div","keyboard-mini-modal","Tryck Esc för att stänga");
-      stage.appendChild(modal);
-      var tabSeen=false, escSeen=false;
-      stage.addEventListener("keydown",function(e){
-        if(e.key==="Tab") tabSeen=true;
-        if(e.key==="Escape"){ escSeen=true; modal.hidden=true; }
-        if(tabSeen&&escSeen) complete("keyboard.tabesc.complete",{});
+      var row = h("div", { class: "keyboard-focus-row" }, [
+        h("button", { type: "button", class: "fw-button", text: t("keyboard.tab.first") }),
+        h("button", { type: "button", class: "fw-button", text: t("keyboard.tab.second") }),
+        h("button", { type: "button", class: "fw-button", text: t("keyboard.tab.third") })
+      ]);
+      var tip = h("div", { class: "keyboard-tip", role: "note", text: t("keyboard.tab.escTip") });
+      stage.appendChild(row);
+      stage.appendChild(tip);
+      var markTab = checklist([["tab", "Tab"], ["esc", "Esc"]]);
+      var tabSeen = false;
+      var escSeen = false;
+      stage.addEventListener("keydown", function (e) {
+        if (e.key === "Tab") { tabSeen = true; markTab("tab"); }
+        if (e.key === "Escape") { e.stopPropagation(); escSeen = true; tip.hidden = true; markTab("esc"); }
+        if (tabSeen && escSeen) complete("keyboard.tabesc.complete", {});
       });
-      setTimeout(function(){ b1.focus(); },0);
+      focusLater(row.firstChild);
     }
 
     if (mode === "modifiers") {
-      title("Ctrl och Alt","Tryck på Ctrl och Alt en i taget.");
-      var checklistM=el("div","keyboard-checklist");
-      checklistM.innerHTML="<span data-k='ctrl'>Ctrl</span><span data-k='alt'>Alt</span>";
-      stage.appendChild(checklistM);
-      var m={};
-      stage.tabIndex=0;
-      stage.addEventListener("keydown",function(e){
-        if(e.key==="Control") m.ctrl=true;
-        if(e.key==="Alt") m.alt=true;
-        Object.keys(m).forEach(function(k){checklistM.querySelector("[data-k='"+k+"']").classList.add("done");});
-        if(m.ctrl&&m.alt) complete("keyboard.modifiers.complete",{});
+      var area = h("div", { class: "keyboard-press-area", tabindex: "0", text: t("keyboard.modifiers.area") });
+      stage.appendChild(area);
+      var markMod = checklist([["ctrl", "Ctrl"], ["alt", "Alt"]]);
+      var mods = {};
+      area.addEventListener("keydown", function (e) {
+        if (e.key === "Control") mods.ctrl = true;
+        if (e.key === "Alt") { mods.alt = true; e.preventDefault(); }
+        Object.keys(mods).forEach(markMod);
+        if (mods.ctrl && mods.alt) complete("keyboard.modifiers.complete", {});
       });
-      setTimeout(function(){ stage.focus(); },0);
+      focusLater(area);
     }
 
     if (mode === "shortcuts") {
-      title("Kortkommandon","Använd Ctrl+A, Ctrl+C och Ctrl+V.");
-      var area=el("textarea","keyboard-textarea");
-      area.value="Kopiera mig";
-      stage.appendChild(area);
-      var check=el("div","keyboard-checklist");
-      check.innerHTML="<span data-k='a'>Ctrl+A</span><span data-k='c'>Ctrl+C</span><span data-k='v'>Ctrl+V</span>";
-      stage.appendChild(check);
-      var sh={};
-      area.addEventListener("keydown",function(e){
-        if(!e.ctrlKey) return;
-        var k=e.key.toLowerCase();
-        if(k==="a") sh.a=true;
-        if(k==="c"){ sh.c=true; state.clipboard=area.value.substring(area.selectionStart,area.selectionEnd)||area.value; }
-        if(k==="v"){ sh.v=true; }
-        Object.keys(sh).forEach(function(x){check.querySelector("[data-k='"+x+"']").classList.add("done");});
-        if(sh.a&&sh.c&&sh.v) complete("keyboard.shortcuts.complete",{});
+      var text = h("textarea", { class: "keyboard-textarea", aria: { label: t("keyboard.mode.shortcuts.title") } });
+      text.value = t("keyboard.shortcuts.text");
+      stage.appendChild(text);
+      var markShort = checklist([["a", "Ctrl+A"], ["c", "Ctrl+C"], ["v", "Ctrl+V"]]);
+      var shortcuts = {};
+      text.addEventListener("keydown", function (e) {
+        if (!e.ctrlKey) return;
+        var k = e.key.toLowerCase();
+        if (k === "a") shortcuts.a = true;
+        if (k === "c") { shortcuts.c = true; lab.clipboard = text.value.substring(text.selectionStart, text.selectionEnd) || text.value; }
+        if (k === "v") shortcuts.v = true;
+        Object.keys(shortcuts).forEach(markShort);
+        if (shortcuts.a && shortcuts.c && shortcuts.v) complete("keyboard.shortcuts.complete", {});
       });
-      setTimeout(function(){ area.focus(); },0);
+      focusLater(text);
     }
 
     if (mode === "special") {
-      title("Specialtecken","Skriv @ ! ? . ,");
-      var special=inputBox("@ ! ? . ,");
-      special.addEventListener("input",function(){
-        var v=special.value;
-        if(v.indexOf("@")>=0&&v.indexOf("!")>=0&&v.indexOf("?")>=0&&v.indexOf(".")>=0&&v.indexOf(",")>=0){
-          complete("keyboard.special.complete",{});
-        }
+      var special = textInput(t("keyboard.mode.special.title"), "@ ! ? . ,");
+      special.addEventListener("input", function () {
+        var v = special.value;
+        if (["@", "!", "?", ".", ","].every(function (c) { return v.indexOf(c) >= 0; })) complete("keyboard.special.complete", {});
       });
     }
 
     if (mode === "final") {
-      title("Tangentbord – slutuppdrag","Gör momenten i listan. Varje klart moment får en bock.");
-
-      var target=el("div","keyboard-final-target");
-      target.innerHTML="<span>SKRIV EXAKT</span><strong>Dator 2026!</strong><small>Texten ligger kvar här medan du skriver.</small>";
-      stage.appendChild(target);
-
-      var final=el("textarea","keyboard-final");
-      final.placeholder="Skriv här...";
-      final.setAttribute("aria-label","Skriv Dator 2026!");
+      var goal = t("keyboard.final.text");
+      stage.appendChild(h("div", { class: "keyboard-target" }, [h("span", { text: t("keyboard.final.typeExactly") }), h("strong", { text: goal })]));
+      var final = h("textarea", { class: "keyboard-textarea", aria: { label: t("keyboard.final.typeLabel", { text: goal }) } });
       stage.appendChild(final);
-
-      var list=el("div","keyboard-checklist keyboard-final-checklist");
-      list.innerHTML=
-        "<span data-k='text'>1. Skriv Dator 2026!</span>"+
-        "<span data-k='enter'>2. Enter</span>"+
-        "<span data-k='back'>3. Backspace</span>"+
-        "<span data-k='arrow'>4. Piltangent</span>"+
-        "<span data-k='shortcut'>5. Ctrl+A</span>";
+      var list = h("ol", { class: "practice-checklist" });
+      var steps = { text: false, enter: false, back: false, arrow: false, shortcut: false };
+      ["text", "enter", "back", "arrow", "shortcut"].forEach(function (key) {
+        list.appendChild(h("li", { data: { k: key }, text: t("keyboard.final.step." + key, { text: goal }) }));
+      });
       stage.appendChild(list);
-
-      var f={ text:false, enter:false, back:false, arrow:false, shortcut:false };
-
-      function updateFinalChecklist(){
-        Object.keys(f).forEach(function(k){
-          var n=list.querySelector("[data-k='"+k+"']");
-          if(!n)return;
-          n.classList.toggle("done",!!f[k]);
-          if(f[k]&&!n.textContent.startsWith("✓ ")) n.textContent="✓ "+n.textContent;
-        });
-
-        if(f.text&&f.enter&&f.back&&f.arrow&&f.shortcut){
-          complete("keyboard.final.complete",{
-            text:"Dator 2026!",
-            enter:true,
-            backspace:true,
-            arrow:true,
-            selectAll:true
-          });
+      function update() {
+        Object.keys(steps).forEach(function (key) { list.querySelector("[data-k='" + key + "']").classList.toggle("is-done", steps[key]); });
+        if (steps.text && steps.enter && steps.back && steps.arrow && steps.shortcut) {
+          complete("keyboard.final.complete", { text: goal, enter: true, backspace: true, arrow: true, selectAll: true });
         }
       }
-
-      final.addEventListener("keydown",function(e){
-        if(e.key==="Enter") f.enter=true;
-        if(e.key==="Backspace") f.back=true;
-        if(/^Arrow/.test(e.key)) f.arrow=true;
-        if(e.ctrlKey&&e.key.toLowerCase()==="a") f.shortcut=true;
-        updateFinalChecklist();
+      final.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") steps.enter = true;
+        if (e.key === "Backspace") steps.back = true;
+        if (/^Arrow/.test(e.key)) steps.arrow = true;
+        if (e.ctrlKey && e.key.toLowerCase() === "a") steps.shortcut = true;
+        update();
       });
-
-      final.addEventListener("input",function(){
-        var normalized=final.value.replace(/\r/g,"").split("\n")[0].trim();
-        if(normalized==="Dator 2026!") f.text=true;
-        updateFinalChecklist();
+      final.addEventListener("input", function () {
+        if (final.value.replace(/\r/g, "").split("\n")[0].trim() === goal) steps.text = true;
+        update();
       });
-
-      setTimeout(function(){ final.focus(); },0);
+      focusLater(final);
     }
 
     return root;
   }
 
-  function ensureBrowserState(state) {
-    if (!state.browser) {
-      state.browser = {
-        tabs:[{id:1,title:"Start",page:"home"}],
-        activeTabId:1,
-        history:["home"],
-        historyIndex:0,
-        zoom:100,
-        bookmarks:[],
-        cookieAccepted:false
-      };
-    }
-    return state.browser;
-  }
+  /* =================================================================
+     Mail
+     ================================================================= */
 
-  function renderBrowser(ctx) {
-    var s=ensureBrowserState(ctx.state);
-    var root=el("div","fake-browser");
-    var tabs=el("div","browser-tabs");
-
-    function activeTab(){ return s.tabs.find(function(t){return t.id===s.activeTabId;})||s.tabs[0]; }
-    function navigate(page){
-      var tab=activeTab(); if(!tab)return;
-      tab.page=page; tab.title=page==="home"?"Start":page;
-      s.history=s.history.slice(0,s.historyIndex+1); s.history.push(page); s.historyIndex=s.history.length-1;
-      ctx.emit("browser.navigated",{page:page}); refresh();
-    }
-    function refresh(){ var fresh=renderBrowser(ctx); root.replaceWith(fresh); }
-
-    s.tabs.forEach(function(tab){
-      var wrap=el("div","browser-tab"+(tab.id===s.activeTabId?" active":""));
-      var b=el("button","browser-tab-select","");
-      b.textContent=tab.title;
-      b.addEventListener("click",function(){s.activeTabId=tab.id;refresh();});
-      wrap.appendChild(b);
-
-      if(s.tabs.length>1){
-        var closeTab=el("button","browser-tab-close","×");
-        closeTab.setAttribute("aria-label","Stäng flik");
-        closeTab.addEventListener("click",function(e){
-          e.stopPropagation();
-          var index=s.tabs.findIndex(function(t){return t.id===tab.id;});
-          s.tabs=s.tabs.filter(function(t){return t.id!==tab.id;});
-          if(s.activeTabId===tab.id){
-            var fallback=s.tabs[Math.max(0,index-1)]||s.tabs[0];
-            s.activeTabId=fallback.id;
-          }
-          ctx.emit("browser.tabClosed",{tabId:tab.id});
-          refresh();
-        });
-        wrap.appendChild(closeTab);
-      }
-      tabs.appendChild(wrap);
-    });
-    var plus=el("button","browser-new-tab","+");
-    plus.addEventListener("click",function(){
-      var id=Date.now();s.tabs.push({id:id,title:"Ny flik",page:"home"});s.activeTabId=id;
-      ctx.emit("browser.tabOpened",{tabId:id});refresh();
-    });
-    tabs.appendChild(plus);root.appendChild(tabs);
-
-    var bar=el("div","browser-bar");
-    var back=el("button","","←"); var forward=el("button","","→"); var reload=el("button","","↻");
-    var address=el("input","browser-address"); address.value=activeTab().page==="home"?"datorskolan.local":activeTab().page;
-    var bookmark=el("button","browser-bookmark","☆");
-    var go=el("button","browser-go","Gå");
-    back.disabled=s.historyIndex<=0;forward.disabled=s.historyIndex>=s.history.length-1;
-    back.addEventListener("click",function(){if(s.historyIndex>0){s.historyIndex--;activeTab().page=s.history[s.historyIndex];ctx.emit("browser.back",{});refresh();}});
-    forward.addEventListener("click",function(){if(s.historyIndex<s.history.length-1){s.historyIndex++;activeTab().page=s.history[s.historyIndex];ctx.emit("browser.forward",{});refresh();}});
-    reload.addEventListener("click",function(){ctx.emit("browser.refreshed",{page:activeTab().page});});
-    function goAddress(){var value=address.value.trim();ctx.emit("browser.addressUsed",{value:value});navigate(value.indexOf("saker")>=0?"search":value.indexOf("form")>=0?"form":"info");}
-    go.addEventListener("click",goAddress);address.addEventListener("keydown",function(e){if(e.key==="Enter")goAddress();});
-    bookmark.addEventListener("click",function(){
-      var pageId=activeTab().page;
-      if(s.bookmarks.indexOf(pageId)<0)s.bookmarks.push(pageId);
-      bookmark.textContent="★";
-      ctx.emit("browser.bookmarked",{page:pageId});
-    });
-    [back,forward,reload,address,bookmark,go].forEach(function(x){bar.appendChild(x);});
-    root.appendChild(bar);
-
-    var page=el("div","browser-page");
-    var p=activeTab().page;
-    if(p==="home"){
-      page.innerHTML="<div class='browser-home'><h2>Övningswebben</h2><p>Det här är en helt simulerad webbläsare.</p><div class='browser-search'><input aria-label='Sök på övningswebben' placeholder='Sök på övningswebben'><button>Sök</button></div><div class='browser-links'><button data-page='info'>Vad är internet?</button><button data-page='search'>Sökresultat</button><button data-page='form'>Formulär</button></div></div>" + (s.cookieAccepted ? "" : "<div class='browser-cookie'><strong>Cookies</strong><span>Den här övningssidan använder simulerade cookies.</span><button>Godkänn</button></div>");
-    } else if(p==="search"){
-      page.innerHTML="<h2>Sökresultat</h2><div class='browser-result'><button data-page='info'>Lär dig om säkra länkar</button><p>datorskolan.local/info</p></div><div class='browser-result'><button data-page='download'>Övningsfil att ladda ner</button><p>datorskolan.local/download</p></div>";
-    } else if(p==="download"){
-      page.innerHTML="<h2>Hämta en övningsfil</h2><p>Den här filen är simulerad.</p><button class='browser-download'>Ladda ner guide.txt</button>";
-    } else if(p==="form"){
-      page.innerHTML="<h2>Formulär</h2><label>Namn <input class='browser-form-name'></label><label><input type='checkbox' class='browser-check'> Jag har läst texten</label><fieldset><legend>Kontakt</legend><label><input type='radio' name='contact' value='mail' checked> E-post</label><label><input type='radio' name='contact' value='phone'> Telefon</label></fieldset><label>Ämne <select class='browser-select'><option>Fråga</option><option>Support</option></select></label><button class='browser-upload'>Välj fil för uppladdning</button><span class='browser-upload-name'></span><button class='browser-submit'>Skicka</button>";
-    } else {
-      page.innerHTML="<h2>Vad är internet?</h2><p>Internet är nätverket. Webbläsaren är programmet du använder för att besöka webbsidor.</p><button data-page='search'>Gå till sökresultat</button>";
-    }
-    page.querySelectorAll("[data-page]").forEach(function(b){
-      b.addEventListener("click",function(){ctx.emit("browser.linkOpened",{page:b.getAttribute("data-page")});navigate(b.getAttribute("data-page"));});
-    });
-    var searchButton=page.querySelector(".browser-search button");
-    var searchInput=page.querySelector(".browser-search input");
-    function runSearch(){
-      if(!searchInput)return;
-      var query=searchInput.value.trim();
-      if(!query)return;
-      ctx.emit("browser.searched",{query:query});
-      navigate("search");
-    }
-    if(searchButton)searchButton.addEventListener("click",runSearch);
-    if(searchInput)searchInput.addEventListener("keydown",function(e){if(e.key==="Enter")runSearch();});
-    var dl=page.querySelector(".browser-download");
-    if(dl)dl.addEventListener("click",function(){
-      try{ctx.vfs.createFile("downloads","guide.txt","text","Övningsfil från webbläsaren.");}catch(e){}
-      ctx.emit("browser.downloaded",{name:"guide.txt"});
-      dl.textContent="✓ Nedladdad";
-    });
-    var cookie=page.querySelector(".browser-cookie button");
-    if(cookie)cookie.addEventListener("click",function(){
-      s.cookieAccepted=true;ctx.emit("browser.cookieAccepted",{});refresh();
-    });
-    var upload=page.querySelector(".browser-upload");
-    if(upload)upload.addEventListener("click",function(){
-      var docs=ctx.vfs.list("documents").filter(function(n){return n.type==="file";});
-      var chosen=docs[0];
-      page.querySelector(".browser-upload-name").textContent=chosen?"📎 "+chosen.name:"Ingen fil hittades";
-      if(chosen)ctx.emit("browser.uploaded",{name:chosen.name});
-    });
-
-    var submit=page.querySelector(".browser-submit");
-    if(submit)submit.addEventListener("click",function(){
-      var name=page.querySelector(".browser-form-name").value.trim();
-      var checked=page.querySelector(".browser-check").checked;
-      if(name&&checked){ctx.emit("browser.formSubmitted",{name:name});submit.textContent="✓ Skickat";}
-    });
-    root.appendChild(page);
-
-    var foot=el("div","browser-footer");
-    var minus=el("button","","−"); var zoom=el("span","",s.zoom+"%"); var plusZ=el("button","","+");
-    minus.addEventListener("click",function(){s.zoom=Math.max(50,s.zoom-10);ctx.emit("browser.zoomChanged",{zoom:s.zoom});refresh();});
-    plusZ.addEventListener("click",function(){s.zoom=Math.min(200,s.zoom+10);ctx.emit("browser.zoomChanged",{zoom:s.zoom});refresh();});
-    foot.appendChild(minus);foot.appendChild(zoom);foot.appendChild(plusZ);root.appendChild(foot);
-    page.style.fontSize=(s.zoom/100)+"em";
-    return root;
-  }
-
-  function ensureMailState(state) {
+  function ensureMailState(ctx) {
+    var state = ctx.state;
     if (!state.mail) {
-      state.mail={
-        selectedId:null,
-        inbox:[
-          {id:"m1",from:"Anna",subject:"Bilder från utflykten",body:"Hej! Här kommer bilden.",attachment:"utflykt.jpg",safe:true},
-          {id:"m2",from:"Support Center",subject:"AKUT: Ditt konto stängs",body:"Klicka genast och skriv ditt lösenord.",attachment:null,safe:false},
-          {id:"m3",from:"Erik",subject:"Möte på fredag",body:"Kan vi ses klockan 10?",attachment:null,safe:true}
+      var t = ctx.t;
+      state.mail = {
+        folder: "inbox",
+        selectedId: null,
+        composing: null,
+        sent: [],
+        inbox: [
+          { id: "m1", from: t("mail.m1.from"), address: "anna@example.com", subject: t("mail.m1.subject"), body: t("mail.m1.body"), attachment: t("mail.m1.attachment"), safe: true, time: "09:12", unread: true },
+          { id: "m2", from: t("mail.m2.from"), address: "security@konto-verify.example.net", subject: t("mail.m2.subject"), body: t("mail.m2.body"), attachment: null, safe: false, time: "08:47", unread: true },
+          { id: "m3", from: t("mail.m3.from"), address: "erik@example.com", subject: t("mail.m3.subject"), body: t("mail.m3.body"), attachment: null, safe: true, time: t("mail.yesterday"), unread: false }
         ]
       };
     }
@@ -420,115 +238,241 @@
   }
 
   function renderMail(ctx) {
-    var s=ensureMailState(ctx.state);
-    var root=el("div","fake-mail");
-    var side=el("div","mail-side");
-    var compose=el("button","mail-compose","Nytt meddelande");
-    side.appendChild(compose);
-    var inbox=el("div","mail-inbox");
-    s.inbox.forEach(function(m){
-      var item=el("button","mail-item"+(s.selectedId===m.id?" active":""));
-      item.innerHTML="<strong></strong><span></span><small></small>";
-      item.querySelector("strong").textContent=m.from;
-      item.querySelector("span").textContent=m.subject;
-      item.querySelector("small").textContent=m.safe?"":"⚠ misstänkt";
-      item.addEventListener("click",function(){s.selectedId=m.id;ctx.emit("mail.opened",{id:m.id,safe:m.safe});refresh();});
-      inbox.appendChild(item);
+    var t = ctx.t;
+    var h = ctx.h;
+    var s = ensureMailState(ctx);
+    var root = h("div", { class: "mail" });
+
+    function refresh() { ctx.refreshApp("mail"); }
+
+    /* Folder pane */
+    var folders = h("nav", { class: "mail-folders", aria: { label: t("mail.folders") } }, [
+      h("button", { type: "button", class: "fw-button fw-button-accent mail-new", data: { ui: "mail-new" }, on: { click: function () {
+        s.composing = { mode: "new", to: "", subject: "", body: "", attachment: null };
+        ctx.emit("mail.composeOpened", {});
+        refresh();
+      } } }, [h("span", { html: ctx.glyph("pencil", 16) }), h("span", { text: t("mail.newMail") })])
+    ]);
+    [["inbox", "mail.inbox", s.inbox.filter(function (m) { return m.unread; }).length], ["sent", "mail.sentFolder", 0]].forEach(function (entry) {
+      folders.appendChild(h("button", {
+        type: "button",
+        class: "mail-folder" + (s.folder === entry[0] ? " is-current" : ""),
+        aria: { current: s.folder === entry[0] ? "page" : null },
+        on: { click: function () { s.folder = entry[0]; s.selectedId = null; s.composing = null; refresh(); } }
+      }, [h("span", { html: entry[0] === "inbox" ? ctx.glyph("mail", 16) : ctx.glyph("send", 16) }), h("span", { text: t(entry[1]) }), entry[2] ? h("span", { class: "mail-count", text: String(entry[2]) }) : null]));
     });
-    side.appendChild(inbox);root.appendChild(side);
+    root.appendChild(folders);
 
-    var main=el("div","mail-main");
-    function refresh(){var fresh=renderMail(ctx);root.replaceWith(fresh);}
-    function renderComposer(replyTo, forwardFrom){
-      main.replaceChildren();
-      var form=el("div","mail-form");
-      form.innerHTML="<label>Till <input class='mail-to'></label><label>Ämne <input class='mail-subject'></label><textarea class='mail-body'></textarea><div class='mail-form-actions'><button class='mail-attach'>Bifoga fil</button><span class='mail-attachment'></span><button class='mail-send'>Skicka</button></div>";
-      if(replyTo){
-        form.querySelector(".mail-to").value=replyTo.from;
-        form.querySelector(".mail-subject").value="Sv: "+replyTo.subject;
+    /* Message list */
+    var list = h("div", { class: "mail-list", role: "listbox", aria: { label: t(s.folder === "inbox" ? "mail.inbox" : "mail.sentFolder") } });
+    var messages = s.folder === "inbox" ? s.inbox : s.sent;
+    if (!messages.length) list.appendChild(h("p", { class: "mail-empty-list", text: t("mail.folderEmpty") }));
+    messages.forEach(function (message) {
+      var selected = s.selectedId === message.id;
+      list.appendChild(h("button", {
+        type: "button",
+        role: "option",
+        aria: { selected: selected ? "true" : "false" },
+        class: "mail-item" + (selected ? " is-selected" : "") + (message.unread ? " is-unread" : ""),
+        data: { ui: "mail-item-" + message.id },
+        on: { click: function () {
+          s.selectedId = message.id;
+          s.composing = null;
+          message.unread = false;
+          if (s.folder === "inbox") ctx.emit("mail.opened", { id: message.id, safe: message.safe });
+          refresh();
+        } }
+      }, [
+        h("span", { class: "fw-avatar", text: (message.from || message.to || "?").charAt(0).toUpperCase() }),
+        h("span", { class: "mail-item-text" }, [
+          h("span", { class: "mail-item-top" }, [h("strong", { text: message.from || message.to }), h("small", { text: message.time })]),
+          h("span", { class: "mail-item-subject", text: message.subject }),
+          h("small", { class: "mail-item-preview", text: message.body })
+        ]),
+        message.attachment ? h("span", { class: "mail-item-clip", title: t("mail.hasAttachment"), html: ctx.glyph("paperclip", 14) }) : null
+      ]));
+    });
+    root.appendChild(list);
+
+    /* Reading pane / composer */
+    var pane = h("section", { class: "mail-pane" });
+    if (s.composing) pane.appendChild(composer(ctx, s, refresh));
+    else {
+      var message = messages.filter(function (m) { return m.id === s.selectedId; })[0];
+      if (!message) {
+        pane.appendChild(h("div", { class: "mail-placeholder" }, [h("span", { html: ctx.icon("mail", 48) }), h("p", { text: t("mail.selectMessage") })]));
+      } else {
+        pane.appendChild(reader(ctx, s, message, refresh));
       }
-      var attached=false;
-      var attachedName=null;
-      form.querySelector(".mail-attach").addEventListener("click",function(e){
-        e.preventDefault();
-        var candidates=ctx.vfs.list("downloads").concat(ctx.vfs.list("documents")).filter(function(n){return n.type==="file";});
-        var chosen=candidates[0];
-        if(!chosen)return;
-        attached=true;
-        attachedName=chosen.name;
-        form.querySelector(".mail-attachment").textContent="📎 "+chosen.name;
-        ctx.emit("mail.attachmentAdded",{name:chosen.name});
-      });
-      form.querySelector(".mail-send").addEventListener("click",function(e){
-        e.preventDefault();
-
-        var to=form.querySelector(".mail-to").value.trim();
-        var subject=form.querySelector(".mail-subject").value.trim();
-        var body=form.querySelector(".mail-body").value.trim();
-        var sendButton=form.querySelector(".mail-send");
-
-        var existingError=form.querySelector(".mail-form-error");
-        if(existingError)existingError.remove();
-
-        if(!to || !subject || !body){
-          var error=el("div","mail-form-error","Fyll i mottagare, ämne och meddelande innan du skickar.");
-          form.insertBefore(error,form.querySelector(".mail-form-actions"));
-          sendButton.textContent="Skicka";
-          return;
-        }
-
-        ctx.emit(
-          forwardFrom?"mail.forwarded":(replyTo?"mail.replied":"mail.sent"),
-          {to:to,subject:subject,bodyLength:body.length,attachment:attached,attachmentName:attachedName}
-        );
-        sendButton.textContent="✓ Skickat";
-      });
-      main.appendChild(form);
     }
-    compose.addEventListener("click",function(){renderComposer(null,null);ctx.emit("mail.composeOpened",{});});
-
-    var selected=s.inbox.find(function(m){return m.id===s.selectedId;});
-    if(!selected){
-      main.innerHTML="<div class='mail-empty'><span>✉️</span><h3>Inkorg</h3><p>Välj ett meddelande till vänster.</p></div>";
-    } else {
-      var message=el("article","mail-message");
-      message.innerHTML="<header><div><strong></strong><span></span></div><div class='mail-head-actions'><button class='mail-reply'>Svara</button><button class='mail-forward'>Vidarebefordra</button></div></header><h2></h2><p></p><div class='mail-actions'></div>";
-      message.querySelector("strong").textContent=selected.from;
-      message.querySelector("span").textContent=selected.safe?"Känd avsändare":"Okänd avsändare";
-      message.querySelector("h2").textContent=selected.subject;
-      message.querySelector("p").textContent=selected.body;
-      message.querySelector(".mail-reply").addEventListener("click",function(){renderComposer(selected,null);});
-      message.querySelector(".mail-forward").addEventListener("click",function(){
-        renderComposer(null,selected);
-        var subject=main.querySelector(".mail-subject");
-        var body=main.querySelector(".mail-body");
-        if(subject)subject.value="VB: "+selected.subject;
-        if(body)body.value="Vidarebefordrat meddelande:\n\n"+selected.body;
-        ctx.emit("mail.forwardStarted",{id:selected.id});
-      });
-      var actions=message.querySelector(".mail-actions");
-      if(selected.attachment){
-        var download=el("button","mail-download","📎 "+selected.attachment+" – Ladda ner");
-        download.addEventListener("click",function(){
-          try{ctx.vfs.createFile("downloads",selected.attachment,"image","");}catch(e){}
-          ctx.emit("mail.attachmentDownloaded",{name:selected.attachment});download.textContent="✓ Nedladdad";
-        });
-        actions.appendChild(download);
-      }
-      if(!selected.safe){
-        var phishing=el("button","mail-phishing","Markera som bluff");
-        phishing.addEventListener("click",function(){ctx.emit("mail.phishingIdentified",{id:selected.id});phishing.textContent="✓ Bluff identifierad";});
-        actions.appendChild(phishing);
-      }
-      main.appendChild(message);
-    }
-    root.appendChild(main);
+    root.appendChild(pane);
     return root;
+  }
+
+  function reader(ctx, s, message, refresh) {
+    var t = ctx.t;
+    var h = ctx.h;
+    var article = h("article", { class: "mail-reader" });
+
+    var actions = h("div", { class: "mail-reader-actions", role: "toolbar", aria: { label: t("mail.actions") } });
+    if (s.folder === "inbox") {
+      actions.appendChild(h("button", { type: "button", class: "fw-command", data: { ui: "mail-reply" }, on: { click: function () {
+        s.composing = { mode: "reply", to: message.address, subject: t("mail.replyPrefix") + message.subject, body: "", attachment: null, source: message.id };
+        refresh();
+      } } }, [h("span", { class: "fw-command-icon", html: ctx.glyph("reply", 16) }), h("span", { class: "fw-command-label", text: t("mail.reply") })]));
+      actions.appendChild(h("button", { type: "button", class: "fw-command", data: { ui: "mail-forward" }, on: { click: function () {
+        s.composing = { mode: "forward", to: "", subject: t("mail.forwardPrefix") + message.subject, body: t("mail.forwardedHeader", { from: message.from }) + "\n\n" + message.body, attachment: null, source: message.id };
+        ctx.emit("mail.forwardStarted", { id: message.id });
+        refresh();
+      } } }, [h("span", { class: "fw-command-icon", html: ctx.glyph("forward", 16) }), h("span", { class: "fw-command-label", text: t("mail.forward") })]));
+      actions.appendChild(h("button", { type: "button", class: "fw-command", data: { ui: "mail-report" }, disabled: !!message.reported, on: { click: function () {
+        ctx.showDialog({
+          icon: "warning",
+          title: t("mail.reportTitle"),
+          message: t("mail.reportText", { from: message.address }),
+          buttons: [
+            { label: t("mail.reportConfirm"), primary: true, ui: "mail-report-confirm", action: function () {
+              message.reported = true;
+              if (!message.safe) ctx.emit("mail.phishingIdentified", { id: message.id });
+              else ctx.emit("mail.reportedSafeMessage", { id: message.id });
+              s.inbox = s.inbox.filter(function (m) { return m.id !== message.id; });
+              s.selectedId = null;
+              ctx.toast(t("app.mail"), t("mail.reported"), "mail");
+              refresh();
+            } },
+            { label: t("common.cancel"), cancel: true }
+          ]
+        });
+      } } }, [h("span", { class: "fw-command-icon", html: ctx.glyph("flag", 16) }), h("span", { class: "fw-command-label", text: t("mail.report") })]));
+    }
+    article.appendChild(actions);
+
+    article.appendChild(h("h2", { class: "mail-subject", text: message.subject }));
+    article.appendChild(h("div", { class: "mail-from" }, [
+      h("span", { class: "fw-avatar is-large", text: (message.from || message.to || "?").charAt(0).toUpperCase() }),
+      h("div", {}, [
+        h("strong", { text: message.from ? message.from + " <" + message.address + ">" : t("mail.toLabel") + " " + message.to }),
+        h("small", { text: message.time })
+      ])
+    ]));
+
+    if (!message.safe) {
+      article.appendChild(h("p", { class: "mail-warning", role: "note" }, [
+        h("span", { html: ctx.glyph("warning", 16) }),
+        h("span", { text: t("mail.externalWarning") })
+      ]));
+    }
+
+    article.appendChild(h("div", { class: "mail-body" }, message.body.split("\n").map(function (line) { return h("p", { text: line }); })));
+
+    if (message.attachment) {
+      var downloaded = !!message.downloadedId && !!ctx.vfs.get(message.downloadedId);
+      article.appendChild(h("div", { class: "mail-attachment-card" }, [
+        h("span", { html: ctx.icon("image-file", 32) }),
+        h("span", {}, [h("strong", { text: message.attachment }), h("small", { text: t("mail.attachmentSize") })]),
+        h("button", {
+          type: "button",
+          class: "fw-button",
+          data: { ui: "mail-download" },
+          text: downloaded ? t("mail.downloaded") : t("mail.download"),
+          disabled: downloaded,
+          on: { click: function () {
+            var node = ctx.vfs.createFile("downloads", message.attachment, "image", "");
+            message.downloadedId = node.id;
+            ctx.emit("mail.attachmentDownloaded", { name: node.name, id: node.id });
+            ctx.toast(t("app.mail"), t("mail.savedTo", { name: node.name, folder: t("vfs.downloads") }), "download");
+            refresh();
+          } }
+        })
+      ]));
+    }
+    return article;
+  }
+
+  function composer(ctx, s, refresh) {
+    var t = ctx.t;
+    var h = ctx.h;
+    var draft = s.composing;
+    var form = h("form", { class: "mail-compose", novalidate: true, on: { submit: function (e) { e.preventDefault(); } } });
+
+    var to = h("input", { type: "email", id: "mail-to", value: draft.to, autocomplete: "off", data: { ui: "mail-to" } });
+    var subject = h("input", { type: "text", id: "mail-subject", value: draft.subject, data: { ui: "mail-subject" } });
+    var body = h("textarea", { id: "mail-body", aria: { label: t("mail.body") }, data: { ui: "mail-body" } });
+    body.value = draft.body;
+    var error = h("p", { class: "fw-field-error", role: "alert" });
+
+    [to, subject, body].forEach(function (field) {
+      field.addEventListener("input", function () {
+        draft.to = to.value;
+        draft.subject = subject.value;
+        draft.body = body.value;
+      });
+    });
+
+    var toolbar = h("div", { class: "mail-compose-toolbar", role: "toolbar", aria: { label: t("mail.actions") } }, [
+      h("button", { type: "submit", class: "fw-button fw-button-accent", data: { ui: "mail-send" }, on: { click: send } }, [h("span", { html: ctx.glyph("send", 16) }), h("span", { text: t("mail.send") })]),
+      h("button", { type: "button", class: "fw-command", data: { ui: "mail-attach" }, on: { click: function () {
+        window.DatorskolanBasicApps.showOpenDialog(ctx, {
+          title: t("mail.attachTitle"),
+          initialFolder: "downloads",
+          onOpen: function (node) {
+            draft.attachment = node.name;
+            ctx.emit("mail.attachmentAdded", { name: node.name });
+            refresh();
+          }
+        });
+      } } }, [h("span", { class: "fw-command-icon", html: ctx.glyph("paperclip", 16) }), h("span", { class: "fw-command-label", text: t("mail.attach") })]),
+      h("button", { type: "button", class: "fw-command", on: { click: function () { s.composing = null; refresh(); } } }, [h("span", { class: "fw-command-icon", html: ctx.icon("delete", 16) }), h("span", { class: "fw-command-label", text: t("mail.discard") })])
+    ]);
+    form.appendChild(toolbar);
+
+    form.appendChild(h("div", { class: "mail-field" }, [h("label", { for: "mail-to", text: t("mail.toLabel") }), to]));
+    form.appendChild(h("div", { class: "mail-field" }, [h("label", { for: "mail-subject", text: t("mail.subjectLabel") }), subject]));
+    if (draft.attachment) {
+      form.appendChild(h("div", { class: "mail-attachment-chip" }, [
+        h("span", { html: ctx.glyph("paperclip", 14) }),
+        h("span", { text: draft.attachment }),
+        h("button", { type: "button", class: "fw-icon-button", aria: { label: t("mail.removeAttachment", { name: draft.attachment }) }, html: ctx.glyph("close", 12), on: { click: function () { draft.attachment = null; refresh(); } } })
+      ]));
+    }
+    form.appendChild(body);
+    form.appendChild(error);
+
+    function send() {
+      var problems = [];
+      if (!to.value.trim()) problems.push(t("mail.errorTo"));
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to.value.trim())) problems.push(t("mail.errorAddress"));
+      if (!subject.value.trim()) problems.push(t("mail.errorSubject"));
+      if (!body.value.trim()) problems.push(t("mail.errorBody"));
+      to.setAttribute("aria-invalid", problems.length && !/@/.test(to.value) ? "true" : "false");
+      if (problems.length) {
+        error.textContent = problems.join(" ");
+        (to.value.trim() && /@/.test(to.value) ? (subject.value.trim() ? body : subject) : to).focus();
+        return;
+      }
+      var type = draft.mode === "forward" ? "mail.forwarded" : draft.mode === "reply" ? "mail.replied" : "mail.sent";
+      ctx.emit(type, {
+        to: to.value.trim(),
+        subject: subject.value.trim(),
+        bodyLength: body.value.trim().length,
+        attachment: !!draft.attachment,
+        attachmentName: draft.attachment || null
+      });
+      s.sent.unshift({ id: "s" + Date.now(), to: to.value.trim(), subject: subject.value.trim(), body: body.value.trim(), attachment: draft.attachment, safe: true, time: ctx.formatTime(new Date()) });
+      s.composing = null;
+      ctx.toast(t("app.mail"), t("mail.sentToast"), "mail");
+      refresh();
+    }
+
+    window.setTimeout(function () {
+      var first = draft.to ? (draft.mode === "reply" ? body : subject) : to;
+      if (document.body.contains(first)) first.focus();
+    }, 0);
+    return form;
   }
 
   window.DatorskolanAdvancedApps = {
     renderKeyboard: renderKeyboard,
-    renderBrowser: renderBrowser,
     renderMail: renderMail
   };
 })();

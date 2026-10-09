@@ -1,116 +1,153 @@
+/*
+  Snipping Tool (Skärmklippverktyget). "Nytt" dims the whole screen; drag a rectangle to capture.
+  On a real PC the shortcut is Windows key + Shift + S (a browser cannot simulate the Windows key).
+*/
 (function () {
   "use strict";
 
-  function el(tag,className,text){
-    var node=document.createElement(tag);
-    if(className) node.className=className;
-    if(text!==undefined) node.textContent=text;
-    return node;
-  }
-
-  function ensure(state){
-    if(!state.snipping){
-      state.snipping={captured:false,saved:false};
-    }
+  function ensure(state) {
+    if (!state.snipping) state.snipping = { captured: false, saved: false, size: null };
     return state.snipping;
   }
 
-  function render(ctx){
-    var s=ensure(ctx.state);
-    var root=el("div","snipping-app");
+  function startCapture(ctx) {
+    var t = ctx.t;
+    var h = ctx.h;
+    var s = ensure(ctx.state);
+    var screen = ctx.el.screen;
+    var win = ctx.findWindow("snipping");
 
-    var toolbar=el("div","snipping-toolbar");
-    var newButton=el("button","snipping-new");
-    newButton.innerHTML=window.DatorskolanWindows11.icon("add",16)+"<span>Nytt</span>";
-    var mode=el("button","");
-    mode.innerHTML=window.DatorskolanWindows11.icon("crop",16)+"<span>Rektangel</span>";
-    var delay=el("button","");
-    delay.innerHTML=window.DatorskolanWindows11.icon("timer",16)+"<span>Ingen fördröjning</span>";
+    // Windows hides the Snipping Tool window while you choose an area.
+    if (win) win.capturing = true;
+    ctx.renderWindows();
 
-    toolbar.appendChild(newButton);
-    toolbar.appendChild(mode);
-    toolbar.appendChild(delay);
+    var layer = h("div", { class: "fw-snip-layer", role: "application", aria: { label: t("snip.overlayLabel") } }, [
+      h("div", { class: "fw-snip-toolbar" }, [
+        h("span", { html: ctx.icon("crop", 16) }),
+        h("span", { text: t("snip.rectangle") }),
+        h("button", { type: "button", class: "fw-icon-button", aria: { label: t("common.cancel") }, title: t("common.cancel"), html: ctx.glyph("close", 16), on: { click: cancel } })
+      ]),
+      h("p", { class: "fw-snip-hint", text: t("snip.dragHint") })
+    ]);
+    var selection = h("div", { class: "fw-snip-selection", hidden: true });
+    layer.appendChild(selection);
+    screen.appendChild(layer);
+    ctx.emit("screenshot.started", {});
 
-    if(s.captured){
-      var save=el("button","snipping-save");
-      save.innerHTML=window.DatorskolanWindows11.icon("save",16)+"<span>Spara</span>";
-      save.addEventListener("click",function(){
-        if(s.saved) return;
-        s.saved=true;
-        try{ctx.vfs.createFile("pictures","Skärmbild.png","image","");}catch(error){}
-        ctx.emit("screenshot.saved",{name:"Skärmbild.png",parentId:"pictures"});
-        save.innerHTML=window.DatorskolanWindows11.icon("save",16)+"<span>Sparad</span>";
-      });
-      toolbar.appendChild(save);
+    var drag = null;
+
+    function finish() {
+      layer.remove();
+      if (win) win.capturing = false;
+      document.removeEventListener("keydown", onKey, true);
     }
 
+    function cancel() {
+      finish();
+      ctx.refreshApp("snipping");
+    }
+
+    function onKey(e) {
+      if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); cancel(); }
+    }
+    document.addEventListener("keydown", onKey, true);
+
+    layer.addEventListener("pointerdown", function (e) {
+      if (e.button !== 0 || e.target.closest("button")) return;
+      var rect = layer.getBoundingClientRect();
+      drag = { x: e.clientX - rect.left, y: e.clientY - rect.top, id: e.pointerId };
+      selection.hidden = false;
+      selection.style.left = drag.x + "px";
+      selection.style.top = drag.y + "px";
+      selection.style.width = "0px";
+      selection.style.height = "0px";
+      layer.setPointerCapture(e.pointerId);
+    });
+    layer.addEventListener("pointermove", function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var rect = layer.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      selection.style.left = Math.min(drag.x, x) + "px";
+      selection.style.top = Math.min(drag.y, y) + "px";
+      selection.style.width = Math.abs(x - drag.x) + "px";
+      selection.style.height = Math.abs(y - drag.y) + "px";
+    });
+    layer.addEventListener("pointerup", function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var width = parseFloat(selection.style.width) || 0;
+      var height = parseFloat(selection.style.height) || 0;
+      drag = null;
+      if (width < 30 || height < 30) {
+        selection.hidden = true;
+        return;
+      }
+      finish();
+      s.captured = true;
+      s.saved = false;
+      s.size = { width: Math.round(width), height: Math.round(height) };
+      ctx.emit("screenshot.captured", s.size);
+      ctx.openApp("snipping");
+      ctx.refreshApp("snipping");
+    });
+  }
+
+  function save(ctx) {
+    var s = ensure(ctx.state);
+    window.DatorskolanBasicApps.showSaveAs(ctx, {
+      title: ctx.t("saveAs.title"),
+      initialFolder: "pictures",
+      initialName: ctx.t("snip.defaultName"),
+      extension: ".png",
+      typeLabel: ctx.t("saveAs.typePng"),
+      onSave: function (folderId, name) {
+        var node = ctx.vfs.createFile(folderId, name, "image", "");
+        s.saved = true;
+        ctx.emit("screenshot.saved", { name: node.name, parentId: folderId });
+        ctx.refreshApp("snipping");
+      }
+    });
+  }
+
+  function render(ctx) {
+    var t = ctx.t;
+    var h = ctx.h;
+    var s = ensure(ctx.state);
+    var root = h("div", { class: "snipping" });
+
+    var toolbar = h("div", { class: "snipping-toolbar", role: "toolbar", aria: { label: t("app.snipping") } }, [
+      h("button", { type: "button", class: "fw-button fw-button-accent", data: { ui: "snip-new" }, on: { click: function () { startCapture(ctx); } } }, [h("span", { html: ctx.glyph("plus", 16) }), h("span", { text: t("snip.new") })]),
+      h("button", { type: "button", class: "fw-command", disabled: true }, [h("span", { class: "fw-command-icon", html: ctx.icon("crop", 16) }), h("span", { class: "fw-command-label", text: t("snip.rectangle") })]),
+      h("button", { type: "button", class: "fw-command", disabled: true }, [h("span", { class: "fw-command-icon", html: ctx.icon("timer", 16) }), h("span", { class: "fw-command-label", text: t("snip.noDelay") })]),
+      h("span", { class: "pdf-spacer" }),
+      s.captured ? h("button", { type: "button", class: "fw-command", data: { ui: "snip-save" }, title: t("common.save") + " (Ctrl+S)", on: { click: function () { save(ctx); } } }, [h("span", { class: "fw-command-icon", html: ctx.icon("save", 16) }), h("span", { class: "fw-command-label", text: t("common.save") })]) : null
+    ]);
     root.appendChild(toolbar);
 
-    var body=el("div","snipping-body");
-
-    if(!s.captured){
-      var intro=el("div","snipping-intro");
-      intro.innerHTML="<div class='snipping-scissors'>"+window.DatorskolanWindows11.icon("snipping",44)+"</div><h2>Skärmklippverktyget</h2><p>Klicka Nytt och dra över området du vill fånga.</p>";
-      body.appendChild(intro);
-
-      var captureLayer=el("div","snipping-capture-layer");
-      captureLayer.hidden=true;
-      var selection=el("div","snipping-selection");
-      captureLayer.appendChild(selection);
-      root.appendChild(captureLayer);
-
-      var drag=null;
-
-      newButton.addEventListener("click",function(){
-        captureLayer.hidden=false;
-        ctx.emit("screenshot.started",{});
-      });
-
-      captureLayer.addEventListener("pointerdown",function(e){
-        if(e.button!==0)return;
-        var rect=captureLayer.getBoundingClientRect();
-        drag={x:e.clientX-rect.left,y:e.clientY-rect.top,id:e.pointerId};
-        selection.style.left=drag.x+"px";
-        selection.style.top=drag.y+"px";
-        selection.style.width="0";
-        selection.style.height="0";
-        selection.hidden=false;
-        captureLayer.setPointerCapture(e.pointerId);
-      });
-
-      captureLayer.addEventListener("pointermove",function(e){
-        if(!drag||e.pointerId!==drag.id)return;
-        var rect=captureLayer.getBoundingClientRect();
-        var x=e.clientX-rect.left;
-        var y=e.clientY-rect.top;
-        var left=Math.min(drag.x,x), top=Math.min(drag.y,y);
-        var width=Math.abs(x-drag.x), height=Math.abs(y-drag.y);
-        selection.style.left=left+"px";
-        selection.style.top=top+"px";
-        selection.style.width=width+"px";
-        selection.style.height=height+"px";
-      });
-
-      captureLayer.addEventListener("pointerup",function(e){
-        if(!drag||e.pointerId!==drag.id)return;
-        var width=parseFloat(selection.style.width)||0;
-        var height=parseFloat(selection.style.height)||0;
-        drag=null;
-        if(width<30||height<30)return;
-        s.captured=true;
-        ctx.emit("screenshot.captured",{width:Math.round(width),height:Math.round(height)});
-        var fresh=render(ctx);
-        root.replaceWith(fresh);
-      });
+    var body = h("div", { class: "snipping-body" });
+    if (!s.captured) {
+      body.appendChild(h("div", { class: "snipping-empty" }, [
+        h("span", { html: ctx.icon("snipping", 48) }),
+        h("p", { text: t("snip.intro") }),
+        h("p", { class: "fw-field-help", text: t("snip.shortcutTip") })
+      ]));
     } else {
-      var preview=el("div","snipping-preview");
-      preview.innerHTML="<div class='snipping-preview-window'><div class='snipping-preview-bar'></div><div class='snipping-preview-content'>FakeWin-skärmbild</div></div>";
-      body.appendChild(preview);
+      body.appendChild(h("div", { class: "snipping-preview", role: "img", aria: { label: t("snip.previewLabel") } }, [
+        h("div", { class: "snipping-preview-shot", style: { aspectRatio: s.size ? s.size.width + " / " + s.size.height : "16 / 10" } }, [
+          h("span", { class: "snipping-preview-bar" }),
+          h("span", { class: "snipping-preview-window" })
+        ])
+      ]));
+      if (s.saved) body.appendChild(h("p", { class: "fw-field-help", role: "status", text: t("snip.saved") }));
     }
-
     root.appendChild(body);
+
+    root.addEventListener("keydown", function (e) {
+      if (e.ctrlKey && e.key.toLowerCase() === "s" && s.captured) { e.preventDefault(); save(ctx); }
+      if (e.ctrlKey && e.key.toLowerCase() === "n") { e.preventDefault(); startCapture(ctx); }
+    });
     return root;
   }
 
-  window.DatorskolanSnippingApp={render:render};
+  window.DatorskolanSnippingApp = { render: render, ensure: ensure };
 })();
