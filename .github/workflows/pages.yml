@@ -25,86 +25,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Check JavaScript syntax
-        run: |
-          node --check src/vfs.js
-          node --check src/scenarios.js
-          node --check src/advanced-scenarios.js
-          node --check src/everyday-scenarios.js
-          node --check src/scenario-engine.js
-          node --check src/progress-store.js
-          node --check src/lessons.js
-          node --check src/advanced-lessons.js
-          node --check src/everyday-lessons.js
-          node --check src/lesson-enrichment.js
-          node --check src/lesson-engine.js
-          node --check src/advanced-apps.js
-          node --check src/everyday-apps.js
-          node --check src/win11-ui.js
-          node --check src/chrome-app.js
-          node --check src/settings-app.js
-          node --check src/pdf-app.js
-          node --check src/installer-app.js
-          node --check src/snipping-app.js
-          node --check src/trouble-app.js
-          node --check src/product-shell.js
-          node --check src/app.js
-          node --check tests/lesson-engine-smoke.js
-          node --check tests/mouse-module-smoke.js
-          node --check tests/full-course-smoke.js
-          node --check tests/event-contract-smoke.js
-          node --check tests/phases5-11-smoke.js
-          node --check tests/beginner-content-smoke.js
-          node --check tests/reset-progress-smoke.js
-          node --check tests/everyday-course-smoke.js
-          node --check tests/windows11-realism-smoke.js
-          node --check tests/realism-scenarios-smoke.js
-          node --check tests/landing-product-smoke.js
-          node --check tests/accessibility-smoke.js
-          node --check tests/arcane-theme-smoke.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
 
-      - name: Smoke test scenario engine
-        run: |
-          node -e "global.window={}; require('./src/scenarios.js'); require('./src/scenario-engine.js'); const e=new window.DatorskolanScenarioEngine(window.DatorskolanScenarios); if(e.list().length<12) process.exit(1);"
-
-      - name: Smoke test Lesson Engine
-        run: node tests/lesson-engine-smoke.js
-
-      - name: Smoke test Mouse module
-        run: node tests/mouse-module-smoke.js
-
-      - name: Smoke test full course
-        run: node tests/full-course-smoke.js
-
-      - name: Smoke test scenario event contracts
-        run: node tests/event-contract-smoke.js
-
-      - name: Smoke test phases 5 through 11
-        run: node tests/phases5-11-smoke.js
-
-      - name: Smoke test beginner lesson content
-        run: node tests/beginner-content-smoke.js
-
-      - name: Smoke test restart progress
-        run: node tests/reset-progress-smoke.js
-
-      - name: Smoke test everyday computer course
-        run: node tests/everyday-course-smoke.js
-
-      - name: Smoke test Windows 11 realism
-        run: node tests/windows11-realism-smoke.js
-
-      - name: Smoke test realistic course scenarios
-        run: node tests/realism-scenarios-smoke.js
-
-      - name: Smoke test landing product truth
-        run: node tests/landing-product-smoke.js
-
-      - name: Smoke test accessibility
-        run: node tests/accessibility-smoke.js
-
-      - name: Smoke test Arcane theme
-        run: node tests/arcane-theme-smoke.js
+      - name: Run the full test suite (syntax check + all smoke tests)
+        run: node tests/run-all.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

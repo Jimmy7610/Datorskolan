@@ -1,13 +1,10 @@
 # AGENTS.md
 
-## Current mission
-Implement Fake Windows v0.1 before all learning features.
+See CLAUDE.md – the same rules apply to every coding agent.
 
 ## Non-negotiable
-- static GitHub Pages app
-- Vanilla HTML/CSS/JS
-- no backend
-- no real OS/filesystem access
-- DOM is not source of truth
-- interactions emit domain events
-- do not start v0.2 before v0.1 acceptance passes
+- static GitHub Pages app, vanilla HTML/CSS/JS, no backend
+- no real OS or filesystem access
+- the DOM is not the source of truth; interactions emit domain events
+- all user-visible text lives in `locales/` (sv + en, identical keys)
+- `node tests/run-all.js` must pass

@@ -81,61 +81,14 @@ En färdighet räknas inte som inlärd bara för att användaren klarat den en g
 
 ## Teknisk grund
 
-Första versionen byggs som:
-- Vanilla HTML
-- Vanilla CSS
-- Vanilla JavaScript
+- Vanilla HTML, CSS och JavaScript – inget byggsteg, ingen backend, ingen databas
 - GitHub Pages
-- Ingen backend
-- Ingen databas
-- localStorage för lokal progression
+- `localStorage` för framsteg, språkval och egna val i övningsdatorn
+- Helt tvåspråkig: **svenska** och **engelska** (valet sparas och gäller hela webbplatsen, övningsdatorn och kursen)
 
-## Viktiga dokument
+Arkitektur, språkstöd och hur man lägger till lektioner eller språk: `docs/39-I18N-AND-ARCHITECTURE-2026.md`.
 
-- `docs/01-PRODUCT-VISION.md`
-- `docs/02-TARGET-USERS.md`
-- `docs/03-LEARNING-MODEL.md`
-- `docs/04-CURRICULUM.md`
-- `docs/05-UX-UI-SPEC.md`
-- `docs/06-WINDOWS-SIMULATOR.md`
-- `docs/07-TECHNICAL-ARCHITECTURE.md`
-- `docs/08-DATA-MODEL.md`
-- `docs/09-LESSON-SCHEMA.md`
-- `docs/10-PROGRESS-AND-ADAPTATION.md`
-- `docs/11-ACCESSIBILITY.md`
-- `docs/12-TESTING-STRATEGY.md`
-- `docs/13-ROADMAP.md`
-- `docs/14-DEFINITION-OF-DONE.md`
-- `docs/15-SECURITY-PRIVACY.md`
-- `docs/16-CONTENT-GUIDE.md`
-- `docs/17-GITHUB-WORKFLOW.md`
-- `docs/18-AI-DEVELOPMENT-GUIDE.md`
-- `docs/19-MVP-SCOPE.md`
-- `docs/20-BACKLOG.md`
-- `docs/24-FULL-WINDOWS-SIMULATOR-SPEC.md`
-
-## Arbetsregel
-
-Alla större beslut ska dokumenteras innan implementationen ändras på ett sätt som påverkar projektets struktur, pedagogik eller UX.
-
-Kod ska följa dokumentationen. Om kod och dokumentation skiljer sig ska skillnaden antingen:
-1. rättas i koden, eller
-2. dokumenteras som ett medvetet designbeslut.
-
-## Aktuell status
-
-Fake Windows, Lesson Engine och den ursprungliga 81-lektionskursen är manuellt godkända.
-
-Fas 12 – **Vardagsdatorn och djupare förståelse** är implementerad och utökar kursen till 120 lektioner. Den väntar på full manuell acceptans i den publicerade GitHub Pages-versionen.
-
-Se:
-- `docs/13-ROADMAP.md`
-- `docs/20-BACKLOG.md`
-- `docs/34-EVERYDAY-COMPUTER-ACCEPTANCE.md`
-
-## Kör Fake Windows lokalt
-
-Projektet är en statisk webbapp och bör köras via en lokal webbserver vid lokal utveckling.
+## Kör lokalt
 
 ```bash
 python -m http.server 8080
@@ -143,23 +96,37 @@ python -m http.server 8080
 
 Öppna sedan `http://localhost:8080`.
 
-Fake Windows läser eller skriver inte riktiga Windows-filer och startar inga riktiga program. All simulatorinteraktion sker inne i webbsidan.
+## Tester
 
+```bash
+node tests/run-all.js
+```
 
-## Ikonkällor
+Kör syntaxkontroll av all JavaScript och alla smoke-tester: kursens 120 lektioner och 85 scenarier på båda språken, översättningarnas fullständighet, att ingen text är hårdkodad, händelsekontraktet, designsystemet (ingen text under 12 px), tillgänglighet och Windows 11-realism. Samma kommando körs i GitHub Actions före varje publicering.
 
-FakeWins generiska systemikoner använder **Microsoft Fluent UI System Icons** från Microsofts officiella repository.
+## Viktiga dokument
 
-- importerade SVG-filer: `assets/icons/fluent/`
-- licens: MIT, se `assets/icons/fluent/LICENSE`
-- källhänvisning och importerad source commit: `assets/icons/fluent/SOURCE.md`
-- ikonerna lagras lokalt så simulatorn inte är beroende av ett externt CDN
+- `docs/37-ACCESSIBILITY-AND-LEGAL.md` – WCAG 2.2 AA, vilka lagar som gäller (och inte), integritet och lagring
+- `docs/38-ASSETS-AND-LICENSES.md` – alla ikoner, typsnitt och logotyper med källa och licens
+- `docs/39-I18N-AND-ARCHITECTURE-2026.md` – filstruktur, språkstöd, hur man skriver lektioner
+- `docs/01-PRODUCT-VISION.md` … `docs/23-NAMING-AND-TERMINOLOGY.md` – produkt, pedagogik och ursprunglig specifikation
+- `docs/24`–`docs/36` – historiska specifikationer och acceptanser
 
-Microsoft Fluent UI System Icons ska inte blandas ihop med proprietära resurser extraherade ur Windows system-DLL:er. Sådana Windows-resurser återdistribueras inte i projektet.
+## Arbetsregel
 
-Google Chrome är produktbranding och hanteras separat från Microsofts Fluent-systemikoner.
+Alla större beslut ska dokumenteras innan implementationen ändras på ett sätt som påverkar projektets struktur, pedagogik eller UX. Om kod och dokumentation skiljer sig ska skillnaden antingen rättas i koden eller dokumenteras som ett medvetet beslut.
 
-Chrome-ikonen laddas från Googles egen officiella Chrome-asset:
-`https://www.google.com/chrome/static/images/chrome-logo-m100.svg`
+## Övningsdatorn (FakeWin)
 
-Den används oförändrad i FakeWin för Start, aktivitetsfält och Chrome-appens identitet.
+FakeWin efterliknar Windows 11 (oktober 2026): skrivbord, aktivitetsfält, Start med sökning, snabbinställningar, kalender och aviseringar, snabbmenyer, Utforskaren, Inställningar, Kalkylator, Anteckningar, Foton, Google Chrome, E-post, PDF och utskrift, installation med UAC, Skärmklippverktyget och Papperskorgen. Medvetna avvikelser av pedagogiska eller tillgänglighetsskäl finns i `docs/37-ACCESSIBILITY-AND-LEGAL.md`, avsnitt 3.
+
+Övningsdatorn läser eller skriver aldrig riktiga filer och startar inga riktiga program. Allt sker inne i webbsidan.
+
+## Ikoner och typsnitt
+
+- Systemikoner: **Microsoft Fluent UI System Icons** (MIT), lokalt i `assets/icons/fluent/`
+- Chrome-logotypen: hämtas från Googles egen server och bundlas inte
+- Webbplatsens typsnitt: **Cooper Hewitt** (SIL OFL 1.1)
+- Övningsdatorns typsnitt: **Segoe UI Variable** när det finns installerat (Windows), annars systemets typsnitt
+
+Detaljer och licenser: `docs/38-ASSETS-AND-LICENSES.md`.
