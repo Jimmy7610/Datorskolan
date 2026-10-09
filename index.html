@@ -3,312 +3,253 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Lär dig Windows från grunden i 120 interaktiva lektioner. Träna i en trygg FakeWin-miljö med Chrome, Utforskaren, Inställningar, filer, internet och vanliga datorproblem.">
+  <meta name="description" content="" data-i18n-attr="content:meta.description">
   <meta name="theme-color" content="#f8fafc">
-  <title>Datorskolan – Lär dig Windows genom att göra det på riktigt</title>
-  <link rel="stylesheet" href="./styles/main.css">
-  <link rel="stylesheet" href="./styles/landing.css">
-  <link rel="stylesheet" href="./styles/accessibility.css">
-  <link rel="stylesheet" href="./styles/arcane-theme.css">
+  <title data-i18n="meta.title">Datorskolan</title>
+  <link rel="stylesheet" href="./styles/site.css">
+  <link rel="stylesheet" href="./styles/fakewin.css">
+  <script src="./src/i18n.js"></script>
+  <script src="./locales/sv/ui.js"></script>
+  <script src="./locales/en/ui.js"></script>
+  <script src="./locales/sv/fakewin.js"></script>
+  <script src="./locales/en/fakewin.js"></script>
 </head>
 <body class="landing-mode">
-  <a class="skip-link" href="#landing-main">Hoppa till huvudinnehållet</a>
-  <div id="landing" class="landing-page">
-    <div class="landing-ambient ambient-a" aria-hidden="true"></div>
-    <div class="landing-ambient ambient-b" aria-hidden="true"></div>
+  <a class="skip-link" href="#landing-main" data-i18n="landing.skipToMain"></a>
 
-    <header class="landing-header">
-      <a class="brand" href="#" data-landing-tab="overview" aria-label="Datorskolan – översikt">
+  <div id="landing" class="site">
+    <header class="site-header">
+      <a class="brand" href="#" data-landing-tab="overview" data-i18n-attr="aria-label:landing.brandHome">
         <span class="brand-mark" aria-hidden="true">D</span>
         <span class="brand-copy">
           <strong>Datorskolan</strong>
-          <small>Windows från första klicket till självständighet</small>
+          <small data-i18n="landing.tagline"></small>
         </span>
       </a>
 
-      <nav class="landing-tabs" role="tablist" aria-label="Information om Datorskolan">
-        <button id="tab-overview" type="button" role="tab" aria-selected="true" aria-controls="panel-overview" tabindex="0" data-landing-tab="overview">Översikt</button>
-        <button id="tab-how" type="button" role="tab" aria-selected="false" aria-controls="panel-how" tabindex="-1" data-landing-tab="how">Så fungerar det</button>
-        <button id="tab-course" type="button" role="tab" aria-selected="false" aria-controls="panel-course" tabindex="-1" data-landing-tab="course">Kursen</button>
-        <button id="tab-safe" type="button" role="tab" aria-selected="false" aria-controls="panel-safe" tabindex="-1" data-landing-tab="safe">Tryggt att öva</button>
+      <nav class="site-tabs" role="tablist" data-i18n-attr="aria-label:landing.tabsLabel">
+        <button id="tab-overview" type="button" role="tab" aria-selected="true" aria-controls="panel-overview" tabindex="0" data-landing-tab="overview" data-i18n="landing.tab.overview"></button>
+        <button id="tab-how" type="button" role="tab" aria-selected="false" aria-controls="panel-how" tabindex="-1" data-landing-tab="how" data-i18n="landing.tab.how"></button>
+        <button id="tab-course" type="button" role="tab" aria-selected="false" aria-controls="panel-course" tabindex="-1" data-landing-tab="course" data-i18n="landing.tab.course"></button>
+        <button id="tab-safe" type="button" role="tab" aria-selected="false" aria-controls="panel-safe" tabindex="-1" data-landing-tab="safe" data-i18n="landing.tab.safe"></button>
       </nav>
 
-      <div class="landing-header-actions">
-        <button class="header-reset" type="button" data-reset-school hidden>
-          <span aria-hidden="true">↻</span>
-          <span>Starta om</span>
-        </button>
-        <button class="header-cta" type="button" data-launch-school>
-          <span data-cta-text>Starta Datorskolan</span>
-          <span aria-hidden="true">→</span>
+      <div class="site-header-actions">
+        <div class="language-switch" role="group" aria-label="Språk / Language">
+          <button type="button" lang="sv" data-set-locale="sv" aria-pressed="true">Svenska</button>
+          <button type="button" lang="en" data-set-locale="en" aria-pressed="false">English</button>
+        </div>
+        <button class="button button-secondary" type="button" data-reset-school hidden data-i18n="landing.restart"></button>
+        <button class="button button-primary header-cta" type="button" data-launch-school>
+          <span data-cta-text></span>
         </button>
       </div>
     </header>
 
-    <main id="landing-main" class="landing-stage" tabindex="-1">
-      <section id="panel-overview" class="landing-panel overview-panel active" data-landing-panel="overview" role="tabpanel" aria-labelledby="tab-overview">
-        <div class="overview-copy">
-          <div class="eyebrow"><span class="eyebrow-dot"></span>Interaktiv Windows-träning direkt i webbläsaren</div>
-          <h1>Lär dig datorn.<br><span>Genom att faktiskt använda den.</span></h1>
-          <p class="hero-lead">
-            Från första musklicket till Chrome, filer, USB, Wi‑Fi, PDF och felsökning.
-            Du tränar i en realistisk FakeWin-miljö utan att riskera något på din riktiga dator.
-          </p>
+    <main id="landing-main" class="site-main" tabindex="-1">
+      <section id="panel-overview" class="panel panel-overview" data-landing-panel="overview" role="tabpanel" aria-labelledby="tab-overview">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="landing.overview.eyebrow"></p>
+          <h1>
+            <span data-i18n="landing.overview.titleA"></span>
+            <span class="accent" data-i18n="landing.overview.titleB"></span>
+          </h1>
+          <p class="lead" data-i18n="landing.overview.lead"></p>
 
           <div class="hero-actions">
-            <button class="primary-cta" type="button" data-launch-school>
-              <span data-cta-text>Starta Datorskolan</span>
-              <span class="cta-arrow">→</span>
+            <button class="button button-primary button-large" type="button" data-launch-school>
+              <span data-cta-text></span>
             </button>
-            <button class="secondary-cta" type="button" data-landing-tab="course">Se kursen</button>
+            <button class="button button-secondary button-large" type="button" data-landing-tab="course" data-i18n="landing.overview.seeCourse"></button>
           </div>
 
-          <p class="resume-note" data-resume-note hidden></p>
+          <p class="resume-note" data-resume-note role="status" hidden></p>
 
-          <div class="hero-facts">
-            <div><strong>120</strong><span>lektioner</span></div>
-            <div><strong>13</strong><span>kursområden</span></div>
-            <div><strong>0</strong><span>risk för dina filer</span></div>
-          </div>
-
-          <div class="overview-trust">
-            <span><b>✓</b> Ingen installation</span>
-            <span><b>✓</b> Sparar framsteg</span>
-            <span><b>✓</b> Hjälp när du behöver</span>
-          </div>
+          <dl class="facts">
+            <div><dt data-i18n="landing.fact.lessons"></dt><dd data-course-count="lessons"></dd></div>
+            <div><dt data-i18n="landing.fact.modules"></dt><dd data-course-count="modules"></dd></div>
+            <div><dt data-i18n="landing.fact.risk"></dt><dd>0</dd></div>
+          </dl>
         </div>
 
-        <div class="overview-visual" aria-hidden="true">
-          <div class="visual-orbit orbit-blue"></div>
-          <div class="visual-orbit orbit-violet"></div>
-
-          <div class="fakewin-device">
-            <div class="fakewin-screen">
-              <div class="preview-desktop-icons">
-                <div><img src="./assets/icons/fluent/folder.svg" alt=""><small>Documents</small></div>
-                <div><img src="./assets/icons/fluent/image-multiple.svg" alt=""><small>Pictures</small></div>
-                <div><img src="./assets/icons/fluent/delete.svg" alt=""><small>Papperskorgen</small></div>
+        <figure class="hero-visual" aria-hidden="true">
+          <div class="preview-screen">
+            <div class="preview-window">
+              <div class="preview-titlebar">
+                <img src="./assets/icons/fluent/folder.svg" alt="">
+                <span data-i18n="app.explorer"></span>
+                <i></i><i></i><i></i>
               </div>
-
-              <div class="preview-start-menu">
-                <div class="preview-search"><span>⌕</span><span>Skriv här för att söka</span></div>
-                <div class="preview-start-head"><strong>Fäst</strong><span>Alla appar ›</span></div>
-                <div class="preview-app-grid">
-                  <div><img src="./assets/icons/fluent/folder.svg" alt=""><small>Utforskaren</small></div>
-                  <div><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><small>Chrome</small></div>
-                  <div><img src="./assets/icons/fluent/calculator.svg" alt=""><small>Kalkylator</small></div>
-                  <div><img src="./assets/icons/fluent/notepad.svg" alt=""><small>Anteckningar</small></div>
-                  <div><img src="./assets/icons/fluent/mail.svg" alt=""><small>E-post</small></div>
-                  <div><img src="./assets/icons/fluent/settings.svg" alt=""><small>Inställningar</small></div>
+              <div class="preview-body">
+                <div class="preview-nav">
+                  <span><img src="./assets/icons/fluent/home.svg" alt=""><b data-i18n="vfs.home"></b></span>
+                  <span class="is-active"><img src="./assets/icons/fluent/folder.svg" alt=""><b data-i18n="vfs.documents"></b></span>
+                  <span><img src="./assets/icons/fluent/download.svg" alt=""><b data-i18n="vfs.downloads"></b></span>
+                  <span><img src="./assets/icons/fluent/image-multiple.svg" alt=""><b data-i18n="vfs.pictures"></b></span>
                 </div>
-                <div class="preview-recommended">
-                  <strong>Rekommenderat</strong>
-                  <div><img src="./assets/icons/fluent/graduation.svg" alt=""><span><b>Kom igång</b><small>Datorskolan – trygg Windows-träning</small></span></div>
-                </div>
-                <div class="preview-start-footer"><span class="preview-avatar">J</span><strong>Jimmy</strong><span>⏻</span></div>
-              </div>
-
-              <div class="preview-taskbar">
-                <div class="preview-taskbar-center">
-                  <img src="./assets/icons/fluent/apps.svg" alt="">
-                  <img src="./assets/icons/fluent/graduation.svg" alt="">
-                  <img src="./assets/icons/fluent/beaker.svg" alt="">
-                  <img src="./assets/icons/fluent/folder.svg" alt="">
-                  <img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt="">
-                </div>
-                <div class="preview-tray">
-                  <img src="./assets/icons/fluent/wifi.svg" alt="">
-                  <img src="./assets/icons/fluent/speaker.svg" alt="">
-                  <img src="./assets/icons/fluent/battery.svg" alt="">
-                  <span>10:42<br>2026-10-07</span>
+                <div class="preview-files">
+                  <span><img src="./assets/icons/fluent/folder.svg" alt=""><b data-i18n="landing.preview.folder"></b></span>
+                  <span class="is-selected"><img src="./assets/icons/fluent/document-text.svg" alt=""><b data-i18n="landing.preview.file"></b></span>
+                  <span><img src="./assets/icons/fluent/document-pdf.svg" alt=""><b data-i18n="landing.preview.pdf"></b></span>
                 </div>
               </div>
             </div>
+            <div class="preview-coach">
+              <strong data-i18n="landing.preview.coachTitle"></strong>
+              <span data-i18n="landing.preview.coachText"></span>
+            </div>
+            <div class="preview-taskbar">
+              <img src="./assets/icons/fluent/apps.svg" alt="">
+              <img src="./assets/icons/fluent/folder.svg" alt="">
+              <img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt="">
+              <img src="./assets/icons/fluent/settings.svg" alt="">
+              <img src="./assets/icons/fluent/mail.svg" alt="">
+            </div>
           </div>
-
-          <div class="visual-chip chip-real"><span class="chip-dot"></span><div><strong>Realistisk FakeWin</strong><small>Windows-lika flöden, inte quizknappar</small></div></div>
-          <div class="visual-chip chip-chrome"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><div><strong>Google Chrome</strong><small>Flikar, länkar och nedladdningar</small></div></div>
-          <div class="visual-chip chip-progress"><strong>120</strong><span>lektioner</span></div>
-        </div>
+        </figure>
       </section>
 
-      <section id="panel-how" class="landing-panel how-panel" data-landing-panel="how" role="tabpanel" aria-labelledby="tab-how" hidden>
-        <div class="panel-heading">
-          <span class="section-kicker">PEDAGOGIK SOM BYGGER SJÄLVSTÄNDIGHET</span>
-          <h2>Förstå först. Gör sedan själv.</h2>
-          <p>Varje färdighet byggs i små steg och återkommer senare i nya situationer.</p>
-        </div>
+      <section id="panel-how" class="panel panel-how" data-landing-panel="how" role="tabpanel" aria-labelledby="tab-how" hidden>
+        <header class="panel-heading">
+          <p class="eyebrow" data-i18n="landing.how.eyebrow"></p>
+          <h2 data-i18n="landing.how.title"></h2>
+          <p class="lead" data-i18n="landing.how.lead"></p>
+        </header>
 
-        <div class="how-bento">
-          <article class="how-card emphasis">
-            <span class="step-number">01</span>
-            <div class="card-icon"><img src="./assets/icons/fluent/document-text.svg" alt=""></div>
-            <h3>Vi förklarar från noll</h3>
-            <p>Vad är en länk? Vad är ett fönster? Varför finns mappar? Inga grundkunskaper förutsätts.</p>
-          </article>
-          <article class="how-card">
-            <span class="step-number">02</span>
-            <div class="card-icon"><img src="./assets/icons/fluent/image.svg" alt=""></div>
-            <h3>Du lär dig känna igen</h3>
-            <p>Symboler, platser, menyer och mönster visas i sitt riktiga sammanhang.</p>
-          </article>
-          <article class="how-card">
-            <span class="step-number">03</span>
-            <div class="card-icon"><img src="./assets/icons/fluent/desktop.svg" alt=""></div>
-            <h3>Du gör uppgiften</h3>
-            <p>Klicka, högerklicka, dra, skriv, öppna och välj i själva FakeWin.</p>
-          </article>
-          <article class="how-card">
-            <span class="step-number">04</span>
-            <div class="card-icon"><img src="./assets/icons/fluent/sync.svg" alt=""></div>
-            <h3>Kunskapen återkommer</h3>
-            <p>Momentet dyker upp igen tills du kan använda det utan steg-för-steg-hjälp.</p>
-          </article>
+        <ol class="step-grid">
+          <li class="card">
+            <span class="step-number" aria-hidden="true">1</span>
+            <img class="card-icon" src="./assets/icons/fluent/document-text.svg" alt="">
+            <h3 data-i18n="landing.how.step1.title"></h3>
+            <p data-i18n="landing.how.step1.text"></p>
+          </li>
+          <li class="card">
+            <span class="step-number" aria-hidden="true">2</span>
+            <img class="card-icon" src="./assets/icons/fluent/image.svg" alt="">
+            <h3 data-i18n="landing.how.step2.title"></h3>
+            <p data-i18n="landing.how.step2.text"></p>
+          </li>
+          <li class="card">
+            <span class="step-number" aria-hidden="true">3</span>
+            <img class="card-icon" src="./assets/icons/fluent/desktop.svg" alt="">
+            <h3 data-i18n="landing.how.step3.title"></h3>
+            <p data-i18n="landing.how.step3.text"></p>
+          </li>
+          <li class="card">
+            <span class="step-number" aria-hidden="true">4</span>
+            <img class="card-icon" src="./assets/icons/fluent/sync.svg" alt="">
+            <h3 data-i18n="landing.how.step4.title"></h3>
+            <p data-i18n="landing.how.step4.text"></p>
+          </li>
+        </ol>
 
-          <article class="realism-card">
-            <div class="realism-card-copy">
-              <span class="section-kicker">TRÄNA PÅ DET RIKTIGA SÄTTET</span>
-              <h3>Inga låtsasknappar när Windows redan har ett riktigt flöde.</h3>
-              <div class="realism-pills">
-                <span><img src="./assets/icons/fluent/apps.svg" alt="">Fäst från Start</span>
-                <span><img src="./assets/icons/fluent/folder.svg" alt="">ZIP i Utforskaren</span>
-                <span><img src="./assets/icons/fluent/settings.svg" alt="">Wi‑Fi i Inställningar</span>
-                <span><img src="./assets/icons/fluent/usb-plug.svg" alt="">Mata ut USB</span>
-              </div>
-            </div>
-            <div class="mini-flow">
-              <div class="flow-step"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><span>Chrome</span></div>
-              <i>→</i>
-              <div class="flow-step"><img src="./assets/icons/fluent/folder.svg" alt=""><span>Downloads</span></div>
-              <i>→</i>
-              <div class="flow-step"><img src="./assets/icons/fluent/document-text.svg" alt=""><span>Fil</span></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="panel-course" class="landing-panel course-panel" data-landing-panel="course" role="tabpanel" aria-labelledby="tab-course" hidden>
-        <div class="course-topline">
+        <div class="callout">
           <div>
-            <span class="section-kicker">120 LEKTIONER • 13 KURSOMRÅDEN</span>
-            <h2>Hela vägen från första klicket till självständighet.</h2>
+            <h3 data-i18n="landing.how.realTitle"></h3>
+            <p data-i18n="landing.how.realText"></p>
           </div>
-          <p>Välj en modul i Datorskolan och träna i din egen takt. Framstegen sparas lokalt.</p>
-        </div>
-
-        <div class="module-grid">
-          <article><img src="./assets/icons/fluent/desktop.svg" alt=""><span><small>STARTEN</small><b>Datorgrunder</b><em>4 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/crop.svg" alt=""><span><small>GRUNDEN</small><b>Mus</b><em>9 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/notepad.svg" alt=""><span><small>GRUNDEN</small><b>Tangentbord</b><em>11 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/apps.svg" alt=""><span><small>WINDOWS</small><b>Windows</b><em>14 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/folder.svg" alt=""><span><small>ORDNING</small><b>Filer & mappar</b><em>12 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/apps-list.svg" alt=""><span><small>PROGRAM</small><b>Program</b><em>1 lektion</em></span></article>
-          <article class="brand-module"><img src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" alt=""><span><small>ONLINE</small><b>Internet & Chrome</b><em>14 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/mail.svg" alt=""><span><small>KOMMUNIKATION</small><b>E-post</b><em>7 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/shield.svg" alt=""><span><small>TRYGGHET</small><b>Säkerhet</b><em>8 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/document-pdf.svg" alt=""><span><small>VARDAGEN</small><b>Vardagsdatorn</b><em>20 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/usb-plug.svg" alt=""><span><small>ANSLUTNINGAR</small><b>Enheter</b><em>8 lektioner</em></span></article>
-          <article><img src="./assets/icons/fluent/sync.svg" alt=""><span><small>PROBLEMLÖSNING</small><b>När något krånglar</b><em>11 lektioner</em></span></article>
-          <article class="final-module"><img src="./assets/icons/fluent/graduation.svg" alt=""><span><small>MÅLET</small><b>Självständighetsprov</b><em>1 slutuppdrag</em></span></article>
-        </div>
-
-        <div class="course-bottom">
-          <span><img src="./assets/icons/fluent/document-pdf.svg" alt="">PDF & utskrift</span>
-          <span><img src="./assets/icons/fluent/folder-zip.svg" alt="">ZIP</span>
-          <span><img src="./assets/icons/fluent/cloud.svg" alt="">OneDrive</span>
-          <span><img src="./assets/icons/fluent/wifi.svg" alt="">Wi‑Fi</span>
-          <span><img src="./assets/icons/fluent/bluetooth.svg" alt="">Bluetooth</span>
-          <span><img src="./assets/icons/fluent/cut.svg" alt="">Skärmklipp</span>
-          <button type="button" class="compact-cta" data-launch-school><span data-cta-text>Starta Datorskolan</span> →</button>
+          <ul class="pill-list">
+            <li><img src="./assets/icons/fluent/apps.svg" alt=""><span data-i18n="landing.how.pill.pin"></span></li>
+            <li><img src="./assets/icons/fluent/folder-zip.svg" alt=""><span data-i18n="landing.how.pill.zip"></span></li>
+            <li><img src="./assets/icons/fluent/wifi.svg" alt=""><span data-i18n="landing.how.pill.wifi"></span></li>
+            <li><img src="./assets/icons/fluent/usb-plug.svg" alt=""><span data-i18n="landing.how.pill.usb"></span></li>
+          </ul>
         </div>
       </section>
 
-      <section id="panel-safe" class="landing-panel safe-panel" data-landing-panel="safe" role="tabpanel" aria-labelledby="tab-safe" hidden>
-        <div class="safe-layout">
-          <div class="safe-copy">
-            <span class="section-kicker">TRYGGT ATT GÖRA FEL</span>
-            <h2>Det känns som en dator.<br><span>Men övningen stannar i webbläsaren.</span></h2>
-            <p>FakeWin är en virtuell träningsmiljö. Du kan prova, göra fel, återställa och prova igen utan att röra dina riktiga filer.</p>
-
-            <div class="safety-list">
-              <div><span class="safety-check">✓</span><span><b>Inga personliga filer läses</b><small>FakeWin använder ett eget virtuellt filsystem.</small></span></div>
-              <div><span class="safety-check">✓</span><span><b>Inga riktiga program installeras</b><small>Installationsövningar sker endast i simulatorn.</small></span></div>
-              <div><span class="safety-check">✓</span><span><b>Du kan återställa allt</b><small>Starta om kursen och börja från noll när du vill.</small></span></div>
-              <div><span class="safety-check">✓</span><span><b>Framsteg sparas lokalt</b><small>Din kursprogress stannar på den här enheten.</small></span></div>
-            </div>
+      <section id="panel-course" class="panel panel-course" data-landing-panel="course" role="tabpanel" aria-labelledby="tab-course" hidden>
+        <header class="panel-heading panel-heading-row">
+          <div>
+            <p class="eyebrow" data-course-eyebrow></p>
+            <h2 data-i18n="landing.course.title"></h2>
           </div>
+          <p class="lead" data-i18n="landing.course.lead"></p>
+        </header>
 
-          <div class="safe-showcase">
-            <div class="shield-scene">
-              <div class="shield-ring ring-one"></div>
-              <div class="shield-ring ring-two"></div>
-              <div class="shield-core"><img src="./assets/icons/fluent/shield.svg" alt=""></div>
-            </div>
+        <ul class="module-grid" data-module-grid></ul>
 
-            <div class="safe-matrix">
-              <article><img src="./assets/icons/fluent/folder.svg" alt=""><span><b>Virtuella filer</b><small>Skapa, flytta, radera och återställ.</small></span></article>
-              <article><img src="./assets/icons/fluent/usb-plug.svg" alt=""><span><b>Simulerad USB</b><small>Kopiera och mata ut säkert.</small></span></article>
-              <article><img src="./assets/icons/fluent/settings.svg" alt=""><span><b>Simulerade inställningar</b><small>Wi‑Fi, Bluetooth och uppdatering.</small></span></article>
-              <article><img src="./assets/icons/fluent/sync.svg" alt=""><span><b>Gör om direkt</b><small>Ingen tidspress och inga verkliga konsekvenser.</small></span></article>
-            </div>
-
-            <button class="primary-cta safe-cta" type="button" data-launch-school>
-              <span data-cta-text>Starta Datorskolan</span><span class="cta-arrow">→</span>
-            </button>
-          </div>
+        <div class="course-footer">
+          <p data-i18n="landing.course.extras"></p>
+          <button class="button button-primary" type="button" data-launch-school><span data-cta-text></span></button>
         </div>
+      </section>
+
+      <section id="panel-safe" class="panel panel-safe" data-landing-panel="safe" role="tabpanel" aria-labelledby="tab-safe" hidden>
+        <div class="safe-copy">
+          <p class="eyebrow" data-i18n="landing.safe.eyebrow"></p>
+          <h2 data-i18n="landing.safe.title"></h2>
+          <p class="lead" data-i18n="landing.safe.lead"></p>
+          <button class="button button-primary button-large" type="button" data-launch-school><span data-cta-text></span></button>
+        </div>
+
+        <ul class="check-list">
+          <li><span class="check" aria-hidden="true"></span><div><h3 data-i18n="landing.safe.item1.title"></h3><p data-i18n="landing.safe.item1.text"></p></div></li>
+          <li><span class="check" aria-hidden="true"></span><div><h3 data-i18n="landing.safe.item2.title"></h3><p data-i18n="landing.safe.item2.text"></p></div></li>
+          <li><span class="check" aria-hidden="true"></span><div><h3 data-i18n="landing.safe.item3.title"></h3><p data-i18n="landing.safe.item3.text"></p></div></li>
+          <li><span class="check" aria-hidden="true"></span><div><h3 data-i18n="landing.safe.item4.title"></h3><p data-i18n="landing.safe.item4.text"></p></div></li>
+        </ul>
       </section>
     </main>
 
-    <div class="landing-statusbar" aria-hidden="true">
-      <span><i></i> FakeWin redo</span>
-      <span>120 lektioner</span>
-      <span>13 kursområden</span>
-      <span class="status-spacer"></span>
-      <span>Öva tryggt • direkt i webbläsaren</span>
-    </div>
+    <footer class="site-footer">
+      <p data-i18n="landing.footer.note"></p>
+      <button class="link-button" type="button" data-open-privacy data-i18n="landing.footer.privacy"></button>
+    </footer>
   </div>
 
-  <div class="reset-dialog-backdrop" data-reset-dialog hidden>
-    <section class="reset-dialog" role="dialog" aria-modal="true" aria-labelledby="reset-dialog-title" aria-describedby="reset-dialog-description">
-      <div class="reset-dialog-icon" aria-hidden="true">↻</div>
-      <h2 id="reset-dialog-title">Starta om Datorskolan?</h2>
-      <p id="reset-dialog-description">
-        Alla dina sparade framsteg på den här enheten kommer att raderas.
-        Alla klara lektioner, kursprogress och inställningar återställs och du börjar om från början.
-      </p>
-      <div class="reset-dialog-warning">
-        <strong>Detta går inte att ångra.</strong>
-      </div>
-      <div class="reset-dialog-actions">
-        <button type="button" class="reset-cancel" data-reset-cancel>Avbryt</button>
-        <button type="button" class="reset-confirm" data-reset-confirm>Ja, radera allt och börja om</button>
+  <div class="modal-backdrop" data-modal="reset" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="reset-title" aria-describedby="reset-description">
+      <h2 id="reset-title" data-i18n="reset.title"></h2>
+      <p id="reset-description" data-i18n="reset.description"></p>
+      <p class="modal-warning" data-i18n="reset.warning"></p>
+      <div class="modal-actions">
+        <button type="button" class="button button-secondary" data-modal-close data-i18n="common.cancel"></button>
+        <button type="button" class="button button-danger" data-reset-confirm data-i18n="reset.confirm"></button>
       </div>
     </section>
   </div>
 
-  <main id="app" hidden tabindex="-1" aria-label="Simulerad Windows-miljö"></main>
+  <div class="modal-backdrop" data-modal="privacy" hidden>
+    <section class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+      <h2 id="privacy-title" data-i18n="privacy.title"></h2>
+      <p data-i18n="privacy.intro"></p>
+      <ul class="plain-list">
+        <li data-i18n="privacy.item.noAccount"></li>
+        <li data-i18n="privacy.item.noTracking"></li>
+        <li data-i18n="privacy.item.localStorage"></li>
+        <li data-i18n="privacy.item.thirdParty"></li>
+        <li data-i18n="privacy.item.delete"></li>
+      </ul>
+      <div class="modal-actions">
+        <button type="button" class="button button-primary" data-modal-close data-i18n="common.close"></button>
+      </div>
+    </section>
+  </div>
 
+  <main id="app" hidden tabindex="-1" data-i18n-attr="aria-label:app.simulatorLabel"></main>
+
+  <script defer src="./locales/sv/course.js"></script>
+  <script defer src="./locales/en/course.js"></script>
+  <script defer src="./src/course/lessons.js"></script>
+  <script defer src="./src/course/scenarios.js"></script>
+  <script defer src="./src/course.js"></script>
   <script defer src="./src/vfs.js"></script>
-  <script defer src="./src/scenarios.js"></script>
-  <script defer src="./src/advanced-scenarios.js"></script>
-  <script defer src="./src/everyday-scenarios.js"></script>
   <script defer src="./src/scenario-engine.js"></script>
   <script defer src="./src/progress-store.js"></script>
-  <script defer src="./src/lessons.js"></script>
-  <script defer src="./src/advanced-lessons.js"></script>
-  <script defer src="./src/everyday-lessons.js"></script>
-  <script defer src="./src/lesson-enrichment.js"></script>
   <script defer src="./src/lesson-engine.js"></script>
+  <script defer src="./src/win11-ui.js"></script>
+  <script defer src="./src/explorer-app.js"></script>
+  <script defer src="./src/basic-apps.js"></script>
+  <script defer src="./src/mouse-lab.js"></script>
   <script defer src="./src/advanced-apps.js"></script>
   <script defer src="./src/everyday-apps.js"></script>
-  <script defer src="./src/win11-ui.js"></script>
   <script defer src="./src/chrome-app.js"></script>
   <script defer src="./src/settings-app.js"></script>
   <script defer src="./src/pdf-app.js"></script>
   <script defer src="./src/installer-app.js"></script>
   <script defer src="./src/snipping-app.js"></script>
   <script defer src="./src/trouble-app.js"></script>
+  <script defer src="./src/learning-panel.js"></script>
   <script defer src="./src/app.js"></script>
   <script defer src="./src/product-shell.js"></script>
 </body>

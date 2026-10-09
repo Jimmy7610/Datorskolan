@@ -1,0 +1,142 @@
+/*
+  Svenska – gränssnittstexter.
+  Nycklarna måste finnas i alla språkfiler (kontrolleras av tests/i18n-completeness-smoke.js).
+  Windows-termer följer svenska Windows 11.
+*/
+(function (global) {
+  "use strict";
+
+  global.DatorskolanI18n.register("sv", "ui", {
+    /* ---------- Gemensamt ---------- */
+    "common.cancel": "Avbryt",
+    "common.close": "Stäng",
+    "common.ok": "OK",
+    "common.next": "Nästa",
+    "common.back": "Tillbaka",
+    "common.save": "Spara",
+    "common.done": "Klart",
+    "common.yes": "Ja",
+    "common.no": "Nej",
+    "common.on": "På",
+    "common.off": "Av",
+
+    /* ---------- Webbplatsen ---------- */
+    "meta.title": "Datorskolan – lär dig Windows genom att göra det",
+    "meta.description": "Lär dig Windows från grunden i 120 interaktiva lektioner. Öva i en trygg kopia av Windows 11 med Utforskaren, Chrome, Inställningar, filer, internet och vanliga datorproblem.",
+
+    "landing.skipToMain": "Hoppa till huvudinnehållet",
+    "landing.skipToSchool": "Hoppa till Datorskolan",
+    "landing.brandHome": "Datorskolan – till översikten",
+    "landing.tagline": "Windows från första klicket",
+    "landing.tabsLabel": "Om Datorskolan",
+    "landing.tab.overview": "Översikt",
+    "landing.tab.how": "Så fungerar det",
+    "landing.tab.course": "Kursen",
+    "landing.tab.safe": "Tryggt att öva",
+    "landing.restart": "Börja om",
+    "landing.cta.start": "Starta Datorskolan",
+    "landing.cta.resume": "Fortsätt där du var",
+    "landing.resume.none": "Dina framsteg är sparade på den här enheten.",
+    "landing.resume.count.one": "Dina framsteg är sparade. Du har klarat {count} lektion.",
+    "landing.resume.count.other": "Dina framsteg är sparade. Du har klarat {count} lektioner.",
+
+    "landing.overview.eyebrow": "Interaktiv Windows-träning i webbläsaren",
+    "landing.overview.titleA": "Lär dig datorn.",
+    "landing.overview.titleB": "Genom att använda den.",
+    "landing.overview.lead": "Från första musklicket till filer, Chrome, Wi‑Fi, PDF och felsökning. Du övar i en trygg kopia av Windows 11 där ingenting kan gå sönder.",
+    "landing.overview.seeCourse": "Se kursen",
+    "landing.fact.lessons": "lektioner",
+    "landing.fact.modules": "kursområden",
+    "landing.fact.risk": "risk för dina filer",
+    "landing.preview.folder": "Semester",
+    "landing.preview.file": "Inköpslista.txt",
+    "landing.preview.pdf": "Faktura.pdf",
+    "landing.preview.coachTitle": "Din tur",
+    "landing.preview.coachText": "Dubbelklicka på mappen Semester för att öppna den.",
+
+    "landing.how.eyebrow": "Så lär du dig",
+    "landing.how.title": "Förstå först. Gör sedan själv.",
+    "landing.how.lead": "Varje moment byggs upp i små steg och kommer tillbaka senare, tills du klarar det utan hjälp.",
+    "landing.how.step1.title": "Vi förklarar från noll",
+    "landing.how.step1.text": "Vad är ett fönster? Vad är en mapp? Inga förkunskaper behövs.",
+    "landing.how.step2.title": "Du lär dig känna igen",
+    "landing.how.step2.text": "Knappar, menyer och symboler visas precis som i Windows 11.",
+    "landing.how.step3.title": "Du gör uppgiften själv",
+    "landing.how.step3.text": "Klicka, högerklicka, dra, skriv och spara – på riktigt, i övningsdatorn.",
+    "landing.how.step4.title": "Kunskapen kommer tillbaka",
+    "landing.how.step4.text": "Det du lärt dig dyker upp igen i nya uppgifter tills det sitter.",
+    "landing.how.realTitle": "Samma sätt som på en riktig dator",
+    "landing.how.realText": "Du gör inte låtsasval i ett quiz. Du använder Start, Utforskaren och Inställningar som du gör i Windows 11.",
+    "landing.how.pill.pin": "Fäst en app i aktivitetsfältet",
+    "landing.how.pill.zip": "Packa upp en ZIP-fil",
+    "landing.how.pill.wifi": "Anslut till Wi‑Fi",
+    "landing.how.pill.usb": "Mata ut ett USB-minne",
+
+    "landing.course.eyebrow": "{lessons} lektioner · {modules} kursområden",
+    "landing.course.title": "Hela vägen från första klicket till att klara dig själv.",
+    "landing.course.lead": "Välj ett kursområde och öva i din egen takt. Dina framsteg sparas bara på den här enheten.",
+    "landing.course.lessonCount.one": "{count} lektion",
+    "landing.course.lessonCount.other": "{count} lektioner",
+    "landing.course.extras": "Kursen tar också upp PDF och utskrift, ZIP-filer, OneDrive, Bluetooth, skärmbilder och vad du gör när något krånglar.",
+
+    "landing.safe.eyebrow": "Tryggt att göra fel",
+    "landing.safe.title": "Det ser ut som Windows. Men inget händer med din dator.",
+    "landing.safe.lead": "Övningsdatorn finns bara i webbläsaren. Prova, gör fel och börja om – så många gånger du vill.",
+    "landing.safe.item1.title": "Dina egna filer rörs inte",
+    "landing.safe.item1.text": "Övningsdatorn har egna, påhittade filer och mappar.",
+    "landing.safe.item2.title": "Inga riktiga program installeras",
+    "landing.safe.item2.text": "Installationer och inställningar sker bara i övningen.",
+    "landing.safe.item3.title": "Du kan alltid börja om",
+    "landing.safe.item3.text": "Varje övning kan återställas, och hela kursen kan startas om.",
+    "landing.safe.item4.title": "Ingen inloggning, inga cookies",
+    "landing.safe.item4.text": "Framstegen sparas bara i din webbläsare på den här enheten.",
+
+    "landing.footer.note": "Datorskolan är en fristående övningsmiljö och är inte knuten till Microsoft eller Google.",
+    "landing.footer.privacy": "Integritet och lagring",
+
+    "reset.title": "Börja om från början?",
+    "reset.description": "Alla sparade framsteg på den här enheten raderas: klara lektioner, kursläge och dina val i övningsdatorn.",
+    "reset.warning": "Det går inte att ångra.",
+    "reset.confirm": "Ja, radera och börja om",
+
+    "privacy.title": "Integritet och lagring",
+    "privacy.intro": "Datorskolan fungerar utan konto och utan att skicka dina uppgifter någonstans.",
+    "privacy.item.noAccount": "Du behöver inte logga in eller lämna några personuppgifter.",
+    "privacy.item.noTracking": "Vi använder inga cookies, ingen statistik och ingen spårning.",
+    "privacy.item.localStorage": "Dina framsteg, ditt språkval och dina val i övningsdatorn sparas i webbläsarens lokala lagring (localStorage) på den här enheten. De skickas inte till någon server.",
+    "privacy.item.thirdParty": "Typsnittet Cooper Hewitt hämtas från GitHub och Chrome-loggan från Google. Då ser de tjänsterna din IP-adress, precis som vid ett vanligt webbesök.",
+    "privacy.item.delete": "Du raderar allt med knappen ”Börja om”, eller genom att rensa webbplatsdata i webbläsaren.",
+
+    /* ---------- Simulatorn: gemensamt ---------- */
+    "app.simulatorLabel": "Övningsdator med Windows 11",
+    "app.startFailed.title": "Datorskolan kunde inte starta",
+    "app.startFailed.text": "Ladda om sidan. Om felet finns kvar, prova en annan webbläsare.",
+
+    "app.explorer": "Utforskaren",
+    "app.calculator": "Kalkylator",
+    "app.notepad": "Anteckningar",
+    "app.photos": "Foton",
+    "app.settings": "Inställningar",
+    "app.browser": "Google Chrome",
+    "app.mail": "E-post",
+    "app.snipping": "Skärmklippverktyget",
+    "app.pdf": "PDF-läsare",
+    "app.installer": "Installationsprogram",
+    "app.troubleDemo": "Rapportvisaren",
+    "app.recycleBin": "Papperskorgen",
+    "app.mouseLab": "Musövning",
+    "app.keyboardLab": "Tangentbordsövning",
+    "app.everydayLab": "Vardagsövning",
+    "app.exerciseProgram": "Övningsprogram",
+
+    "vfs.home": "Start",
+    "vfs.documents": "Dokument",
+    "vfs.pictures": "Bilder",
+    "vfs.downloads": "Hämtade filer",
+    "vfs.desktop": "Skrivbord",
+    "vfs.onedrive": "OneDrive",
+    "vfs.recycleBin": "Papperskorgen",
+    "vfs.thisPc": "Den här datorn",
+    "vfs.usbDrive": "USB-enhet (E:)"
+  });
+})(typeof window !== "undefined" ? window : globalThis);

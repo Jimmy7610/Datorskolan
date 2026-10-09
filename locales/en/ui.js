@@ -1,0 +1,142 @@
+/*
+  English – interface strings.
+  Every key must exist in every locale (checked by tests/i18n-completeness-smoke.js).
+  Windows terms follow English (United Kingdom/United States) Windows 11.
+*/
+(function (global) {
+  "use strict";
+
+  global.DatorskolanI18n.register("en", "ui", {
+    /* ---------- Common ---------- */
+    "common.cancel": "Cancel",
+    "common.close": "Close",
+    "common.ok": "OK",
+    "common.next": "Next",
+    "common.back": "Back",
+    "common.save": "Save",
+    "common.done": "Done",
+    "common.yes": "Yes",
+    "common.no": "No",
+    "common.on": "On",
+    "common.off": "Off",
+
+    /* ---------- Website ---------- */
+    "meta.title": "Datorskolan – learn Windows by doing it",
+    "meta.description": "Learn Windows from scratch in 120 interactive lessons. Practise in a safe copy of Windows 11 with File Explorer, Chrome, Settings, files, the internet and everyday computer problems.",
+
+    "landing.skipToMain": "Skip to main content",
+    "landing.skipToSchool": "Skip to Datorskolan",
+    "landing.brandHome": "Datorskolan – back to the overview",
+    "landing.tagline": "Windows from the very first click",
+    "landing.tabsLabel": "About Datorskolan",
+    "landing.tab.overview": "Overview",
+    "landing.tab.how": "How it works",
+    "landing.tab.course": "The course",
+    "landing.tab.safe": "Safe to practise",
+    "landing.restart": "Start over",
+    "landing.cta.start": "Start Datorskolan",
+    "landing.cta.resume": "Continue where you left off",
+    "landing.resume.none": "Your progress is saved on this device.",
+    "landing.resume.count.one": "Your progress is saved. You have completed {count} lesson.",
+    "landing.resume.count.other": "Your progress is saved. You have completed {count} lessons.",
+
+    "landing.overview.eyebrow": "Hands-on Windows training in your browser",
+    "landing.overview.titleA": "Learn the computer.",
+    "landing.overview.titleB": "By actually using it.",
+    "landing.overview.lead": "From your very first mouse click to files, Chrome, Wi‑Fi, PDFs and fixing problems. You practise in a safe copy of Windows 11 where nothing can break.",
+    "landing.overview.seeCourse": "See the course",
+    "landing.fact.lessons": "lessons",
+    "landing.fact.modules": "course areas",
+    "landing.fact.risk": "risk to your files",
+    "landing.preview.folder": "Holiday",
+    "landing.preview.file": "Shopping list.txt",
+    "landing.preview.pdf": "Invoice.pdf",
+    "landing.preview.coachTitle": "Your turn",
+    "landing.preview.coachText": "Double-click the Holiday folder to open it.",
+
+    "landing.how.eyebrow": "How you learn",
+    "landing.how.title": "Understand first. Then do it yourself.",
+    "landing.how.lead": "Every skill is built in small steps and comes back later, until you can do it without help.",
+    "landing.how.step1.title": "We explain from scratch",
+    "landing.how.step1.text": "What is a window? What is a folder? No prior knowledge needed.",
+    "landing.how.step2.title": "You learn to recognise things",
+    "landing.how.step2.text": "Buttons, menus and symbols look just like they do in Windows 11.",
+    "landing.how.step3.title": "You do the task yourself",
+    "landing.how.step3.text": "Click, right-click, drag, type and save – for real, on the practice computer.",
+    "landing.how.step4.title": "Skills come back",
+    "landing.how.step4.text": "What you have learned returns in new tasks until it sticks.",
+    "landing.how.realTitle": "The same way as on a real computer",
+    "landing.how.realText": "No pretend quiz buttons. You use Start, File Explorer and Settings just like in Windows 11.",
+    "landing.how.pill.pin": "Pin an app to the taskbar",
+    "landing.how.pill.zip": "Extract a ZIP file",
+    "landing.how.pill.wifi": "Connect to Wi‑Fi",
+    "landing.how.pill.usb": "Eject a USB stick",
+
+    "landing.course.eyebrow": "{lessons} lessons · {modules} course areas",
+    "landing.course.title": "All the way from the first click to managing on your own.",
+    "landing.course.lead": "Choose a course area and practise at your own pace. Your progress is only saved on this device.",
+    "landing.course.lessonCount.one": "{count} lesson",
+    "landing.course.lessonCount.other": "{count} lessons",
+    "landing.course.extras": "The course also covers PDFs and printing, ZIP files, OneDrive, Bluetooth, screenshots and what to do when something goes wrong.",
+
+    "landing.safe.eyebrow": "Safe to make mistakes",
+    "landing.safe.title": "It looks like Windows. But nothing happens to your computer.",
+    "landing.safe.lead": "The practice computer only exists in your browser. Try things, get them wrong and start again – as often as you like.",
+    "landing.safe.item1.title": "Your own files are never touched",
+    "landing.safe.item1.text": "The practice computer has its own made-up files and folders.",
+    "landing.safe.item2.title": "No real programs are installed",
+    "landing.safe.item2.text": "Installations and settings only happen inside the exercise.",
+    "landing.safe.item3.title": "You can always start again",
+    "landing.safe.item3.text": "Every exercise can be reset, and the whole course can be restarted.",
+    "landing.safe.item4.title": "No sign-in, no cookies",
+    "landing.safe.item4.text": "Progress is only saved in your browser on this device.",
+
+    "landing.footer.note": "Datorskolan is an independent practice environment and is not affiliated with Microsoft or Google.",
+    "landing.footer.privacy": "Privacy and storage",
+
+    "reset.title": "Start over from the beginning?",
+    "reset.description": "All progress saved on this device will be deleted: completed lessons, your course level and your choices on the practice computer.",
+    "reset.warning": "This cannot be undone.",
+    "reset.confirm": "Yes, delete and start over",
+
+    "privacy.title": "Privacy and storage",
+    "privacy.intro": "Datorskolan works without an account and without sending your information anywhere.",
+    "privacy.item.noAccount": "You do not need to sign in or give any personal details.",
+    "privacy.item.noTracking": "We use no cookies, no analytics and no tracking.",
+    "privacy.item.localStorage": "Your progress, your language choice and your choices on the practice computer are stored in your browser's local storage (localStorage) on this device. They are never sent to a server.",
+    "privacy.item.thirdParty": "The Cooper Hewitt typeface is loaded from GitHub and the Chrome logo from Google. Those services see your IP address, just as with any normal website visit.",
+    "privacy.item.delete": "You can delete everything with the “Start over” button, or by clearing site data in your browser.",
+
+    /* ---------- Simulator: shared ---------- */
+    "app.simulatorLabel": "Practice computer running Windows 11",
+    "app.startFailed.title": "Datorskolan could not start",
+    "app.startFailed.text": "Reload the page. If the problem continues, try another browser.",
+
+    "app.explorer": "File Explorer",
+    "app.calculator": "Calculator",
+    "app.notepad": "Notepad",
+    "app.photos": "Photos",
+    "app.settings": "Settings",
+    "app.browser": "Google Chrome",
+    "app.mail": "Mail",
+    "app.snipping": "Snipping Tool",
+    "app.pdf": "PDF reader",
+    "app.installer": "Setup",
+    "app.troubleDemo": "Report Viewer",
+    "app.recycleBin": "Recycle Bin",
+    "app.mouseLab": "Mouse practice",
+    "app.keyboardLab": "Keyboard practice",
+    "app.everydayLab": "Everyday practice",
+    "app.exerciseProgram": "Practice Program",
+
+    "vfs.home": "Home",
+    "vfs.documents": "Documents",
+    "vfs.pictures": "Pictures",
+    "vfs.downloads": "Downloads",
+    "vfs.desktop": "Desktop",
+    "vfs.onedrive": "OneDrive",
+    "vfs.recycleBin": "Recycle Bin",
+    "vfs.thisPc": "This PC",
+    "vfs.usbDrive": "USB Drive (E:)"
+  });
+})(typeof window !== "undefined" ? window : globalThis);
