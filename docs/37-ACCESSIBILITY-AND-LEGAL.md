@@ -62,7 +62,7 @@ Följande har **inte** kunnat testas i den här miljön och ska inte räknas som
 
 1. **NVDA** (Firefox och Chrome) och **Skärmläsaren/Narrator** (Edge) på Windows 11: läsordning på startsidan, flikarna, att lektionsfeedback läses upp (`role="status"`), dialogernas namn och beskrivning, och Utforskarens listruta (antal objekt, markering).
 2. **VoiceOver** på macOS/iOS (Safari).
-3. **Riktiga kontrastteman i Windows** (Akvatisk, Ökenlandskap, Skymning, Natthimmel), särskilt det ljusa temat Ökenlandskap. Den automatiska kontrollen emulerade bara ett mörkt tema.
+3. **Riktiga kontrastteman i Windows** (engelska namn: Aquatic, Desert, Dusk, Night sky), särskilt det ljusa temat Desert. Den automatiska kontrollen emulerade bara ett mörkt tema.
 4. **Webbläsarens zoom 200–400 %** med Ctrl+plus, i stället för emulerad fönsterstorlek, och textstorlek 200 % i Windows-inställningarna.
 5. **Pekskärm**: dra och släpp och långtryck (högerklick) på surfplatta.
 6. **Röststyrning** (Röståtkomst i Windows): att synliga etiketter matchar de tillgängliga namnen (WCAG 2.5.3).
