@@ -827,6 +827,8 @@
     render: render,
     windowTitle: windowTitle,
     currentFolderId: function (ctx) { return ex(ctx).folderId; },
+    sortNodes: sortNodes,
+    currentView: currentView,
     navigate: navigate,
     extractDialog: extractDialog,
     confirmEmptyRecycleBin: confirmEmptyRecycleBin,

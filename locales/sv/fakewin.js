@@ -373,7 +373,7 @@
     "settings.keywords.time": "datum tid klocka tidszon språk region",
     "settings.keywords.gaming": "spel spelläge inspelning",
     "settings.home.recommended": "Rekommenderade inställningar",
-    "settings.accounts.yourInfo": "Din info",
+    "settings.accounts.yourInfo": "Din information",
     "settings.accounts.signIn": "Inloggningsalternativ",
     "settings.accounts.signInDesc": "Ansiktsigenkänning, fingeravtryck, PIN-kod, lösenord",
     "settings.time.dateTime": "Datum och tid",

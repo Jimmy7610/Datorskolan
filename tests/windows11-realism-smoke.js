@@ -117,7 +117,24 @@ const en = window.DatorskolanI18n.dictionary("en", "ui");
   ["explorer.delete", "Ta bort", "Delete"],
   ["explorer.restore", "Återställ", "Restore"],
   ["saveAs.title", "Spara som", "Save as"],
-  ["explorer.navigationPane", "Navigeringsfönster", "Navigation pane"]
+  ["explorer.navigationPane", "Navigeringsfönster", "Navigation pane"],
+  // Settings pages and desktop menu, verified 2026-10-10 (docs/40, sources S6–S9).
+  ["settings.page.system", "System", "System"],
+  ["settings.page.apps", "Appar", "Apps"],
+  ["settings.page.accounts", "Konton", "Accounts"],
+  ["settings.page.gaming", "Spel", "Gaming"],
+  ["settings.page.accessibility", "Hjälpmedel", "Accessibility"],
+  ["settings.page.personalization", "Anpassning", "Personalisation"],
+  ["settings.page.update", "Windows Update", "Windows Update"],
+  ["settings.accounts.yourInfo", "Din information", "Your info"],
+  ["settings.accounts.signIn", "Inloggningsalternativ", "Sign-in options"],
+  ["settings.gaming.gameMode", "Spelläge", "Game Mode"],
+  ["desktop.view.large", "Stora ikoner", "Large icons"],
+  ["desktop.view.medium", "Medelstora ikoner", "Medium icons"],
+  ["desktop.view.small", "Små ikoner", "Small icons"],
+  ["desktop.view.showIcons", "Visa skrivbordsikoner", "Show desktop icons"],
+  ["menu.view", "Visa", "View"],
+  ["menu.sortBy", "Sortera efter", "Sort by"]
 ].forEach(function (row) {
   assert(sv[row[0]] === row[1], "Swedish Windows term changed for " + row[0] + ": " + sv[row[0]]);
   assert(en[row[0]] === row[2], "English Windows term changed for " + row[0] + ": " + en[row[0]]);
