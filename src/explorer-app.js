@@ -12,6 +12,84 @@
 
   function ex(ctx) { return ctx.state.explorer; }
 
+  /* ---------- Sort and View (Windows 11 command bar) ---------- */
+
+  var VIEWS = ["large", "medium", "list", "details"];
+  var SORT_KEYS = ["name", "modified", "type", "size"];
+  // Rough sizes for practice files that have no real content, so Size and sorting look believable.
+  var TYPICAL_KB = { "image-file": 245, pdf: 88, zip: 1240, installer: 2380 };
+
+  function sizeKb(ctx, node) {
+    if (!node || node.type === "folder") return null;
+    if (node.content && node.content.length) return Math.max(1, Math.ceil(node.content.length / 1024));
+    return TYPICAL_KB[ctx.nodeIconKey(node)] || 1;
+  }
+
+  // The view a folder opens in: Home and Pictures use icons, other folders show details (as in Windows 11).
+  function currentView(s) {
+    if (s.view && VIEWS.indexOf(s.view) >= 0) return s.view;
+    return s.folderId === "pictures" ? "large" : "details";
+  }
+
+  function currentSort(s) {
+    return s.sort && SORT_KEYS.indexOf(s.sort.by) >= 0 ? s.sort : { by: "name", dir: "asc" };
+  }
+
+  // Folders always come before files, like Windows; within each group the chosen column decides.
+  function sortNodes(ctx, nodes, sort) {
+    var locale = ctx.I18n.intlLocale();
+    var key = {
+      name: function (n) { return ctx.displayName(n); },
+      modified: function (n) { return n.createdAt || 0; },
+      type: function (n) { return ctx.fileTypeLabel(n); },
+      size: function (n) { return sizeKb(ctx, n) || 0; }
+    }[sort.by];
+    var dir = sort.dir === "desc" ? -1 : 1;
+    return nodes.slice().sort(function (a, b) {
+      var fa = a.type === "folder" ? 0 : 1;
+      var fb = b.type === "folder" ? 0 : 1;
+      if (fa !== fb) return fa - fb;
+      var ka = key(a);
+      var kb = key(b);
+      var c = typeof ka === "string" ? ka.localeCompare(kb, locale) : ka - kb;
+      if (!c) c = ctx.displayName(a).localeCompare(ctx.displayName(b), locale);
+      return c * dir;
+    });
+  }
+
+  function setSort(ctx, patch) {
+    var s = ex(ctx);
+    s.sort = Object.assign({}, currentSort(s), patch);
+    ctx.emit("explorer.sorted", { by: s.sort.by, dir: s.sort.dir, folderId: s.folderId });
+    ctx.refreshApp("explorer");
+  }
+
+  function setView(ctx, view) {
+    var s = ex(ctx);
+    s.view = view;
+    ctx.emit("explorer.viewChanged", { view: view, folderId: s.folderId });
+    ctx.refreshApp("explorer");
+  }
+
+  function sortMenu(ctx) {
+    var t = ctx.t;
+    var sort = currentSort(ex(ctx));
+    return SORT_KEYS.map(function (by) {
+      return { label: t("explorer.sort." + by), radio: true, checked: sort.by === by, ui: "explorer-sort-" + by, action: function () { setSort(ctx, { by: by }); } };
+    }).concat(["sep",
+      { label: t("explorer.sort.asc"), radio: true, checked: sort.dir === "asc", ui: "explorer-sort-asc", action: function () { setSort(ctx, { dir: "asc" }); } },
+      { label: t("explorer.sort.desc"), radio: true, checked: sort.dir === "desc", ui: "explorer-sort-desc", action: function () { setSort(ctx, { dir: "desc" }); } }
+    ]);
+  }
+
+  function viewMenu(ctx) {
+    var t = ctx.t;
+    var view = currentView(ex(ctx));
+    return VIEWS.map(function (v) {
+      return { label: t("explorer.view." + v), radio: true, checked: view === v, ui: "explorer-view-" + v, action: function () { setView(ctx, v); } };
+    });
+  }
+
   function windowTitle(ctx) {
     return ctx.displayName(ctx.vfs.get(ex(ctx).folderId)) || ctx.t("app.explorer");
   }
@@ -477,6 +555,18 @@
         bar.appendChild(commandButton(ctx, { label: t("explorer.eject"), iconKey: "usb-drive", ui: "eject", action: function () { ejectUsb(ctx); } }));
       }
     }
+    if (!isHome) {
+      bar.appendChild(h("span", { class: "fw-command-separator", aria: { hidden: "true" } }));
+      [["explorer.sort", "sort", "explorer-sort", sortMenu], ["explorer.view", "view", "explorer-view", viewMenu]].forEach(function (cmd) {
+        bar.appendChild(commandButton(ctx, {
+          label: t(cmd[0]), glyph: cmd[1], menu: true, ui: cmd[2],
+          action: function (e) {
+            var rect = e.currentTarget.getBoundingClientRect();
+            ctx.openMenu({ kind: cmd[2], x: rect.left, y: rect.bottom + 4, items: cmd[3](ctx) });
+          }
+        }));
+      });
+    }
     root.appendChild(bar);
 
     /* Navigation pane */
@@ -529,21 +619,30 @@
     var query = ctx.I18n.lower(s.search);
     if (query) nodes = nodes.filter(function (node) { return ctx.I18n.lower(ctx.displayName(node)).indexOf(query) >= 0; });
 
-    var useTiles = isHome || s.folderId === "pictures";
+    var view = isHome ? "large" : currentView(s);
+    if (!isHome) nodes = sortNodes(ctx, nodes, currentSort(s));
+    var useTiles = view === "large" || view === "medium";
+    var details = view === "details";
     var list = h("div", {
-      class: "explorer-items " + (useTiles ? "is-tiles" : "is-details"),
+      class: "explorer-items is-" + view + (useTiles ? " is-tiles" : ""),
       role: "listbox",
       tabindex: nodes.length ? null : "0",
       aria: { label: ctx.displayName(folder) },
       data: { ui: "explorer-items" }
     });
 
-    if (!useTiles && nodes.length) {
-      list.appendChild(h("div", { class: "explorer-details-head", aria: { hidden: "true" } }, [
-        h("span", { text: t("explorer.col.name") }),
-        h("span", { text: inRecycle ? t("explorer.col.originalLocation") : t("explorer.col.modified") }),
-        h("span", { text: t("explorer.col.type") })
-      ]));
+    if (details && nodes.length) {
+      // Column headers sort like in Windows: click once to sort, again to reverse. (The Sort menu is the keyboard path.)
+      var sort = currentSort(s);
+      var head = h("div", { class: "explorer-details-head", aria: { hidden: "true" } });
+      [["name", "explorer.col.name"], ["modified", inRecycle ? "explorer.col.originalLocation" : "explorer.col.modified"], ["type", "explorer.col.type"], ["size", "explorer.col.size"]].forEach(function (col) {
+        var active = sort.by === col[0] && !(inRecycle && col[0] === "modified");
+        head.appendChild(h("span", {
+          class: "explorer-col" + (active ? " is-sorted is-" + sort.dir : ""),
+          on: inRecycle && col[0] === "modified" ? null : { click: function () { setSort(ctx, { by: col[0], dir: active && sort.dir === "asc" ? "desc" : "asc" }); } }
+        }, [h("span", { text: t(col[1]) }), active ? h("span", { class: "explorer-col-arrow", html: ctx.glyph(sort.dir === "asc" ? "chevron-up" : "chevron-down", 10) }) : null]));
+      });
+      list.appendChild(head);
     }
 
     if (isHome) {
@@ -589,14 +688,16 @@
         label = h("span", { class: "explorer-item-name", text: name });
       }
 
-      option.appendChild(h("span", { class: "explorer-item-icon", html: ctx.nodeIcon(node, useTiles ? 48 : 20) }));
+      option.appendChild(h("span", { class: "explorer-item-icon", html: ctx.nodeIcon(node, view === "large" ? 48 : view === "medium" ? 32 : view === "list" ? 16 : 20) }));
       option.appendChild(label);
-      if (!useTiles) {
+      if (details) {
         var second = inRecycle
           ? ctx.displayName(vfs.get(node.deletedFrom)) || ""
           : node.createdAt ? ctx.formatDate(new Date(node.createdAt)) + " " + ctx.formatTime(new Date(node.createdAt)) : "";
         option.appendChild(h("span", { class: "explorer-item-meta", text: second }));
         option.appendChild(h("span", { class: "explorer-item-meta", text: ctx.fileTypeLabel(node) }));
+        var kb = sizeKb(ctx, node);
+        option.appendChild(h("span", { class: "explorer-item-meta is-size", text: kb === null ? "" : t("explorer.sizeKb", { size: kb.toLocaleString(ctx.I18n.intlLocale()) }) }));
       }
 
       option.addEventListener("click", function (e) {

@@ -69,6 +69,10 @@
       return { folderId: "home", selectedId: null, clipboard: null, search: "", renamingId: null, history: ["home"], historyIndex: 0, view: null };
     }
 
+    function freshDesktopView() {
+      return { size: "medium", autoArrange: false, alignToGrid: true, showIcons: true, sortBy: null };
+    }
+
     var state = {
       desktopItems: [
         { id: "recycle-bin", labelKey: "vfs.recycleBin", iconKey: "recycle", x: 12, y: 12, appId: "recycle-bin", folderId: "recycle-bin" },
@@ -76,6 +80,9 @@
         { id: "pictures", labelKey: "vfs.pictures", iconKey: "pictures", x: 12, y: 212, appId: "explorer", folderId: "pictures" }
       ],
       selected: null,
+      desktopMulti: [],
+      // Desktop right-click > View / Sort by, like Windows 11.
+      desktopView: freshDesktopView(),
       startOpen: false,
       startQuery: "",
       startShowAllPins: false,
@@ -196,6 +203,9 @@
     function resetForScenario() {
       vfs.reset();
       state.selected = null;
+      state.desktopMulti = [];
+      state.desktopView = freshDesktopView();
+      arrangeDesktop();
       state.startOpen = false;
       state.startQuery = "";
       state.quickSettingsOpen = false;
@@ -768,19 +778,94 @@
 
     /* ---------- Desktop ---------- */
 
+    /* ---------- Desktop layout: View and Sort by ---------- */
+
+    // Cell size per icon size: Small 32 px, Medium 48 px (default), Large 96 px icons.
+    var DESKTOP_CELL = { small: { w: 80, h: 76, icon: 32 }, medium: { w: 96, h: 100, icon: 48 }, large: { w: 128, h: 148, icon: 96 } };
+    var DESKTOP_MARGIN = 12;
+
+    function desktopCell() { return DESKTOP_CELL[state.desktopView.size] || DESKTOP_CELL.medium; }
+
+    // Puts the icons in columns from the top left, in their current order.
+    function arrangeDesktop() {
+      var cell = desktopCell();
+      var desktopNode = typeof el !== "undefined" && el ? el.desktop : null;
+      var height = Math.max(cell.h, (desktopNode ? desktopNode.clientHeight : 0) || 600) - DESKTOP_MARGIN;
+      var perColumn = Math.max(1, Math.floor(height / cell.h));
+      state.desktopItems.forEach(function (item, index) {
+        item.x = DESKTOP_MARGIN + Math.floor(index / perColumn) * cell.w;
+        item.y = DESKTOP_MARGIN + (index % perColumn) * cell.h;
+      });
+    }
+
+    function snapToGrid(item) {
+      var cell = desktopCell();
+      item.x = DESKTOP_MARGIN + Math.max(0, Math.round((item.x - DESKTOP_MARGIN) / cell.w)) * cell.w;
+      item.y = DESKTOP_MARGIN + Math.max(0, Math.round((item.y - DESKTOP_MARGIN) / cell.h)) * cell.h;
+    }
+
+    // Windows sorts "virtual" items such as the Recycle Bin first, then folders, then files.
+    function sortDesktop(by) {
+      var rank = function (item) { return item.appId === "recycle-bin" ? 0 : 1; };
+      var name = function (item) { return t(item.labelKey); };
+      state.desktopItems.sort(function (a, b) {
+        if (rank(a) !== rank(b)) return rank(a) - rank(b);
+        var size = function (item) { return item.folderId ? vfs.list(item.folderId).length : 0; };
+        if (by === "size" && size(a) !== size(b)) return size(b) - size(a);
+        return name(a).localeCompare(name(b), I18n.intlLocale());
+      });
+      state.desktopView.sortBy = by;
+      arrangeDesktop();
+      emit("desktop.sorted", { by: by });
+      renderDesktop();
+    }
+
+    function setDesktopView(patch) {
+      Object.assign(state.desktopView, patch);
+      if (patch.size || patch.autoArrange) arrangeDesktop();
+      else if (patch.alignToGrid) state.desktopItems.forEach(snapToGrid);
+      emit("desktop.viewChanged", Object.assign({}, state.desktopView));
+      renderDesktop();
+    }
+
+    function desktopViewMenu() {
+      var v = state.desktopView;
+      return [
+        { label: t("desktop.view.large"), radio: true, checked: v.size === "large", ui: "desktop-view-large", action: function () { setDesktopView({ size: "large" }); } },
+        { label: t("desktop.view.medium"), radio: true, checked: v.size === "medium", ui: "desktop-view-medium", action: function () { setDesktopView({ size: "medium" }); } },
+        { label: t("desktop.view.small"), radio: true, checked: v.size === "small", ui: "desktop-view-small", action: function () { setDesktopView({ size: "small" }); } },
+        "sep",
+        { label: t("desktop.view.autoArrange"), checked: v.autoArrange, ui: "desktop-auto-arrange", action: function () { setDesktopView({ autoArrange: !v.autoArrange }); } },
+        { label: t("desktop.view.alignToGrid"), checked: v.alignToGrid, ui: "desktop-align-grid", action: function () { setDesktopView({ alignToGrid: !v.alignToGrid }); } },
+        "sep",
+        { label: t("desktop.view.showIcons"), checked: v.showIcons, ui: "desktop-show-icons", action: function () { setDesktopView({ showIcons: !v.showIcons }); } }
+      ];
+    }
+
+    function desktopSortMenu() {
+      return ["name", "size", "type", "date"].map(function (by) {
+        return { label: t("desktop.sort." + by), radio: true, checked: state.desktopView.sortBy === by, ui: "desktop-sort-" + by, action: function () { sortDesktop(by); } };
+      });
+    }
+
     function renderDesktop() {
       el.desktop.replaceChildren();
+      var view = state.desktopView;
+      var cell = desktopCell();
+      el.desktop.className = "fw-desktop is-" + view.size + "-icons";
+      if (!view.showIcons) return;
 
       state.desktopItems.forEach(function (item) {
         var label = t(item.labelKey);
+        var selected = state.selected === item.id || state.desktopMulti.indexOf(item.id) >= 0;
         var button = h("button", {
           type: "button",
-          class: "fw-desktop-icon" + (state.selected === item.id ? " is-selected" : ""),
+          class: "fw-desktop-icon" + (selected ? " is-selected" : ""),
           data: { itemId: item.id, ui: "desktop-" + item.id },
           aria: { label: label },
           style: { left: item.x + "px", top: item.y + "px" }
         }, [
-          h("span", { class: "fw-desktop-icon-image", html: ui.icon(item.iconKey, 48) }),
+          h("span", { class: "fw-desktop-icon-image", html: ui.icon(item.iconKey, cell.icon) }),
           h("span", { class: "fw-desktop-icon-label", text: label })
         ]);
 
@@ -789,6 +874,7 @@
         button.addEventListener("click", function (e) {
           e.stopPropagation();
           state.selected = item.id;
+          state.desktopMulti = [];
           el.desktop.querySelectorAll(".fw-desktop-icon").forEach(function (n) { n.classList.toggle("is-selected", n === button); });
           emit("desktop.item.selected", { itemId: item.id });
         });
@@ -845,8 +931,8 @@
           if (!drag.moved && Math.abs(dx) + Math.abs(dy) <= 5) return;
           drag.moved = true;
           var size = workspaceSize();
-          item.x = Math.max(0, Math.min(size.width - 96, drag.ix + dx));
-          item.y = Math.max(0, Math.min(size.height - 90, drag.iy + dy));
+          item.x = Math.max(0, Math.min(size.width - cell.w, drag.ix + dx));
+          item.y = Math.max(0, Math.min(size.height - cell.h, drag.iy + dy));
           button.style.left = item.x + "px";
           button.style.top = item.y + "px";
         });
@@ -856,9 +942,16 @@
           var moved = drag.moved;
           drag = null;
           if (moved) {
-            // Windows 11 aligns desktop icons to an invisible grid.
-            item.x = Math.round(item.x / 4) * 4;
-            item.y = Math.round(item.y / 4) * 4;
+            if (view.autoArrange) {
+              // Auto arrange: the icon takes the place it was dropped at in the column order.
+              state.desktopItems.sort(function (a, b) { return (a.x - b.x) * 1000 + (a.y - b.y); });
+              arrangeDesktop();
+            } else if (view.alignToGrid) {
+              snapToGrid(item);
+            } else {
+              item.x = Math.round(item.x);
+              item.y = Math.round(item.y);
+            }
             emit("desktop.item.moved", { itemId: item.id, x: item.x, y: item.y });
             renderDesktop();
           }
@@ -866,6 +959,46 @@
 
         el.desktop.appendChild(button);
       });
+    }
+
+    // Dragging on the empty desktop draws the blue selection rectangle and selects the icons it touches.
+    function startDesktopMarquee(e) {
+      var origin = el.desktop.getBoundingClientRect();
+      var start = { x: e.clientX - origin.left, y: e.clientY - origin.top };
+      var box = null;
+      function move(ev) {
+        var x = ev.clientX - origin.left;
+        var y = ev.clientY - origin.top;
+        if (!box) {
+          if (Math.abs(x - start.x) + Math.abs(y - start.y) < 4) return;
+          box = h("div", { class: "fw-desktop-marquee", aria: { hidden: "true" } });
+          el.desktop.appendChild(box);
+        }
+        var r = { left: Math.min(x, start.x), top: Math.min(y, start.y), right: Math.max(x, start.x), bottom: Math.max(y, start.y) };
+        box.style.left = r.left + "px";
+        box.style.top = r.top + "px";
+        box.style.width = (r.right - r.left) + "px";
+        box.style.height = (r.bottom - r.top) + "px";
+        var hits = [];
+        el.desktop.querySelectorAll(".fw-desktop-icon").forEach(function (node) {
+          var n = node.getBoundingClientRect();
+          var hit = n.left - origin.left < r.right && n.right - origin.left > r.left && n.top - origin.top < r.bottom && n.bottom - origin.top > r.top;
+          node.classList.toggle("is-selected", hit);
+          if (hit) hits.push(node.getAttribute("data-item-id"));
+        });
+        state.desktopMulti = hits;
+        state.selected = hits[hits.length - 1] || null;
+      }
+      function up() {
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("pointerup", up);
+        if (box) {
+          box.remove();
+          emit("desktop.itemsSelected", { count: state.desktopMulti.length });
+        }
+      }
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", up);
     }
 
     /* ---------- Taskbar ---------- */
@@ -1036,6 +1169,7 @@
       return h("button", {
         type: "button",
         class: "fw-start-tile",
+        title: appTitle(id),
         data: { appId: id, ui: "start-app-" + id },
         on: {
           click: function () { openApp(id); },
@@ -1259,6 +1393,7 @@
       state.quickSettingsOpen = quick;
       state.quickSettingsView = "main";
       state.calendarOpen = calendar;
+      if (calendar) state.calendarView = null; // opens on today's month, like Windows
       state.startOpen = false;
       startWasOpen = false;
       closeMenu(true);
@@ -1365,31 +1500,104 @@
       container.appendChild(panel);
     }
 
+    // Windows 11 calendar flyout: month title with up/down arrows, six weeks, today in the accent colour.
+    // Days are a grid with one tab stop; the arrow keys move between days (and across months).
     function renderCalendar(container) {
       var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      if (!state.calendarView) state.calendarView = { year: today.getFullYear(), month: today.getMonth(), focus: today.getTime() };
+      var view = state.calendarView;
+      var locale = I18n.intlLocale();
+
       var panel = h("section", { class: "fw-flyout fw-calendar", aria: { label: t("shell.calendar") } });
       panel.appendChild(h("div", { class: "fw-notifications" }, [
         h("h2", { text: t("shell.notifications") }),
         h("p", { text: t("shell.noNotifications") })
       ]));
 
-      var monthName = now.toLocaleDateString(I18n.intlLocale(), { month: "long", year: "numeric" });
       var cal = h("div", { class: "fw-calendar-month" });
-      cal.appendChild(h("h2", { text: now.toLocaleDateString(I18n.intlLocale(), { weekday: "long", day: "numeric", month: "long" }) }));
-      cal.appendChild(h("p", { class: "fw-calendar-title", text: monthName }));
+      cal.appendChild(h("h2", { class: "fw-calendar-today", text: today.toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long" }) }));
 
-      var grid = h("div", { class: "fw-calendar-grid", role: "grid" });
-      var weekStart = I18n.locale() === "sv" ? 1 : 1;
-      for (var d = 0; d < 7; d++) {
-        var day = new Date(2024, 0, 1 + ((d + weekStart - 1) % 7)); // 2024-01-01 is a Monday
-        grid.appendChild(h("span", { class: "fw-calendar-weekday", text: day.toLocaleDateString(I18n.intlLocale(), { weekday: "short" }).slice(0, 2) }));
+      function show(year, month, focusTime, focusSelector, selectedTime) {
+        var d = new Date(year, month, 1);
+        state.calendarView = { year: d.getFullYear(), month: d.getMonth(), focus: focusTime, selected: selectedTime !== undefined ? selectedTime : view.selected };
+        emit("calendar.monthChanged", { year: d.getFullYear(), month: d.getMonth() + 1 });
+        renderFlyouts();
+        var target = el.flyouts.querySelector(focusSelector || ".fw-calendar-day[tabindex='0']");
+        if (target) target.focus({ preventScroll: true });
       }
-      var first = new Date(now.getFullYear(), now.getMonth(), 1);
-      var lead = (first.getDay() + 6) % 7;
-      var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-      for (var i = 0; i < lead; i++) grid.appendChild(h("span", {}));
-      for (var n = 1; n <= daysInMonth; n++) {
-        grid.appendChild(h("span", { class: "fw-calendar-day" + (n === now.getDate() ? " is-today" : ""), text: String(n) }));
+
+      var shown = new Date(view.year, view.month, 1);
+      var head = h("div", { class: "fw-calendar-head" }, [
+        h("p", { class: "fw-calendar-title", id: "fw-calendar-title", aria: { live: "polite" }, text: shown.toLocaleDateString(locale, { month: "long", year: "numeric" }) }),
+        h("div", { class: "fw-calendar-nav" }, [
+          h("button", { type: "button", class: "fw-icon-button", title: t("calendar.previousMonth"), aria: { label: t("calendar.previousMonth") }, data: { ui: "calendar-previous" }, html: ui.glyph("chevron-up", 16),
+            on: { click: function () { show(view.year, view.month - 1, new Date(view.year, view.month - 1, 1).getTime(), "[data-ui='calendar-previous']"); } } }),
+          h("button", { type: "button", class: "fw-icon-button", title: t("calendar.nextMonth"), aria: { label: t("calendar.nextMonth") }, data: { ui: "calendar-next" }, html: ui.glyph("chevron-down", 16),
+            on: { click: function () { show(view.year, view.month + 1, new Date(view.year, view.month + 1, 1).getTime(), "[data-ui='calendar-next']"); } } })
+        ])
+      ]);
+      cal.appendChild(head);
+
+      var grid = h("div", { class: "fw-calendar-grid", role: "grid", aria: { labelledby: "fw-calendar-title" } });
+      var headRow = h("div", { class: "fw-calendar-row", role: "row" });
+      for (var w = 0; w < 7; w++) {
+        var weekday = new Date(2024, 0, 1 + w); // 2024-01-01 is a Monday; Sweden and the UK start the week on Monday.
+        headRow.appendChild(h("span", { class: "fw-calendar-weekday", role: "columnheader", aria: { label: weekday.toLocaleDateString(locale, { weekday: "long" }) }, text: weekday.toLocaleDateString(locale, { weekday: "short" }).slice(0, 2) }));
+      }
+      grid.appendChild(headRow);
+
+      var lead = (shown.getDay() + 6) % 7;
+      var cursor = new Date(view.year, view.month, 1 - lead);
+      var focusTime = view.focus;
+      var focusInMonth = new Date(focusTime).getMonth() === view.month && new Date(focusTime).getFullYear() === view.year;
+      if (!focusInMonth) focusTime = (today.getMonth() === view.month && today.getFullYear() === view.year ? today : shown).getTime();
+
+      for (var row = 0; row < 6; row++) {
+        var rowNode = h("div", { class: "fw-calendar-row", role: "row" });
+        for (var col = 0; col < 7; col++) {
+          var date = new Date(cursor.getFullYear(), cursor.getMonth(), cursor.getDate());
+          var outside = date.getMonth() !== view.month;
+          var isToday = date.getTime() === today.getTime();
+          (function (date) {
+            rowNode.appendChild(h("button", {
+              type: "button",
+              role: "gridcell",
+              class: "fw-calendar-day" + (outside ? " is-outside" : "") + (isToday ? " is-today" : "") + (date.getTime() === view.selected ? " is-selected" : ""),
+              tabindex: date.getTime() === focusTime ? "0" : "-1",
+              aria: { label: date.toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" }), current: isToday ? "date" : null, selected: date.getTime() === view.selected ? "true" : "false" },
+              data: { time: String(date.getTime()) },
+              text: String(date.getDate()),
+              on: {
+                click: function () { show(date.getFullYear(), date.getMonth(), date.getTime(), "[data-time='" + date.getTime() + "']", date.getTime()); },
+                keydown: function (e) {
+                  var step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 }[e.key];
+                  if (e.key === "PageUp" || e.key === "PageDown") {
+                    e.preventDefault();
+                    var other = new Date(date.getFullYear(), date.getMonth() + (e.key === "PageUp" ? -1 : 1), Math.min(date.getDate(), 28));
+                    show(other.getFullYear(), other.getMonth(), other.getTime());
+                    return;
+                  }
+                  if (!step) return;
+                  e.preventDefault();
+                  var next = new Date(date.getFullYear(), date.getMonth(), date.getDate() + step);
+                  if (next.getMonth() !== view.month || next.getFullYear() !== view.year) {
+                    show(next.getFullYear(), next.getMonth(), next.getTime());
+                    return;
+                  }
+                  var nextButton = grid.querySelector("[data-time='" + next.getTime() + "']");
+                  if (nextButton) {
+                    grid.querySelectorAll(".fw-calendar-day").forEach(function (b) { b.tabIndex = -1; });
+                    nextButton.tabIndex = 0;
+                    nextButton.focus();
+                  }
+                }
+              }
+            }));
+          })(date);
+          cursor.setDate(cursor.getDate() + 1);
+        }
+        grid.appendChild(rowNode);
       }
       cal.appendChild(grid);
       panel.appendChild(cal);
@@ -1430,66 +1638,131 @@
       menuReturnFocus = null;
     }
 
+    // Context menus with optional submenus (Windows 11: "View >", "Sort by >").
+    // Items: { label, action, iconKey | glyph, shortcut, disabled, bold, ui,
+    //          checked (check mark), radio + checked (dot), submenu: [items] } or "sep".
     function renderMenu() {
       el.menu.replaceChildren();
       var spec = state.menu;
       if (!spec) return;
 
-      var menu = h("div", { class: "fw-menu", role: "menu", aria: { label: spec.label || t("menu.label") }, data: { menuKind: spec.kind } });
-      var buttons = [];
-
-      spec.items.forEach(function (item) {
-        if (!item) return;
-        if (item === "sep") {
-          menu.appendChild(h("div", { class: "fw-menu-separator", role: "separator" }));
-          return;
-        }
-        var button = h("button", {
-          type: "button",
-          role: item.checked !== undefined ? "menuitemcheckbox" : "menuitem",
-          class: "fw-menu-item" + (item.bold ? " is-default" : "") + (item.danger ? " is-danger" : ""),
-          tabindex: "-1",
-          disabled: !!item.disabled,
-          aria: { disabled: item.disabled ? "true" : null, checked: item.checked !== undefined ? String(!!item.checked) : null },
-          data: { ui: item.ui || "" }
-        }, [
-          h("span", { class: "fw-menu-icon", html: item.iconKey ? ui.icon(item.iconKey, 16) : item.glyph ? ui.glyph(item.glyph, 16) : item.checked ? ui.glyph("check", 16) : "" }),
-          h("span", { class: "fw-menu-label", text: item.label }),
-          item.shortcut ? h("span", { class: "fw-menu-shortcut", text: item.shortcut }) : null
-        ]);
-        button.addEventListener("click", function (e) {
-          e.stopPropagation();
-          if (item.disabled) return;
-          state.menu = null;
-          renderMenu();
-          emit("contextMenu.closed", {});
-          if (item.action) item.action();
-        });
-        menu.appendChild(button);
-        if (!item.disabled) buttons.push(button);
-      });
-
-      menu.addEventListener("keydown", function (e) {
-        var index = buttons.indexOf(document.activeElement);
-        if (e.key === "ArrowDown") { e.preventDefault(); (buttons[index + 1] || buttons[0]).focus(); }
-        else if (e.key === "ArrowUp") { e.preventDefault(); (buttons[index - 1] || buttons[buttons.length - 1]).focus(); }
-        else if (e.key === "Home") { e.preventDefault(); buttons[0].focus(); }
-        else if (e.key === "End") { e.preventDefault(); buttons[buttons.length - 1].focus(); }
-        else if (e.key === "Escape" || e.key === "Tab") { e.preventDefault(); e.stopPropagation(); closeMenu(); }
-      });
-
-      el.menu.appendChild(menu);
-
       var screenRect = el.screen.getBoundingClientRect();
-      var rect = menu.getBoundingClientRect();
-      var x = spec.x - screenRect.left;
-      var y = spec.anchor === "above" ? spec.y - screenRect.top - rect.height - 8 : spec.y - screenRect.top;
-      x = Math.max(4, Math.min(x, screenRect.width - rect.width - 4));
-      y = Math.max(4, Math.min(y, screenRect.height - TASKBAR_HEIGHT - rect.height - 4));
-      menu.style.left = x + "px";
-      menu.style.top = y + "px";
+      var openSub = null;
 
-      if (buttons[0]) buttons[0].focus({ preventScroll: true });
+      function place(menu, x, y, alignRightOf) {
+        var rect = menu.getBoundingClientRect();
+        var maxX = screenRect.width - rect.width - 4;
+        if (alignRightOf && x > maxX) x = alignRightOf.left - screenRect.left - rect.width + 4;
+        menu.style.left = Math.max(4, Math.min(x, maxX)) + "px";
+        menu.style.top = Math.max(4, Math.min(y, screenRect.height - TASKBAR_HEIGHT - rect.height - 4)) + "px";
+      }
+
+      function choose(item) {
+        state.menu = null;
+        renderMenu();
+        emit("contextMenu.closed", {});
+        if (menuReturnFocus && document.body.contains(menuReturnFocus)) menuReturnFocus.focus({ preventScroll: true });
+        menuReturnFocus = null;
+        if (item.action) item.action();
+      }
+
+      function closeSub(focusParent) {
+        if (!openSub) return;
+        openSub.menu.remove();
+        openSub.button.setAttribute("aria-expanded", "false");
+        if (focusParent) openSub.button.focus({ preventScroll: true });
+        openSub = null;
+      }
+
+      function build(items, label, isSub, parentButton) {
+        var menu = h("div", { class: "fw-menu" + (isSub ? " is-submenu" : ""), role: "menu", aria: { label: label }, data: { menuKind: isSub ? "submenu" : spec.kind } });
+        var buttons = [];
+
+        items.forEach(function (item) {
+          if (!item) return;
+          if (item === "sep") {
+            menu.appendChild(h("div", { class: "fw-menu-separator", role: "separator" }));
+            return;
+          }
+          var hasSub = Array.isArray(item.submenu);
+          var role = item.radio ? "menuitemradio" : item.checked !== undefined ? "menuitemcheckbox" : "menuitem";
+          var mark = item.iconKey ? ui.icon(item.iconKey, 16) : item.glyph ? ui.glyph(item.glyph, 16) : item.checked ? ui.glyph(item.radio ? "dot" : "check", 16) : "";
+          var button = h("button", {
+            type: "button",
+            role: role,
+            class: "fw-menu-item" + (item.bold ? " is-default" : "") + (item.danger ? " is-danger" : "") + (hasSub ? " has-submenu" : ""),
+            tabindex: "-1",
+            disabled: !!item.disabled,
+            aria: {
+              disabled: item.disabled ? "true" : null,
+              checked: role === "menuitem" ? null : String(!!item.checked),
+              haspopup: hasSub ? "menu" : null,
+              expanded: hasSub ? "false" : null
+            },
+            data: { ui: item.ui || "" }
+          }, [
+            h("span", { class: "fw-menu-icon", html: mark }),
+            h("span", { class: "fw-menu-label", text: item.label }),
+            hasSub ? h("span", { class: "fw-menu-chevron", html: ui.glyph("chevron-right", 12) })
+              : item.shortcut ? h("span", { class: "fw-menu-shortcut", text: item.shortcut }) : null
+          ]);
+
+          function openThisSub(focusFirst) {
+            if (openSub && openSub.button === button) {
+              if (focusFirst && openSub.first) openSub.first.focus({ preventScroll: true });
+              return;
+            }
+            closeSub(false);
+            var sub = build(item.submenu, item.label, true, button);
+            el.menu.appendChild(sub.menu);
+            var r = button.getBoundingClientRect();
+            place(sub.menu, r.right - screenRect.left - 2, r.top - screenRect.top - 4, r);
+            button.setAttribute("aria-expanded", "true");
+            openSub = { button: button, menu: sub.menu, first: sub.buttons[0] };
+            if (focusFirst && sub.buttons[0]) sub.buttons[0].focus({ preventScroll: true });
+          }
+
+          button.addEventListener("click", function (e) {
+            e.stopPropagation();
+            if (item.disabled) return;
+            if (hasSub) { openThisSub(true); return; }
+            choose(item);
+          });
+          if (!isSub) {
+            button.addEventListener("mouseenter", function () {
+              if (hasSub && !item.disabled) openThisSub(false);
+              else closeSub(false);
+            });
+          }
+          button.addEventListener("keydown", function (e) {
+            if (hasSub && (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ")) {
+              e.preventDefault();
+              e.stopPropagation();
+              openThisSub(true);
+            }
+          });
+          menu.appendChild(button);
+          if (!item.disabled) buttons.push(button);
+        });
+
+        menu.addEventListener("keydown", function (e) {
+          var index = buttons.indexOf(document.activeElement);
+          if (e.key === "ArrowDown") { e.preventDefault(); e.stopPropagation(); (buttons[index + 1] || buttons[0]).focus(); }
+          else if (e.key === "ArrowUp") { e.preventDefault(); e.stopPropagation(); (buttons[index - 1] || buttons[buttons.length - 1]).focus(); }
+          else if (e.key === "Home") { e.preventDefault(); e.stopPropagation(); buttons[0].focus(); }
+          else if (e.key === "End") { e.preventDefault(); e.stopPropagation(); buttons[buttons.length - 1].focus(); }
+          else if (isSub && (e.key === "ArrowLeft" || e.key === "Escape")) { e.preventDefault(); e.stopPropagation(); closeSub(true); }
+          else if (e.key === "Escape" || e.key === "Tab") { e.preventDefault(); e.stopPropagation(); closeMenu(); }
+        });
+        return { menu: menu, buttons: buttons };
+      }
+
+      var root = build(spec.items, spec.label || t("menu.label"), false, null);
+      el.menu.appendChild(root.menu);
+      var rootRect = root.menu.getBoundingClientRect();
+      var y = spec.anchor === "above" ? spec.y - screenRect.top - rootRect.height - 8 : spec.y - screenRect.top;
+      place(root.menu, spec.x - screenRect.left, y, null);
+      if (root.buttons[0]) root.buttons[0].focus({ preventScroll: true });
     }
 
     /* ---------- Dialogs (Windows 11 ContentDialog / message box) ---------- */
@@ -1654,8 +1927,8 @@
         x: e.clientX,
         y: e.clientY,
         items: [
-          { label: t("menu.view"), glyph: "view", disabled: true },
-          { label: t("menu.sortBy"), glyph: "sort", disabled: true },
+          { label: t("menu.view"), glyph: "view", ui: "desktop-menu-view", submenu: desktopViewMenu() },
+          { label: t("menu.sortBy"), glyph: "sort", ui: "desktop-menu-sort", submenu: desktopSortMenu() },
           { label: t("menu.refresh"), glyph: "refresh", action: function () { emit("desktop.refreshed", {}); renderDesktop(); } },
           "sep",
           { label: t("menu.displaySettings"), iconKey: "desktop", action: function () {
@@ -1689,10 +1962,12 @@
         emit("startMenu.closed", {});
         changed = true;
       }
-      if (e.target === el.desktop && state.selected) {
+      if (e.target === el.desktop && (state.selected || state.desktopMulti.length)) {
         state.selected = null;
+        state.desktopMulti = [];
         el.desktop.querySelectorAll(".is-selected").forEach(function (n) { n.classList.remove("is-selected"); });
       }
+      if (e.target === el.desktop && e.button === 0) startDesktopMarquee(e);
       if (changed) {
         renderFlyouts();
         renderTaskbar();
