@@ -2,7 +2,7 @@
 
 /*
   FakeWin realism details that are easy to break: submenus, desktop View / Sort by, File Explorer
-  Sort / View, the calendar and Start labels.
+  Sort / View, the calendar, Start labels, window resizing and snap layouts.
 */
 const fs = require("fs");
 const path = require("path");
@@ -72,6 +72,19 @@ assert(/class: "fw-start-tile",\s*title: appTitle\(id\)/.test(app), "Start tiles
  "desktop.sort.name", "desktop.sort.size", "desktop.sort.type", "desktop.sort.date",
  "explorer.sort", "explorer.view", "explorer.sort.asc", "explorer.sort.desc", "explorer.view.list", "explorer.view.details", "explorer.col.size", "explorer.sizeKb",
  "calendar.previousMonth", "calendar.nextMonth"].forEach(function (key) {
+  ["sv", "en"].forEach(function (locale) { assert(key in I18n.dictionary(locale, "ui"), locale + " missing " + key); });
+});
+
+/* Windows: resize from every edge and corner; snap layouts from the Maximize button */
+assert(app.indexOf('["n", "s", "e", "w", "ne", "nw", "se", "sw"]') >= 0, "Windows must resize from all four edges and corners");
+assert(app.indexOf('dir === "se" ? " fw-resize-grip" : ""') >= 0, "The bottom-right handle keeps .fw-resize-grip (the resize lesson highlights it)");
+["ns-resize", "ew-resize", "nesw-resize", "nwse-resize"].forEach(function (cursor) { assert(css.indexOf("cursor:" + cursor) >= 0, "Resize cursor missing: " + cursor); });
+assert(/emit\("window\.resized"/.test(app), "Resizing must still emit window.resized");
+assert(app.indexOf('e.pointerType === "touch"') >= 0, "Snap layouts open on hover only for mouse/pen, never on a touch tap");
+assert(app.indexOf('e.key !== "ArrowDown"') >= 0, "↓ on a focused Maximize button opens the snap layouts");
+assert(/side = name === "left" \|\| name === "leftLarge" \? "left"/.test(app), "Snap layouts keep the side: left/right contract of window.snapped");
+["window.snapLayouts", "window.snap.left", "window.snap.right", "window.snap.leftLarge", "window.snap.rightSmall",
+ "window.snap.topLeft", "window.snap.topRight", "window.snap.bottomLeft", "window.snap.bottomRight"].forEach(function (key) {
   ["sv", "en"].forEach(function (locale) { assert(key in I18n.dictionary(locale, "ui"), locale + " missing " + key); });
 });
 

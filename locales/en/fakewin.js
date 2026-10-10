@@ -17,6 +17,15 @@
     "window.restore": "Restore down",
     "window.close": "Close",
     "window.closeTab": "Close tab",
+    "window.snapLayouts": "Snap layouts",
+    "window.snap.left": "Left half",
+    "window.snap.right": "Right half",
+    "window.snap.leftLarge": "Left two thirds",
+    "window.snap.rightSmall": "Right third",
+    "window.snap.topLeft": "Top-left quarter",
+    "window.snap.topRight": "Top-right quarter",
+    "window.snap.bottomLeft": "Bottom-left quarter",
+    "window.snap.bottomRight": "Bottom-right quarter",
 
     /* ---------- Desktop and taskbar ---------- */
     "shell.desktop": "Desktop",

@@ -698,14 +698,179 @@
       window.addEventListener("pointercancel", up);
     }
 
+    // Drag one edge or corner; the opposite edge stays put. Sizes respect the app's minimum and the screen.
+    function startResize(e, win, node, app, dir, handle) {
+      if (e.button !== 0) return;
+      e.stopPropagation();
+      e.preventDefault();
+      focusWindow(win.id, false);
+      var minW = app.minW || 320;
+      var minH = app.minH || 200;
+      var start = { id: e.pointerId, x: e.clientX, y: e.clientY, left: win.x, top: win.y, w: win.width, h: win.height };
+      handle.setPointerCapture(e.pointerId);
+      function move(ev) {
+        if (ev.pointerId !== start.id) return;
+        var area = workspaceSize();
+        var dx = ev.clientX - start.x;
+        var dy = ev.clientY - start.y;
+        var right = start.left + start.w;
+        var bottom = start.top + start.h;
+        if (dir.indexOf("e") >= 0) win.width = Math.max(minW, Math.min(area.width - start.left, start.w + dx));
+        if (dir.indexOf("s") >= 0) win.height = Math.max(minH, Math.min(area.height - start.top, start.h + dy));
+        if (dir.indexOf("w") >= 0) {
+          win.x = Math.max(0, Math.min(right - minW, start.left + dx));
+          win.width = right - win.x;
+        }
+        if (dir.indexOf("n") >= 0) {
+          win.y = Math.max(0, Math.min(bottom - minH, start.top + dy));
+          win.height = bottom - win.y;
+        }
+        win.snapRestore = null;
+        node.style.left = win.x + "px";
+        node.style.top = win.y + "px";
+        node.style.width = win.width + "px";
+        node.style.height = win.height + "px";
+      }
+      function up(ev) {
+        if (ev.pointerId !== start.id) return;
+        handle.removeEventListener("pointermove", move);
+        handle.removeEventListener("pointerup", up);
+        handle.removeEventListener("pointercancel", up);
+        if (win.width !== start.w || win.height !== start.h) {
+          emit("window.resized", { windowId: win.id, width: Math.round(win.width), height: Math.round(win.height), edge: dir });
+        }
+        render();
+      }
+      handle.addEventListener("pointermove", move);
+      handle.addEventListener("pointerup", up);
+      handle.addEventListener("pointercancel", up);
+    }
+
+    /* ---------- Snap layouts (hover over Maximize) ---------- */
+
+    // Zones as fractions of the screen above the taskbar. Quarters only when the screen is big enough.
+    var SNAP_LAYOUTS = [
+      [[0, 0, 0.5, 1], [0.5, 0, 0.5, 1]],
+      [[0, 0, 2 / 3, 1], [2 / 3, 0, 1 / 3, 1]],
+      [[0, 0, 0.5, 0.5], [0.5, 0, 0.5, 0.5], [0, 0.5, 0.5, 0.5], [0.5, 0.5, 0.5, 0.5]]
+    ];
+    var snapFlyout = null;
+    var snapTimer = null;
+
+    function zoneName(zone) {
+      var full = zone[3] === 1;
+      if (full && zone[0] === 0) return zone[2] === 0.5 ? "left" : "leftLarge";
+      if (full) return zone[2] === 0.5 ? "right" : "rightSmall";
+      return (zone[1] === 0 ? "top" : "bottom") + (zone[0] === 0 ? "Left" : "Right");
+    }
+
+    function snapToZone(win, zone) {
+      var area = workspaceSize();
+      if (!win.snapRestore) win.snapRestore = win.mode === "maximized" && win.restore ? { width: win.restore.width, height: win.restore.height } : { width: win.width, height: win.height };
+      win.mode = "normal";
+      win.restore = null;
+      win.x = Math.round(zone[0] * area.width);
+      win.y = Math.round(zone[1] * area.height);
+      win.width = Math.round(zone[2] * area.width);
+      win.height = Math.round(zone[3] * area.height);
+      activate(win);
+      var name = zoneName(zone);
+      // left/right keep the event contract the "side by side" lesson listens to.
+      var side = name === "left" || name === "leftLarge" ? "left" : name === "right" || name === "rightSmall" ? "right" : name;
+      emit("window.snapped", { windowId: win.id, appId: win.appId, side: side, layout: name });
+      render();
+      focusActiveWindow();
+    }
+
+    function closeSnapLayouts(focusButton) {
+      if (snapTimer) window.clearTimeout(snapTimer);
+      snapTimer = null;
+      if (!snapFlyout) return;
+      var opener = snapFlyout.opener;
+      snapFlyout.remove();
+      snapFlyout = null;
+      if (focusButton && opener && document.body.contains(opener)) opener.focus({ preventScroll: true });
+    }
+
+    function openSnapLayouts(win, button, focusFirst) {
+      closeSnapLayouts(false);
+      var area = workspaceSize();
+      var layouts = SNAP_LAYOUTS.filter(function (layout) { return layout.length < 4 || (area.width >= 900 && area.height >= 560); });
+      var panel = h("div", { class: "fw-snap", role: "menu", aria: { label: t("window.snapLayouts") }, data: { ui: "snap-layouts" } });
+      var zonesButtons = [];
+      layouts.forEach(function (layout) {
+        var group = h("div", { class: "fw-snap-layout", role: "group" });
+        layout.forEach(function (zone) {
+          var b = h("button", {
+            type: "button",
+            role: "menuitem",
+            class: "fw-snap-zone",
+            tabindex: "-1",
+            title: t("window.snap." + zoneName(zone)),
+            aria: { label: t("window.snap." + zoneName(zone)) },
+            data: { ui: "snap-" + zoneName(zone) },
+            style: { left: zone[0] * 100 + "%", top: zone[1] * 100 + "%", width: "calc(" + zone[2] * 100 + "% - 2px)", height: "calc(" + zone[3] * 100 + "% - 2px)" },
+            on: { click: function () { closeSnapLayouts(false); if (windowById(win.id)) snapToZone(win, zone); } }
+          });
+          group.appendChild(b);
+          zonesButtons.push(b);
+        });
+        panel.appendChild(group);
+      });
+      panel.addEventListener("keydown", function (ev) {
+        var i = zonesButtons.indexOf(document.activeElement);
+        if (ev.key === "ArrowRight" || ev.key === "ArrowDown") { ev.preventDefault(); (zonesButtons[i + 1] || zonesButtons[0]).focus(); }
+        else if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") { ev.preventDefault(); (zonesButtons[i - 1] || zonesButtons[zonesButtons.length - 1]).focus(); }
+        else if (ev.key === "Escape" || ev.key === "Tab") { ev.preventDefault(); ev.stopPropagation(); closeSnapLayouts(true); }
+      });
+      panel.addEventListener("pointerleave", function () { snapTimer = window.setTimeout(function () { closeSnapLayouts(false); }, 300); });
+      panel.addEventListener("pointerenter", function () { if (snapTimer) window.clearTimeout(snapTimer); snapTimer = null; });
+      panel.opener = button;
+      el.screen.appendChild(panel);
+      var r = button.getBoundingClientRect();
+      var screenRect = el.screen.getBoundingClientRect();
+      var width = panel.getBoundingClientRect().width;
+      panel.style.left = Math.max(4, Math.min(r.right - screenRect.left - width + 46, screenRect.width - width - 4)) + "px";
+      panel.style.top = (r.bottom - screenRect.top + 4) + "px";
+      snapFlyout = panel;
+      // A click anywhere else closes the panel, like any flyout.
+      document.addEventListener("pointerdown", function outside(ev) {
+        if (snapFlyout !== panel) { document.removeEventListener("pointerdown", outside, true); return; }
+        if (panel.contains(ev.target) || ev.target === button) return;
+        document.removeEventListener("pointerdown", outside, true);
+        closeSnapLayouts(false);
+      }, true);
+      emit("window.snapLayoutsOpened", { windowId: win.id });
+      if (focusFirst && zonesButtons[0]) zonesButtons[0].focus({ preventScroll: true });
+    }
+
     function captionButtons(win) {
       var maximized = win.mode === "maximized";
       var fixedSize = apps[win.appId] && apps[win.appId].resizable === false;
       var box = h("div", { class: "fw-caption", data: { noDrag: "" } }, [
         h("button", { type: "button", class: "fw-caption-button", data: { ui: "window-minimize" }, title: t("window.minimize"), aria: { label: t("window.minimize") }, html: ui.captionGlyph("minimize"),
           on: { click: function (e) { e.stopPropagation(); minimizeWindow(win.id); } } }),
-        h("button", { type: "button", class: "fw-caption-button", disabled: fixedSize, data: { ui: "window-maximize" }, title: t(maximized ? "window.restore" : "window.maximize"), aria: { label: t(maximized ? "window.restore" : "window.maximize") }, html: ui.captionGlyph(maximized ? "restore" : "maximize"),
-          on: { click: function (e) { e.stopPropagation(); if (maximized) restoreWindow(win.id); else maximizeWindow(win.id); } } }),
+        h("button", { type: "button", class: "fw-caption-button", disabled: fixedSize, data: { ui: "window-maximize" }, title: t(maximized ? "window.restore" : "window.maximize"), aria: { label: t(maximized ? "window.restore" : "window.maximize"), haspopup: fixedSize ? null : "menu", keyshortcuts: fixedSize ? null : "ArrowDown" }, html: ui.captionGlyph(maximized ? "restore" : "maximize"),
+          on: {
+            click: function (e) { e.stopPropagation(); closeSnapLayouts(false); if (maximized) restoreWindow(win.id); else maximizeWindow(win.id); },
+            // Windows 11: resting the pointer on Maximize shows the snap layouts.
+            pointerenter: function (e) {
+              if (fixedSize || e.pointerType === "touch") return;
+              var button = e.currentTarget;
+              if (snapTimer) window.clearTimeout(snapTimer);
+              snapTimer = window.setTimeout(function () { if (document.body.contains(button)) openSnapLayouts(win, button, false); }, 450);
+            },
+            pointerleave: function () {
+              if (snapTimer) window.clearTimeout(snapTimer);
+              snapTimer = window.setTimeout(function () { if (snapFlyout && !snapFlyout.matches(":hover")) closeSnapLayouts(false); }, 300);
+            },
+            keydown: function (e) {
+              if (fixedSize || e.key !== "ArrowDown") return;
+              e.preventDefault();
+              e.stopPropagation();
+              openSnapLayouts(win, e.currentTarget, true);
+            }
+          } }),
         h("button", { type: "button", class: "fw-caption-button fw-caption-close", data: { ui: "window-close" }, title: t("window.close"), aria: { label: t("window.close") }, html: ui.captionGlyph("close"),
           on: { click: function (e) { e.stopPropagation(); closeWindow(win.id); } } })
       ]);
@@ -768,32 +933,13 @@
         });
 
         if (win.mode === "normal" && app.resizable !== false) {
-          var grip = h("div", { class: "fw-resize-grip", aria: { hidden: "true" } });
-          grip.addEventListener("pointerdown", function (e) {
-            if (e.button !== 0) return;
-            e.stopPropagation();
-            focusWindow(win.id, false);
-            var start = { id: e.pointerId, x: e.clientX, y: e.clientY, w: win.width, h: win.height };
-            grip.setPointerCapture(e.pointerId);
-            function move(ev) {
-              if (ev.pointerId !== start.id) return;
-              var size = workspaceSize();
-              win.width = Math.max(app.minW || 320, Math.min(size.width - win.x, start.w + ev.clientX - start.x));
-              win.height = Math.max(app.minH || 200, Math.min(size.height - win.y, start.h + ev.clientY - start.y));
-              node.style.width = win.width + "px";
-              node.style.height = win.height + "px";
-            }
-            function up(ev) {
-              if (ev.pointerId !== start.id) return;
-              grip.removeEventListener("pointermove", move);
-              grip.removeEventListener("pointerup", up);
-              emit("window.resized", { windowId: win.id, width: Math.round(win.width), height: Math.round(win.height) });
-              render();
-            }
-            grip.addEventListener("pointermove", move);
-            grip.addEventListener("pointerup", up);
+          // Resize from all four edges and corners, like Windows. The bottom-right corner keeps the
+          // .fw-resize-grip class the resize lesson points at.
+          ["n", "s", "e", "w", "ne", "nw", "se", "sw"].forEach(function (dir) {
+            var handle = h("div", { class: "fw-resize-handle is-" + dir + (dir === "se" ? " fw-resize-grip" : ""), aria: { hidden: "true" } });
+            handle.addEventListener("pointerdown", function (e) { startResize(e, win, node, app, dir, handle); });
+            node.appendChild(handle);
           });
-          node.appendChild(grip);
         }
 
         node.addEventListener("pointerdown", function () {

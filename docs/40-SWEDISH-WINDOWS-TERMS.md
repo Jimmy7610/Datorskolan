@@ -68,6 +68,7 @@ Status: **Verifierad** = ordagrant i källan. **Delvis** = stöd i källan men i
 | Utforskaren: Sortera, Visa, Stigande, Fallande, Lista, Detaljer | Sort, View, Ascending, Descending, List, Details | Delvis | "Visa" i kommandofältet är verifierad (S3). Övriga ej hittade ordagrant. |
 | Webbläsare | Browser | – | Övningsdatorns neutrala webbläsare, inget Windows-namn (se `38-ASSETS-AND-LICENSES.md`). |
 | Stäng flik | Close tab | Ej verifierad | Verktygstips på flikens kryss i Utforskaren och Anteckningar |
+| Fästlayouter; Vänster halva, Höger halva, Vänstra två tredjedelarna, Högra tredjedelen, Övre/Nedre vänstra/högra fjärdedelen | Snap layouts; zone names | Ej verifierad | Panelens namn och zonernas tillgängliga namn. Windows visar inga synliga etiketter på zonerna; namnen hörs bara i skärmläsare. Kontrollera "fästlayouter" under Inställningar → System → Multitasking. |
 
 ## Kvar att göra manuellt
 

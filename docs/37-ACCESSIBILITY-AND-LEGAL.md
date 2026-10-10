@@ -70,11 +70,13 @@ Kört igen i Chrome 153 headless, både lokalt och mot den publika GitHub Pages-
 
 Följande har **inte** kunnat testas i den här miljön och ska inte räknas som verifierat:
 
+Skärmläsare och pekskärm har egna steg-för-steg-listor: `43-SCREEN-READER-QA.md` och `44-TOUCH-QA.md`.
+
 1. **NVDA** (Firefox och Chrome) och **Skärmläsaren/Narrator** (Edge) på Windows 11: läsordning på startsidan, flikarna, att lektionsfeedback läses upp (`role="status"`), dialogernas namn och beskrivning, och Utforskarens listruta (antal objekt, markering).
 2. **VoiceOver** på macOS/iOS (Safari).
 3. **Riktiga kontrastteman i Windows** (engelska namn: Aquatic, Desert, Dusk, Night sky), särskilt det ljusa temat Desert. Den automatiska kontrollen emulerade bara ett mörkt tema.
 4. **Webbläsarens zoom 200–400 %** med Ctrl+plus, i stället för emulerad fönsterstorlek, och textstorlek 200 % i Windows-inställningarna.
-5. **Pekskärm**: dra och släpp och långtryck (högerklick) på surfplatta.
+5. **Pekskärm**: se `44-TOUCH-QA.md`.
 6. **Röststyrning** (Röståtkomst i Windows): att synliga etiketter matchar de tillgängliga namnen (WCAG 2.5.3).
 
 ### Textstorlek
@@ -83,7 +85,24 @@ Följande har **inte** kunnat testas i den här miljön och ska inte räknas som
 - Coachpanelen (lärarens text): 16–17 px.
 - FakeWin: Windows standard 14 px, bildtext 12 px där Windows själv använder 12 px (Start-ikoner, klocka, statusrader). Ingen text i projektet är mindre än 12 px – det kontrolleras av `tests/design-system-smoke.js`.
 
-## 3. Medvetna avvikelser från Windows 11 av tillgänglighets- eller pedagogiska skäl
+## 3. Skillnader mot Windows 11: A, B och C
+
+Alla kända skillnader mellan övningsdatorn och svenskt Windows 11 står här, i tre grupper:
+
+- **A – Åtgärdat.** Skillnaden fanns och är nu rättad.
+- **B – Medveten avvikelse.** Vi har valt att inte göra som Windows, av ett skäl som står i tabellen.
+- **C – Kräver manuell verifiering.** Kan inte avgöras utan en riktig svensk Windows 11-dator, en skärmläsare eller en pekskärm. Checklistor: `42-MANUAL-QA-WINDOWS11.md`, `43-SCREEN-READER-QA.md`, `44-TOUCH-QA.md`.
+
+Det finns inga kända stora luckor utanför de här listorna.
+
+### A – Åtgärdat (gap closure 2026-10-10)
+
+| Windows 11 | Nu i Datorskolan | Kontroll |
+|---|---|---|
+| Fönster ändrar storlek från alla fyra kanter och hörn, med muspekare som visar riktningen | Samma. Fönstret blir aldrig mindre än appens minsta storlek och aldrig större än skärmen. Hörnet nere till höger är kvar som lektionens markering, och har större träffyta på pekskärm. | `fakewin-polish-smoke`, CDP-test: drag i alla riktningar, min- och maxgräns, ingen vågrät rullning på 375 px |
+| Hovring över Maximera visar fästlayouter | Samma: 50/50, 2/3 + 1/3 och fyra hörn (hörnen bara när skärmen är minst 900 × 560). Nedåtpil på Maximera öppnar panelen med tangentbordet, Esc stänger och lämnar fokus på knappen. Ett fönster som fästs och sedan dras bort får tillbaka sin storlek. Lektionen "sida vid sida" fungerar som förut (`window.snapped` med `side: left/right`). | `fakewin-polish-smoke`, CDP-test: hovring, lämna, klick, tangentbord, liten skärm |
+
+### B – Medvetna avvikelser
 
 | Windows 11 | Datorskolan | Varför |
 |---|---|---|
@@ -95,17 +114,27 @@ Följande har **inte** kunnat testas i den här miljön och ska inte räknas som
 | Sekundärtext i "tertiärgrå" (#8d8d8d) | Alltid "sekundärgrå" (#5c5c5c) | Kontrast. |
 | Skrivbordsikonernas etikett 12 px | 13 px | Läsbarhet på blå bakgrund. |
 | PDF öppnas i Microsoft Edge | Neutral "PDF-läsare" | Edge-varumärket används inte. Lektionen nämner att PDF ofta öppnas i Edge. |
-| Windows-tangenten, Alt+Tab, Win+Shift+S | Start-knappen, Ctrl+Esc, aktivitetsfältet, Skärmklippverktygets Nytt-knapp | Webbläsaren kan inte ta emot de här tangenterna – operativsystemet fångar dem. Lektionerna förklarar de riktiga kortkommandona. |
 | Typsnitt Segoe UI Variable | Segoe UI Variable om det finns, annars systemets typsnitt | Microsofts typsnitt får inte spridas. På Windows-datorer blir resultatet äkta. |
 | Dialogrutor (till exempel "Vill du spara?") i Windows tonar inte ned resten av skärmen | Inte heller i Datorskolan. Bara UAC-frågan tonar ned skärmen, precis som Windows säkra skrivbord. | Samma upplevelse som i Windows. Resten av övningsdatorn blir `inert` för tangentbord och skärmläsare. |
-| Start-knappen visar Windows-logotypen | Fyra blå rundade rutor (Microsofts Fluent-ikon *Grid*) | Windows-logotypen är ett varumärke. Se `38-ASSETS-AND-LICENSES.md`. |
-| Fönster ändrar storlek från alla kanter och hörn | Bara från nedre högra hörnet | Ett enda tydligt grepp är lättare för nybörjare; lektionen om storlek lär ut hörnet. Maximera, fäst mot kant, dra till överkanten och dra ut ett maximerat fönster fungerar som i Windows. |
-| Hovring över Maximera visar fästlayouter (Snap layouts) | Visas inte | Förenkling. Fästa mot vänster/höger kant fungerar. |
-| Utforskaren har flera flikar och en +-knapp | En flik per fönster, ingen +-knapp | En knapp som inte gör något vore missvisande. Fliken stängs med sitt kryss som i Windows. |
-| Inställningarnas kort öppnar undersidor | Bara de sidor som kursen använder finns; övriga kort är information utan pil | Kort med pil leder alltid någonstans, så inget lovar mer än det gör. |
-| Skrivbordet visar filer som sparas på Skrivbordet | Skrivbordet har tre fasta ikoner (Papperskorgen, Dokument, Bilder) | Övningsfilerna sparas i Dokument, Hämtade filer och Bilder. |
-| Aktivitetsvy, virtuella skrivbord, widgets | Finns inte | Utanför kursens innehåll. |
 | Coachpanelen finns inte i Windows | Datorskolans panel med webbplatsens typsnitt och färger | Den ska tydligt se annorlunda ut än Windows, så att eleven förstår vad som är "läraren" och vad som är "datorn". |
+| Start-knappen visar Windows-logotypen | Fyra blå rundade rutor (Microsofts Fluent-ikon *Grid*) | Windows-logotypen är ett varumärke och får inte användas. Se `38-ASSETS-AND-LICENSES.md`. Formen och platsen är desamma, så eleven känner igen knappen. |
+| Windows-tangenten, Alt+Tab, Alt+F4, Win+D, Win+Shift+S | Start-knappen, Ctrl+Esc, aktivitetsfältet, fönstrets Stäng-knapp, Skärmklippverktygets Nytt-knapp | Operativsystemet fångar de här tangenterna innan webbläsaren får dem, och vi försöker inte kringgå det. Lektionerna `keyboard-007b` och `windows-010b` visar de riktiga tangenterna och förklarar att de fungerar på den riktiga datorn. |
+| Utforskaren har flera flikar och en +-knapp | En flik per fönster, ingen +-knapp | Kursen lär inte ut flikar i Utforskaren. Utforskarens tillstånd (aktuell mapp, historik, markering) är ett enda objekt, och lektionerna och scenarierna om filer och mappar (händelser som `folder.opened`, `file.moved`, `file.renamed`) bygger på det. Flera flikar skulle kräva att det delas upp, med risk att de går sönder. En +-knapp som inte gör något vore missvisande. Fliken stängs med sitt kryss, som i Windows. |
+| Inställningarnas kort öppnar undersidor | Kort som leder vidare har pil ›; övriga kort visar sin information direkt och saknar pil | En pil lovar en undersida. Tomma undersidor vore värre än ingen pil. Lektionstexterna beskriver korten som de ser ut nu. |
+| Skrivbordet: genvägar, nya mappar och filer som sparas på skrivbordet | Tre fasta ikoner (Papperskorgen, Dokument, Bilder). Flytta, sortera, ikonstorlek, justera mot rutnät och markeringsrektangel finns. | Övningsfilerna sparas i Dokument, Hämtade filer och Bilder; ingen lektion behöver skrivbordsfiler. |
+| Aktivitetsvy, virtuella skrivbord, widgets, Copilot | Finns inte | Utanför kursens innehåll. Knapparna visas inte, så inget ser ut att fungera utan att göra det. |
+| Fästlayouter med pekskärm | Visas inte vid tryck; tryck på Maximera maximerar | Som i Windows: panelen visas när en mus vilar på knappen. |
+
+### C – Kräver manuell verifiering
+
+| Vad | Hur | Checklista |
+|---|---|---|
+| Svenska termer markerade **Delvis** eller **Ej verifierad** i `40-SWEDISH-WINDOWS-TERMS.md`, bland annat "Fästlayouter", "Ordna ikoner automatiskt", "Stäng flik", "Inspelningar" | Jämför på svenskt Windows 11 24H2+ | `42` |
+| Ikonstorlekar, avstånd, radhöjder och hörnradier | Skärmbild i samma upplösning, jämför | `42` avsnitt 10 |
+| Vad NVDA, Skärmläsaren och VoiceOver faktiskt läser upp, och att inget bakom en dialog går att nå i läsläge | Manuell test | `43` |
+| Dra och släpp med finger (Utforskaren, musövningen), dubbeltryck utan zoom, markeringsrektangel, skärmtangentbord | Manuell test på Android, iPad och Windows med pekskärm | `44` |
+| Långtryck = högerklick på iPhone/iPad | Stöds inte av Safari (inget `contextmenu`). Bekräfta och notera iPadOS-version. | `44` avsnitt 5 |
+| Riktiga kontrastteman i Windows, zoom 200–400 %, röststyrning | Se "Kvar att testa manuellt" ovan | – |
 
 ## 4. Integritet och lagring
 

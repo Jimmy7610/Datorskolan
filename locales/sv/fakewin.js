@@ -17,6 +17,15 @@
     "window.restore": "Återställ nedåt",
     "window.close": "Stäng",
     "window.closeTab": "Stäng flik",
+    "window.snapLayouts": "Fästlayouter",
+    "window.snap.left": "Vänster halva",
+    "window.snap.right": "Höger halva",
+    "window.snap.leftLarge": "Vänstra två tredjedelarna",
+    "window.snap.rightSmall": "Högra tredjedelen",
+    "window.snap.topLeft": "Övre vänstra fjärdedelen",
+    "window.snap.topRight": "Övre högra fjärdedelen",
+    "window.snap.bottomLeft": "Nedre vänstra fjärdedelen",
+    "window.snap.bottomRight": "Nedre högra fjärdedelen",
 
     /* ---------- Skrivbord och aktivitetsfält ---------- */
     "shell.desktop": "Skrivbord",
