@@ -873,7 +873,7 @@
             "text": {
               "default": "Ctrl and Alt rarely do anything on their own. They are used together with another key, for example Ctrl+C to copy.",
               "short": "Ctrl and Alt are used together with other keys.",
-              "child": "Ctrl and Alt are helper keys. On their own they do almost nothing, but together with another key they become super-quick shortcuts."
+              "child": "Ctrl and Alt are helper keys. On their own they do almost nothing, but together with another key they become quick shortcuts."
             }
           },
           {
@@ -1225,7 +1225,7 @@
             "text": {
               "default": "Maximise makes the window as big as possible. The same button restores it to its previous size.",
               "short": "Maximise makes the window as big as possible.",
-              "child": "Maximise means making the window really big, so it fills the whole screen. Press the same button again and it goes back to the size it was before."
+              "child": "Maximise means making the window as big as it can be, so it fills the whole screen. Press the same button again and the window goes back to the size it was."
             }
           },
           {
@@ -1234,7 +1234,7 @@
               "default": "Maximise Calculator with the square at the top right of the window.",
               "guided": "Look at the top right of the Calculator window. Of the three buttons, the middle one is a small square – that is Maximise. Click the square once. The window grows and fills the whole screen above the taskbar.",
               "independent": "Maximise Calculator.",
-              "child.guided": "At the top right of Calculator there are three buttons. Click the middle one, which looks like a little square. Now the window is huge!"
+              "child.guided": "At the top right of Calculator there are three buttons. Click the middle one, which looks like a little square. Now the window fills the whole screen."
             },
             "hints": [
               "Look at the top right of the Calculator window.",
@@ -1357,7 +1357,7 @@
               "default": "Open Calculator from Start. Move the window, minimise it, bring it back from the taskbar, maximise it and close it.",
               "guided": "Take one part at a time. Click the Start button and then Calculator. Drag the window by its title bar, the top strip. Click the line at the top right to minimise. Bring the window back by clicking Calculator's icon in the taskbar. Click the square to maximise and finally the cross to close.",
               "independent": "Open Start, start Calculator, move the window, minimise it, bring it back, maximise it and close it.",
-              "child.guided": "Start button → Calculator. Drag the top strip. Click the line and the window hides; click Calculator at the bottom to bring it back. Make it huge with the square and close it with the cross."
+              "child.guided": "One thing at a time. Click the Start button and then Calculator. Drag the window by its top strip. Click the line at the top right and the window hides. Click Calculator in the row at the bottom to bring it back. Click the square, and finally the cross."
             },
             "hints": [
               "Begin with the Start button in the taskbar.",
@@ -1614,7 +1614,7 @@
               "default": "Open Notepad from Start, type a few words and save as plan.txt in Documents with File → Save as.",
               "guided": "Click the Start button and then Notepad, the icon with a blue notepad. Click in the white area and type a few words. Then click File at the top of the window and choose Save as. Check that Documents is selected on the left. Type plan.txt in the File name field at the bottom and click Save.",
               "independent": "Type any text and save the file as plan.txt in Documents.",
-              "child.guided": "Open Notepad from the Start button. Type a few words. Click File → Save as. Choose Documents, type plan.txt as the name and click Save."
+              "child.guided": "Click the Start button at the bottom and then Notepad, the blue notepad. Type a few words in the white area. Click File at the top and choose Save as. Choose Documents on the left. Type plan.txt as the name and click Save."
             },
             "hints": [
               "You need the program Notepad. It is in the Start menu.",
@@ -1810,7 +1810,7 @@
               "default": "Select Example.txt, click Copy and then Paste in the same folder.",
               "guided": "Click Example.txt once in File Explorer so it is highlighted in blue. Look at the row of buttons at the top and click Copy – it has two small sheets of paper on top of each other. Nothing seems to happen, but the computer now remembers the file. Then click Paste, the button just to the right. A copy called Example - Copy.txt appears.",
               "independent": "Make a copy of Example.txt in Documents.",
-              "child.guided": "Click Example.txt so it turns blue. Click Copy (two sheets of paper) and then Paste. Now there are two files the same!"
+              "child.guided": "Click Example.txt so it turns blue. Look at the buttons at the top of the window. Click Copy, which looks like two sheets of paper. Then click Paste next to it. Now there are two files the same."
             },
             "hints": [
               "Click Example.txt once so it is selected.",
@@ -1892,7 +1892,7 @@
               "default": "Select Restore me.txt and press Delete. Then open the Recycle Bin and restore the file.",
               "guided": "Click Restore me.txt in Documents once so it is highlighted in blue. Press the Delete key on the keyboard, or click the button with a bin at the top. Then click Recycle Bin at the bottom of the pane on the left. Click the file there and then Restore the selected items.",
               "independent": "Delete Restore me.txt and then restore it.",
-              "child.guided": "Click Restore me.txt and press Delete. Go to the Recycle Bin on the left, click the file and choose Restore the selected items."
+              "child.guided": "Click Restore me.txt so it turns blue. Press the Delete key. Then click Recycle Bin at the bottom of the pane on the left. Click the file there and choose Restore the selected items at the top."
             },
             "hints": [
               "Restore me.txt is in Documents.",
@@ -1998,7 +1998,7 @@
               "default": "Create a new folder, rename Project.txt, move the file to another folder, delete it and restore it from the Recycle Bin.",
               "guided": "Take one part at a time. Click New and choose Folder, and you have a new folder. Click Project.txt and choose Rename, type a new name and press Enter. Move the file to a folder with Cut and Paste, or drag it there. Delete the file with the button with the bin. Open the Recycle Bin on the left, click the file and choose Restore the selected items.",
               "independent": "Do five things: create a new folder, rename Project.txt, move the file to another folder, delete it and restore it from the Recycle Bin.",
-              "child.guided": "Five things, one at a time: New → Folder. Rename Project.txt. Move the file into a folder. Delete it. Get it back from the Recycle Bin. You have done all of these before!"
+              "child.guided": "Five things, one at a time. Click New and choose Folder. Rename Project.txt. Move the file into a folder. Delete the file. Get it back from the Recycle Bin. You have done all of this before."
             },
             "hints": [
               "Start with New → Folder in Documents.",
@@ -2337,7 +2337,7 @@
               "default": "Open Contact form, type a name, tick the box I have read the information and click Send.",
               "guided": "Click the shortcut Contact form on the browser's start page. The form opens. Click in the Name field and type a name. Then find the little square next to I have read the information and click it, so a tick appears. Finally click the Send button at the bottom. If something is missing, a red explanation appears by the field.",
               "independent": "Send the contact form with your name filled in.",
-              "child.guided": "Open Contact form. Type a name in the Name box. Click the little square so it gets a tick. Click Send!"
+              "child.guided": "Click the Contact form shortcut in the middle of the page. Click in the Name box and type a name. Click the little square next to I have read the information, so it gets a tick. Click Send at the bottom."
             },
             "hints": [
               "Click the shortcut Contact form on the browser's start page.",
@@ -2378,7 +2378,7 @@
               "default": "Open the browser's menu with the three dots and choose Zoom in or Zoom out.",
               "guided": "Look at the top right of the browser window. There is a button with three dots on top of each other. Click it. A menu opens. Find the Zoom row and click the plus sign to zoom in, or the minus sign to zoom out. The text on the page gets bigger or smaller.",
               "independent": "Zoom the web page in or out.",
-              "child.guided": "Click the three dots at the top right. Find Zoom in the menu and click plus. Now everything is bigger!"
+              "child.guided": "Look at the top right of the browser. Click the button with three dots. Find Zoom in the menu and click plus. Now the text gets bigger."
             },
             "hints": [
               "At the top right of the browser there is a button with three dots.",
@@ -2410,7 +2410,7 @@
             "text": {
               "default": "Now you use the most important parts of the browser in one task.",
               "short": "Address bar, link, tab, Back/Forward and download in one task.",
-              "child": "Now you become a browser expert! You use the most important things you have learned about the internet in a single mission."
+              "child": "Now you get to show what you can do in the web browser. You use the most important things you have learned about the internet in a single mission."
             }
           },
           {
@@ -2501,7 +2501,7 @@
               "default": "Read the cookie notice at the bottom of the browser's start page and click Accept all.",
               "guided": "Look at the bottom of the browser's start page. There is a box about cookies. Read the text in it – it explains what the site wants to store. Then click the Accept all button in the box. On real websites you could just as well choose Reject if you don't want to share more than necessary.",
               "independent": "Accept the cookie notice on the browser's start page.",
-              "child.guided": "At the bottom of the page there is a box about cookies. Read it first. Then click Accept all."
+              "child.guided": "Look at the bottom of the page. There is a box about cookies. Read it first. Then click the Accept all button in the box."
             },
             "hints": [
               "The cookie notice is at the bottom of the start page.",
@@ -2542,7 +2542,7 @@
               "default": "Open Contact form, click Choose file and choose profile.txt in Documents.",
               "guided": "Click the shortcut Contact form on the browser's start page. Find the Choose file button in the form and click it. A box called Open appears. Click Documents on the left of the box. Then click the file profile.txt and the Open button. The file's name appears next to the Choose file button.",
               "independent": "Attach profile.txt in the contact form.",
-              "child.guided": "Open Contact form and click Choose file. In the box that appears, click Documents, then profile.txt and finally Open."
+              "child.guided": "Click the Contact form shortcut in the middle of the page. Click the Choose file button. A box called Open appears. Click Documents on the left, then profile.txt and finally Open."
             },
             "hints": [
               "Click the shortcut Contact form on the browser's start page.",
@@ -2583,7 +2583,7 @@
               "default": "Click the Reload button – the round arrow at the top left of the browser.",
               "guided": "Look at the top left of the browser. That is where the Back and Forward arrows are. Just to the right of them is a button that looks like an arrow in a circle – that is Reload. Click it once. The page is fetched again.",
               "independent": "Reload the web page.",
-              "child.guided": "At the top left of the browser there is a round arrow. Click it and the page reloads!"
+              "child.guided": "Look at the top left of the browser, next to the arrows. There is a round arrow. Click it and the page is fetched again."
             },
             "hints": [
               "Look at the top left of the browser, next to the arrows.",
@@ -2656,7 +2656,7 @@
             "text": {
               "default": "When you don't know the address, you can search. Type a few words about what you are looking for and you get a list of links.",
               "short": "Search with a few words when you don't know the address.",
-              "child": "If you don't know a page's address, you can search, a bit like asking a giant library catalogue. Type a few words about what you are looking for and you get a list of links."
+              "child": "If you don't know a page's address, you can search, a bit like asking a big library catalogue. Type a few words about what you are looking for and you get a list of links."
             }
           },
           {
@@ -2747,7 +2747,7 @@
               "default": "Open the email from Erik Lund, click Reply, write a few words and click Send.",
               "guided": "Click the email from Erik Lund in the list in the middle. Above the email on the right there are some buttons – click Reply. A new email opens with To and Subject already filled in. Click in the big text box and write a few words. Then click Send.",
               "independent": "Reply to the email from Erik Lund.",
-              "child.guided": "Click Erik's email. Click Reply. Write a few words in the big box and click Send!"
+              "child.guided": "Click the email from Erik Lund in the list in the middle. Click Reply above the email on the right. Write a few words in the big box. Click Send."
             },
             "hints": [
               "Click the email from Erik Lund in the inbox.",
@@ -2788,7 +2788,7 @@
               "default": "Click New mail, type anna@example.com in To, fill in a subject and a message and click Send.",
               "guided": "Click the New mail button at the top left. An empty email opens. Click in the To field and type anna@example.com – that is the recipient's address. Click in the Subject field and type a few words about what the email is about. Then write your message in the big box and click Send.",
               "independent": "Write a new email to anna@example.com and send it.",
-              "child.guided": "Click New mail. In To, type anna@example.com. In Subject, write what it is about. Write your message and click Send!"
+              "child.guided": "Click New mail at the top left. Type anna@example.com in the To box. Type what the email is about in the Subject box. Write your message in the big box and click Send."
             },
             "hints": [
               "The New mail button is at the top left.",
@@ -2911,7 +2911,7 @@
               "default": "Open Anna's email and download the attachment. Click Reply, write a few words, attach plan.txt and send.",
               "guided": "Take one part at a time. Click the email from Anna Berg. Click Download next to the attachment at the bottom. Then click Reply and write a few words in the big box. Click the paper clip, Attach file, choose Documents and plan.txt and click Open. Only click Send when the attachment shows with a paper clip.",
               "independent": "Save the attachment in Anna's email and reply to her with a file attached.",
-              "child.guided": "Anna's email → Download the attachment → Reply → write a few words → the paper clip → plan.txt → Send. One thing at a time!"
+              "child.guided": "One thing at a time. Click Anna's email. Click Download next to the attachment at the bottom. Click Reply and write a few words. Click the paper clip, choose Documents and plan.txt and click Open. Click Send when the paper clip shows."
             },
             "hints": [
               "Open the email from Anna Berg.",
@@ -2952,7 +2952,7 @@
               "default": "Open Erik's email, click Forward, type anna@example.com in To and click Send.",
               "guided": "Click the email from Erik Lund. Above the email on the right there is the Forward button. Click it. A new email opens with Erik's text already in it. Click in the To field and type anna@example.com. Then click Send.",
               "independent": "Forward Erik's email to someone else.",
-              "child.guided": "Click Erik's email and then Forward. Type anna@example.com in To and click Send."
+              "child.guided": "Click the email from Erik Lund in the list in the middle. Click Forward above the email on the right. Type anna@example.com in the To box. Click Send."
             },
             "hints": [
               "Click the email from Erik Lund.",
@@ -3298,7 +3298,7 @@
               "default": "Type a short sentence in Notepad. Press Ctrl+Z to undo and then Ctrl+Y to redo.",
               "guided": "Click in the white area in Notepad and type a few words. Then hold Ctrl, at the bottom left of the keyboard, and press Z. What you typed disappears. Hold Ctrl again and press Y. The text comes back.",
               "independent": "Type a sentence in Notepad, undo it and redo it.",
-              "child.guided": "Type a few words in Notepad. Press Ctrl+Z – poof, gone! Press Ctrl+Y – back again!"
+              "child.guided": "Click in the white area in Notepad and type a few words. Hold Ctrl and press Z. The text disappears. Hold Ctrl and press Y. The text comes back."
             },
             "hints": [
               "Click in Notepad's white area.",
@@ -3466,7 +3466,7 @@
               "default": "Double-click invoice.pdf in Documents, zoom in with the plus button and save a copy with Save as.",
               "guided": "In File Explorer, in the Documents folder, double-click invoice.pdf. The file opens in the PDF reader. Click the plus button at the top to zoom in, so the text gets bigger. Then click Save as at the top right. Keep the name invoice-copy.pdf and click Save.",
               "independent": "Open invoice.pdf, make the text bigger and save a copy.",
-              "child.guided": "Double-click invoice.pdf. Click plus so the text gets bigger. Click Save as and then Save."
+              "child.guided": "Double-click invoice.pdf in the Documents folder. The invoice opens. Click plus at the top so the text gets bigger. Click Save as at the top right and then Save."
             },
             "hints": [
               "Double-click invoice.pdf in Documents.",
@@ -3515,7 +3515,7 @@
               "default": "Click New in the Snipping Tool, drag a box over what you want to include and save the picture in Pictures.",
               "guided": "The Snipping Tool is open. Click the New button at the top left of the tool. The screen gets a little darker. Press the left mouse button where the box should start, keep holding and drag to the opposite corner. Let go of the button. The picture appears in the tool. Click Save – the Save as box opens with the Pictures folder selected – and click Save again.",
               "independent": "Take a screenshot with the Snipping Tool and save it in Pictures.",
-              "child.guided": "Click New. The screen goes dark. Press, hold and drag a box over what you want a picture of, and let go. Click Save twice. Done!"
+              "child.guided": "Click New at the top left of the Snipping Tool. The screen goes darker. Press and hold the left mouse button and drag a box over what you want a picture of. Let go of the button. Click Save, and then Save again."
             },
             "hints": [
               "Click New in the Snipping Tool.",
@@ -3709,7 +3709,7 @@
               "default": "Double-click PracticeProgram-Setup.exe in Downloads and go through the installation. Then uninstall the program in Settings → Apps.",
               "guided": "In File Explorer, in Downloads, double-click PracticeProgram-Setup.exe. Windows asks whether the app may make changes – read it and click Yes. Click Next, choose I accept the agreement, click Next twice, then Install and Finish. Then open Settings from Start and click Apps. Click the three dots next to Practice Program, choose Uninstall and confirm.",
               "independent": "Install Practice Program from Downloads and then uninstall it in Settings.",
-              "child.guided": "Double-click PracticeProgram-Setup.exe and answer Yes. Click through with Next, Install and Finish. Then go to Settings → Apps, click the three dots next to Practice Program and choose Uninstall."
+              "child.guided": "Double-click PracticeProgram-Setup.exe in Downloads. The computer asks whether the program may make changes – click Yes. Click Next, accept the agreement, click Next twice, then Install and Finish. Then open Settings and click Apps. Click the three dots next to Practice Program and choose Uninstall."
             },
             "hints": [
               "Double-click PracticeProgram-Setup.exe in Downloads. Answer Yes to Windows' question.",
@@ -3758,7 +3758,7 @@
               "default": "Click Print in the PDF reader, choose Microsoft Print to PDF as the printer and click Print. Then save the file.",
               "guided": "Click Print at the top right of the PDF reader. The print box opens. At the top left there is the Printer list – click it and choose Microsoft Print to PDF. Then click the blue Print button. The Save Print Output As box opens. Click Save.",
               "independent": "Print the invoice to a PDF file.",
-              "child.guided": "Click Print. In the Printer list, choose Microsoft Print to PDF. Click Print and then Save."
+              "child.guided": "Click Print at the top right of the PDF reader. Click the Printer list and choose Microsoft Print to PDF. Click the blue Print button. Then click Save."
             },
             "hints": [
               "Click Print at the top right of the PDF reader.",
@@ -4246,7 +4246,7 @@
               "default": "Click HomeNet in the Available networks list, click Connect, type datorskolan and click Next.",
               "guided": "Settings shows Network & internet. Under Wi‑Fi there is the Available networks list. Click HomeNet. The row gets bigger and a button called Connect appears – click it. A box for the network security key pops up. Click in it, type datorskolan and click Next.",
               "independent": "Connect to HomeNet. The network security key is datorskolan.",
-              "child.guided": "Click HomeNet in the list. Click Connect. Type the password datorskolan in the box and click Next."
+              "child.guided": "Look at the Available networks list under Wi‑Fi. Click HomeNet. Click the Connect button that appears. Type the password datorskolan in the box and click Next."
             },
             "hints": [
               "You are already on Network & internet. The Available networks list is under Wi‑Fi.",
@@ -4295,7 +4295,7 @@
               "default": "Check that Bluetooth is On, click Add device, choose Bluetooth and then Headset.",
               "guided": "Settings shows Bluetooth & devices. First check that the Bluetooth switch is On. Under Devices there is the Add device button – click it. In the box that opens, click Bluetooth. The computer looks for devices. Click Headset when it appears, and then Done.",
               "independent": "Connect the headset with Bluetooth.",
-              "child.guided": "Make sure Bluetooth is On. Click Add device and then Bluetooth. When Headset appears, click it, and then Done."
+              "child.guided": "Check that the Bluetooth switch is On. Click Add device under Devices. Click Bluetooth in the box that appears. When Headset shows up, click it, and then Done."
             },
             "hints": [
               "You are already on Bluetooth & devices. Check that Bluetooth is On.",

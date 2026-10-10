@@ -220,7 +220,7 @@
               "default": "Öppna Anteckningar från Start, skriv några ord och spara som plan.txt i Dokument med Arkiv → Spara som.",
               "guided": "Klicka på Start-knappen och sedan på Anteckningar, ikonen med ett blått anteckningsblock. Klicka i den vita ytan och skriv några ord. Klicka sedan på Arkiv högst upp i fönstret och välj Spara som. Kontrollera att Dokument är vald till vänster. Skriv plan.txt i fältet Filnamn längst ned och klicka på Spara.",
               "independent": "Skriv valfri text och spara filen som plan.txt i Dokument.",
-              "child.guided": "Öppna Anteckningar från Start-knappen. Skriv några ord. Klicka på Arkiv → Spara som. Välj Dokument, skriv plan.txt som namn och klicka på Spara."
+              "child.guided": "Klicka på Start-knappen längst ned och sedan på Anteckningar, det blå anteckningsblocket. Skriv några ord i den vita ytan. Klicka på Arkiv högst upp och välj Spara som. Välj Dokument till vänster. Skriv plan.txt som namn och klicka på Spara."
             },
             "hints": [
               "Du behöver programmet Anteckningar. Det finns i Start-menyn.",
@@ -738,7 +738,7 @@
             "text": {
               "default": "Datorn är själva apparaten. Internet är nätverket som kopplar ihop datorer över hela världen. Webbläsaren – till exempel Microsoft Edge eller Google Chrome – är programmet som använder internet för att visa webbsidor.",
               "short": "Datorn är apparaten, internet är nätverket och webbläsaren visar webbsidor.",
-              "child": "Datorn är själva maskinen framför dig. Internet är som ett jättestort nät av vägar mellan datorer i hela världen. Webbläsaren, till exempel Microsoft Edge eller Google Chrome, är programmet du använder för att åka på de vägarna och titta på webbsidor."
+              "child": "Datorn är själva maskinen framför dig. Internet är som ett väldigt stort nät av vägar mellan datorer i hela världen. Webbläsaren, till exempel Microsoft Edge eller Google Chrome, är programmet du använder för att åka på de vägarna och titta på webbsidor."
             }
           },
           {
@@ -1008,7 +1008,7 @@
             "text": {
               "default": "Ctrl och Alt gör sällan något själva. De används tillsammans med en annan tangent, till exempel Ctrl+C för att kopiera.",
               "short": "Ctrl och Alt används tillsammans med andra tangenter.",
-              "child": "Ctrl och Alt är hjälptangenter. Ensamma gör de nästan ingenting, men tillsammans med en annan tangent blir de supersnabba genvägar."
+              "child": "Ctrl och Alt är hjälptangenter. Ensamma gör de nästan ingenting, men tillsammans med en annan tangent blir de snabba genvägar."
             }
           },
           {
@@ -1073,7 +1073,7 @@
             "text": {
               "default": "Ett kortkommando är två tangenter samtidigt: du håller ned Ctrl och trycker en bokstav. Ctrl+A markerar allt, Ctrl+C kopierar och Ctrl+V klistrar in.",
               "short": "Ctrl+A markerar allt, Ctrl+C kopierar och Ctrl+V klistrar in.",
-              "child": "Ett kortkommando är ett trollknep med två tangenter. Du håller ned Ctrl och trycker på en bokstav. Ctrl+A markerar all text, Ctrl+C gör en kopia och Ctrl+V lägger in kopian."
+              "child": "Ett kortkommando är ett knep med två tangenter. Du håller ned Ctrl och trycker på en bokstav. Ctrl+A markerar all text, Ctrl+C gör en kopia och Ctrl+V lägger in kopian."
             }
           },
           {
@@ -1360,7 +1360,7 @@
             "text": {
               "default": "Maximera gör fönstret så stort som möjligt. Samma knapp återställer det till den tidigare storleken.",
               "short": "Maximera gör fönstret så stort som möjligt.",
-              "child": "Maximera betyder att göra fönstret jättestort, så att det fyller hela skärmen. Trycker du på samma knapp igen blir det lagom stort som förut."
+              "child": "Maximera betyder att göra fönstret så stort det går, så att det fyller hela skärmen. Trycker du på samma knapp igen blir fönstret lika stort som förut."
             }
           },
           {
@@ -1369,7 +1369,7 @@
               "default": "Maximera Kalkylator med fyrkanten längst upp till höger i fönstret.",
               "guided": "Titta längst upp till höger i Kalkylatorns fönster. Bland de tre knapparna är den mittersta en liten fyrkant – det är Maximera. Klicka en gång på fyrkanten. Fönstret växer och fyller hela skärmen ovanför aktivitetsfältet.",
               "independent": "Maximera Kalkylator.",
-              "child.guided": "Uppe till höger på Kalkylatorn finns tre knappar. Klicka på den i mitten, som ser ut som en liten fyrkant. Nu blir fönstret jättestort!"
+              "child.guided": "Uppe till höger på Kalkylatorn finns tre knappar. Klicka på den i mitten, som ser ut som en liten fyrkant. Nu fyller fönstret hela skärmen."
             },
             "hints": [
               "Titta längst upp till höger i Kalkylatorns fönster.",
@@ -1492,7 +1492,7 @@
               "default": "Öppna Kalkylator från Start. Flytta fönstret, minimera det, ta fram det igen via aktivitetsfältet, maximera det och stäng det.",
               "guided": "Ta ett moment i taget. Klicka på Start-knappen och sedan på Kalkylator. Dra fönstret i namnlisten, den översta remsan. Klicka på strecket uppe till höger för att minimera. Ta fram fönstret igen genom att klicka på Kalkylatorns ikon i aktivitetsfältet. Klicka på fyrkanten för att maximera och till sist på krysset för att stänga.",
               "independent": "Öppna Start, starta Kalkylator, flytta fönstret, minimera det, ta fram det igen, maximera det och stäng det.",
-              "child.guided": "Start-knappen → Kalkylator. Dra i den översta remsan. Klicka på strecket så gömmer sig fönstret, och klicka på Kalkylatorn längst ned för att hämta tillbaka den. Gör den jättestor med fyrkanten och stäng med krysset."
+              "child.guided": "Ta en sak i taget. Klicka på Start-knappen och sedan på Kalkylator. Dra fönstret i den översta remsan. Klicka på strecket uppe till höger så gömmer sig fönstret. Klicka på Kalkylatorn i raden längst ned för att hämta tillbaka den. Klicka på fyrkanten och till sist på krysset."
             },
             "hints": [
               "Börja med Start-knappen i aktivitetsfältet.",
@@ -1598,7 +1598,7 @@
               "default": "Markera Exempel.txt, klicka på Kopiera och sedan på Klistra in i samma mapp.",
               "guided": "Klicka en gång på Exempel.txt i Utforskaren så att den blir blåmarkerad. Titta på raden med knappar högst upp och klicka på Kopiera – den har två små papper på varandra. Inget syns hända, men datorn kommer nu ihåg filen. Klicka sedan på Klistra in, knappen strax till höger. En kopia som heter Exempel - Kopia.txt dyker upp.",
               "independent": "Gör en kopia av Exempel.txt i Dokument.",
-              "child.guided": "Klicka på Exempel.txt så att den blir blå. Klicka på Kopiera (två papper) och sedan på Klistra in. Nu finns det två likadana filer!"
+              "child.guided": "Klicka på Exempel.txt så att den blir blå. Titta på knapparna högst upp i fönstret. Klicka på Kopiera, som ser ut som två papper. Klicka sedan på Klistra in bredvid. Nu finns det två likadana filer."
             },
             "hints": [
               "Klicka en gång på Exempel.txt så att den blir markerad.",
@@ -1680,7 +1680,7 @@
               "default": "Markera Återställ mig.txt och tryck Delete. Öppna sedan Papperskorgen och återställ filen.",
               "guided": "Klicka en gång på Återställ mig.txt i Dokument så att den blir blåmarkerad. Tryck på Delete-tangenten på tangentbordet, eller klicka på knappen med en papperskorg högst upp. Klicka sedan på Papperskorgen längst ned i spalten till vänster. Klicka på filen där och sedan på Återställ markerade objekt.",
               "independent": "Ta bort Återställ mig.txt och återställ filen igen.",
-              "child.guided": "Klicka på Återställ mig.txt och tryck på Delete. Gå till Papperskorgen till vänster, klicka på filen och välj Återställ markerade objekt."
+              "child.guided": "Klicka på Återställ mig.txt så att den blir blå. Tryck på tangenten Delete. Klicka sedan på Papperskorgen längst ned i spalten till vänster. Klicka på filen där och välj Återställ markerade objekt högst upp."
             },
             "hints": [
               "Återställ mig.txt ligger i Dokument.",
@@ -1786,7 +1786,7 @@
               "default": "Skapa en ny mapp, byt namn på Projekt.txt, flytta filen till en annan mapp, ta bort den och återställ den från Papperskorgen.",
               "guided": "Ta ett moment i taget. Klicka på Nytt och välj Mapp, så har du en ny mapp. Klicka på Projekt.txt och välj Byt namn, skriv ett nytt namn och tryck Retur. Flytta filen till en mapp med Klipp ut och Klistra in, eller dra den dit. Ta bort filen med knappen med papperskorgen. Öppna Papperskorgen till vänster, klicka på filen och välj Återställ markerade objekt.",
               "independent": "Gör fem saker: skapa en ny mapp, byt namn på Projekt.txt, flytta filen till en annan mapp, ta bort den och återställ den från Papperskorgen.",
-              "child.guided": "Fem saker, en i taget: Nytt → Mapp. Byt namn på Projekt.txt. Flytta filen till en mapp. Ta bort den. Hämta tillbaka den från Papperskorgen. Du har gjort allt förut!"
+              "child.guided": "Fem saker, en i taget. Klicka på Nytt och välj Mapp. Byt namn på Projekt.txt. Flytta filen till en mapp. Ta bort filen. Hämta tillbaka den från Papperskorgen. Du har gjort allt det här förut."
             },
             "hints": [
               "Börja med Nytt → Mapp i Dokument.",
@@ -2043,7 +2043,7 @@
               "default": "Öppna Kontaktformulär, skriv ett namn, kryssa i rutan Jag har läst informationen och klicka på Skicka.",
               "guided": "Klicka på genvägen Kontaktformulär på webbläsarens startsida. Formuläret öppnas. Klicka i fältet Namn och skriv ett namn. Leta sedan upp den lilla fyrkanten bredvid Jag har läst informationen och klicka i den, så att en bock syns. Klicka till sist på knappen Skicka längst ned. Saknas något visas en röd förklaring vid fältet.",
               "independent": "Skicka kontaktformuläret med ditt namn ifyllt.",
-              "child.guided": "Öppna Kontaktformulär. Skriv ett namn i rutan Namn. Klicka i den lilla fyrkanten så att det blir en bock. Klicka på Skicka!"
+              "child.guided": "Klicka på genvägen Kontaktformulär mitt på sidan. Klicka i rutan Namn och skriv ett namn. Klicka i den lilla fyrkanten bredvid Jag har läst informationen, så att det blir en bock. Klicka på Skicka längst ned."
             },
             "hints": [
               "Klicka på genvägen Kontaktformulär på webbläsarens startsida.",
@@ -2084,7 +2084,7 @@
               "default": "Öppna webbläsarens meny med de tre prickarna och välj Zooma in eller Zooma ut.",
               "guided": "Titta uppe till höger i webbläsarfönstret. Där finns en knapp med tre prickar ovanför varandra. Klicka på den. En meny öppnas. Leta upp raden Zooma och klicka på plustecknet för att zooma in, eller på minustecknet för att zooma ut. Texten på sidan blir större eller mindre.",
               "independent": "Zooma in eller ut på webbsidan.",
-              "child.guided": "Klicka på de tre prickarna uppe till höger. Hitta Zooma i menyn och klicka på plus. Nu blir allt större!"
+              "child.guided": "Titta uppe till höger i webbläsaren. Klicka på knappen med tre prickar. Hitta Zooma i menyn och klicka på plus. Nu blir texten större."
             },
             "hints": [
               "Uppe till höger i webbläsaren finns en knapp med tre prickar.",
@@ -2116,7 +2116,7 @@
             "text": {
               "default": "Nu använder du det viktigaste i webbläsaren i ett och samma uppdrag.",
               "short": "Adressfält, länk, flik, Bakåt/Framåt och nedladdning i ett uppdrag.",
-              "child": "Nu blir du webbläsar-expert! Du ska använda det viktigaste du har lärt dig om internet i ett och samma uppdrag."
+              "child": "Nu får du visa vad du kan i webbläsaren. Du ska använda det viktigaste du har lärt dig om internet i ett och samma uppdrag."
             }
           },
           {
@@ -2207,7 +2207,7 @@
               "default": "Öppna mejlet från Erik Lund, klicka på Svara, skriv några ord och klicka på Skicka.",
               "guided": "Klicka på mejlet från Erik Lund i listan i mitten. Ovanför mejlet till höger finns några knappar – klicka på Svara. Ett nytt mejl öppnas där Till och Ämne redan är ifyllda. Klicka i den stora rutan för text och skriv några ord. Klicka sedan på Skicka.",
               "independent": "Svara på mejlet från Erik Lund.",
-              "child.guided": "Klicka på Eriks mejl. Klicka på Svara. Skriv några ord i den stora rutan och klicka på Skicka!"
+              "child.guided": "Klicka på mejlet från Erik Lund i listan i mitten. Klicka på Svara ovanför mejlet till höger. Skriv några ord i den stora rutan. Klicka på Skicka."
             },
             "hints": [
               "Klicka på mejlet från Erik Lund i inkorgen.",
@@ -2248,7 +2248,7 @@
               "default": "Klicka på Ny e-post, skriv anna@example.com i Till, fyll i ett ämne och ett meddelande och klicka på Skicka.",
               "guided": "Klicka på knappen Ny e-post uppe till vänster. Ett tomt mejl öppnas. Klicka i fältet Till och skriv anna@example.com – det är mottagarens adress. Klicka i fältet Ämne och skriv några ord om vad mejlet handlar om. Skriv sedan ditt meddelande i den stora rutan och klicka på Skicka.",
               "independent": "Skriv ett nytt mejl till anna@example.com och skicka det.",
-              "child.guided": "Klicka på Ny e-post. I Till skriver du anna@example.com. I Ämne skriver du vad det handlar om. Skriv ditt meddelande och klicka på Skicka!"
+              "child.guided": "Klicka på Ny e-post uppe till vänster. Skriv anna@example.com i rutan Till. Skriv vad mejlet handlar om i rutan Ämne. Skriv ditt meddelande i den stora rutan och klicka på Skicka."
             },
             "hints": [
               "Knappen Ny e-post sitter uppe till vänster.",
@@ -2371,7 +2371,7 @@
               "default": "Öppna Annas mejl och ladda ned bilagan. Klicka Svara, skriv några ord, bifoga plan.txt och skicka.",
               "guided": "Ta ett moment i taget. Klicka på mejlet från Anna Berg. Klicka på Ladda ned bredvid bilagan längst ned. Klicka sedan på Svara och skriv några ord i den stora rutan. Klicka på gemet, Bifoga fil, välj Dokument och plan.txt och klicka på Öppna. Klicka på Skicka först när bilagan syns med ett gem.",
               "independent": "Spara bilagan i Annas mejl och svara henne med en bifogad fil.",
-              "child.guided": "Annas mejl → Ladda ned bilagan → Svara → skriv några ord → gemet → plan.txt → Skicka. Ta en sak i taget!"
+              "child.guided": "En sak i taget. Klicka på Annas mejl. Klicka på Ladda ned vid bilagan längst ned. Klicka på Svara och skriv några ord. Klicka på gemet, välj Dokument och plan.txt och klicka på Öppna. Klicka på Skicka när gemet syns."
             },
             "hints": [
               "Öppna mejlet från Anna Berg.",
@@ -2689,7 +2689,7 @@
               "default": "Läs cookie-rutan längst ned på webbläsarens startsida och klicka på Godkänn alla.",
               "guided": "Titta längst ned på webbläsarens startsida. Där finns en ruta som handlar om cookies. Läs texten i den – den förklarar vad sidan vill spara. Klicka sedan på knappen Godkänn alla i rutan. På riktiga webbplatser kan du lika gärna välja Avvisa om du inte vill dela mer än nödvändigt.",
               "independent": "Godkänn cookie-rutan på webbläsarens startsida.",
-              "child.guided": "Längst ned på sidan finns en ruta om cookies. Läs den först. Klicka sedan på Godkänn alla."
+              "child.guided": "Titta längst ned på sidan. Där finns en ruta om cookies. Läs den först. Klicka sedan på knappen Godkänn alla i rutan."
             },
             "hints": [
               "Cookie-rutan ligger längst ned på startsidan.",
@@ -2730,7 +2730,7 @@
               "default": "Öppna Kontaktformulär, klicka på Välj fil och välj profil.txt i Dokument.",
               "guided": "Klicka på genvägen Kontaktformulär på webbläsarens startsida. Leta upp knappen Välj fil i formuläret och klicka på den. En ruta som heter Öppna visas. Klicka på Dokument till vänster i rutan. Klicka sedan på filen profil.txt och på knappen Öppna. Filens namn visas bredvid knappen Välj fil.",
               "independent": "Bifoga profil.txt i kontaktformuläret.",
-              "child.guided": "Öppna Kontaktformulär och klicka på Välj fil. I rutan som kommer upp klickar du på Dokument, sedan på profil.txt och till sist på Öppna."
+              "child.guided": "Klicka på genvägen Kontaktformulär mitt på sidan. Klicka på knappen Välj fil. En ruta som heter Öppna kommer fram. Klicka på Dokument till vänster, sedan på profil.txt och till sist på Öppna."
             },
             "hints": [
               "Klicka på genvägen Kontaktformulär på webbläsarens startsida.",
@@ -2771,7 +2771,7 @@
               "default": "Öppna Eriks mejl, klicka på Vidarebefordra, skriv anna@example.com i Till och klicka på Skicka.",
               "guided": "Klicka på mejlet från Erik Lund. Ovanför mejlet till höger finns knappen Vidarebefordra. Klicka på den. Ett nytt mejl öppnas med Eriks text redan i. Klicka i fältet Till och skriv anna@example.com. Klicka sedan på Skicka.",
               "independent": "Vidarebefordra Eriks mejl till någon annan.",
-              "child.guided": "Klicka på Eriks mejl och sedan på Vidarebefordra. Skriv anna@example.com i Till och klicka på Skicka."
+              "child.guided": "Klicka på mejlet från Erik Lund i listan i mitten. Klicka på Vidarebefordra ovanför mejlet till höger. Skriv anna@example.com i rutan Till. Klicka på Skicka."
             },
             "hints": [
               "Klicka på mejlet från Erik Lund.",
@@ -2894,7 +2894,7 @@
               "default": "Klicka på knappen Läs in igen – den runda pilen uppe till vänster i webbläsaren.",
               "guided": "Titta uppe till vänster i webbläsaren. Där finns pilarna för Bakåt och Framåt. Strax till höger om dem sitter en knapp som ser ut som en pil i en cirkel – det är Läs in igen. Klicka en gång på den. Sidan hämtas på nytt.",
               "independent": "Läs in webbsidan igen.",
-              "child.guided": "Uppe till vänster i webbläsaren finns en rund pil. Klicka på den så laddas sidan om!"
+              "child.guided": "Titta uppe till vänster i webbläsaren, bredvid pilarna. Där finns en rund pil. Klicka på den så hämtas sidan en gång till."
             },
             "hints": [
               "Titta uppe till vänster i webbläsaren, bredvid pilarna.",
@@ -3032,7 +3032,7 @@
             "text": {
               "default": "När du inte vet adressen kan du söka. Skriv några ord om det du letar efter, så får du en lista med länkar.",
               "short": "Sök med några ord när du inte vet adressen.",
-              "child": "Om du inte vet adressen till en sida kan du söka, ungefär som att fråga i en jättestor bibliotekskatalog. Skriv några ord om det du letar efter, så får du en lista med länkar."
+              "child": "Om du inte vet adressen till en sida kan du söka, ungefär som att fråga i en stor bibliotekskatalog. Skriv några ord om det du letar efter, så får du en lista med länkar."
             }
           },
           {
@@ -3298,7 +3298,7 @@
               "default": "Skriv en kort mening i Anteckningar. Tryck Ctrl+Z för att ångra och sedan Ctrl+Y för att göra om.",
               "guided": "Klicka i den vita ytan i Anteckningar och skriv några ord. Håll sedan ned Ctrl längst ned till vänster på tangentbordet och tryck Z. Det du skrev försvinner. Håll ned Ctrl igen och tryck Y. Texten kommer tillbaka.",
               "independent": "Skriv en mening i Anteckningar, ångra den och gör om den.",
-              "child.guided": "Skriv några ord i Anteckningar. Tryck Ctrl+Z – pang, borta! Tryck Ctrl+Y – tillbaka igen!"
+              "child.guided": "Klicka i den vita ytan i Anteckningar och skriv några ord. Håll ned Ctrl och tryck Z. Texten försvinner. Håll ned Ctrl och tryck Y. Texten kommer tillbaka."
             },
             "hints": [
               "Klicka i Anteckningars vita yta.",
@@ -3466,7 +3466,7 @@
               "default": "Dubbelklicka på faktura.pdf i Dokument, zooma in med plusknappen och spara en kopia med Spara som.",
               "guided": "I Utforskaren, i mappen Dokument, dubbelklickar du på faktura.pdf. Filen öppnas i PDF-läsaren. Klicka på plusknappen högst upp för att zooma in, så att texten blir större. Klicka sedan på Spara som uppe till höger. Behåll namnet faktura-kopia.pdf och klicka på Spara.",
               "independent": "Öppna faktura.pdf, förstora texten och spara en kopia.",
-              "child.guided": "Dubbelklicka på faktura.pdf. Klicka på plus så att texten blir större. Klicka på Spara som och sedan på Spara."
+              "child.guided": "Dubbelklicka på faktura.pdf i mappen Dokument. Fakturan öppnas. Klicka på plus högst upp så att texten blir större. Klicka på Spara som uppe till höger och sedan på Spara."
             },
             "hints": [
               "Dubbelklicka på faktura.pdf i Dokument.",
@@ -3515,7 +3515,7 @@
               "default": "Klicka på Nytt i Skärmklippverktyget, dra en ruta över det du vill ha med och spara bilden i Bilder.",
               "guided": "Skärmklippverktyget är öppet. Klicka på knappen Nytt uppe till vänster i verktyget. Skärmen blir lite mörkare. Tryck ned vänster musknapp där rutan ska börja, håll kvar och dra till motsatt hörn. Släpp knappen. Bilden visas i verktyget. Klicka på Spara – rutan Spara som öppnas med mappen Bilder vald – och klicka på Spara igen.",
               "independent": "Ta en skärmbild med Skärmklippverktyget och spara den i Bilder.",
-              "child.guided": "Klicka på Nytt. Skärmen blir mörk. Tryck, håll och dra en ruta över det du vill ta bild på, och släpp. Klicka på Spara två gånger. Klart!"
+              "child.guided": "Klicka på Nytt uppe till vänster i Skärmklippverktyget. Skärmen blir mörkare. Tryck och håll vänster musknapp och dra en ruta över det du vill ta bild på. Släpp knappen. Klicka på Spara och sedan på Spara igen."
             },
             "hints": [
               "Klicka på Nytt i Skärmklippverktyget.",
@@ -3709,7 +3709,7 @@
               "default": "Dubbelklicka på Övningsprogram-Setup.exe i Hämtade filer och gå igenom installationen. Avinstallera sedan programmet i Inställningar → Appar.",
               "guided": "I Utforskaren, i Hämtade filer, dubbelklickar du på Övningsprogram-Setup.exe. Windows frågar om appen får göra ändringar – läs och klicka på Ja. Klicka Nästa, välj Jag godkänner avtalet, klicka Nästa två gånger, sedan Installera och Slutför. Öppna sedan Inställningar från Start och klicka på Appar. Klicka på de tre prickarna bredvid Övningsprogram, välj Avinstallera och bekräfta.",
               "independent": "Installera Övningsprogram från Hämtade filer och avinstallera det sedan i Inställningar.",
-              "child.guided": "Dubbelklicka på Övningsprogram-Setup.exe och svara Ja. Klicka dig igenom med Nästa, Installera och Slutför. Gå sedan till Inställningar → Appar, klicka på de tre prickarna vid Övningsprogram och välj Avinstallera."
+              "child.guided": "Dubbelklicka på Övningsprogram-Setup.exe i Hämtade filer. Datorn frågar om programmet får göra ändringar – klicka på Ja. Klicka på Nästa, godkänn avtalet, klicka på Nästa två gånger, Installera och Slutför. Öppna sedan Inställningar och klicka på Appar. Klicka på de tre prickarna vid Övningsprogram och välj Avinstallera."
             },
             "hints": [
               "Dubbelklicka på Övningsprogram-Setup.exe i Hämtade filer. Svara Ja på Windows fråga.",
@@ -3758,7 +3758,7 @@
               "default": "Klicka på Skriv ut i PDF-läsaren, välj Microsoft Print to PDF som skrivare och klicka på Skriv ut. Spara sedan filen.",
               "guided": "Klicka på Skriv ut uppe till höger i PDF-läsaren. Utskriftsrutan öppnas. Längst upp till vänster finns listan Skrivare – klicka på den och välj Microsoft Print to PDF. Klicka sedan på den blå knappen Skriv ut. Rutan Spara utskriften som öppnas. Klicka på Spara.",
               "independent": "Skriv ut fakturan till en PDF-fil.",
-              "child.guided": "Klicka på Skriv ut. I listan Skrivare väljer du Microsoft Print to PDF. Klicka på Skriv ut och sedan på Spara."
+              "child.guided": "Klicka på Skriv ut uppe till höger i PDF-läsaren. Klicka på listan Skrivare och välj Microsoft Print to PDF. Klicka på den blå knappen Skriv ut. Klicka sedan på Spara."
             },
             "hints": [
               "Klicka på Skriv ut uppe till höger i PDF-läsaren.",
@@ -4190,7 +4190,7 @@
               "default": "Klicka på HemmaNet i listan Tillgängliga nätverk, klicka Anslut, skriv datorskolan och klicka Nästa.",
               "guided": "Inställningar visar Nätverk och internet. Under Wi‑Fi finns listan Tillgängliga nätverk. Klicka på HemmaNet. Raden blir större och en knapp som heter Anslut visas – klicka på den. En ruta för nätverkssäkerhetsnyckeln dyker upp. Klicka i den, skriv datorskolan och klicka på Nästa.",
               "independent": "Anslut till HemmaNet. Nätverkssäkerhetsnyckeln är datorskolan.",
-              "child.guided": "Klicka på HemmaNet i listan. Klicka på Anslut. Skriv lösenordet datorskolan i rutan och klicka på Nästa."
+              "child.guided": "Titta på listan Tillgängliga nätverk under Wi‑Fi. Klicka på HemmaNet. Klicka på knappen Anslut som dyker upp. Skriv lösenordet datorskolan i rutan och klicka på Nästa."
             },
             "hints": [
               "Du är redan på Nätverk och internet. Listan Tillgängliga nätverk finns under Wi‑Fi.",
@@ -4239,7 +4239,7 @@
               "default": "Kontrollera att Bluetooth är På, klicka Lägg till enhet, välj Bluetooth och sedan Headset.",
               "guided": "Inställningar visar Bluetooth och enheter. Kontrollera först att strömbrytaren för Bluetooth står på På. Under Enheter finns knappen Lägg till enhet – klicka på den. I rutan som öppnas klickar du på Bluetooth. Datorn letar efter enheter. Klicka på Headset när det dyker upp, och sedan på Klart.",
               "independent": "Anslut headsetet med Bluetooth.",
-              "child.guided": "Se till att Bluetooth är På. Klicka på Lägg till enhet och sedan på Bluetooth. När Headset dyker upp klickar du på det, och sedan på Klart."
+              "child.guided": "Kontrollera att knappen för Bluetooth står på På. Klicka på Lägg till enhet under Enheter. Klicka på Bluetooth i rutan som kommer fram. När Headset dyker upp klickar du på det, och sedan på Klart."
             },
             "hints": [
               "Du är redan på Bluetooth och enheter. Kontrollera att Bluetooth är På.",

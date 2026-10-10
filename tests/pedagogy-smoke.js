@@ -90,6 +90,23 @@ LOCALES.forEach(function (locale) {
   });
 });
 
+/* ---------- Child texts: simple and friendly, never babyish ---------- */
+LOCALES.forEach(function (locale) {
+  course.lessons(locale).forEach(function (lesson) {
+    lesson.steps.forEach(function (step) {
+      ["child", "child.guided"].forEach(function (key) {
+        const text = step.text && step.text[key];
+        if (!text) return;
+        const where = locale + " " + lesson.id + " " + key;
+        assert(!/→/.test(text), where + ": child texts are written as sentences, not arrow shorthand");
+        assert(!/(^|[^a-zåäö])(pang|poof|trollknep|supersnabb\w*|jättestor\w*|bebis\w*|gullig\w*)/i.test(text), where + ": babyish wording");
+        assert((text.replace(/\d!/g, "").match(/!/g) || []).length <= 1, where + ": at most one exclamation mark");
+        assert(text.length <= 420, where + ": child text is too long");
+      });
+    });
+  });
+});
+
 /* ---------- Saved settings, migration, language switch ---------- */
 const storage = memoryStorage();
 const store = new window.DatorskolanProgressStore(storage);
