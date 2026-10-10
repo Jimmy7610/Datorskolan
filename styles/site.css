@@ -8,13 +8,13 @@
 */
 
 @font-face{font-family:"Cooper Hewitt";font-style:normal;font-weight:400;font-display:swap;
-  src:url("https://raw.githubusercontent.com/tom10271/cooper-hewitt-fixed-for-windows/24437eb6fc8bbf1fe8c518eeeaabd3012dffed4c/CooperHewitt-Book.ttf") format("truetype")}
+  src:url("../assets/fonts/CooperHewitt-Book.woff") format("woff")}
 @font-face{font-family:"Cooper Hewitt";font-style:normal;font-weight:500;font-display:swap;
-  src:url("https://raw.githubusercontent.com/tom10271/cooper-hewitt-fixed-for-windows/24437eb6fc8bbf1fe8c518eeeaabd3012dffed4c/CooperHewitt-Medium.ttf") format("truetype")}
+  src:url("../assets/fonts/CooperHewitt-Medium.woff") format("woff")}
 @font-face{font-family:"Cooper Hewitt";font-style:normal;font-weight:600;font-display:swap;
-  src:url("https://raw.githubusercontent.com/tom10271/cooper-hewitt-fixed-for-windows/24437eb6fc8bbf1fe8c518eeeaabd3012dffed4c/CooperHewitt-Semibold.ttf") format("truetype")}
+  src:url("../assets/fonts/CooperHewitt-Semibold.woff") format("woff")}
 @font-face{font-family:"Cooper Hewitt";font-style:normal;font-weight:700;font-display:swap;
-  src:url("https://raw.githubusercontent.com/tom10271/cooper-hewitt-fixed-for-windows/24437eb6fc8bbf1fe8c518eeeaabd3012dffed4c/CooperHewitt-Bold.ttf") format("truetype")}
+  src:url("../assets/fonts/CooperHewitt-Bold.woff") format("woff")}
 
 :root{
   /* Surfaces */

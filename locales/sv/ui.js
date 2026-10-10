@@ -104,7 +104,7 @@
     "privacy.item.noAccount": "Du behöver inte logga in eller lämna några personuppgifter.",
     "privacy.item.noTracking": "Vi använder inga cookies, ingen statistik och ingen spårning.",
     "privacy.item.localStorage": "Dina framsteg, ditt språkval och dina val i övningsdatorn sparas i webbläsarens lokala lagring (localStorage) på den här enheten. De skickas inte till någon server.",
-    "privacy.item.thirdParty": "Typsnittet Cooper Hewitt hämtas från GitHub och Chrome-loggan från Google. Då ser de tjänsterna din IP-adress, precis som vid ett vanligt webbesök.",
+    "privacy.item.thirdParty": "Allt utom Chrome-loggan kommer från Datorskolans egen webbplats. Chrome-loggan visas direkt från Google, så Google ser din IP-adress, precis som vid ett vanligt webbesök.",
     "privacy.item.delete": "Du raderar allt med knappen ”Börja om”, eller genom att rensa webbplatsdata i webbläsaren.",
 
     /* ---------- Simulatorn: gemensamt ---------- */

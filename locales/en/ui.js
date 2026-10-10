@@ -104,7 +104,7 @@
     "privacy.item.noAccount": "You do not need to sign in or give any personal details.",
     "privacy.item.noTracking": "We use no cookies, no analytics and no tracking.",
     "privacy.item.localStorage": "Your progress, your language choice and your choices on the practice computer are stored in your browser's local storage (localStorage) on this device. They are never sent to a server.",
-    "privacy.item.thirdParty": "The Cooper Hewitt typeface is loaded from GitHub and the Chrome logo from Google. Those services see your IP address, just as with any normal website visit.",
+    "privacy.item.thirdParty": "Everything except the Chrome logo comes from Datorskolan's own website. The Chrome logo is shown directly from Google, so Google sees your IP address, just as with any normal website visit.",
     "privacy.item.delete": "You can delete everything with the “Start over” button, or by clearing site data in your browser.",
 
     /* ---------- Simulator: shared ---------- */

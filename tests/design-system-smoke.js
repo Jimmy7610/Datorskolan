@@ -70,6 +70,28 @@ const fontSource = fs.readFileSync(path.join(ROOT, "assets/fonts/SOURCE.md"), "u
 const license = fs.readFileSync(path.join(ROOT, "assets/fonts/CooperHewitt-OFL.txt"), "utf8");
 assert(fontSource.indexOf("SIL Open Font License") >= 0, "Cooper Hewitt source documentation missing license");
 assert(license.indexOf("SIL OPEN FONT LICENSE Version 1.1") >= 0, "Cooper Hewitt OFL text missing");
-assert(site.indexOf("24437eb6fc8bbf1fe8c518eeeaabd3012dffed4c") >= 0, "Cooper Hewitt delivery source is not pinned");
+
+// Fonts are served locally: the official, unmodified Cooper Hewitt web fonts (OFL Reserved Font Name).
+const crypto = require("crypto");
+const fontHashes = {
+  Book: "3bcf6f17d332714cf8d8ab79601b84ec177351cc920cb5af236506853b96836b",
+  Medium: "e5fcd47740334669e7dcb22ffafbd2a422e2325dd5f3a4d9ad0562fe28b948e8",
+  Semibold: "f4f69e0fe16a962370bebdc294d508bb95c0f95f7f78d144561c0ad05f75ba03",
+  Bold: "e145444bda1a0bf3cfb4f0047cbd367c2d1dad7b0e46dffa5fbcd8a4433f2943"
+};
+Object.keys(fontHashes).forEach(function (weight) {
+  const file = "CooperHewitt-" + weight + ".woff";
+  assert(site.indexOf('url("../assets/fonts/' + file + '")') >= 0, "site.css does not load local " + file);
+  const hash = crypto.createHash("sha256").update(fs.readFileSync(path.join(ROOT, "assets/fonts", file))).digest("hex");
+  assert(hash === fontHashes[weight], file + " differs from the official Cooper Hewitt web font (modified versions may not use the name)");
+  assert(fontSource.indexOf(hash) >= 0, "SOURCE.md does not document " + file);
+});
+assert(fs.existsSync(path.join(ROOT, "assets/fonts/CooperHewitt-FontLog.txt")), "Cooper Hewitt FontLog missing");
+
+// No external font requests anywhere on the site.
+[site, fakewin, html].forEach(function (text) {
+  const external = text.match(/@font-face[^}]*url\(["']?https?:|fonts\.googleapis|fonts\.gstatic|githubusercontent|use\.typekit/);
+  assert(!external, "External font request found: " + (external && external[0]));
+});
 
 console.log("Design system smoke test passed (site.css + fakewin.css, !important: " + importantSite + "/" + importantFakewin + ")");

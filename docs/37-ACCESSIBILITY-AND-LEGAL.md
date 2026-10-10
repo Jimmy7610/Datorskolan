@@ -81,7 +81,6 @@ Datorskolan har inga konton, ingen statistik, inga cookies och ingen spårning.
 | Mottagare | Vad | Varför |
 |---|---|---|
 | GitHub Pages | Hela webbplatsen | Webbhotell |
-| `raw.githubusercontent.com` | Typsnittet Cooper Hewitt | Webbplatsens typsnitt. **Rekommendation:** lägg filerna lokalt (OFL tillåter det) så att inga anrop görs till tredje part. |
 | `www.google.com` | Chrome-logotypen | Får inte bundlas, se `38-ASSETS-AND-LICENSES.md` |
 
 Inga skript laddas från tredje part. Övningsdatorns "webb" (`datorskolan.example`) är helt simulerad – inget skickas någonstans.
