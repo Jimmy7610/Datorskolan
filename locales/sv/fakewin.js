@@ -52,6 +52,7 @@
     "start.noResults": "Inga resultat för ”{query}”.",
 
     "power.button": "Ström",
+    "start.accountSettings": "Ändra kontoinställningar",
     "power.lock": "Lås",
     "power.sleep": "Strömsparläge",
     "power.shutdown": "Stäng av",

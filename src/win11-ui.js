@@ -155,6 +155,7 @@
     plus: '<path d="M8 3v10M3 8h10"/>',
     minus: '<path d="M3 8h10"/>',
     check: '<path d="M3.5 8.5l3 3 6-7"/>',
+    sleep: '<path d="M12.5 10.2A5 5 0 0 1 5.8 3.5a5 5 0 1 0 6.7 6.7z"/>',
     open: '<path d="M9 3.5h3.5V7M12.5 3.5L7 9M11 9.5v3H3.5V5h3"/>',
     dot: '<circle cx="8" cy="8" r="2.5" fill="currentColor" stroke="none"/>',
     star: '<path d="M8 2.5l1.7 3.5 3.8.5-2.8 2.7.7 3.8L8 11.2 4.6 13l.7-3.8L2.5 6.5l3.8-.5z"/>',

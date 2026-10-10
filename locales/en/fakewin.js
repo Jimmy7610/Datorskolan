@@ -52,6 +52,7 @@
     "start.noResults": "No results for “{query}”.",
 
     "power.button": "Power",
+    "start.accountSettings": "Change account settings",
     "power.lock": "Lock",
     "power.sleep": "Sleep",
     "power.shutdown": "Shut down",

@@ -389,16 +389,23 @@
     var t = ctx.t;
     var s = ex(ctx);
     var canCreate = s.folderId !== "recycle-bin" && s.folderId !== "home";
+    // Same order as Windows 11: View ›, Sort by ›, Refresh | Paste | New › | Properties.
     var items = [
+      { label: t("menu.view"), glyph: "view", ui: "explorer-bg-view", submenu: viewMenu(ctx) },
+      { label: t("menu.sortBy"), glyph: "sort", ui: "explorer-bg-sort", submenu: sortMenu(ctx) },
       { label: t("menu.refresh"), glyph: "refresh", action: function () { ctx.refreshApp("explorer"); } },
       "sep",
       { label: t("explorer.paste"), glyph: "paste", shortcut: "Ctrl+V", disabled: !s.clipboard || !canCreate, action: function () { paste(ctx); } },
       "sep",
-      { label: t("explorer.newFolder"), iconKey: "folder", shortcut: "Ctrl+Shift+N", disabled: !canCreate, action: function () { newFolder(ctx); } },
-      { label: t("explorer.newTextDocument"), iconKey: "text-file", disabled: !canCreate, action: function () { newTextDocument(ctx); } },
+      { label: t("explorer.new"), glyph: "plus", ui: "explorer-bg-new", disabled: !canCreate, submenu: [
+        { label: t("explorer.newMenu.folder"), iconKey: "folder", shortcut: "Ctrl+Shift+N", ui: "explorer-bg-new-folder", action: function () { newFolder(ctx); } },
+        "sep",
+        { label: t("explorer.newMenu.textDocument"), iconKey: "text-file", action: function () { newTextDocument(ctx); } }
+      ] },
       "sep",
       { label: t("menu.properties"), action: function () { showProperties(ctx, ctx.vfs.get(s.folderId)); } }
     ];
+    if (s.folderId === "home") items.splice(0, 2);
     if (s.folderId === "recycle-bin") {
       items = [
         { label: t("menu.refresh"), glyph: "refresh", action: function () { ctx.refreshApp("explorer"); } },

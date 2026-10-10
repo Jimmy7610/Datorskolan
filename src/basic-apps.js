@@ -278,7 +278,11 @@
             message: t("saveAs.replaceText", { name: name }),
             buttons: [
               { label: t("common.yes"), primary: true, action: function () { options.onSave(folderId, name); } },
-              { label: t("common.no"), cancel: true }
+              // As in Windows, "No" has the focus so Enter never replaces a file by accident,
+              // and "No" goes back to Save as so another name can be chosen.
+              { label: t("common.no"), cancel: true, autofocus: true, ui: "replace-no", action: function () {
+                showSaveAs(ctx, Object.assign({}, options, { initialFolder: folderId, initialName: name }));
+              } }
             ]
           });
         } },

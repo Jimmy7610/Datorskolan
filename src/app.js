@@ -534,6 +534,7 @@
       if (state.activeWindowId === id) activate(topVisibleWindow());
       emit("window.minimized", { windowId: id });
       render();
+      focusActiveWindow();
     }
 
     function maximizeWindow(id) {
@@ -569,6 +570,15 @@
       if (state.activeWindowId === id) activate(topVisibleWindow());
       emit("window.closed", { windowId: id, appId: win.appId });
       render();
+      focusActiveWindow();
+    }
+
+    // After a window closes or minimizes, Windows gives keyboard focus to the window that is now on top.
+    function focusActiveWindow() {
+      var node = state.activeWindowId && el.windows.querySelector("[data-window-id='" + state.activeWindowId + "']");
+      if (!node || node.contains(document.activeElement)) return;
+      var target = node.querySelector("textarea, input:not([type=hidden]), [role=listbox], [tabindex='0']") || node.querySelector("button");
+      if (target) target.focus({ preventScroll: true });
     }
 
     function closeWindow(id) {
@@ -607,6 +617,8 @@
 
     function snapWindow(win, side) {
       var size = workspaceSize();
+      // Remember the size before snapping: dragging the window away gives it back, like Windows.
+      if (!win.snapRestore) win.snapRestore = { width: win.width, height: win.height };
       win.mode = "normal";
       win.restore = null;
       win.x = side === "left" ? 0 : Math.floor(size.width / 2);
@@ -616,44 +628,74 @@
       emit("window.snapped", { windowId: win.id, appId: win.appId, side: side });
     }
 
+    // Dragging a window by its title bar, as in Windows 11:
+    // - a maximized or snapped window gets its normal size back and follows the pointer,
+    // - dropping at the left/right edge snaps to half the screen, at the top edge maximizes,
+    // - at least part of the title bar always stays on screen.
     function startWindowDrag(event, win, node, handle) {
-      if (event.button !== 0 || win.mode === "maximized") return;
+      if (event.button !== 0) return;
       if (event.target.closest("button, input, a, select, textarea, [data-no-drag]")) return;
       focusWindow(win.id, false);
       el.windows.querySelectorAll(".fw-window.is-active").forEach(function (other) { other.classList.remove("is-active"); });
       node.classList.add("is-active");
       node.style.zIndex = String(win.z);
 
-      var drag = { pointerId: event.pointerId, ox: event.clientX - win.x, oy: event.clientY - win.y, moved: false };
-      handle.setPointerCapture(event.pointerId);
+      var size = workspaceSize();
+      var drag = { pointerId: event.pointerId, sx: event.clientX, sy: event.clientY, ox: event.clientX - size.left - win.x, oy: event.clientY - size.top - win.y, moved: false };
+
+      function currentNode() { return el.windows.querySelector("[data-window-id='" + win.id + "']"); }
 
       function move(e) {
         if (e.pointerId !== drag.pointerId) return;
-        var size = workspaceSize();
-        drag.moved = true;
-        win.x = Math.min(Math.max(-win.width + 120, e.clientX - drag.ox), Math.max(0, size.width - 120));
-        win.y = Math.min(Math.max(0, e.clientY - drag.oy), Math.max(0, size.height - 40));
-        node.style.left = win.x + "px";
-        node.style.top = win.y + "px";
+        if (!drag.moved && Math.abs(e.clientX - drag.sx) + Math.abs(e.clientY - drag.sy) < 6) return;
+        var area = workspaceSize();
+        if (!drag.moved) {
+          drag.moved = true;
+          var from = win.mode === "maximized" ? win.restore : win.snapRestore;
+          if (win.mode === "maximized" || win.snapRestore) {
+            // Keep the pointer at the same relative place on the narrower title bar.
+            var currentWidth = win.mode === "maximized" ? area.width : win.width;
+            var ratio = Math.min(1, Math.max(0, (e.clientX - area.left - (win.mode === "maximized" ? 0 : win.x)) / currentWidth));
+            win.width = from ? from.width : win.width;
+            win.height = from ? from.height : win.height;
+            win.mode = "normal";
+            win.restore = null;
+            win.snapRestore = null;
+            drag.ox = Math.round(ratio * win.width);
+            drag.oy = Math.min(drag.oy, 16);
+            emit("window.restored", { windowId: win.id });
+            render();
+          }
+        }
+        win.x = Math.min(Math.max(-win.width + 120, e.clientX - area.left - drag.ox), Math.max(0, area.width - 120));
+        win.y = Math.min(Math.max(0, e.clientY - area.top - drag.oy), Math.max(0, area.height - 40));
+        var live = currentNode();
+        if (live) {
+          live.style.left = win.x + "px";
+          live.style.top = win.y + "px";
+          live.style.width = win.width + "px";
+          live.style.height = win.height + "px";
+        }
       }
 
       function up(e) {
         if (e.pointerId !== drag.pointerId) return;
-        handle.removeEventListener("pointermove", move);
-        handle.removeEventListener("pointerup", up);
-        handle.removeEventListener("pointercancel", up);
+        window.removeEventListener("pointermove", move);
+        window.removeEventListener("pointerup", up);
+        window.removeEventListener("pointercancel", up);
         if (!drag.moved) return;
-        var size = workspaceSize();
-        var x = e.clientX - size.left;
+        var area = workspaceSize();
+        var x = e.clientX - area.left;
+        if (e.clientY - area.top <= 4 && apps[win.appId].resizable !== false) { maximizeWindow(win.id); return; }
         if (x <= 24) snapWindow(win, "left");
-        else if (x >= size.width - 24) snapWindow(win, "right");
+        else if (x >= area.width - 24) snapWindow(win, "right");
         else emit("window.moved", { windowId: win.id });
         render();
       }
 
-      handle.addEventListener("pointermove", move);
-      handle.addEventListener("pointerup", up);
-      handle.addEventListener("pointercancel", up);
+      window.addEventListener("pointermove", move);
+      window.addEventListener("pointerup", up);
+      window.addEventListener("pointercancel", up);
     }
 
     function captionButtons(win) {
@@ -1345,7 +1387,32 @@
       else drawHome();
 
       var footer = h("div", { class: "fw-start-footer" }, [
-        h("span", { class: "fw-start-user" }, [h("span", { class: "fw-avatar", text: t("shell.userInitial") }), h("span", { text: t("shell.userName") })]),
+        // The account button opens the account menu (Windows 11: Change account settings, Lock).
+        h("button", {
+          type: "button",
+          class: "fw-start-user fw-subtle-button",
+          aria: { haspopup: "menu" },
+          data: { ui: "start-account" },
+          on: { click: function (e) {
+            e.stopPropagation();
+            var rect = e.currentTarget.getBoundingClientRect();
+            openMenu({
+              kind: "power",
+              x: rect.left,
+              y: rect.top,
+              anchor: "above",
+              items: [
+                { label: t("start.accountSettings"), iconKey: "person", action: function () {
+                  window.DatorskolanSettingsApp.ensure(state).page = "accounts";
+                  openApp("settings");
+                  refreshApp("settings");
+                } },
+                "sep",
+                { label: t("power.lock"), glyph: "lock", action: function () { powerAction("lock"); } }
+              ]
+            });
+          } }
+        }, [h("span", { class: "fw-avatar", text: t("shell.userInitial") }), h("span", { text: t("shell.userName") })]),
         h("button", {
           type: "button",
           class: "fw-subtle-button fw-icon-button",
@@ -1362,8 +1429,7 @@
               y: rect.top,
               anchor: "above",
               items: [
-                { label: t("power.lock"), glyph: "lock", action: function () { powerAction("lock"); } },
-                { label: t("power.sleep"), action: function () { powerAction("sleep"); } },
+                { label: t("power.sleep"), glyph: "sleep", action: function () { powerAction("sleep"); } },
                 { label: t("power.shutdown"), glyph: "power", action: function () { powerAction("shutdown"); } },
                 { label: t("power.restart"), glyph: "refresh", action: function () { powerAction("restart"); } }
               ]
@@ -1833,6 +1899,8 @@
           class: "fw-button" + (button.primary ? " fw-button-accent" : ""),
           text: button.label,
           disabled: !!button.disabled,
+          // The button that has keyboard focus when the dialog opens (e.g. "No" when replacing a file).
+          autofocus: button.autofocus ? "autofocus" : null,
           data: { ui: button.ui || "" },
           on: { click: function () {
             if (button.validate && button.validate() === false) return;
