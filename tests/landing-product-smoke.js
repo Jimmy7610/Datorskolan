@@ -41,6 +41,7 @@ LOCALES.forEach(function (locale) {
 
 assert(!/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(landing), "Landing must not use emoji as icons");
 assert(!/google\.com|gstatic\.com|googleapis\.com/i.test(landing), "The landing page must not load anything from Google (docs/38)");
+assert(html.indexOf('<link rel="icon" href="./assets/favicon.svg"') >= 0, "The site needs its own favicon (otherwise browsers request /favicon.ico and get a 404)");
 assert(shell.indexOf("scrollIntoView") < 0, "Product shell must not hijack scrolling");
 assert(css.indexOf("overflow:hidden") < 0 || css.indexOf("body.school-mode{overflow:hidden}") >= 0, "Landing must never lock scrolling (content would be clipped at zoom)");
 assert(css.indexOf("@media (min-width:981px) and (max-height:820px)") >= 0, "Short desktop screens need a tighter layout instead of clipping");

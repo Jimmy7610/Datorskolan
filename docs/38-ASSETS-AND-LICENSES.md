@@ -15,6 +15,7 @@ Hitta inte på rättigheter: om en resurs inte uttryckligen får spridas bundlas
 | Cooper Hewitt (typsnitt för webbplatsen, 4 vikter, WOFF) | `assets/fonts/`, laddas via `@font-face` i `styles/site.css` | Museets officiella webbfontpaket `CooperHewitt-WebFonts-public.zip` från cooperhewitt.org, oförändrade filer (SHA-256 i `assets/fonts/SOURCE.md`) | SIL Open Font License 1.1 med reserverat namn "Cooper Hewitt" (`assets/fonts/CooperHewitt-OFL.txt`, FontLog och OFL-FAQ medföljer) | Ja |
 | Segoe UI Variable / Segoe UI (typsnitt i FakeWin) | används via `font-family` | Installerat i Windows | Microsoft-licens. Distribueras **inte** – webbläsaren använder det typsnitt som redan finns på användarens dator. Andra system faller tillbaka till `system-ui`. | Nej |
 | Fönsterknapparnas symboler (minimera, maximera, stäng), pilar, sök m.m. | `src/win11-ui.js` (`glyph`, `captionGlyph`) | Egna minimala SVG-linjer | Projektets egen kod | Ja |
+| Webbplatsikon (favicon) | `assets/favicon.svg` | Egen: blå ruta med ett D, samma som märket på webbplatsen | Projektets egen | Ja |
 | Skrivbordsbakgrund | `styles/fakewin.css` | CSS-gradienter | Projektets egen kod. Windows 11:s bakgrundsbild "Bloom" är upphovsrättsskyddad och används inte. | Ja (som CSS) |
 
 ## Beslut och avvägningar

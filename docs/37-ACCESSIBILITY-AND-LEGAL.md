@@ -56,6 +56,16 @@ Testat automatiskt i Chrome 153 (headless, styrt via Chrome DevTools Protocol). 
 | `prefers-reduced-motion: reduce` | Start-menyn öppnas utan animation (0 s). |
 | `forced-colors: active` (mörkt tema) | Fönster, menyer och knappar får kanter. Ikonerna i systemfältet och de enfärgade kommandoikonerna syns. **Rättat:** de var tidigare mörka på mörk bakgrund. |
 
+### Testlogg 2026-10-10, slutkontroll
+
+Kört igen i Chrome 153 headless, både lokalt och mot den publika GitHub Pages-sidan:
+- Tab, Shift+Tab, Enter, Esc: rätt ordning, synlig fokus, fokusfälla i dialoger och fokus tillbaka. Undermenyer: → öppnar, ← och Esc stänger och lämnar fokus på föräldern.
+- 200 % zoom (960×540 och 683×384): ingen vågrät rullning, aktivitetsfältet syns.
+- `prefers-reduced-motion` och `forced-colors`: som tidigare.
+- Kontrast: all synlig text minst 4,5:1 i 14 vyer (även menyer, kalender, sökning och barn+guidad).
+- `<html lang>` följer språkvalet. Alla knappar har namn och alla bilder har alt-text.
+- Publik sida: inga konsolfel, inga anrop utanför GitHub Pages; språk, framsteg, pågående lektion och profil finns kvar efter omladdning.
+
 ### Kvar att testa manuellt
 
 Följande har **inte** kunnat testas i den här miljön och ska inte räknas som verifierat:
@@ -89,6 +99,12 @@ Följande har **inte** kunnat testas i den här miljön och ska inte räknas som
 | Typsnitt Segoe UI Variable | Segoe UI Variable om det finns, annars systemets typsnitt | Microsofts typsnitt får inte spridas. På Windows-datorer blir resultatet äkta. |
 | Dialogrutor (till exempel "Vill du spara?") i Windows tonar inte ned resten av skärmen | Inte heller i Datorskolan. Bara UAC-frågan tonar ned skärmen, precis som Windows säkra skrivbord. | Samma upplevelse som i Windows. Resten av övningsdatorn blir `inert` för tangentbord och skärmläsare. |
 | Start-knappen visar Windows-logotypen | Fyra blå rundade rutor (Microsofts Fluent-ikon *Grid*) | Windows-logotypen är ett varumärke. Se `38-ASSETS-AND-LICENSES.md`. |
+| Fönster ändrar storlek från alla kanter och hörn | Bara från nedre högra hörnet | Ett enda tydligt grepp är lättare för nybörjare; lektionen om storlek lär ut hörnet. Maximera, fäst mot kant, dra till överkanten och dra ut ett maximerat fönster fungerar som i Windows. |
+| Hovring över Maximera visar fästlayouter (Snap layouts) | Visas inte | Förenkling. Fästa mot vänster/höger kant fungerar. |
+| Utforskaren har flera flikar och en +-knapp | En flik per fönster, ingen +-knapp | En knapp som inte gör något vore missvisande. Fliken stängs med sitt kryss som i Windows. |
+| Inställningarnas kort öppnar undersidor | Bara de sidor som kursen använder finns; övriga kort är information utan pil | Kort med pil leder alltid någonstans, så inget lovar mer än det gör. |
+| Skrivbordet visar filer som sparas på Skrivbordet | Skrivbordet har tre fasta ikoner (Papperskorgen, Dokument, Bilder) | Övningsfilerna sparas i Dokument, Hämtade filer och Bilder. |
+| Aktivitetsvy, virtuella skrivbord, widgets | Finns inte | Utanför kursens innehåll. |
 | Coachpanelen finns inte i Windows | Datorskolans panel med webbplatsens typsnitt och färger | Den ska tydligt se annorlunda ut än Windows, så att eleven förstår vad som är "läraren" och vad som är "datorn". |
 
 ## 4. Integritet och lagring
