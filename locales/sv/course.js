@@ -3143,17 +3143,17 @@
         "steps": [
           {
             "title": "Fästa program",
-            "text": "Ett fäst program har sin ikon i aktivitetsfältet även när det är stängt. Du fäster det genom att högerklicka på appen i Start och välja Fäst i aktivitetsfältet."
+            "text": "Ett fäst program har sin ikon i aktivitetsfältet även när det är stängt. Du fäster det genom att högerklicka på appen i Start och välja Fäst i Aktivitetsfältet."
           },
           {
             "title": "Din tur",
-            "text": "Öppna Start, högerklicka på Google Chrome och välj Fäst i aktivitetsfältet.",
+            "text": "Öppna Start, högerklicka på Google Chrome och välj Fäst i Aktivitetsfältet.",
             "hints": [
               "Öppna Start med Windows-symbolen i aktivitetsfältet.",
               "Leta upp Google Chrome under Fäst.",
               "Högerklicka på Google Chrome.",
               "Den gula ramen visar Start-knappen.",
-              "Start → högerklicka på Google Chrome → Fäst i aktivitetsfältet."
+              "Start → högerklicka på Google Chrome → Fäst i Aktivitetsfältet."
             ]
           },
           {
@@ -3163,13 +3163,13 @@
         ],
         "detail": {
           "what": "Att fästa ett program betyder att ikonen ligger kvar i aktivitetsfältet även när programmet är stängt.",
-          "recognize": "I Windows 11 fäster du via appens snabbmeny: högerklicka på appen i Start och välj Fäst i aktivitetsfältet.",
+          "recognize": "I Windows 11 fäster du via appens snabbmeny: högerklicka på appen i Start och välj Fäst i Aktivitetsfältet.",
           "use": "Det ger snabb åtkomst till program du använder ofta.",
           "example": "Google Chrome kan ligga kvar bredvid Utforskaren i aktivitetsfältet även när Chrome är stängt.",
           "steps": [
             "Öppna Start.",
             "Högerklicka på Google Chrome.",
-            "Välj Fäst i aktivitetsfältet.",
+            "Välj Fäst i Aktivitetsfältet.",
             "Kontrollera att Chrome-ikonen syns i aktivitetsfältet."
           ],
           "everyday": [

@@ -81,7 +81,25 @@ const en = window.DatorskolanI18n.dictionary("en", "ui");
   ["explorer.newFolderName", "Ny mapp", "New folder"],
   ["explorer.emptyRecycleBin", "Töm Papperskorgen", "Empty Recycle Bin"],
   ["settings.page.network", "Nätverk och internet", "Network & internet"],
-  ["start.searchPlaceholder", "Sök efter appar, inställningar och dokument", "Search for apps, settings and documents"]
+  ["start.searchPlaceholder", "Sök efter appar, inställningar och dokument", "Search for apps, settings and documents"],
+  // Verified against Microsoft's Swedish support pages, see docs/40-SWEDISH-WINDOWS-TERMS.md.
+  ["vfs.home", "Start", "Home"],
+  ["app.settings", "Inställningar", "Settings"],
+  ["start.pinned", "Fäst", "Pinned"],
+  ["start.showAll", "Visa alla", "Show all"],
+  ["start.all", "Alla", "All"],
+  ["start.recommended", "Rekommenderas", "Recommended"],
+  ["menu.pinToStart", "Fäst på Start", "Pin to Start"],
+  ["menu.pinTaskbar", "Fäst i Aktivitetsfältet", "Pin to taskbar"],
+  ["menu.unpinTaskbar", "Ta bort från Aktivitetsfältet", "Unpin from taskbar"],
+  ["shell.quickSettings", "Snabbinställningar", "Quick settings"],
+  ["menu.open", "Öppna", "Open"],
+  ["menu.properties", "Egenskaper", "Properties"],
+  ["explorer.rename", "Byt namn", "Rename"],
+  ["explorer.delete", "Ta bort", "Delete"],
+  ["explorer.restore", "Återställ", "Restore"],
+  ["saveAs.title", "Spara som", "Save as"],
+  ["explorer.navigationPane", "Navigeringsfönster", "Navigation pane"]
 ].forEach(function (row) {
   assert(sv[row[0]] === row[1], "Swedish Windows term changed for " + row[0] + ": " + sv[row[0]]);
   assert(en[row[0]] === row[2], "English Windows term changed for " + row[0] + ": " + en[row[0]]);

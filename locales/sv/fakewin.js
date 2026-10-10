@@ -84,8 +84,8 @@
     "menu.personalize": "Anpassa",
     "menu.pinToStart": "Fäst på Start",
     "menu.unpinStart": "Ta bort från Start",
-    "menu.pinTaskbar": "Fäst i aktivitetsfältet",
-    "menu.unpinTaskbar": "Ta bort från aktivitetsfältet",
+    "menu.pinTaskbar": "Fäst i Aktivitetsfältet",
+    "menu.unpinTaskbar": "Ta bort från Aktivitetsfältet",
     "menu.closeWindow": "Stäng fönster",
 
     /* ---------- Dialogrutor ---------- */
