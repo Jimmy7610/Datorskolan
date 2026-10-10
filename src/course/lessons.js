@@ -28,11 +28,6 @@
       "skills": [
         "files.create-folder"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "files-create-folder-01",
       "steps": [
         {
@@ -64,11 +59,6 @@
         "programs.notepad",
         "files.save"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "notepad-save-file-01",
       "steps": [
         {
@@ -97,11 +87,6 @@
         "files.delete",
         "files.recycle-restore"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "recycle-restore-01",
       "steps": [
         {
@@ -124,11 +109,6 @@
       "moduleId": "mouse",
       "skills": [
         "mouse.move"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "mouse-move-01",
       "steps": [
@@ -158,11 +138,6 @@
         "mouse.move",
         "mouse.precision"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "mouse-target-01",
       "steps": [
         {
@@ -185,11 +160,6 @@
       "moduleId": "mouse",
       "skills": [
         "mouse.left-click"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "mouse-click-01",
       "steps": [
@@ -214,11 +184,6 @@
       "skills": [
         "mouse.double-click"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "mouse-double-01",
       "steps": [
         {
@@ -241,11 +206,6 @@
       "moduleId": "mouse",
       "skills": [
         "mouse.right-click"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "mouse-right-01",
       "steps": [
@@ -270,11 +230,6 @@
       "skills": [
         "mouse.scroll"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "mouse-scroll-01",
       "steps": [
         {
@@ -297,11 +252,6 @@
       "moduleId": "mouse",
       "skills": [
         "mouse.hold"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "mouse-hold-01",
       "steps": [
@@ -326,11 +276,6 @@
       "skills": [
         "mouse.hold",
         "mouse.drag-drop"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "mouse-drag-01",
       "steps": [
@@ -360,11 +305,6 @@
         "mouse.scroll",
         "mouse.drag-drop"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "mouse-final-01",
       "steps": [
         {
@@ -388,11 +328,6 @@
       "skills": [
         "basics.computer"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -407,11 +342,6 @@
       "moduleId": "basics",
       "skills": [
         "basics.power"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "steps": [
         {
@@ -428,11 +358,6 @@
       "skills": [
         "basics.connections"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -448,11 +373,6 @@
       "skills": [
         "basics.internet"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -467,11 +387,6 @@
       "moduleId": "keyboard",
       "skills": [
         "keyboard.letters"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "keyboard-letters-01",
       "steps": [
@@ -495,11 +410,6 @@
       "moduleId": "keyboard",
       "skills": [
         "keyboard.numbers"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "keyboard-numbers-01",
       "steps": [
@@ -527,11 +437,6 @@
         "keyboard.backspace",
         "keyboard.delete"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "keyboard-editing-01",
       "steps": [
         {
@@ -556,11 +461,6 @@
         "keyboard.shift",
         "keyboard.capslock"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "keyboard-shiftcaps-01",
       "steps": [
         {
@@ -583,11 +483,6 @@
       "moduleId": "keyboard",
       "skills": [
         "keyboard.arrows"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "keyboard-arrows-01",
       "steps": [
@@ -613,11 +508,6 @@
         "keyboard.tab",
         "keyboard.escape"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "keyboard-tabesc-01",
       "steps": [
         {
@@ -642,11 +532,6 @@
         "keyboard.ctrl",
         "keyboard.alt"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "keyboard-modifiers-01",
       "steps": [
         {
@@ -670,11 +555,6 @@
       "skills": [
         "keyboard.meta"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -691,11 +571,6 @@
         "keyboard.selectall",
         "keyboard.copy",
         "keyboard.paste"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "keyboard-shortcuts-01",
       "steps": [
@@ -719,11 +594,6 @@
       "moduleId": "keyboard",
       "skills": [
         "keyboard.special"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "keyboard-special-01",
       "steps": [
@@ -752,11 +622,6 @@
         "keyboard.arrows",
         "keyboard.selectall"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "keyboard-final-01",
       "steps": [
         {
@@ -779,11 +644,6 @@
       "moduleId": "windows",
       "skills": [
         "windows.start"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "windows-start-01",
       "steps": [
@@ -808,11 +668,6 @@
       "skills": [
         "windows.open-app"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "windows-open-app-01",
       "steps": [
         {
@@ -835,11 +690,6 @@
       "moduleId": "windows",
       "skills": [
         "windows.move-window"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "windows-move-01",
       "steps": [
@@ -864,11 +714,6 @@
       "skills": [
         "windows.minimize"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "windows-minimize-01",
       "steps": [
         {
@@ -891,11 +736,6 @@
       "moduleId": "windows",
       "skills": [
         "windows.maximize"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "windows-maximize-01",
       "steps": [
@@ -920,11 +760,6 @@
       "skills": [
         "windows.close"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "windows-close-01",
       "steps": [
         {
@@ -947,11 +782,6 @@
       "moduleId": "windows",
       "skills": [
         "windows.context-menu"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "windows-context-01",
       "steps": [
@@ -981,11 +811,6 @@
         "windows.maximize",
         "windows.close"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "windows-final-01",
       "steps": [
         {
@@ -1009,11 +834,6 @@
       "skills": [
         "files.concepts"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -1028,11 +848,6 @@
       "moduleId": "files",
       "skills": [
         "files.rename"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "files-rename-01",
       "steps": [
@@ -1056,11 +871,6 @@
       "moduleId": "files",
       "skills": [
         "files.copy"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "files-copy-01",
       "steps": [
@@ -1086,11 +896,6 @@
         "files.cut",
         "files.move"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "files-move-01",
       "steps": [
         {
@@ -1114,11 +919,6 @@
       "skills": [
         "files.delete",
         "files.recycle-restore"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "files-delete-01",
       "steps": [
@@ -1144,11 +944,6 @@
         "files.save",
         "files.save-as"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "files-saveas-01",
       "steps": [
         {
@@ -1172,11 +967,6 @@
       "skills": [
         "files.locations"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -1195,11 +985,6 @@
         "files.move",
         "files.delete",
         "files.recycle-restore"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "files-final-01",
       "steps": [
@@ -1224,11 +1009,6 @@
       "skills": [
         "internet.address"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "internet-address-01",
       "steps": [
         {
@@ -1252,11 +1032,6 @@
       "skills": [
         "internet.link"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "internet-link-01",
       "steps": [
         {
@@ -1279,11 +1054,6 @@
       "moduleId": "internet",
       "skills": [
         "internet.tab"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "internet-tab-01",
       "steps": [
@@ -1309,11 +1079,6 @@
         "internet.back",
         "internet.forward"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "internet-history-01",
       "steps": [
         {
@@ -1336,11 +1101,6 @@
       "moduleId": "internet",
       "skills": [
         "internet.download"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "internet-download-01",
       "steps": [
@@ -1365,11 +1125,6 @@
       "skills": [
         "internet.form"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "internet-form-01",
       "steps": [
         {
@@ -1392,11 +1147,6 @@
       "moduleId": "internet",
       "skills": [
         "internet.zoom"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "internet-zoom-01",
       "steps": [
@@ -1426,11 +1176,6 @@
         "internet.forward",
         "internet.download"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "internet-final-01",
       "steps": [
         {
@@ -1454,11 +1199,6 @@
       "skills": [
         "mail.open"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "mail-open-01",
       "steps": [
         {
@@ -1481,11 +1221,6 @@
       "moduleId": "mail",
       "skills": [
         "mail.reply"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "mail-reply-01",
       "steps": [
@@ -1511,11 +1246,6 @@
         "mail.compose",
         "mail.send"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "mail-new-01",
       "steps": [
         {
@@ -1539,11 +1269,6 @@
       "skills": [
         "mail.attachment"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "mail-attach-01",
       "steps": [
         {
@@ -1566,11 +1291,6 @@
       "moduleId": "mail",
       "skills": [
         "mail.download-attachment"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "mail-download-01",
       "steps": [
@@ -1598,11 +1318,6 @@
         "mail.attachment",
         "mail.download-attachment"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "mail-final-01",
       "steps": [
         {
@@ -1626,11 +1341,6 @@
       "skills": [
         "security.password"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -1646,11 +1356,6 @@
       "skills": [
         "security.personal-data"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -1665,11 +1370,6 @@
       "moduleId": "security",
       "skills": [
         "security.phishing"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "security-phishing-01",
       "steps": [
@@ -1694,11 +1394,6 @@
       "skills": [
         "windows.resize"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "windows-resize-01",
       "steps": [
         {
@@ -1721,11 +1416,6 @@
       "moduleId": "windows",
       "skills": [
         "windows.switch-app"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "windows-switch-01",
       "steps": [
@@ -1750,11 +1440,6 @@
       "skills": [
         "windows.alt-tab"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -1769,11 +1454,6 @@
       "moduleId": "files",
       "skills": [
         "files.search"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "files-search-01",
       "steps": [
@@ -1798,11 +1478,6 @@
       "skills": [
         "internet.bookmark"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "internet-bookmark-01",
       "steps": [
         {
@@ -1825,11 +1500,6 @@
       "moduleId": "internet",
       "skills": [
         "internet.cookie"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "internet-cookie-01",
       "steps": [
@@ -1854,11 +1524,6 @@
       "skills": [
         "internet.upload"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "internet-upload-01",
       "steps": [
         {
@@ -1881,11 +1546,6 @@
       "moduleId": "mail",
       "skills": [
         "mail.forward"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "mail-forward-01",
       "steps": [
@@ -1910,11 +1570,6 @@
       "skills": [
         "windows.search"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "windows-search-01",
       "steps": [
         {
@@ -1937,11 +1592,6 @@
       "moduleId": "files",
       "skills": [
         "files.drag-drop"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "files-drag-01",
       "steps": [
@@ -1966,11 +1616,6 @@
       "skills": [
         "internet.refresh"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "internet-refresh-01",
       "steps": [
         {
@@ -1993,11 +1638,6 @@
       "moduleId": "internet",
       "skills": [
         "internet.close-tab"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "internet-close-tab-01",
       "steps": [
@@ -2022,11 +1662,6 @@
       "skills": [
         "windows.desktop-icon"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "windows-desktop-open-01",
       "steps": [
         {
@@ -2050,11 +1685,6 @@
       "skills": [
         "windows.taskbar"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2069,11 +1699,6 @@
       "moduleId": "internet",
       "skills": [
         "internet.search"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "internet-search-01",
       "steps": [
@@ -2098,11 +1723,6 @@
       "skills": [
         "security.mfa"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2117,11 +1737,6 @@
       "moduleId": "security",
       "skills": [
         "security.https"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "steps": [
         {
@@ -2138,11 +1753,6 @@
       "skills": [
         "security.updates"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2158,11 +1768,6 @@
       "skills": [
         "security.public-wifi"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2177,11 +1782,6 @@
       "moduleId": "security",
       "skills": [
         "security.support-scam"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "steps": [
         {
@@ -2200,11 +1800,6 @@
         "files.rename",
         "mail.attachment",
         "mail.send"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "final-independent-01",
       "steps": [
@@ -2231,11 +1826,6 @@
         "everyday.copy-text",
         "everyday.paste-text"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-copy-paste-01",
       "steps": [
         {
@@ -2260,11 +1850,6 @@
         "everyday.undo",
         "everyday.redo"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-undo-redo-01",
       "steps": [
         {
@@ -2288,11 +1873,6 @@
       "skills": [
         "everyday.clipboard"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2308,11 +1888,6 @@
       "skills": [
         "everyday.file-extensions"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2327,11 +1902,6 @@
       "moduleId": "everyday",
       "skills": [
         "everyday.save-location"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-save-location-01",
       "steps": [
@@ -2356,11 +1926,6 @@
       "skills": [
         "everyday.pdf"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-pdf-01",
       "steps": [
         {
@@ -2383,11 +1948,6 @@
       "moduleId": "everyday",
       "skills": [
         "everyday.screenshot"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-screenshot-01",
       "steps": [
@@ -2412,11 +1972,6 @@
       "skills": [
         "everyday.zip"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-zip-01",
       "steps": [
         {
@@ -2440,11 +1995,6 @@
       "skills": [
         "everyday.web-vs-app"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2459,11 +2009,6 @@
       "moduleId": "everyday",
       "skills": [
         "everyday.login"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "steps": [
         {
@@ -2480,11 +2025,6 @@
       "skills": [
         "everyday.password-manager"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2499,11 +2039,6 @@
       "moduleId": "everyday",
       "skills": [
         "everyday.install"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-install-01",
       "steps": [
@@ -2528,11 +2063,6 @@
       "skills": [
         "everyday.print"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-print-pdf-01",
       "steps": [
         {
@@ -2555,11 +2085,6 @@
       "moduleId": "everyday",
       "skills": [
         "everyday.cloud"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-cloud-01",
       "steps": [
@@ -2584,11 +2109,6 @@
       "skills": [
         "everyday.dialogs"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-dialog-01",
       "steps": [
         {
@@ -2612,11 +2132,6 @@
       "skills": [
         "everyday.notifications"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2631,11 +2146,6 @@
       "moduleId": "everyday",
       "skills": [
         "everyday.recent"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "steps": [
         {
@@ -2652,11 +2162,6 @@
       "skills": [
         "everyday.select-text-methods"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2671,11 +2176,6 @@
       "moduleId": "everyday",
       "skills": [
         "everyday.pin-taskbar"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-pin-taskbar-01",
       "steps": [
@@ -2700,11 +2200,6 @@
       "skills": [
         "everyday.snap"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-snap-01",
       "steps": [
         {
@@ -2727,11 +2222,6 @@
       "moduleId": "devices",
       "skills": [
         "devices.usb"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-usb-01",
       "steps": [
@@ -2756,11 +2246,6 @@
       "skills": [
         "devices.ports"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2775,11 +2260,6 @@
       "moduleId": "devices",
       "skills": [
         "devices.wifi"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-wifi-01",
       "steps": [
@@ -2803,11 +2283,6 @@
       "moduleId": "devices",
       "skills": [
         "devices.bluetooth"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-bluetooth-01",
       "steps": [
@@ -2834,11 +2309,6 @@
         "devices.microphone",
         "devices.camera"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-audio-camera-01",
       "steps": [
         {
@@ -2862,11 +2332,6 @@
       "skills": [
         "devices.printer"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2881,11 +2346,6 @@
       "moduleId": "devices",
       "skills": [
         "devices.battery"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "steps": [
         {
@@ -2902,11 +2362,6 @@
       "skills": [
         "devices.display"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -2921,11 +2376,6 @@
       "moduleId": "troubleshooting",
       "skills": [
         "troubleshooting.error"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-error-01",
       "steps": [
@@ -2950,11 +2400,6 @@
       "skills": [
         "troubleshooting.restart"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "scenarioId": "everyday-restart-01",
       "steps": [
         {
@@ -2977,11 +2422,6 @@
       "moduleId": "troubleshooting",
       "skills": [
         "troubleshooting.frozen-app"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-recovery-01",
       "steps": [
@@ -3006,11 +2446,6 @@
       "skills": [
         "troubleshooting.task-manager"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -3025,11 +2460,6 @@
       "moduleId": "troubleshooting",
       "skills": [
         "troubleshooting.internet"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "steps": [
         {
@@ -3046,11 +2476,6 @@
       "skills": [
         "troubleshooting.sound"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -3066,11 +2491,6 @@
       "skills": [
         "troubleshooting.storage"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -3085,11 +2505,6 @@
       "moduleId": "everyday",
       "skills": [
         "everyday.link-actions"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "scenarioId": "everyday-link-actions-01",
       "steps": [
@@ -3114,11 +2529,6 @@
       "skills": [
         "devices.hotspot"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -3134,11 +2544,6 @@
       "skills": [
         "troubleshooting.support-info"
       ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
-      ],
       "steps": [
         {
           "type": "instruction"
@@ -3153,11 +2558,6 @@
       "moduleId": "troubleshooting",
       "skills": [
         "troubleshooting.backup"
-      ],
-      "audience": [
-        "child",
-        "standard",
-        "fast"
       ],
       "steps": [
         {
