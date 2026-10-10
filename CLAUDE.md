@@ -8,6 +8,7 @@ The practice computer, FakeWin, is a faithful Windows 11 simulation that runs en
 - docs/39-I18N-AND-ARCHITECTURE-2026.md – file layout, i18n, how to write lessons
 - docs/37-ACCESSIBILITY-AND-LEGAL.md – WCAG 2.2 AA target, legal status, privacy, Windows deviations
 - docs/38-ASSETS-AND-LICENSES.md – icon/font/logo sources and licences
+- docs/41-TEACHING-MODEL.md – audience × help level × explanation level, text variants, hint ladder, adaptive help
 - docs/14-DEFINITION-OF-DONE.md
 
 ## Rules

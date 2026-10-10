@@ -99,7 +99,7 @@ Datorskolan har inga konton, ingen statistik, inga cookies och ingen spårning.
 
 | Nyckel | Innehåll | Varför | Raderas med |
 |---|---|---|---|
-| `datorskolan.progress.v1` | Klara lektioner, vilken lektion och vilket steg som pågår, färdighetsnivåer, vald nivå (Vuxen/Barn/Snabb), en logg över övningshändelser (högst 500 poster) | För att kunna fortsätta där du var | Knappen **Börja om** eller rensning av webbplatsdata |
+| `datorskolan.progress.v1` | Klara lektioner, vilken lektion och vilket steg som pågår, färdighetsnivåer, hur eleven vill lära sig (läge Vuxen/Barn, hjälp Guidad/Normal/Självständig, förklaring Utförlig/Normal/Kort), en logg över övningshändelser (högst 500 poster) | För att kunna fortsätta där du var och få undervisningen anpassad | Framstegen: knappen **Börja om**. Inställningarna för lärandet sparas medvetet vid Börja om, precis som språket. Allt: rensning av webbplatsdata. |
 | `datorskolan.fakewin.shell.v1` | Vilka appar som är fästa på Start och i aktivitetsfältet | Så att egna val i övningsdatorn ligger kvar | **Börja om** |
 | `datorskolan.locale.v1` | Valt språk (`sv`/`en`) | Så att språket ligger kvar efter omladdning | Rensning av webbplatsdata (sparas medvetet vid Börja om) |
 

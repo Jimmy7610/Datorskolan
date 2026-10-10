@@ -22,7 +22,8 @@ src/course.js               Slår ihop struktur + texter för valt språk.
 src/vfs.js                  Virtuellt filsystem (ingen riktig fil rörs).
 src/scenario-engine.js      Laddar scenarier och kontrollerar mål mot händelser.
 src/lesson-engine.js        Lektionsflöde, ledtrådar, feedback (som språknycklar).
-src/progress-store.js       Framsteg i localStorage, inklusive pågående lektion och steg.
+src/pedagogy.js             Undervisningsmodellen: målgrupp, hjälpnivå, förklaringsnivå, textvarianter, ledtrådsstege.
+src/progress-store.js       Framsteg i localStorage, inklusive pågående lektion, steg och inställningar för lärandet.
 
 src/win11-ui.js             Ikoner, glyfer, DOM-hjälparen h(), fästa appar.
 src/app.js                  Övningsdatorns kärna: state, händelser, fönsterhanterare, skrivbord,
@@ -73,8 +74,12 @@ src/product-shell.js        Webbplatsen runt övningsdatorn: flikar, språkval, 
 
 1. Lägg till strukturen i `src/course/lessons.js` (och vid behov ett scenario i `src/course/scenarios.js`).
 2. Lägg till texten under samma id i **varje** `locales/<språk>/course.js`: `title`, `summary`, en post per steg (`title`, `text`, och exakt fem `hints` för övningssteg) samt `detail` (`what`, `recognize`, `use`, `example`, gärna `steps`, `everyday`, `mistakes`).
-3. Ledtrådarna trappas upp: 1 var, 2 vilken kontroll, 3 hur, 4 "den gula ramen visar …" (`visualTarget` markeras från nivå 4), 5 hela vägen.
-4. Använd stabila `data-ui`-väljare i `visualTarget` (till exempel `[data-ui='explorer-new']`), aldrig översatta texter eller `aria-label`.
+3. Skriv varianterna som undervisningsmodellen kräver (se `41-TEACHING-MODEL.md`):
+   - introduktionen: `default`, `short` och `child`;
+   - övningen: `default` (Normal), `guided`, `independent` (bara målet) och `child.guided`, plus en allmän första ledtråd `nudge`.
+   `tests/i18n-completeness-smoke.js` och `tests/pedagogy-smoke.js` visar vad som saknas.
+4. Ledtrådarna trappas upp: (0 `nudge`, allmän), 1 var, 2 vilken kontroll, 3 hur, 4 "den gula ramen visar …", 5 hela vägen. Hjälpnivån bestämmer var eleven börjar på stegen och när den gula ramen visas.
+5. Använd stabila `data-ui`-väljare i `visualTarget` (till exempel `[data-ui='explorer-new']`), aldrig översatta texter eller `aria-label`.
 
 ## Tester
 
