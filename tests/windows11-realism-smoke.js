@@ -25,8 +25,26 @@ Object.keys(ui.fluentIcons).forEach(function (name) {
   assert(/alt="" aria-hidden="true"/.test(markup), "Icons are decorative and must be hidden from assistive tech: " + name);
 });
 
-assert(ui.CHROME_LOGO_URL === "https://www.google.com/chrome/static/images/chrome-logo-m100.svg", "Chrome logo must use Google's official asset URL");
-assert(ui.icon("chrome", 24).indexOf("assets/icons/fluent/") < 0, "Chrome must not pretend to be a Microsoft Fluent icon");
+// The practice browser is neutral: no third-party logo, nothing loaded from Google or any other host (docs/38).
+assert(!("CHROME_LOGO_URL" in ui), "No browser brand logo may be referenced");
+assert(ui.icon("browser", 24).indexOf("fluent-color/globe-small.svg") >= 0, "The practice browser uses the neutral Fluent Globe icon");
+(function noExternalAssets() {
+  const files = ["index.html", "styles/site.css", "styles/fakewin.css"].concat(
+    fs.readdirSync(path.join(ROOT, "src")).filter(function (n) { return /\.js$/.test(n); }).map(function (n) { return "src/" + n; }),
+    fs.readdirSync(path.join(ROOT, "locales")).reduce(function (all, loc) {
+      return all.concat(fs.readdirSync(path.join(ROOT, "locales", loc)).map(function (n) { return "locales/" + loc + "/" + n; }));
+    }, [])
+  );
+  files.forEach(function (file) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert(!/google\.com|gstatic\.com|googleapis\.com|googleusercontent\.com/i.test(text), file + " references a Google resource");
+    // Runtime assets (images, scripts, stylesheets, fonts) must come from this site.
+    const external = text.match(/(?:src|href)\s*=\s*["']https?:\/\/[^"']+|url\(\s*["']?https?:\/\/[^)"']+/gi) || [];
+    assert(!external.length, file + " loads an external asset: " + external.join(", "));
+  });
+  const appsText = fs.readFileSync(path.join(ROOT, "locales/sv/ui.js"), "utf8") + fs.readFileSync(path.join(ROOT, "locales/en/ui.js"), "utf8");
+  assert(!/"app\.browser":\s*"[^"]*Chrome/.test(appsText), "The practice browser must not be called Chrome");
+})();
 assert(fs.existsSync(path.join(ROOT, "assets/icons/fluent/LICENSE")), "Fluent license missing");
 const source = fs.readFileSync(path.join(ROOT, "assets/icons/fluent/SOURCE.md"), "utf8");
 assert(source.indexOf("microsoft/fluentui-system-icons") >= 0 && source.indexOf("08130c218d6bb87767d6d5616d9afcea651146c7") >= 0, "Fluent provenance not documented");
@@ -118,7 +136,7 @@ assert(fs.readFileSync(path.join(ROOT, "src/installer-app.js"), "utf8").indexOf(
 assert(fs.readFileSync(path.join(ROOT, "src/pdf-app.js"), "utf8").indexOf("print.saveOutputAs") >= 0, "Print to PDF must ask where to save");
 
 const shell = ui.defaultShellState();
-assert(shell.pinnedTaskbar.indexOf("explorer") >= 0 && shell.pinnedTaskbar.indexOf("browser") >= 0, "Explorer and Chrome should be pinned by default");
+assert(shell.pinnedTaskbar.indexOf("explorer") >= 0 && shell.pinnedTaskbar.indexOf("browser") >= 0, "Explorer and the browser should be pinned by default");
 shell.pinnedTaskbar = ["explorer"];
 ui.saveShellState(shell, global.localStorage);
 assert(ui.loadShellState(global.localStorage).pinnedTaskbar.join() === "explorer", "Shell state did not persist");

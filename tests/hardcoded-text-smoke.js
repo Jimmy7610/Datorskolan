@@ -17,7 +17,7 @@ const files = fs.readdirSync(srcDir).filter(function (n) { return /\.js$/.test(n
 
 // Proper names, product names and keyboard key names may appear literally.
 const allowed = [
-  /^Datorskolan$/, /^Google Chrome$/, /^Microsoft Print to PDF$/, /^Google LLC$/, /^Microsoft Corporation$/,
+  /^Datorskolan$/, /^Microsoft Print to PDF$/, /^Microsoft Corporation$/,
   /^UTF-8$/, /^Windows \(CRLF\)$/, /^Svenska$/, /^English$/, /^Språk \/ Language$/, /^D$/, /^\d+$/,
   /^(Shift|Caps Lock|Backspace|Ctrl|Alt|Tab|Esc|F2|F5)$/, /^Alt\+Enter$/, /^Ctrl\+.+$/, /^[↑↓←→]$/
 ];

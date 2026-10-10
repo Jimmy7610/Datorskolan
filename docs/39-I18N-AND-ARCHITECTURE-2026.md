@@ -30,7 +30,7 @@ src/app.js                  Övningsdatorns kärna: state, händelser, fönsterh
                             aktivitetsfält, Start, snabbinställningar, kalender, menyer, dialoger.
 src/explorer-app.js         Utforskaren.
 src/basic-apps.js           Kalkylator, Anteckningar (+ dialogerna Spara som/Öppna), Foton.
-src/chrome-app.js           Google Chrome (simulerad övningswebb).
+src/chrome-app.js           Webbläsaren (neutral, Chrome-lik layout, simulerad övningswebb).
 src/settings-app.js         Inställningar (+ Wi‑Fi-listan som även används i snabbinställningarna).
 src/advanced-apps.js        E-post och tangentbordsövningen.
 src/pdf-app.js              PDF-läsare och utskriftsdialogen.

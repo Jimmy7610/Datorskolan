@@ -1174,7 +1174,7 @@
 .photos-thumb.is-current{border-color:#60cdff}
 .photos-thumb .photo-art{width:100%}
 
-/* ---------- Google Chrome ---------- */
+/* ---------- Web browser (neutral, Chrome-like layout) ---------- */
 
 .chrome{display:grid;grid-template-rows:auto auto auto minmax(0,1fr);position:relative;background:#fff;font-family:system-ui,"Segoe UI",Roboto,Arial,sans-serif}
 

@@ -352,7 +352,7 @@
         tabbed: true, tabTitle: function () { return window.DatorskolanBasicApps.notepadDocName(ctx); }, tabDirty: function () { return !!state.notepadDirty; } },
       photos: { titleKey: "app.photos", iconKey: "photos", w: 720, h: 500, render: function () { return window.DatorskolanBasicApps.renderPhotos(ctx); } },
       settings: { titleKey: "app.settings", iconKey: "settings", w: 960, h: 640, render: function () { return window.DatorskolanSettingsApp.render(ctx); } },
-      browser: { titleKey: "app.browser", iconKey: "chrome", w: 1000, h: 660, chromeless: true, render: function () { return window.DatorskolanChromeApp.render(ctx); } },
+      browser: { titleKey: "app.browser", iconKey: "browser", w: 1000, h: 660, chromeless: true, render: function () { return window.DatorskolanChromeApp.render(ctx); } },
       mail: { titleKey: "app.mail", iconKey: "mail", w: 960, h: 640, render: function () { return window.DatorskolanAdvancedApps.renderMail(ctx); } },
       snipping: { titleKey: "app.snipping", iconKey: "snipping", w: 760, h: 540, render: function () { return window.DatorskolanSnippingApp.render(ctx); } },
       pdf: { titleKey: "app.pdf", iconKey: "pdf", w: 900, h: 640, render: function () { return window.DatorskolanPdfApp.render(ctx); }, title: function () { return window.DatorskolanPdfApp.windowTitle(ctx); } },
@@ -683,7 +683,7 @@
 
         var handle;
         if (app.chromeless) {
-          // Apps like Chrome draw their own title bar; they provide a [data-titlebar] element and a [data-caption-slot].
+          // Apps like the web browser draw their own title bar; they provide a [data-titlebar] element and a [data-caption-slot].
           handle = content.querySelector("[data-titlebar]") || body;
           var slot = content.querySelector("[data-caption-slot]");
           if (slot) slot.appendChild(captionButtons(win));
@@ -1086,7 +1086,9 @@
         var normalized = I18n.lower(query);
         return startApps().filter(function (id) {
           var title = I18n.lower(appTitle(id));
-          return title.indexOf(normalized) >= 0 || title.split(/\s+/).some(function (word) { return word.indexOf(normalized) === 0; });
+          // Extra search words, e.g. "chrome" or "edge" also finds the neutral practice browser.
+          var keywords = I18n.has("search.keywords." + id) ? I18n.lower(t("search.keywords." + id)).split(/\s+/) : [];
+          return title.indexOf(normalized) >= 0 || title.split(/\s+/).concat(keywords).some(function (word) { return word.indexOf(normalized) === 0; });
         });
       }
 

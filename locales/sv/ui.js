@@ -22,7 +22,7 @@
 
     /* ---------- Webbplatsen ---------- */
     "meta.title": "Datorskolan – lär dig Windows genom att göra det",
-    "meta.description": "Lär dig Windows från grunden i 120 interaktiva lektioner. Öva i en trygg kopia av Windows 11 med Utforskaren, Chrome, Inställningar, filer, internet och vanliga datorproblem.",
+    "meta.description": "Lär dig Windows från grunden i 120 interaktiva lektioner. Öva i en trygg kopia av Windows 11 med Utforskaren, webbläsaren, Inställningar, filer, internet och vanliga datorproblem.",
 
     "landing.skipToMain": "Hoppa till huvudinnehållet",
     "landing.skipToSchool": "Hoppa till Datorskolan",
@@ -43,7 +43,7 @@
     "landing.overview.eyebrow": "Interaktiv Windows-träning i webbläsaren",
     "landing.overview.titleA": "Lär dig datorn.",
     "landing.overview.titleB": "Genom att använda den.",
-    "landing.overview.lead": "Från första musklicket till filer, Chrome, Wi‑Fi, PDF och felsökning. Du övar i en trygg kopia av Windows 11 där ingenting kan gå sönder.",
+    "landing.overview.lead": "Från första musklicket till filer, webben, Wi‑Fi, PDF och felsökning. Du övar i en trygg kopia av Windows 11 där ingenting kan gå sönder.",
     "landing.overview.seeCourse": "Se kursen",
     "landing.fact.lessons": "lektioner",
     "landing.fact.modules": "kursområden",
@@ -104,7 +104,7 @@
     "privacy.item.noAccount": "Du behöver inte logga in eller lämna några personuppgifter.",
     "privacy.item.noTracking": "Vi använder inga cookies, ingen statistik och ingen spårning.",
     "privacy.item.localStorage": "Dina framsteg, ditt språkval, hur du vill lära dig och dina val i övningsdatorn sparas i webbläsarens lokala lagring (localStorage) på den här enheten. De skickas inte till någon server.",
-    "privacy.item.thirdParty": "Allt utom Chrome-loggan kommer från Datorskolans egen webbplats. Chrome-loggan visas direkt från Google, så Google ser din IP-adress, precis som vid ett vanligt webbesök.",
+    "privacy.item.thirdParty": "Allt – texter, typsnitt, ikoner och bilder – kommer från Datorskolans egen webbplats. Inget hämtas från andra tjänster.",
     "privacy.item.delete": "Dina framsteg raderar du med knappen ”Börja om”. Allt, även språk och inställningar, raderar du genom att rensa webbplatsdata i webbläsaren.",
 
     /* ---------- Simulatorn: gemensamt ---------- */
@@ -117,7 +117,8 @@
     "app.notepad": "Anteckningar",
     "app.photos": "Foton",
     "app.settings": "Inställningar",
-    "app.browser": "Google Chrome",
+    "app.browser": "Webbläsare",
+    "search.keywords.browser": "webben internet chrome edge firefox",
     "app.mail": "E-post",
     "app.snipping": "Skärmklippverktyget",
     "app.pdf": "PDF-läsare",

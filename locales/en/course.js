@@ -228,9 +228,9 @@
           {
             "title": "The computer is not the internet",
             "text": {
-              "default": "The computer is the device itself. The internet is the network that connects computers all over the world. The web browser – for example Google Chrome – is the program that uses the internet to show web pages.",
+              "default": "The computer is the device itself. The internet is the network that connects computers all over the world. The web browser – for example Microsoft Edge or Google Chrome – is the program that uses the internet to show web pages.",
               "short": "The computer is the device, the internet is the network and the browser shows web pages.",
-              "child": "The computer is the machine in front of you. The internet is like a huge network of roads between computers all over the world. The web browser, for example Google Chrome, is the program you use to travel along those roads and look at web pages."
+              "child": "The computer is the machine in front of you. The internet is like a huge network of roads between computers all over the world. The web browser, for example Microsoft Edge or Google Chrome, is the program you use to travel along those roads and look at web pages."
             }
           },
           {
@@ -242,7 +242,7 @@
           "what": "The computer, the internet and the web browser are three different things. The computer is the device. The internet is the network. The web browser is the program that shows web pages.",
           "recognize": "The web browser has tabs and an address bar at the top. The internet itself has no icon that you work in.",
           "use": "The difference matters when someone says “the internet isn't working” or asks you to open the web browser.",
-          "example": "You start Chrome on the computer. Chrome uses the internet to open a web page."
+          "example": "You start the browser on the computer. The browser uses the internet to open a web page."
         }
       },
       "mouse-001-move": {
@@ -2118,13 +2118,13 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Click in the address bar at the top of Chrome, type datorskolan.example/internet and press Enter.",
-              "guided": "Look at the top of the Chrome window. To the right of the arrows there is a long, rounded box – that is the address bar. Click in it once. The text already there becomes selected, so what you type replaces it. Type datorskolan.example/internet and press the Enter key. The page changes.",
+              "default": "Click in the address bar at the top of the browser, type datorskolan.example/internet and press Enter.",
+              "guided": "Look at the top of the browser window. To the right of the arrows there is a long, rounded box – that is the address bar. Click in it once. The text already there becomes selected, so what you type replaces it. Type datorskolan.example/internet and press the Enter key. The page changes.",
               "independent": "Go to datorskolan.example/internet.",
-              "child.guided": "Click in the long box at the top of Chrome. Type datorskolan.example/internet and press Enter. Off you go to that page!"
+              "child.guided": "Click in the long box at the top of the browser. Type datorskolan.example/internet and press Enter. Off you go to that page!"
             },
             "hints": [
-              "The address bar is at the top of Chrome, next to the arrows.",
+              "The address bar is at the top of the browser, next to the arrows.",
               "Click in the address bar. What was there becomes selected.",
               "Type datorskolan.example/internet and press Enter.",
               "The yellow frame shows the address bar.",
@@ -2166,12 +2166,12 @@
             "title": "Your turn",
             "text": {
               "default": "Click a link or one of the round shortcuts on the web page.",
-              "guided": "Look at the large white area in Chrome – that is the web page itself. Move the pointer slowly over the round shortcuts in the middle of the page. Notice that the pointer turns into a hand – that means you are pointing at a link. Click once, for example on What is the internet?. The page changes and the address in the address bar changes.",
-              "independent": "Follow a link on the page in Chrome.",
+              "guided": "Look at the large white area in the browser – that is the web page itself. Move the pointer slowly over the round shortcuts in the middle of the page. Notice that the pointer turns into a hand – that means you are pointing at a link. Click once, for example on What is the internet?. The page changes and the address in the address bar changes.",
+              "independent": "Follow a link on the page in the browser.",
               "child.guided": "Move the arrow over the round pictures in the middle of the page. Does the arrow turn into a hand? Then it's a link! Click What is the internet? and see what happens."
             },
             "hints": [
-              "Look at the large white area in Chrome – the web page itself.",
+              "Look at the large white area in the browser – the web page itself.",
               "Point at the round shortcuts or at blue text. The pointer becomes a hand over a link.",
               "Click once on, for example, What is the internet?",
               "The yellow frame shows the web page.",
@@ -2203,21 +2203,21 @@
           {
             "title": "Tabs",
             "text": {
-              "default": "Tabs let you have several web pages open in the same window. The tabs are at the top of Chrome.",
+              "default": "Tabs let you have several web pages open in the same window. The tabs are at the top of the browser.",
               "short": "Tabs let you have several pages open in the same window.",
-              "child": "Tabs are like the dividers in a ring binder. You can have several web pages open at once and flip between them. The tabs are at the top of Chrome."
+              "child": "Tabs are like the dividers in a ring binder. You can have several web pages open at once and flip between them. The tabs are at the top of the browser."
             }
           },
           {
             "title": "Your turn",
             "text": {
-              "default": "Open a new tab with the plus button to the right of the tabs at the top of Chrome.",
-              "guided": "Look at the top of the Chrome window. That is where the tabs are, one for each open page, with the page's name. To the right of the last tab there is a small plus sign. Click the plus sign once. A new, empty tab opens.",
+              "default": "Open a new tab with the plus button to the right of the tabs at the top of the browser.",
+              "guided": "Look at the top of the browser window. That is where the tabs are, one for each open page, with the page's name. To the right of the last tab there is a small plus sign. Click the plus sign once. A new, empty tab opens.",
               "independent": "Open a new tab.",
-              "child.guided": "At the top of Chrome you can see the tabs. Next to the last one there is a small plus. Click the plus and you get a new tab!"
+              "child.guided": "At the top of the browser you can see the tabs. Next to the last one there is a small plus. Click the plus and you get a new tab!"
             },
             "hints": [
-              "Look at the top of the Chrome window where the tabs are.",
+              "Look at the top of the browser window where the tabs are.",
               "To the right of the last tab there is a plus sign.",
               "Click the plus sign once.",
               "The yellow frame shows the plus button.",
@@ -2253,7 +2253,7 @@
             "title": "Your turn",
             "text": {
               "default": "Open a page using a shortcut. Then click the Back arrow and then the Forward arrow at the top left.",
-              "guided": "Start by clicking one of the round shortcuts, for example What is the internet?, so that you change page. Then look at the top left of Chrome. There are two arrows. Click the arrow pointing left – Back. You return to the previous page. Then click the arrow pointing right – Forward.",
+              "guided": "Start by clicking one of the round shortcuts, for example What is the internet?, so that you change page. Then look at the top left of the browser. There are two arrows. Click the arrow pointing left – Back. You return to the previous page. Then click the arrow pointing right – Forward.",
               "independent": "Go back to the previous page and then forward again.",
               "child.guided": "Click What is the internet? to change page. Then click the arrow pointing left at the top – you are back! Click the arrow pointing right to go forward again."
             },
@@ -2285,21 +2285,21 @@
           {
             "title": "Downloading",
             "text": {
-              "default": "Downloading means a file from the web is saved on your computer. Chrome saves it in the Downloads folder and shows a download icon at the top right.",
+              "default": "Downloading means a file from the web is saved on your computer. The browser saves it in the Downloads folder and shows a download icon at the top right.",
               "short": "Downloaded files are saved in Downloads.",
-              "child": "Downloading means fetching a file from the internet and keeping it on your own computer. Chrome puts it in the Downloads folder, so you know where it is."
+              "child": "Downloading means fetching a file from the internet and keeping it on your own computer. The browser puts it in the Downloads folder, so you know where it is."
             }
           },
           {
             "title": "Your turn",
             "text": {
               "default": "Open the shortcut Download a guide and click the button Download guide.txt.",
-              "guided": "On Chrome's start page there are round shortcuts in the middle of the page. Click the one called Download a guide. A new page opens. Click the blue button Download guide.txt. A Recent downloads box appears at the top right of Chrome. The file ends up in the Downloads folder.",
+              "guided": "On the browser's start page there are round shortcuts in the middle of the page. Click the one called Download a guide. A new page opens. Click the blue button Download guide.txt. A Recent downloads box appears at the top right of the browser. The file ends up in the Downloads folder.",
               "independent": "Go to the page Download a guide and download guide.txt.",
               "child.guided": "Click the shortcut Download a guide. Then click the blue button Download guide.txt. Now the file is fetched to your computer!"
             },
             "hints": [
-              "Start on Chrome's start page with the round shortcuts.",
+              "Start on the browser's start page with the round shortcuts.",
               "Click the shortcut Download a guide.",
               "Click the blue button Download guide.txt.",
               "The yellow frame shows the web page.",
@@ -2335,12 +2335,12 @@
             "title": "Your turn",
             "text": {
               "default": "Open Contact form, type a name, tick the box I have read the information and click Send.",
-              "guided": "Click the shortcut Contact form on Chrome's start page. The form opens. Click in the Name field and type a name. Then find the little square next to I have read the information and click it, so a tick appears. Finally click the Send button at the bottom. If something is missing, a red explanation appears by the field.",
+              "guided": "Click the shortcut Contact form on the browser's start page. The form opens. Click in the Name field and type a name. Then find the little square next to I have read the information and click it, so a tick appears. Finally click the Send button at the bottom. If something is missing, a red explanation appears by the field.",
               "independent": "Send the contact form with your name filled in.",
               "child.guided": "Open Contact form. Type a name in the Name box. Click the little square so it gets a tick. Click Send!"
             },
             "hints": [
-              "Click the shortcut Contact form on Chrome's start page.",
+              "Click the shortcut Contact form on the browser's start page.",
               "Click in the Name field and type a name.",
               "Tick the box I have read the information.",
               "The yellow frame shows the form.",
@@ -2375,14 +2375,14 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Open Chrome's menu with the three dots and choose Zoom in or Zoom out.",
-              "guided": "Look at the top right of the Chrome window. There is a button with three dots on top of each other. Click it. A menu opens. Find the Zoom row and click the plus sign to zoom in, or the minus sign to zoom out. The text on the page gets bigger or smaller.",
+              "default": "Open the browser's menu with the three dots and choose Zoom in or Zoom out.",
+              "guided": "Look at the top right of the browser window. There is a button with three dots on top of each other. Click it. A menu opens. Find the Zoom row and click the plus sign to zoom in, or the minus sign to zoom out. The text on the page gets bigger or smaller.",
               "independent": "Zoom the web page in or out.",
               "child.guided": "Click the three dots at the top right. Find Zoom in the menu and click plus. Now everything is bigger!"
             },
             "hints": [
-              "At the top right of Chrome there is a button with three dots.",
-              "Click the three dots to open Chrome's menu.",
+              "At the top right of the browser there is a button with three dots.",
+              "Click the three dots to open the browser's menu.",
               "Choose Zoom in or Zoom out.",
               "The yellow frame shows the menu button.",
               "⋮ → Zoom in. Quicker: hold Ctrl and press +. Ctrl+0 resets."
@@ -2439,7 +2439,7 @@
           "what": "This task combines the browser's most important parts.",
           "recognize": "The browser has tabs at the top, arrows for Back and Forward, an address bar and a large area where the web page is shown.",
           "use": "You use the browser to visit web pages, search, follow links and download files.",
-          "example": "Chrome, Edge and Firefox are common web browsers. Here you practise in a copy of Chrome."
+          "example": "Edge, Chrome and Firefox are common web browsers. Here you practise in a practice browser that works the same way."
         }
       },
       "internet-009-bookmark": {
@@ -2478,7 +2478,7 @@
         ],
         "detail": {
           "what": "A bookmark saves the address of a web page so you can easily find your way back.",
-          "recognize": "In Chrome it is a star at the far right of the address bar. A blue star means the page is already bookmarked.",
+          "recognize": "In the browser it is a star at the far right of the address bar. A blue star means the page is already bookmarked.",
           "use": "Bookmarks suit pages you visit often.",
           "example": "Bookmark your bank's real address so you don't need to search for it – and you are less likely to land on a fake page."
         }
@@ -2498,9 +2498,9 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Read the cookie notice at the bottom of Chrome's start page and click Accept all.",
-              "guided": "Look at the bottom of Chrome's start page. There is a box about cookies. Read the text in it – it explains what the site wants to store. Then click the Accept all button in the box. On real websites you could just as well choose Reject if you don't want to share more than necessary.",
-              "independent": "Accept the cookie notice on Chrome's start page.",
+              "default": "Read the cookie notice at the bottom of the browser's start page and click Accept all.",
+              "guided": "Look at the bottom of the browser's start page. There is a box about cookies. Read the text in it – it explains what the site wants to store. Then click the Accept all button in the box. On real websites you could just as well choose Reject if you don't want to share more than necessary.",
+              "independent": "Accept the cookie notice on the browser's start page.",
               "child.guided": "At the bottom of the page there is a box about cookies. Read it first. Then click Accept all."
             },
             "hints": [
@@ -2540,12 +2540,12 @@
             "title": "Your turn",
             "text": {
               "default": "Open Contact form, click Choose file and choose profile.txt in Documents.",
-              "guided": "Click the shortcut Contact form on Chrome's start page. Find the Choose file button in the form and click it. A box called Open appears. Click Documents on the left of the box. Then click the file profile.txt and the Open button. The file's name appears next to the Choose file button.",
+              "guided": "Click the shortcut Contact form on the browser's start page. Find the Choose file button in the form and click it. A box called Open appears. Click Documents on the left of the box. Then click the file profile.txt and the Open button. The file's name appears next to the Choose file button.",
               "independent": "Attach profile.txt in the contact form.",
               "child.guided": "Open Contact form and click Choose file. In the box that appears, click Documents, then profile.txt and finally Open."
             },
             "hints": [
-              "Click the shortcut Contact form on Chrome's start page.",
+              "Click the shortcut Contact form on the browser's start page.",
               "Click the Choose file button.",
               "The Open box appears. The file profile.txt is in Documents.",
               "The yellow frame shows the form.",
@@ -2580,13 +2580,13 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Click the Reload button – the round arrow at the top left of Chrome.",
-              "guided": "Look at the top left of Chrome. That is where the Back and Forward arrows are. Just to the right of them is a button that looks like an arrow in a circle – that is Reload. Click it once. The page is fetched again.",
+              "default": "Click the Reload button – the round arrow at the top left of the browser.",
+              "guided": "Look at the top left of the browser. That is where the Back and Forward arrows are. Just to the right of them is a button that looks like an arrow in a circle – that is Reload. Click it once. The page is fetched again.",
               "independent": "Reload the web page.",
-              "child.guided": "At the top left of Chrome there is a round arrow. Click it and the page reloads!"
+              "child.guided": "At the top left of the browser there is a round arrow. Click it and the page reloads!"
             },
             "hints": [
-              "Look at the top left of Chrome, next to the arrows.",
+              "Look at the top left of the browser, next to the arrows.",
               "The button looks like a round arrow.",
               "Click it once.",
               "The yellow frame shows the button.",
@@ -2622,7 +2622,7 @@
             "title": "Your turn",
             "text": {
               "default": "Open a new tab with the plus button and close it with the small cross on the tab.",
-              "guided": "Click the plus sign to the right of the tabs at the top of Chrome, and a new tab opens. Look at the new tab: to the right of its name there is a small cross. Click the small cross. Don't click the big cross at the top right – that closes the whole of Chrome.",
+              "guided": "Click the plus sign to the right of the tabs at the top of the browser, and a new tab opens. Look at the new tab: to the right of its name there is a small cross. Click the small cross. Don't click the big cross at the top right – that closes the whole browser.",
               "independent": "Open a new tab and then close just that tab.",
               "child.guided": "Click plus for a new tab. The new tab has a small cross. Click the small cross – not the big one in the corner!"
             },
@@ -2662,8 +2662,8 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Click in the search box in the middle of Chrome's start page, type a few words and press Enter.",
-              "guided": "Look at the middle of Chrome's start page. There is a big, rounded box – that is the search box. Click in it. Type a few words about what you want to know, for example safe passwords. Then press Enter. A list of search results appears, and each row is a link.",
+              "default": "Click in the search box in the middle of the browser's start page, type a few words and press Enter.",
+              "guided": "Look at the middle of the browser's start page. There is a big, rounded box – that is the search box. Click in it. Type a few words about what you want to know, for example safe passwords. Then press Enter. A list of search results appears, and each row is a link.",
               "independent": "Search the web for something you wonder about.",
               "child.guided": "Click in the big rounded box in the middle of the page. Type something you wonder about, for example safe passwords, and press Enter."
             },
@@ -3192,20 +3192,20 @@
             "title": "The independence test",
             "text": {
               "default": "Now you combine the web browser, File Explorer and Mail – like a real task where you choose the programs and the order yourself.",
-              "short": "Chrome, File Explorer and Mail in one real task.",
+              "short": "The browser, File Explorer and Mail in one real task.",
               "child": "This is the big final test! You use three programs one after another, just like when you do something for real. You decide how to do it."
             }
           },
           {
             "title": "Your turn",
             "text": {
-              "default": "Download guide.txt in Chrome. Rename it to guide-done.txt in Downloads. Then send it as an attachment in a new email.",
-              "guided": "Take one program at a time. Open Chrome and click the shortcut Download a guide, then Download guide.txt. Open File Explorer and click Downloads on the left. Select guide.txt, click Rename and type guide-done.txt. Open Mail from Start and click New mail. Click the paper clip, choose Downloads and guide-done.txt. Fill in To, for example anna@example.com, a subject and some text, and click Send.",
-              "independent": "Download guide.txt in Chrome. Rename the file to guide-done.txt in File Explorer. Then send it as an attachment in a new email.",
-              "child.guided": "Three programs one after another: 1. Chrome – download guide.txt. 2. File Explorer – rename the file in Downloads to guide-done.txt. 3. Mail – send the file with a new email. You have done every part before!"
+              "default": "Download guide.txt in the browser. Rename it to guide-done.txt in Downloads. Then send it as an attachment in a new email.",
+              "guided": "Take one program at a time. Open the browser and click the shortcut Download a guide, then Download guide.txt. Open File Explorer and click Downloads on the left. Select guide.txt, click Rename and type guide-done.txt. Open Mail from Start and click New mail. Click the paper clip, choose Downloads and guide-done.txt. Fill in To, for example anna@example.com, a subject and some text, and click Send.",
+              "independent": "Download guide.txt in the browser. Rename the file to guide-done.txt in File Explorer. Then send it as an attachment in a new email.",
+              "child.guided": "Three programs one after another: 1. The browser – download guide.txt. 2. File Explorer – rename the file in Downloads to guide-done.txt. 3. Mail – send the file with a new email. You have done every part before!"
             },
             "hints": [
-              "Start in Chrome and find the page where the guide is downloaded.",
+              "Start in the browser and find the page where the guide is downloaded.",
               "The file ends up in Downloads. Open File Explorer and go there.",
               "Rename the file to guide-done.txt before you continue.",
               "Open Mail from Start and click New mail.",
@@ -3240,13 +3240,13 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Open What is the internet? in Chrome, select the phone line and press Ctrl+C. Then click in Notepad and press Ctrl+V.",
-              "guided": "In Chrome, click the shortcut What is the internet?. Find the line with a phone number. Press the left mouse button just before the first character, keep holding and drag to the end of the line – the text is highlighted in blue. Hold Ctrl and press C. Then click Notepad's icon in the taskbar, click in the white area and press Ctrl+V. The line is pasted in.",
-              "independent": "Copy the phone line from the What is the internet? page in Chrome into Notepad.",
-              "child.guided": "Open What is the internet? in Chrome. Drag the mouse over the line with the phone number so it turns blue. Press Ctrl+C. Switch to Notepad, click in the white area and press Ctrl+V. There it is!"
+              "default": "Open What is the internet? in the browser, select the phone line and press Ctrl+C. Then click in Notepad and press Ctrl+V.",
+              "guided": "In the browser, click the shortcut What is the internet?. Find the line with a phone number. Press the left mouse button just before the first character, keep holding and drag to the end of the line – the text is highlighted in blue. Hold Ctrl and press C. Then click Notepad's icon in the taskbar, click in the white area and press Ctrl+V. The line is pasted in.",
+              "independent": "Copy the phone line from the What is the internet? page in the browser into Notepad.",
+              "child.guided": "Open What is the internet? in the browser. Drag the mouse over the line with the phone number so it turns blue. Press Ctrl+C. Switch to Notepad, click in the white area and press Ctrl+V. There it is!"
             },
             "hints": [
-              "Click the shortcut What is the internet? in Chrome.",
+              "Click the shortcut What is the internet? in the browser.",
               "Press the mouse button at the start of the phone line and drag to the end so the line is selected.",
               "Press Ctrl+C to copy.",
               "Switch to Notepad by clicking its icon in the taskbar.",
@@ -3414,13 +3414,13 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Download guide.txt using the shortcut Download a guide in Chrome. Then click Show in folder to see the file in Downloads.",
-              "guided": "In Chrome, click the shortcut Download a guide and then the button Download guide.txt. The Recent downloads box appears at the top right. Click Show in folder in that box. File Explorer opens at the Downloads folder, and guide.txt is there.",
-              "independent": "Download guide.txt in Chrome and then find the file in Downloads.",
-              "child.guided": "Download guide.txt in Chrome. Click Show in folder in the box that pops up. Now you can see where the file ended up: in Downloads!"
+              "default": "Download guide.txt using the shortcut Download a guide in the browser. Then click Show in folder to see the file in Downloads.",
+              "guided": "In the browser, click the shortcut Download a guide and then the button Download guide.txt. The Recent downloads box appears at the top right. Click Show in folder in that box. File Explorer opens at the Downloads folder, and guide.txt is there.",
+              "independent": "Download guide.txt in the browser and then find the file in Downloads.",
+              "child.guided": "Download guide.txt in the browser. Click Show in folder in the box that pops up. Now you can see where the file ended up: in Downloads!"
             },
             "hints": [
-              "Click the shortcut Download a guide in Chrome and download guide.txt.",
+              "Click the shortcut Download a guide in the browser and download guide.txt.",
               "The Recent downloads box appears at the top right.",
               "Click Show in folder – or open File Explorer and click Downloads.",
               "The yellow frame shows Downloads in File Explorer.",
@@ -3616,7 +3616,7 @@
           "what": "A web page is shown inside a web browser and has a web address. An installed program runs as its own app in Windows.",
           "recognize": "Web pages have an address bar and tabs around them. Installed programs have their own icon in the Start menu and their own window.",
           "use": "The difference helps when you install, update, sign in or troubleshoot.",
-          "example": "Gmail can be used as a web page in Chrome, while Outlook also exists as an installed program.",
+          "example": "Gmail can be used as a web page in the browser, while Outlook also exists as an installed program.",
           "everyday": [
             "Banking, government services and email in the web browser.",
             "Word, Spotify or other installed apps."
@@ -3998,17 +3998,17 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Open Start, right-click Google Chrome and choose Pin to taskbar.",
-              "guided": "Click the Start button – the four blue squares at the bottom. Under Pinned in the Start menu, find Google Chrome, the colourful round icon. Right-click it. A menu opens. Click Pin to taskbar. Chrome's icon now stays at the bottom even when the program is closed.",
-              "independent": "Pin Google Chrome to the taskbar.",
-              "child.guided": "Open Start. Right-click Google Chrome, the colourful round icon. Choose Pin to taskbar. Now Chrome is stuck at the bottom!"
+              "default": "Open Start, right-click the Browser app and choose Pin to taskbar.",
+              "guided": "Click the Start button – the four blue squares at the bottom. Under Pinned in the Start menu, find the Browser app, the blue globe. Right-click it. A menu opens. Click Pin to taskbar. The browser's icon now stays at the bottom even when the program is closed.",
+              "independent": "Pin the Browser app to the taskbar.",
+              "child.guided": "Open Start. Right-click the Browser app, the blue globe. Choose Pin to taskbar. Now the browser is stuck at the bottom!"
             },
             "hints": [
               "Open Start with the Windows symbol in the taskbar.",
-              "Find Google Chrome under Pinned.",
-              "Right-click Google Chrome.",
+              "Find the Browser app under Pinned.",
+              "Right-click the Browser app.",
               "The yellow frame shows the Start button.",
-              "Start → right-click Google Chrome → Pin to taskbar."
+              "Start → right-click the Browser app → Pin to taskbar."
             ],
             "nudge": "The choice is in the app's context menu."
           },
@@ -4021,12 +4021,12 @@
           "what": "Pinning a program means its icon stays in the taskbar even when the program is closed.",
           "recognize": "In Windows 11 you pin through the app's context menu: right-click the app in Start and choose Pin to taskbar.",
           "use": "It gives quick access to programs you use often.",
-          "example": "Google Chrome can stay next to File Explorer in the taskbar even when Chrome is closed.",
+          "example": "The web browser can stay next to File Explorer in the taskbar even when the browser is closed.",
           "steps": [
             "Open Start.",
-            "Right-click Google Chrome.",
+            "Right-click the Browser app.",
             "Choose Pin to taskbar.",
-            "Check that the Chrome icon appears in the taskbar."
+            "Check that the browser icon appears in the taskbar."
           ],
           "everyday": [
             "Pin the web browser you use every day.",
@@ -4053,17 +4053,17 @@
           {
             "title": "Your turn",
             "text": {
-              "default": "Drag Chrome by the empty area at the top to the left edge of the screen. Then drag Notepad by its title bar to the right edge.",
-              "guided": "In Chrome, take hold of the empty area next to the tabs at the top. Keep the left mouse button down and drag all the way to the left edge of the screen. When the pointer reaches the edge, an outline appears – then let go. Then take hold of the title bar at the top of Notepad and drag all the way to the right edge. Let go. Now you have two windows side by side.",
-              "independent": "Put Chrome and Notepad side by side, with Chrome on the left.",
-              "child.guided": "Grab Chrome at the top, drag all the way to the left edge and let go. Grab Notepad, drag all the way to the right edge and let go. Now they share the screen!"
+              "default": "Drag the browser by the empty area at the top to the left edge of the screen. Then drag Notepad by its title bar to the right edge.",
+              "guided": "In the browser, take hold of the empty area next to the tabs at the top. Keep the left mouse button down and drag all the way to the left edge of the screen. When the pointer reaches the edge, an outline appears – then let go. Then take hold of the title bar at the top of Notepad and drag all the way to the right edge. Let go. Now you have two windows side by side.",
+              "independent": "Put the browser and Notepad side by side, with the browser on the left.",
+              "child.guided": "Grab the browser at the top, drag all the way to the left edge and let go. Grab Notepad, drag all the way to the right edge and let go. Now they share the screen!"
             },
             "hints": [
-              "In Chrome, take hold of the empty area next to the tabs at the top.",
+              "In the browser, take hold of the empty area next to the tabs at the top.",
               "Hold the mouse button down and drag all the way to the left edge. Let go when the pointer reaches the edge.",
               "Take hold of the title bar at the top of Notepad.",
               "Drag Notepad all the way to the right edge and let go.",
-              "Chrome → left edge. Notepad → right edge."
+              "The browser → left edge. Notepad → right edge."
             ],
             "nudge": "Windows can fill half the screen if you drag them far enough."
           },
@@ -4076,9 +4076,9 @@
           "what": "Windows can place a window on half the screen when you drag it towards the left or right edge.",
           "recognize": "The window changes size and fills half the screen. The feature is called Snap. You can also point at the Maximise button to see ready-made layouts.",
           "use": "It is handy when you read in one place and write in another.",
-          "example": "Have Chrome on the left half and Notepad on the right half when you copy information.",
+          "example": "Have the browser on the left half and Notepad on the right half when you copy information.",
           "steps": [
-            "Drag Chrome by the empty area next to the tabs to the left edge and let go.",
+            "Drag the browser by the empty area next to the tabs to the left edge and let go.",
             "Drag Notepad by the title bar to the right edge and let go."
           ],
           "everyday": [
@@ -4093,12 +4093,12 @@
       },
       "everyday-021-link-actions": {
         "title": "Copy link and open in new tab",
-        "summary": "Use a link's right-click menu in Chrome.",
+        "summary": "Use a link's right-click menu in the browser.",
         "steps": [
           {
             "title": "The link menu",
             "text": {
-              "default": "If you right-click a link in Chrome, you can copy the address itself or open the link in a new tab – without leaving the page you are on.",
+              "default": "If you right-click a link in the browser, you can copy the address itself or open the link in a new tab – without leaving the page you are on.",
               "short": "Right-click a link to copy it or open it in a new tab.",
               "child": "Links have their own context menu. If you right-click a link you can copy the address, for example to send it to someone, or open the link in a new tab without leaving the page you are on."
             }
@@ -4107,12 +4107,12 @@
             "title": "Your turn",
             "text": {
               "default": "Open Search results. Right-click a blue link and choose Copy link address. Then right-click again and choose Open link in new tab.",
-              "guided": "Click the shortcut Search results on Chrome's start page. Put the pointer right on some blue link text – the pointer becomes a hand. Press the right mouse button. Choose Copy link address in the menu. Then right-click a link again and choose Open link in new tab. A new tab opens at the top.",
+              "guided": "Click the shortcut Search results on the browser's start page. Put the pointer right on some blue link text – the pointer becomes a hand. Press the right mouse button. Choose Copy link address in the menu. Then right-click a link again and choose Open link in new tab. A new tab opens at the top.",
               "independent": "Copy the address of a link in Search results and open a link in a new tab.",
               "child.guided": "Open Search results. Right-click a blue link and choose Copy link address. Right-click again and choose Open link in new tab."
             },
             "hints": [
-              "Click the shortcut Search results on Chrome's start page.",
+              "Click the shortcut Search results on the browser's start page.",
               "Right-click directly on the blue link text – not beside it.",
               "Choose Copy link address.",
               "Right-click a link again and choose Open link in new tab.",
@@ -4127,7 +4127,7 @@
         ],
         "detail": {
           "what": "A link has an address behind it. You can copy the address or open the link in a new tab without leaving the page.",
-          "recognize": "In Chrome, right-clicking a link shows a menu with link commands. The link is often blue and the pointer becomes a hand.",
+          "recognize": "In the browser, right-clicking a link shows a menu with link commands. The link is often blue and the pointer becomes a hand.",
           "use": "It is useful when you want to send someone an address or open several results without losing the results page.",
           "example": "On a search page you can copy one result's address and open another result in a new tab.",
           "steps": [
@@ -5220,7 +5220,7 @@
       },
       "everyday-copy-paste-01": {
         "title": "Copy text between programs",
-        "description": "Copy the phone line from Chrome and paste it into Notepad."
+        "description": "Copy the phone line from the browser and paste it into Notepad."
       },
       "everyday-undo-redo-01": {
         "title": "Undo and redo",
@@ -5228,7 +5228,7 @@
       },
       "everyday-save-location-01": {
         "title": "Find the download",
-        "description": "Download guide.txt in Chrome and find the file in Downloads.",
+        "description": "Download guide.txt in the browser and find the file in Downloads.",
         "goal": {
           "goals": [
             {
@@ -5312,11 +5312,11 @@
       },
       "everyday-pin-taskbar-01": {
         "title": "Pin a program",
-        "description": "Pin Google Chrome to the taskbar from the Start menu."
+        "description": "Pin the Browser app to the taskbar from the Start menu."
       },
       "everyday-snap-01": {
         "title": "Windows side by side",
-        "description": "Put Chrome on the left and Notepad on the right by dragging the windows to the screen edges."
+        "description": "Put the browser on the left and Notepad on the right by dragging the windows to the screen edges."
       },
       "everyday-link-actions-01": {
         "title": "The link menu",

@@ -232,7 +232,7 @@
     "photos.previous": "Previous picture",
     "photos.next": "Next picture",
 
-    /* ---------- Google Chrome ---------- */
+    /* ---------- Web browser (neutral, Chrome-like) ---------- */
     "chrome.tabs": "Tabs",
     "chrome.newTab": "New tab",
     "chrome.closeTab": "Close",
@@ -254,7 +254,7 @@
     "chrome.allDownloads": "Show all downloads",
     "chrome.downloadsEmpty": "Files you download appear here.",
     "chrome.profile": "User",
-    "chrome.menu": "Customise and control Google Chrome",
+    "chrome.menu": "Settings and more",
     "chrome.zoomIn": "Zoom in",
     "chrome.zoomOut": "Zoom out",
     "chrome.zoomReset": "Reset zoom to 100%",

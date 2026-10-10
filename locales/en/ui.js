@@ -22,7 +22,7 @@
 
     /* ---------- Website ---------- */
     "meta.title": "Datorskolan – learn Windows by doing it",
-    "meta.description": "Learn Windows from scratch in 120 interactive lessons. Practise in a safe copy of Windows 11 with File Explorer, Chrome, Settings, files, the internet and everyday computer problems.",
+    "meta.description": "Learn Windows from scratch in 120 interactive lessons. Practise in a safe copy of Windows 11 with File Explorer, the web browser, Settings, files, the internet and everyday computer problems.",
 
     "landing.skipToMain": "Skip to main content",
     "landing.skipToSchool": "Skip to Datorskolan",
@@ -43,7 +43,7 @@
     "landing.overview.eyebrow": "Hands-on Windows training in your browser",
     "landing.overview.titleA": "Learn the computer.",
     "landing.overview.titleB": "By actually using it.",
-    "landing.overview.lead": "From your very first mouse click to files, Chrome, Wi‑Fi, PDFs and fixing problems. You practise in a safe copy of Windows 11 where nothing can break.",
+    "landing.overview.lead": "From your very first mouse click to files, the web, Wi‑Fi, PDFs and fixing problems. You practise in a safe copy of Windows 11 where nothing can break.",
     "landing.overview.seeCourse": "See the course",
     "landing.fact.lessons": "lessons",
     "landing.fact.modules": "course areas",
@@ -104,7 +104,7 @@
     "privacy.item.noAccount": "You do not need to sign in or give any personal details.",
     "privacy.item.noTracking": "We use no cookies, no analytics and no tracking.",
     "privacy.item.localStorage": "Your progress, your language choice, how you want to learn and your choices on the practice computer are stored in your browser's local storage (localStorage) on this device. They are never sent to a server.",
-    "privacy.item.thirdParty": "Everything except the Chrome logo comes from Datorskolan's own website. The Chrome logo is shown directly from Google, so Google sees your IP address, just as with any normal website visit.",
+    "privacy.item.thirdParty": "Everything – text, fonts, icons and images – comes from Datorskolan's own website. Nothing is loaded from other services.",
     "privacy.item.delete": "You delete your progress with the “Start over” button. To delete everything, including the language and settings, clear the site data in your browser.",
 
     /* ---------- Simulator: shared ---------- */
@@ -117,7 +117,8 @@
     "app.notepad": "Notepad",
     "app.photos": "Photos",
     "app.settings": "Settings",
-    "app.browser": "Google Chrome",
+    "app.browser": "Browser",
+    "search.keywords.browser": "web internet chrome edge firefox",
     "app.mail": "Mail",
     "app.snipping": "Snipping Tool",
     "app.pdf": "PDF reader",

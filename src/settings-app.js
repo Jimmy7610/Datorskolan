@@ -362,7 +362,7 @@
 
     if (s.page === "apps") {
       var installed = [
-        { id: "browser", name: t("app.browser"), publisher: "Google LLC" },
+        { id: "browser", name: t("app.browser"), publisher: "Datorskolan" },
         { id: "calculator", name: t("app.calculator"), publisher: "Microsoft Corporation" },
         { id: "notepad", name: t("app.notepad"), publisher: "Microsoft Corporation" }
       ];
@@ -371,7 +371,7 @@
       }
       var rows = installed.map(function (app) {
         var row = h("div", { class: "settings-app-row", data: { ui: "app-row-" + app.id } }, [
-          h("span", { class: "settings-app-icon", html: ctx.icon(app.id === "browser" ? "chrome" : app.id === "exercise-program" ? "installer" : app.id, 24) }),
+          h("span", { class: "settings-app-icon", html: ctx.icon(app.id === "exercise-program" ? "installer" : app.id, 24) }),
           h("span", {}, [h("strong", { text: app.name }), h("small", { text: app.publisher })]),
           h("button", {
             type: "button",

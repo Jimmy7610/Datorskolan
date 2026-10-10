@@ -1,9 +1,8 @@
 /*
-  Google Chrome (simulated). Chrome draws its own title bar: tabs sit next to the window controls.
+  The practice web browser ("Webbläsare" / "Browser"). It looks and behaves like the common Windows
+  browsers (tabs in the title bar, address bar, back/forward/reload, ⋮ menu, downloads) so what the
+  learner practises carries over to Chrome and Edge, but it carries no browser brand or logo (docs/38).
   The pages are a closed practice web ("datorskolan.example"); nothing is loaded from the internet.
-
-  Google Chrome is a trademark of Google LLC. The Chrome logo is loaded from Google's own server
-  and is used only to identify the browser being taught.
 */
 (function () {
   "use strict";
@@ -118,7 +117,7 @@
           aria: { selected: selected ? "true" : "false" },
           title: info.title,
           on: { click: function () { s.activeTabId = tab.id; refresh(); } }
-        }, [h("span", { class: "chrome-favicon", html: tab.page === "home" ? ctx.icon("chrome", 16) : ctx.icon("globe", 16) }), h("span", { class: "chrome-tab-title", text: info.title })]),
+        }, [h("span", { class: "chrome-favicon", html: ctx.icon("globe", 16) }), h("span", { class: "chrome-tab-title", text: info.title })]),
         h("button", {
           type: "button",
           class: "chrome-tab-close",
@@ -217,7 +216,7 @@
         on: { click: function () {
           if (!bookmarked) s.bookmarks.push(info.url);
           ctx.emit("browser.bookmarked", { page: tab.page, url: info.url });
-          ctx.toast(t("chrome.bookmarkAddedTitle"), info.title, "chrome");
+          ctx.toast(t("chrome.bookmarkAddedTitle"), info.title, "browser");
           refresh();
         } }
       }) : null
@@ -359,15 +358,16 @@
       searchInput.addEventListener("keydown", function (e) { if (e.key === "Enter") runSearch(); });
 
       var shortcuts = h("div", { class: "chrome-shortcuts" });
-      [["info", "chrome.page.info"], ["search", "chrome.page.search"], ["form", "chrome.page.form"], ["download", "chrome.page.download"]].forEach(function (entry) {
+      // Each shortcut gets an icon that says what the page is, so a beginner can tell them apart.
+      [["info", "chrome.page.info", "globe"], ["search", "chrome.page.search", "apps-list"], ["form", "chrome.page.form", "text-file"], ["download", "chrome.page.download", "download"]].forEach(function (entry) {
         shortcuts.appendChild(h("button", { type: "button", class: "chrome-shortcut", on: { click: function () { ctx.emit("browser.linkOpened", { page: entry[0] }); navigate(entry[0], "shortcut"); } } }, [
-          h("span", { class: "chrome-shortcut-icon", html: ctx.icon("globe", 24) }),
+          h("span", { class: "chrome-shortcut-icon", html: ctx.icon(entry[2], 24) }),
           h("span", { text: t(entry[1]) })
         ]));
       });
 
       content.appendChild(h("div", { class: "chrome-newtab" }, [
-        h("div", { class: "chrome-newtab-logo", html: ctx.icon("chrome", 72) }),
+        h("div", { class: "chrome-newtab-logo", html: ctx.icon("browser", 72) }),
         h("label", { class: "chrome-newtab-search" }, [h("span", { html: ctx.glyph("search", 20) }), searchInput, h("button", { type: "button", class: "chrome-text-button", text: t("chrome.searchButton"), on: { click: runSearch } })]),
         shortcuts
       ]));

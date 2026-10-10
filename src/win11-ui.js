@@ -7,7 +7,7 @@
                                   publishes no color version (folder, Recycle Bin, Notepad, Calculator …)
     assets/icons/fluent/          monochrome icons for the system tray and commands (monochrome in Windows 11 too)
   See docs/38-ASSETS-AND-LICENSES.md and each folder's SOURCE.md.
-  Chrome: Google's official Chrome logo, loaded from Google (not redistributed in this repo).
+  Web browser: the neutral Fluent Globe icon. No third-party logo is used or loaded (docs/38).
   Glyphs: the few simple geometric shapes Windows draws with its Segoe Fluent Icons system font
   (caption buttons, chevrons, search). That font cannot be redistributed, so the shapes are drawn
   here as minimal SVG lines of the same size and stroke weight.
@@ -50,6 +50,8 @@
     laptop: "fluent-color/laptop",
     desktop: "fluent-derived/desktop",
     globe: "fluent-color/globe",
+    // The practice web browser is a neutral browser, not a branded one.
+    browser: "fluent-color/globe",
     "apps-list": "fluent-color/apps-list",
     installer: "fluent-color/apps-list",
     shield: "fluent-color/shield",
@@ -63,7 +65,6 @@
     error: "fluent-color/error-circle",
     success: "fluent-color/checkmark-circle"
   };
-  var CHROME_LOGO_URL = "https://www.google.com/chrome/static/images/chrome-logo-m100.svg";
 
   var fluentIcons = {
     start: "apps.svg",
@@ -118,17 +119,8 @@
       .replace(/"/g, "&quot;");
   }
 
-  function chromeIcon(size, className) {
-    return '<img class="win11-icon brand-icon ' + esc(className || "") +
-      '" src="' + CHROME_LOGO_URL +
-      '" width="' + size + '" height="' + size +
-      '" alt="" aria-hidden="true" draggable="false">';
-  }
-
   function icon(name, size, className) {
     size = size || 24;
-    // Chrome is a Google product brand, not a Microsoft Fluent system icon.
-    if (name === "chrome") return chromeIcon(size, className);
     if (colorIcons[name]) {
       return '<img class="win11-icon fluent-icon ' + esc(className || "") +
         '" src="' + ICON_ROOT + colorIcons[name] + (size <= 24 ? "-small" : "-large") + '.svg"' +
@@ -319,7 +311,6 @@
   window.DatorskolanWindows11 = {
     STORAGE_KEY: STORAGE_KEY,
     FLUENT_ROOT: FLUENT_ROOT,
-    CHROME_LOGO_URL: CHROME_LOGO_URL,
     fluentIcons: fluentIcons,
     colorIcons: colorIcons,
     ICON_ROOT: ICON_ROOT,

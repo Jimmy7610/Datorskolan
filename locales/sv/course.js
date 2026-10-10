@@ -736,9 +736,9 @@
           {
             "title": "Datorn är inte internet",
             "text": {
-              "default": "Datorn är själva apparaten. Internet är nätverket som kopplar ihop datorer över hela världen. Webbläsaren – till exempel Google Chrome – är programmet som använder internet för att visa webbsidor.",
+              "default": "Datorn är själva apparaten. Internet är nätverket som kopplar ihop datorer över hela världen. Webbläsaren – till exempel Microsoft Edge eller Google Chrome – är programmet som använder internet för att visa webbsidor.",
               "short": "Datorn är apparaten, internet är nätverket och webbläsaren visar webbsidor.",
-              "child": "Datorn är själva maskinen framför dig. Internet är som ett jättestort nät av vägar mellan datorer i hela världen. Webbläsaren, till exempel Google Chrome, är programmet du använder för att åka på de vägarna och titta på webbsidor."
+              "child": "Datorn är själva maskinen framför dig. Internet är som ett jättestort nät av vägar mellan datorer i hela världen. Webbläsaren, till exempel Microsoft Edge eller Google Chrome, är programmet du använder för att åka på de vägarna och titta på webbsidor."
             }
           },
           {
@@ -750,7 +750,7 @@
           "what": "Datorn, internet och webbläsaren är tre olika saker. Datorn är apparaten. Internet är nätverket. Webbläsaren är programmet som visar webbsidor.",
           "recognize": "Webbläsaren har flikar och ett adressfält högst upp. Internet har ingen egen ikon som du arbetar i.",
           "use": "Skillnaden är viktig när någon säger att ”internet inte fungerar” eller ber dig öppna webbläsaren.",
-          "example": "Du startar Chrome på datorn. Chrome använder internet för att öppna en webbsida."
+          "example": "Du startar webbläsaren på datorn. Webbläsaren använder internet för att öppna en webbsida."
         }
       },
       "keyboard-001-letters": {
@@ -1824,13 +1824,13 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Klicka i adressfältet högst upp i Chrome, skriv datorskolan.example/internet och tryck Retur.",
-              "guided": "Titta högst upp i Chrome-fönstret. Till höger om pilarna finns en lång, rundad ruta – det är adressfältet. Klicka en gång i den. Texten som står där blir markerad, så det du skriver ersätter den. Skriv datorskolan.example/internet och tryck på Retur-tangenten. Sidan byts.",
+              "default": "Klicka i adressfältet högst upp i webbläsaren, skriv datorskolan.example/internet och tryck Retur.",
+              "guided": "Titta högst upp i webbläsarfönstret. Till höger om pilarna finns en lång, rundad ruta – det är adressfältet. Klicka en gång i den. Texten som står där blir markerad, så det du skriver ersätter den. Skriv datorskolan.example/internet och tryck på Retur-tangenten. Sidan byts.",
               "independent": "Gå till datorskolan.example/internet.",
-              "child.guided": "Klicka i den långa rutan högst upp i Chrome. Skriv datorskolan.example/internet och tryck Retur. Nu åker du till den sidan!"
+              "child.guided": "Klicka i den långa rutan högst upp i webbläsaren. Skriv datorskolan.example/internet och tryck Retur. Nu åker du till den sidan!"
             },
             "hints": [
-              "Adressfältet sitter högst upp i Chrome, bredvid pilarna.",
+              "Adressfältet sitter högst upp i webbläsaren, bredvid pilarna.",
               "Klicka i adressfältet. Det som stod där blir markerat.",
               "Skriv datorskolan.example/internet och tryck Retur.",
               "Den gula ramen visar adressfältet.",
@@ -1872,12 +1872,12 @@
             "title": "Din tur",
             "text": {
               "default": "Klicka på en länk eller en av de runda genvägarna på webbsidan.",
-              "guided": "Titta på den stora vita ytan i Chrome – det är själva webbsidan. Flytta pekaren långsamt över de runda genvägarna mitt på sidan. Lägg märke till att pekaren blir en hand – det betyder att du pekar på en länk. Klicka en gång, till exempel på Vad är internet?. Sidan byts och adressen i adressfältet ändras.",
-              "independent": "Följ en länk på sidan i Chrome.",
+              "guided": "Titta på den stora vita ytan i webbläsaren – det är själva webbsidan. Flytta pekaren långsamt över de runda genvägarna mitt på sidan. Lägg märke till att pekaren blir en hand – det betyder att du pekar på en länk. Klicka en gång, till exempel på Vad är internet?. Sidan byts och adressen i adressfältet ändras.",
+              "independent": "Följ en länk på sidan i webbläsaren.",
               "child.guided": "Flytta pilen över de runda bilderna mitt på sidan. Blir pilen en hand? Då är det en länk! Klicka på Vad är internet? och se vad som händer."
             },
             "hints": [
-              "Titta på den stora vita ytan i Chrome – själva webbsidan.",
+              "Titta på den stora vita ytan i webbläsaren – själva webbsidan.",
               "Peka på de runda genvägarna eller på blå text. Pekaren blir en hand över en länk.",
               "Klicka en gång på till exempel Vad är internet?",
               "Den gula ramen visar webbsidan.",
@@ -1909,21 +1909,21 @@
           {
             "title": "Flikar",
             "text": {
-              "default": "Med flikar kan du ha flera webbsidor öppna i samma fönster. Flikarna sitter högst upp i Chrome.",
+              "default": "Med flikar kan du ha flera webbsidor öppna i samma fönster. Flikarna sitter högst upp i webbläsaren.",
               "short": "Flikar låter dig ha flera sidor öppna i samma fönster.",
-              "child": "Flikar är som flikarna i en pärm. Du kan ha flera webbsidor öppna samtidigt och bläddra mellan dem. Flikarna sitter högst upp i Chrome."
+              "child": "Flikar är som flikarna i en pärm. Du kan ha flera webbsidor öppna samtidigt och bläddra mellan dem. Flikarna sitter högst upp i webbläsaren."
             }
           },
           {
             "title": "Din tur",
             "text": {
-              "default": "Öppna en ny flik med plusknappen till höger om flikarna högst upp i Chrome.",
-              "guided": "Titta högst upp i Chrome-fönstret. Där sitter flikarna, en för varje öppen sida, med sidans namn. Till höger om den sista fliken finns ett litet plustecken. Klicka en gång på plustecknet. En ny, tom flik öppnas.",
+              "default": "Öppna en ny flik med plusknappen till höger om flikarna högst upp i webbläsaren.",
+              "guided": "Titta högst upp i webbläsarfönstret. Där sitter flikarna, en för varje öppen sida, med sidans namn. Till höger om den sista fliken finns ett litet plustecken. Klicka en gång på plustecknet. En ny, tom flik öppnas.",
               "independent": "Öppna en ny flik.",
-              "child.guided": "Högst upp i Chrome ser du flikarna. Bredvid den sista finns ett litet plus. Klicka på plusset så får du en ny flik!"
+              "child.guided": "Högst upp i webbläsaren ser du flikarna. Bredvid den sista finns ett litet plus. Klicka på plusset så får du en ny flik!"
             },
             "hints": [
-              "Titta högst upp i Chrome-fönstret där flikarna finns.",
+              "Titta högst upp i webbläsarfönstret där flikarna finns.",
               "Till höger om den sista fliken finns ett plustecken.",
               "Klicka på plustecknet en gång.",
               "Den gula ramen visar plusknappen.",
@@ -1959,7 +1959,7 @@
             "title": "Din tur",
             "text": {
               "default": "Öppna en sida via en genväg. Klicka sedan på Bakåt-pilen och därefter på Framåt-pilen uppe till vänster.",
-              "guided": "Börja med att klicka på en av de runda genvägarna, till exempel Vad är internet?, så att du byter sida. Titta sedan längst upp till vänster i Chrome. Där finns två pilar. Klicka på pilen som pekar åt vänster – Bakåt. Du kommer tillbaka till förra sidan. Klicka sedan på pilen som pekar åt höger – Framåt.",
+              "guided": "Börja med att klicka på en av de runda genvägarna, till exempel Vad är internet?, så att du byter sida. Titta sedan längst upp till vänster i webbläsaren. Där finns två pilar. Klicka på pilen som pekar åt vänster – Bakåt. Du kommer tillbaka till förra sidan. Klicka sedan på pilen som pekar åt höger – Framåt.",
               "independent": "Gå tillbaka till förra sidan och sedan framåt igen.",
               "child.guided": "Klicka på Vad är internet? för att byta sida. Klicka sedan på pilen åt vänster högst upp – nu är du tillbaka! Klicka på pilen åt höger så går du framåt igen."
             },
@@ -1991,21 +1991,21 @@
           {
             "title": "Ladda ned",
             "text": {
-              "default": "Att ladda ned betyder att en fil från webben sparas på din dator. Chrome sparar den i mappen Hämtade filer och visar en nedladdningsikon uppe till höger.",
+              "default": "Att ladda ned betyder att en fil från webben sparas på din dator. Webbläsaren sparar den i mappen Hämtade filer och visar en nedladdningsikon uppe till höger.",
               "short": "Nedladdade filer sparas i Hämtade filer.",
-              "child": "Att ladda ned betyder att du hämtar en fil från internet och sparar den i din egen dator. Chrome lägger den i mappen Hämtade filer, så att du vet var den finns."
+              "child": "Att ladda ned betyder att du hämtar en fil från internet och sparar den i din egen dator. Webbläsaren lägger den i mappen Hämtade filer, så att du vet var den finns."
             }
           },
           {
             "title": "Din tur",
             "text": {
               "default": "Öppna genvägen Ladda ned en guide och klicka på knappen Ladda ned guide.txt.",
-              "guided": "På Chromes startsida finns runda genvägar mitt på sidan. Klicka på den som heter Ladda ned en guide. En ny sida öppnas. Klicka på den blå knappen Ladda ned guide.txt. Uppe till höger i Chrome visas en ruta med Senaste nedladdningar. Filen hamnar i mappen Hämtade filer.",
+              "guided": "På webbläsarens startsida finns runda genvägar mitt på sidan. Klicka på den som heter Ladda ned en guide. En ny sida öppnas. Klicka på den blå knappen Ladda ned guide.txt. Uppe till höger i webbläsaren visas en ruta med Senaste nedladdningar. Filen hamnar i mappen Hämtade filer.",
               "independent": "Gå till sidan Ladda ned en guide och ladda ned guide.txt.",
               "child.guided": "Klicka på genvägen Ladda ned en guide. Klicka sedan på den blå knappen Ladda ned guide.txt. Nu hämtas filen till din dator!"
             },
             "hints": [
-              "Börja på Chromes startsida med de runda genvägarna.",
+              "Börja på webbläsarens startsida med de runda genvägarna.",
               "Klicka på genvägen Ladda ned en guide.",
               "Klicka på den blå knappen Ladda ned guide.txt.",
               "Den gula ramen visar webbsidan.",
@@ -2041,12 +2041,12 @@
             "title": "Din tur",
             "text": {
               "default": "Öppna Kontaktformulär, skriv ett namn, kryssa i rutan Jag har läst informationen och klicka på Skicka.",
-              "guided": "Klicka på genvägen Kontaktformulär på Chromes startsida. Formuläret öppnas. Klicka i fältet Namn och skriv ett namn. Leta sedan upp den lilla fyrkanten bredvid Jag har läst informationen och klicka i den, så att en bock syns. Klicka till sist på knappen Skicka längst ned. Saknas något visas en röd förklaring vid fältet.",
+              "guided": "Klicka på genvägen Kontaktformulär på webbläsarens startsida. Formuläret öppnas. Klicka i fältet Namn och skriv ett namn. Leta sedan upp den lilla fyrkanten bredvid Jag har läst informationen och klicka i den, så att en bock syns. Klicka till sist på knappen Skicka längst ned. Saknas något visas en röd förklaring vid fältet.",
               "independent": "Skicka kontaktformuläret med ditt namn ifyllt.",
               "child.guided": "Öppna Kontaktformulär. Skriv ett namn i rutan Namn. Klicka i den lilla fyrkanten så att det blir en bock. Klicka på Skicka!"
             },
             "hints": [
-              "Klicka på genvägen Kontaktformulär på Chromes startsida.",
+              "Klicka på genvägen Kontaktformulär på webbläsarens startsida.",
               "Klicka i fältet Namn och skriv ett namn.",
               "Kryssa i rutan Jag har läst informationen.",
               "Den gula ramen visar formuläret.",
@@ -2081,14 +2081,14 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Öppna Chromes meny med de tre prickarna och välj Zooma in eller Zooma ut.",
-              "guided": "Titta uppe till höger i Chrome-fönstret. Där finns en knapp med tre prickar ovanför varandra. Klicka på den. En meny öppnas. Leta upp raden Zooma och klicka på plustecknet för att zooma in, eller på minustecknet för att zooma ut. Texten på sidan blir större eller mindre.",
+              "default": "Öppna webbläsarens meny med de tre prickarna och välj Zooma in eller Zooma ut.",
+              "guided": "Titta uppe till höger i webbläsarfönstret. Där finns en knapp med tre prickar ovanför varandra. Klicka på den. En meny öppnas. Leta upp raden Zooma och klicka på plustecknet för att zooma in, eller på minustecknet för att zooma ut. Texten på sidan blir större eller mindre.",
               "independent": "Zooma in eller ut på webbsidan.",
               "child.guided": "Klicka på de tre prickarna uppe till höger. Hitta Zooma i menyn och klicka på plus. Nu blir allt större!"
             },
             "hints": [
-              "Uppe till höger i Chrome finns en knapp med tre prickar.",
-              "Klicka på de tre prickarna för att öppna Chromes meny.",
+              "Uppe till höger i webbläsaren finns en knapp med tre prickar.",
+              "Klicka på de tre prickarna för att öppna webbläsarens meny.",
               "Välj Zooma in eller Zooma ut.",
               "Den gula ramen visar menyknappen.",
               "⋮ → Zooma in. Snabbare: håll Ctrl och tryck +. Ctrl+0 återställer."
@@ -2145,7 +2145,7 @@
           "what": "Det här uppdraget kombinerar webbläsarens viktigaste delar.",
           "recognize": "Webbläsaren har flikar högst upp, pilar för Bakåt och Framåt, ett adressfält och en stor yta där webbsidan visas.",
           "use": "Du använder webbläsaren för att besöka webbsidor, söka, följa länkar och ladda ned filer.",
-          "example": "Chrome, Edge och Firefox är vanliga webbläsare. Här övar du i en kopia av Chrome."
+          "example": "Edge, Chrome och Firefox är vanliga webbläsare. Här övar du i en övningswebbläsare som fungerar på samma sätt."
         }
       },
       "mail-001-open": {
@@ -2666,7 +2666,7 @@
         ],
         "detail": {
           "what": "Ett bokmärke sparar adressen till en webbsida så att du lätt hittar tillbaka.",
-          "recognize": "I Chrome är det en stjärna längst till höger i adressfältet. En blå stjärna betyder att sidan redan är bokmärkt.",
+          "recognize": "I webbläsaren är det en stjärna längst till höger i adressfältet. En blå stjärna betyder att sidan redan är bokmärkt.",
           "use": "Bokmärken passar för sidor du besöker ofta.",
           "example": "Bokmärk din banks riktiga adress, så slipper du söka efter den – och risken att hamna på en falsk sida minskar."
         }
@@ -2686,9 +2686,9 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Läs cookie-rutan längst ned på Chromes startsida och klicka på Godkänn alla.",
-              "guided": "Titta längst ned på Chromes startsida. Där finns en ruta som handlar om cookies. Läs texten i den – den förklarar vad sidan vill spara. Klicka sedan på knappen Godkänn alla i rutan. På riktiga webbplatser kan du lika gärna välja Avvisa om du inte vill dela mer än nödvändigt.",
-              "independent": "Godkänn cookie-rutan på Chromes startsida.",
+              "default": "Läs cookie-rutan längst ned på webbläsarens startsida och klicka på Godkänn alla.",
+              "guided": "Titta längst ned på webbläsarens startsida. Där finns en ruta som handlar om cookies. Läs texten i den – den förklarar vad sidan vill spara. Klicka sedan på knappen Godkänn alla i rutan. På riktiga webbplatser kan du lika gärna välja Avvisa om du inte vill dela mer än nödvändigt.",
+              "independent": "Godkänn cookie-rutan på webbläsarens startsida.",
               "child.guided": "Längst ned på sidan finns en ruta om cookies. Läs den först. Klicka sedan på Godkänn alla."
             },
             "hints": [
@@ -2728,12 +2728,12 @@
             "title": "Din tur",
             "text": {
               "default": "Öppna Kontaktformulär, klicka på Välj fil och välj profil.txt i Dokument.",
-              "guided": "Klicka på genvägen Kontaktformulär på Chromes startsida. Leta upp knappen Välj fil i formuläret och klicka på den. En ruta som heter Öppna visas. Klicka på Dokument till vänster i rutan. Klicka sedan på filen profil.txt och på knappen Öppna. Filens namn visas bredvid knappen Välj fil.",
+              "guided": "Klicka på genvägen Kontaktformulär på webbläsarens startsida. Leta upp knappen Välj fil i formuläret och klicka på den. En ruta som heter Öppna visas. Klicka på Dokument till vänster i rutan. Klicka sedan på filen profil.txt och på knappen Öppna. Filens namn visas bredvid knappen Välj fil.",
               "independent": "Bifoga profil.txt i kontaktformuläret.",
               "child.guided": "Öppna Kontaktformulär och klicka på Välj fil. I rutan som kommer upp klickar du på Dokument, sedan på profil.txt och till sist på Öppna."
             },
             "hints": [
-              "Klicka på genvägen Kontaktformulär på Chromes startsida.",
+              "Klicka på genvägen Kontaktformulär på webbläsarens startsida.",
               "Klicka på knappen Välj fil.",
               "Rutan Öppna visas. Filen profil.txt ligger i Dokument.",
               "Den gula ramen visar formuläret.",
@@ -2891,13 +2891,13 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Klicka på knappen Läs in igen – den runda pilen uppe till vänster i Chrome.",
-              "guided": "Titta uppe till vänster i Chrome. Där finns pilarna för Bakåt och Framåt. Strax till höger om dem sitter en knapp som ser ut som en pil i en cirkel – det är Läs in igen. Klicka en gång på den. Sidan hämtas på nytt.",
+              "default": "Klicka på knappen Läs in igen – den runda pilen uppe till vänster i webbläsaren.",
+              "guided": "Titta uppe till vänster i webbläsaren. Där finns pilarna för Bakåt och Framåt. Strax till höger om dem sitter en knapp som ser ut som en pil i en cirkel – det är Läs in igen. Klicka en gång på den. Sidan hämtas på nytt.",
               "independent": "Läs in webbsidan igen.",
-              "child.guided": "Uppe till vänster i Chrome finns en rund pil. Klicka på den så laddas sidan om!"
+              "child.guided": "Uppe till vänster i webbläsaren finns en rund pil. Klicka på den så laddas sidan om!"
             },
             "hints": [
-              "Titta uppe till vänster i Chrome, bredvid pilarna.",
+              "Titta uppe till vänster i webbläsaren, bredvid pilarna.",
               "Knappen ser ut som en rund pil.",
               "Klicka på den en gång.",
               "Den gula ramen visar knappen.",
@@ -2933,7 +2933,7 @@
             "title": "Din tur",
             "text": {
               "default": "Öppna en ny flik med plusknappen och stäng den med det lilla krysset på fliken.",
-              "guided": "Klicka på plustecknet till höger om flikarna högst upp i Chrome, så öppnas en ny flik. Titta på den nya fliken: till höger om dess namn finns ett litet kryss. Klicka på det lilla krysset. Klicka inte på det stora krysset längst upp till höger – det stänger hela Chrome.",
+              "guided": "Klicka på plustecknet till höger om flikarna högst upp i webbläsaren, så öppnas en ny flik. Titta på den nya fliken: till höger om dess namn finns ett litet kryss. Klicka på det lilla krysset. Klicka inte på det stora krysset längst upp till höger – det stänger hela webbläsaren.",
               "independent": "Öppna en ny flik och stäng sedan bara den fliken.",
               "child.guided": "Klicka på plus för en ny flik. På den nya fliken finns ett litet kryss. Klicka på det lilla krysset – inte det stora i hörnet!"
             },
@@ -3038,8 +3038,8 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Klicka i sökrutan mitt på Chromes startsida, skriv några ord och tryck Retur.",
-              "guided": "Titta mitt på Chromes startsida. Där finns en stor, rundad ruta – det är sökrutan. Klicka i den. Skriv några ord om det du vill veta, till exempel säkra lösenord. Tryck sedan på Retur. En lista med sökresultat visas, och varje rad är en länk.",
+              "default": "Klicka i sökrutan mitt på webbläsarens startsida, skriv några ord och tryck Retur.",
+              "guided": "Titta mitt på webbläsarens startsida. Där finns en stor, rundad ruta – det är sökrutan. Klicka i den. Skriv några ord om det du vill veta, till exempel säkra lösenord. Tryck sedan på Retur. En lista med sökresultat visas, och varje rad är en länk.",
               "independent": "Sök på webben efter något du undrar över.",
               "child.guided": "Klicka i den stora rundade rutan mitt på sidan. Skriv något du undrar över, till exempel säkra lösenord, och tryck Retur."
             },
@@ -3192,20 +3192,20 @@
             "title": "Självständighetsprovet",
             "text": {
               "default": "Nu kombinerar du webbläsaren, Utforskaren och E-post – som en riktig uppgift där du själv väljer program och ordning.",
-              "short": "Chrome, Utforskaren och E-post i en riktig uppgift.",
+              "short": "Webbläsaren, Utforskaren och E-post i en riktig uppgift.",
               "child": "Det här är det stora slutprovet! Du ska använda tre program efter varandra, precis som när man gör något på riktigt. Du väljer själv hur du gör."
             }
           },
           {
             "title": "Din tur",
             "text": {
-              "default": "Ladda ned guide.txt i Chrome. Byt namn på den till guide-klar.txt i Hämtade filer. Skicka den sedan som bilaga i ett nytt mejl.",
-              "guided": "Ta ett program i taget. Öppna Chrome och klicka på genvägen Ladda ned en guide, och sedan på Ladda ned guide.txt. Öppna Utforskaren och klicka på Hämtade filer till vänster. Markera guide.txt, klicka på Byt namn och skriv guide-klar.txt. Öppna E-post från Start och klicka på Ny e-post. Klicka på gemet, välj Hämtade filer och guide-klar.txt. Fyll i Till, till exempel anna@example.com, ett ämne och lite text, och klicka på Skicka.",
-              "independent": "Ladda ned guide.txt i Chrome. Byt namn på filen till guide-klar.txt i Utforskaren. Skicka den sedan som bilaga i ett nytt mejl.",
-              "child.guided": "Tre program efter varandra: 1. Chrome – ladda ned guide.txt. 2. Utforskaren – byt namn på filen i Hämtade filer till guide-klar.txt. 3. E-post – skicka filen med ett nytt mejl. Du har gjort varje del förut!"
+              "default": "Ladda ned guide.txt i webbläsaren. Byt namn på den till guide-klar.txt i Hämtade filer. Skicka den sedan som bilaga i ett nytt mejl.",
+              "guided": "Ta ett program i taget. Öppna webbläsaren och klicka på genvägen Ladda ned en guide, och sedan på Ladda ned guide.txt. Öppna Utforskaren och klicka på Hämtade filer till vänster. Markera guide.txt, klicka på Byt namn och skriv guide-klar.txt. Öppna E-post från Start och klicka på Ny e-post. Klicka på gemet, välj Hämtade filer och guide-klar.txt. Fyll i Till, till exempel anna@example.com, ett ämne och lite text, och klicka på Skicka.",
+              "independent": "Ladda ned guide.txt i webbläsaren. Byt namn på filen till guide-klar.txt i Utforskaren. Skicka den sedan som bilaga i ett nytt mejl.",
+              "child.guided": "Tre program efter varandra: 1. Webbläsaren – ladda ned guide.txt. 2. Utforskaren – byt namn på filen i Hämtade filer till guide-klar.txt. 3. E-post – skicka filen med ett nytt mejl. Du har gjort varje del förut!"
             },
             "hints": [
-              "Börja i Chrome och leta upp sidan där guiden laddas ned.",
+              "Börja i webbläsaren och leta upp sidan där guiden laddas ned.",
               "Filen hamnar i Hämtade filer. Öppna Utforskaren och gå dit.",
               "Byt namn på filen till guide-klar.txt innan du fortsätter.",
               "Öppna E-post från Start och klicka på Ny e-post.",
@@ -3240,13 +3240,13 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Öppna Vad är internet? i Chrome, markera telefonraden och tryck Ctrl+C. Klicka sedan i Anteckningar och tryck Ctrl+V.",
-              "guided": "I Chrome klickar du på genvägen Vad är internet?. Leta upp raden med ett telefonnummer. Tryck ned vänster musknapp precis före första tecknet, håll kvar och dra till slutet av raden – texten blir blåmarkerad. Håll ned Ctrl och tryck C. Klicka sedan på Anteckningars ikon i aktivitetsfältet, klicka i den vita ytan och tryck Ctrl+V. Raden klistras in.",
-              "independent": "Kopiera telefonraden från sidan Vad är internet? i Chrome till Anteckningar.",
-              "child.guided": "Öppna Vad är internet? i Chrome. Dra med musen över raden med telefonnumret så att den blir blå. Tryck Ctrl+C. Byt till Anteckningar, klicka i den vita ytan och tryck Ctrl+V. Där är den!"
+              "default": "Öppna Vad är internet? i webbläsaren, markera telefonraden och tryck Ctrl+C. Klicka sedan i Anteckningar och tryck Ctrl+V.",
+              "guided": "I webbläsaren klickar du på genvägen Vad är internet?. Leta upp raden med ett telefonnummer. Tryck ned vänster musknapp precis före första tecknet, håll kvar och dra till slutet av raden – texten blir blåmarkerad. Håll ned Ctrl och tryck C. Klicka sedan på Anteckningars ikon i aktivitetsfältet, klicka i den vita ytan och tryck Ctrl+V. Raden klistras in.",
+              "independent": "Kopiera telefonraden från sidan Vad är internet? i webbläsaren till Anteckningar.",
+              "child.guided": "Öppna Vad är internet? i webbläsaren. Dra med musen över raden med telefonnumret så att den blir blå. Tryck Ctrl+C. Byt till Anteckningar, klicka i den vita ytan och tryck Ctrl+V. Där är den!"
             },
             "hints": [
-              "Klicka på genvägen Vad är internet? i Chrome.",
+              "Klicka på genvägen Vad är internet? i webbläsaren.",
               "Tryck ned musknappen i början av telefonraden och dra till slutet så att raden blir markerad.",
               "Tryck Ctrl+C för att kopiera.",
               "Byt till Anteckningar genom att klicka på dess ikon i aktivitetsfältet.",
@@ -3414,13 +3414,13 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Ladda ned guide.txt via genvägen Ladda ned en guide i Chrome. Klicka sedan på Visa i mapp för att se filen i Hämtade filer.",
-              "guided": "I Chrome klickar du på genvägen Ladda ned en guide och sedan på knappen Ladda ned guide.txt. Uppe till höger visas rutan Senaste nedladdningar. Klicka på Visa i mapp i den rutan. Utforskaren öppnas på mappen Hämtade filer, och där ligger guide.txt.",
-              "independent": "Ladda ned guide.txt i Chrome och hitta sedan filen i Hämtade filer.",
-              "child.guided": "Ladda ned guide.txt i Chrome. Klicka på Visa i mapp i rutan som dyker upp. Nu ser du var filen hamnade: i Hämtade filer!"
+              "default": "Ladda ned guide.txt via genvägen Ladda ned en guide i webbläsaren. Klicka sedan på Visa i mapp för att se filen i Hämtade filer.",
+              "guided": "I webbläsaren klickar du på genvägen Ladda ned en guide och sedan på knappen Ladda ned guide.txt. Uppe till höger visas rutan Senaste nedladdningar. Klicka på Visa i mapp i den rutan. Utforskaren öppnas på mappen Hämtade filer, och där ligger guide.txt.",
+              "independent": "Ladda ned guide.txt i webbläsaren och hitta sedan filen i Hämtade filer.",
+              "child.guided": "Ladda ned guide.txt i webbläsaren. Klicka på Visa i mapp i rutan som dyker upp. Nu ser du var filen hamnade: i Hämtade filer!"
             },
             "hints": [
-              "Klicka på genvägen Ladda ned en guide i Chrome och ladda ned guide.txt.",
+              "Klicka på genvägen Ladda ned en guide i webbläsaren och ladda ned guide.txt.",
               "Rutan Senaste nedladdningar visas uppe till höger.",
               "Klicka på Visa i mapp – eller öppna Utforskaren och klicka på Hämtade filer.",
               "Den gula ramen visar Hämtade filer i Utforskaren.",
@@ -3616,7 +3616,7 @@
           "what": "En webbsida visas inne i en webbläsare och har en webbadress. Ett installerat program körs som en egen app i Windows.",
           "recognize": "Webbsidor har adressfält och flikar runt sig. Installerade program har en egen ikon i Start-menyn och ett eget fönster.",
           "use": "Skillnaden hjälper när du ska installera, uppdatera, logga in eller felsöka.",
-          "example": "Gmail kan användas som webbsida i Chrome medan Outlook också finns som installerat program.",
+          "example": "Gmail kan användas som webbsida i webbläsaren medan Outlook också finns som installerat program.",
           "everyday": [
             "Bank, myndighetstjänster och e-post i webbläsaren.",
             "Word, Spotify eller andra installerade appar."
@@ -3998,17 +3998,17 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Öppna Start, högerklicka på Google Chrome och välj Fäst i Aktivitetsfältet.",
-              "guided": "Klicka på Start-knappen – de fyra blå rutorna längst ned. Under Fäst i Start-menyn letar du upp Google Chrome, den färgglada runda ikonen. Högerklicka på den. En meny öppnas. Klicka på Fäst i Aktivitetsfältet. Chromes ikon ligger nu kvar längst ned även när programmet är stängt.",
-              "independent": "Fäst Google Chrome i Aktivitetsfältet.",
-              "child.guided": "Öppna Start. Högerklicka på Google Chrome, den färgglada runda ikonen. Välj Fäst i Aktivitetsfältet. Nu sitter Chrome fast längst ned!"
+              "default": "Öppna Start, högerklicka på appen Webbläsare och välj Fäst i Aktivitetsfältet.",
+              "guided": "Klicka på Start-knappen – de fyra blå rutorna längst ned. Under Fäst i Start-menyn letar du upp appen Webbläsare, den blå jordgloben. Högerklicka på den. En meny öppnas. Klicka på Fäst i Aktivitetsfältet. Webbläsarens ikon ligger nu kvar längst ned även när programmet är stängt.",
+              "independent": "Fäst appen Webbläsare i Aktivitetsfältet.",
+              "child.guided": "Öppna Start. Högerklicka på appen Webbläsare, den blå jordgloben. Välj Fäst i Aktivitetsfältet. Nu sitter webbläsaren fast längst ned!"
             },
             "hints": [
               "Öppna Start med Windows-symbolen i aktivitetsfältet.",
-              "Leta upp Google Chrome under Fäst.",
-              "Högerklicka på Google Chrome.",
+              "Leta upp appen Webbläsare under Fäst.",
+              "Högerklicka på appen Webbläsare.",
               "Den gula ramen visar Start-knappen.",
-              "Start → högerklicka på Google Chrome → Fäst i Aktivitetsfältet."
+              "Start → högerklicka på appen Webbläsare → Fäst i Aktivitetsfältet."
             ],
             "nudge": "Valet finns i snabbmenyn för appen."
           },
@@ -4021,12 +4021,12 @@
           "what": "Att fästa ett program betyder att ikonen ligger kvar i aktivitetsfältet även när programmet är stängt.",
           "recognize": "I Windows 11 fäster du via appens snabbmeny: högerklicka på appen i Start och välj Fäst i Aktivitetsfältet.",
           "use": "Det ger snabb åtkomst till program du använder ofta.",
-          "example": "Google Chrome kan ligga kvar bredvid Utforskaren i aktivitetsfältet även när Chrome är stängt.",
+          "example": "Webbläsaren kan ligga kvar bredvid Utforskaren i aktivitetsfältet även när webbläsaren är stängd.",
           "steps": [
             "Öppna Start.",
-            "Högerklicka på Google Chrome.",
+            "Högerklicka på appen Webbläsare.",
             "Välj Fäst i Aktivitetsfältet.",
-            "Kontrollera att Chrome-ikonen syns i aktivitetsfältet."
+            "Kontrollera att webbläsarikonen syns i aktivitetsfältet."
           ],
           "everyday": [
             "Fäst webbläsaren du använder varje dag.",
@@ -4053,17 +4053,17 @@
           {
             "title": "Din tur",
             "text": {
-              "default": "Dra Chrome i den tomma ytan högst upp till vänster skärmkant. Dra sedan Anteckningar i namnlisten till höger skärmkant.",
-              "guided": "I Chrome tar du tag i den tomma ytan bredvid flikarna högst upp. Håll vänster musknapp nere och dra hela vägen till skärmens vänstra kant. När pekaren når kanten visas en ram – släpp då. Ta sedan tag i namnlisten högst upp i Anteckningar och dra hela vägen till höger kant. Släpp. Nu har du två fönster sida vid sida.",
-              "independent": "Lägg Chrome och Anteckningar sida vid sida, med Chrome till vänster.",
-              "child.guided": "Ta tag i Chrome högst upp och dra hela vägen till vänster kant, och släpp. Ta tag i Anteckningar och dra hela vägen till höger kant, och släpp. Nu delar de skärmen!"
+              "default": "Dra webbläsaren i den tomma ytan högst upp till vänster skärmkant. Dra sedan Anteckningar i namnlisten till höger skärmkant.",
+              "guided": "I webbläsaren tar du tag i den tomma ytan bredvid flikarna högst upp. Håll vänster musknapp nere och dra hela vägen till skärmens vänstra kant. När pekaren når kanten visas en ram – släpp då. Ta sedan tag i namnlisten högst upp i Anteckningar och dra hela vägen till höger kant. Släpp. Nu har du två fönster sida vid sida.",
+              "independent": "Lägg webbläsaren och Anteckningar sida vid sida, med webbläsaren till vänster.",
+              "child.guided": "Ta tag i webbläsaren högst upp och dra hela vägen till vänster kant, och släpp. Ta tag i Anteckningar och dra hela vägen till höger kant, och släpp. Nu delar de skärmen!"
             },
             "hints": [
-              "I Chrome tar du tag i den tomma ytan bredvid flikarna högst upp.",
+              "I webbläsaren tar du tag i den tomma ytan bredvid flikarna högst upp.",
               "Håll musknappen nere och dra hela vägen till vänster kant. Släpp när pekaren når kanten.",
               "Ta tag i namnlisten högst upp i Anteckningar.",
               "Dra Anteckningar hela vägen till höger kant och släpp.",
-              "Chrome → vänster kant. Anteckningar → höger kant."
+              "Webbläsaren → vänster kant. Anteckningar → höger kant."
             ],
             "nudge": "Fönster kan fylla halva skärmen om du drar dem tillräckligt långt."
           },
@@ -4076,9 +4076,9 @@
           "what": "Windows kan placera ett fönster på halva skärmen när du drar det mot vänster eller höger kant.",
           "recognize": "Fönstret ändrar storlek och fyller halva skärmen. Funktionen heter Fäst (Snap). Du kan också peka på Maximera-knappen för att se färdiga layouter.",
           "use": "Det är praktiskt när du läser på ett ställe och skriver på ett annat.",
-          "example": "Ha Chrome på vänster halva och Anteckningar på höger halva när du kopierar information.",
+          "example": "Ha webbläsaren på vänster halva och Anteckningar på höger halva när du kopierar information.",
           "steps": [
-            "Dra Chrome i den tomma ytan bredvid flikarna till vänster kant och släpp.",
+            "Dra webbläsaren i den tomma ytan bredvid flikarna till vänster kant och släpp.",
             "Dra Anteckningar i namnlisten till höger kant och släpp."
           ],
           "everyday": [
@@ -4692,12 +4692,12 @@
       },
       "everyday-021-link-actions": {
         "title": "Kopiera länk och öppna i ny flik",
-        "summary": "Använd en länks högerklicksmeny i Chrome.",
+        "summary": "Använd en länks högerklicksmeny i webbläsaren.",
         "steps": [
           {
             "title": "Länkens meny",
             "text": {
-              "default": "Högerklickar du på en länk i Chrome kan du kopiera själva adressen eller öppna länken i en ny flik – utan att lämna sidan du är på.",
+              "default": "Högerklickar du på en länk i webbläsaren kan du kopiera själva adressen eller öppna länken i en ny flik – utan att lämna sidan du är på.",
               "short": "Högerklicka på en länk för att kopiera den eller öppna den i ny flik.",
               "child": "Länkar har en egen snabbmeny. Högerklickar du på en länk kan du kopiera adressen, till exempel för att skicka den till någon, eller öppna länken i en ny flik utan att lämna sidan du är på."
             }
@@ -4706,12 +4706,12 @@
             "title": "Din tur",
             "text": {
               "default": "Öppna Sökresultat. Högerklicka på en blå länk och välj Kopiera länkadress. Högerklicka sedan igen och välj Öppna länk i ny flik.",
-              "guided": "Klicka på genvägen Sökresultat på Chromes startsida. Lägg pekaren direkt på en blå länktext – pekaren blir en hand. Tryck på höger musknapp. Välj Kopiera länkadress i menyn. Högerklicka sedan på en länk igen och välj Öppna länk i ny flik. En ny flik öppnas högst upp.",
+              "guided": "Klicka på genvägen Sökresultat på webbläsarens startsida. Lägg pekaren direkt på en blå länktext – pekaren blir en hand. Tryck på höger musknapp. Välj Kopiera länkadress i menyn. Högerklicka sedan på en länk igen och välj Öppna länk i ny flik. En ny flik öppnas högst upp.",
               "independent": "Kopiera adressen till en länk i Sökresultat och öppna en länk i en ny flik.",
               "child.guided": "Öppna Sökresultat. Högerklicka på en blå länk och välj Kopiera länkadress. Högerklicka igen och välj Öppna länk i ny flik."
             },
             "hints": [
-              "Klicka på genvägen Sökresultat på Chromes startsida.",
+              "Klicka på genvägen Sökresultat på webbläsarens startsida.",
               "Högerklicka direkt på den blå länktexten – inte bredvid.",
               "Välj Kopiera länkadress.",
               "Högerklicka på en länk igen och välj Öppna länk i ny flik.",
@@ -4726,7 +4726,7 @@
         ],
         "detail": {
           "what": "En länk har en adress bakom sig. Du kan kopiera adressen eller öppna länken i en ny flik utan att lämna sidan.",
-          "recognize": "I Chrome visar högerklick på en länk en meny med länkkommandon. Länken är ofta blå och pekaren blir en hand.",
+          "recognize": "I webbläsaren visar högerklick på en länk en meny med länkkommandon. Länken är ofta blå och pekaren blir en hand.",
           "use": "Det är användbart när du vill skicka en adress till någon eller öppna flera resultat utan att tappa resultatsidan.",
           "example": "På en söksida kan du kopiera ett resultats adress och öppna ett annat resultat i en ny flik.",
           "steps": [
@@ -5220,7 +5220,7 @@
       },
       "everyday-copy-paste-01": {
         "title": "Kopiera text mellan program",
-        "description": "Kopiera telefonraden från Chrome och klistra in den i Anteckningar."
+        "description": "Kopiera telefonraden från webbläsaren och klistra in den i Anteckningar."
       },
       "everyday-undo-redo-01": {
         "title": "Ångra och gör om",
@@ -5228,7 +5228,7 @@
       },
       "everyday-save-location-01": {
         "title": "Hitta nedladdningen",
-        "description": "Ladda ned guide.txt i Chrome och hitta filen i Hämtade filer.",
+        "description": "Ladda ned guide.txt i webbläsaren och hitta filen i Hämtade filer.",
         "goal": {
           "goals": [
             {
@@ -5350,11 +5350,11 @@
       },
       "everyday-pin-taskbar-01": {
         "title": "Fäst ett program",
-        "description": "Fäst Google Chrome i aktivitetsfältet via Start-menyn."
+        "description": "Fäst appen Webbläsare i aktivitetsfältet via Start-menyn."
       },
       "everyday-snap-01": {
         "title": "Fönster sida vid sida",
-        "description": "Lägg Chrome till vänster och Anteckningar till höger genom att dra fönstren till skärmkanterna."
+        "description": "Lägg webbläsaren till vänster och Anteckningar till höger genom att dra fönstren till skärmkanterna."
       },
       "everyday-link-actions-01": {
         "title": "Länkens snabbmeny",

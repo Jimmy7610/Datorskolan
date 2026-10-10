@@ -36,7 +36,7 @@ Källor: [Lag (2023:254), EU Accessibility Centre](https://accessible-eu-centre.
 | 2.4.11 Fokus inte dolt (minimum) | Startsidans sidhuvud är sticky men tar bara en rad. Coachpanelen ligger bredvid skärmen och aldrig ovanpå fokuserat innehåll på breda skärmar. | Manuellt |
 | 2.5.8 Målstorlek (minimum) | Webbplatsknappar ≥ 44 px, språkknappar 44×36 px, FakeWin-kontroller ≥ 24 px (Windows standard är 32 px). | `accessibility-smoke` |
 | 3.1.1 / 3.1.2 Sidans språk | `<html lang>` sätts av i18n-lagret. Språkknapparna har `lang="sv"`/`lang="en"`. | `accessibility-smoke` |
-| 3.3.1 / 3.3.3 Felidentifiering | Formulär i övningsdatorn (Chrome-formulär, e-post, Wi‑Fi-nyckel, Spara som) visar fel i text med `role="alert"` och `aria-invalid`. | Manuellt |
+| 3.3.1 / 3.3.3 Felidentifiering | Formulär i övningsdatorn (webbläsarens formulär, e-post, Wi‑Fi-nyckel, Spara som) visar fel i text med `role="alert"` och `aria-invalid`. | Manuellt |
 | 4.1.2 Namn, roll, värde | Roller: `tablist`/`tab`, `menu`/`menuitem`, `dialog`/`alertdialog`, `switch`, `listbox`/`option`, `progressbar`. | `accessibility-smoke` |
 | 4.1.3 Statusmeddelanden | Lektionsfeedback, statusraden i Utforskaren, aviseringar och övningsstatus använder `role="status"`/`aria-live`. | `accessibility-smoke` |
 | 2.3.3 / rörelse | `prefers-reduced-motion` stänger av animationer. `forced-colors` stöds: kanter på fönster och menyer, och enfärgade ikoner inverteras i mörka kontrastteman. | `accessibility-smoke`, emulering 2026-10-10 |
@@ -110,8 +110,7 @@ Datorskolan har inga konton, ingen statistik, inga cookies och ingen spårning.
 | Mottagare | Vad | Varför |
 |---|---|---|
 | GitHub Pages | Hela webbplatsen | Webbhotell |
-| `www.google.com` | Chrome-logotypen | Får inte bundlas, se `38-ASSETS-AND-LICENSES.md` |
 
-Inga skript laddas från tredje part. Övningsdatorns "webb" (`datorskolan.example`) är helt simulerad – inget skickas någonstans.
+Inga skript, typsnitt, ikoner eller bilder laddas från tredje part (kontrolleras av `tests/windows11-realism-smoke.js`). Övningsdatorns "webb" (`datorskolan.example`) är helt simulerad – inget skickas någonstans.
 
 **Behövs en integritetspolicy?** Eftersom inga personuppgifter samlas in och ingen spårning sker behövs ingen fullständig integritetspolicy. Informationen ovan finns i klartext på startsidan (**Integritet och lagring**), vilket uppfyller kravet på information om lagring i användarens enhet.

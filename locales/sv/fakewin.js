@@ -232,7 +232,7 @@
     "photos.previous": "Föregående bild",
     "photos.next": "Nästa bild",
 
-    /* ---------- Google Chrome ---------- */
+    /* ---------- Webbläsaren (neutral, Chrome-lik) ---------- */
     "chrome.tabs": "Flikar",
     "chrome.newTab": "Ny flik",
     "chrome.closeTab": "Stäng",
@@ -254,7 +254,7 @@
     "chrome.allDownloads": "Visa alla nedladdningar",
     "chrome.downloadsEmpty": "Här visas filer som du laddar ned.",
     "chrome.profile": "Användare",
-    "chrome.menu": "Anpassa och kontrollera Google Chrome",
+    "chrome.menu": "Inställningar och mer",
     "chrome.zoomIn": "Zooma in",
     "chrome.zoomOut": "Zooma ut",
     "chrome.zoomReset": "Återställ zoom till 100 %",
