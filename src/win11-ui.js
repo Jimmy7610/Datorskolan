@@ -136,7 +136,7 @@
         '" alt="" aria-hidden="true" draggable="false">';
     }
     var fileName = fluentIcons[name] || "document.svg";
-    return '<img class="win11-icon fluent-icon ' + esc(className || "") +
+    return '<img class="win11-icon fluent-icon is-mono ' + esc(className || "") +
       '" src="' + FLUENT_ROOT + esc(fileName) +
       '" width="' + size + '" height="' + size +
       '" alt="" aria-hidden="true" draggable="false">';

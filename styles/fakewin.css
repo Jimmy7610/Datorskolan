@@ -780,9 +780,12 @@
   display:grid;
   place-items:center;
   padding:16px;
-  background:rgba(0,0,0,.3);
+  background:transparent;
   pointer-events:auto;
 }
+
+/* Only User Account Control dims the screen (the "secure desktop"); ordinary dialogs do not. */
+.fw-dialog-backdrop:has(.fw-uac){background:rgba(0,0,0,.45)}
 
 .fw-dialog{
   display:flex;
@@ -1779,4 +1782,9 @@
 @media (forced-colors:active){
   .fw-window,.fw-flyout,.fw-menu,.fw-dialog{border:1px solid CanvasText}
   .learning-highlight{outline:3px solid Highlight}
+  .coach-next-cta{border:1px solid CanvasText}
+}
+/* Monochrome icons are dark artwork; on a dark high-contrast theme they must turn light. */
+@media (forced-colors:active) and (prefers-color-scheme:dark){
+  .fw .fluent-icon.is-mono{filter:invert(1)}
 }

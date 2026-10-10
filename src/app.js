@@ -1511,6 +1511,8 @@
     function renderDialog() {
       el.dialog.replaceChildren();
       var spec = state.dialog;
+      // Everything behind a modal dialog is out of reach for keyboard and screen readers. The coach panel stays usable.
+      [el.desktop, el.windows, el.flyouts, el.taskbar].forEach(function (node) { if (node) node.inert = !!spec; });
       if (!spec) return;
 
       var titleId = "fw-dialog-title";
@@ -1704,11 +1706,17 @@
 
       if (e.key === "Escape") {
         if (state.dialog || state.menu) return; // handled inside dialog/menu
-        if (state.startOpen) { setStart(false); return; }
-        if (state.quickSettingsOpen || state.calendarOpen) {
+        // Closing a flyout with Escape returns focus to the taskbar button that opened it.
+        var opener = state.startOpen ? "start" : state.quickSettingsOpen ? "quick-settings" : state.calendarOpen ? "clock" : null;
+        if (state.startOpen) setStart(false);
+        else if (opener) {
           state.quickSettingsOpen = false;
           state.calendarOpen = false;
           render();
+        }
+        if (opener) {
+          var button = el.taskbar.querySelector("[data-ui='" + opener + "']");
+          if (button) button.focus();
           return;
         }
       }

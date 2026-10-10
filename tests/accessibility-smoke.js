@@ -74,4 +74,12 @@ assert(settings.indexOf('describedby: "fw-wifi-key-help"') >= 0, "Wi‑Fi key fi
 assert(html.indexOf('class="hero-visual" aria-hidden="true"') >= 0, "Decorative preview is exposed to assistive tech");
 assert(!/<img(?![^>]*alt=)[^>]*>/.test(html), "Every image in index.html needs an alt attribute");
 
+// Modal dialogs: everything behind them is inert; flyouts closed with Escape return focus to their taskbar button.
+assert(app.indexOf("[el.desktop, el.windows, el.flyouts, el.taskbar].forEach(function (node) { if (node) node.inert = !!spec; })") >= 0, "Background must be inert while a dialog is open");
+assert(app.indexOf("el.taskbar.querySelector(\"[data-ui='\" + opener + \"']\")") >= 0, "Escape must return focus to the flyout's taskbar button");
+
+// Forced colours: dark monochrome icons are inverted on dark high-contrast themes.
+assert(/@media \(forced-colors:active\) and \(prefers-color-scheme:dark\)\{\s*\.fw \.fluent-icon\.is-mono\{filter:invert\(1\)\}/.test(fakewin), "Mono icons must stay visible in dark forced-colours themes");
+assert(/@media \(prefers-reduced-motion:reduce\)/.test(fakewin), "Simulator must honour reduced motion");
+
 console.log("Accessibility smoke test passed");

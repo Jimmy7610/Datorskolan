@@ -32,14 +32,40 @@ Källor: [Lag (2023:254), EU Accessibility Centre](https://accessible-eu-centre.
 | 1.4.12 Textavstånd | Radavstånd 1,55 på webbplatsen och i coachpanelen. Ingen text klipps vid ökat avstånd. | Kodgranskning |
 | 2.1.1 Tangentbord | Allt går att använda med tangentbord: flikar (piltangenter/Home/End), menyer (pilar, Esc), dialoger (Tab-fälla, Esc), Utforskaren (pilar, Retur, F2, Delete, Ctrl+C/X/V). | `accessibility-smoke`, `windows11-realism-smoke`, manuellt |
 | 2.4.1 Hoppa över block | Skip-länk som byter mål när övningsdatorn är öppen. | `accessibility-smoke` |
-| 2.4.3 Fokusordning / 2.4.7 Synligt fokus | Logisk DOM-ordning, `:focus-visible` på allt interaktivt. Fokus återgår till knappen som öppnade en dialog eller meny. | Manuellt |
+| 2.4.3 Fokusordning / 2.4.7 Synligt fokus | Logisk DOM-ordning, `:focus-visible` på allt interaktivt. Fokus återgår till knappen som öppnade en dialog, meny eller utfällbar panel (Start, Snabbinställningar, kalendern). När en dialog är öppen är resten av övningsdatorn `inert`. Coachpanelen går fortfarande att nå. | Automatiskt tangentbordstest 2026-10-10 (se testloggen), `accessibility-smoke` |
 | 2.4.11 Fokus inte dolt (minimum) | Startsidans sidhuvud är sticky men tar bara en rad. Coachpanelen ligger bredvid skärmen och aldrig ovanpå fokuserat innehåll på breda skärmar. | Manuellt |
 | 2.5.8 Målstorlek (minimum) | Webbplatsknappar ≥ 44 px, språkknappar 44×36 px, FakeWin-kontroller ≥ 24 px (Windows standard är 32 px). | `accessibility-smoke` |
 | 3.1.1 / 3.1.2 Sidans språk | `<html lang>` sätts av i18n-lagret. Språkknapparna har `lang="sv"`/`lang="en"`. | `accessibility-smoke` |
 | 3.3.1 / 3.3.3 Felidentifiering | Formulär i övningsdatorn (Chrome-formulär, e-post, Wi‑Fi-nyckel, Spara som) visar fel i text med `role="alert"` och `aria-invalid`. | Manuellt |
 | 4.1.2 Namn, roll, värde | Roller: `tablist`/`tab`, `menu`/`menuitem`, `dialog`/`alertdialog`, `switch`, `listbox`/`option`, `progressbar`. | `accessibility-smoke` |
 | 4.1.3 Statusmeddelanden | Lektionsfeedback, statusraden i Utforskaren, aviseringar och övningsstatus använder `role="status"`/`aria-live`. | `accessibility-smoke` |
-| 2.3.3 / rörelse | `prefers-reduced-motion` stänger av animationer. `forced-colors` stöds. | `accessibility-smoke` |
+| 2.3.3 / rörelse | `prefers-reduced-motion` stänger av animationer. `forced-colors` stöds: kanter på fönster och menyer, och enfärgade ikoner inverteras i mörka kontrastteman. | `accessibility-smoke`, emulering 2026-10-10 |
+
+### Testlogg 2026-10-10
+
+Testat automatiskt i Chrome 153 (headless, styrt via Chrome DevTools Protocol). Resultatet bygger på riktiga tangenttryckningar och emulerade medieinställningar, inte på en skärmläsare.
+
+| Test | Resultat |
+|---|---|
+| Tab genom hela startsidan (sv) | Ordningen följer sidan: skip-länk, logotyp, flikar (en tabbstopp, piltangenter inom), språkknappar, Starta, Se kursen, Integritet. Alla stopp hade synlig fokusring. Tab efter sista stoppet går tillbaka till början. |
+| Dialogen Integritet och lagring | Öppnas med Retur. Fokus hamnar på Stäng och stannar i dialogen vid Tab och Shift+Tab. Esc stänger, och fokus går tillbaka till knappen som öppnade dialogen. |
+| Start-menyn | Retur på Start öppnar menyn med fokus i sökrutan. Tab går till de fästa apparna. Esc stänger, och fokus går tillbaka till Start-knappen. **Rättat:** fokus hamnade tidigare på `body`. |
+| Snabbinställningar | Esc stänger, och fokus går tillbaka till knappen i aktivitetsfältet. **Rättat.** |
+| "Vill du spara?" i Anteckningar | `role="dialog"`. Fokus startar på Spara, och Tab cirkulerar mellan Spara, Spara inte och Avbryt. Aktivitetsfältet är `inert` medan dialogen är öppen. Esc = Avbryt, och fokus går tillbaka till textrutan. |
+| 200 % zoom (960×540 och 683×384 CSS-pixlar, motsvarar 1920×1080 och 1366×768) | Ingen vågrät rullning på startsidan eller i övningsdatorn. Aktivitetsfältet syns helt. |
+| `prefers-reduced-motion: reduce` | Start-menyn öppnas utan animation (0 s). |
+| `forced-colors: active` (mörkt tema) | Fönster, menyer och knappar får kanter. Ikonerna i systemfältet och de enfärgade kommandoikonerna syns. **Rättat:** de var tidigare mörka på mörk bakgrund. |
+
+### Kvar att testa manuellt
+
+Följande har **inte** kunnat testas i den här miljön och ska inte räknas som verifierat:
+
+1. **NVDA** (Firefox och Chrome) och **Skärmläsaren/Narrator** (Edge) på Windows 11: läsordning på startsidan, flikarna, att lektionsfeedback läses upp (`role="status"`), dialogernas namn och beskrivning, och Utforskarens listruta (antal objekt, markering).
+2. **VoiceOver** på macOS/iOS (Safari).
+3. **Riktiga kontrastteman i Windows** (Akvatisk, Ökenlandskap, Skymning, Natthimmel), särskilt det ljusa temat Ökenlandskap. Den automatiska kontrollen emulerade bara ett mörkt tema.
+4. **Webbläsarens zoom 200–400 %** med Ctrl+plus, i stället för emulerad fönsterstorlek, och textstorlek 200 % i Windows-inställningarna.
+5. **Pekskärm**: dra och släpp och långtryck (högerklick) på surfplatta.
+6. **Röststyrning** (Röståtkomst i Windows): att synliga etiketter matchar de tillgängliga namnen (WCAG 2.5.3).
 
 ### Textstorlek
 
@@ -60,6 +86,8 @@ Källor: [Lag (2023:254), EU Accessibility Centre](https://accessible-eu-centre.
 | PDF öppnas i Microsoft Edge | Neutral "PDF-läsare" | Edge-varumärket används inte. Lektionen nämner att PDF ofta öppnas i Edge. |
 | Windows-tangenten, Alt+Tab, Win+Shift+S | Start-knappen, Ctrl+Esc, aktivitetsfältet, Skärmklippverktygets Nytt-knapp | Webbläsaren kan inte ta emot de här tangenterna – operativsystemet fångar dem. Lektionerna förklarar de riktiga kortkommandona. |
 | Typsnitt Segoe UI Variable | Segoe UI Variable om det finns, annars systemets typsnitt | Microsofts typsnitt får inte spridas. På Windows-datorer blir resultatet äkta. |
+| Dialogrutor (till exempel "Vill du spara?") i Windows tonar inte ned resten av skärmen | Inte heller i Datorskolan. Bara UAC-frågan tonar ned skärmen, precis som Windows säkra skrivbord. | Samma upplevelse som i Windows. Resten av övningsdatorn blir `inert` för tangentbord och skärmläsare. |
+| Start-knappen visar Windows-logotypen | Fyra blå rundade rutor (Microsofts Fluent-ikon *Grid*) | Windows-logotypen är ett varumärke. Se `38-ASSETS-AND-LICENSES.md`. |
 | Coachpanelen finns inte i Windows | Datorskolans panel med webbplatsens typsnitt och färger | Den ska tydligt se annorlunda ut än Windows, så att eleven förstår vad som är "läraren" och vad som är "datorn". |
 
 ## 4. Integritet och lagring
