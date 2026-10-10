@@ -57,7 +57,10 @@ const mouseModes = ["move", "target", "click", "double", "right", "scroll", "hol
   ["mouse.mode.", mouseModes],
   ["mouse.instruction.", mouseModes],
   ["learn.stepType.", ["instruction", "demonstration", "exercise", "quiz", "simulation", "reflection", "checkpoint", "completion"]],
-  ["learn.level.", ["standard", "child", "fast"]],
+  ["learn.setting.", ["audience", "support", "depth"]],
+  ["learn.audience.", ["adult", "child", "adult.desc", "child.desc"]],
+  ["learn.support.", ["guided", "normal", "independent", "guided.desc", "normal.desc", "independent.desc"]],
+  ["learn.depth.", ["detailed", "normal", "short", "detailed.desc", "normal.desc", "short.desc"]],
   ["settings.personal.wallpaper.", ["bloom", "dawn", "dusk", "solid"]],
   ["installer.step.", ["welcome.title", "license.title", "location.title", "ready.title", "done.title"]]
 ].forEach(function (family) {
@@ -87,8 +90,25 @@ LOCALES.forEach(function (locale) {
     assert(l, locale + ": lesson text missing: " + lesson.id);
     assert(l.title && l.summary, locale + ": lesson title/summary missing: " + lesson.id);
     assert(Array.isArray(l.steps) && l.steps.length === lesson.steps.length, locale + ": step count differs: " + lesson.id);
+    const Pedagogy = window.DatorskolanPedagogy;
     l.steps.forEach(function (step, i) {
-      assert(step.text && step.text.trim(), locale + ": step text missing: " + lesson.id + " #" + (i + 1));
+      const where = locale + ": " + lesson.id + " #" + (i + 1);
+      assert(typeof step.text === "string" ? step.text.trim() : Pedagogy.isVariantObject(step.text) && step.text["default"].trim(), where + " step text missing");
+      // The teaching model (docs/41): every lesson adapts its introduction, every exercise its help.
+      const type = lesson.steps[i].type;
+      const firstInstruction = lesson.steps.findIndex(function (s) { return s.type === "instruction"; });
+      if (i === firstInstruction) {
+        ["short", "child"].forEach(function (variant) {
+          assert(step.text && step.text[variant] && step.text[variant].trim(), where + " introduction needs a '" + variant + "' variant");
+        });
+      }
+      if (type === "exercise") {
+        ["default", "guided", "independent", "child.guided"].forEach(function (variant) {
+          assert(step.text && step.text[variant] && step.text[variant].trim(), where + " exercise needs a '" + variant + "' variant");
+        });
+        assert(step.nudge && step.nudge.trim(), where + " exercise needs a general first hint (nudge) for independent help");
+        assert(step.text.guided.length > step.text.independent.length, where + " guided text must say more than the bare goal");
+      }
       assert(!!step.title === !!ref.steps[i].title, locale + ": step title presence differs: " + lesson.id + " #" + (i + 1));
       assert((step.hints || []).length === (ref.steps[i].hints || []).length, locale + ": hint count differs: " + lesson.id + " #" + (i + 1));
     });

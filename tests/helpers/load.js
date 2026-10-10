@@ -26,6 +26,7 @@ function loadCourse() {
     "src/course.js",
     "src/vfs.js",
     "src/scenario-engine.js",
+    "src/pedagogy.js",
     "src/progress-store.js",
     "src/lesson-engine.js"
   ]);

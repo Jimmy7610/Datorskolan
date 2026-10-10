@@ -1,8 +1,10 @@
 (function () {
   "use strict";
 
+  // The key keeps its original name so existing learners keep their progress; VERSION tracks the shape.
   var STORAGE_KEY = "datorskolan.progress.v1";
-  var VERSION = 1;
+  var VERSION = 2;
+  var Pedagogy = (typeof window !== "undefined" ? window : globalThis).DatorskolanPedagogy;
   var STATUSES = ["locked","introduced","practicing","assisted","independent","mastered","needs_review"];
 
   function clone(value) {
@@ -19,7 +21,8 @@
       userProfile: {
         id: "local-user",
         displayName: "",
-        mode: "standard",
+        // How Datorskolan teaches this learner: see src/pedagogy.js.
+        learning: Pedagogy.normalizeProfile(Pedagogy.DEFAULT_PROFILE),
         createdAt: nowIso(),
         lastSeenAt: nowIso(),
         settings: {
@@ -35,9 +38,21 @@
     };
   }
 
+  // Version 1 had one "mode" (standard | child | fast). Lessons, skills and events are kept as they are.
+  function migrateFromV1(state) {
+    state.userProfile.learning = Pedagogy.migrateMode(state.userProfile.mode);
+    delete state.userProfile.mode;
+    state.version = 2;
+    state.migrated = true;
+  }
+
   function ProgressStore(storage) {
     this._storage = storage || null;
     this._state = this._load();
+    if (this._state.migrated) {
+      delete this._state.migrated;
+      this._save();
+    }
   }
 
   ProgressStore.prototype._load = function () {
@@ -48,8 +63,11 @@
       if (!raw) return emptyState();
 
       var parsed = JSON.parse(raw);
-      if (!parsed || parsed.version !== VERSION) return emptyState();
+      if (!parsed || !parsed.userProfile) return emptyState();
+      if (parsed.version === 1) migrateFromV1(parsed);
+      if (parsed.version !== VERSION) return emptyState();
 
+      parsed.userProfile.learning = Pedagogy.normalizeProfile(parsed.userProfile.learning);
       parsed.userProfile.lastSeenAt = nowIso();
       return parsed;
     } catch (error) {
@@ -77,11 +95,20 @@
     return clone(this._state.userProfile);
   };
 
-  ProgressStore.prototype.setMode = function (mode) {
-    if (["standard","child","fast"].indexOf(mode) < 0) mode = "standard";
-    this._state.userProfile.mode = mode;
+  // audience / support / depth – each can be changed on its own; unknown values are ignored.
+  ProgressStore.prototype.learningProfile = function () {
+    return Pedagogy.normalizeProfile(this._state.userProfile.learning);
+  };
+
+  ProgressStore.prototype.setLearning = function (patch) {
+    var next = Object.assign({}, this.learningProfile());
+    Object.keys(patch || {}).forEach(function (name) {
+      var dimension = Pedagogy.DIMENSIONS[name];
+      if (dimension && dimension.values.indexOf(patch[name]) >= 0) next[name] = patch[name];
+    });
+    this._state.userProfile.learning = next;
     this._save();
-    return this.profile();
+    return clone(next);
   };
 
   ProgressStore.prototype.updateSettings = function (patch) {
@@ -331,8 +358,12 @@
     });
   };
 
+  // "Start over" removes all progress. How the learner wants to be taught is a preference, like the
+  // language, so it is kept.
   ProgressStore.prototype.reset = function () {
+    var learning = this.learningProfile();
     this._state = emptyState();
+    this._state.userProfile.learning = learning;
     this._save();
     return this.snapshot();
   };

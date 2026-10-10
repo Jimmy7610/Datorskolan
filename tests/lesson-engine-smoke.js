@@ -27,7 +27,7 @@ assert(engine.active().feedback.kind === "try-again" && engine.active().feedback
   "Retry feedback must be a translatable message key, not hardcoded text");
 
 const hint = engine.requestHint();
-assert(hint.kind === "hint" && hint.text.length > 0, "Hints come from the localized lesson text");
+assert(hint.kind === "hint" && window.DatorskolanPedagogy.hintText(engine.currentStep(), hint.rung, engine.profile()).length > 0, "Hints come from the localized lesson text");
 
 scenarioStatus = "completed";
 engine.observe("file.renamed", { name: "Semester" });

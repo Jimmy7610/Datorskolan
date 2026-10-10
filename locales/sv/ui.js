@@ -95,7 +95,7 @@
     "landing.footer.privacy": "Integritet och lagring",
 
     "reset.title": "Börja om från början?",
-    "reset.description": "Alla sparade framsteg på den här enheten raderas: klara lektioner, kursläge och dina val i övningsdatorn.",
+    "reset.description": "Alla sparade framsteg på den här enheten raderas: klara lektioner och dina val i övningsdatorn. Språket och hur du vill lära dig (läge, hjälp och förklaring) finns kvar.",
     "reset.warning": "Det går inte att ångra.",
     "reset.confirm": "Ja, radera och börja om",
 
@@ -103,9 +103,9 @@
     "privacy.intro": "Datorskolan fungerar utan konto och utan att skicka dina uppgifter någonstans.",
     "privacy.item.noAccount": "Du behöver inte logga in eller lämna några personuppgifter.",
     "privacy.item.noTracking": "Vi använder inga cookies, ingen statistik och ingen spårning.",
-    "privacy.item.localStorage": "Dina framsteg, ditt språkval och dina val i övningsdatorn sparas i webbläsarens lokala lagring (localStorage) på den här enheten. De skickas inte till någon server.",
+    "privacy.item.localStorage": "Dina framsteg, ditt språkval, hur du vill lära dig och dina val i övningsdatorn sparas i webbläsarens lokala lagring (localStorage) på den här enheten. De skickas inte till någon server.",
     "privacy.item.thirdParty": "Allt utom Chrome-loggan kommer från Datorskolans egen webbplats. Chrome-loggan visas direkt från Google, så Google ser din IP-adress, precis som vid ett vanligt webbesök.",
-    "privacy.item.delete": "Du raderar allt med knappen ”Börja om”, eller genom att rensa webbplatsdata i webbläsaren.",
+    "privacy.item.delete": "Dina framsteg raderar du med knappen ”Börja om”. Allt, även språk och inställningar, raderar du genom att rensa webbplatsdata i webbläsaren.",
 
     /* ---------- Simulatorn: gemensamt ---------- */
     "app.simulatorLabel": "Övningsdator med Windows 11",

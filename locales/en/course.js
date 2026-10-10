@@ -155,7 +155,11 @@
         "steps": [
           {
             "title": "What is a computer?",
-            "text": "The computer is the machine that runs programs and stores your files. The screen shows what is happening. You point and click with the mouse, and you type with the keyboard."
+            "text": {
+              "default": "The computer is the machine that runs programs and stores your files. The screen shows what is happening. You point and click with the mouse, and you type with the keyboard.",
+              "short": "The computer runs programs and stores files. You control it with the mouse and keyboard.",
+              "child": "A computer is a machine that can do lots of things: play films, keep your drawings and let you write. The screen is like a window into the computer. You point at things with the mouse, and you type letters with the keyboard."
+            }
           },
           {
             "title": "Done",
@@ -175,7 +179,11 @@
         "steps": [
           {
             "title": "Power and charging",
-            "text": "The power button switches the computer on. A laptop has a battery that is charged with a charger. When you have finished, shut the computer down from the Start menu – not by holding the power button."
+            "text": {
+              "default": "The power button switches the computer on. A laptop has a battery that is charged with a charger. When you have finished, shut the computer down from the Start menu – not by holding the power button.",
+              "short": "Start with the power button. Shut down from the Start menu.",
+              "child": "The power button switches the computer on. A laptop has a battery, a bit like a mobile phone, and needs charging now and then. When you have finished, switch it off from the Start menu. Don't hold the power button down – things you haven't saved could disappear."
+            }
           },
           {
             "title": "Done",
@@ -195,7 +203,11 @@
         "steps": [
           {
             "title": "USB and sound",
-            "text": "USB ports are where you plug in accessories such as a mouse, a keyboard and a USB stick. Sound is played through the computer's speakers or through headphones."
+            "text": {
+              "default": "USB ports are where you plug in accessories such as a mouse, a keyboard and a USB stick. Sound is played through the computer's speakers or through headphones.",
+              "short": "USB ports are for accessories. Sound comes from speakers or headphones.",
+              "child": "The USB ports are small, flat slots on the computer. You can plug things into them, such as a mouse, a keyboard or a USB stick. Sound comes out of the computer's speakers, or out of headphones if you plug some in."
+            }
           },
           {
             "title": "Done",
@@ -215,7 +227,11 @@
         "steps": [
           {
             "title": "The computer is not the internet",
-            "text": "The computer is the device itself. The internet is the network that connects computers all over the world. The web browser – for example Google Chrome – is the program that uses the internet to show web pages."
+            "text": {
+              "default": "The computer is the device itself. The internet is the network that connects computers all over the world. The web browser – for example Google Chrome – is the program that uses the internet to show web pages.",
+              "short": "The computer is the device, the internet is the network and the browser shows web pages.",
+              "child": "The computer is the machine in front of you. The internet is like a huge network of roads between computers all over the world. The web browser, for example Google Chrome, is the program you use to travel along those roads and look at web pages."
+            }
           },
           {
             "title": "Done",
@@ -235,7 +251,11 @@
         "steps": [
           {
             "title": "The pointer follows your hand",
-            "text": "When you move the mouse on the desk, the little arrow – the mouse pointer – moves on the screen. Don't lift the mouse, let it glide."
+            "text": {
+              "default": "When you move the mouse on the desk, the little arrow – the mouse pointer – moves on the screen. Don't lift the mouse, let it glide.",
+              "short": "The mouse controls the pointer on the screen.",
+              "child": "When you move the mouse on the desk, a little arrow moves on the screen. The arrow is called the mouse pointer. It follows the mouse, a bit like a shadow. Let the mouse glide on the desk – you don't need to lift it."
+            }
           },
           {
             "title": "Try a small movement",
@@ -243,14 +263,20 @@
           },
           {
             "title": "Move the pointer",
-            "text": "Move the mouse pointer around the blue area until the meter is full.",
+            "text": {
+              "default": "Move the mouse calmly so that the pointer moves around inside the blue area. Keep going until the meter is full.",
+              "guided": "Put your hand on top of the mouse. Look at the screen and find the little white arrow – that is the mouse pointer. Now slide the mouse calmly back and forth on the desk so the arrow moves inside the blue area in the practice window. The meter fills up as you move the mouse. Keep going until it is full.",
+              "independent": "Move the mouse pointer around the blue area until the meter is full.",
+              "child.guided": "Put your hand on the mouse. Can you see the little arrow on the screen? It is called the mouse pointer. Slide the mouse back and forth on the desk so the arrow dances around in the blue box. Keep going until the meter is full!"
+            },
             "hints": [
               "Put your hand on the mouse and move it calmly in any direction.",
               "The pointer needs to be inside the blue area for the movement to count.",
               "Move the mouse back and forth a few times.",
               "The yellow frame shows the area where the movement is measured.",
               "Move the mouse slowly left and right inside the area until the meter shows 100%."
-            ]
+            ],
+            "nudge": "It is the mouse on the desk that moves the arrow on the screen."
           },
           {
             "title": "Done",
@@ -270,18 +296,28 @@
         "steps": [
           {
             "title": "Steer the pointer",
-            "text": "Now you practise precision: moving the pointer exactly where you want it. You don't need to click."
+            "text": {
+              "default": "Now you practise precision: moving the pointer exactly where you want it. You don't need to click.",
+              "short": "Practise moving the pointer exactly where you want it.",
+              "child": "Now you practise aiming, like when you aim with a ball. You move the arrow to exactly the right place. You don't need to click."
+            }
           },
           {
             "title": "Hit three targets",
-            "text": "Move the pointer to circle 1, then to 2 and finally to 3.",
+            "text": {
+              "default": "Move the pointer to the targets in number order: first 1, then 2 and finally 3. You don't need to click.",
+              "guided": "In the practice window there are three round targets with the numbers 1, 2 and 3. Move the mouse calmly until the pointer is over the circle with the number 1. The next target then turns blue. Move the pointer on to 2 and finally to 3. You don't need to click – it is enough for the pointer to be over the circle.",
+              "independent": "Move the pointer to circle 1, then to 2 and finally to 3.",
+              "child.guided": "Find the circle with the number 1. Move the arrow there so it sits over the circle. Then aim for 2 and finally 3. No clicking, just aiming!"
+            },
             "hints": [
               "Start with the circle that has the number 1.",
               "It is enough for the pointer to be over the circle – don't click.",
               "Take one target at a time in number order. The next target turns blue when it is its turn.",
               "The yellow frame shows the area with the targets.",
               "Move the pointer over 1, then 2 and finally 3."
-            ]
+            ],
+            "nudge": "The numbers show the order to take the targets in."
           },
           {
             "title": "Done",
@@ -301,18 +337,28 @@
         "steps": [
           {
             "title": "One click",
-            "text": "A normal click is made with the left mouse button: press it down and let go straight away, once."
+            "text": {
+              "default": "A normal click is made with the left mouse button: press it down and let go straight away, once.",
+              "short": "A click is a short press of the left mouse button.",
+              "child": "The mouse has two buttons on top. You use the left one almost all the time. A click is a quick press – press down and let go straight away, like pressing a doorbell."
+            }
           },
           {
             "title": "Click once",
-            "text": "Click the blue button exactly once.",
+            "text": {
+              "default": "Point at the blue button and press the left mouse button once.",
+              "guided": "The mouse has two buttons on top. You use the left one, which sits under your index finger. First move the pointer so it is on the blue button in the practice window. Then press the left mouse button and let go straight away – once.",
+              "independent": "Click the blue button exactly once.",
+              "child.guided": "Move the arrow to the blue button. Then press the mouse's left button once, the one under your pointing finger. Press and let go straight away – click!"
+            },
             "hints": [
               "Use the button on the left side of the mouse.",
               "Move the pointer to the blue button first.",
               "Press the left mouse button and let go straight away – just once.",
               "The yellow frame shows the button to click.",
               "Pointer on the button → press the left mouse button once → let go."
-            ]
+            ],
+            "nudge": "The mouse has two buttons. One of them is used almost all the time."
           },
           {
             "title": "Done",
@@ -332,18 +378,28 @@
         "steps": [
           {
             "title": "Two quick clicks",
-            "text": "A double-click is two left-clicks close together, without moving the mouse in between. It is used to open files, folders and icons on the desktop."
+            "text": {
+              "default": "A double-click is two left-clicks close together, without moving the mouse in between. It is used to open files, folders and icons on the desktop.",
+              "short": "Two quick clicks open files, folders and icons.",
+              "child": "A double-click is two clicks straight after each other: click-click. That is how you open things on the desktop, for example a folder. Keep the mouse still while you click."
+            }
           },
           {
             "title": "Double-click",
-            "text": "Double-click the blue button.",
+            "text": {
+              "default": "Point at the blue button and click twice quickly with the left mouse button without moving the mouse.",
+              "guided": "Move the pointer to the blue button in the practice window. Keep the mouse completely still. Now press the left mouse button twice quickly, click-click, with as short a pause as possible. If it is too slow it counts as two ordinary clicks – then try again a little faster.",
+              "independent": "Double-click the blue button.",
+              "child.guided": "Move the arrow to the blue button and keep the mouse still. Click twice quickly with the left button: click-click! Too slow? Try again a bit faster."
+            },
             "hints": [
               "You need two clicks.",
               "Both clicks must be on the same button – keep the mouse still.",
               "Click twice quickly with the left mouse button: click-click.",
               "The yellow frame shows the button to double-click.",
               "Keep the pointer still over the button and click twice quickly with the left mouse button."
-            ]
+            ],
+            "nudge": "Opening something takes more than one click."
           },
           {
             "title": "Done",
@@ -363,18 +419,28 @@
         "steps": [
           {
             "title": "The other mouse button",
-            "text": "The right mouse button usually opens a menu with more choices for the thing you are pointing at. It is called a context menu."
+            "text": {
+              "default": "The right mouse button usually opens a menu with more choices for the thing you are pointing at. It is called a context menu.",
+              "short": "The right mouse button opens a context menu with more choices.",
+              "child": "The right mouse button is like asking a question: \"What can I do with this?\" When you press it, a menu appears with different choices. The menu is called a context menu."
+            }
           },
           {
             "title": "Right-click",
-            "text": "Right-click the blue button.",
+            "text": {
+              "default": "Point at the blue button and press the right mouse button once.",
+              "guided": "This time you use the right button on the mouse – the one under your middle finger. Move the pointer to the blue button in the practice window. Then press the right mouse button once and let go.",
+              "independent": "Right-click the blue button.",
+              "child.guided": "Move the arrow to the blue button. Press the mouse's right button once, the one under your middle finger. Press and let go!"
+            },
             "hints": [
               "Don't use the left mouse button this time.",
               "Move the pointer to the blue button first.",
               "Press the button on the right side of the mouse once.",
               "The yellow frame shows the button waiting for a right-click.",
               "Pointer on the button → press the right mouse button once → let go."
-            ]
+            ],
+            "nudge": "The mouse has another button that you haven't used yet."
           },
           {
             "title": "Done",
@@ -394,18 +460,28 @@
         "steps": [
           {
             "title": "The mouse wheel",
-            "text": "The wheel between the mouse buttons moves the content up and down. Roll the wheel towards you and the page moves down. Roll it away from you and it moves up."
+            "text": {
+              "default": "The wheel between the mouse buttons moves the content up and down. Roll the wheel towards you and the page moves down. Roll it away from you and it moves up.",
+              "short": "The mouse wheel moves the content up and down.",
+              "child": "Between the mouse buttons there is a little wheel. Roll it towards you and the page slides down, like unrolling a long strip of paper. Roll it away from you and the page goes up again."
+            }
           },
           {
             "title": "Down and up",
-            "text": "First scroll down to the end of the list, then back up again.",
+            "text": {
+              "default": "Put the pointer on the list and roll the mouse wheel towards you until you see the end. Then roll it away from you to get back up.",
+              "guided": "Find the wheel between the mouse's two buttons. Move the pointer so it is over the list of rows in the practice window. Roll the wheel towards you with your index finger – the list slides down. Keep going until you see the end of the list. Then roll the wheel away from you until you are back at the top.",
+              "independent": "First scroll down to the end of the list, then back up again.",
+              "child.guided": "Put the arrow on the list. Roll the wheel on the mouse towards you – the list moves down. When you reach the end, roll the wheel the other way and it moves up again."
+            },
             "hints": [
               "Put the pointer over the list of rows.",
               "Roll the wheel towards you to go down.",
               "When you are far down: roll the wheel away from you to go up.",
               "The yellow frame shows the list to scroll.",
               "Pointer on the list → roll towards you (down) → roll away from you (up). On a touchpad, drag with two fingers."
-            ]
+            ],
+            "nudge": "The mouse has more than two buttons. Something on it can roll."
           },
           {
             "title": "Done",
@@ -425,18 +501,28 @@
         "steps": [
           {
             "title": "Keep the button down",
-            "text": "Sometimes you should not let go of the mouse button straight away. You press it and keep holding. You need this when you drag something, for example."
+            "text": {
+              "default": "Sometimes you should not let go of the mouse button straight away. You press it and keep holding. You need this when you drag something, for example.",
+              "short": "Press the mouse button down and keep holding.",
+              "child": "Sometimes you shouldn't let go of the button straight away. You press it and hold on for a while, like holding a handle. You need this, for example, when you move something on the screen."
+            }
           },
           {
             "title": "Hold until the meter is full",
-            "text": "Press the left mouse button on the blue button and keep holding until the meter is full.",
+            "text": {
+              "default": "Point at the blue button, press the left mouse button and keep holding until the meter is full.",
+              "guided": "Move the pointer to the blue button in the practice window. Press the left mouse button – but don't let go. Keep your finger on the button. The meter fills while you hold. When it is full you can let go. It takes about one second.",
+              "independent": "Press the left mouse button on the blue button and keep holding until the meter is full.",
+              "child.guided": "Move the arrow to the blue button. Press the left mouse button and hold it – don't let go yet! Count calmly to two. When the meter is full you can let go."
+            },
             "hints": [
               "Press the blue button with the left mouse button.",
               "Don't let go straight away.",
               "Keep the button down for about one second.",
               "The yellow frame shows the button to hold down.",
               "Pointer on the button → press the left mouse button → keep holding until the meter is full → let go."
-            ]
+            ],
+            "nudge": "An ordinary click is too short this time."
           },
           {
             "title": "Done",
@@ -456,18 +542,28 @@
         "steps": [
           {
             "title": "Press, hold, drag, drop",
-            "text": "To move something, keep the left mouse button down while you move the mouse. When you get there, let go of the button."
+            "text": {
+              "default": "To move something, keep the left mouse button down while you move the mouse. When you get there, let go of the button.",
+              "short": "Hold the button down, move the mouse and let go where you want the item.",
+              "child": "Drag and drop is like picking up a toy and putting it down somewhere new. You press the left mouse button on the item, keep holding while you move the mouse, and let go when you get there."
+            }
           },
           {
             "title": "Move the box",
-            "text": "Drag the blue box Drag me to the box Drop here and let go there.",
+            "text": {
+              "default": "Press and hold on the Drag me box, move it to the Drop here box and let go of the mouse button there.",
+              "guided": "Move the pointer to the blue box called Drag me. Press the left mouse button and keep holding. Now move the mouse – the box comes with it – until it is over the Drop here box. Only let go of the mouse button when you get there.",
+              "independent": "Drag the blue box Drag me to the box Drop here and let go there.",
+              "child.guided": "Put the arrow on the blue Drag me box. Press the left button and keep holding – now you have \"picked up\" the box. Move it to Drop here and let go of the button there."
+            },
             "hints": [
               "Start on the blue box Drag me.",
               "Press the left mouse button and keep holding.",
               "Move the mouse towards the Drop here box while holding the button down.",
               "The yellow frame shows the area with both boxes.",
               "Press and hold on Drag me → drag to Drop here → let go of the mouse button."
-            ]
+            ],
+            "nudge": "What you practised in the last lesson is needed again."
           },
           {
             "title": "Done",
@@ -487,18 +583,28 @@
         "steps": [
           {
             "title": "Now you do it yourself",
-            "text": "The final task has six parts. You choose the order and there are no step-by-step instructions."
+            "text": {
+              "default": "The final task has six parts. You choose the order and there are no step-by-step instructions.",
+              "short": "Six mouse tasks in any order.",
+              "child": "Now it's time to show everything you can do with the mouse! There are six small missions. You decide which order to do them in."
+            }
           },
           {
             "title": "Complete all six parts",
-            "text": "Move, click, double-click, right-click, scroll and drag and drop in the practice window.",
+            "text": {
+              "default": "Do all six parts in the practice window: move, click, double-click, right-click, scroll and drag and drop. The list shows what is done.",
+              "guided": "The practice window has six boxes, one for each thing you have practised. Take them one at a time. Move the pointer in the Move box. Click Click once. Click twice quickly on Double-click. Press Right-click with the right button. Roll the wheel down and up in Scroll. Finally, drag the Drag box to Drop here. The list under the boxes ticks off what you have done.",
+              "independent": "Move, click, double-click, right-click, scroll and drag and drop in the practice window.",
+              "child.guided": "There are six boxes, one for each mouse trick you know. Start with Move and then go on one box at a time. The list under the boxes shows what you have already done. Can you get all six?"
+            },
             "hints": [
               "Look at the names of the six boxes.",
               "Each box practises something you have already done.",
               "The list under the boxes shows which parts are done.",
               "The yellow frame shows the six boxes.",
               "Move the pointer in Move, click Click, double-click Double-click, right-click Right-click, scroll down and up in Scroll and drag Drag to Drop here."
-            ]
+            ],
+            "nudge": "Each box has the same name as a lesson you have already done."
           },
           {
             "title": "The mouse module is done",
@@ -518,18 +624,28 @@
         "steps": [
           {
             "title": "Letters",
-            "text": "The letter keys are in the middle of the keyboard. When you press a key, the letter appears where the text cursor – the blinking line – is."
+            "text": {
+              "default": "The letter keys are in the middle of the keyboard. When you press a key, the letter appears where the text cursor – the blinking line – is.",
+              "short": "The letter keys type where the text cursor blinks.",
+              "child": "The keyboard has a key for every letter. When you press a key, the letter appears on the screen, right where a little blinking line is. The line is called the text cursor and shows where the next letter will go."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type the word computer in the box.",
+            "text": {
+              "default": "Click in the white box and type the word computer.",
+              "guided": "Look at the practice window. There is a white box. Click once in it – a small line starts blinking. That is the text cursor, and it shows where the letters will go. Then find the letters on the keyboard and press them one at a time: c, o, m, p, u, t, e, r.",
+              "independent": "Type the word computer in the box.",
+              "child.guided": "Click in the white box so a little line blinks there. Find c on the keyboard and press it. Carry on with o, m, p, u, t, e and r. Now it says computer!"
+            },
             "hints": [
               "First click in the white box so the text cursor blinks there.",
               "Find the letter c on the keyboard.",
               "Type one letter at a time: c, o, m, p, u, t, e, r.",
               "The yellow frame shows the box to type in.",
               "Click in the box and type c o m p u t e r in small letters."
-            ]
+            ],
+            "nudge": "Before you type, the computer needs to know where the text should go."
           },
           {
             "title": "Done",
@@ -549,18 +665,28 @@
         "steps": [
           {
             "title": "Numbers",
-            "text": "The numbers 1 to 0 are in the row above the letters. Larger keyboards also have a number pad on the far right."
+            "text": {
+              "default": "The numbers 1 to 0 are in the row above the letters. Larger keyboards also have a number pad on the far right.",
+              "short": "The numbers are in the row above the letters.",
+              "child": "The numbers have their own row above the letters, from 1 to 0. Some big keyboards also have a small number block on the far right, almost like a calculator."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type 12345 in the box.",
+            "text": {
+              "default": "Click in the box and type 12345 using the number row above the letters.",
+              "guided": "First click in the white box in the practice window so the text cursor blinks there. Then look at the keyboard: the numbers are in the row above the letters, starting with 1 on the left. Press 1, 2, 3, 4 and 5, one at a time.",
+              "independent": "Type 12345 in the box.",
+              "child.guided": "Click in the box. Find the row of numbers above the letters. Press 1, then 2, 3, 4 and 5. No spaces!"
+            },
             "hints": [
               "Look for the row of numbers above the letters.",
               "Click in the box first.",
               "Type one number at a time: 1, 2, 3, 4, 5.",
               "The yellow frame shows the box to type in.",
               "Type exactly 12345 – no spaces."
-            ]
+            ],
+            "nudge": "The numbers have their own row on the keyboard."
           },
           {
             "title": "Done",
@@ -580,18 +706,28 @@
         "steps": [
           {
             "title": "Correcting text",
-            "text": "Space makes a gap. Enter starts a new line. Backspace deletes the character to the left of the text cursor. Delete removes the character to the right."
+            "text": {
+              "default": "Space makes a gap. Enter starts a new line. Backspace deletes the character to the left of the text cursor. Delete removes the character to the right.",
+              "short": "Space makes a gap, Enter a new line. Backspace and Delete remove text.",
+              "child": "Four keys help you write neatly. Space makes a gap between words. Enter jumps down to a new line. Backspace rubs out the letter to the left of the text cursor, and Delete rubs out the one to the right – like an eraser pointing each way."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Use Space, Backspace, Delete and Enter at least once each in the text box.",
+            "text": {
+              "default": "Click in the text box and press Space, Backspace, Delete and Enter at least once each.",
+              "guided": "First click in the text box in the practice window. Then find the keys one at a time. Space is the long key at the bottom. Enter is the big key on the right, often with a bent arrow. Backspace is above Enter and has an arrow pointing left. Delete is higher up on the right and may be labelled Del. Press each one at least once. The list under the box ticks them off.",
+              "independent": "Use Space, Backspace, Delete and Enter at least once each in the text box.",
+              "child.guided": "Click in the text box. Press the long key at the bottom – that is Space. Press the big key on the right – Enter. Find Backspace above Enter and Delete (Del) at the top right. The list shows which ones you have done."
+            },
             "hints": [
               "Click in the text box first.",
               "Space is the long key at the bottom.",
               "Backspace is above Enter and often has an arrow pointing left. Delete may be labelled Del.",
               "The list under the text box shows which keys you have already used.",
               "Press Space, Backspace, Delete and Enter – in any order."
-            ]
+            ],
+            "nudge": "These are the keys you use when you correct and arrange text."
           },
           {
             "title": "Done",
@@ -611,18 +747,28 @@
         "steps": [
           {
             "title": "Capital letters",
-            "text": "Hold Shift while you press a letter and it becomes a capital. Caps Lock turns capitals on until you press Caps Lock again."
+            "text": {
+              "default": "Hold Shift while you press a letter and it becomes a capital. Caps Lock turns capitals on until you press Caps Lock again.",
+              "short": "Shift makes one capital letter. Caps Lock makes capitals until you switch it off.",
+              "child": "There are two ways to make capital letters. If you hold Shift while pressing a letter, just that letter becomes a capital. Caps Lock is like a light switch: press it once and all letters become capitals, press it again and they are small."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Make a capital letter with Shift. Then press Caps Lock and type one more letter.",
+            "text": {
+              "default": "Type a capital letter by holding Shift. Then press Caps Lock and type one more letter.",
+              "guided": "Click in the box in the practice window. Find Shift – the key with an arrow pointing up, on both sides of the keyboard. Hold Shift with one hand and press a letter with the other. Let go of Shift. Then press Caps Lock once – it is to the left of A – and type one more letter. Press Caps Lock again afterwards to switch it off.",
+              "independent": "Make a capital letter with Shift. Then press Caps Lock and type one more letter.",
+              "child.guided": "Click in the box. Hold Shift (the arrow pointing up) and press a letter – now it is a capital! Then press Caps Lock to the left of A and type another letter. Press Caps Lock again when you are done."
+            },
             "hints": [
               "Click in the box first.",
               "Shift has an arrow pointing up and is on both sides of the keyboard.",
               "Hold Shift and press a letter. Then let go of Shift.",
               "Caps Lock is to the left of A. Press it and type a letter.",
               "Shift + letter, then Caps Lock + one letter. Press Caps Lock again afterwards to switch it off."
-            ]
+            ],
+            "nudge": "There are two ways to get capital letters."
           },
           {
             "title": "Done",
@@ -642,18 +788,28 @@
         "steps": [
           {
             "title": "Arrow keys",
-            "text": "The four arrow keys move the text cursor or the selection up, down, left and right – without the mouse."
+            "text": {
+              "default": "The four arrow keys move the text cursor or the selection up, down, left and right – without the mouse.",
+              "short": "The arrow keys move the cursor or the selection without the mouse.",
+              "child": "At the bottom right of the keyboard there are four keys with arrows. They move things up, down, left and right – a bit like a joystick in a game."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Move the blue dot in all four directions with the arrow keys.",
+            "text": {
+              "default": "Click in the box with the dot and move it up, down, left and right with the arrow keys.",
+              "guided": "First click in the box with the blue dot in the practice window. Then look at the bottom right of the keyboard: there are four keys with arrows, ↑ ↓ ← →. Press each arrow once. The dot moves the way the arrow points. The list under the box shows which directions you have used.",
+              "independent": "Move the blue dot in all four directions with the arrow keys.",
+              "child.guided": "Click in the box with the dot. Find the four arrow keys at the bottom right. Press each arrow once and watch the dot move!"
+            },
             "hints": [
               "Click in the box with the dot first.",
               "The arrow keys are at the bottom right of the keyboard.",
               "Press up, down, left and right.",
               "The list under the box shows which directions you have already used.",
               "Click in the box → press ↑, ↓, ← and → once each."
-            ]
+            ],
+            "nudge": "Some keys point in different directions."
           },
           {
             "title": "Done",
@@ -673,18 +829,28 @@
         "steps": [
           {
             "title": "Tab and Esc",
-            "text": "Tab moves to the next button or field. Shift+Tab moves back. Esc usually means cancel or close."
+            "text": {
+              "default": "Tab moves to the next button or field. Shift+Tab moves back. Esc usually means cancel or close.",
+              "short": "Tab goes to the next field. Esc cancels or closes.",
+              "child": "Tab is a shortcut: it jumps to the next button or box without the mouse. Esc is the emergency exit – it closes or cancels whatever just opened."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Press Tab to move between the buttons. Then press Esc to close the tip.",
+            "text": {
+              "default": "Press Tab a few times to move between the buttons. Then close the tip with Esc.",
+              "guided": "Look at the left edge of the keyboard. Tab is above Caps Lock and often has two arrows. Press Tab a few times and watch a frame jump between the buttons in the practice window. Then find Esc at the top left and press it. That closes the tip.",
+              "independent": "Move between the buttons without the mouse, then close the tip with the keyboard.",
+              "child.guided": "Find Tab above Caps Lock and press it a few times – watch the frame jump between the buttons! Then press Esc at the top left to close the tip."
+            },
             "hints": [
               "Tab is on the far left, above Caps Lock.",
               "Press Tab a few times and watch the frame jump between the buttons.",
               "Esc is at the top left.",
               "The list shows which keys you have already used.",
               "Press Tab → press Esc."
-            ]
+            ],
+            "nudge": "One key jumps forward, the other cancels."
           },
           {
             "title": "Done",
@@ -704,18 +870,28 @@
         "steps": [
           {
             "title": "Ctrl and Alt",
-            "text": "Ctrl and Alt rarely do anything on their own. They are used together with another key, for example Ctrl+C to copy."
+            "text": {
+              "default": "Ctrl and Alt rarely do anything on their own. They are used together with another key, for example Ctrl+C to copy.",
+              "short": "Ctrl and Alt are used together with other keys.",
+              "child": "Ctrl and Alt are helper keys. On their own they do almost nothing, but together with another key they become super-quick shortcuts."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Click in the box and press Ctrl and then Alt.",
+            "text": {
+              "default": "Click in the box and press Ctrl once and Alt once.",
+              "guided": "First click in the box in the practice window. Then look at the bottom left of the keyboard. Ctrl is in the corner. Alt is just to the left of the long space bar. Press Ctrl once and then Alt once. The list shows which ones you have pressed.",
+              "independent": "Press Ctrl and Alt.",
+              "child.guided": "Click in the box. Find Ctrl in the bottom left corner and press it. Then find Alt next to the long space bar and press it."
+            },
             "hints": [
               "Click in the box first.",
               "Ctrl is at the bottom left.",
               "Alt is to the left of the space bar.",
               "The list shows which keys you have already pressed.",
               "Press Ctrl once and Alt once."
-            ]
+            ],
+            "nudge": "Both keys are in the bottom row."
           },
           {
             "title": "Done",
@@ -735,7 +911,11 @@
         "steps": [
           {
             "title": "The Windows key",
-            "text": "The Windows key has the Windows symbol – four squares – and sits between Ctrl and Alt. On a real computer it opens Start. On the practice computer in your browser, your real computer catches the key, so here you open Start with the Start button or with Ctrl+Esc."
+            "text": {
+              "default": "The Windows key has the Windows symbol – four squares – and sits between Ctrl and Alt. On a real computer it opens Start. On the practice computer in your browser, your real computer catches the key, so here you open Start with the Start button or with Ctrl+Esc.",
+              "short": "The Windows key opens Start. Here you use the Start button or Ctrl+Esc.",
+              "child": "The Windows key has the same symbol as the Start button, four small squares. On a real computer it opens Start straight away. On the practice computer it doesn't work, because your real computer grabs the key first. Here you click the Start button instead, or press Ctrl+Esc."
+            }
           },
           {
             "title": "Done",
@@ -755,18 +935,28 @@
         "steps": [
           {
             "title": "Keyboard shortcuts",
-            "text": "A keyboard shortcut is two keys at the same time: you hold Ctrl and press a letter. Ctrl+A selects everything, Ctrl+C copies and Ctrl+V pastes."
+            "text": {
+              "default": "A keyboard shortcut is two keys at the same time: you hold Ctrl and press a letter. Ctrl+A selects everything, Ctrl+C copies and Ctrl+V pastes.",
+              "short": "Ctrl+A selects everything, Ctrl+C copies and Ctrl+V pastes.",
+              "child": "A keyboard shortcut is a two-key trick. You hold Ctrl and press a letter. Ctrl+A selects all the text, Ctrl+C makes a copy and Ctrl+V puts the copy in."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Use Ctrl+A, Ctrl+C and Ctrl+V in the text box.",
+            "text": {
+              "default": "Click in the text box and use Ctrl+A to select, Ctrl+C to copy and Ctrl+V to paste.",
+              "guided": "Click in the text box in the practice window. Keep Ctrl, at the bottom left, held down with one hand the whole time. Then press A with the other hand – all the text becomes selected. Keep holding Ctrl and press C to copy, and then V to paste. Let go of Ctrl when you are done. The list shows which shortcuts are done.",
+              "independent": "Use Ctrl+A, Ctrl+C and Ctrl+V in the text box.",
+              "child.guided": "Click in the text box. Hold Ctrl and press A – now everything is selected. Keep holding Ctrl and press C (copy) and then V (paste). The list ticks them off!"
+            },
             "hints": [
               "Click in the text box first.",
               "Hold Ctrl and press A. All the text becomes selected.",
               "Hold Ctrl and press C to copy.",
               "Hold Ctrl and press V to paste.",
               "Ctrl+A → Ctrl+C → Ctrl+V. The list shows which ones are done."
-            ]
+            ],
+            "nudge": "You need a helper key from the last lesson."
           },
           {
             "title": "Done",
@@ -786,18 +976,28 @@
         "steps": [
           {
             "title": "Special characters",
-            "text": "Special characters are characters that are not letters or numbers. Many share a key with a number and need Shift."
+            "text": {
+              "default": "Special characters are characters that are not letters or numbers. Many share a key with a number and need Shift.",
+              "short": "Special characters often need Shift.",
+              "child": "Special characters are characters that aren't letters or numbers, like @, ! and ?. Many of them live on the same key as a number. You get them by holding Shift at the same time."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type the characters @ ! ? . , in the box.",
+            "text": {
+              "default": "Click in the box and type @ ! ? . , – most of them need Shift.",
+              "guided": "Click in the box in the practice window. The full stop and comma have their own keys to the right of M. For an exclamation mark, hold Shift and press 1. For a question mark, hold Shift and press the / key, to the left of the right Shift key. For @, hold Shift and press the ' key on a UK keyboard, or 2 on a US keyboard.",
+              "independent": "Type the characters @ ! ? . , in the box.",
+              "child.guided": "Click in the box. The full stop and comma are to the right of M. ! is Shift + 1, and ? is Shift + /. @ is the trickiest: hold Shift and press ' (or 2 on some keyboards)."
+            },
             "hints": [
               "Click in the box first.",
               "The full stop and comma have their own keys to the right of M.",
               "! is Shift + 1 and ? is Shift + / (to the left of the right Shift key).",
               "@ is Shift + ' on a UK keyboard and Shift + 2 on a US keyboard.",
               "Type @, ! (Shift+1), ? (Shift+/), a full stop and a comma."
-            ]
+            ],
+            "nudge": "The characters share keys with other characters."
           },
           {
             "title": "Done",
@@ -817,18 +1017,28 @@
         "steps": [
           {
             "title": "Keyboard – final task",
-            "text": "Now you combine what you have learned: letters, numbers, a capital letter, special characters and the keys for correcting and selecting."
+            "text": {
+              "default": "Now you combine what you have learned: letters, numbers, a capital letter, special characters and the keys for correcting and selecting.",
+              "short": "Combine letters, numbers, a capital and special keys.",
+              "child": "Time for the keyboard final! Now you mix everything you have learned: letters, numbers, a capital letter, a special character and the keys that fix and select text."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type exactly Computer 2026! Then press Enter, Backspace, any arrow key and Ctrl+A. Each part gets a tick.",
+            "text": {
+              "default": "Type Computer 2026! with a capital C and an exclamation mark. Then press Enter, Backspace, an arrow key and Ctrl+A.",
+              "guided": "Click in the box in the practice window. Hold Shift and press C for a capital C. Then type omputer, a space and 2026. Finish with Shift + 1 for the exclamation mark. When the text has a tick, press Enter and then Backspace. Press any of the arrow keys, and finish by holding Ctrl and pressing A. Each part gets a tick.",
+              "independent": "Type exactly Computer 2026! Then press Enter, Backspace, any arrow key and Ctrl+A. Each part gets a tick.",
+              "child.guided": "Click in the box and type Computer 2026! – a capital C with Shift, and ! with Shift + 1. Then press Enter, Backspace, an arrow key and finally Ctrl+A. Can you get a tick on everything?"
+            },
             "hints": [
               "Start by typing Computer 2026! – a capital C, one space and an exclamation mark at the end.",
               "The capital C comes with Shift. The exclamation mark with Shift + 1.",
               "When the text has a tick: press Enter and then Backspace.",
               "Press an arrow key and finish with Ctrl+A.",
               "Computer 2026! → Enter → Backspace → arrow key → Ctrl+A."
-            ]
+            ],
+            "nudge": "You have already practised everything you need in the earlier lessons."
           },
           {
             "title": "Done",
@@ -848,18 +1058,28 @@
         "steps": [
           {
             "title": "The Start menu",
-            "text": "The Start menu is where you find your programs. You open it with the Start button – the Windows symbol with four squares – in the taskbar at the bottom of the screen."
+            "text": {
+              "default": "The Start menu is where you find your programs. You open it with the Start button – the Windows symbol with four squares – in the taskbar at the bottom of the screen.",
+              "short": "The Start menu is where you find your programs.",
+              "child": "The Start menu is like a table of contents for the whole computer. That is where you find all the programs. You open it with the Start button, which has four small blue squares and sits in the row at the bottom of the screen."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open the Start menu.",
+            "text": {
+              "default": "Open the Start menu by clicking the Start button in the taskbar.",
+              "guided": "Look at the bottom of the screen. There is a row of icons called the taskbar. Roughly in the middle of the row is the Start button. It looks like four small blue squares. Click it once with the left mouse button.",
+              "independent": "Open the Start menu.",
+              "child.guided": "Look at the row at the bottom of the screen. Find the button with four small blue squares – that is the Start button. Click it once!"
+            },
             "hints": [
               "Look at the row at the bottom of the screen. It is called the taskbar.",
               "The Start button has the Windows symbol with four squares and sits in the middle of the taskbar.",
               "Click the Start button once.",
               "The yellow frame shows the Start button.",
               "Click the Windows symbol at the bottom in the middle. On a real computer you can also press the Windows key."
-            ]
+            ],
+            "nudge": "Think about where Windows keeps all its programs."
           },
           {
             "title": "Done",
@@ -879,18 +1099,28 @@
         "steps": [
           {
             "title": "Start a program",
-            "text": "You start a program by clicking its icon. In the Start menu the most common programs are listed under Pinned."
+            "text": {
+              "default": "You start a program by clicking its icon. In the Start menu the most common programs are listed under Pinned.",
+              "short": "Click a program's icon to start it.",
+              "child": "A program is a tool inside the computer, like a calculator or a notepad. You start a program by clicking its picture, which is called an icon. The most common programs are under Pinned in the Start menu."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open Calculator from the Start menu.",
+            "text": {
+              "default": "Open the Start menu and click Calculator under Pinned.",
+              "guided": "First click the Start button – the four blue squares at the bottom of the screen. The Start menu opens. Under the heading Pinned you see small pictures with names underneath, one for each program. Find the one called Calculator, which looks like a small calculator. Click it once.",
+              "independent": "Open Calculator.",
+              "child.guided": "Click the Start button with the four blue squares. Under Pinned there are pictures of different programs. Find Calculator – it looks like a calculator – and click it."
+            },
             "hints": [
               "Begin by opening the Start menu.",
               "Under Pinned you see icons with program names underneath.",
               "Find Calculator and click it once.",
               "The yellow frame shows the Start button.",
               "Start → Calculator. Calculator opens in its own window."
-            ]
+            ],
+            "nudge": "You usually find programs in the same place as in the last lesson."
           },
           {
             "title": "Done",
@@ -910,18 +1140,28 @@
         "steps": [
           {
             "title": "Move a window",
-            "text": "Every program is shown in a window. At the top is the title bar with the program's name. That is where you take hold when you want to move the window."
+            "text": {
+              "default": "Every program is shown in a window. At the top is the title bar with the program's name. That is where you take hold when you want to move the window.",
+              "short": "Move a window by dragging its title bar.",
+              "child": "Every program opens in its own box, called a window. The top strip of the window, where the program's name is, is called the title bar. It works like a handle – that is where you grab the window to move it."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Move the Calculator window to another place on the screen.",
+            "text": {
+              "default": "Drag the Calculator window by its title bar to another place on the screen.",
+              "guided": "Look at the Calculator window. The top strip, where it says Calculator, is called the title bar. Put the pointer on the title bar – not on the buttons at the top right. Press the left mouse button and keep holding. Move the mouse and the window follows. Let go of the button when the window is where you want it.",
+              "independent": "Move the Calculator window to another place on the screen.",
+              "child.guided": "Find the top strip of Calculator, where it says Calculator. Press and hold the left button there, move the mouse and let go. The window moves with it!"
+            },
             "hints": [
               "Find the title bar – the top row of the Calculator window, where it says Calculator.",
               "Press the left mouse button on the title bar and keep holding.",
               "Move the mouse while holding the button. The window follows.",
               "The yellow frame shows the title bar.",
               "Hold on the title bar → drag the window a little → let go of the mouse button."
-            ]
+            ],
+            "nudge": "Windows have a place where you grab hold of them."
           },
           {
             "title": "Done",
@@ -941,18 +1181,28 @@
         "steps": [
           {
             "title": "Minimise",
-            "text": "Minimise hides the window in the taskbar. The program is still running and you can bring it back."
+            "text": {
+              "default": "Minimise hides the window in the taskbar. The program is still running and you can bring it back.",
+              "short": "Minimise hides the window in the taskbar without closing it.",
+              "child": "Minimising is like putting something away in a drawer without throwing it out. The window goes down to the row at the bottom of the screen, but the program is still there and you can bring it back."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Minimise Calculator.",
+            "text": {
+              "default": "Minimise Calculator with the line at the top right of the window.",
+              "guided": "Look at the top right of the Calculator window. There are three buttons side by side. The left one looks like a short, flat line – that is Minimise. Click the line once. The window goes down to the taskbar, but the program is still running.",
+              "independent": "Minimise Calculator.",
+              "child.guided": "At the top right of Calculator there are three buttons. Click the left one, which looks like a little line. The window hides at the bottom!"
+            },
             "hints": [
               "Look at the top right of the Calculator window. There are three buttons there.",
               "Minimise is the left one of the three and looks like a short line.",
               "Click the line once.",
               "The yellow frame shows the Minimise button.",
               "Click the line at the top right of Calculator. The window goes down to the taskbar."
-            ]
+            ],
+            "nudge": "The window buttons are always in the same place."
           },
           {
             "title": "Done",
@@ -972,18 +1222,28 @@
         "steps": [
           {
             "title": "Maximise",
-            "text": "Maximise makes the window as big as possible. The same button restores it to its previous size."
+            "text": {
+              "default": "Maximise makes the window as big as possible. The same button restores it to its previous size.",
+              "short": "Maximise makes the window as big as possible.",
+              "child": "Maximise means making the window really big, so it fills the whole screen. Press the same button again and it goes back to the size it was before."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Maximise Calculator.",
+            "text": {
+              "default": "Maximise Calculator with the square at the top right of the window.",
+              "guided": "Look at the top right of the Calculator window. Of the three buttons, the middle one is a small square – that is Maximise. Click the square once. The window grows and fills the whole screen above the taskbar.",
+              "independent": "Maximise Calculator.",
+              "child.guided": "At the top right of Calculator there are three buttons. Click the middle one, which looks like a little square. Now the window is huge!"
+            },
             "hints": [
               "Look at the top right of the Calculator window.",
               "Maximise is the middle button and looks like a square.",
               "Click the square once.",
               "The yellow frame shows the Maximise button.",
               "Click the square at the top right. You can also double-click the title bar."
-            ]
+            ],
+            "nudge": "It is one of the three buttons up in the window's corner."
           },
           {
             "title": "Done",
@@ -1003,18 +1263,28 @@
         "steps": [
           {
             "title": "Close",
-            "text": "Close ends the program. Use Close when you have finished – not Minimise."
+            "text": {
+              "default": "Close ends the program. Use Close when you have finished – not Minimise.",
+              "short": "Close ends the program.",
+              "child": "Close means you are completely finished with the program. It goes away – not just down to the row at the bottom, but completely. The cross at the top right closes it."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Close Calculator.",
+            "text": {
+              "default": "Close Calculator with the cross at the top right of the window.",
+              "guided": "Look at the top right of the Calculator window. The right one of the three buttons is a cross, and it turns red when you point at it. That is Close. Click the cross once. Calculator ends and also disappears from the taskbar.",
+              "independent": "Close Calculator.",
+              "child.guided": "At the top right of Calculator there is a cross. It turns red when you point at it. Click the cross and the program closes."
+            },
             "hints": [
               "Look at the top right of the Calculator window.",
               "Close is the right-hand button and looks like a cross.",
               "Click the cross once. It turns red when you point at it.",
               "The yellow frame shows the Close button.",
               "Click the cross at the top right. Calculator closes and also disappears from the taskbar."
-            ]
+            ],
+            "nudge": "Hiding a window is not the same as ending the program."
           },
           {
             "title": "Done",
@@ -1034,18 +1304,28 @@
         "steps": [
           {
             "title": "The context menu",
-            "text": "When you right-click, a context menu appears with choices for the thing you clicked. The desktop, files and apps have different context menus."
+            "text": {
+              "default": "When you right-click, a context menu appears with choices for the thing you clicked. The desktop, files and apps have different context menus.",
+              "short": "A right-click opens a context menu for what you point at.",
+              "child": "When you right-click something, a small menu appears with things you can do with exactly that. It is like asking the computer: \"What can I do here?\" The menu is called a context menu."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Right-click an empty part of the desktop.",
+            "text": {
+              "default": "Right-click an empty part of the desktop so the context menu opens.",
+              "guided": "Find an empty part of the desktop – the blue background, where there is no icon or window. Put the pointer there. Then press the right mouse button once, the one under your middle finger. A small menu pops up. You can close it with Esc or by clicking beside it.",
+              "independent": "Right-click an empty part of the desktop.",
+              "child.guided": "Find an empty spot on the blue background. Press there with the mouse's right button. A little menu appears!"
+            },
             "hints": [
               "Find an empty area of the desktop – not on an icon or a window.",
               "Use the right mouse button.",
               "Click the empty area once with the right mouse button.",
               "The yellow frame shows the desktop.",
               "Pointer on an empty part of the desktop → right mouse button. Close the menu with Esc or by clicking beside it."
-            ]
+            ],
+            "nudge": "The mouse has a button that shows more choices."
           },
           {
             "title": "Done",
@@ -1065,18 +1345,28 @@
         "steps": [
           {
             "title": "Windows – final task",
-            "text": "Now you use everything about windows in one task, without step-by-step instructions."
+            "text": {
+              "default": "Now you use everything about windows in one task, without step-by-step instructions.",
+              "short": "Everything about windows in one task.",
+              "child": "Now you get to show everything you know about windows, in a single mission. This time there are no steps – you decide how to do it."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open Start, start Calculator, move the window, minimise it, bring it back, maximise it and close it.",
+            "text": {
+              "default": "Open Calculator from Start. Move the window, minimise it, bring it back from the taskbar, maximise it and close it.",
+              "guided": "Take one part at a time. Click the Start button and then Calculator. Drag the window by its title bar, the top strip. Click the line at the top right to minimise. Bring the window back by clicking Calculator's icon in the taskbar. Click the square to maximise and finally the cross to close.",
+              "independent": "Open Start, start Calculator, move the window, minimise it, bring it back, maximise it and close it.",
+              "child.guided": "Start button → Calculator. Drag the top strip. Click the line and the window hides; click Calculator at the bottom to bring it back. Make it huge with the square and close it with the cross."
+            },
             "hints": [
               "Begin with the Start button in the taskbar.",
               "Move the window by dragging the title bar.",
               "Minimise with the line. Bring the window back by clicking Calculator's icon in the taskbar.",
               "Maximise with the square and close with the cross.",
               "Start → Calculator → drag the title bar → line → icon in the taskbar → square → cross."
-            ]
+            ],
+            "nudge": "You have done every part in an earlier lesson. Begin where you start programs."
           },
           {
             "title": "Done",
@@ -1096,18 +1386,28 @@
         "steps": [
           {
             "title": "Resizing",
-            "text": "A window can be made wider, narrower, taller or shorter without maximising it. You drag the window's edge or corner."
+            "text": {
+              "default": "A window can be made wider, narrower, taller or shorter without maximising it. You drag the window's edge or corner.",
+              "short": "Drag the window's edge or corner to change its size.",
+              "child": "A window can be made a little bigger or a little smaller, without filling the whole screen. You grab the window's edge or corner and pull, a bit like stretching an accordion."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Resize the Calculator window by dragging its bottom right corner.",
+            "text": {
+              "default": "Drag Calculator's bottom right corner to make the window bigger or smaller.",
+              "guided": "Look at the Calculator window and find its bottom right corner. Move the pointer there slowly. When the pointer is exactly on the corner it changes into a double arrow pointing two ways. Then press the left mouse button, keep holding and drag outwards or inwards. Let go when the size is right.",
+              "independent": "Make the Calculator window bigger or smaller without maximising it.",
+              "child.guided": "Go to Calculator's bottom right corner. When the arrow turns into a double arrow, press and hold the left button. Pull – and the window grows or shrinks!"
+            },
             "hints": [
               "Find the bottom right corner of Calculator.",
               "When the pointer is exactly on the corner it turns into a double arrow.",
               "Press and hold the left mouse button and drag outwards or inwards.",
               "The yellow frame shows the corner to drag.",
               "Pointer on the bottom right corner → hold → drag → let go."
-            ]
+            ],
+            "nudge": "You can grab a window in more places than the title bar."
           },
           {
             "title": "Done",
@@ -1127,18 +1427,28 @@
         "steps": [
           {
             "title": "Switching programs",
-            "text": "When several programs are open, the window you chose last is on top. You switch program by clicking its icon in the taskbar."
+            "text": {
+              "default": "When several programs are open, the window you chose last is on top. You switch program by clicking its icon in the taskbar.",
+              "short": "Switch program by clicking its icon in the taskbar.",
+              "child": "When several programs are open, they lie like papers in a pile. The one you chose last is on top. To see another one, click its picture in the row at the bottom and it comes to the top."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Switch to the other open program by clicking its icon in the taskbar.",
+            "text": {
+              "default": "Click the other program's icon in the taskbar to switch to it.",
+              "guided": "Look at the taskbar at the bottom of the screen. Under the icons of open programs there is a small line. The program that is active right now has a longer, blue line. Click the icon of the other open program once – the one with the short line. That window then comes to the top.",
+              "independent": "Switch to the other open program.",
+              "child.guided": "Look at the row at the bottom. Two programs are open and have a line under them. Click the one that does NOT have the long blue line. Now it comes to the top!"
+            },
             "hints": [
               "Look at the taskbar at the bottom.",
               "Open programs have a small line under the icon. The active program has a longer blue line.",
               "Click the icon of the program that is not active.",
               "The yellow frame shows the icons in the taskbar.",
               "Click Calculator or Notepad in the taskbar – whichever is not on top right now."
-            ]
+            ],
+            "nudge": "The row at the bottom shows which programs are open."
           },
           {
             "title": "Done",
@@ -1158,7 +1468,11 @@
         "steps": [
           {
             "title": "Alt+Tab",
-            "text": "On a real computer you can hold Alt and press Tab to switch between open programs. Keep pressing Tab to choose the next one and let go of Alt to switch. Your real computer catches this combination before the browser sees it, so on the practice computer you switch with the taskbar."
+            "text": {
+              "default": "On a real computer you can hold Alt and press Tab to switch between open programs. Keep pressing Tab to choose the next one and let go of Alt to switch. Your real computer catches this combination before the browser sees it, so on the practice computer you switch with the taskbar.",
+              "short": "Alt+Tab switches between open programs on a real computer.",
+              "child": "On a real computer there is a quick trick for switching programs: hold Alt and press Tab. You then see all the open programs and can flip between them. On the practice computer the trick doesn't work, because your real computer grabs it first, so here you use the row at the bottom instead."
+            }
           },
           {
             "title": "Done",
@@ -1178,18 +1492,28 @@
         "steps": [
           {
             "title": "Search in Start",
-            "text": "The Start menu has a search box at the top. Type the name of a program and it appears under Best match."
+            "text": {
+              "default": "The Start menu has a search box at the top. Type the name of a program and it appears under Best match.",
+              "short": "Type in the Start menu's search box to find a program.",
+              "child": "If you can't find a program, you can ask the computer. Open the Start menu and type the program's name. The computer looks for you and shows it at the top, under Best match."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open Start and type Calculator in the search box.",
+            "text": {
+              "default": "Open the Start menu and type Calculator in the search box at the top.",
+              "guided": "Click the Start button at the bottom of the screen. At the top of the Start menu there is a long box that says Search. It is already selected, so you can start typing straight away without clicking. Type the word Calculator. The program appears under Best match.",
+              "independent": "Search for Calculator.",
+              "child.guided": "Click the Start button. Start typing Calculator straight away – the computer looks while you type. Calculator appears at the top!"
+            },
             "hints": [
               "Begin by opening the Start menu.",
               "The search box at the top is already active – you can start typing straight away.",
               "Type the word Calculator.",
               "The yellow frame shows the Start button.",
               "Start → type Calculator. Press Enter to open the Best match."
-            ]
+            ],
+            "nudge": "You don't have to look yourself – the computer can look for you."
           },
           {
             "title": "Done",
@@ -1209,18 +1533,28 @@
         "steps": [
           {
             "title": "The desktop",
-            "text": "The desktop is the background behind all windows. You open icons on the desktop with a double-click."
+            "text": {
+              "default": "The desktop is the background behind all windows. You open icons on the desktop with a double-click.",
+              "short": "Open desktop icons with a double-click.",
+              "child": "The desktop is the background behind all the windows, like the top of a table. The pictures on the desktop are called icons. You open them with a double-click: click-click."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Double-click the Documents icon on the desktop.",
+            "text": {
+              "default": "Double-click the Documents icon on the desktop.",
+              "guided": "Look at the top left of the desktop. There are a few icons with names underneath. Find the yellow folder called Documents. Keep the pointer still on it and click twice quickly with the left mouse button. The folder opens in a window called File Explorer.",
+              "independent": "Open the Documents folder from the desktop.",
+              "child.guided": "At the top left there is a yellow folder called Documents. Put the arrow on it and click twice quickly: click-click! The folder opens."
+            },
             "hints": [
               "The icons are at the top left of the desktop.",
               "Find the icon called Documents.",
               "Double-click – two quick clicks – on the icon.",
               "The yellow frame shows the Documents icon.",
               "Keep the pointer still on Documents and click twice quickly. The folder opens in File Explorer."
-            ]
+            ],
+            "nudge": "Things on the desktop open the same way you practised with the mouse."
           },
           {
             "title": "Done",
@@ -1240,7 +1574,11 @@
         "steps": [
           {
             "title": "The taskbar",
-            "text": "The taskbar is the row at the bottom. In the middle are Start, Search and your programs. On the right are network, sound, battery and the clock. You bring back a minimised program by clicking its icon."
+            "text": {
+              "default": "The taskbar is the row at the bottom. In the middle are Start, Search and your programs. On the right are network, sound, battery and the clock. You bring back a minimised program by clicking its icon.",
+              "short": "The taskbar shows Start, programs, network, sound and the clock.",
+              "child": "The row at the bottom of the screen is called the taskbar. In the middle are the Start button and the programs you use. On the far right you can see if the computer has internet, how loud the sound is, how much battery is left and what time it is."
+            }
           },
           {
             "title": "Done",
@@ -1260,7 +1598,11 @@
         "steps": [
           {
             "title": "Save your work",
-            "text": "What you type in Notepad only exists in the program at first. When you save, the text becomes a file that is still there after the program is closed."
+            "text": {
+              "default": "What you type in Notepad only exists in the program at first. When you save, the text becomes a file that is still there after the program is closed.",
+              "short": "Save the text and it becomes a file that stays.",
+              "child": "What you type in Notepad is like words on a whiteboard – they disappear when you close the program unless you save. When you save, the text becomes a file that stays on the computer."
+            }
           },
           {
             "title": "Notepad",
@@ -1268,14 +1610,20 @@
           },
           {
             "title": "Your turn",
-            "text": "Type any text and save the file as plan.txt in Documents.",
+            "text": {
+              "default": "Open Notepad from Start, type a few words and save as plan.txt in Documents with File → Save as.",
+              "guided": "Click the Start button and then Notepad, the icon with a blue notepad. Click in the white area and type a few words. Then click File at the top of the window and choose Save as. Check that Documents is selected on the left. Type plan.txt in the File name field at the bottom and click Save.",
+              "independent": "Type any text and save the file as plan.txt in Documents.",
+              "child.guided": "Open Notepad from the Start button. Type a few words. Click File → Save as. Choose Documents, type plan.txt as the name and click Save."
+            },
             "hints": [
               "You need the program Notepad. It is in the Start menu.",
               "Click in the white area and type a few words.",
               "Click File at the top and choose Save as.",
               "The yellow frame shows the menu bar where File is.",
               "Start → Notepad → type → File → Save as → check that Documents is selected → type plan.txt → Save."
-            ]
+            ],
+            "nudge": "First you need a program where you can write text."
           },
           {
             "title": "Done",
@@ -1295,7 +1643,11 @@
         "steps": [
           {
             "title": "File, folder and file type",
-            "text": "A file contains information – for example a text or a picture. A folder collects files and other folders. The end of a file name, for example .txt or .jpg, tells you what kind of file it is."
+            "text": {
+              "default": "A file contains information – for example a text or a picture. A folder collects files and other folders. The end of a file name, for example .txt or .jpg, tells you what kind of file it is.",
+              "short": "Files hold information, folders collect files and the extension shows the file type.",
+              "child": "A file is something you have saved on the computer, for example a story or a picture. A folder is like a box where you can put files, and even other boxes. The end of the file name, like .txt or .jpg, is like a label telling you what kind of file it is."
+            }
           },
           {
             "title": "Done",
@@ -1315,7 +1667,11 @@
         "steps": [
           {
             "title": "What is a folder?",
-            "text": "A folder collects files in one place. Now you will create your own folder in Documents."
+            "text": {
+              "default": "A folder collects files in one place. Now you will create your own folder in Documents.",
+              "short": "A folder collects files. Create one with New → Folder.",
+              "child": "A folder is like a box where you can put things you want to keep. With your own folders it is easy to keep things tidy, for example one box for schoolwork and one for pictures. Now you are going to make your own folder in Documents."
+            }
           },
           {
             "title": "How it is done",
@@ -1323,14 +1679,20 @@
           },
           {
             "title": "Your turn",
-            "text": "Create a folder called Holiday.",
+            "text": {
+              "default": "Click New in File Explorer, choose Folder and type the name Holiday.",
+              "guided": "File Explorer is open and shows the Documents folder. Look at the row of buttons at the top of the window. On the far left is the New button with a plus sign. Click it. A small menu opens – click Folder. A new folder appears called New folder, with the name highlighted in blue. Type Holiday straight away and press Enter.",
+              "independent": "Create a folder called Holiday.",
+              "child.guided": "Find the New button with a plus sign at the top left of the window and click it. Choose Folder. A new folder appears! Type Holiday while the name is blue, and press Enter."
+            },
             "hints": [
               "File Explorer is open in the Documents folder.",
               "The New button is on the far left of the row of buttons.",
               "Click New and choose Folder. Type Holiday while the name is selected.",
               "The yellow frame shows the New button.",
               "New → Folder → type Holiday → press Enter."
-            ]
+            ],
+            "nudge": "Think about where in File Explorer you create something new."
           },
           {
             "title": "Check",
@@ -1354,18 +1716,28 @@
         "steps": [
           {
             "title": "The Recycle Bin",
-            "text": "When you delete a file it goes to the Recycle Bin first. From there you can restore it to where it was."
+            "text": {
+              "default": "When you delete a file it goes to the Recycle Bin first. From there you can restore it to where it was.",
+              "short": "Deleted files go to the Recycle Bin and can be restored.",
+              "child": "When you delete a file it doesn't disappear straight away. It goes to the Recycle Bin, like a real bin you can take things out of again. From there you can put the file back where it was."
+            }
           },
           {
             "title": "Delete and restore",
-            "text": "Delete Practice file.txt and then restore it from the Recycle Bin.",
+            "text": {
+              "default": "Select Practice file.txt and delete it. Then open the Recycle Bin in the left-hand pane, select the file and choose Restore the selected items.",
+              "guided": "File Explorer shows Documents. Click Practice file.txt once so it is highlighted in blue. Click Delete – the button with a bin in the row at the top – or press Delete. The file disappears. Now look at the pane on the left and click Recycle Bin at the bottom. The file is there. Click it and then Restore the selected items at the top.",
+              "independent": "Delete Practice file.txt and then restore it from the Recycle Bin.",
+              "child.guided": "Click Practice file.txt so it turns blue. Click the button with the bin. The file goes to the Recycle Bin! Click Recycle Bin on the left, click the file and choose Restore the selected items. Now it is back."
+            },
             "hints": [
               "Practice file.txt is in Documents.",
               "Click the file once and then click Delete (the bin) – or press Delete.",
               "Click Recycle Bin in the left-hand pane.",
               "The yellow frame shows the buttons in File Explorer.",
               "Select Practice file.txt → Delete → Recycle Bin → select the file → Restore the selected items."
-            ]
+            ],
+            "nudge": "Things you delete stay somewhere for a while."
           },
           {
             "title": "Done",
@@ -1385,18 +1757,28 @@
         "steps": [
           {
             "title": "Rename",
-            "text": "A good name makes a file easy to find. When you rename, only the name changes – the contents stay the same."
+            "text": {
+              "default": "A good name makes a file easy to find. When you rename, only the name changes – the contents stay the same.",
+              "short": "Rename only changes the file's name, not its contents.",
+              "child": "A good name makes the file easy to find later, just like a clear label on a box. When you rename, only the label changes – what is inside the file stays the same."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Rename Draft.txt to Report.txt.",
+            "text": {
+              "default": "Select Draft.txt, click Rename and type Report. Keep .txt at the end.",
+              "guided": "File Explorer shows Documents. Click Draft.txt once so it is highlighted in blue. Then click Rename in the row of buttons at the top – it has a pencil – or press F2. Now you can change the name, and the part before .txt is selected. Type Report and press Enter. The .txt ending should stay.",
+              "independent": "Rename Draft.txt to Report.txt.",
+              "child.guided": "Click Draft.txt so it turns blue. Click Rename – the button with a pencil. Type Report and press Enter. Leave .txt at the end!"
+            },
             "hints": [
               "Draft.txt is in Documents.",
               "Click the file once so it is selected.",
               "Click Rename in the row of buttons – or press F2. The name becomes editable.",
               "The yellow frame shows the Rename button.",
               "Select Draft.txt → Rename → type Report → press Enter. The .txt ending should stay."
-            ]
+            ],
+            "nudge": "A file has to be selected before you can change anything about it."
           },
           {
             "title": "Done",
@@ -1416,18 +1798,28 @@
         "steps": [
           {
             "title": "Copy",
-            "text": "Copy creates an extra file with the same contents. The original stays where it is. The steps are always: select → Copy → choose a place → Paste."
+            "text": {
+              "default": "Copy creates an extra file with the same contents. The original stays where it is. The steps are always: select → Copy → choose a place → Paste.",
+              "short": "Copy makes an extra file. Select → Copy → Paste.",
+              "child": "Copying is like using a photocopier: the original stays and you get another file just like it. It always goes like this: choose the file, copy, choose the place and paste."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Copy Example.txt and paste the copy into the same folder, Documents.",
+            "text": {
+              "default": "Select Example.txt, click Copy and then Paste in the same folder.",
+              "guided": "Click Example.txt once in File Explorer so it is highlighted in blue. Look at the row of buttons at the top and click Copy – it has two small sheets of paper on top of each other. Nothing seems to happen, but the computer now remembers the file. Then click Paste, the button just to the right. A copy called Example - Copy.txt appears.",
+              "independent": "Make a copy of Example.txt in Documents.",
+              "child.guided": "Click Example.txt so it turns blue. Click Copy (two sheets of paper) and then Paste. Now there are two files the same!"
+            },
             "hints": [
               "Click Example.txt once so it is selected.",
               "Click Copy in the row of buttons – or press Ctrl+C.",
               "Then click Paste – or press Ctrl+V.",
               "The yellow frame shows the row of buttons.",
               "Example.txt → Copy → Paste. The copy is called Example - Copy.txt."
-            ]
+            ],
+            "nudge": "It works the same way as copying text, but with a whole file."
           },
           {
             "title": "Done",
@@ -1447,18 +1839,28 @@
         "steps": [
           {
             "title": "Cut and paste",
-            "text": "Cut prepares a move. When you paste in a new place, the file moves there – it is no longer in the old place."
+            "text": {
+              "default": "Cut prepares a move. When you paste in a new place, the file moves there – it is no longer in the old place.",
+              "short": "Cut and paste moves the file.",
+              "child": "Cut and paste is like moving something from one box to another. The difference from copying is that the file is no longer in the old place afterwards."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Move Move me.txt from Documents to Downloads.",
+            "text": {
+              "default": "Cut Move me.txt, open Downloads in the left-hand pane and paste the file there.",
+              "guided": "Click Move me.txt in Documents once. Click Cut – the button with scissors – in the row at the top. The file fades a little, which means it is waiting to be moved. Now click Downloads in the pane on the left. Then click Paste at the top. The file moves here and is no longer in Documents.",
+              "independent": "Move Move me.txt from Documents to Downloads.",
+              "child.guided": "Click Move me.txt. Click the scissors (Cut) – now the file looks faded. Click Downloads on the left and then Paste. The file has moved!"
+            },
             "hints": [
               "Click Move me.txt once.",
               "Click Cut (the scissors) – or press Ctrl+X. The file fades.",
               "Click Downloads in the left-hand pane.",
               "The yellow frame shows Downloads in the left-hand pane.",
               "Move me.txt → Cut → Downloads → Paste."
-            ]
+            ],
+            "nudge": "This time you are not making a copy, you are moving the original."
           },
           {
             "title": "Done",
@@ -1478,18 +1880,28 @@
         "steps": [
           {
             "title": "Deleting safely",
-            "text": "Whatever you delete in File Explorer goes to the Recycle Bin. Only when you empty the Recycle Bin is the file really gone."
+            "text": {
+              "default": "Whatever you delete in File Explorer goes to the Recycle Bin. Only when you empty the Recycle Bin is the file really gone.",
+              "short": "Deleted items stay in the Recycle Bin until you empty it.",
+              "child": "When you delete something in File Explorer it is put in the Recycle Bin. Only when you empty the Recycle Bin is it really gone – just like when the rubbish is collected."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Delete Restore me.txt and then restore it.",
+            "text": {
+              "default": "Select Restore me.txt and press Delete. Then open the Recycle Bin and restore the file.",
+              "guided": "Click Restore me.txt in Documents once so it is highlighted in blue. Press the Delete key on the keyboard, or click the button with a bin at the top. Then click Recycle Bin at the bottom of the pane on the left. Click the file there and then Restore the selected items.",
+              "independent": "Delete Restore me.txt and then restore it.",
+              "child.guided": "Click Restore me.txt and press Delete. Go to the Recycle Bin on the left, click the file and choose Restore the selected items."
+            },
             "hints": [
               "Restore me.txt is in Documents.",
               "Select the file and press Delete – or click Delete.",
               "Open the Recycle Bin in the left-hand pane and select the file.",
               "The yellow frame shows the Recycle Bin in the left-hand pane.",
               "Select the file → Delete → Recycle Bin → select the file → Restore the selected items."
-            ]
+            ],
+            "nudge": "You have done something similar with the Recycle Bin before."
           },
           {
             "title": "Done",
@@ -1509,18 +1921,28 @@
         "steps": [
           {
             "title": "Save and Save as",
-            "text": "Save stores changes in the file you already have. Save as lets you choose a name and a folder – and is used the first time a new text is saved."
+            "text": {
+              "default": "Save stores changes in the file you already have. Save as lets you choose a name and a folder – and is used the first time a new text is saved.",
+              "short": "Use Save as the first time to choose a name and folder.",
+              "child": "What you type only exists in the program until you save it. Save as is the first time you save: you choose what the file is called and which folder it goes in. After that, Save is enough."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type something in Notepad and save it as a file.",
+            "text": {
+              "default": "Type a few words in Notepad. Then choose File → Save as, pick a folder, type a name and click Save.",
+              "guided": "Click in the big white area in Notepad and type a few words. Then look at the top of the window: it says File. Click it and choose Save as in the menu. A box opens. On the left you choose a folder, for example Documents. At the bottom, in the File name field, you type a name. Then click the blue Save button.",
+              "independent": "Type something in Notepad and save it as a file.",
+              "child.guided": "Type a few words in the white area. Click File at the top and choose Save as. Choose Documents on the left, type a name in the File name box and click Save."
+            },
             "hints": [
               "Click in Notepad's white area and type a few words.",
               "Click File at the top.",
               "Choose Save as – or press Ctrl+S.",
               "The yellow frame shows the menu bar.",
               "Type text → File → Save as → choose a folder → type a name → Save."
-            ]
+            ],
+            "nudge": "The text only exists in the program until you do something with it."
           },
           {
             "title": "Done",
@@ -1540,7 +1962,11 @@
         "steps": [
           {
             "title": "The common folders",
-            "text": "Windows has ready-made folders for different things: Documents for documents, Downloads for things you download and Pictures for photos and screenshots. You find them in File Explorer's left-hand pane."
+            "text": {
+              "default": "Windows has ready-made folders for different things: Documents for documents, Downloads for things you download and Pictures for photos and screenshots. You find them in File Explorer's left-hand pane.",
+              "short": "Documents, Downloads and Pictures are in File Explorer's left-hand pane.",
+              "child": "Windows has ready-made boxes for different things. Documents is for things you write. Downloads is where things from the internet end up. Pictures is where photos and screenshots are kept. You find all three in the pane on the left of File Explorer."
+            }
           },
           {
             "title": "Done",
@@ -1560,18 +1986,28 @@
         "steps": [
           {
             "title": "Files – final task",
-            "text": "Now you use everything about files and folders in one task."
+            "text": {
+              "default": "Now you use everything about files and folders in one task.",
+              "short": "Create, rename, move, delete and restore in one task.",
+              "child": "Now you get to use everything you know about files and folders in a single mission. Take it calmly and do one thing at a time."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Do five things: create a new folder, rename Project.txt, move the file to another folder, delete it and restore it from the Recycle Bin.",
+            "text": {
+              "default": "Create a new folder, rename Project.txt, move the file to another folder, delete it and restore it from the Recycle Bin.",
+              "guided": "Take one part at a time. Click New and choose Folder, and you have a new folder. Click Project.txt and choose Rename, type a new name and press Enter. Move the file to a folder with Cut and Paste, or drag it there. Delete the file with the button with the bin. Open the Recycle Bin on the left, click the file and choose Restore the selected items.",
+              "independent": "Do five things: create a new folder, rename Project.txt, move the file to another folder, delete it and restore it from the Recycle Bin.",
+              "child.guided": "Five things, one at a time: New → Folder. Rename Project.txt. Move the file into a folder. Delete it. Get it back from the Recycle Bin. You have done all of these before!"
+            },
             "hints": [
               "Start with New → Folder in Documents.",
               "Then rename Project.txt with Rename or F2.",
               "Move the file – with Cut and Paste or by dragging it onto a folder.",
               "Delete the file and open the Recycle Bin.",
               "New folder → rename Project.txt → move → delete → Recycle Bin → Restore."
-            ]
+            ],
+            "nudge": "You have done all five parts in earlier lessons in this module."
           },
           {
             "title": "Done",
@@ -1591,18 +2027,28 @@
         "steps": [
           {
             "title": "Search in a folder",
-            "text": "At the top right of File Explorer there is a search box. Whatever you type there filters out everything that doesn't match."
+            "text": {
+              "default": "At the top right of File Explorer there is a search box. Whatever you type there filters out everything that doesn't match.",
+              "short": "File Explorer's search box shows only what matches.",
+              "child": "When a folder is full of files it can be hard to find the right one. Then you can search. You type part of the name in the search box, and only the files that fit are shown."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type Find in File Explorer's search box.",
+            "text": {
+              "default": "Click in the search box at the top right of File Explorer and type Find.",
+              "guided": "Look at the top right of the File Explorer window. There is a long box with a magnifying glass that says Search Documents. Click in that box. Then type the word Find. The list of files shrinks as you type, and only Find me.txt is left.",
+              "independent": "Search Documents for the file whose name starts with Find.",
+              "child.guided": "At the top right there is a box with a magnifying glass. Click there and type Find. Watch the other files disappear until only the right one is left!"
+            },
             "hints": [
               "Look at the top right of File Explorer.",
               "There is a box that says Search Documents.",
               "Click in the box and type Find.",
               "The yellow frame shows the search box.",
               "Click in the search box and type Find. The file Find me.txt appears."
-            ]
+            ],
+            "nudge": "There is a way to let the computer look through a folder for you."
           },
           {
             "title": "Done",
@@ -1622,18 +2068,28 @@
         "steps": [
           {
             "title": "Dragging files",
-            "text": "You can move a file by dragging it with the mouse and dropping it on a folder."
+            "text": {
+              "default": "You can move a file by dragging it with the mouse and dropping it on a folder.",
+              "short": "Drag a file and drop it on a folder to move it.",
+              "child": "You can move a file just like you moved the box in the mouse practice: grab it, drag it and drop it on a folder."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Drag Drag me.txt to Downloads in the left-hand pane.",
+            "text": {
+              "default": "Drag Drag me.txt with the mouse and drop it on Downloads in the left-hand pane.",
+              "guided": "Put the pointer on Drag me.txt in Documents. Press the left mouse button and keep holding. Move the mouse to the left, towards the pane on the left, until the pointer is over Downloads. The row lights up when you are in the right place. Then let go of the mouse button. The file moves to Downloads.",
+              "independent": "Move Drag me.txt to Downloads with the mouse.",
+              "child.guided": "Press and hold on Drag me.txt. Drag it to Downloads in the pane on the left. When the row lights up, let go of the button. Done!"
+            },
             "hints": [
               "Drag me.txt is in Documents.",
               "Press and hold the left mouse button on the file.",
               "Drag it to Downloads in the left-hand pane. The folder is highlighted when you are over it.",
               "The yellow frame shows Downloads.",
               "Hold on Drag me.txt → drag to Downloads → let go."
-            ]
+            ],
+            "nudge": "You can move the file with the mouse without using any button in the window."
           },
           {
             "title": "Done",
@@ -1653,18 +2109,28 @@
         "steps": [
           {
             "title": "The address bar",
-            "text": "The address bar is the long box at the top of the web browser. That is where you type a web address to go straight to a website."
+            "text": {
+              "default": "The address bar is the long box at the top of the web browser. That is where you type a web address to go straight to a website.",
+              "short": "Type a web address in the address bar to go to a website.",
+              "child": "Every website has its own address, a bit like a house has a street address. The address bar is the long box at the top of the web browser. If you type the address there, you go straight to the right page."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type the address datorskolan.example/internet in the address bar and press Enter.",
+            "text": {
+              "default": "Click in the address bar at the top of Chrome, type datorskolan.example/internet and press Enter.",
+              "guided": "Look at the top of the Chrome window. To the right of the arrows there is a long, rounded box – that is the address bar. Click in it once. The text already there becomes selected, so what you type replaces it. Type datorskolan.example/internet and press the Enter key. The page changes.",
+              "independent": "Go to datorskolan.example/internet.",
+              "child.guided": "Click in the long box at the top of Chrome. Type datorskolan.example/internet and press Enter. Off you go to that page!"
+            },
             "hints": [
               "The address bar is at the top of Chrome, next to the arrows.",
               "Click in the address bar. What was there becomes selected.",
               "Type datorskolan.example/internet and press Enter.",
               "The yellow frame shows the address bar.",
               "Click in the address bar → type datorskolan.example/internet → press Enter."
-            ]
+            ],
+            "nudge": "Web pages have addresses. Think about where in the browser you type an address."
           },
           {
             "title": "Done",
@@ -1690,18 +2156,28 @@
         "steps": [
           {
             "title": "Links",
-            "text": "A link takes you to another page when you click it. The mouse pointer turns into a hand when you point at a link."
+            "text": {
+              "default": "A link takes you to another page when you click it. The mouse pointer turns into a hand when you point at a link.",
+              "short": "Click a link to go to another page.",
+              "child": "A link is like a door to another page. When you point at a link, the mouse pointer turns into a little hand. If you click then, you go to the new page."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Click a link or a shortcut on the page in Chrome.",
+            "text": {
+              "default": "Click a link or one of the round shortcuts on the web page.",
+              "guided": "Look at the large white area in Chrome – that is the web page itself. Move the pointer slowly over the round shortcuts in the middle of the page. Notice that the pointer turns into a hand – that means you are pointing at a link. Click once, for example on What is the internet?. The page changes and the address in the address bar changes.",
+              "independent": "Follow a link on the page in Chrome.",
+              "child.guided": "Move the arrow over the round pictures in the middle of the page. Does the arrow turn into a hand? Then it's a link! Click What is the internet? and see what happens."
+            },
             "hints": [
               "Look at the large white area in Chrome – the web page itself.",
               "Point at the round shortcuts or at blue text. The pointer becomes a hand over a link.",
               "Click once on, for example, What is the internet?",
               "The yellow frame shows the web page.",
               "Click the shortcut What is the internet? once. The page changes and the address changes."
-            ]
+            ],
+            "nudge": "The pointer changes shape when it is over something you can click."
           },
           {
             "title": "Done",
@@ -1726,18 +2202,28 @@
         "steps": [
           {
             "title": "Tabs",
-            "text": "Tabs let you have several web pages open in the same window. The tabs are at the top of Chrome."
+            "text": {
+              "default": "Tabs let you have several web pages open in the same window. The tabs are at the top of Chrome.",
+              "short": "Tabs let you have several pages open in the same window.",
+              "child": "Tabs are like the dividers in a ring binder. You can have several web pages open at once and flip between them. The tabs are at the top of Chrome."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open a new tab with the plus button.",
+            "text": {
+              "default": "Open a new tab with the plus button to the right of the tabs at the top of Chrome.",
+              "guided": "Look at the top of the Chrome window. That is where the tabs are, one for each open page, with the page's name. To the right of the last tab there is a small plus sign. Click the plus sign once. A new, empty tab opens.",
+              "independent": "Open a new tab.",
+              "child.guided": "At the top of Chrome you can see the tabs. Next to the last one there is a small plus. Click the plus and you get a new tab!"
+            },
             "hints": [
               "Look at the top of the Chrome window where the tabs are.",
               "To the right of the last tab there is a plus sign.",
               "Click the plus sign once.",
               "The yellow frame shows the plus button.",
               "Click + next to the tabs – or press Ctrl+T."
-            ]
+            ],
+            "nudge": "It is about the row at the very top of the browser."
           },
           {
             "title": "Done",
@@ -1757,18 +2243,28 @@
         "steps": [
           {
             "title": "Back and forward",
-            "text": "The arrows at the top left of the browser take you to the page you were just on (back) and back again (forward)."
+            "text": {
+              "default": "The arrows at the top left of the browser take you to the page you were just on (back) and back again (forward).",
+              "short": "Back goes to the previous page, Forward goes back again.",
+              "child": "The browser remembers which pages you have been on. The arrow pointing left takes you one step back, and the arrow pointing right takes you forward again – like turning the pages of a book."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open a page, then click Back and then Forward.",
+            "text": {
+              "default": "Open a page using a shortcut. Then click the Back arrow and then the Forward arrow at the top left.",
+              "guided": "Start by clicking one of the round shortcuts, for example What is the internet?, so that you change page. Then look at the top left of Chrome. There are two arrows. Click the arrow pointing left – Back. You return to the previous page. Then click the arrow pointing right – Forward.",
+              "independent": "Go back to the previous page and then forward again.",
+              "child.guided": "Click What is the internet? to change page. Then click the arrow pointing left at the top – you are back! Click the arrow pointing right to go forward again."
+            },
             "hints": [
               "First open a page, for example the shortcut What is the internet?",
               "The Back arrow points left and is at the top left.",
               "Click Back. Then click the arrow pointing right – Forward.",
               "The yellow frame shows the Back arrow.",
               "Open a page → ← Back → → Forward."
-            ]
+            ],
+            "nudge": "You need to have visited more than one page before you can go back."
           },
           {
             "title": "Done",
@@ -1788,18 +2284,28 @@
         "steps": [
           {
             "title": "Downloading",
-            "text": "Downloading means a file from the web is saved on your computer. Chrome saves it in the Downloads folder and shows a download icon at the top right."
+            "text": {
+              "default": "Downloading means a file from the web is saved on your computer. Chrome saves it in the Downloads folder and shows a download icon at the top right.",
+              "short": "Downloaded files are saved in Downloads.",
+              "child": "Downloading means fetching a file from the internet and keeping it on your own computer. Chrome puts it in the Downloads folder, so you know where it is."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Go to the page Download a guide and download guide.txt.",
+            "text": {
+              "default": "Open the shortcut Download a guide and click the button Download guide.txt.",
+              "guided": "On Chrome's start page there are round shortcuts in the middle of the page. Click the one called Download a guide. A new page opens. Click the blue button Download guide.txt. A Recent downloads box appears at the top right of Chrome. The file ends up in the Downloads folder.",
+              "independent": "Go to the page Download a guide and download guide.txt.",
+              "child.guided": "Click the shortcut Download a guide. Then click the blue button Download guide.txt. Now the file is fetched to your computer!"
+            },
             "hints": [
               "Start on Chrome's start page with the round shortcuts.",
               "Click the shortcut Download a guide.",
               "Click the blue button Download guide.txt.",
               "The yellow frame shows the web page.",
               "Shortcut Download a guide → Download guide.txt. A Recent downloads box appears."
-            ]
+            ],
+            "nudge": "There is a page that offers a file to fetch."
           },
           {
             "title": "Done",
@@ -1819,18 +2325,28 @@
         "steps": [
           {
             "title": "Forms",
-            "text": "A form collects details from you: text fields, choices and tick boxes. Fields marked * must be filled in before you can send."
+            "text": {
+              "default": "A form collects details from you: text fields, choices and tick boxes. Fields marked * must be filled in before you can send.",
+              "short": "Fill in the form's fields and send it. Fields with * are required.",
+              "child": "A form is like a paper form, but on the screen. You type in boxes and tick choices. Boxes with a little star * must be filled in, otherwise you can't send it."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open the contact form, type your name, tick the box and click Send.",
+            "text": {
+              "default": "Open Contact form, type a name, tick the box I have read the information and click Send.",
+              "guided": "Click the shortcut Contact form on Chrome's start page. The form opens. Click in the Name field and type a name. Then find the little square next to I have read the information and click it, so a tick appears. Finally click the Send button at the bottom. If something is missing, a red explanation appears by the field.",
+              "independent": "Send the contact form with your name filled in.",
+              "child.guided": "Open Contact form. Type a name in the Name box. Click the little square so it gets a tick. Click Send!"
+            },
             "hints": [
               "Click the shortcut Contact form on Chrome's start page.",
               "Click in the Name field and type a name.",
               "Tick the box I have read the information.",
               "The yellow frame shows the form.",
               "Name → tick box → Send. If something is missing, a red explanation appears."
-            ]
+            ],
+            "nudge": "There is a shortcut to a form on the start page."
           },
           {
             "title": "Done",
@@ -1850,18 +2366,28 @@
         "steps": [
           {
             "title": "Zoom",
-            "text": "Zoom makes the text and pictures on the web page bigger or smaller. It helps when the text feels too small."
+            "text": {
+              "default": "Zoom makes the text and pictures on the web page bigger or smaller. It helps when the text feels too small.",
+              "short": "Zoom to make text and pictures bigger or smaller.",
+              "child": "Zooming means making things bigger or smaller, like with a magnifying glass. If the text on a page is too small, you can zoom in so it gets bigger."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Zoom the web page in or out.",
+            "text": {
+              "default": "Open Chrome's menu with the three dots and choose Zoom in or Zoom out.",
+              "guided": "Look at the top right of the Chrome window. There is a button with three dots on top of each other. Click it. A menu opens. Find the Zoom row and click the plus sign to zoom in, or the minus sign to zoom out. The text on the page gets bigger or smaller.",
+              "independent": "Zoom the web page in or out.",
+              "child.guided": "Click the three dots at the top right. Find Zoom in the menu and click plus. Now everything is bigger!"
+            },
             "hints": [
               "At the top right of Chrome there is a button with three dots.",
               "Click the three dots to open Chrome's menu.",
               "Choose Zoom in or Zoom out.",
               "The yellow frame shows the menu button.",
               "⋮ → Zoom in. Quicker: hold Ctrl and press +. Ctrl+0 resets."
-            ]
+            ],
+            "nudge": "The browser has a menu with more settings."
           },
           {
             "title": "Done",
@@ -1881,18 +2407,28 @@
         "steps": [
           {
             "title": "Internet – final task",
-            "text": "Now you use the most important parts of the browser in one task."
+            "text": {
+              "default": "Now you use the most important parts of the browser in one task.",
+              "short": "Address bar, link, tab, Back/Forward and download in one task.",
+              "child": "Now you become a browser expert! You use the most important things you have learned about the internet in a single mission."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Use the address bar, open a link, open a new tab, use Back and Forward and download guide.txt.",
+            "text": {
+              "default": "Type an address in the address bar, click a link, open a new tab, use Back and Forward and download guide.txt.",
+              "guided": "Take one part at a time. Click in the address bar at the top, type an address and press Enter. Click a link on the page. Open a new tab with the plus sign next to the tabs. In a tab where you have visited more than one page, click the Back arrow and then the Forward arrow. Finish with the shortcut Download a guide and the button Download guide.txt.",
+              "independent": "Use the address bar, open a link, open a new tab, use Back and Forward and download guide.txt.",
+              "child.guided": "Five things: type an address, click a link, open a new tab with plus, press Back and Forward, and download guide.txt. You have done them all before!"
+            },
             "hints": [
               "Start with the address bar: type an address and press Enter.",
               "Click a link on the page.",
               "Open a new tab with the plus button.",
               "Use Back and Forward in a tab where you have visited more than one page.",
               "Finish on the page Download a guide and download guide.txt."
-            ]
+            ],
+            "nudge": "You have done every part in an earlier lesson about the browser."
           },
           {
             "title": "Done",
@@ -1912,18 +2448,28 @@
         "steps": [
           {
             "title": "Bookmarks",
-            "text": "A bookmark saves the address of a page. You bookmark with the star at the far right of the address bar. Bookmarks then appear in a row below the address bar."
+            "text": {
+              "default": "A bookmark saves the address of a page. You bookmark with the star at the far right of the address bar. Bookmarks then appear in a row below the address bar.",
+              "short": "The star in the address bar saves the page as a bookmark.",
+              "child": "A bookmark in the browser works like a bookmark in a book: it helps you find your way back to a page you like. You make a bookmark with the star in the address bar."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open a web page and bookmark it with the star.",
+            "text": {
+              "default": "Open the page What is the internet? and click the star at the far right of the address bar.",
+              "guided": "The start page can't be bookmarked, so first open a page: click the shortcut What is the internet?. Then look at the address bar at the top. At the far right inside the box there is a small star. Click it once. The star turns blue and the page is saved in the bookmarks bar below the address bar.",
+              "independent": "Bookmark a web page.",
+              "child.guided": "Click What is the internet?. Find the little star at the far right of the long box at the top. Click the star – now it turns blue and the page is saved!"
+            },
             "hints": [
               "The start page can't be bookmarked – first open a page, for example What is the internet?",
               "Look at the far right inside the address bar.",
               "There is a star there. Click it.",
               "The yellow frame shows the address bar where the star is.",
               "Open What is the internet? → click the star in the address bar. The star turns blue."
-            ]
+            ],
+            "nudge": "You need to be on a real page, not the start page."
           },
           {
             "title": "Done",
@@ -1943,18 +2489,28 @@
         "steps": [
           {
             "title": "Cookies",
-            "text": "Many websites show a box about cookies the first time you visit. Read what it says – you can often choose between Accept all and Reject."
+            "text": {
+              "default": "Many websites show a box about cookies the first time you visit. Read what it says – you can often choose between Accept all and Reject.",
+              "short": "Read the cookie notice and choose Accept all or Reject.",
+              "child": "Cookies are small notes a website keeps in your browser, for example about what you have chosen. Many sites ask first whether that is OK. Read the box before you click."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Accept the cookie notice on Chrome's start page.",
+            "text": {
+              "default": "Read the cookie notice at the bottom of Chrome's start page and click Accept all.",
+              "guided": "Look at the bottom of Chrome's start page. There is a box about cookies. Read the text in it – it explains what the site wants to store. Then click the Accept all button in the box. On real websites you could just as well choose Reject if you don't want to share more than necessary.",
+              "independent": "Accept the cookie notice on Chrome's start page.",
+              "child.guided": "At the bottom of the page there is a box about cookies. Read it first. Then click Accept all."
+            },
             "hints": [
               "The cookie notice is at the bottom of the start page.",
               "Read the text in the box.",
               "Click Accept all.",
               "The yellow frame shows the cookie notice.",
               "Click Accept all in the box at the bottom. On real sites you could just as well choose Reject."
-            ]
+            ],
+            "nudge": "Look for a box that asks you to make a choice."
           },
           {
             "title": "Done",
@@ -1974,18 +2530,28 @@
         "steps": [
           {
             "title": "Uploading",
-            "text": "Uploading is the opposite of downloading: you send a file from the computer to a website. You choose the file in a box called Open."
+            "text": {
+              "default": "Uploading is the opposite of downloading: you send a file from the computer to a website. You choose the file in a box called Open.",
+              "short": "Upload: choose a file in the Open box and send it to the website.",
+              "child": "Uploading is the opposite of downloading. Now you send a file from your computer to a website, for example a picture. You choose the file in a box called Open."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open the contact form and choose the file profile.txt with the Choose file button.",
+            "text": {
+              "default": "Open Contact form, click Choose file and choose profile.txt in Documents.",
+              "guided": "Click the shortcut Contact form on Chrome's start page. Find the Choose file button in the form and click it. A box called Open appears. Click Documents on the left of the box. Then click the file profile.txt and the Open button. The file's name appears next to the Choose file button.",
+              "independent": "Attach profile.txt in the contact form.",
+              "child.guided": "Open Contact form and click Choose file. In the box that appears, click Documents, then profile.txt and finally Open."
+            },
             "hints": [
               "Click the shortcut Contact form on Chrome's start page.",
               "Click the Choose file button.",
               "The Open box appears. The file profile.txt is in Documents.",
               "The yellow frame shows the form.",
               "Choose file → Documents → click profile.txt → Open. The file name appears next to the button."
-            ]
+            ],
+            "nudge": "The form has a button for attaching something from the computer."
           },
           {
             "title": "Done",
@@ -2005,18 +2571,28 @@
         "steps": [
           {
             "title": "Reload",
-            "text": "The button with a round arrow loads the web page again. It helps when the page hasn't finished loading or when the content may have changed."
+            "text": {
+              "default": "The button with a round arrow loads the web page again. It helps when the page hasn't finished loading or when the content may have changed.",
+              "short": "The round arrow loads the page again.",
+              "child": "Sometimes a page gets stuck or shows old information. Then you can ask the browser to fetch the page once more with the button that looks like a round arrow."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Click the Reload button.",
+            "text": {
+              "default": "Click the Reload button – the round arrow at the top left of Chrome.",
+              "guided": "Look at the top left of Chrome. That is where the Back and Forward arrows are. Just to the right of them is a button that looks like an arrow in a circle – that is Reload. Click it once. The page is fetched again.",
+              "independent": "Reload the web page.",
+              "child.guided": "At the top left of Chrome there is a round arrow. Click it and the page reloads!"
+            },
             "hints": [
               "Look at the top left of Chrome, next to the arrows.",
               "The button looks like a round arrow.",
               "Click it once.",
               "The yellow frame shows the button.",
               "Click the round arrow – or press F5."
-            ]
+            ],
+            "nudge": "The button is next to the arrows you used to go back."
           },
           {
             "title": "Done",
@@ -2036,18 +2612,28 @@
         "steps": [
           {
             "title": "Close tab",
-            "text": "Every tab has its own small cross. It closes only that tab – not the whole browser."
+            "text": {
+              "default": "Every tab has its own small cross. It closes only that tab – not the whole browser.",
+              "short": "The tab's cross closes only that tab.",
+              "child": "Every tab has its own small cross. It closes only that tab, not the whole browser. The big cross up in the corner closes everything – don't use that one now."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open a new tab with the plus button and then close it with the tab's cross.",
+            "text": {
+              "default": "Open a new tab with the plus button and close it with the small cross on the tab.",
+              "guided": "Click the plus sign to the right of the tabs at the top of Chrome, and a new tab opens. Look at the new tab: to the right of its name there is a small cross. Click the small cross. Don't click the big cross at the top right – that closes the whole of Chrome.",
+              "independent": "Open a new tab and then close just that tab.",
+              "child.guided": "Click plus for a new tab. The new tab has a small cross. Click the small cross – not the big one in the corner!"
+            },
             "hints": [
               "Click the plus sign next to the tabs to open a new tab.",
               "The new tab has a small cross to the right of its name.",
               "Click the tab's cross – not the big cross at the top right.",
               "The yellow frame shows the plus button.",
               "+ → click the cross on the new tab. Ctrl+W also closes a tab."
-            ]
+            ],
+            "nudge": "There is more than one cross at the top. Think about which one belongs to the tab."
           },
           {
             "title": "Done",
@@ -2067,18 +2653,28 @@
         "steps": [
           {
             "title": "Searching",
-            "text": "When you don't know the address, you can search. Type a few words about what you are looking for and you get a list of links."
+            "text": {
+              "default": "When you don't know the address, you can search. Type a few words about what you are looking for and you get a list of links.",
+              "short": "Search with a few words when you don't know the address.",
+              "child": "If you don't know a page's address, you can search, a bit like asking a giant library catalogue. Type a few words about what you are looking for and you get a list of links."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type something in the search box on Chrome's start page and press Enter.",
+            "text": {
+              "default": "Click in the search box in the middle of Chrome's start page, type a few words and press Enter.",
+              "guided": "Look at the middle of Chrome's start page. There is a big, rounded box – that is the search box. Click in it. Type a few words about what you want to know, for example safe passwords. Then press Enter. A list of search results appears, and each row is a link.",
+              "independent": "Search the web for something you wonder about.",
+              "child.guided": "Click in the big rounded box in the middle of the page. Type something you wonder about, for example safe passwords, and press Enter."
+            },
             "hints": [
               "The search box is the large rounded box in the middle of the start page.",
               "Click in it.",
               "Type a few words, for example safe passwords, and press Enter.",
               "The yellow frame shows the search box.",
               "Click in the search box → type → Enter. The results appear as a list of links."
-            ]
+            ],
+            "nudge": "You don't need to know the address to find something."
           },
           {
             "title": "Done",
@@ -2098,18 +2694,28 @@
         "steps": [
           {
             "title": "The inbox",
-            "text": "The inbox is the list of emails you have received. Unread emails are bold and have a blue line. Click an email to read it."
+            "text": {
+              "default": "The inbox is the list of emails you have received. Unread emails are bold and have a blue line. Click an email to read it.",
+              "short": "The inbox lists your emails. Click one to read it.",
+              "child": "Email is like letters, but on the computer. The inbox is your letterbox – all the emails you get end up there. Emails you haven't read yet are shown in bold with a blue line."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open an email in the inbox.",
+            "text": {
+              "default": "Click an email in the list in Mail to read it.",
+              "guided": "Mail is open. In the middle of the window there is a list of emails – that is the inbox. Each row shows who sent the email, what it is about and the start of the text. Click an email once, for example from Erik Lund. The whole email then appears on the right.",
+              "independent": "Open an email in the inbox.",
+              "child.guided": "In the middle you can see a list of emails. Click the email from Erik Lund. Now you can read it on the right!"
+            },
             "hints": [
               "The list of emails is in the middle of Mail.",
               "Each row shows the sender, the subject and the start of the text.",
               "Click an email once, for example from Erik Lund.",
               "The yellow frame shows the list of emails.",
               "Click an email in the list. The whole email appears on the right."
-            ]
+            ],
+            "nudge": "Your emails are gathered in one place in the program."
           },
           {
             "title": "Done",
@@ -2129,18 +2735,28 @@
         "steps": [
           {
             "title": "Reply",
-            "text": "Reply creates a new email to the person who wrote. The recipient and subject are filled in automatically – the subject gets RE: in front."
+            "text": {
+              "default": "Reply creates a new email to the person who wrote. The recipient and subject are filled in automatically – the subject gets RE: in front.",
+              "short": "Reply sends an email back to the sender.",
+              "child": "When someone has written to you, you can reply. If you click Reply, the computer fills in who it goes to and what it is about. You only need to write your answer."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open the email from Erik Lund, click Reply, write an answer and send it.",
+            "text": {
+              "default": "Open the email from Erik Lund, click Reply, write a few words and click Send.",
+              "guided": "Click the email from Erik Lund in the list in the middle. Above the email on the right there are some buttons – click Reply. A new email opens with To and Subject already filled in. Click in the big text box and write a few words. Then click Send.",
+              "independent": "Reply to the email from Erik Lund.",
+              "child.guided": "Click Erik's email. Click Reply. Write a few words in the big box and click Send!"
+            },
             "hints": [
               "Click the email from Erik Lund in the inbox.",
               "Click Reply above the email.",
               "Type a few words in the large box.",
               "The yellow frame shows the list of emails.",
               "Erik's email → Reply → write your answer → Send."
-            ]
+            ],
+            "nudge": "First you need to read the email you are replying to."
           },
           {
             "title": "Done",
@@ -2160,18 +2776,28 @@
         "steps": [
           {
             "title": "New email",
-            "text": "A new email starts with the New mail button. You fill in To (the recipient's email address), Subject and the message itself."
+            "text": {
+              "default": "A new email starts with the New mail button. You fill in To (the recipient's email address), Subject and the message itself.",
+              "short": "New mail: fill in To, Subject and the message.",
+              "child": "A new email is like writing a letter from scratch. You write who it is for (their email address), what it is about (the subject) and the letter itself."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Write a new email to anna@example.com and send it.",
+            "text": {
+              "default": "Click New mail, type anna@example.com in To, fill in a subject and a message and click Send.",
+              "guided": "Click the New mail button at the top left. An empty email opens. Click in the To field and type anna@example.com – that is the recipient's address. Click in the Subject field and type a few words about what the email is about. Then write your message in the big box and click Send.",
+              "independent": "Write a new email to anna@example.com and send it.",
+              "child.guided": "Click New mail. In To, type anna@example.com. In Subject, write what it is about. Write your message and click Send!"
+            },
             "hints": [
               "The New mail button is at the top left.",
               "Type anna@example.com in the To field.",
               "Type a subject and a short message.",
               "The yellow frame shows the New mail button.",
               "New mail → To: anna@example.com → Subject → message → Send."
-            ]
+            ],
+            "nudge": "There is a button for starting a completely new email."
           },
           {
             "title": "Done",
@@ -2191,18 +2817,28 @@
         "steps": [
           {
             "title": "Attach",
-            "text": "An attached file – an attachment – is sent along with the email. You choose the file in the Open box, just like when you upload on the web."
+            "text": {
+              "default": "An attached file – an attachment – is sent along with the email. You choose the file in the Open box, just like when you upload on the web.",
+              "short": "Attach file sends a file along with the email.",
+              "child": "An attachment is something you send along with the email, like putting a photo in an envelope. You choose the file in a box called Open, and it then shows with a little paper clip."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Create a new email and attach the file plan.txt.",
+            "text": {
+              "default": "Click New mail and then Attach file. Choose plan.txt in Documents and click Open.",
+              "guided": "Click New mail at the top left. Above the fields in the new email there is a button with a paper clip – Attach file. Click it. The Open box appears. Click Documents in the left-hand pane, then click plan.txt and the Open button. The attachment shows in the email with a paper clip.",
+              "independent": "Create a new email and attach the file plan.txt.",
+              "child.guided": "Click New mail. Click the paper clip, Attach file. Choose Documents, click plan.txt and then Open. Now the file is clipped on!"
+            },
             "hints": [
               "Click New mail.",
               "Click Attach file (the paper clip) in the row above the fields.",
               "The Open box appears. plan.txt is in Documents – click Documents on the left.",
               "The yellow frame shows the New mail button.",
               "New mail → Attach file → Documents → plan.txt → Open. The attachment appears with a paper clip."
-            ]
+            ],
+            "nudge": "Look for something that looks like a paper clip."
           },
           {
             "title": "Done",
@@ -2222,18 +2858,28 @@
         "steps": [
           {
             "title": "Save the attachment",
-            "text": "An attachment in an email can be saved as a file on the computer. It ends up in Downloads."
+            "text": {
+              "default": "An attachment in an email can be saved as a file on the computer. It ends up in Downloads.",
+              "short": "Download an attachment and it is saved in Downloads.",
+              "child": "If someone has sent a picture or a document in an email, you can keep it on your computer. That is called downloading the attachment, and it ends up in the Downloads folder."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open Anna's email and download the attachment.",
+            "text": {
+              "default": "Open Anna's email and click Download next to the attachment at the bottom.",
+              "guided": "Click the email from Anna Berg in the list in the middle. The email appears on the right. At the bottom of the email there is a box with the attachment daytrip.jpg. Next to it is the Download button. Click it. The file is saved in the Downloads folder.",
+              "independent": "Open Anna's email and download the attachment.",
+              "child.guided": "Click Anna's email. At the bottom there is a picture called daytrip.jpg. Click Download next to it!"
+            },
             "hints": [
               "Click the email from Anna Berg.",
               "At the bottom of the email is the attachment daytrip.jpg.",
               "Click Download next to the attachment.",
               "The yellow frame shows Anna's email.",
               "Anna's email → Download. The file is saved in Downloads."
-            ]
+            ],
+            "nudge": "The attachment is in one of the emails in the inbox."
           },
           {
             "title": "Done",
@@ -2253,18 +2899,28 @@
         "steps": [
           {
             "title": "Email – final task",
-            "text": "Now you use the most important parts of Mail in one task."
+            "text": {
+              "default": "Now you use the most important parts of Mail in one task.",
+              "short": "Read, download, reply and attach in one task.",
+              "child": "Now it's time to show everything you know about email. You read an email, keep the attachment, reply and send a file along with it."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open Anna's email, download the attachment, click Reply, write an answer, attach a file and send.",
+            "text": {
+              "default": "Open Anna's email and download the attachment. Click Reply, write a few words, attach plan.txt and send.",
+              "guided": "Take one part at a time. Click the email from Anna Berg. Click Download next to the attachment at the bottom. Then click Reply and write a few words in the big box. Click the paper clip, Attach file, choose Documents and plan.txt and click Open. Only click Send when the attachment shows with a paper clip.",
+              "independent": "Save the attachment in Anna's email and reply to her with a file attached.",
+              "child.guided": "Anna's email → Download the attachment → Reply → write a few words → the paper clip → plan.txt → Send. One thing at a time!"
+            },
             "hints": [
               "Open the email from Anna Berg.",
               "Download the attachment in the email.",
               "Click Reply and write a few words.",
               "Click Attach file and choose a file – for example plan.txt in Documents.",
               "Only send when the attachment shows with a paper clip."
-            ]
+            ],
+            "nudge": "You have done each part earlier in the Mail module."
           },
           {
             "title": "Done",
@@ -2284,18 +2940,28 @@
         "steps": [
           {
             "title": "Forward",
-            "text": "Forward sends an email you received on to a new recipient. The original text comes along and the subject gets FW: in front."
+            "text": {
+              "default": "Forward sends an email you received on to a new recipient. The original text comes along and the subject gets FW: in front.",
+              "short": "Forward sends an email on to someone else.",
+              "child": "Forwarding is like passing a letter you got on to a friend. The whole text goes along, and you just write who the new recipient is."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open Erik's email, choose Forward, type a recipient and send.",
+            "text": {
+              "default": "Open Erik's email, click Forward, type anna@example.com in To and click Send.",
+              "guided": "Click the email from Erik Lund. Above the email on the right there is the Forward button. Click it. A new email opens with Erik's text already in it. Click in the To field and type anna@example.com. Then click Send.",
+              "independent": "Forward Erik's email to someone else.",
+              "child.guided": "Click Erik's email and then Forward. Type anna@example.com in To and click Send."
+            },
             "hints": [
               "Click the email from Erik Lund.",
               "Click Forward above the email.",
               "Type an email address in the To field, for example anna@example.com.",
               "The yellow frame shows the list of emails.",
               "Erik's email → Forward → To: anna@example.com → Send."
-            ]
+            ],
+            "nudge": "It is not the same as replying – the email goes to someone new."
           },
           {
             "title": "Done",
@@ -2315,7 +2981,11 @@
         "steps": [
           {
             "title": "Passwords",
-            "text": "A good password is long, hard to guess and used in only one place. A passphrase – several words in a row – is often both stronger and easier to remember."
+            "text": {
+              "default": "A good password is long, hard to guess and used in only one place. A passphrase – several words in a row – is often both stronger and easier to remember.",
+              "short": "Use long, unique passwords or passphrases.",
+              "child": "A password is like the key to your home online. A good key is long and hard to guess, and you only use it for one place. Several words in a row, a passphrase, is often easiest to remember – and hardest to work out."
+            }
           },
           {
             "title": "Done",
@@ -2335,7 +3005,11 @@
         "steps": [
           {
             "title": "Be careful",
-            "text": "Never give out passwords or sensitive details just because an email or a page asks for them. First check who is asking and which address you are on."
+            "text": {
+              "default": "Never give out passwords or sensitive details just because an email or a page asks for them. First check who is asking and which address you are on.",
+              "short": "Don't give passwords or sensitive details to whoever asks.",
+              "child": "Your password and personal details are your secrets. Even if an email or a page asks for them, don't give them away. Ask an adult you trust if you are unsure."
+            }
           },
           {
             "title": "Done",
@@ -2355,18 +3029,28 @@
         "steps": [
           {
             "title": "Scam emails",
-            "text": "Phishing means emails that pretend to come from someone you trust in order to trick you into giving away passwords or money. Typical signs are urgency, threats and an odd sender address."
+            "text": {
+              "default": "Phishing means emails that pretend to come from someone you trust in order to trick you into giving away passwords or money. Typical signs are urgency, threats and an odd sender address.",
+              "short": "Scam emails rush you and pretend to be someone you trust.",
+              "child": "A scam email is like a trickster in disguise. It pretends to come from someone you trust, for example your bank, in order to fool you. It often tries to stress you: \"Do it now, or something bad will happen!\""
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open the scam email and report it.",
+            "text": {
+              "default": "Open the email that tries to rush you and click Report above the email.",
+              "guided": "Look through the list of emails in the middle. One of them has a stressful subject: URGENT: Your account will be closed today. Click that email once. Don't click anything inside the text. Look at the sender's address – it looks odd. Click Report above the email and confirm with Report.",
+              "independent": "Open the scam email and report it.",
+              "child.guided": "Find the email that shouts URGENT. Open it, but don't click anything in the text! Click Report at the top and then Report again."
+            },
             "hints": [
               "Look for an email that tries to rush you.",
               "Open it and look at the sender's address. Don't click anything in the text.",
               "Click Report above the email.",
               "The yellow frame shows the suspicious email.",
               "The email URGENT: Your account will be closed today → Report → Report."
-            ]
+            ],
+            "nudge": "One of the emails is trying to make you do something very quickly."
           },
           {
             "title": "Done",
@@ -2386,7 +3070,11 @@
         "steps": [
           {
             "title": "Two-step verification",
-            "text": "With two-step verification the password is not enough. You also confirm in another way, for example with a code on your phone or in an app."
+            "text": {
+              "default": "With two-step verification the password is not enough. You also confirm in another way, for example with a code on your phone or in an app.",
+              "short": "Two-step verification needs something as well as the password.",
+              "child": "With two-step verification you need two things to get in, a bit like a door with two locks. First the password, and then, for example, a code sent to a phone. Even if someone finds out the password, they can't get in."
+            }
           },
           {
             "title": "Done",
@@ -2406,7 +3094,11 @@
         "steps": [
           {
             "title": "Read the address",
-            "text": "Always check which website you are actually on. HTTPS and the padlock mean the connection is encrypted – but not that the site is honest. Look at the name itself, before the first single slash."
+            "text": {
+              "default": "Always check which website you are actually on. HTTPS and the padlock mean the connection is encrypted – but not that the site is honest. Look at the name itself, before the first single slash.",
+              "short": "Check the website's name. The padlock means encryption, not honesty.",
+              "child": "Fake sites can look almost exactly like real ones. That's why you should look carefully at the address at the top. The padlock only means what you send is kept secret on the way – not that the site is friendly."
+            }
           },
           {
             "title": "Done",
@@ -2426,7 +3118,11 @@
         "steps": [
           {
             "title": "Updates",
-            "text": "Updates close security holes. Install them from Windows Update in Settings – never from a pop-up on a web page. Windows Security protects against viruses and is switched on from the start."
+            "text": {
+              "default": "Updates close security holes. Install them from Windows Update in Settings – never from a pop-up on a web page. Windows Security protects against viruses and is switched on from the start.",
+              "short": "Install updates from Windows Update, never from pop-ups.",
+              "child": "Updates fix small holes in the computer's protection, a bit like mending a fence. You get them in Settings under Windows Update. If a box on a web page says you must install something – close it."
+            }
           },
           {
             "title": "Done",
@@ -2446,7 +3142,11 @@
         "steps": [
           {
             "title": "Public Wi‑Fi",
-            "text": "Open networks in cafés, hotels and stations are shared by many people. Avoid sensitive tasks there, and check that the network name really belongs to the place you are in."
+            "text": {
+              "default": "Open networks in cafés, hotels and stations are shared by many people. Avoid sensitive tasks there, and check that the network name really belongs to the place you are in.",
+              "short": "Avoid sensitive tasks on open networks.",
+              "child": "Cafés and trains often have Wi‑Fi that anyone can use. It is like talking in a crowded room – others can listen. So don't do anything secret there, and check that the network really belongs to the place you are in."
+            }
           },
           {
             "title": "Done",
@@ -2466,7 +3166,11 @@
         "steps": [
           {
             "title": "Fake support",
-            "text": "Real companies don't call out of the blue and demand that you install a remote control program or pay to remove a virus. Hang up, and close pop-ups that tell you to call a number."
+            "text": {
+              "default": "Real companies don't call out of the blue and demand that you install a remote control program or pay to remove a virus. Hang up, and close pop-ups that tell you to call a number.",
+              "short": "Real support doesn't call out of the blue demanding remote access or payment.",
+              "child": "Sometimes someone calls and says they are from a computer company and your computer has a virus. It is almost always a trick. Hang up, and tell an adult you trust."
+            }
           },
           {
             "title": "Done",
@@ -2486,18 +3190,28 @@
         "steps": [
           {
             "title": "The independence test",
-            "text": "Now you combine the web browser, File Explorer and Mail – like a real task where you choose the programs and the order yourself."
+            "text": {
+              "default": "Now you combine the web browser, File Explorer and Mail – like a real task where you choose the programs and the order yourself.",
+              "short": "Chrome, File Explorer and Mail in one real task.",
+              "child": "This is the big final test! You use three programs one after another, just like when you do something for real. You decide how to do it."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Download guide.txt in Chrome. Rename the file to guide-done.txt in File Explorer. Then send it as an attachment in a new email.",
+            "text": {
+              "default": "Download guide.txt in Chrome. Rename it to guide-done.txt in Downloads. Then send it as an attachment in a new email.",
+              "guided": "Take one program at a time. Open Chrome and click the shortcut Download a guide, then Download guide.txt. Open File Explorer and click Downloads on the left. Select guide.txt, click Rename and type guide-done.txt. Open Mail from Start and click New mail. Click the paper clip, choose Downloads and guide-done.txt. Fill in To, for example anna@example.com, a subject and some text, and click Send.",
+              "independent": "Download guide.txt in Chrome. Rename the file to guide-done.txt in File Explorer. Then send it as an attachment in a new email.",
+              "child.guided": "Three programs one after another: 1. Chrome – download guide.txt. 2. File Explorer – rename the file in Downloads to guide-done.txt. 3. Mail – send the file with a new email. You have done every part before!"
+            },
             "hints": [
               "Start in Chrome and find the page where the guide is downloaded.",
               "The file ends up in Downloads. Open File Explorer and go there.",
               "Rename the file to guide-done.txt before you continue.",
               "Open Mail from Start and click New mail.",
               "Attach guide-done.txt from Downloads, fill in To (for example anna@example.com), a subject and some text, and click Send."
-            ]
+            ],
+            "nudge": "Start by getting the file onto the computer."
           },
           {
             "title": "Done",
@@ -2517,18 +3231,28 @@
         "steps": [
           {
             "title": "Copy and paste",
-            "text": "Select the text, copy it with Ctrl+C and paste it with Ctrl+V where the text cursor is. The original stays where it was."
+            "text": {
+              "default": "Select the text, copy it with Ctrl+C and paste it with Ctrl+V where the text cursor is. The original stays where it was.",
+              "short": "Select, copy with Ctrl+C and paste with Ctrl+V.",
+              "child": "Copying text is like writing something out again, but the computer does it for you. You select the text, copy it and paste it somewhere new. The original stays where it was."
+            }
           },
           {
             "title": "Your turn",
-            "text": "In Chrome: open What is the internet? and select the phone line. Press Ctrl+C. Then switch to Notepad and press Ctrl+V.",
+            "text": {
+              "default": "Open What is the internet? in Chrome, select the phone line and press Ctrl+C. Then click in Notepad and press Ctrl+V.",
+              "guided": "In Chrome, click the shortcut What is the internet?. Find the line with a phone number. Press the left mouse button just before the first character, keep holding and drag to the end of the line – the text is highlighted in blue. Hold Ctrl and press C. Then click Notepad's icon in the taskbar, click in the white area and press Ctrl+V. The line is pasted in.",
+              "independent": "Copy the phone line from the What is the internet? page in Chrome into Notepad.",
+              "child.guided": "Open What is the internet? in Chrome. Drag the mouse over the line with the phone number so it turns blue. Press Ctrl+C. Switch to Notepad, click in the white area and press Ctrl+V. There it is!"
+            },
             "hints": [
               "Click the shortcut What is the internet? in Chrome.",
               "Press the mouse button at the start of the phone line and drag to the end so the line is selected.",
               "Press Ctrl+C to copy.",
               "Switch to Notepad by clicking its icon in the taskbar.",
               "Click in Notepad's white area and press Ctrl+V."
-            ]
+            ],
+            "nudge": "The text must be selected before the computer knows what to copy."
           },
           {
             "title": "Done",
@@ -2562,18 +3286,28 @@
         "steps": [
           {
             "title": "Undo",
-            "text": "Ctrl+Z undoes what you just did. Ctrl+Y redoes what you undid. It works in almost every program."
+            "text": {
+              "default": "Ctrl+Z undoes what you just did. Ctrl+Y redoes what you undid. It works in almost every program.",
+              "short": "Ctrl+Z undoes, Ctrl+Y redoes.",
+              "child": "Ctrl+Z is like a time machine: it removes what you just did. If you undid too much, Ctrl+Y brings it back. It works in almost every program, so you never need to be afraid of making mistakes."
+            }
           },
           {
             "title": "Your turn",
-            "text": "In Notepad: type a short sentence, press Ctrl+Z to undo it and Ctrl+Y to redo it.",
+            "text": {
+              "default": "Type a short sentence in Notepad. Press Ctrl+Z to undo and then Ctrl+Y to redo.",
+              "guided": "Click in the white area in Notepad and type a few words. Then hold Ctrl, at the bottom left of the keyboard, and press Z. What you typed disappears. Hold Ctrl again and press Y. The text comes back.",
+              "independent": "Type a sentence in Notepad, undo it and redo it.",
+              "child.guided": "Type a few words in Notepad. Press Ctrl+Z – poof, gone! Press Ctrl+Y – back again!"
+            },
             "hints": [
               "Click in Notepad's white area.",
               "Type a few words.",
               "Hold Ctrl and press Z. What you typed disappears.",
               "Hold Ctrl and press Y. The text comes back.",
               "Type → Ctrl+Z → Ctrl+Y. You also find Undo under Edit."
-            ]
+            ],
+            "nudge": "There is a keyboard shortcut for taking back what you just did."
           },
           {
             "title": "Done",
@@ -2607,7 +3341,11 @@
         "steps": [
           {
             "title": "The clipboard",
-            "text": "What you copy or cut goes to the clipboard – a temporary memory. It stays there until you copy something new. On a real computer, Windows key + V shows things you copied earlier."
+            "text": {
+              "default": "What you copy or cut goes to the clipboard – a temporary memory. It stays there until you copy something new. On a real computer, Windows key + V shows things you copied earlier.",
+              "short": "The clipboard holds what you last copied or cut.",
+              "child": "The clipboard is the computer's short-term memory. What you copy is kept there for a while, until you copy something new. That is why you can paste the same thing several times."
+            }
           },
           {
             "title": "Done",
@@ -2635,7 +3373,11 @@
         "steps": [
           {
             "title": "File extensions",
-            "text": "The file extension is the letters after the last full stop in the file name, for example .pdf or .jpg. It tells you what kind of file it is. Windows often hides the extension – in File Explorer you show it with View → Show → File name extensions. On the practice computer it is always shown."
+            "text": {
+              "default": "The file extension is the letters after the last full stop in the file name, for example .pdf or .jpg. It tells you what kind of file it is. Windows often hides the extension – in File Explorer you show it with View → Show → File name extensions. On the practice computer it is always shown.",
+              "short": "The extension, such as .pdf or .jpg, shows what kind of file it is.",
+              "child": "The letters after the last full stop in a file name are like a label. .jpg means it is a picture, .pdf a document that should look the same everywhere and .txt a simple text. Then you know which program can open the file."
+            }
           },
           {
             "title": "Done",
@@ -2663,18 +3405,28 @@
         "steps": [
           {
             "title": "Where does the file go?",
-            "text": "Everything you download in the web browser ends up in the Downloads folder, unless you choose something else. Knowing where a file is matters as much as knowing its name."
+            "text": {
+              "default": "Everything you download in the web browser ends up in the Downloads folder, unless you choose something else. Knowing where a file is matters as much as knowing its name.",
+              "short": "Downloads end up in the Downloads folder.",
+              "child": "When you download something it has to end up somewhere. If you don't choose, the computer puts it in the Downloads folder. If you remember that, you can always find the things you have downloaded."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Download guide.txt in Chrome and then find the file in Downloads.",
+            "text": {
+              "default": "Download guide.txt using the shortcut Download a guide in Chrome. Then click Show in folder to see the file in Downloads.",
+              "guided": "In Chrome, click the shortcut Download a guide and then the button Download guide.txt. The Recent downloads box appears at the top right. Click Show in folder in that box. File Explorer opens at the Downloads folder, and guide.txt is there.",
+              "independent": "Download guide.txt in Chrome and then find the file in Downloads.",
+              "child.guided": "Download guide.txt in Chrome. Click Show in folder in the box that pops up. Now you can see where the file ended up: in Downloads!"
+            },
             "hints": [
               "Click the shortcut Download a guide in Chrome and download guide.txt.",
               "The Recent downloads box appears at the top right.",
               "Click Show in folder – or open File Explorer and click Downloads.",
               "The yellow frame shows Downloads in File Explorer.",
               "Download guide.txt → Show in folder. The file guide.txt is in Downloads."
-            ]
+            ],
+            "nudge": "Think about which folder downloads usually end up in."
           },
           {
             "title": "Done",
@@ -2702,18 +3454,28 @@
         "steps": [
           {
             "title": "PDF",
-            "text": "PDF is a format for documents that should look the same everywhere – invoices, receipts and forms. On a real computer, PDF files often open in the Microsoft Edge web browser."
+            "text": {
+              "default": "PDF is a format for documents that should look the same everywhere – invoices, receipts and forms. On a real computer, PDF files often open in the Microsoft Edge web browser.",
+              "short": "PDF files look the same everywhere. You can zoom and save a copy.",
+              "child": "A PDF is a document that looks exactly the same on every computer, like a sheet of paper that has been photographed. Receipts, invoices and forms are often PDF files."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open invoice.pdf, zoom in and save a copy with Save as.",
+            "text": {
+              "default": "Double-click invoice.pdf in Documents, zoom in with the plus button and save a copy with Save as.",
+              "guided": "In File Explorer, in the Documents folder, double-click invoice.pdf. The file opens in the PDF reader. Click the plus button at the top to zoom in, so the text gets bigger. Then click Save as at the top right. Keep the name invoice-copy.pdf and click Save.",
+              "independent": "Open invoice.pdf, make the text bigger and save a copy.",
+              "child.guided": "Double-click invoice.pdf. Click plus so the text gets bigger. Click Save as and then Save."
+            },
             "hints": [
               "Double-click invoice.pdf in Documents.",
               "The PDF file opens in its own window.",
               "Click the plus button to zoom in.",
               "Click Save as and then Save.",
               "invoice.pdf → + → Save as → keep the name invoice-copy.pdf → Save."
-            ]
+            ],
+            "nudge": "Start by opening the file that ends in .pdf."
           },
           {
             "title": "Done",
@@ -2741,18 +3503,28 @@
         "steps": [
           {
             "title": "Screenshot",
-            "text": "A screenshot is a picture of what is on the screen. With the Snipping Tool you choose which part to include. On a real computer, Windows key + Shift + S opens the same tool straight away."
+            "text": {
+              "default": "A screenshot is a picture of what is on the screen. With the Snipping Tool you choose which part to include. On a real computer, Windows key + Shift + S opens the same tool straight away.",
+              "short": "The Snipping Tool takes a picture of part of the screen.",
+              "child": "A screenshot is like a photo of the screen. With the Snipping Tool you draw a box around what you want to include, and then you save the picture."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Take a screenshot with the Snipping Tool and save it in Pictures.",
+            "text": {
+              "default": "Click New in the Snipping Tool, drag a box over what you want to include and save the picture in Pictures.",
+              "guided": "The Snipping Tool is open. Click the New button at the top left of the tool. The screen gets a little darker. Press the left mouse button where the box should start, keep holding and drag to the opposite corner. Let go of the button. The picture appears in the tool. Click Save – the Save as box opens with the Pictures folder selected – and click Save again.",
+              "independent": "Take a screenshot with the Snipping Tool and save it in Pictures.",
+              "child.guided": "Click New. The screen goes dark. Press, hold and drag a box over what you want a picture of, and let go. Click Save twice. Done!"
+            },
             "hints": [
               "Click New in the Snipping Tool.",
               "The screen gets darker. Press the mouse button and drag a box over what you want to include.",
               "Let go of the mouse button. The picture appears in the tool.",
               "Click Save. The Save as box opens with the Pictures folder selected.",
               "New → drag a box → let go → Save → Save."
-            ]
+            ],
+            "nudge": "The tool has a button for starting a new snip."
           },
           {
             "title": "Done",
@@ -2780,18 +3552,28 @@
         "steps": [
           {
             "title": "ZIP",
-            "text": "A ZIP file is a package with several files inside. Before you work with the files, you unpack – extract – the package into a normal folder."
+            "text": {
+              "default": "A ZIP file is a package with several files inside. Before you work with the files, you unpack – extract – the package into a normal folder.",
+              "short": "Unpack a ZIP file with Extract all.",
+              "child": "A ZIP file is like a parcel with several things inside. Before you can use the things, you unpack the parcel. That is called extracting."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Right-click Photos.zip in Downloads, choose Extract all and click Extract.",
+            "text": {
+              "default": "Right-click Photos.zip in Downloads, choose Extract all and click Extract.",
+              "guided": "File Explorer shows Downloads. Find Photos.zip – a yellow folder with a zip. Right-click it. Choose Extract all in the menu that opens. A box shows where the files will go. Click Extract. A normal folder with the photos opens.",
+              "independent": "Unpack Photos.zip in Downloads.",
+              "child.guided": "Right-click Photos.zip, the folder with a zip on it. Choose Extract all and click Extract. Now the parcel is unpacked!"
+            },
             "hints": [
               "Photos.zip is in Downloads.",
               "Right-click Photos.zip.",
               "Choose Extract all in the context menu. A box shows where the files will go.",
               "The yellow frame shows the files in Downloads.",
               "Right-click Photos.zip → Extract all → Extract. The Photos folder opens."
-            ]
+            ],
+            "nudge": "There is a choice in the context menu for unpacking."
           },
           {
             "title": "Done",
@@ -2819,7 +3601,11 @@
         "steps": [
           {
             "title": "Web page or program?",
-            "text": "A web page is shown inside the web browser and has a web address. An installed program runs in its own window and is in the Start menu."
+            "text": {
+              "default": "A web page is shown inside the web browser and has a web address. An installed program runs in its own window and is in the Start menu.",
+              "short": "Web pages show in the browser. Programs have their own window.",
+              "child": "A web page lives inside the web browser and has an address, for example starting with www. A program installed on the computer opens in its own window and is in the Start menu."
+            }
           },
           {
             "title": "Done",
@@ -2847,7 +3633,11 @@
         "steps": [
           {
             "title": "Signing in",
-            "text": "When you sign in, the browser is linked to your account. On a computer that others also use, always sign out when you have finished – closing the tab is not enough."
+            "text": {
+              "default": "When you sign in, the browser is linked to your account. On a computer that others also use, always sign out when you have finished – closing the tab is not enough.",
+              "short": "Sign out on computers that other people use.",
+              "child": "When you sign in, you show it is you. On a computer others use too, like at school or the library, always sign out when you have finished. Otherwise the next person could get into your account."
+            }
           },
           {
             "title": "Done",
@@ -2875,7 +3665,11 @@
         "steps": [
           {
             "title": "Password managers",
-            "text": "A password manager remembers your passwords for you and fills them in. That way you can have a separate strong password for every service and only need to remember one master password."
+            "text": {
+              "default": "A password manager remembers your passwords for you and fills them in. That way you can have a separate strong password for every service and only need to remember one master password.",
+              "short": "A password manager remembers your passwords.",
+              "child": "A password manager is like a safe for passwords. It remembers all your passwords, and you only need to know one: the one that opens the safe."
+            }
           },
           {
             "title": "Done",
@@ -2903,18 +3697,28 @@
         "steps": [
           {
             "title": "Installing",
-            "text": "A program is installed with a setup file, often an .exe file. Windows first asks whether the program may make changes. You remove a program under Settings → Apps – not by deleting an icon."
+            "text": {
+              "default": "A program is installed with a setup file, often an .exe file. Windows first asks whether the program may make changes. You remove a program under Settings → Apps – not by deleting an icon.",
+              "short": "Install with the setup file. Uninstall in Settings → Apps.",
+              "child": "Installing means moving a new program into the computer. Windows asks first whether that is OK. If you want to remove the program again, you do it in Settings, not by throwing away the icon."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Install Practice Program from Downloads and then uninstall it in Settings.",
+            "text": {
+              "default": "Double-click PracticeProgram-Setup.exe in Downloads and go through the installation. Then uninstall the program in Settings → Apps.",
+              "guided": "In File Explorer, in Downloads, double-click PracticeProgram-Setup.exe. Windows asks whether the app may make changes – read it and click Yes. Click Next, choose I accept the agreement, click Next twice, then Install and Finish. Then open Settings from Start and click Apps. Click the three dots next to Practice Program, choose Uninstall and confirm.",
+              "independent": "Install Practice Program from Downloads and then uninstall it in Settings.",
+              "child.guided": "Double-click PracticeProgram-Setup.exe and answer Yes. Click through with Next, Install and Finish. Then go to Settings → Apps, click the three dots next to Practice Program and choose Uninstall."
+            },
             "hints": [
               "Double-click PracticeProgram-Setup.exe in Downloads. Answer Yes to Windows' question.",
               "Click Next, choose I accept the agreement, click Next twice, Install and Finish.",
               "Open Settings from Start and choose Apps.",
               "Click the three dots next to Practice Program and choose Uninstall.",
               "Setup.exe → Yes → Next → accept → Next → Next → Install → Finish → Settings → Apps → ⋯ → Uninstall → Uninstall."
-            ]
+            ],
+            "nudge": "The installation starts with a file in the folder where downloads end up."
           },
           {
             "title": "Done",
@@ -2942,18 +3746,28 @@
         "steps": [
           {
             "title": "Print",
-            "text": "In the print box you choose the printer, the number of copies and the pages. The printer Microsoft Print to PDF doesn't print on paper – it creates a PDF file and asks where to save it."
+            "text": {
+              "default": "In the print box you choose the printer, the number of copies and the pages. The printer Microsoft Print to PDF doesn't print on paper – it creates a PDF file and asks where to save it.",
+              "short": "Microsoft Print to PDF creates a PDF file instead of paper.",
+              "child": "When you print, you choose which printer to use. Microsoft Print to PDF is a pretend printer: instead of a sheet of paper, it makes a PDF file that you save on the computer."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Click Print in the PDF reader, choose Microsoft Print to PDF and save the printout.",
+            "text": {
+              "default": "Click Print in the PDF reader, choose Microsoft Print to PDF as the printer and click Print. Then save the file.",
+              "guided": "Click Print at the top right of the PDF reader. The print box opens. At the top left there is the Printer list – click it and choose Microsoft Print to PDF. Then click the blue Print button. The Save Print Output As box opens. Click Save.",
+              "independent": "Print the invoice to a PDF file.",
+              "child.guided": "Click Print. In the Printer list, choose Microsoft Print to PDF. Click Print and then Save."
+            },
             "hints": [
               "Click Print at the top right of the PDF reader.",
               "The print box shows which printer is selected.",
               "Open the Printer list and choose Microsoft Print to PDF.",
               "Click Print. The Save Print Output As box opens.",
               "Print → Printer: Microsoft Print to PDF → Print → Save."
-            ]
+            ],
+            "nudge": "Which printer is selected matters."
           },
           {
             "title": "Done",
@@ -2981,18 +3795,28 @@
         "steps": [
           {
             "title": "The cloud",
-            "text": "Cloud storage such as OneDrive saves files on the internet and syncs them between your devices. A file in the OneDrive folder is still there even if the computer breaks."
+            "text": {
+              "default": "Cloud storage such as OneDrive saves files on the internet and syncs them between your devices. A file in the OneDrive folder is still there even if the computer breaks.",
+              "short": "Files in OneDrive are saved on the internet and survive if the computer breaks.",
+              "child": "The cloud means files are saved on the internet instead of only on your computer. Then they are still there even if the computer breaks, and you can reach them from other devices."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Move report.docx from Documents to OneDrive with Cut and Paste.",
+            "text": {
+              "default": "Select report.docx in Documents, click Cut, open OneDrive in the left-hand pane and click Paste.",
+              "guided": "File Explorer shows Documents. Click report.docx once. Click Cut – the scissors – at the top. Look at the pane on the left and click OneDrive, which has a blue cloud. Then click Paste at the top. The file moves to OneDrive.",
+              "independent": "Move report.docx from Documents to OneDrive.",
+              "child.guided": "Click report.docx and then the scissors. Click OneDrive with the blue cloud on the left, and click Paste. Now the file lives in the cloud!"
+            },
             "hints": [
               "report.docx is in Documents.",
               "Select the file and click Cut.",
               "Click OneDrive in the left-hand pane.",
               "The yellow frame shows OneDrive in the left-hand pane.",
               "report.docx → Cut → OneDrive → Paste."
-            ]
+            ],
+            "nudge": "It is the same way of moving you have used before, just to another place."
           },
           {
             "title": "Done",
@@ -3020,18 +3844,28 @@
         "steps": [
           {
             "title": "Dialog boxes",
-            "text": "A dialog box stops and asks a question. Read the question before you click. Save keeps the changes, Don't save throws them away and Cancel takes you back without anything happening."
+            "text": {
+              "default": "A dialog box stops and asks a question. Read the question before you click. Save keeps the changes, Don't save throws them away and Cancel takes you back without anything happening.",
+              "short": "Read the question in the dialog box before you click.",
+              "child": "Sometimes the computer stops and asks something in a small box. Read the question first! Save means keep it, Don't save means throw it away, and Cancel means you change your mind and go back."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Type something in Notepad, close the window with the cross and choose Don't save.",
+            "text": {
+              "default": "Type a few words in Notepad, close the window with the cross and choose Don't save in the box that appears.",
+              "guided": "Click in the white area in Notepad and type a few words. Then click the cross at the top right of the Notepad window. A box appears asking Do you want to save changes to Untitled?. Read the question. This time, click Don't save. In real life you choose Save if you want to keep the text.",
+              "independent": "Type something in Notepad and close the program without saving.",
+              "child.guided": "Type a few words. Click the cross at the top right. A box asks if you want to save – read it! Click Don't save this time."
+            },
             "hints": [
               "Type a few words in Notepad so the document has unsaved changes.",
               "Click the cross at the top right of Notepad.",
               "Read the question: Do you want to save changes to Untitled?",
               "The yellow frame shows the cross.",
               "Type → the cross → Don't save. In real life, choose Save if you want to keep the text."
-            ]
+            ],
+            "nudge": "The program asks something when you try to close without saving."
           },
           {
             "title": "Done",
@@ -3059,7 +3893,11 @@
         "steps": [
           {
             "title": "Notifications",
-            "text": "Notifications appear at the bottom right and disappear by themselves. Click the clock in the taskbar to see them again. A pop-up inside a web page claiming the computer has a virus is not a Windows notification."
+            "text": {
+              "default": "Notifications appear at the bottom right and disappear by themselves. Click the clock in the taskbar to see them again. A pop-up inside a web page claiming the computer has a virus is not a Windows notification.",
+              "short": "Notifications appear at the bottom right. Click the clock to see them again.",
+              "child": "Notifications are small messages from Windows that pop up at the bottom right and then disappear. If a web page suddenly says the computer has a virus, it is not Windows talking – close the page."
+            }
           },
           {
             "title": "Done",
@@ -3087,7 +3925,11 @@
         "steps": [
           {
             "title": "Recent files",
-            "text": "The Start menu shows files you have used recently under Recommended. Many programs also have a list of recent files. The file is still in its usual folder."
+            "text": {
+              "default": "The Start menu shows files you have used recently under Recommended. Many programs also have a list of recent files. The file is still in its usual folder.",
+              "short": "The Start menu shows recently used files under Recommended.",
+              "child": "The computer remembers which files you have just used. In the Start menu, under Recommended, you can see them. The file is still in its usual folder – the list is just a shortcut."
+            }
           },
           {
             "title": "Done",
@@ -3115,7 +3957,11 @@
         "steps": [
           {
             "title": "Selecting text",
-            "text": "Text has to be selected before it can be copied or changed. Drag the mouse over the text, double-click a word, or hold Shift and use the arrow keys. Ctrl+A selects everything."
+            "text": {
+              "default": "Text has to be selected before it can be copied or changed. Drag the mouse over the text, double-click a word, or hold Shift and use the arrow keys. Ctrl+A selects everything.",
+              "short": "Select text by dragging, double-clicking or using Shift and the arrows.",
+              "child": "Before you can copy or change text, you have to show the computer which text you mean. That is called selecting. You can drag the mouse over the text, double-click a word or press Ctrl+A to take everything."
+            }
           },
           {
             "title": "Done",
@@ -3143,18 +3989,28 @@
         "steps": [
           {
             "title": "Pinning programs",
-            "text": "A pinned program keeps its icon in the taskbar even when it is closed. You pin it by right-clicking the app in Start and choosing Pin to taskbar."
+            "text": {
+              "default": "A pinned program keeps its icon in the taskbar even when it is closed. You pin it by right-clicking the app in Start and choosing Pin to taskbar.",
+              "short": "Right-click the app in Start and choose Pin to taskbar.",
+              "child": "Programs you use often can be fixed to the row at the bottom. Then they are always there waiting, even when they are closed. That is called pinning."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open Start, right-click Google Chrome and choose Pin to taskbar.",
+            "text": {
+              "default": "Open Start, right-click Google Chrome and choose Pin to taskbar.",
+              "guided": "Click the Start button – the four blue squares at the bottom. Under Pinned in the Start menu, find Google Chrome, the colourful round icon. Right-click it. A menu opens. Click Pin to taskbar. Chrome's icon now stays at the bottom even when the program is closed.",
+              "independent": "Pin Google Chrome to the taskbar.",
+              "child.guided": "Open Start. Right-click Google Chrome, the colourful round icon. Choose Pin to taskbar. Now Chrome is stuck at the bottom!"
+            },
             "hints": [
               "Open Start with the Windows symbol in the taskbar.",
               "Find Google Chrome under Pinned.",
               "Right-click Google Chrome.",
               "The yellow frame shows the Start button.",
               "Start → right-click Google Chrome → Pin to taskbar."
-            ]
+            ],
+            "nudge": "The choice is in the app's context menu."
           },
           {
             "title": "Done",
@@ -3188,18 +4044,28 @@
         "steps": [
           {
             "title": "Snapping windows",
-            "text": "If you drag a window all the way to the left or right edge of the screen, it fills half the screen. Then you can have two programs side by side."
+            "text": {
+              "default": "If you drag a window all the way to the left or right edge of the screen, it fills half the screen. Then you can have two programs side by side.",
+              "short": "Drag a window to the edge of the screen and it fills half the screen.",
+              "child": "If you want to see two programs at once, you can split the screen in the middle. Drag one window all the way to the left edge and another to the right edge, and they get half each."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Drag Chrome to the left edge of the screen and Notepad to the right edge.",
+            "text": {
+              "default": "Drag Chrome by the empty area at the top to the left edge of the screen. Then drag Notepad by its title bar to the right edge.",
+              "guided": "In Chrome, take hold of the empty area next to the tabs at the top. Keep the left mouse button down and drag all the way to the left edge of the screen. When the pointer reaches the edge, an outline appears – then let go. Then take hold of the title bar at the top of Notepad and drag all the way to the right edge. Let go. Now you have two windows side by side.",
+              "independent": "Put Chrome and Notepad side by side, with Chrome on the left.",
+              "child.guided": "Grab Chrome at the top, drag all the way to the left edge and let go. Grab Notepad, drag all the way to the right edge and let go. Now they share the screen!"
+            },
             "hints": [
               "In Chrome, take hold of the empty area next to the tabs at the top.",
               "Hold the mouse button down and drag all the way to the left edge. Let go when the pointer reaches the edge.",
               "Take hold of the title bar at the top of Notepad.",
               "Drag Notepad all the way to the right edge and let go.",
               "Chrome → left edge. Notepad → right edge."
-            ]
+            ],
+            "nudge": "Windows can fill half the screen if you drag them far enough."
           },
           {
             "title": "Done",
@@ -3231,18 +4097,28 @@
         "steps": [
           {
             "title": "The link menu",
-            "text": "If you right-click a link in Chrome, you can copy the address itself or open the link in a new tab – without leaving the page you are on."
+            "text": {
+              "default": "If you right-click a link in Chrome, you can copy the address itself or open the link in a new tab – without leaving the page you are on.",
+              "short": "Right-click a link to copy it or open it in a new tab.",
+              "child": "Links have their own context menu. If you right-click a link you can copy the address, for example to send it to someone, or open the link in a new tab without leaving the page you are on."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Open Search results. Right-click a link and choose Copy link address. Then right-click again and choose Open link in new tab.",
+            "text": {
+              "default": "Open Search results. Right-click a blue link and choose Copy link address. Then right-click again and choose Open link in new tab.",
+              "guided": "Click the shortcut Search results on Chrome's start page. Put the pointer right on some blue link text – the pointer becomes a hand. Press the right mouse button. Choose Copy link address in the menu. Then right-click a link again and choose Open link in new tab. A new tab opens at the top.",
+              "independent": "Copy the address of a link in Search results and open a link in a new tab.",
+              "child.guided": "Open Search results. Right-click a blue link and choose Copy link address. Right-click again and choose Open link in new tab."
+            },
             "hints": [
               "Click the shortcut Search results on Chrome's start page.",
               "Right-click directly on the blue link text – not beside it.",
               "Choose Copy link address.",
               "Right-click a link again and choose Open link in new tab.",
               "Search results → right-click a blue link → Copy link address → right-click again → Open link in new tab."
-            ]
+            ],
+            "nudge": "Links have more choices than just clicking them."
           },
           {
             "title": "Done",
@@ -3277,18 +4153,28 @@
         "steps": [
           {
             "title": "USB stick",
-            "text": "A USB stick appears as its own drive in File Explorer. Always eject it before you pull it out, so that nothing being saved is lost."
+            "text": {
+              "default": "A USB stick appears as its own drive in File Explorer. Always eject it before you pull it out, so that nothing being saved is lost.",
+              "short": "The USB stick shows in File Explorer. Eject it before pulling it out.",
+              "child": "A USB stick is a small stick that can carry files between computers, like a backpack for files. When it is plugged in, it shows in File Explorer. Before you pull it out, you tell the computer – that is called ejecting – so nothing gets damaged."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Copy report.pdf from USB Drive (E:) to Documents and then eject the USB stick.",
+            "text": {
+              "default": "Open USB Drive (E:), copy report.pdf and paste it into Documents. Then right-click USB Drive (E:) and choose Eject.",
+              "guided": "Look at the pane on the left of File Explorer and click USB Drive (E:). Click report.pdf once and then Copy at the top. Click Documents in the left-hand pane and then Paste. Now right-click USB Drive (E:) in the left-hand pane and choose Eject. Windows tells you when it is safe to take the stick out.",
+              "independent": "Copy report.pdf from the USB stick to Documents, then remove the USB stick safely.",
+              "child.guided": "Click USB Drive (E:) on the left. Copy report.pdf, go to Documents and paste. Then right-click USB Drive (E:) and choose Eject."
+            },
             "hints": [
               "Click USB Drive (E:) in File Explorer's left-hand pane.",
               "Select report.pdf and click Copy.",
               "Click Documents and then Paste.",
               "Right-click USB Drive (E:) in the left-hand pane.",
               "Choose Eject. Windows tells you when it is safe to remove the drive."
-            ]
+            ],
+            "nudge": "You find what is on the USB stick in the same place as other folders."
           },
           {
             "title": "Done",
@@ -3316,7 +4202,11 @@
         "steps": [
           {
             "title": "Ports",
-            "text": "USB-A is rectangular and USB-C is small and oblong with rounded ends. HDMI is used for screens. A plug should go in easily – never force it."
+            "text": {
+              "default": "USB-A is rectangular and USB-C is small and oblong with rounded ends. HDMI is used for screens. A plug should go in easily – never force it.",
+              "short": "USB-A is rectangular, USB-C small and rounded, HDMI is for screens.",
+              "child": "The computer's ports have different shapes, a bit like puzzle pieces. USB-A is rectangular, USB-C is small with rounded ends and HDMI is used to plug in a screen. The plug should slide in easily – never push hard."
+            }
           },
           {
             "title": "Done",
@@ -3344,18 +4234,28 @@
         "steps": [
           {
             "title": "Wi‑Fi",
-            "text": "Under Settings → Network & internet you see the networks nearby. Choose your network, click Connect and type the network's password – called the network security key in Windows."
+            "text": {
+              "default": "Under Settings → Network & internet you see the networks nearby. Choose your network, click Connect and type the network's password – called the network security key in Windows.",
+              "short": "Choose the network, click Connect and type the network security key.",
+              "child": "Wi‑Fi is internet without a cable. The computer can see several networks around it. You choose the right network and type its password, which Windows calls the network security key."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Connect to HomeNet. The network security key is datorskolan.",
+            "text": {
+              "default": "Click HomeNet in the Available networks list, click Connect, type datorskolan and click Next.",
+              "guided": "Settings shows Network & internet. Under Wi‑Fi there is the Available networks list. Click HomeNet. The row gets bigger and a button called Connect appears – click it. A box for the network security key pops up. Click in it, type datorskolan and click Next.",
+              "independent": "Connect to HomeNet. The network security key is datorskolan.",
+              "child.guided": "Click HomeNet in the list. Click Connect. Type the password datorskolan in the box and click Next."
+            },
             "hints": [
               "You are already on Network & internet. The Available networks list is under Wi‑Fi.",
               "Click HomeNet in the list.",
               "Click Connect. A box for the network security key appears.",
               "The yellow frame shows HomeNet.",
               "HomeNet → Connect → type datorskolan → Next. You can also do it through the Wi‑Fi arrow in Quick settings."
-            ]
+            ],
+            "nudge": "Look for a list of networks that are nearby."
           },
           {
             "title": "Done",
@@ -3383,18 +4283,28 @@
         "steps": [
           {
             "title": "Bluetooth",
-            "text": "Bluetooth connects accessories such as headphones and mice without a cable. You add a new device once – after that it connects by itself."
+            "text": {
+              "default": "Bluetooth connects accessories such as headphones and mice without a cable. You add a new device once – after that it connects by itself.",
+              "short": "Add a Bluetooth device once, then it connects by itself.",
+              "child": "Bluetooth connects things without a cable, for example headphones. The first time you introduce them to each other with Add device. After that they recognise each other and connect on their own."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Add the headset with Add device.",
+            "text": {
+              "default": "Check that Bluetooth is On, click Add device, choose Bluetooth and then Headset.",
+              "guided": "Settings shows Bluetooth & devices. First check that the Bluetooth switch is On. Under Devices there is the Add device button – click it. In the box that opens, click Bluetooth. The computer looks for devices. Click Headset when it appears, and then Done.",
+              "independent": "Connect the headset with Bluetooth.",
+              "child.guided": "Make sure Bluetooth is On. Click Add device and then Bluetooth. When Headset appears, click it, and then Done."
+            },
             "hints": [
               "You are already on Bluetooth & devices. Check that Bluetooth is On.",
               "Click Add device under Devices.",
               "Choose Bluetooth in the box that appears.",
               "The yellow frame shows the Add device button.",
               "Add device → Bluetooth → Headset → Done."
-            ]
+            ],
+            "nudge": "A new device is added with a button under Devices."
           },
           {
             "title": "Done",
@@ -3422,18 +4332,28 @@
         "steps": [
           {
             "title": "Before a call",
-            "text": "You set the volume under System → Sound or in Quick settings. Whether apps may use the camera and microphone is decided under Privacy & security."
+            "text": {
+              "default": "You set the volume under System → Sound or in Quick settings. Whether apps may use the camera and microphone is decided under Privacy & security.",
+              "short": "Volume under System → Sound. Camera and microphone under Privacy & security.",
+              "child": "You set how loud things are with a slider. Whether programs may use the camera and microphone is up to you – they are your eyes and ears online, so they have their own switches."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Raise the volume to at least 40 and turn on the camera and microphone for apps.",
+            "text": {
+              "default": "Drag the volume slider under Sound to at least 40. Then open Privacy & security and turn on Camera and Microphone.",
+              "guided": "Settings shows System. Under Sound there is a volume slider – drag the round knob to the right until the number is at least 40. Then click Privacy & security in the pane on the left. There are switches for Camera and Microphone. Click them so both are On.",
+              "independent": "Raise the volume to at least 40 and turn on the camera and microphone for apps.",
+              "child.guided": "Drag the volume slider to the right until it says at least 40. Click Privacy & security on the left and turn on Camera and Microphone."
+            },
             "hints": [
               "You are on System. Drag the volume slider under Sound to at least 40.",
               "Click Privacy & security in the left-hand pane.",
               "Turn Camera on with its switch.",
               "Turn Microphone on with its switch.",
               "System → Sound: volume ≥ 40 → Privacy & security → Camera On → Microphone On."
-            ]
+            ],
+            "nudge": "Sound and privacy are on two different pages in Settings."
           },
           {
             "title": "Done",
@@ -3461,7 +4381,11 @@
         "steps": [
           {
             "title": "Printers",
-            "text": "When you print, a print job joins a queue. If nothing comes out: check which printer is selected, the paper, the cable or the Wi‑Fi – before you click Print again."
+            "text": {
+              "default": "When you print, a print job joins a queue. If nothing comes out: check which printer is selected, the paper, the cable or the Wi‑Fi – before you click Print again.",
+              "short": "If nothing comes out, check the printer, paper and connection before printing again.",
+              "child": "When you print, the printout joins a queue and waits its turn. If no paper comes out: check the right printer is chosen, that there is paper and that the printer is connected. Don't press Print lots of times."
+            }
           },
           {
             "title": "Done",
@@ -3489,7 +4413,11 @@
         "steps": [
           {
             "title": "The battery",
-            "text": "The battery level is shown at the bottom right. When it is low, plug in the charger. Energy saver in Quick settings makes the battery last longer."
+            "text": {
+              "default": "The battery level is shown at the bottom right. When it is low, plug in the charger. Energy saver in Quick settings makes the battery last longer.",
+              "short": "The battery level shows at the bottom right. Energy saver makes it last longer.",
+              "child": "At the bottom right, a little battery picture shows how much power is left. When it starts running out, plug in the charger. Energy saver makes the battery last longer."
+            }
           },
           {
             "title": "Done",
@@ -3517,7 +4445,11 @@
         "steps": [
           {
             "title": "Two screens",
-            "text": "An external screen or projector can show the same picture as the computer (Duplicate) or give you extra space (Extend). Windows key + P switches between the modes."
+            "text": {
+              "default": "An external screen or projector can show the same picture as the computer (Duplicate) or give you extra space (Extend). Windows key + P switches between the modes.",
+              "short": "Duplicate shows the same picture, Extend gives extra space.",
+              "child": "You can plug in an extra screen or a projector. Either it shows the same picture as the computer (Duplicate), or the screen gets bigger so you have more room (Extend)."
+            }
           },
           {
             "title": "Done",
@@ -3545,7 +4477,11 @@
         "steps": [
           {
             "title": "Hotspot",
-            "text": "A mobile hotspot turns the phone into a temporary Wi‑Fi network. The computer connects to it like any other Wi‑Fi. Remember that it uses the phone's mobile data."
+            "text": {
+              "default": "A mobile hotspot turns the phone into a temporary Wi‑Fi network. The computer connects to it like any other Wi‑Fi. Remember that it uses the phone's mobile data.",
+              "short": "A mobile hotspot turns the phone into a Wi‑Fi network.",
+              "child": "A phone can share its internet with the computer. The phone becomes a small Wi‑Fi network the computer can connect to. It uses the phone's data, so ask first whether that is OK."
+            }
           },
           {
             "title": "Done",
@@ -3573,18 +4509,28 @@
         "steps": [
           {
             "title": "Error messages",
-            "text": "An error message often tells you both what went wrong and what you can do. Read the whole text before you choose a button."
+            "text": {
+              "default": "An error message often tells you both what went wrong and what you can do. Read the whole text before you choose a button.",
+              "short": "Read the whole error message before you choose a button.",
+              "child": "An error message is the computer trying to explain what went wrong. Read the whole text, even if it feels complicated. It often says both what the problem is and what you can do."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Click report.pdf in Report Viewer, read the error message and choose Close.",
+            "text": {
+              "default": "Click report.pdf in Report Viewer. Read the whole error message and then click Close.",
+              "guided": "Report Viewer is open. Under Recent files there is report.pdf – click it once. A box with an error message appears. Read the heading first and then the whole text. It explains that the file is being used by another program. Then click the Close button.",
+              "independent": "Find out why report.pdf won't open in Report Viewer, then close the error message.",
+              "child.guided": "Click report.pdf. A box with an error appears. Read everything in the box – it says what happened. Then click Close."
+            },
             "hints": [
               "Click report.pdf under Recent files in Report Viewer.",
               "Read the heading and the whole explanation in the box that appears.",
               "The message says the file is being used by another program – that is the cause.",
               "The yellow frame shows the file.",
               "report.pdf → read → Close. Try again won't help until the other program is closed."
-            ]
+            ],
+            "nudge": "The error appears when you try to open one of the files."
           },
           {
             "title": "Done",
@@ -3612,18 +4558,28 @@
         "steps": [
           {
             "title": "Restart",
-            "text": "Restart closes Windows and starts it again – it fixes many temporary problems and is needed after updates. Shut down leaves the computer off. Always save your work first."
+            "text": {
+              "default": "Restart closes Windows and starts it again – it fixes many temporary problems and is needed after updates. Shut down leaves the computer off. Always save your work first.",
+              "short": "Save first. Restart fixes many problems and is needed after updates.",
+              "child": "Restarting is like the computer taking a quick nap and waking up fresh. It fixes many small problems and is needed after updates. Always save what you are working on first."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Read the information in Windows Update and click Restart now.",
+            "text": {
+              "default": "Read the information in Windows Update and click Restart now.",
+              "guided": "Settings shows Windows Update. Read the box at the top: it says the computer needs to restart for the updates to install. Also read the reminder to save your work first. Then click the blue Restart now button.",
+              "independent": "Restart the computer so the updates install.",
+              "child.guided": "Read what it says at the top of Windows Update. Remember to save first! Then click Restart now."
+            },
             "hints": [
               "You are already on Windows Update.",
               "Read that a restart is required to install the updates.",
               "Read the reminder to save your work first.",
               "The yellow frame shows the Restart now button.",
               "Windows Update → Restart now."
-            ]
+            ],
+            "nudge": "Read what Windows Update wants you to do."
           },
           {
             "title": "Done",
@@ -3651,18 +4607,28 @@
         "steps": [
           {
             "title": "The program isn't responding",
-            "text": "Sometimes a program stops responding. Start with the least drastic step: wait. If that doesn't help, close the program and start it again."
+            "text": {
+              "default": "Sometimes a program stops responding. Start with the least drastic step: wait. If that doesn't help, close the program and start it again.",
+              "short": "Wait first. If that doesn't help, close the program and start it again.",
+              "child": "Sometimes a program gets stuck and doesn't respond. First wait a little – it might just be thinking. If it still doesn't respond, close it and start it again."
+            }
           },
           {
             "title": "Your turn",
-            "text": "Click the cross in Report Viewer and choose Wait for the program to respond. Then click the cross again and choose Close the program. Then start Report Viewer again from Start.",
+            "text": {
+              "default": "Click the cross in Report Viewer and choose Wait for the program to respond. Click the cross again and choose Close the program. Then start Report Viewer from Start.",
+              "guided": "Click the cross at the top right of Report Viewer. A box says the program isn't responding. Start by clicking Wait for the program to respond. The program still doesn't respond, so click the cross once more and choose Close the program. Then open Start, type Report Viewer and press Enter.",
+              "independent": "Report Viewer isn't responding. Give it a chance, then close it and start it again.",
+              "child.guided": "Click the cross. First choose Wait for the program to respond. Didn't help? Click the cross again and choose Close the program. Then open Report Viewer again from Start."
+            },
             "hints": [
               "Click the cross at the top right of Report Viewer.",
               "In the box that appears, first choose Wait for the program to respond.",
               "The program still isn't responding. Click the cross again.",
               "Choose Close the program.",
               "Open Start, type Report Viewer and press Enter."
-            ]
+            ],
+            "nudge": "Start with the least drastic thing you can do."
           },
           {
             "title": "Done",
@@ -3690,7 +4656,11 @@
         "steps": [
           {
             "title": "Task Manager",
-            "text": "Task Manager shows every program that is running. There you can end a program that has frozen and won't close the normal way. You open it with Ctrl+Shift+Esc."
+            "text": {
+              "default": "Task Manager shows every program that is running. There you can end a program that has frozen and won't close the normal way. You open it with Ctrl+Shift+Esc.",
+              "short": "Task Manager (Ctrl+Shift+Esc) can end a program that has frozen.",
+              "child": "Task Manager is like a list of everything the computer is doing right now. If a program has got completely stuck, you can end it from there. You open it with three keys: Ctrl, Shift and Esc."
+            }
           },
           {
             "title": "Done",
@@ -3718,7 +4688,11 @@
         "steps": [
           {
             "title": "Check in order",
-            "text": "1. Is Wi‑Fi on and connected? Look at the bottom right. 2. Does another website work? 3. Does the internet work on other devices? 4. Only then: restart the router."
+            "text": {
+              "default": "1. Is Wi‑Fi on and connected? Look at the bottom right. 2. Does another website work? 3. Does the internet work on other devices? 4. Only then: restart the router.",
+              "short": "Check Wi‑Fi, another site and other devices before restarting the router.",
+              "child": "Internet not working? Be a detective and check one thing at a time: Is Wi‑Fi on? Does another site work? Do others in the house have internet? Only last of all do you restart the router, the little box that gives you internet."
+            }
           },
           {
             "title": "Done",
@@ -3746,7 +4720,11 @@
         "steps": [
           {
             "title": "No sound?",
-            "text": "Check in order: is the sound muted? Is the volume up? Are the right speakers or headphones selected? Is the sound on in the program itself?"
+            "text": {
+              "default": "Check in order: is the sound muted? Is the volume up? Are the right speakers or headphones selected? Is the sound on in the program itself?",
+              "short": "Check mute, volume, the selected speakers and the program's own sound.",
+              "child": "Can't hear anything? Check one thing at a time: Is the sound muted? Is the volume turned up? Are the right speakers or headphones chosen? And is the sound on in the program you are using?"
+            }
           },
           {
             "title": "Done",
@@ -3774,7 +4752,11 @@
         "steps": [
           {
             "title": "Full storage",
-            "text": "When storage starts getting full, Windows warns you. Under Settings → System → Storage you can see what takes up space. Start with Downloads and the Recycle Bin – not unknown system folders."
+            "text": {
+              "default": "When storage starts getting full, Windows warns you. Under Settings → System → Storage you can see what takes up space. Start with Downloads and the Recycle Bin – not unknown system folders.",
+              "short": "See what takes up space under System → Storage. Start with Downloads and the Recycle Bin.",
+              "child": "The computer's storage can get full, like a wardrobe. Then Windows warns you. Clear out things you know first, like Downloads and the Recycle Bin. Don't touch folders you don't recognise."
+            }
           },
           {
             "title": "Done",
@@ -3802,7 +4784,11 @@
         "steps": [
           {
             "title": "Back-ups",
-            "text": "A back-up is an extra copy somewhere else, for example in OneDrive or on an external hard drive. Important files should be in at least two places."
+            "text": {
+              "default": "A back-up is an extra copy somewhere else, for example in OneDrive or on an external hard drive. Important files should be in at least two places.",
+              "short": "Keep important files in at least two places.",
+              "child": "A back-up is an extra copy you keep somewhere else, for example in OneDrive. If something happens to the computer, your important files are still safe."
+            }
           },
           {
             "title": "Done",
@@ -3830,7 +4816,11 @@
         "steps": [
           {
             "title": "Describe the problem",
-            "text": "Write down what you did, what you expected and what happened – and exactly what the error message says. A screenshot helps a lot. Never give out your password."
+            "text": {
+              "default": "Write down what you did, what you expected and what happened – and exactly what the error message says. A screenshot helps a lot. Never give out your password.",
+              "short": "Write down what happened and the error message. Never give out your password.",
+              "child": "Before you ask someone for help: write down what you did and what happened, and take a screenshot of the error message if you can. That makes it easier to help you. Nobody needs to know your password."
+            }
           },
           {
             "title": "Done",

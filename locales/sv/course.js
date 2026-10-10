@@ -155,7 +155,11 @@
         "steps": [
           {
             "title": "Vad är en mapp?",
-            "text": "En mapp samlar filer på ett ställe. Nu ska du skapa en egen mapp i Dokument."
+            "text": {
+              "default": "En mapp samlar filer på ett ställe. Nu ska du skapa en egen mapp i Dokument.",
+              "short": "En mapp samlar filer. Skapa en med Nytt → Mapp.",
+              "child": "En mapp är som en låda där du kan lägga saker du vill spara. Med egna mappar blir det lätt att hålla ordning, till exempel en låda för skolarbeten och en för bilder. Nu ska du göra en egen mapp i Dokument."
+            }
           },
           {
             "title": "Så går det till",
@@ -163,14 +167,20 @@
           },
           {
             "title": "Din tur",
-            "text": "Skapa en mapp som heter Semester.",
+            "text": {
+              "default": "Klicka på Nytt i Utforskaren, välj Mapp och skriv namnet Semester.",
+              "guided": "Utforskaren är öppen och visar mappen Dokument. Titta på raden med knappar högst upp i fönstret. Längst till vänster sitter knappen Nytt med ett plustecken. Klicka på den. En liten meny öppnas – klicka på Mapp. En ny mapp dyker upp med namnet Ny mapp, och namnet är markerat i blått. Skriv Semester direkt och tryck Retur.",
+              "independent": "Skapa en mapp som heter Semester.",
+              "child.guided": "Hitta knappen Nytt med ett plustecken högst upp till vänster i fönstret och klicka på den. Välj Mapp. Nu kommer en ny mapp fram! Skriv Semester medan namnet är blått, och tryck Retur."
+            },
             "hints": [
               "Utforskaren är öppen i mappen Dokument.",
               "Knappen Nytt sitter längst till vänster i raden med knappar.",
               "Klicka på Nytt och välj Mapp. Skriv Semester medan namnet är markerat.",
               "Den gula ramen visar knappen Nytt.",
               "Nytt → Mapp → skriv Semester → tryck Retur."
-            ]
+            ],
+            "nudge": "Tänk på var i Utforskaren man skapar något nytt."
           },
           {
             "title": "Kontroll",
@@ -194,7 +204,11 @@
         "steps": [
           {
             "title": "Spara ditt arbete",
-            "text": "Det du skriver i Anteckningar finns först bara i programmet. När du sparar blir texten en fil som finns kvar efter att programmet har stängts."
+            "text": {
+              "default": "Det du skriver i Anteckningar finns först bara i programmet. När du sparar blir texten en fil som finns kvar efter att programmet har stängts.",
+              "short": "Spara texten så blir den en fil som finns kvar.",
+              "child": "Det du skriver i Anteckningar är som ord på en skrivtavla – de försvinner när du stänger programmet, om du inte sparar. När du sparar blir texten en fil som finns kvar i datorn."
+            }
           },
           {
             "title": "Anteckningar",
@@ -202,14 +216,20 @@
           },
           {
             "title": "Din tur",
-            "text": "Skriv valfri text och spara filen som plan.txt i Dokument.",
+            "text": {
+              "default": "Öppna Anteckningar från Start, skriv några ord och spara som plan.txt i Dokument med Arkiv → Spara som.",
+              "guided": "Klicka på Start-knappen och sedan på Anteckningar, ikonen med ett blått anteckningsblock. Klicka i den vita ytan och skriv några ord. Klicka sedan på Arkiv högst upp i fönstret och välj Spara som. Kontrollera att Dokument är vald till vänster. Skriv plan.txt i fältet Filnamn längst ned och klicka på Spara.",
+              "independent": "Skriv valfri text och spara filen som plan.txt i Dokument.",
+              "child.guided": "Öppna Anteckningar från Start-knappen. Skriv några ord. Klicka på Arkiv → Spara som. Välj Dokument, skriv plan.txt som namn och klicka på Spara."
+            },
             "hints": [
               "Du behöver programmet Anteckningar. Det finns i Start-menyn.",
               "Klicka i den vita ytan och skriv några ord.",
               "Klicka på Arkiv högst upp och välj Spara som.",
               "Den gula ramen visar menyraden där Arkiv finns.",
               "Start → Anteckningar → skriv → Arkiv → Spara som → kontrollera att Dokument är vald → skriv plan.txt → Spara."
-            ]
+            ],
+            "nudge": "Först behöver du ett program där man kan skriva text."
           },
           {
             "title": "Klart",
@@ -229,18 +249,28 @@
         "steps": [
           {
             "title": "Papperskorgen",
-            "text": "När du tar bort en fil hamnar den först i Papperskorgen. Därifrån kan du återställa den till sin gamla plats."
+            "text": {
+              "default": "När du tar bort en fil hamnar den först i Papperskorgen. Därifrån kan du återställa den till sin gamla plats.",
+              "short": "Borttagna filer hamnar i Papperskorgen och kan återställas.",
+              "child": "När du tar bort en fil försvinner den inte direkt. Den hamnar i Papperskorgen, som en riktig papperskorg du kan plocka upp saker ur igen. Därifrån kan du ställa tillbaka filen där den låg."
+            }
           },
           {
             "title": "Ta bort och återställ",
-            "text": "Ta bort Övningsfil.txt och återställ den sedan från Papperskorgen.",
+            "text": {
+              "default": "Markera Övningsfil.txt och ta bort den. Öppna sedan Papperskorgen i vänsterspalten, markera filen och välj Återställ markerade objekt.",
+              "guided": "Utforskaren visar Dokument. Klicka en gång på Övningsfil.txt så att den blir blåmarkerad. Klicka på Ta bort – knappen med en papperskorg i raden högst upp – eller tryck Delete. Filen försvinner. Titta nu i spalten till vänster och klicka på Papperskorgen längst ned. Där ligger filen. Klicka på den och sedan på Återställ markerade objekt högst upp.",
+              "independent": "Ta bort Övningsfil.txt och återställ den sedan från Papperskorgen.",
+              "child.guided": "Klicka på Övningsfil.txt så att den blir blå. Klicka på knappen med papperskorgen. Filen åker till Papperskorgen! Klicka på Papperskorgen till vänster, klicka på filen och välj Återställ markerade objekt. Nu är den tillbaka."
+            },
             "hints": [
               "Övningsfil.txt ligger i Dokument.",
               "Klicka en gång på filen och klicka sedan på Ta bort (papperskorgen) – eller tryck Delete.",
               "Klicka på Papperskorgen i vänsterspalten.",
               "Den gula ramen visar knapparna i Utforskaren.",
               "Markera Övningsfil.txt → Ta bort → Papperskorgen → markera filen → Återställ markerade objekt."
-            ]
+            ],
+            "nudge": "Det du tar bort finns kvar på ett ställe en tid."
           },
           {
             "title": "Klart",
@@ -260,7 +290,11 @@
         "steps": [
           {
             "title": "Muspekaren följer din hand",
-            "text": "När du flyttar musen på bordet flyttar sig den lilla pilen – muspekaren – på skärmen. Lyft inte musen, låt den glida."
+            "text": {
+              "default": "När du flyttar musen på bordet flyttar sig den lilla pilen – muspekaren – på skärmen. Lyft inte musen, låt den glida.",
+              "short": "Musen styr muspekaren på skärmen.",
+              "child": "När du flyttar musen på bordet flyttar sig en liten pil på skärmen. Pilen heter muspekaren. Den följer med musen, ungefär som en skugga. Låt musen glida på bordet – du behöver inte lyfta den."
+            }
           },
           {
             "title": "Prova en liten rörelse",
@@ -268,14 +302,20 @@
           },
           {
             "title": "Flytta pekaren",
-            "text": "Flytta muspekaren runt i den blå ytan tills mätaren är full.",
+            "text": {
+              "default": "Rör musen lugnt så att muspekaren rör sig runt inne i den blå ytan. Fortsätt tills mätaren är full.",
+              "guided": "Lägg handen ovanpå musen. Titta på skärmen och hitta den lilla vita pilen – det är muspekaren. Skjut nu musen lugnt fram och tillbaka på bordet så att pilen rör sig inne i den blå ytan i övningsfönstret. Mätaren fylls när du rör musen. Fortsätt tills den är full.",
+              "independent": "Flytta muspekaren runt i den blå ytan tills mätaren är full.",
+              "child.guided": "Lägg handen på musen. Ser du den lilla pilen på skärmen? Den heter muspekaren. Skjut musen fram och tillbaka på bordet så att pilen dansar runt i den blå rutan. Fortsätt tills mätaren är full!"
+            },
             "hints": [
               "Lägg handen på musen och rör den lugnt åt något håll.",
               "Pekaren behöver vara inne i den blå ytan för att rörelsen ska räknas.",
               "Flytta musen fram och tillbaka några gånger.",
               "Den gula ramen visar ytan där rörelsen mäts.",
               "För musen långsamt åt höger och vänster inne i ytan tills mätaren visar 100 %."
-            ]
+            ],
+            "nudge": "Det är musen på bordet som styr pilen på skärmen."
           },
           {
             "title": "Klart",
@@ -295,18 +335,28 @@
         "steps": [
           {
             "title": "Styr pekaren",
-            "text": "Nu tränar du precision: att föra pekaren exakt dit du vill. Du behöver inte klicka."
+            "text": {
+              "default": "Nu tränar du precision: att föra pekaren exakt dit du vill. Du behöver inte klicka.",
+              "short": "Öva på att föra pekaren exakt dit du vill.",
+              "child": "Nu ska du träna på att sikta, som när du siktar med en boll. Du ska föra pilen exakt till rätt ställe. Du behöver inte klicka."
+            }
           },
           {
             "title": "Träffa tre mål",
-            "text": "För pekaren till cirkel 1, sedan till 2 och sist till 3.",
+            "text": {
+              "default": "För pekaren till målen i nummerordning: först 1, sedan 2 och sist 3. Du behöver inte klicka.",
+              "guided": "I övningsfönstret finns tre runda mål med siffrorna 1, 2 och 3. Flytta musen lugnt tills pekaren ligger över cirkeln med siffran 1. Då blir nästa mål blått. För pekaren vidare till 2 och sist till 3. Du behöver inte klicka – det räcker att pekaren hamnar över cirkeln.",
+              "independent": "För pekaren till cirkel 1, sedan till 2 och sist till 3.",
+              "child.guided": "Hitta cirkeln med siffran 1. Flytta pilen dit så att den ligger över cirkeln. Sedan siktar du på 2 och sist på 3. Du behöver inte klicka, bara sikta!"
+            },
             "hints": [
               "Börja med cirkeln som har siffran 1.",
               "Det räcker att pekaren hamnar över cirkeln – du ska inte klicka.",
               "Ta ett mål i taget i nummerordning. Nästa mål blir blått när det är dags.",
               "Den gula ramen visar ytan med målen.",
               "För pekaren över 1, sedan 2 och sist 3."
-            ]
+            ],
+            "nudge": "Siffrorna visar i vilken ordning du ska ta målen."
           },
           {
             "title": "Klart",
@@ -326,18 +376,28 @@
         "steps": [
           {
             "title": "Ett klick",
-            "text": "Ett vanligt klick görs med den vänstra musknappen: tryck ned och släpp direkt, en gång."
+            "text": {
+              "default": "Ett vanligt klick görs med den vänstra musknappen: tryck ned och släpp direkt, en gång.",
+              "short": "Ett klick är ett kort tryck på vänster musknapp.",
+              "child": "Musen har två knappar på ovansidan. Den vänstra använder du nästan hela tiden. Ett klick är ett snabbt tryck – tryck ned och släpp direkt, som när du trycker på en ringklocka."
+            }
           },
           {
             "title": "Klicka en gång",
-            "text": "Klicka exakt en gång på den blå knappen.",
+            "text": {
+              "default": "Peka på den blå knappen och tryck en gång på vänster musknapp.",
+              "guided": "Musen har två knappar på ovansidan. Du ska använda den vänstra, som ligger under ditt pekfinger. Flytta först pekaren så att den ligger på den blå knappen i övningsfönstret. Tryck sedan ned vänster musknapp och släpp direkt – en gång.",
+              "independent": "Klicka exakt en gång på den blå knappen.",
+              "child.guided": "Flytta pilen till den blå knappen. Tryck sedan en gång på musens vänstra knapp, den under pekfingret. Tryck och släpp direkt – klick!"
+            },
             "hints": [
               "Använd knappen på musens vänstra sida.",
               "För pekaren till den blå knappen först.",
               "Tryck ned vänster musknapp och släpp direkt – bara en gång.",
               "Den gula ramen visar knappen du ska klicka på.",
               "Pekaren på knappen → tryck vänster musknapp en gång → släpp."
-            ]
+            ],
+            "nudge": "Det finns två knappar på musen. Den ena används nästan hela tiden."
           },
           {
             "title": "Klart",
@@ -357,18 +417,28 @@
         "steps": [
           {
             "title": "Två snabba klick",
-            "text": "Ett dubbelklick är två vänsterklick tätt efter varandra, utan att flytta musen emellan. Det används för att öppna filer, mappar och ikoner på skrivbordet."
+            "text": {
+              "default": "Ett dubbelklick är två vänsterklick tätt efter varandra, utan att flytta musen emellan. Det används för att öppna filer, mappar och ikoner på skrivbordet.",
+              "short": "Två snabba klick öppnar filer, mappar och ikoner.",
+              "child": "Ett dubbelklick är två klick direkt efter varandra: klick-klick. Det är så du öppnar saker på skrivbordet, till exempel en mapp. Håll musen stilla medan du klickar."
+            }
           },
           {
             "title": "Dubbelklicka",
-            "text": "Dubbelklicka på den blå knappen.",
+            "text": {
+              "default": "Peka på den blå knappen och klicka snabbt två gånger med vänster musknapp utan att flytta musen.",
+              "guided": "Flytta pekaren till den blå knappen i övningsfönstret. Håll musen helt stilla. Tryck nu snabbt två gånger på vänster musknapp, klick-klick, med så kort paus som möjligt. Om det blir för långsamt räknas det som två vanliga klick – prova då igen lite snabbare.",
+              "independent": "Dubbelklicka på den blå knappen.",
+              "child.guided": "Flytta pilen till den blå knappen och håll musen stilla. Klicka två gånger snabbt med vänster knapp: klick-klick! Blev det för långsamt? Prova igen lite snabbare."
+            },
             "hints": [
               "Det behövs två klick.",
               "Båda klicken ska vara på samma knapp – håll musen stilla.",
               "Klicka två gånger snabbt med vänster musknapp: klick-klick.",
               "Den gula ramen visar knappen du ska dubbelklicka på.",
               "Håll pekaren stilla över knappen och klicka snabbt två gånger med vänster musknapp."
-            ]
+            ],
+            "nudge": "Att öppna något kräver mer än ett klick."
           },
           {
             "title": "Klart",
@@ -388,18 +458,28 @@
         "steps": [
           {
             "title": "Den andra musknappen",
-            "text": "Den högra musknappen öppnar oftast en meny med fler val för det du pekar på. Den kallas snabbmeny."
+            "text": {
+              "default": "Den högra musknappen öppnar oftast en meny med fler val för det du pekar på. Den kallas snabbmeny.",
+              "short": "Höger musknapp öppnar en snabbmeny med fler val.",
+              "child": "Den högra musknappen är som en fråga: \"Vad kan jag göra med det här?\" När du trycker på den kommer en meny fram med olika val. Menyn kallas snabbmeny."
+            }
           },
           {
             "title": "Högerklicka",
-            "text": "Högerklicka på den blå knappen.",
+            "text": {
+              "default": "Peka på den blå knappen och tryck en gång på höger musknapp.",
+              "guided": "Den här gången ska du använda den högra knappen på musen – den under långfingret. Flytta pekaren till den blå knappen i övningsfönstret. Tryck sedan en gång på höger musknapp och släpp.",
+              "independent": "Högerklicka på den blå knappen.",
+              "child.guided": "Flytta pilen till den blå knappen. Tryck en gång på musens högra knapp, den under långfingret. Tryck och släpp!"
+            },
             "hints": [
               "Använd inte vänster musknapp den här gången.",
               "För pekaren till den blå knappen först.",
               "Tryck en gång på knappen på musens högra sida.",
               "Den gula ramen visar knappen som väntar på ett högerklick.",
               "Pekaren på knappen → tryck höger musknapp en gång → släpp."
-            ]
+            ],
+            "nudge": "Musen har en knapp till, som du inte har använt än."
           },
           {
             "title": "Klart",
@@ -419,18 +499,28 @@
         "steps": [
           {
             "title": "Mushjulet",
-            "text": "Hjulet mellan musknapparna flyttar innehållet uppåt och nedåt. Rullar du hjulet mot dig går sidan nedåt. Rullar du bort från dig går den uppåt."
+            "text": {
+              "default": "Hjulet mellan musknapparna flyttar innehållet uppåt och nedåt. Rullar du hjulet mot dig går sidan nedåt. Rullar du bort från dig går den uppåt.",
+              "short": "Mushjulet flyttar innehållet uppåt och nedåt.",
+              "child": "Mellan musknapparna sitter ett litet hjul. Snurra det mot dig så glider sidan nedåt, som när du rullar fram en lång papperslapp. Snurra det bort från dig så går sidan uppåt igen."
+            }
           },
           {
             "title": "Ned och upp",
-            "text": "Scrolla först nedåt till slutet av listan och sedan uppåt igen.",
+            "text": {
+              "default": "Lägg pekaren på listan och rulla mushjulet mot dig tills du ser slutet. Rulla sedan bort från dig för att komma upp igen.",
+              "guided": "Hitta hjulet mellan musens två knappar. Flytta pekaren så att den ligger över listan med rader i övningsfönstret. Rulla hjulet mot dig med pekfingret – listan glider nedåt. Fortsätt tills du ser slutet av listan. Rulla sedan hjulet bort från dig tills du är högst upp igen.",
+              "independent": "Scrolla först nedåt till slutet av listan och sedan uppåt igen.",
+              "child.guided": "Lägg pilen på listan. Snurra hjulet på musen mot dig – då åker listan nedåt. När du kommit till slutet snurrar du hjulet åt andra hållet, så åker den upp igen."
+            },
             "hints": [
               "Lägg pekaren över listan med rader.",
               "Rulla hjulet mot dig för att komma nedåt.",
               "När du har kommit långt ned: rulla hjulet bort från dig för att komma uppåt.",
               "Den gula ramen visar listan du ska scrolla i.",
               "Pekaren på listan → rulla mot dig (nedåt) → rulla bort från dig (uppåt). På en styrplatta drar du två fingrar."
-            ]
+            ],
+            "nudge": "Musen har mer än två knappar. Något på den kan rulla."
           },
           {
             "title": "Klart",
@@ -450,18 +540,28 @@
         "steps": [
           {
             "title": "Håll knappen nere",
-            "text": "Ibland ska du inte släppa musknappen direkt. Du trycker ned och håller kvar. Det behövs bland annat när du drar något."
+            "text": {
+              "default": "Ibland ska du inte släppa musknappen direkt. Du trycker ned och håller kvar. Det behövs bland annat när du drar något.",
+              "short": "Tryck ned musknappen och håll kvar.",
+              "child": "Ibland ska du inte släppa knappen direkt. Du trycker ned och håller kvar en stund, som när du håller i ett handtag. Det behövs till exempel när du ska flytta något på skärmen."
+            }
           },
           {
             "title": "Håll tills mätaren är full",
-            "text": "Tryck ned vänster musknapp på den blå knappen och håll kvar tills mätaren är full.",
+            "text": {
+              "default": "Peka på den blå knappen, tryck ned vänster musknapp och håll kvar tills mätaren är full.",
+              "guided": "Flytta pekaren till den blå knappen i övningsfönstret. Tryck ned vänster musknapp – men släpp inte. Håll fingret kvar på knappen. Mätaren fylls medan du håller. När den är full kan du släppa. Det tar ungefär en sekund.",
+              "independent": "Tryck ned vänster musknapp på den blå knappen och håll kvar tills mätaren är full.",
+              "child.guided": "Flytta pilen till den blå knappen. Tryck ned vänster musknapp och håll kvar – släpp inte än! Räkna lugnt till två. När mätaren är full får du släppa."
+            },
             "hints": [
               "Tryck på den blå knappen med vänster musknapp.",
               "Släpp inte direkt.",
               "Håll knappen nere i ungefär en sekund.",
               "Den gula ramen visar knappen du ska hålla ned.",
               "Pekaren på knappen → tryck ned vänster musknapp → håll kvar tills mätaren är full → släpp."
-            ]
+            ],
+            "nudge": "Ett vanligt klick är för kort den här gången."
           },
           {
             "title": "Klart",
@@ -481,18 +581,28 @@
         "steps": [
           {
             "title": "Tryck, håll, dra, släpp",
-            "text": "För att flytta något håller du vänster musknapp nere medan du flyttar musen. När du är framme släpper du knappen."
+            "text": {
+              "default": "För att flytta något håller du vänster musknapp nere medan du flyttar musen. När du är framme släpper du knappen.",
+              "short": "Håll ned knappen, flytta musen och släpp där du vill ha saken.",
+              "child": "Att dra och släppa är som att plocka upp en leksak och lägga den på ett nytt ställe. Du trycker ned vänster musknapp på saken, håller kvar medan du flyttar musen och släpper när du är framme."
+            }
           },
           {
             "title": "Flytta rutan",
-            "text": "Dra den blå rutan Dra mig till rutan Släpp här och släpp den där.",
+            "text": {
+              "default": "Tryck och håll på rutan Dra mig, flytta den till rutan Släpp här och släpp musknappen där.",
+              "guided": "Flytta pekaren till den blå rutan som heter Dra mig. Tryck ned vänster musknapp och håll kvar. Flytta nu musen – rutan följer med – tills den ligger över rutan Släpp här. Släpp musknappen först när du är framme.",
+              "independent": "Dra den blå rutan Dra mig till rutan Släpp här och släpp den där.",
+              "child.guided": "Lägg pilen på den blå rutan Dra mig. Tryck ned vänster knapp och håll kvar, så har du \"plockat upp\" rutan. Flytta den till Släpp här och släpp knappen där."
+            },
             "hints": [
               "Börja på den blå rutan Dra mig.",
               "Tryck ned vänster musknapp och håll kvar.",
               "Flytta musen mot rutan Släpp här medan du håller knappen nere.",
               "Den gula ramen visar ytan med båda rutorna.",
               "Tryck och håll på Dra mig → dra till Släpp här → släpp musknappen."
-            ]
+            ],
+            "nudge": "Det du tränade i förra lektionen behövs igen."
           },
           {
             "title": "Klart",
@@ -512,18 +622,28 @@
         "steps": [
           {
             "title": "Nu gör du själv",
-            "text": "Slutuppdraget har sex moment. Du väljer själv ordning och får inga steg-för-steg-instruktioner."
+            "text": {
+              "default": "Slutuppdraget har sex moment. Du väljer själv ordning och får inga steg-för-steg-instruktioner.",
+              "short": "Sex mus-moment i valfri ordning.",
+              "child": "Nu är det dags att visa allt du kan med musen! Det finns sex små uppdrag. Du bestämmer själv i vilken ordning du gör dem."
+            }
           },
           {
             "title": "Klara alla sex moment",
-            "text": "Flytta, klicka, dubbelklicka, högerklicka, scrolla och dra och släpp i övningsfönstret.",
+            "text": {
+              "default": "Gör alla sex moment i övningsfönstret: flytta, klicka, dubbelklicka, högerklicka, scrolla och dra och släpp. Listan visar vad som är klart.",
+              "guided": "Övningsfönstret har sex rutor, en för varje sak du har tränat. Ta dem en i taget. Rör pekaren i rutan Flytta. Klicka en gång på Klick. Klicka två gånger snabbt på Dubbelklick. Tryck med höger knapp på Högerklick. Rulla hjulet ned och upp i Scrolla. Dra till sist rutan Dra till Släpp här. Listan under rutorna bockar av det du har gjort.",
+              "independent": "Flytta, klicka, dubbelklicka, högerklicka, scrolla och dra och släpp i övningsfönstret.",
+              "child.guided": "Det finns sex rutor, en för varje musknep du kan. Börja med Flytta och gå sedan vidare en ruta i taget. Listan under rutorna visar vad du redan klarat. Kan du få alla sex?"
+            },
             "hints": [
               "Titta på namnen på de sex rutorna.",
               "Varje ruta tränar något du redan har gjort.",
               "Listan under rutorna visar vilka moment som är klara.",
               "Den gula ramen visar de sex rutorna.",
               "Rör pekaren i Flytta, klicka på Klick, dubbelklicka på Dubbelklick, högerklicka på Högerklick, scrolla ned och upp i Scrolla och dra Dra till Släpp här."
-            ]
+            ],
+            "nudge": "Varje ruta har samma namn som en lektion du redan har gjort."
           },
           {
             "title": "Musmodulen är klar",
@@ -543,7 +663,11 @@
         "steps": [
           {
             "title": "Vad är en dator?",
-            "text": "Datorn är maskinen som kör programmen och sparar dina filer. Skärmen visar vad som händer. Med musen pekar och klickar du, och med tangentbordet skriver du."
+            "text": {
+              "default": "Datorn är maskinen som kör programmen och sparar dina filer. Skärmen visar vad som händer. Med musen pekar och klickar du, och med tangentbordet skriver du.",
+              "short": "Datorn kör program och sparar filer. Du styr den med mus och tangentbord.",
+              "child": "Datorn är en maskin som kan göra massor av saker: visa filmer, spara dina teckningar och låta dig skriva. Skärmen är som ett fönster in i datorn. Med musen pekar du på saker, och med tangentbordet skriver du bokstäver."
+            }
           },
           {
             "title": "Klart",
@@ -563,7 +687,11 @@
         "steps": [
           {
             "title": "Ström och laddning",
-            "text": "Strömknappen startar datorn. En bärbar dator har ett batteri som laddas med en laddare. När du är klar stänger du av datorn via Start-menyn – inte genom att hålla inne strömknappen."
+            "text": {
+              "default": "Strömknappen startar datorn. En bärbar dator har ett batteri som laddas med en laddare. När du är klar stänger du av datorn via Start-menyn – inte genom att hålla inne strömknappen.",
+              "short": "Starta med strömknappen. Stäng av via Start-menyn.",
+              "child": "Strömknappen sätter igång datorn. En bärbar dator har ett batteri, ungefär som en mobil, och behöver laddas ibland. När du är klar stänger du av den via Start-menyn. Håll inte in strömknappen – då kan saker du inte har sparat försvinna."
+            }
           },
           {
             "title": "Klart",
@@ -583,7 +711,11 @@
         "steps": [
           {
             "title": "USB och ljud",
-            "text": "USB är uttag där du ansluter tillbehör som mus, tangentbord och USB-minne. Ljud spelas upp i datorns högtalare eller i hörlurar."
+            "text": {
+              "default": "USB är uttag där du ansluter tillbehör som mus, tangentbord och USB-minne. Ljud spelas upp i datorns högtalare eller i hörlurar.",
+              "short": "USB-uttag är till för tillbehör. Ljud hörs i högtalare eller hörlurar.",
+              "child": "USB-uttagen är små avlånga hål på datorn. Där kan du koppla in saker som en mus, ett tangentbord eller ett USB-minne. Ljudet kommer ut ur datorns högtalare, eller ur hörlurar om du kopplar in sådana."
+            }
           },
           {
             "title": "Klart",
@@ -603,7 +735,11 @@
         "steps": [
           {
             "title": "Datorn är inte internet",
-            "text": "Datorn är själva apparaten. Internet är nätverket som kopplar ihop datorer över hela världen. Webbläsaren – till exempel Google Chrome – är programmet som använder internet för att visa webbsidor."
+            "text": {
+              "default": "Datorn är själva apparaten. Internet är nätverket som kopplar ihop datorer över hela världen. Webbläsaren – till exempel Google Chrome – är programmet som använder internet för att visa webbsidor.",
+              "short": "Datorn är apparaten, internet är nätverket och webbläsaren visar webbsidor.",
+              "child": "Datorn är själva maskinen framför dig. Internet är som ett jättestort nät av vägar mellan datorer i hela världen. Webbläsaren, till exempel Google Chrome, är programmet du använder för att åka på de vägarna och titta på webbsidor."
+            }
           },
           {
             "title": "Klart",
@@ -623,18 +759,28 @@
         "steps": [
           {
             "title": "Bokstäver",
-            "text": "Bokstavstangenterna sitter i mitten av tangentbordet. När du trycker på en tangent visas bokstaven där textmarkören – det blinkande strecket – står."
+            "text": {
+              "default": "Bokstavstangenterna sitter i mitten av tangentbordet. När du trycker på en tangent visas bokstaven där textmarkören – det blinkande strecket – står.",
+              "short": "Bokstavstangenterna skriver där textmarkören blinkar.",
+              "child": "Tangentbordet har en knapp för varje bokstav. När du trycker på en knapp kommer bokstaven fram på skärmen, precis där ett litet blinkande streck står. Strecket heter textmarkören och visar var nästa bokstav hamnar."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv ordet dator i rutan.",
+            "text": {
+              "default": "Klicka i den vita rutan och skriv ordet dator.",
+              "guided": "Titta på övningsfönstret. Där finns en vit ruta. Klicka en gång i den – då börjar ett litet streck blinka. Det är textmarkören, och den visar var bokstäverna hamnar. Leta sedan upp bokstäverna på tangentbordet och tryck på dem en i taget: d, a, t, o, r.",
+              "independent": "Skriv ordet dator i rutan.",
+              "child.guided": "Klicka i den vita rutan så att ett litet streck blinkar där. Leta upp d på tangentbordet och tryck på den. Fortsätt med a, t, o och r. Då står det dator!"
+            },
             "hints": [
               "Klicka först i den vita rutan så att textmarkören blinkar där.",
               "Leta upp bokstaven d på tangentbordet.",
               "Skriv en bokstav i taget: d, a, t, o, r.",
               "Den gula ramen visar rutan du ska skriva i.",
               "Klicka i rutan och skriv d a t o r med små bokstäver."
-            ]
+            ],
+            "nudge": "Innan du skriver måste datorn veta var texten ska hamna."
           },
           {
             "title": "Klart",
@@ -654,18 +800,28 @@
         "steps": [
           {
             "title": "Siffror",
-            "text": "Siffrorna 1 till 0 sitter i raden ovanför bokstäverna. Större tangentbord har också en sifferdel längst till höger."
+            "text": {
+              "default": "Siffrorna 1 till 0 sitter i raden ovanför bokstäverna. Större tangentbord har också en sifferdel längst till höger.",
+              "short": "Siffrorna sitter i raden ovanför bokstäverna.",
+              "child": "Siffrorna sitter i en egen rad ovanför bokstäverna, från 1 till 0. Vissa stora tangentbord har dessutom en liten sifferruta längst till höger, nästan som en miniräknare."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv 12345 i rutan.",
+            "text": {
+              "default": "Klicka i rutan och skriv 12345 med sifferraden ovanför bokstäverna.",
+              "guided": "Klicka först i den vita rutan i övningsfönstret så att textmarkören blinkar där. Titta sedan på tangentbordet: siffrorna sitter i raden ovanför bokstäverna och börjar med 1 till vänster. Tryck 1, 2, 3, 4 och 5, en i taget.",
+              "independent": "Skriv 12345 i rutan.",
+              "child.guided": "Klicka i rutan. Hitta raden med siffror ovanför bokstäverna. Tryck på 1, sedan 2, 3, 4 och 5. Inga mellanslag!"
+            },
             "hints": [
               "Leta efter raden med siffror ovanför bokstäverna.",
               "Klicka i rutan först.",
               "Skriv en siffra i taget: 1, 2, 3, 4, 5.",
               "Den gula ramen visar rutan du ska skriva i.",
               "Skriv exakt 12345 – inga mellanslag."
-            ]
+            ],
+            "nudge": "Siffrorna har en egen rad på tangentbordet."
           },
           {
             "title": "Klart",
@@ -685,18 +841,28 @@
         "steps": [
           {
             "title": "Rätta text",
-            "text": "Mellanslag gör ett mellanrum. Retur (Enter) gör en ny rad. Backspace tar bort tecknet till vänster om textmarkören. Delete tar bort tecknet till höger."
+            "text": {
+              "default": "Mellanslag gör ett mellanrum. Retur (Enter) gör en ny rad. Backspace tar bort tecknet till vänster om textmarkören. Delete tar bort tecknet till höger.",
+              "short": "Mellanslag ger mellanrum, Retur ny rad. Backspace och Delete tar bort.",
+              "child": "Fyra tangenter hjälper dig att skriva snyggt. Mellanslag gör ett tomrum mellan orden. Retur hoppar ned till en ny rad. Backspace suddar bokstaven till vänster om textmarkören, och Delete suddar den till höger – som ett suddgummi åt varsitt håll."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Använd Mellanslag, Backspace, Delete och Retur minst en gång var i textrutan.",
+            "text": {
+              "default": "Klicka i textrutan och tryck på Mellanslag, Backspace, Delete och Retur minst en gång var.",
+              "guided": "Klicka först i textrutan i övningsfönstret. Hitta sedan tangenterna en i taget. Mellanslag är den långa tangenten längst ned. Retur är den stora tangenten till höger, ofta med en böjd pil. Backspace sitter ovanför Retur och har en pil åt vänster. Delete sitter högre upp till höger och kan heta Del. Tryck på var och en minst en gång. Listan under rutan bockar av dem.",
+              "independent": "Använd Mellanslag, Backspace, Delete och Retur minst en gång var i textrutan.",
+              "child.guided": "Klicka i textrutan. Tryck på den långa tangenten längst ned – det är Mellanslag. Tryck på den stora tangenten till höger – Retur. Hitta Backspace ovanför Retur och Delete (Del) uppe till höger. Listan visar vilka du har klarat."
+            },
             "hints": [
               "Klicka i textrutan först.",
               "Mellanslag är den långa tangenten längst ned.",
               "Backspace sitter ovanför Retur och har ofta en pil åt vänster. Delete kan heta Del.",
               "Listan under textrutan visar vilka tangenter du redan har använt.",
               "Tryck Mellanslag, Backspace, Delete och Retur – i vilken ordning du vill."
-            ]
+            ],
+            "nudge": "Det handlar om tangenterna du använder när du rättar och ordnar text."
           },
           {
             "title": "Klart",
@@ -716,18 +882,28 @@
         "steps": [
           {
             "title": "Stora bokstäver",
-            "text": "Håll ned Shift samtidigt som du trycker en bokstav så blir den stor. Caps Lock slår på stora bokstäver tills du trycker på Caps Lock igen."
+            "text": {
+              "default": "Håll ned Shift samtidigt som du trycker en bokstav så blir den stor. Caps Lock slår på stora bokstäver tills du trycker på Caps Lock igen.",
+              "short": "Shift ger en stor bokstav. Caps Lock ger stora bokstäver tills du stänger av den.",
+              "child": "Stora bokstäver gör du på två sätt. Håller du ned Shift när du trycker på en bokstav blir just den bokstaven stor. Caps Lock är som en strömbrytare: tryck en gång så blir alla bokstäver stora, tryck igen så blir de små."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Gör en stor bokstav med Shift. Tryck sedan på Caps Lock och skriv en bokstav till.",
+            "text": {
+              "default": "Skriv en stor bokstav genom att hålla ned Shift. Tryck sedan på Caps Lock och skriv en bokstav till.",
+              "guided": "Klicka i rutan i övningsfönstret. Leta upp Shift – tangenten med en pil uppåt, som finns på båda sidor av tangentbordet. Håll ned Shift med ena handen och tryck på en bokstav med den andra. Släpp Shift. Tryck sedan en gång på Caps Lock, som sitter till vänster om A, och skriv en bokstav till. Tryck på Caps Lock igen efteråt så att den stängs av.",
+              "independent": "Gör en stor bokstav med Shift. Tryck sedan på Caps Lock och skriv en bokstav till.",
+              "child.guided": "Klicka i rutan. Håll ned Shift (pilen uppåt) och tryck på en bokstav – nu blev den stor! Tryck sedan på Caps Lock till vänster om A och skriv en bokstav till. Tryck Caps Lock igen när du är klar."
+            },
             "hints": [
               "Klicka i rutan först.",
               "Shift har en pil uppåt och finns på båda sidor av tangentbordet.",
               "Håll ned Shift och tryck en bokstav. Släpp sedan Shift.",
               "Caps Lock sitter till vänster om A. Tryck på den och skriv en bokstav.",
               "Shift + bokstav, sedan Caps Lock + en bokstav. Tryck Caps Lock igen efteråt så att den stängs av."
-            ]
+            ],
+            "nudge": "Det finns två sätt att få stora bokstäver."
           },
           {
             "title": "Klart",
@@ -747,18 +923,28 @@
         "steps": [
           {
             "title": "Piltangenter",
-            "text": "De fyra piltangenterna flyttar textmarkören eller markeringen upp, ned, åt vänster och åt höger – utan mus."
+            "text": {
+              "default": "De fyra piltangenterna flyttar textmarkören eller markeringen upp, ned, åt vänster och åt höger – utan mus.",
+              "short": "Piltangenterna flyttar markören eller markeringen utan mus.",
+              "child": "Längst ned till höger på tangentbordet sitter fyra tangenter med pilar. De flyttar saker uppåt, nedåt, åt vänster och åt höger – lite som en styrspak i ett spel."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Flytta den blå pricken åt alla fyra håll med piltangenterna.",
+            "text": {
+              "default": "Klicka i rutan med pricken och flytta den uppåt, nedåt, åt vänster och åt höger med piltangenterna.",
+              "guided": "Klicka först i rutan med den blå pricken i övningsfönstret. Titta sedan längst ned till höger på tangentbordet: där sitter fyra tangenter med pilar, ↑ ↓ ← →. Tryck en gång på varje pil. Pricken flyttar sig åt det håll pilen pekar. Listan under rutan visar vilka håll du har använt.",
+              "independent": "Flytta den blå pricken åt alla fyra håll med piltangenterna.",
+              "child.guided": "Klicka i rutan med pricken. Hitta de fyra piltangenterna längst ned till höger. Tryck på varje pil en gång och se hur pricken flyttar sig!"
+            },
             "hints": [
               "Klicka i rutan med pricken först.",
               "Piltangenterna sitter längst ned till höger på tangentbordet.",
               "Tryck pil upp, pil ned, pil vänster och pil höger.",
               "Listan under rutan visar vilka håll du redan har använt.",
               "Klicka i rutan → tryck ↑, ↓, ← och → en gång var."
-            ]
+            ],
+            "nudge": "Det finns tangenter som pekar åt olika håll."
           },
           {
             "title": "Klart",
@@ -778,18 +964,28 @@
         "steps": [
           {
             "title": "Tab och Esc",
-            "text": "Tab flyttar till nästa knapp eller fält. Shift+Tab flyttar bakåt. Esc betyder oftast avbryt eller stäng."
+            "text": {
+              "default": "Tab flyttar till nästa knapp eller fält. Shift+Tab flyttar bakåt. Esc betyder oftast avbryt eller stäng.",
+              "short": "Tab går till nästa fält. Esc avbryter eller stänger.",
+              "child": "Tab är en genväg: den hoppar till nästa knapp eller ruta utan att du behöver musen. Esc är nödutgången – den stänger eller avbryter det som just öppnats."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Tryck Tab för att flytta mellan knapparna. Tryck sedan Esc för att stänga tipsrutan.",
+            "text": {
+              "default": "Tryck på Tab några gånger för att flytta mellan knapparna. Stäng sedan tipsrutan med Esc.",
+              "guided": "Titta på tangentbordets vänstra kant. Tab sitter ovanför Caps Lock och har ofta två pilar. Tryck på Tab några gånger och se hur en ram hoppar mellan knapparna i övningsfönstret. Leta sedan upp Esc längst upp till vänster och tryck på den. Då stängs tipsrutan.",
+              "independent": "Flytta mellan knapparna utan mus och stäng sedan tipsrutan med tangentbordet.",
+              "child.guided": "Hitta Tab ovanför Caps Lock och tryck några gånger – se ramen hoppa mellan knapparna! Tryck sedan på Esc längst upp till vänster för att stänga tipsrutan."
+            },
             "hints": [
               "Tab sitter längst till vänster, ovanför Caps Lock.",
               "Tryck Tab några gånger och se hur ramen hoppar mellan knapparna.",
               "Esc sitter längst upp till vänster.",
               "Listan visar vilka tangenter du redan har använt.",
               "Tryck Tab → tryck Esc."
-            ]
+            ],
+            "nudge": "Den ena tangenten hoppar framåt, den andra avbryter."
           },
           {
             "title": "Klart",
@@ -809,18 +1005,28 @@
         "steps": [
           {
             "title": "Ctrl och Alt",
-            "text": "Ctrl och Alt gör sällan något själva. De används tillsammans med en annan tangent, till exempel Ctrl+C för att kopiera."
+            "text": {
+              "default": "Ctrl och Alt gör sällan något själva. De används tillsammans med en annan tangent, till exempel Ctrl+C för att kopiera.",
+              "short": "Ctrl och Alt används tillsammans med andra tangenter.",
+              "child": "Ctrl och Alt är hjälptangenter. Ensamma gör de nästan ingenting, men tillsammans med en annan tangent blir de supersnabba genvägar."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Klicka i rutan och tryck på Ctrl och sedan på Alt.",
+            "text": {
+              "default": "Klicka i rutan och tryck en gång på Ctrl och en gång på Alt.",
+              "guided": "Klicka först i rutan i övningsfönstret. Titta sedan längst ned till vänster på tangentbordet. Ctrl sitter i hörnet. Alt sitter strax till vänster om den långa mellanslagstangenten. Tryck på Ctrl en gång och sedan på Alt en gång. Listan visar vilka du har tryckt på.",
+              "independent": "Tryck på Ctrl och Alt.",
+              "child.guided": "Klicka i rutan. Hitta Ctrl i nedre vänstra hörnet och tryck på den. Hitta sedan Alt bredvid den långa mellanslagstangenten och tryck på den."
+            },
             "hints": [
               "Klicka i rutan först.",
               "Ctrl sitter längst ned till vänster.",
               "Alt sitter till vänster om mellanslagstangenten.",
               "Listan visar vilka tangenter du redan har tryckt på.",
               "Tryck Ctrl en gång och Alt en gång."
-            ]
+            ],
+            "nudge": "Båda tangenterna sitter i nedersta raden."
           },
           {
             "title": "Klart",
@@ -840,7 +1046,11 @@
         "steps": [
           {
             "title": "Windows-tangenten",
-            "text": "Windows-tangenten har Windows-symbolen – fyra rutor – och sitter mellan Ctrl och Alt. På en riktig dator öppnar den Start. I övningsdatorn i webbläsaren fångas tangenten av din riktiga dator, så här öppnar du Start med Start-knappen eller med Ctrl+Esc."
+            "text": {
+              "default": "Windows-tangenten har Windows-symbolen – fyra rutor – och sitter mellan Ctrl och Alt. På en riktig dator öppnar den Start. I övningsdatorn i webbläsaren fångas tangenten av din riktiga dator, så här öppnar du Start med Start-knappen eller med Ctrl+Esc.",
+              "short": "Windows-tangenten öppnar Start. Här använder du Start-knappen eller Ctrl+Esc.",
+              "child": "Windows-tangenten har samma symbol som Start-knappen, fyra små rutor. På en riktig dator öppnar den Start direkt. I övningsdatorn fungerar den inte, eftersom din riktiga dator tar hand om tangenten först. Här klickar du på Start-knappen i stället, eller trycker Ctrl+Esc."
+            }
           },
           {
             "title": "Klart",
@@ -860,18 +1070,28 @@
         "steps": [
           {
             "title": "Kortkommandon",
-            "text": "Ett kortkommando är två tangenter samtidigt: du håller ned Ctrl och trycker en bokstav. Ctrl+A markerar allt, Ctrl+C kopierar och Ctrl+V klistrar in."
+            "text": {
+              "default": "Ett kortkommando är två tangenter samtidigt: du håller ned Ctrl och trycker en bokstav. Ctrl+A markerar allt, Ctrl+C kopierar och Ctrl+V klistrar in.",
+              "short": "Ctrl+A markerar allt, Ctrl+C kopierar och Ctrl+V klistrar in.",
+              "child": "Ett kortkommando är ett trollknep med två tangenter. Du håller ned Ctrl och trycker på en bokstav. Ctrl+A markerar all text, Ctrl+C gör en kopia och Ctrl+V lägger in kopian."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Använd Ctrl+A, Ctrl+C och Ctrl+V i textrutan.",
+            "text": {
+              "default": "Klicka i textrutan och använd Ctrl+A för att markera, Ctrl+C för att kopiera och Ctrl+V för att klistra in.",
+              "guided": "Klicka i textrutan i övningsfönstret. Håll ned Ctrl längst ned till vänster med ena handen hela tiden. Tryck sedan A med andra handen – all text blir markerad. Fortsätt hålla Ctrl och tryck C för att kopiera, och sedan V för att klistra in. Släpp Ctrl när du är klar. Listan visar vilka kortkommandon som är gjorda.",
+              "independent": "Använd Ctrl+A, Ctrl+C och Ctrl+V i textrutan.",
+              "child.guided": "Klicka i textrutan. Håll ned Ctrl och tryck A – nu är allt markerat. Håll Ctrl kvar och tryck C (kopiera) och sedan V (klistra in). Listan bockar av!"
+            },
             "hints": [
               "Klicka i textrutan först.",
               "Håll ned Ctrl och tryck A. All text blir markerad.",
               "Håll ned Ctrl och tryck C för att kopiera.",
               "Håll ned Ctrl och tryck V för att klistra in.",
               "Ctrl+A → Ctrl+C → Ctrl+V. Listan visar vilka som är klara."
-            ]
+            ],
+            "nudge": "Du behöver en hjälptangent från förra lektionen."
           },
           {
             "title": "Klart",
@@ -891,18 +1111,28 @@
         "steps": [
           {
             "title": "Specialtecken",
-            "text": "Specialtecken är tecken som inte är bokstäver eller siffror. Många sitter på samma tangent som en siffra och kräver Shift eller AltGr."
+            "text": {
+              "default": "Specialtecken är tecken som inte är bokstäver eller siffror. Många sitter på samma tangent som en siffra och kräver Shift eller AltGr.",
+              "short": "Specialtecken kräver ofta Shift eller AltGr.",
+              "child": "Specialtecken är tecken som inte är bokstäver eller siffror, som @, ! och ?. Många av dem bor på samma tangent som en siffra. Du får fram dem genom att hålla ned Shift eller AltGr samtidigt."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv tecknen @ ! ? . , i rutan.",
+            "text": {
+              "default": "Klicka i rutan och skriv @ ! ? . , – du behöver Shift för ! och ? och AltGr för @.",
+              "guided": "Klicka i rutan i övningsfönstret. Punkt och komma har egna tangenter till höger om M. För utropstecken håller du ned Shift och trycker 1. För frågetecken håller du ned Shift och trycker på plustangenten till höger om 0. För @ håller du ned AltGr – till höger om mellanslag – och trycker 2.",
+              "independent": "Skriv tecknen @ ! ? . , i rutan.",
+              "child.guided": "Klicka i rutan. Punkt och komma finns till höger om M. ! får du med Shift + 1, och ? med Shift + plus. @ är klurigast: håll ned AltGr till höger om mellanslag och tryck 2."
+            },
             "hints": [
               "Klicka i rutan först.",
               "Punkt och komma har egna tangenter till höger om M.",
               "! får du med Shift + 1 och ? med Shift + + (tangenten till höger om 0).",
               "@ får du med AltGr + 2 på ett svenskt tangentbord.",
               "Skriv @ (AltGr+2), ! (Shift+1), ? (Shift+plus), punkt och komma."
-            ]
+            ],
+            "nudge": "Tecknen bor på samma tangenter som andra tecken."
           },
           {
             "title": "Klart",
@@ -922,18 +1152,28 @@
         "steps": [
           {
             "title": "Tangentbord – slutuppdrag",
-            "text": "Nu kombinerar du det du har lärt dig: bokstäver, siffror, stor bokstav, specialtecken och tangenter för att rätta och markera."
+            "text": {
+              "default": "Nu kombinerar du det du har lärt dig: bokstäver, siffror, stor bokstav, specialtecken och tangenter för att rätta och markera.",
+              "short": "Kombinera bokstäver, siffror, stor bokstav och specialtangenter.",
+              "child": "Dags för slutprovet på tangentbordet! Nu blandar du allt du har lärt dig: bokstäver, siffror, en stor bokstav, ett specialtecken och tangenterna som rättar och markerar text."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv exakt Dator 2026! Tryck sedan Retur, Backspace, valfri piltangent och Ctrl+A. Varje moment får en bock.",
+            "text": {
+              "default": "Skriv Dator 2026! med stort D och utropstecken. Tryck sedan Retur, Backspace, en piltangent och Ctrl+A.",
+              "guided": "Klicka i rutan i övningsfönstret. Håll ned Shift och tryck D för ett stort D. Skriv sedan ator, ett mellanslag och 2026. Avsluta med Shift + 1 för utropstecknet. När texten har fått en bock trycker du Retur och sedan Backspace. Tryck på någon av piltangenterna, och avsluta med att hålla ned Ctrl och trycka A. Varje moment får en bock.",
+              "independent": "Skriv exakt Dator 2026! Tryck sedan Retur, Backspace, valfri piltangent och Ctrl+A. Varje moment får en bock.",
+              "child.guided": "Klicka i rutan och skriv Dator 2026! – stort D med Shift, och ! med Shift + 1. Tryck sedan Retur, Backspace, en piltangent och till sist Ctrl+A. Kan du få bock på allt?"
+            },
             "hints": [
               "Börja med att skriva Dator 2026! – stort D, ett mellanslag och utropstecken på slutet.",
               "Stort D får du med Shift. Utropstecknet med Shift + 1.",
               "När texten fått en bock: tryck Retur och sedan Backspace.",
               "Tryck en piltangent och avsluta med Ctrl+A.",
               "Dator 2026! → Retur → Backspace → piltangent → Ctrl+A."
-            ]
+            ],
+            "nudge": "Allt du behöver har du redan tränat i de tidigare lektionerna."
           },
           {
             "title": "Klart",
@@ -953,18 +1193,28 @@
         "steps": [
           {
             "title": "Start-menyn",
-            "text": "Start-menyn är platsen där du hittar dina program. Du öppnar den med Start-knappen – Windows-symbolen med fyra rutor – i aktivitetsfältet längst ned på skärmen."
+            "text": {
+              "default": "Start-menyn är platsen där du hittar dina program. Du öppnar den med Start-knappen – Windows-symbolen med fyra rutor – i aktivitetsfältet längst ned på skärmen.",
+              "short": "Start-menyn är där du hittar dina program.",
+              "child": "Start-menyn är som en innehållsförteckning för hela datorn. Där hittar du alla program. Du öppnar den med Start-knappen, som har fyra små blå rutor och sitter i raden längst ned på skärmen."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Start-menyn.",
+            "text": {
+              "default": "Öppna Start-menyn genom att klicka på Start-knappen i aktivitetsfältet.",
+              "guided": "Titta längst ned på skärmen. Där finns en rad med ikoner som heter aktivitetsfältet. Ungefär i mitten av raden sitter Start-knappen. Den ser ut som fyra små blå rutor. Klicka en gång på den med vänster musknapp.",
+              "independent": "Öppna Start-menyn.",
+              "child.guided": "Titta på raden längst ned på skärmen. Hitta knappen med fyra små blå rutor – det är Start-knappen. Klicka en gång på den!"
+            },
             "hints": [
               "Titta på raden längst ned på skärmen. Den kallas aktivitetsfältet.",
               "Start-knappen har Windows-symbolen med fyra rutor och sitter mitt i aktivitetsfältet.",
               "Klicka en gång på Start-knappen.",
               "Den gula ramen visar Start-knappen.",
               "Klicka på Windows-symbolen längst ned i mitten. På en riktig dator kan du också trycka på Windows-tangenten."
-            ]
+            ],
+            "nudge": "Fundera på var Windows samlar alla program."
           },
           {
             "title": "Klart",
@@ -984,18 +1234,28 @@
         "steps": [
           {
             "title": "Starta ett program",
-            "text": "Ett program startas genom att du klickar på dess ikon. I Start-menyn ligger de vanligaste programmen under Fäst."
+            "text": {
+              "default": "Ett program startas genom att du klickar på dess ikon. I Start-menyn ligger de vanligaste programmen under Fäst.",
+              "short": "Klicka på ett programs ikon för att starta det.",
+              "child": "Ett program är ett verktyg i datorn, som en miniräknare eller ett anteckningsblock. Du startar ett program genom att klicka på dess bild, som kallas ikon. De vanligaste programmen ligger under Fäst i Start-menyn."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Kalkylator från Start-menyn.",
+            "text": {
+              "default": "Öppna Start-menyn och klicka på Kalkylator under Fäst.",
+              "guided": "Klicka först på Start-knappen – de fyra blå rutorna längst ned på skärmen. Start-menyn öppnas. Under rubriken Fäst ser du små bilder med namn under, en för varje program. Leta upp den som heter Kalkylator och ser ut som en liten miniräknare. Klicka en gång på den.",
+              "independent": "Öppna Kalkylator.",
+              "child.guided": "Klicka på Start-knappen med de fyra blå rutorna. Under Fäst finns bilder på olika program. Hitta Kalkylator – den ser ut som en miniräknare – och klicka på den."
+            },
             "hints": [
               "Börja med att öppna Start-menyn.",
               "Under Fäst ser du ikoner med programnamn under.",
               "Leta upp Kalkylator och klicka en gång på den.",
               "Den gula ramen visar Start-knappen.",
               "Start → Kalkylator. Kalkylator öppnas i ett eget fönster."
-            ]
+            ],
+            "nudge": "Program brukar du hitta på samma ställe som i förra lektionen."
           },
           {
             "title": "Klart",
@@ -1015,18 +1275,28 @@
         "steps": [
           {
             "title": "Flytta ett fönster",
-            "text": "Varje program visas i ett fönster. Högst upp finns namnlisten med programmets namn. Där tar du tag när du vill flytta fönstret."
+            "text": {
+              "default": "Varje program visas i ett fönster. Högst upp finns namnlisten med programmets namn. Där tar du tag när du vill flytta fönstret.",
+              "short": "Flytta ett fönster genom att dra i namnlisten.",
+              "child": "Varje program öppnas i en egen ruta som heter fönster. Den översta remsan på fönstret, där programmets namn står, heter namnlisten. Den är som ett handtag – där tar du tag när du vill flytta fönstret."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Flytta Kalkylatorns fönster till ett annat ställe på skärmen.",
+            "text": {
+              "default": "Dra Kalkylatorns fönster i namnlisten till ett annat ställe på skärmen.",
+              "guided": "Titta på Kalkylatorns fönster. Den översta remsan, där det står Kalkylator, heter namnlisten. Lägg pekaren på namnlisten – inte på knapparna uppe till höger. Tryck ned vänster musknapp och håll kvar. Flytta musen så följer fönstret med. Släpp knappen när fönstret ligger där du vill.",
+              "independent": "Flytta Kalkylatorns fönster till ett annat ställe på skärmen.",
+              "child.guided": "Hitta den översta remsan på Kalkylatorn, där det står Kalkylator. Tryck och håll med vänster knapp där, flytta musen och släpp. Fönstret flyttar med!"
+            },
             "hints": [
               "Hitta namnlisten – den översta raden i Kalkylatorns fönster, där det står Kalkylator.",
               "Tryck ned vänster musknapp på namnlisten och håll kvar.",
               "Flytta musen medan du håller knappen nere. Fönstret följer med.",
               "Den gula ramen visar namnlisten.",
               "Håll på namnlisten → dra fönstret en bit → släpp musknappen."
-            ]
+            ],
+            "nudge": "Fönster har ett ställe där man tar tag i dem."
           },
           {
             "title": "Klart",
@@ -1046,18 +1316,28 @@
         "steps": [
           {
             "title": "Minimera",
-            "text": "Minimera gömmer fönstret i aktivitetsfältet. Programmet är fortfarande igång och du kan ta fram det igen."
+            "text": {
+              "default": "Minimera gömmer fönstret i aktivitetsfältet. Programmet är fortfarande igång och du kan ta fram det igen.",
+              "short": "Minimera gömmer fönstret i aktivitetsfältet utan att stänga det.",
+              "child": "Att minimera är som att lägga undan något i en låda utan att slänga det. Fönstret försvinner ned till raden längst ned på skärmen, men programmet är kvar och du kan ta fram det igen."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Minimera Kalkylator.",
+            "text": {
+              "default": "Minimera Kalkylator med strecket längst upp till höger i fönstret.",
+              "guided": "Titta längst upp till höger i Kalkylatorns fönster. Där sitter tre knappar bredvid varandra. Den vänstra av dem ser ut som ett kort, vågrätt streck – det är Minimera. Klicka en gång på strecket. Fönstret försvinner ned till aktivitetsfältet, men programmet är fortfarande igång.",
+              "independent": "Minimera Kalkylator.",
+              "child.guided": "Uppe till höger på Kalkylatorn finns tre knappar. Klicka på den vänstra, som ser ut som ett litet streck. Fönstret gömmer sig längst ned!"
+            },
             "hints": [
               "Titta längst upp till höger i Kalkylatorns fönster. Där finns tre knappar.",
               "Minimera är den vänstra av de tre och ser ut som ett kort streck.",
               "Klicka en gång på strecket.",
               "Den gula ramen visar Minimera-knappen.",
               "Klicka på strecket uppe till höger i Kalkylator. Fönstret försvinner ned till aktivitetsfältet."
-            ]
+            ],
+            "nudge": "Fönsterknapparna sitter alltid på samma ställe."
           },
           {
             "title": "Klart",
@@ -1077,18 +1357,28 @@
         "steps": [
           {
             "title": "Maximera",
-            "text": "Maximera gör fönstret så stort som möjligt. Samma knapp återställer det till den tidigare storleken."
+            "text": {
+              "default": "Maximera gör fönstret så stort som möjligt. Samma knapp återställer det till den tidigare storleken.",
+              "short": "Maximera gör fönstret så stort som möjligt.",
+              "child": "Maximera betyder att göra fönstret jättestort, så att det fyller hela skärmen. Trycker du på samma knapp igen blir det lagom stort som förut."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Maximera Kalkylator.",
+            "text": {
+              "default": "Maximera Kalkylator med fyrkanten längst upp till höger i fönstret.",
+              "guided": "Titta längst upp till höger i Kalkylatorns fönster. Bland de tre knapparna är den mittersta en liten fyrkant – det är Maximera. Klicka en gång på fyrkanten. Fönstret växer och fyller hela skärmen ovanför aktivitetsfältet.",
+              "independent": "Maximera Kalkylator.",
+              "child.guided": "Uppe till höger på Kalkylatorn finns tre knappar. Klicka på den i mitten, som ser ut som en liten fyrkant. Nu blir fönstret jättestort!"
+            },
             "hints": [
               "Titta längst upp till höger i Kalkylatorns fönster.",
               "Maximera är den mittersta knappen och ser ut som en fyrkant.",
               "Klicka en gång på fyrkanten.",
               "Den gula ramen visar Maximera-knappen.",
               "Klicka på fyrkanten uppe till höger. Du kan också dubbelklicka på namnlisten."
-            ]
+            ],
+            "nudge": "Det är en av de tre knapparna uppe i fönstrets hörn."
           },
           {
             "title": "Klart",
@@ -1108,18 +1398,28 @@
         "steps": [
           {
             "title": "Stäng",
-            "text": "Stäng avslutar programmet. Använd Stäng när du är klar – inte Minimera."
+            "text": {
+              "default": "Stäng avslutar programmet. Använd Stäng när du är klar – inte Minimera.",
+              "short": "Stäng avslutar programmet.",
+              "child": "Stäng betyder att du är helt klar med programmet. Det försvinner – inte bara ned i raden längst ned, utan helt. Krysset uppe till höger stänger."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Stäng Kalkylator.",
+            "text": {
+              "default": "Stäng Kalkylator med krysset längst upp till höger i fönstret.",
+              "guided": "Titta längst upp till höger i Kalkylatorns fönster. Den högra av de tre knapparna är ett kryss, och den blir röd när du pekar på den. Det är Stäng. Klicka en gång på krysset. Kalkylator avslutas och försvinner även från aktivitetsfältet.",
+              "independent": "Stäng Kalkylator.",
+              "child.guided": "Uppe till höger på Kalkylatorn finns ett kryss. Det blir rött när du pekar på det. Klicka på krysset så stängs programmet."
+            },
             "hints": [
               "Titta längst upp till höger i Kalkylatorns fönster.",
               "Stäng är den högra knappen och ser ut som ett kryss.",
               "Klicka en gång på krysset. Det blir rött när du pekar på det.",
               "Den gula ramen visar Stäng-knappen.",
               "Klicka på krysset uppe till höger. Kalkylator stängs och försvinner även från aktivitetsfältet."
-            ]
+            ],
+            "nudge": "Det är skillnad på att gömma ett fönster och att avsluta programmet."
           },
           {
             "title": "Klart",
@@ -1139,18 +1439,28 @@
         "steps": [
           {
             "title": "Snabbmenyn",
-            "text": "När du högerklickar visas en snabbmeny med val som passar det du klickade på. Skrivbordet, filer och appar har olika snabbmenyer."
+            "text": {
+              "default": "När du högerklickar visas en snabbmeny med val som passar det du klickade på. Skrivbordet, filer och appar har olika snabbmenyer.",
+              "short": "Högerklick öppnar en snabbmeny för det du pekar på.",
+              "child": "När du högerklickar på något kommer en liten meny fram med saker du kan göra med just det. Det är som att fråga datorn: \"Vad kan jag göra här?\" Menyn heter snabbmeny."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Högerklicka på en tom del av skrivbordet.",
+            "text": {
+              "default": "Högerklicka på en tom del av skrivbordet så att snabbmenyn öppnas.",
+              "guided": "Leta upp en tom del av skrivbordet – den blå bakgrunden, där det inte finns någon ikon eller något fönster. Lägg pekaren där. Tryck sedan en gång på den högra musknappen, den under långfingret. En liten meny dyker upp. Den kan du stänga med Esc eller genom att klicka bredvid.",
+              "independent": "Högerklicka på en tom del av skrivbordet.",
+              "child.guided": "Hitta ett tomt ställe på den blå bakgrunden. Tryck där med musens högra knapp. Då kommer en liten meny fram!"
+            },
             "hints": [
               "Hitta en tom yta på skrivbordet – inte på en ikon eller ett fönster.",
               "Använd den högra musknappen.",
               "Klicka en gång med höger musknapp på den tomma ytan.",
               "Den gula ramen visar skrivbordet.",
               "Pekaren på tom yta på skrivbordet → höger musknapp. Stäng menyn med Esc eller genom att klicka bredvid."
-            ]
+            ],
+            "nudge": "Musen har en knapp som visar fler val."
           },
           {
             "title": "Klart",
@@ -1170,18 +1480,28 @@
         "steps": [
           {
             "title": "Windows – slutuppdrag",
-            "text": "Nu använder du allt om fönster i ett och samma uppdrag, utan steg-för-steg-instruktioner."
+            "text": {
+              "default": "Nu använder du allt om fönster i ett och samma uppdrag, utan steg-för-steg-instruktioner.",
+              "short": "Allt om fönster i ett uppdrag.",
+              "child": "Nu får du visa allt du kan om fönster, i ett enda uppdrag. Den här gången får du inga steg – du bestämmer själv hur du gör."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Start, starta Kalkylator, flytta fönstret, minimera det, ta fram det igen, maximera det och stäng det.",
+            "text": {
+              "default": "Öppna Kalkylator från Start. Flytta fönstret, minimera det, ta fram det igen via aktivitetsfältet, maximera det och stäng det.",
+              "guided": "Ta ett moment i taget. Klicka på Start-knappen och sedan på Kalkylator. Dra fönstret i namnlisten, den översta remsan. Klicka på strecket uppe till höger för att minimera. Ta fram fönstret igen genom att klicka på Kalkylatorns ikon i aktivitetsfältet. Klicka på fyrkanten för att maximera och till sist på krysset för att stänga.",
+              "independent": "Öppna Start, starta Kalkylator, flytta fönstret, minimera det, ta fram det igen, maximera det och stäng det.",
+              "child.guided": "Start-knappen → Kalkylator. Dra i den översta remsan. Klicka på strecket så gömmer sig fönstret, och klicka på Kalkylatorn längst ned för att hämta tillbaka den. Gör den jättestor med fyrkanten och stäng med krysset."
+            },
             "hints": [
               "Börja med Start-knappen i aktivitetsfältet.",
               "Flytta fönstret genom att dra i namnlisten.",
               "Minimera med strecket. Ta fram fönstret igen genom att klicka på Kalkylatorns ikon i aktivitetsfältet.",
               "Maximera med fyrkanten och stäng med krysset.",
               "Start → Kalkylator → dra namnlisten → streck → ikonen i aktivitetsfältet → fyrkant → kryss."
-            ]
+            ],
+            "nudge": "Varje del har du gjort i en tidigare lektion. Börja där du startar program."
           },
           {
             "title": "Klart",
@@ -1201,7 +1521,11 @@
         "steps": [
           {
             "title": "Fil, mapp och filtyp",
-            "text": "En fil innehåller information – till exempel en text eller en bild. En mapp samlar filer och andra mappar. Slutet på filnamnet, till exempel .txt eller .jpg, berättar vilken sorts fil det är."
+            "text": {
+              "default": "En fil innehåller information – till exempel en text eller en bild. En mapp samlar filer och andra mappar. Slutet på filnamnet, till exempel .txt eller .jpg, berättar vilken sorts fil det är.",
+              "short": "Filer innehåller information, mappar samlar filer och filändelsen visar filtypen.",
+              "child": "En fil är något du har sparat i datorn, till exempel en berättelse eller en bild. En mapp är som en låda där du kan lägga filer, och även andra lådor. Slutet på filens namn, som .txt eller .jpg, är som en etikett som berättar vad det är för sorts fil."
+            }
           },
           {
             "title": "Klart",
@@ -1221,18 +1545,28 @@
         "steps": [
           {
             "title": "Byt namn",
-            "text": "Ett bra namn gör filen lätt att hitta. När du byter namn ändras bara namnet – innehållet är detsamma."
+            "text": {
+              "default": "Ett bra namn gör filen lätt att hitta. När du byter namn ändras bara namnet – innehållet är detsamma.",
+              "short": "Byt namn ändrar bara filens namn, inte innehållet.",
+              "child": "Ett bra namn gör det lätt att hitta filen senare, precis som en tydlig etikett på en låda. När du byter namn ändras bara etiketten – det som står i filen är detsamma."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Byt namn på Utkast.txt till Rapport.txt.",
+            "text": {
+              "default": "Markera Utkast.txt, klicka på Byt namn och skriv Rapport. Behåll .txt i slutet.",
+              "guided": "Utforskaren visar Dokument. Klicka en gång på Utkast.txt så att den blir blåmarkerad. Klicka sedan på Byt namn i raden med knappar högst upp – den har en penna – eller tryck F2. Nu kan du ändra namnet, och delen före .txt är markerad. Skriv Rapport och tryck Retur. Ändelsen .txt ska stå kvar.",
+              "independent": "Byt namn på Utkast.txt till Rapport.txt.",
+              "child.guided": "Klicka på Utkast.txt så att den blir blå. Klicka på Byt namn – knappen med en penna. Skriv Rapport och tryck Retur. Låt .txt stå kvar på slutet!"
+            },
             "hints": [
               "Utkast.txt ligger i Dokument.",
               "Klicka en gång på filen så att den blir markerad.",
               "Klicka på Byt namn i raden med knappar – eller tryck F2. Namnet blir redigerbart.",
               "Den gula ramen visar knappen Byt namn.",
               "Markera Utkast.txt → Byt namn → skriv Rapport → tryck Retur. Ändelsen .txt ska stå kvar."
-            ]
+            ],
+            "nudge": "En fil måste vara vald innan du kan ändra något på den."
           },
           {
             "title": "Klart",
@@ -1252,18 +1586,28 @@
         "steps": [
           {
             "title": "Kopiera",
-            "text": "Kopiera skapar en extra fil med samma innehåll. Originalet ligger kvar. Arbetsgången är alltid: markera → Kopiera → välj plats → Klistra in."
+            "text": {
+              "default": "Kopiera skapar en extra fil med samma innehåll. Originalet ligger kvar. Arbetsgången är alltid: markera → Kopiera → välj plats → Klistra in.",
+              "short": "Kopiera skapar en extra fil. Markera → Kopiera → Klistra in.",
+              "child": "Att kopiera är som att använda en kopieringsmaskin: originalet ligger kvar och du får en likadan fil till. Det går alltid till så här: välj filen, kopiera, välj ställe och klistra in."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Kopiera Exempel.txt och klistra in kopian i samma mapp, Dokument.",
+            "text": {
+              "default": "Markera Exempel.txt, klicka på Kopiera och sedan på Klistra in i samma mapp.",
+              "guided": "Klicka en gång på Exempel.txt i Utforskaren så att den blir blåmarkerad. Titta på raden med knappar högst upp och klicka på Kopiera – den har två små papper på varandra. Inget syns hända, men datorn kommer nu ihåg filen. Klicka sedan på Klistra in, knappen strax till höger. En kopia som heter Exempel - Kopia.txt dyker upp.",
+              "independent": "Gör en kopia av Exempel.txt i Dokument.",
+              "child.guided": "Klicka på Exempel.txt så att den blir blå. Klicka på Kopiera (två papper) och sedan på Klistra in. Nu finns det två likadana filer!"
+            },
             "hints": [
               "Klicka en gång på Exempel.txt så att den blir markerad.",
               "Klicka på Kopiera i raden med knappar – eller tryck Ctrl+C.",
               "Klicka sedan på Klistra in – eller tryck Ctrl+V.",
               "Den gula ramen visar raden med knappar.",
               "Exempel.txt → Kopiera → Klistra in. Kopian heter Exempel - Kopia.txt."
-            ]
+            ],
+            "nudge": "Det är samma arbetsgång som när du kopierar text, fast med en hel fil."
           },
           {
             "title": "Klart",
@@ -1283,18 +1627,28 @@
         "steps": [
           {
             "title": "Klipp ut och klistra in",
-            "text": "Klipp ut förbereder en flytt. När du klistrar in på ett nytt ställe flyttas filen dit – den finns inte längre kvar på det gamla stället."
+            "text": {
+              "default": "Klipp ut förbereder en flytt. När du klistrar in på ett nytt ställe flyttas filen dit – den finns inte längre kvar på det gamla stället.",
+              "short": "Klipp ut och klistra in flyttar filen.",
+              "child": "Klipp ut och klistra in är som att flytta en sak från en låda till en annan. Skillnaden mot att kopiera är att filen inte finns kvar på det gamla stället efteråt."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Flytta Flytta mig.txt från Dokument till Hämtade filer.",
+            "text": {
+              "default": "Klipp ut Flytta mig.txt, öppna Hämtade filer i vänsterspalten och klistra in filen där.",
+              "guided": "Klicka en gång på Flytta mig.txt i Dokument. Klicka på Klipp ut – knappen med en sax – i raden högst upp. Filen blir lite blekare, det betyder att den väntar på att flyttas. Klicka nu på Hämtade filer i spalten till vänster. Klicka sedan på Klistra in högst upp. Filen flyttas hit och finns inte längre kvar i Dokument.",
+              "independent": "Flytta Flytta mig.txt från Dokument till Hämtade filer.",
+              "child.guided": "Klicka på Flytta mig.txt. Klicka på saxen (Klipp ut) – nu blir filen blek. Klicka på Hämtade filer till vänster och sedan på Klistra in. Filen har flyttat!"
+            },
             "hints": [
               "Klicka en gång på Flytta mig.txt.",
               "Klicka på Klipp ut (saxen) – eller tryck Ctrl+X. Filen blir blekare.",
               "Klicka på Hämtade filer i vänsterspalten.",
               "Den gula ramen visar Hämtade filer i vänsterspalten.",
               "Flytta mig.txt → Klipp ut → Hämtade filer → Klistra in."
-            ]
+            ],
+            "nudge": "Du ska inte göra en kopia den här gången, utan flytta originalet."
           },
           {
             "title": "Klart",
@@ -1314,18 +1668,28 @@
         "steps": [
           {
             "title": "Ta bort tryggt",
-            "text": "Det du tar bort i Utforskaren hamnar i Papperskorgen. Först när du tömmer Papperskorgen är filen borta på riktigt."
+            "text": {
+              "default": "Det du tar bort i Utforskaren hamnar i Papperskorgen. Först när du tömmer Papperskorgen är filen borta på riktigt.",
+              "short": "Borttaget hamnar i Papperskorgen tills du tömmer den.",
+              "child": "När du tar bort något i Utforskaren läggs det i Papperskorgen. Först när du tömmer Papperskorgen är det borta på riktigt – precis som när soporna hämtas."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Ta bort Återställ mig.txt och återställ filen igen.",
+            "text": {
+              "default": "Markera Återställ mig.txt och tryck Delete. Öppna sedan Papperskorgen och återställ filen.",
+              "guided": "Klicka en gång på Återställ mig.txt i Dokument så att den blir blåmarkerad. Tryck på Delete-tangenten på tangentbordet, eller klicka på knappen med en papperskorg högst upp. Klicka sedan på Papperskorgen längst ned i spalten till vänster. Klicka på filen där och sedan på Återställ markerade objekt.",
+              "independent": "Ta bort Återställ mig.txt och återställ filen igen.",
+              "child.guided": "Klicka på Återställ mig.txt och tryck på Delete. Gå till Papperskorgen till vänster, klicka på filen och välj Återställ markerade objekt."
+            },
             "hints": [
               "Återställ mig.txt ligger i Dokument.",
               "Markera filen och tryck Delete – eller klicka på Ta bort.",
               "Öppna Papperskorgen i vänsterspalten och markera filen.",
               "Den gula ramen visar Papperskorgen i vänsterspalten.",
               "Markera filen → Delete → Papperskorgen → markera filen → Återställ markerade objekt."
-            ]
+            ],
+            "nudge": "Du har gjort något liknande förut med Papperskorgen."
           },
           {
             "title": "Klart",
@@ -1345,18 +1709,28 @@
         "steps": [
           {
             "title": "Spara och Spara som",
-            "text": "Spara sparar ändringar i den fil du redan har. Spara som låter dig välja namn och mapp – och används första gången en ny text sparas."
+            "text": {
+              "default": "Spara sparar ändringar i den fil du redan har. Spara som låter dig välja namn och mapp – och används första gången en ny text sparas.",
+              "short": "Använd Spara som första gången, så väljer du namn och mapp.",
+              "child": "Det du skriver finns bara i programmet tills du sparar det. Spara som är första gången du sparar: då väljer du vad filen ska heta och vilken mapp den ska ligga i. Efter det räcker det med Spara."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv något i Anteckningar och spara det som en fil.",
+            "text": {
+              "default": "Skriv några ord i Anteckningar. Välj sedan Arkiv → Spara som, välj en mapp, skriv ett namn och klicka på Spara.",
+              "guided": "Klicka i den stora vita ytan i Anteckningar och skriv några ord. Titta sedan högst upp i fönstret: där står Arkiv. Klicka på det och välj Spara som i menyn. En ruta öppnas. Till vänster väljer du mapp, till exempel Dokument. Längst ned, i fältet Filnamn, skriver du ett namn. Klicka sedan på den blå knappen Spara.",
+              "independent": "Skriv något i Anteckningar och spara det som en fil.",
+              "child.guided": "Skriv några ord i den vita ytan. Klicka på Arkiv högst upp och välj Spara som. Välj Dokument till vänster, skriv ett namn i rutan Filnamn och klicka på Spara."
+            },
             "hints": [
               "Klicka i Anteckningars vita yta och skriv några ord.",
               "Klicka på Arkiv högst upp.",
               "Välj Spara som – eller tryck Ctrl+S.",
               "Den gula ramen visar menyraden.",
               "Skriv text → Arkiv → Spara som → välj mapp → skriv ett namn → Spara."
-            ]
+            ],
+            "nudge": "Texten finns bara i programmet tills du har gjort något med den."
           },
           {
             "title": "Klart",
@@ -1376,7 +1750,11 @@
         "steps": [
           {
             "title": "De vanliga mapparna",
-            "text": "Windows har färdiga mappar för olika saker: Dokument för dokument, Hämtade filer för det du laddar ned och Bilder för foton och skärmbilder. Du hittar dem i Utforskarens vänsterspalt."
+            "text": {
+              "default": "Windows har färdiga mappar för olika saker: Dokument för dokument, Hämtade filer för det du laddar ned och Bilder för foton och skärmbilder. Du hittar dem i Utforskarens vänsterspalt.",
+              "short": "Dokument, Hämtade filer och Bilder finns i Utforskarens vänsterspalt.",
+              "child": "Windows har färdiga lådor för olika saker. I Dokument lägger du sådant du skriver. I Hämtade filer hamnar det du laddar ned från internet. I Bilder sparas foton och skärmbilder. Du hittar alla tre i spalten till vänster i Utforskaren."
+            }
           },
           {
             "title": "Klart",
@@ -1396,18 +1774,28 @@
         "steps": [
           {
             "title": "Filer – slutuppdrag",
-            "text": "Nu använder du allt om filer och mappar i ett och samma uppdrag."
+            "text": {
+              "default": "Nu använder du allt om filer och mappar i ett och samma uppdrag.",
+              "short": "Skapa, byt namn, flytta, ta bort och återställ i ett uppdrag.",
+              "child": "Nu får du använda allt du kan om filer och mappar i ett enda uppdrag. Ta det lugnt och gör en sak i taget."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Gör fem saker: skapa en ny mapp, byt namn på Projekt.txt, flytta filen till en annan mapp, ta bort den och återställ den från Papperskorgen.",
+            "text": {
+              "default": "Skapa en ny mapp, byt namn på Projekt.txt, flytta filen till en annan mapp, ta bort den och återställ den från Papperskorgen.",
+              "guided": "Ta ett moment i taget. Klicka på Nytt och välj Mapp, så har du en ny mapp. Klicka på Projekt.txt och välj Byt namn, skriv ett nytt namn och tryck Retur. Flytta filen till en mapp med Klipp ut och Klistra in, eller dra den dit. Ta bort filen med knappen med papperskorgen. Öppna Papperskorgen till vänster, klicka på filen och välj Återställ markerade objekt.",
+              "independent": "Gör fem saker: skapa en ny mapp, byt namn på Projekt.txt, flytta filen till en annan mapp, ta bort den och återställ den från Papperskorgen.",
+              "child.guided": "Fem saker, en i taget: Nytt → Mapp. Byt namn på Projekt.txt. Flytta filen till en mapp. Ta bort den. Hämta tillbaka den från Papperskorgen. Du har gjort allt förut!"
+            },
             "hints": [
               "Börja med Nytt → Mapp i Dokument.",
               "Byt sedan namn på Projekt.txt med Byt namn eller F2.",
               "Flytta filen – med Klipp ut och Klistra in eller genom att dra den till en mapp.",
               "Ta bort filen och öppna Papperskorgen.",
               "Ny mapp → byt namn på Projekt.txt → flytta → ta bort → Papperskorgen → Återställ."
-            ]
+            ],
+            "nudge": "Alla fem delarna har du gjort i tidigare lektioner i den här modulen."
           },
           {
             "title": "Klart",
@@ -1427,18 +1815,28 @@
         "steps": [
           {
             "title": "Adressfältet",
-            "text": "Adressfältet är den långa rutan högst upp i webbläsaren. Där skriver du en webbadress för att komma direkt till en webbplats."
+            "text": {
+              "default": "Adressfältet är den långa rutan högst upp i webbläsaren. Där skriver du en webbadress för att komma direkt till en webbplats.",
+              "short": "Skriv en webbadress i adressfältet för att gå till en webbplats.",
+              "child": "Varje webbplats har en egen adress, ungefär som ett hus har en gatuadress. Adressfältet är den långa rutan högst upp i webbläsaren. Skriver du adressen där åker du direkt till rätt sida."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv adressen datorskolan.example/internet i adressfältet och tryck Retur.",
+            "text": {
+              "default": "Klicka i adressfältet högst upp i Chrome, skriv datorskolan.example/internet och tryck Retur.",
+              "guided": "Titta högst upp i Chrome-fönstret. Till höger om pilarna finns en lång, rundad ruta – det är adressfältet. Klicka en gång i den. Texten som står där blir markerad, så det du skriver ersätter den. Skriv datorskolan.example/internet och tryck på Retur-tangenten. Sidan byts.",
+              "independent": "Gå till datorskolan.example/internet.",
+              "child.guided": "Klicka i den långa rutan högst upp i Chrome. Skriv datorskolan.example/internet och tryck Retur. Nu åker du till den sidan!"
+            },
             "hints": [
               "Adressfältet sitter högst upp i Chrome, bredvid pilarna.",
               "Klicka i adressfältet. Det som stod där blir markerat.",
               "Skriv datorskolan.example/internet och tryck Retur.",
               "Den gula ramen visar adressfältet.",
               "Klicka i adressfältet → skriv datorskolan.example/internet → tryck Retur."
-            ]
+            ],
+            "nudge": "Webbsidor har adresser. Fundera på var i webbläsaren man skriver en adress."
           },
           {
             "title": "Klart",
@@ -1464,18 +1862,28 @@
         "steps": [
           {
             "title": "Länkar",
-            "text": "En länk tar dig till en annan sida när du klickar på den. Muspekaren blir en hand när du pekar på en länk."
+            "text": {
+              "default": "En länk tar dig till en annan sida när du klickar på den. Muspekaren blir en hand när du pekar på en länk.",
+              "short": "Klicka på en länk för att komma till en annan sida.",
+              "child": "En länk är som en dörr till en annan sida. När du pekar på en länk förvandlas muspekaren till en liten hand. Klickar du då kommer du till den nya sidan."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Klicka på en länk eller en genväg på sidan i Chrome.",
+            "text": {
+              "default": "Klicka på en länk eller en av de runda genvägarna på webbsidan.",
+              "guided": "Titta på den stora vita ytan i Chrome – det är själva webbsidan. Flytta pekaren långsamt över de runda genvägarna mitt på sidan. Lägg märke till att pekaren blir en hand – det betyder att du pekar på en länk. Klicka en gång, till exempel på Vad är internet?. Sidan byts och adressen i adressfältet ändras.",
+              "independent": "Följ en länk på sidan i Chrome.",
+              "child.guided": "Flytta pilen över de runda bilderna mitt på sidan. Blir pilen en hand? Då är det en länk! Klicka på Vad är internet? och se vad som händer."
+            },
             "hints": [
               "Titta på den stora vita ytan i Chrome – själva webbsidan.",
               "Peka på de runda genvägarna eller på blå text. Pekaren blir en hand över en länk.",
               "Klicka en gång på till exempel Vad är internet?",
               "Den gula ramen visar webbsidan.",
               "Klicka en gång på genvägen Vad är internet? Sidan byts och adressen ändras."
-            ]
+            ],
+            "nudge": "Pekaren ändrar utseende när den är över något man kan klicka på."
           },
           {
             "title": "Klart",
@@ -1500,18 +1908,28 @@
         "steps": [
           {
             "title": "Flikar",
-            "text": "Med flikar kan du ha flera webbsidor öppna i samma fönster. Flikarna sitter högst upp i Chrome."
+            "text": {
+              "default": "Med flikar kan du ha flera webbsidor öppna i samma fönster. Flikarna sitter högst upp i Chrome.",
+              "short": "Flikar låter dig ha flera sidor öppna i samma fönster.",
+              "child": "Flikar är som flikarna i en pärm. Du kan ha flera webbsidor öppna samtidigt och bläddra mellan dem. Flikarna sitter högst upp i Chrome."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna en ny flik med plusknappen.",
+            "text": {
+              "default": "Öppna en ny flik med plusknappen till höger om flikarna högst upp i Chrome.",
+              "guided": "Titta högst upp i Chrome-fönstret. Där sitter flikarna, en för varje öppen sida, med sidans namn. Till höger om den sista fliken finns ett litet plustecken. Klicka en gång på plustecknet. En ny, tom flik öppnas.",
+              "independent": "Öppna en ny flik.",
+              "child.guided": "Högst upp i Chrome ser du flikarna. Bredvid den sista finns ett litet plus. Klicka på plusset så får du en ny flik!"
+            },
             "hints": [
               "Titta högst upp i Chrome-fönstret där flikarna finns.",
               "Till höger om den sista fliken finns ett plustecken.",
               "Klicka på plustecknet en gång.",
               "Den gula ramen visar plusknappen.",
               "Klicka på + bredvid flikarna – eller tryck Ctrl+T."
-            ]
+            ],
+            "nudge": "Det handlar om raden allra högst upp i webbläsaren."
           },
           {
             "title": "Klart",
@@ -1531,18 +1949,28 @@
         "steps": [
           {
             "title": "Bakåt och framåt",
-            "text": "Pilarna uppe till vänster i webbläsaren tar dig till sidan du var på nyss (bakåt) och tillbaka igen (framåt)."
+            "text": {
+              "default": "Pilarna uppe till vänster i webbläsaren tar dig till sidan du var på nyss (bakåt) och tillbaka igen (framåt).",
+              "short": "Bakåt går till förra sidan, Framåt tillbaka igen.",
+              "child": "Webbläsaren kommer ihåg vilka sidor du har varit på. Pilen åt vänster tar dig ett steg tillbaka, och pilen åt höger tar dig framåt igen – som att bläddra i en bok."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna en sida, klicka sedan på Bakåt och därefter på Framåt.",
+            "text": {
+              "default": "Öppna en sida via en genväg. Klicka sedan på Bakåt-pilen och därefter på Framåt-pilen uppe till vänster.",
+              "guided": "Börja med att klicka på en av de runda genvägarna, till exempel Vad är internet?, så att du byter sida. Titta sedan längst upp till vänster i Chrome. Där finns två pilar. Klicka på pilen som pekar åt vänster – Bakåt. Du kommer tillbaka till förra sidan. Klicka sedan på pilen som pekar åt höger – Framåt.",
+              "independent": "Gå tillbaka till förra sidan och sedan framåt igen.",
+              "child.guided": "Klicka på Vad är internet? för att byta sida. Klicka sedan på pilen åt vänster högst upp – nu är du tillbaka! Klicka på pilen åt höger så går du framåt igen."
+            },
             "hints": [
               "Öppna först en sida, till exempel genvägen Vad är internet?",
               "Bakåt-pilen pekar åt vänster och sitter längst upp till vänster.",
               "Klicka på Bakåt. Klicka sedan på pilen åt höger – Framåt.",
               "Den gula ramen visar Bakåt-pilen.",
               "Öppna en sida → ← Bakåt → → Framåt."
-            ]
+            ],
+            "nudge": "Du behöver ha besökt mer än en sida för att kunna gå tillbaka."
           },
           {
             "title": "Klart",
@@ -1562,18 +1990,28 @@
         "steps": [
           {
             "title": "Ladda ned",
-            "text": "Att ladda ned betyder att en fil från webben sparas på din dator. Chrome sparar den i mappen Hämtade filer och visar en nedladdningsikon uppe till höger."
+            "text": {
+              "default": "Att ladda ned betyder att en fil från webben sparas på din dator. Chrome sparar den i mappen Hämtade filer och visar en nedladdningsikon uppe till höger.",
+              "short": "Nedladdade filer sparas i Hämtade filer.",
+              "child": "Att ladda ned betyder att du hämtar en fil från internet och sparar den i din egen dator. Chrome lägger den i mappen Hämtade filer, så att du vet var den finns."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Gå till sidan Ladda ned en guide och ladda ned guide.txt.",
+            "text": {
+              "default": "Öppna genvägen Ladda ned en guide och klicka på knappen Ladda ned guide.txt.",
+              "guided": "På Chromes startsida finns runda genvägar mitt på sidan. Klicka på den som heter Ladda ned en guide. En ny sida öppnas. Klicka på den blå knappen Ladda ned guide.txt. Uppe till höger i Chrome visas en ruta med Senaste nedladdningar. Filen hamnar i mappen Hämtade filer.",
+              "independent": "Gå till sidan Ladda ned en guide och ladda ned guide.txt.",
+              "child.guided": "Klicka på genvägen Ladda ned en guide. Klicka sedan på den blå knappen Ladda ned guide.txt. Nu hämtas filen till din dator!"
+            },
             "hints": [
               "Börja på Chromes startsida med de runda genvägarna.",
               "Klicka på genvägen Ladda ned en guide.",
               "Klicka på den blå knappen Ladda ned guide.txt.",
               "Den gula ramen visar webbsidan.",
               "Genvägen Ladda ned en guide → Ladda ned guide.txt. En ruta med Senaste nedladdningar visas."
-            ]
+            ],
+            "nudge": "Det finns en sida som erbjuder en fil att hämta."
           },
           {
             "title": "Klart",
@@ -1593,18 +2031,28 @@
         "steps": [
           {
             "title": "Formulär",
-            "text": "Ett formulär samlar in uppgifter från dig: textfält, val och kryssrutor. Fält med * måste fyllas i innan du kan skicka."
+            "text": {
+              "default": "Ett formulär samlar in uppgifter från dig: textfält, val och kryssrutor. Fält med * måste fyllas i innan du kan skicka.",
+              "short": "Fyll i formulärets fält och skicka. Fält med * är obligatoriska.",
+              "child": "Ett formulär är som en blankett på papper, fast på skärmen. Du skriver i rutor och kryssar i val. Rutor med en liten stjärna * måste du fylla i, annars går det inte att skicka."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna kontaktformuläret, skriv ditt namn, kryssa i rutan och klicka Skicka.",
+            "text": {
+              "default": "Öppna Kontaktformulär, skriv ett namn, kryssa i rutan Jag har läst informationen och klicka på Skicka.",
+              "guided": "Klicka på genvägen Kontaktformulär på Chromes startsida. Formuläret öppnas. Klicka i fältet Namn och skriv ett namn. Leta sedan upp den lilla fyrkanten bredvid Jag har läst informationen och klicka i den, så att en bock syns. Klicka till sist på knappen Skicka längst ned. Saknas något visas en röd förklaring vid fältet.",
+              "independent": "Skicka kontaktformuläret med ditt namn ifyllt.",
+              "child.guided": "Öppna Kontaktformulär. Skriv ett namn i rutan Namn. Klicka i den lilla fyrkanten så att det blir en bock. Klicka på Skicka!"
+            },
             "hints": [
               "Klicka på genvägen Kontaktformulär på Chromes startsida.",
               "Klicka i fältet Namn och skriv ett namn.",
               "Kryssa i rutan Jag har läst informationen.",
               "Den gula ramen visar formuläret.",
               "Namn → kryssrutan → Skicka. Saknas något visas en röd förklaring."
-            ]
+            ],
+            "nudge": "Det finns en genväg till ett formulär på startsidan."
           },
           {
             "title": "Klart",
@@ -1624,18 +2072,28 @@
         "steps": [
           {
             "title": "Zoom",
-            "text": "Med zoom gör du text och bilder på webbsidan större eller mindre. Det är bra när texten känns för liten."
+            "text": {
+              "default": "Med zoom gör du text och bilder på webbsidan större eller mindre. Det är bra när texten känns för liten.",
+              "short": "Zooma för att göra text och bilder större eller mindre.",
+              "child": "Zooma betyder att förstora eller förminska, som med ett förstoringsglas. Är texten på en sida för liten kan du zooma in så att den blir större."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Zooma in eller ut på webbsidan.",
+            "text": {
+              "default": "Öppna Chromes meny med de tre prickarna och välj Zooma in eller Zooma ut.",
+              "guided": "Titta uppe till höger i Chrome-fönstret. Där finns en knapp med tre prickar ovanför varandra. Klicka på den. En meny öppnas. Leta upp raden Zooma och klicka på plustecknet för att zooma in, eller på minustecknet för att zooma ut. Texten på sidan blir större eller mindre.",
+              "independent": "Zooma in eller ut på webbsidan.",
+              "child.guided": "Klicka på de tre prickarna uppe till höger. Hitta Zooma i menyn och klicka på plus. Nu blir allt större!"
+            },
             "hints": [
               "Uppe till höger i Chrome finns en knapp med tre prickar.",
               "Klicka på de tre prickarna för att öppna Chromes meny.",
               "Välj Zooma in eller Zooma ut.",
               "Den gula ramen visar menyknappen.",
               "⋮ → Zooma in. Snabbare: håll Ctrl och tryck +. Ctrl+0 återställer."
-            ]
+            ],
+            "nudge": "Webbläsaren har en meny med fler inställningar."
           },
           {
             "title": "Klart",
@@ -1655,18 +2113,28 @@
         "steps": [
           {
             "title": "Internet – slutuppdrag",
-            "text": "Nu använder du det viktigaste i webbläsaren i ett och samma uppdrag."
+            "text": {
+              "default": "Nu använder du det viktigaste i webbläsaren i ett och samma uppdrag.",
+              "short": "Adressfält, länk, flik, Bakåt/Framåt och nedladdning i ett uppdrag.",
+              "child": "Nu blir du webbläsar-expert! Du ska använda det viktigaste du har lärt dig om internet i ett och samma uppdrag."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Använd adressfältet, öppna en länk, öppna en ny flik, använd Bakåt och Framåt och ladda ned guide.txt.",
+            "text": {
+              "default": "Skriv en adress i adressfältet, klicka på en länk, öppna en ny flik, använd Bakåt och Framåt och ladda ned guide.txt.",
+              "guided": "Ta ett moment i taget. Klicka i adressfältet högst upp, skriv en adress och tryck Retur. Klicka på en länk på sidan. Öppna en ny flik med plustecknet bredvid flikarna. I en flik där du har besökt mer än en sida klickar du på Bakåt-pilen och sedan Framåt-pilen. Avsluta med genvägen Ladda ned en guide och knappen Ladda ned guide.txt.",
+              "independent": "Använd adressfältet, öppna en länk, öppna en ny flik, använd Bakåt och Framåt och ladda ned guide.txt.",
+              "child.guided": "Fem saker: skriv en adress, klicka på en länk, öppna en ny flik med plus, tryck Bakåt och Framåt, och ladda ned guide.txt. Du har gjort allt förut!"
+            },
             "hints": [
               "Börja med adressfältet: skriv en adress och tryck Retur.",
               "Klicka på en länk på sidan.",
               "Öppna en ny flik med plusknappen.",
               "Använd Bakåt och Framåt i en flik där du har besökt mer än en sida.",
               "Avsluta på sidan Ladda ned en guide och ladda ned guide.txt."
-            ]
+            ],
+            "nudge": "Varje del har du gjort i en tidigare lektion om webbläsaren."
           },
           {
             "title": "Klart",
@@ -1686,18 +2154,28 @@
         "steps": [
           {
             "title": "Inkorgen",
-            "text": "Inkorgen är listan med mejl som du har fått. Olästa mejl har fetstil och ett blått streck. Klicka på ett mejl för att läsa det."
+            "text": {
+              "default": "Inkorgen är listan med mejl som du har fått. Olästa mejl har fetstil och ett blått streck. Klicka på ett mejl för att läsa det.",
+              "short": "Inkorgen listar dina mejl. Klicka på ett för att läsa det.",
+              "child": "E-post är som brev, fast i datorn. Inkorgen är din brevlåda – där hamnar alla mejl du får. Mejl du inte har läst än syns med fet stil och ett blått streck."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna ett mejl i inkorgen.",
+            "text": {
+              "default": "Klicka på ett mejl i listan i E-post för att läsa det.",
+              "guided": "E-post är öppet. I mitten av fönstret finns en lista med mejl – det är inkorgen. Varje rad visar vem som skickade mejlet, vad det handlar om och början av texten. Klicka en gång på ett mejl, till exempel från Erik Lund. Hela mejlet visas då till höger.",
+              "independent": "Öppna ett mejl i inkorgen.",
+              "child.guided": "I mitten ser du en lista med mejl. Klicka på mejlet från Erik Lund. Nu kan du läsa det till höger!"
+            },
             "hints": [
               "Listan med mejl finns i mitten av E-post.",
               "Varje rad visar avsändare, ämne och början av texten.",
               "Klicka en gång på ett mejl, till exempel från Erik Lund.",
               "Den gula ramen visar listan med mejl.",
               "Klicka på ett mejl i listan. Hela mejlet visas till höger."
-            ]
+            ],
+            "nudge": "Dina mejl samlas på ett ställe i programmet."
           },
           {
             "title": "Klart",
@@ -1717,18 +2195,28 @@
         "steps": [
           {
             "title": "Svara",
-            "text": "Svara skapar ett nytt mejl till den som skrev. Mottagare och ämne fylls i automatiskt – ämnet får SV: framför."
+            "text": {
+              "default": "Svara skapar ett nytt mejl till den som skrev. Mottagare och ämne fylls i automatiskt – ämnet får SV: framför.",
+              "short": "Svara skickar ett mejl tillbaka till avsändaren.",
+              "child": "När någon har skrivit till dig kan du svara. Klickar du på Svara fyller datorn själv i vem det ska till och vad det handlar om. Du behöver bara skriva ditt svar."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna mejlet från Erik Lund, klicka Svara, skriv ett svar och skicka det.",
+            "text": {
+              "default": "Öppna mejlet från Erik Lund, klicka på Svara, skriv några ord och klicka på Skicka.",
+              "guided": "Klicka på mejlet från Erik Lund i listan i mitten. Ovanför mejlet till höger finns några knappar – klicka på Svara. Ett nytt mejl öppnas där Till och Ämne redan är ifyllda. Klicka i den stora rutan för text och skriv några ord. Klicka sedan på Skicka.",
+              "independent": "Svara på mejlet från Erik Lund.",
+              "child.guided": "Klicka på Eriks mejl. Klicka på Svara. Skriv några ord i den stora rutan och klicka på Skicka!"
+            },
             "hints": [
               "Klicka på mejlet från Erik Lund i inkorgen.",
               "Klicka på Svara ovanför mejlet.",
               "Skriv några ord i den stora rutan.",
               "Den gula ramen visar listan med mejl.",
               "Eriks mejl → Svara → skriv ditt svar → Skicka."
-            ]
+            ],
+            "nudge": "Du behöver först läsa mejlet du ska svara på."
           },
           {
             "title": "Klart",
@@ -1748,18 +2236,28 @@
         "steps": [
           {
             "title": "Nytt mejl",
-            "text": "Ett nytt mejl börjar med knappen Ny e-post. Du fyller i Till (mottagarens e-postadress), Ämne och själva meddelandet."
+            "text": {
+              "default": "Ett nytt mejl börjar med knappen Ny e-post. Du fyller i Till (mottagarens e-postadress), Ämne och själva meddelandet.",
+              "short": "Ny e-post: fyll i Till, Ämne och meddelande.",
+              "child": "Ett nytt mejl är som att skriva ett brev från början. Du skriver vem det ska till (deras e-postadress), vad det handlar om (ämnet) och själva brevet."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv ett nytt mejl till anna@example.com och skicka det.",
+            "text": {
+              "default": "Klicka på Ny e-post, skriv anna@example.com i Till, fyll i ett ämne och ett meddelande och klicka på Skicka.",
+              "guided": "Klicka på knappen Ny e-post uppe till vänster. Ett tomt mejl öppnas. Klicka i fältet Till och skriv anna@example.com – det är mottagarens adress. Klicka i fältet Ämne och skriv några ord om vad mejlet handlar om. Skriv sedan ditt meddelande i den stora rutan och klicka på Skicka.",
+              "independent": "Skriv ett nytt mejl till anna@example.com och skicka det.",
+              "child.guided": "Klicka på Ny e-post. I Till skriver du anna@example.com. I Ämne skriver du vad det handlar om. Skriv ditt meddelande och klicka på Skicka!"
+            },
             "hints": [
               "Knappen Ny e-post sitter uppe till vänster.",
               "Skriv anna@example.com i fältet Till.",
               "Skriv ett ämne och ett kort meddelande.",
               "Den gula ramen visar knappen Ny e-post.",
               "Ny e-post → Till: anna@example.com → Ämne → meddelande → Skicka."
-            ]
+            ],
+            "nudge": "Det finns en knapp för att börja skriva ett helt nytt mejl."
           },
           {
             "title": "Klart",
@@ -1779,18 +2277,28 @@
         "steps": [
           {
             "title": "Bifoga",
-            "text": "En bifogad fil – en bilaga – skickas tillsammans med mejlet. Du väljer filen i rutan Öppna, precis som när du laddar upp på webben."
+            "text": {
+              "default": "En bifogad fil – en bilaga – skickas tillsammans med mejlet. Du väljer filen i rutan Öppna, precis som när du laddar upp på webben.",
+              "short": "Bifoga fil skickar med en fil i mejlet.",
+              "child": "En bilaga är något du skickar med i mejlet, som när du lägger en bild i ett kuvert. Du väljer filen i en ruta som heter Öppna, och den syns sedan med ett litet gem."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skapa ett nytt mejl och bifoga filen plan.txt.",
+            "text": {
+              "default": "Klicka på Ny e-post och sedan Bifoga fil. Välj plan.txt i Dokument och klicka på Öppna.",
+              "guided": "Klicka på Ny e-post uppe till vänster. Ovanför fälten i det nya mejlet finns en knapp med ett gem – Bifoga fil. Klicka på den. Rutan Öppna visas. Klicka på Dokument i vänsterspalten, klicka sedan på plan.txt och på knappen Öppna. Bilagan syns i mejlet med ett gem.",
+              "independent": "Skapa ett nytt mejl och bifoga filen plan.txt.",
+              "child.guided": "Klicka på Ny e-post. Klicka på gemet, Bifoga fil. Välj Dokument, klicka på plan.txt och sedan på Öppna. Nu sitter filen fast med ett gem!"
+            },
             "hints": [
               "Klicka på Ny e-post.",
               "Klicka på Bifoga fil (gemet) i raden ovanför fälten.",
               "Rutan Öppna visas. plan.txt ligger i Dokument – klicka på Dokument till vänster.",
               "Den gula ramen visar knappen Ny e-post.",
               "Ny e-post → Bifoga fil → Dokument → plan.txt → Öppna. Bilagan visas med ett gem."
-            ]
+            ],
+            "nudge": "Leta efter något som ser ut som ett gem."
           },
           {
             "title": "Klart",
@@ -1810,18 +2318,28 @@
         "steps": [
           {
             "title": "Spara bilagan",
-            "text": "En bilaga i ett mejl kan sparas som en fil på datorn. Den hamnar i Hämtade filer."
+            "text": {
+              "default": "En bilaga i ett mejl kan sparas som en fil på datorn. Den hamnar i Hämtade filer.",
+              "short": "Ladda ned en bilaga så sparas den i Hämtade filer.",
+              "child": "Har någon skickat en bild eller ett dokument i ett mejl kan du spara det i din dator. Det kallas att ladda ned bilagan, och den hamnar i mappen Hämtade filer."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Annas mejl och ladda ned bilagan.",
+            "text": {
+              "default": "Öppna Annas mejl och klicka på Ladda ned bredvid bilagan längst ned.",
+              "guided": "Klicka på mejlet från Anna Berg i listan i mitten. Mejlet visas till höger. Längst ned i mejlet finns en ruta med bilagan utflykt.jpg. Bredvid den finns knappen Ladda ned. Klicka på den. Filen sparas i mappen Hämtade filer.",
+              "independent": "Öppna Annas mejl och ladda ned bilagan.",
+              "child.guided": "Klicka på Annas mejl. Längst ned finns en bild som heter utflykt.jpg. Klicka på Ladda ned bredvid den!"
+            },
             "hints": [
               "Klicka på mejlet från Anna Berg.",
               "Längst ned i mejlet finns bilagan utflykt.jpg.",
               "Klicka på Ladda ned bredvid bilagan.",
               "Den gula ramen visar Annas mejl.",
               "Annas mejl → Ladda ned. Filen sparas i Hämtade filer."
-            ]
+            ],
+            "nudge": "Bilagan sitter i ett av mejlen i inkorgen."
           },
           {
             "title": "Klart",
@@ -1841,18 +2359,28 @@
         "steps": [
           {
             "title": "E-post – slutuppdrag",
-            "text": "Nu använder du det viktigaste i E-post i ett och samma uppdrag."
+            "text": {
+              "default": "Nu använder du det viktigaste i E-post i ett och samma uppdrag.",
+              "short": "Läs, ladda ned, svara och bifoga i ett uppdrag.",
+              "child": "Nu är det dags att visa allt du kan om e-post. Du ska läsa ett mejl, spara bilagan, svara och skicka med en fil."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Annas mejl, ladda ned bilagan, klicka Svara, skriv ett svar, bifoga en fil och skicka.",
+            "text": {
+              "default": "Öppna Annas mejl och ladda ned bilagan. Klicka Svara, skriv några ord, bifoga plan.txt och skicka.",
+              "guided": "Ta ett moment i taget. Klicka på mejlet från Anna Berg. Klicka på Ladda ned bredvid bilagan längst ned. Klicka sedan på Svara och skriv några ord i den stora rutan. Klicka på gemet, Bifoga fil, välj Dokument och plan.txt och klicka på Öppna. Klicka på Skicka först när bilagan syns med ett gem.",
+              "independent": "Spara bilagan i Annas mejl och svara henne med en bifogad fil.",
+              "child.guided": "Annas mejl → Ladda ned bilagan → Svara → skriv några ord → gemet → plan.txt → Skicka. Ta en sak i taget!"
+            },
             "hints": [
               "Öppna mejlet från Anna Berg.",
               "Ladda ned bilagan i mejlet.",
               "Klicka Svara och skriv några ord.",
               "Klicka Bifoga fil och välj en fil – till exempel plan.txt i Dokument.",
               "Skicka först när bilagan syns med ett gem."
-            ]
+            ],
+            "nudge": "Varje del har du gjort tidigare i E-post-modulen."
           },
           {
             "title": "Klart",
@@ -1872,7 +2400,11 @@
         "steps": [
           {
             "title": "Lösenord",
-            "text": "Ett bra lösenord är långt, svårt att gissa och används bara på ett ställe. En lösenfras – flera ord i rad – är ofta både starkare och lättare att komma ihåg."
+            "text": {
+              "default": "Ett bra lösenord är långt, svårt att gissa och används bara på ett ställe. En lösenfras – flera ord i rad – är ofta både starkare och lättare att komma ihåg.",
+              "short": "Använd långa, unika lösenord eller lösenfraser.",
+              "child": "Ett lösenord är som nyckeln till ditt hem på nätet. En bra nyckel är lång och svår att gissa, och du använder den bara till ett ställe. Flera ord i rad, en lösenfras, är ofta lättast att komma ihåg – och svårast att lista ut."
+            }
           },
           {
             "title": "Klart",
@@ -1892,7 +2424,11 @@
         "steps": [
           {
             "title": "Var försiktig",
-            "text": "Lämna aldrig ut lösenord eller känsliga uppgifter bara för att ett mejl eller en sida ber om det. Kontrollera först vem som frågar och vilken adress du är på."
+            "text": {
+              "default": "Lämna aldrig ut lösenord eller känsliga uppgifter bara för att ett mejl eller en sida ber om det. Kontrollera först vem som frågar och vilken adress du är på.",
+              "short": "Lämna inte ut lösenord eller känsliga uppgifter till den som frågar.",
+              "child": "Ditt lösenord och dina personliga uppgifter är dina hemligheter. Även om ett mejl eller en sida ber om dem ska du inte lämna ut dem. Fråga en vuxen du litar på om du blir osäker."
+            }
           },
           {
             "title": "Klart",
@@ -1912,18 +2448,28 @@
         "steps": [
           {
             "title": "Bluffmejl",
-            "text": "Nätfiske – phishing – är mejl som låtsas komma från någon du litar på för att lura dig att lämna ut lösenord eller pengar. Typiska tecken är brådska, hot och en konstig avsändaradress."
+            "text": {
+              "default": "Nätfiske – phishing – är mejl som låtsas komma från någon du litar på för att lura dig att lämna ut lösenord eller pengar. Typiska tecken är brådska, hot och en konstig avsändaradress.",
+              "short": "Bluffmejl skyndar på dig och låtsas vara någon du litar på.",
+              "child": "Ett bluffmejl är som en lurendrejare som klär ut sig. Det låtsas komma från någon du litar på, till exempel din bank, för att lura dig. Ofta försöker det stressa dig: \"Gör det nu, annars händer något!\""
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna bluffmejlet och rapportera det.",
+            "text": {
+              "default": "Öppna mejlet som försöker skynda på dig och klicka på Rapportera ovanför mejlet.",
+              "guided": "Titta igenom listan med mejl i mitten. Ett av dem har ett stressande ämne: BRÅDSKANDE: Ditt konto stängs i dag. Klicka en gång på det mejlet. Klicka inte på något inne i texten. Titta på avsändarens adress – den ser konstig ut. Klicka på Rapportera ovanför mejlet och bekräfta med Rapportera.",
+              "independent": "Öppna bluffmejlet och rapportera det.",
+              "child.guided": "Hitta mejlet som skriker BRÅDSKANDE. Öppna det, men klicka inte på något i texten! Klicka på Rapportera högst upp och sedan på Rapportera igen."
+            },
             "hints": [
               "Leta efter ett mejl som försöker skynda på dig.",
               "Öppna det och titta på avsändarens adress. Klicka inte på något i texten.",
               "Klicka på Rapportera ovanför mejlet.",
               "Den gula ramen visar det misstänkta mejlet.",
               "Mejlet BRÅDSKANDE: Ditt konto stängs i dag → Rapportera → Rapportera."
-            ]
+            ],
+            "nudge": "Ett av mejlen försöker få dig att göra något väldigt snabbt."
           },
           {
             "title": "Klart",
@@ -1943,18 +2489,28 @@
         "steps": [
           {
             "title": "Ändra storlek",
-            "text": "Ett fönster kan göras bredare, smalare, högre eller lägre utan att maximeras. Du drar i fönstrets kant eller hörn."
+            "text": {
+              "default": "Ett fönster kan göras bredare, smalare, högre eller lägre utan att maximeras. Du drar i fönstrets kant eller hörn.",
+              "short": "Dra i fönstrets kant eller hörn för att ändra storleken.",
+              "child": "Ett fönster kan bli lite större eller lite mindre, utan att fylla hela skärmen. Du tar tag i fönstrets kant eller hörn och drar, ungefär som när du drar ut ett dragspel."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Ändra storleken på Kalkylatorns fönster genom att dra i det nedre högra hörnet.",
+            "text": {
+              "default": "Dra i Kalkylatorns nedre högra hörn för att göra fönstret större eller mindre.",
+              "guided": "Titta på Kalkylatorns fönster och hitta det nedre högra hörnet. Flytta pekaren långsamt dit. När pekaren ligger exakt på hörnet ändras den till en dubbelpil med spetsar åt två håll. Tryck då ned vänster musknapp, håll kvar och dra utåt eller inåt. Släpp när storleken passar.",
+              "independent": "Gör Kalkylatorns fönster större eller mindre utan att maximera det.",
+              "child.guided": "Gå till Kalkylatorns nedre högra hörn. När pilen blir en dubbelpil trycker du och håller vänster knapp. Dra – och fönstret växer eller krymper!"
+            },
             "hints": [
               "Leta upp Kalkylatorns nedre högra hörn.",
               "När pekaren är exakt på hörnet blir den en dubbelpil.",
               "Tryck och håll vänster musknapp och dra utåt eller inåt.",
               "Den gula ramen visar hörnet du ska dra i.",
               "Pekaren på nedre högra hörnet → håll → dra → släpp."
-            ]
+            ],
+            "nudge": "Det går att ta tag i fönstret på fler ställen än i namnlisten."
           },
           {
             "title": "Klart",
@@ -1974,18 +2530,28 @@
         "steps": [
           {
             "title": "Växla program",
-            "text": "När flera program är öppna ligger det senast valda fönstret överst. Du byter program genom att klicka på dess ikon i aktivitetsfältet."
+            "text": {
+              "default": "När flera program är öppna ligger det senast valda fönstret överst. Du byter program genom att klicka på dess ikon i aktivitetsfältet.",
+              "short": "Byt program genom att klicka på dess ikon i aktivitetsfältet.",
+              "child": "När flera program är öppna ligger de som papper i en hög. Det du valde sist ligger överst. Vill du se ett annat klickar du på dess bild i raden längst ned, så hamnar det överst."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Byt till det andra öppna programmet genom att klicka på dess ikon i aktivitetsfältet.",
+            "text": {
+              "default": "Klicka på det andra programmets ikon i aktivitetsfältet för att byta till det.",
+              "guided": "Titta på aktivitetsfältet längst ned på skärmen. Under ikonerna för öppna program finns ett litet streck. Programmet som är aktivt just nu har ett längre, blått streck. Klicka en gång på ikonen för det andra öppna programmet – det med det korta strecket. Då hamnar det fönstret överst.",
+              "independent": "Byt till det andra öppna programmet.",
+              "child.guided": "Titta på raden längst ned. Två program är öppna och har ett streck under sig. Klicka på det som INTE har det långa blå strecket. Nu hamnar det överst!"
+            },
             "hints": [
               "Titta på aktivitetsfältet längst ned.",
               "Öppna program har ett litet streck under ikonen. Det aktiva programmet har ett längre, blått streck.",
               "Klicka på ikonen för det program som inte är aktivt.",
               "Den gula ramen visar ikonerna i aktivitetsfältet.",
               "Klicka på Kalkylator eller Anteckningar i aktivitetsfältet – det som inte är överst just nu."
-            ]
+            ],
+            "nudge": "Raden längst ned visar vilka program som är öppna."
           },
           {
             "title": "Klart",
@@ -2005,7 +2571,11 @@
         "steps": [
           {
             "title": "Alt+Tab",
-            "text": "På en riktig dator kan du hålla ned Alt och trycka Tab för att växla mellan öppna program. Fortsätt trycka Tab för att välja nästa och släpp Alt för att byta. Din riktiga dator fångar den här kombinationen innan webbläsaren ser den, så i övningsdatorn byter du program med aktivitetsfältet."
+            "text": {
+              "default": "På en riktig dator kan du hålla ned Alt och trycka Tab för att växla mellan öppna program. Fortsätt trycka Tab för att välja nästa och släpp Alt för att byta. Din riktiga dator fångar den här kombinationen innan webbläsaren ser den, så i övningsdatorn byter du program med aktivitetsfältet.",
+              "short": "Alt+Tab växlar mellan öppna program på en riktig dator.",
+              "child": "På en riktig dator finns ett snabbt knep för att byta program: håll ned Alt och tryck på Tab. Då ser du alla öppna program och kan bläddra mellan dem. I övningsdatorn fungerar inte knepet, för din riktiga dator tar hand om det först, så här använder du raden längst ned i stället."
+            }
           },
           {
             "title": "Klart",
@@ -2025,18 +2595,28 @@
         "steps": [
           {
             "title": "Sök i en mapp",
-            "text": "Uppe till höger i Utforskaren finns en sökruta. Det du skriver där filtrerar bort allt som inte matchar."
+            "text": {
+              "default": "Uppe till höger i Utforskaren finns en sökruta. Det du skriver där filtrerar bort allt som inte matchar.",
+              "short": "Utforskarens sökruta visar bara det som matchar.",
+              "child": "När en mapp är full av filer kan det vara svårt att hitta rätt. Då kan du söka. Du skriver en del av namnet i sökrutan, så visas bara de filer som passar."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv Hitta i Utforskarens sökruta.",
+            "text": {
+              "default": "Klicka i sökrutan uppe till höger i Utforskaren och skriv Hitta.",
+              "guided": "Titta uppe till höger i Utforskarens fönster. Där finns en avlång ruta med ett förstoringsglas där det står Sök i Dokument. Klicka i den rutan. Skriv sedan ordet Hitta. Listan med filer krymper medan du skriver, och bara Hitta mig.txt blir kvar.",
+              "independent": "Sök i Dokument efter filen vars namn börjar med Hitta.",
+              "child.guided": "Uppe till höger finns en ruta med ett förstoringsglas. Klicka där och skriv Hitta. Se hur de andra filerna försvinner tills bara rätt fil är kvar!"
+            },
             "hints": [
               "Titta uppe till höger i Utforskaren.",
               "Där finns en ruta där det står Sök i Dokument.",
               "Klicka i rutan och skriv Hitta.",
               "Den gula ramen visar sökrutan.",
               "Klicka i sökrutan och skriv Hitta. Filen Hitta mig.txt syns."
-            ]
+            ],
+            "nudge": "Det finns ett sätt att låta datorn leta i en mapp åt dig."
           },
           {
             "title": "Klart",
@@ -2056,18 +2636,28 @@
         "steps": [
           {
             "title": "Bokmärken",
-            "text": "Ett bokmärke sparar adressen till en sida. Du bokmärker med stjärnan längst till höger i adressfältet. Bokmärken visas sedan i en rad under adressfältet."
+            "text": {
+              "default": "Ett bokmärke sparar adressen till en sida. Du bokmärker med stjärnan längst till höger i adressfältet. Bokmärken visas sedan i en rad under adressfältet.",
+              "short": "Stjärnan i adressfältet sparar sidan som bokmärke.",
+              "child": "Ett bokmärke i webbläsaren fungerar som ett bokmärke i en bok: det hjälper dig att hitta tillbaka till en sida du gillar. Du gör ett bokmärke med stjärnan i adressfältet."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna en webbsida och bokmärk den med stjärnan.",
+            "text": {
+              "default": "Öppna sidan Vad är internet? och klicka på stjärnan längst till höger i adressfältet.",
+              "guided": "Startsidan går inte att bokmärka, så öppna först en sida: klicka på genvägen Vad är internet?. Titta sedan på adressfältet högst upp. Längst till höger inne i fältet finns en liten stjärna. Klicka en gång på den. Stjärnan blir blå och sidan sparas i bokmärkesraden under adressfältet.",
+              "independent": "Bokmärk en webbsida.",
+              "child.guided": "Klicka på Vad är internet?. Hitta den lilla stjärnan längst till höger i den långa rutan högst upp. Klicka på stjärnan – nu blir den blå och sidan är sparad!"
+            },
             "hints": [
               "Startsidan kan inte bokmärkas – öppna först en sida, till exempel Vad är internet?",
               "Titta längst till höger inne i adressfältet.",
               "Där finns en stjärna. Klicka på den.",
               "Den gula ramen visar adressfältet där stjärnan sitter.",
               "Öppna Vad är internet? → klicka på stjärnan i adressfältet. Stjärnan blir blå."
-            ]
+            ],
+            "nudge": "Du behöver vara på en riktig sida, inte på startsidan."
           },
           {
             "title": "Klart",
@@ -2087,18 +2677,28 @@
         "steps": [
           {
             "title": "Cookies",
-            "text": "Många webbplatser visar en ruta om cookies när du kommer dit första gången. Läs vad den säger – du får ofta välja mellan Godkänn alla och Avvisa."
+            "text": {
+              "default": "Många webbplatser visar en ruta om cookies när du kommer dit första gången. Läs vad den säger – du får ofta välja mellan Godkänn alla och Avvisa.",
+              "short": "Läs cookie-rutan och välj Godkänn alla eller Avvisa.",
+              "child": "Cookies är små anteckningar som en webbplats sparar i din webbläsare, till exempel om vad du har valt. Många sidor frågar först om det är okej. Läs rutan innan du klickar."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Godkänn cookie-rutan på Chromes startsida.",
+            "text": {
+              "default": "Läs cookie-rutan längst ned på Chromes startsida och klicka på Godkänn alla.",
+              "guided": "Titta längst ned på Chromes startsida. Där finns en ruta som handlar om cookies. Läs texten i den – den förklarar vad sidan vill spara. Klicka sedan på knappen Godkänn alla i rutan. På riktiga webbplatser kan du lika gärna välja Avvisa om du inte vill dela mer än nödvändigt.",
+              "independent": "Godkänn cookie-rutan på Chromes startsida.",
+              "child.guided": "Längst ned på sidan finns en ruta om cookies. Läs den först. Klicka sedan på Godkänn alla."
+            },
             "hints": [
               "Cookie-rutan ligger längst ned på startsidan.",
               "Läs texten i rutan.",
               "Klicka på Godkänn alla.",
               "Den gula ramen visar cookie-rutan.",
               "Klicka på Godkänn alla i rutan längst ned. På riktiga sidor kan du lika gärna välja Avvisa."
-            ]
+            ],
+            "nudge": "Leta efter en ruta som ber dig om ett val."
           },
           {
             "title": "Klart",
@@ -2118,18 +2718,28 @@
         "steps": [
           {
             "title": "Ladda upp",
-            "text": "Att ladda upp är motsatsen till att ladda ned: du skickar en fil från datorn till en webbplats. Du väljer filen i en ruta som heter Öppna."
+            "text": {
+              "default": "Att ladda upp är motsatsen till att ladda ned: du skickar en fil från datorn till en webbplats. Du väljer filen i en ruta som heter Öppna.",
+              "short": "Ladda upp: välj en fil i rutan Öppna och skicka den till webbplatsen.",
+              "child": "Att ladda upp är motsatsen till att ladda ned. Nu skickar du en fil från din dator till en webbplats, till exempel en bild. Du väljer filen i en ruta som heter Öppna."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna kontaktformuläret och välj filen profil.txt med knappen Välj fil.",
+            "text": {
+              "default": "Öppna Kontaktformulär, klicka på Välj fil och välj profil.txt i Dokument.",
+              "guided": "Klicka på genvägen Kontaktformulär på Chromes startsida. Leta upp knappen Välj fil i formuläret och klicka på den. En ruta som heter Öppna visas. Klicka på Dokument till vänster i rutan. Klicka sedan på filen profil.txt och på knappen Öppna. Filens namn visas bredvid knappen Välj fil.",
+              "independent": "Bifoga profil.txt i kontaktformuläret.",
+              "child.guided": "Öppna Kontaktformulär och klicka på Välj fil. I rutan som kommer upp klickar du på Dokument, sedan på profil.txt och till sist på Öppna."
+            },
             "hints": [
               "Klicka på genvägen Kontaktformulär på Chromes startsida.",
               "Klicka på knappen Välj fil.",
               "Rutan Öppna visas. Filen profil.txt ligger i Dokument.",
               "Den gula ramen visar formuläret.",
               "Välj fil → Dokument → klicka på profil.txt → Öppna. Filnamnet visas bredvid knappen."
-            ]
+            ],
+            "nudge": "Formuläret har en knapp för att bifoga något från datorn."
           },
           {
             "title": "Klart",
@@ -2149,18 +2759,28 @@
         "steps": [
           {
             "title": "Vidarebefordra",
-            "text": "Vidarebefordra skickar ett mejl du har fått vidare till en ny mottagare. Originalets text följer med och ämnet får VB: framför."
+            "text": {
+              "default": "Vidarebefordra skickar ett mejl du har fått vidare till en ny mottagare. Originalets text följer med och ämnet får VB: framför.",
+              "short": "Vidarebefordra skickar ett mejl vidare till någon annan.",
+              "child": "Att vidarebefordra är som att skicka vidare ett brev du har fått till en kompis. Hela texten följer med, och du skriver bara vem den nya mottagaren är."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Eriks mejl, välj Vidarebefordra, skriv en mottagare och skicka.",
+            "text": {
+              "default": "Öppna Eriks mejl, klicka på Vidarebefordra, skriv anna@example.com i Till och klicka på Skicka.",
+              "guided": "Klicka på mejlet från Erik Lund. Ovanför mejlet till höger finns knappen Vidarebefordra. Klicka på den. Ett nytt mejl öppnas med Eriks text redan i. Klicka i fältet Till och skriv anna@example.com. Klicka sedan på Skicka.",
+              "independent": "Vidarebefordra Eriks mejl till någon annan.",
+              "child.guided": "Klicka på Eriks mejl och sedan på Vidarebefordra. Skriv anna@example.com i Till och klicka på Skicka."
+            },
             "hints": [
               "Klicka på mejlet från Erik Lund.",
               "Klicka på Vidarebefordra ovanför mejlet.",
               "Skriv en e-postadress i fältet Till, till exempel anna@example.com.",
               "Den gula ramen visar listan med mejl.",
               "Eriks mejl → Vidarebefordra → Till: anna@example.com → Skicka."
-            ]
+            ],
+            "nudge": "Det är inte samma sak som att svara – mejlet ska till någon ny."
           },
           {
             "title": "Klart",
@@ -2180,18 +2800,28 @@
         "steps": [
           {
             "title": "Sök i Start",
-            "text": "Start-menyn har en sökruta högst upp. Skriv namnet på ett program så visas det under Bästa matchning."
+            "text": {
+              "default": "Start-menyn har en sökruta högst upp. Skriv namnet på ett program så visas det under Bästa matchning.",
+              "short": "Skriv i Start-menyns sökruta för att hitta ett program.",
+              "child": "Om du inte hittar ett program kan du fråga datorn. Öppna Start-menyn och skriv namnet på programmet. Datorn letar åt dig och visar det överst, under Bästa matchning."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Start och skriv Kalkylator i sökrutan.",
+            "text": {
+              "default": "Öppna Start-menyn och skriv Kalkylator i sökrutan högst upp.",
+              "guided": "Klicka på Start-knappen längst ned på skärmen. Högst upp i Start-menyn finns en lång ruta där det står Sök. Den är redan vald, så du kan börja skriva direkt utan att klicka. Skriv ordet Kalkylator. Programmet dyker upp under Bästa matchning.",
+              "independent": "Sök fram Kalkylator.",
+              "child.guided": "Klicka på Start-knappen. Börja skriva Kalkylator direkt – datorn letar medan du skriver. Kalkylatorn dyker upp överst!"
+            },
             "hints": [
               "Börja med att öppna Start-menyn.",
               "Sökrutan högst upp är redan aktiv – du kan börja skriva direkt.",
               "Skriv ordet Kalkylator.",
               "Den gula ramen visar Start-knappen.",
               "Start → skriv Kalkylator. Tryck Retur för att öppna Bästa matchning."
-            ]
+            ],
+            "nudge": "Du behöver inte leta själv – datorn kan leta åt dig."
           },
           {
             "title": "Klart",
@@ -2211,18 +2841,28 @@
         "steps": [
           {
             "title": "Dra och släpp filer",
-            "text": "Du kan flytta en fil genom att dra den med musen och släppa den på en mapp."
+            "text": {
+              "default": "Du kan flytta en fil genom att dra den med musen och släppa den på en mapp.",
+              "short": "Dra en fil och släpp den på en mapp för att flytta den.",
+              "child": "Du kan flytta en fil precis som du flyttade rutan i musövningen: ta tag i den, dra den och släpp den på en mapp."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Dra Dra mig.txt till Hämtade filer i vänsterspalten.",
+            "text": {
+              "default": "Dra Dra mig.txt med musen och släpp den på Hämtade filer i vänsterspalten.",
+              "guided": "Lägg pekaren på Dra mig.txt i Dokument. Tryck ned vänster musknapp och håll kvar. Flytta musen åt vänster, mot spalten till vänster, tills pekaren ligger över Hämtade filer. Raden blir markerad när du är rätt. Släpp då musknappen. Filen flyttas till Hämtade filer.",
+              "independent": "Flytta Dra mig.txt till Hämtade filer med musen.",
+              "child.guided": "Tryck och håll på Dra mig.txt. Dra den till Hämtade filer i spalten till vänster. När raden lyser upp släpper du knappen. Klart!"
+            },
             "hints": [
               "Dra mig.txt ligger i Dokument.",
               "Tryck och håll vänster musknapp på filen.",
               "Dra den till Hämtade filer i vänsterspalten. Mappen markeras när du är över den.",
               "Den gula ramen visar Hämtade filer.",
               "Håll på Dra mig.txt → dra till Hämtade filer → släpp."
-            ]
+            ],
+            "nudge": "Du kan flytta filen med musen utan att använda någon knapp i fönstret."
           },
           {
             "title": "Klart",
@@ -2242,18 +2882,28 @@
         "steps": [
           {
             "title": "Läs in igen",
-            "text": "Knappen med en rund pil läser in webbsidan igen. Det hjälper när sidan inte har laddats klart eller när innehållet kan ha ändrats."
+            "text": {
+              "default": "Knappen med en rund pil läser in webbsidan igen. Det hjälper när sidan inte har laddats klart eller när innehållet kan ha ändrats.",
+              "short": "Den runda pilen läser in sidan igen.",
+              "child": "Ibland fastnar en sida eller visar gammal information. Då kan du be webbläsaren hämta sidan en gång till med knappen som ser ut som en rund pil."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Klicka på knappen Läs in igen.",
+            "text": {
+              "default": "Klicka på knappen Läs in igen – den runda pilen uppe till vänster i Chrome.",
+              "guided": "Titta uppe till vänster i Chrome. Där finns pilarna för Bakåt och Framåt. Strax till höger om dem sitter en knapp som ser ut som en pil i en cirkel – det är Läs in igen. Klicka en gång på den. Sidan hämtas på nytt.",
+              "independent": "Läs in webbsidan igen.",
+              "child.guided": "Uppe till vänster i Chrome finns en rund pil. Klicka på den så laddas sidan om!"
+            },
             "hints": [
               "Titta uppe till vänster i Chrome, bredvid pilarna.",
               "Knappen ser ut som en rund pil.",
               "Klicka på den en gång.",
               "Den gula ramen visar knappen.",
               "Klicka på den runda pilen – eller tryck F5."
-            ]
+            ],
+            "nudge": "Knappen sitter bredvid pilarna du använde för att gå bakåt."
           },
           {
             "title": "Klart",
@@ -2273,18 +2923,28 @@
         "steps": [
           {
             "title": "Stäng flik",
-            "text": "Varje flik har ett eget litet kryss. Det stänger bara den fliken – inte hela webbläsaren."
+            "text": {
+              "default": "Varje flik har ett eget litet kryss. Det stänger bara den fliken – inte hela webbläsaren.",
+              "short": "Flikens kryss stänger bara den fliken.",
+              "child": "Varje flik har ett eget litet kryss. Det stänger bara den fliken, inte hela webbläsaren. Det stora krysset uppe i hörnet stänger allt – det ska du inte använda nu."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna en ny flik med plusknappen och stäng den sedan med flikens kryss.",
+            "text": {
+              "default": "Öppna en ny flik med plusknappen och stäng den med det lilla krysset på fliken.",
+              "guided": "Klicka på plustecknet till höger om flikarna högst upp i Chrome, så öppnas en ny flik. Titta på den nya fliken: till höger om dess namn finns ett litet kryss. Klicka på det lilla krysset. Klicka inte på det stora krysset längst upp till höger – det stänger hela Chrome.",
+              "independent": "Öppna en ny flik och stäng sedan bara den fliken.",
+              "child.guided": "Klicka på plus för en ny flik. På den nya fliken finns ett litet kryss. Klicka på det lilla krysset – inte det stora i hörnet!"
+            },
             "hints": [
               "Klicka på plustecknet bredvid flikarna för att öppna en ny flik.",
               "Den nya fliken har ett litet kryss till höger om namnet.",
               "Klicka på flikens kryss – inte på det stora krysset längst upp till höger.",
               "Den gula ramen visar plusknappen.",
               "+ → klicka på krysset på den nya fliken. Ctrl+W stänger också en flik."
-            ]
+            ],
+            "nudge": "Det finns mer än ett kryss högst upp. Fundera på vilket som hör till fliken."
           },
           {
             "title": "Klart",
@@ -2304,18 +2964,28 @@
         "steps": [
           {
             "title": "Skrivbordet",
-            "text": "Skrivbordet är bakgrunden bakom alla fönster. Ikonerna på skrivbordet öppnar du med ett dubbelklick."
+            "text": {
+              "default": "Skrivbordet är bakgrunden bakom alla fönster. Ikonerna på skrivbordet öppnar du med ett dubbelklick.",
+              "short": "Öppna ikoner på skrivbordet med ett dubbelklick.",
+              "child": "Skrivbordet är bakgrunden som syns bakom alla fönster, som en bordsskiva. Bilderna på skrivbordet heter ikoner. Du öppnar dem med ett dubbelklick: klick-klick."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Dubbelklicka på ikonen Dokument på skrivbordet.",
+            "text": {
+              "default": "Dubbelklicka på ikonen Dokument på skrivbordet.",
+              "guided": "Titta längst upp till vänster på skrivbordet. Där sitter några ikoner med namn under. Leta upp den gula mappen som heter Dokument. Håll pekaren stilla på den och klicka två gånger snabbt med vänster musknapp. Mappen öppnas i ett fönster som heter Utforskaren.",
+              "independent": "Öppna mappen Dokument från skrivbordet.",
+              "child.guided": "Uppe till vänster finns en gul mapp som heter Dokument. Lägg pilen på den och klicka två gånger snabbt: klick-klick! Då öppnas mappen."
+            },
             "hints": [
               "Ikonerna sitter längst upp till vänster på skrivbordet.",
               "Leta upp ikonen med namnet Dokument.",
               "Dubbelklicka – två snabba klick – på ikonen.",
               "Den gula ramen visar ikonen Dokument.",
               "Håll pekaren stilla på Dokument och klicka två gånger snabbt. Mappen öppnas i Utforskaren."
-            ]
+            ],
+            "nudge": "Det som syns på skrivbordet öppnas på samma sätt som du tränade med musen."
           },
           {
             "title": "Klart",
@@ -2335,7 +3005,11 @@
         "steps": [
           {
             "title": "Aktivitetsfältet",
-            "text": "Aktivitetsfältet är raden längst ned. I mitten finns Start, Sök och dina program. Till höger finns nätverk, ljud, batteri och klockan. Ett minimerat program tar du fram genom att klicka på dess ikon."
+            "text": {
+              "default": "Aktivitetsfältet är raden längst ned. I mitten finns Start, Sök och dina program. Till höger finns nätverk, ljud, batteri och klockan. Ett minimerat program tar du fram genom att klicka på dess ikon.",
+              "short": "Aktivitetsfältet visar Start, program, nätverk, ljud och klocka.",
+              "child": "Raden längst ned på skärmen heter aktivitetsfältet. I mitten finns Start-knappen och de program du använder. Längst till höger ser du om datorn har internet, hur högt ljudet är, hur mycket batteri som finns kvar och vad klockan är."
+            }
           },
           {
             "title": "Klart",
@@ -2355,18 +3029,28 @@
         "steps": [
           {
             "title": "Sökning",
-            "text": "När du inte vet adressen kan du söka. Skriv några ord om det du letar efter, så får du en lista med länkar."
+            "text": {
+              "default": "När du inte vet adressen kan du söka. Skriv några ord om det du letar efter, så får du en lista med länkar.",
+              "short": "Sök med några ord när du inte vet adressen.",
+              "child": "Om du inte vet adressen till en sida kan du söka, ungefär som att fråga i en jättestor bibliotekskatalog. Skriv några ord om det du letar efter, så får du en lista med länkar."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv något i sökrutan på Chromes startsida och tryck Retur.",
+            "text": {
+              "default": "Klicka i sökrutan mitt på Chromes startsida, skriv några ord och tryck Retur.",
+              "guided": "Titta mitt på Chromes startsida. Där finns en stor, rundad ruta – det är sökrutan. Klicka i den. Skriv några ord om det du vill veta, till exempel säkra lösenord. Tryck sedan på Retur. En lista med sökresultat visas, och varje rad är en länk.",
+              "independent": "Sök på webben efter något du undrar över.",
+              "child.guided": "Klicka i den stora rundade rutan mitt på sidan. Skriv något du undrar över, till exempel säkra lösenord, och tryck Retur."
+            },
             "hints": [
               "Sökrutan är den stora rundade rutan mitt på startsidan.",
               "Klicka i den.",
               "Skriv några ord, till exempel säkra lösenord, och tryck Retur.",
               "Den gula ramen visar sökrutan.",
               "Klicka i sökrutan → skriv → Retur. Sökresultaten visas som en lista med länkar."
-            ]
+            ],
+            "nudge": "Du behöver inte kunna adressen för att hitta något."
           },
           {
             "title": "Klart",
@@ -2386,7 +3070,11 @@
         "steps": [
           {
             "title": "Tvåstegsverifiering",
-            "text": "Med tvåstegsverifiering räcker inte lösenordet. Du bekräftar också på ett annat sätt, till exempel med en kod i mobilen eller en app."
+            "text": {
+              "default": "Med tvåstegsverifiering räcker inte lösenordet. Du bekräftar också på ett annat sätt, till exempel med en kod i mobilen eller en app.",
+              "short": "Tvåstegsverifiering kräver något mer än lösenordet.",
+              "child": "Med tvåstegsverifiering behövs två saker för att komma in, ungefär som en dörr med två lås. Först lösenordet, och sedan till exempel en kod som skickas till en mobil. Även om någon får reda på lösenordet kommer de inte in."
+            }
           },
           {
             "title": "Klart",
@@ -2406,7 +3094,11 @@
         "steps": [
           {
             "title": "Läs adressen",
-            "text": "Kontrollera alltid vilken webbplats du faktiskt är på. HTTPS och hänglåset betyder att anslutningen är krypterad – men inte att sidan är ärlig. Titta på själva namnet före den första ensamma snedstrecket."
+            "text": {
+              "default": "Kontrollera alltid vilken webbplats du faktiskt är på. HTTPS och hänglåset betyder att anslutningen är krypterad – men inte att sidan är ärlig. Titta på själva namnet före det första ensamma snedstrecket.",
+              "short": "Kontrollera webbplatsens namn. Hänglåset betyder kryptering, inte ärlighet.",
+              "child": "Bluffsidor kan se nästan likadana ut som riktiga sidor. Därför ska du titta noga på adressen högst upp. Hänglåset betyder bara att det du skickar är hemligt på vägen – inte att sidan är snäll."
+            }
           },
           {
             "title": "Klart",
@@ -2426,7 +3118,11 @@
         "steps": [
           {
             "title": "Uppdateringar",
-            "text": "Uppdateringar täpper till säkerhetshål. Installera dem från Windows Update i Inställningar – aldrig från en popup-ruta på en webbsida. Windows-säkerhet skyddar mot virus och är påslagen från början."
+            "text": {
+              "default": "Uppdateringar täpper till säkerhetshål. Installera dem från Windows Update i Inställningar – aldrig från en popup-ruta på en webbsida. Windows-säkerhet skyddar mot virus och är påslagen från början.",
+              "short": "Installera uppdateringar via Windows Update, aldrig från popup-rutor.",
+              "child": "Uppdateringar lagar små hål i datorns skydd, ungefär som att laga ett staket. Du hämtar dem i Inställningar under Windows Update. Om en ruta på en webbsida säger att du måste installera något – stäng den."
+            }
           },
           {
             "title": "Klart",
@@ -2446,7 +3142,11 @@
         "steps": [
           {
             "title": "Offentligt Wi‑Fi",
-            "text": "Öppna nätverk på kaféer, hotell och stationer delas av många. Undvik känsliga ärenden där, och kontrollera att nätverkets namn verkligen är stället du är på."
+            "text": {
+              "default": "Öppna nätverk på kaféer, hotell och stationer delas av många. Undvik känsliga ärenden där, och kontrollera att nätverkets namn verkligen är stället du är på.",
+              "short": "Undvik känsliga ärenden på öppna nätverk.",
+              "child": "På kaféer och tåg finns ofta Wi‑Fi som alla får använda. Det är som att prata i ett fullt rum – andra kan höra. Gör därför inget hemligt där, och kontrollera att nätverket verkligen hör till stället du är på."
+            }
           },
           {
             "title": "Klart",
@@ -2466,7 +3166,11 @@
         "steps": [
           {
             "title": "Falsk support",
-            "text": "Riktiga företag ringer inte oväntat och kräver att du installerar ett fjärrstyrningsprogram eller betalar för att ta bort ett virus. Lägg på, och stäng popup-rutor som säger att du ska ringa ett nummer."
+            "text": {
+              "default": "Riktiga företag ringer inte oväntat och kräver att du installerar ett fjärrstyrningsprogram eller betalar för att ta bort ett virus. Lägg på, och stäng popup-rutor som säger att du ska ringa ett nummer.",
+              "short": "Riktig support ringer inte oväntat och kräver fjärrstyrning eller betalning.",
+              "child": "Ibland ringer någon och säger att de är från ett datorföretag och att din dator har virus. Det är nästan alltid ett lurendrejeri. Lägg på, och berätta för en vuxen du litar på."
+            }
           },
           {
             "title": "Klart",
@@ -2486,18 +3190,28 @@
         "steps": [
           {
             "title": "Självständighetsprovet",
-            "text": "Nu kombinerar du webbläsaren, Utforskaren och E-post – som en riktig uppgift där du själv väljer program och ordning."
+            "text": {
+              "default": "Nu kombinerar du webbläsaren, Utforskaren och E-post – som en riktig uppgift där du själv väljer program och ordning.",
+              "short": "Chrome, Utforskaren och E-post i en riktig uppgift.",
+              "child": "Det här är det stora slutprovet! Du ska använda tre program efter varandra, precis som när man gör något på riktigt. Du väljer själv hur du gör."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Ladda ned guide.txt i Chrome. Byt namn på filen till guide-klar.txt i Utforskaren. Skicka den sedan som bilaga i ett nytt mejl.",
+            "text": {
+              "default": "Ladda ned guide.txt i Chrome. Byt namn på den till guide-klar.txt i Hämtade filer. Skicka den sedan som bilaga i ett nytt mejl.",
+              "guided": "Ta ett program i taget. Öppna Chrome och klicka på genvägen Ladda ned en guide, och sedan på Ladda ned guide.txt. Öppna Utforskaren och klicka på Hämtade filer till vänster. Markera guide.txt, klicka på Byt namn och skriv guide-klar.txt. Öppna E-post från Start och klicka på Ny e-post. Klicka på gemet, välj Hämtade filer och guide-klar.txt. Fyll i Till, till exempel anna@example.com, ett ämne och lite text, och klicka på Skicka.",
+              "independent": "Ladda ned guide.txt i Chrome. Byt namn på filen till guide-klar.txt i Utforskaren. Skicka den sedan som bilaga i ett nytt mejl.",
+              "child.guided": "Tre program efter varandra: 1. Chrome – ladda ned guide.txt. 2. Utforskaren – byt namn på filen i Hämtade filer till guide-klar.txt. 3. E-post – skicka filen med ett nytt mejl. Du har gjort varje del förut!"
+            },
             "hints": [
               "Börja i Chrome och leta upp sidan där guiden laddas ned.",
               "Filen hamnar i Hämtade filer. Öppna Utforskaren och gå dit.",
               "Byt namn på filen till guide-klar.txt innan du fortsätter.",
               "Öppna E-post från Start och klicka på Ny e-post.",
               "Bifoga guide-klar.txt från Hämtade filer, fyll i Till (till exempel anna@example.com), ämne och text och klicka Skicka."
-            ]
+            ],
+            "nudge": "Börja med att få hem filen till datorn."
           },
           {
             "title": "Klart",
@@ -2517,18 +3231,28 @@
         "steps": [
           {
             "title": "Kopiera och klistra in",
-            "text": "Markera texten, kopiera den med Ctrl+C och klistra in den med Ctrl+V där textmarkören står. Originalet ligger kvar där det var."
+            "text": {
+              "default": "Markera texten, kopiera den med Ctrl+C och klistra in den med Ctrl+V där textmarkören står. Originalet ligger kvar där det var.",
+              "short": "Markera, kopiera med Ctrl+C och klistra in med Ctrl+V.",
+              "child": "Att kopiera text är som att skriva av något, fast datorn gör det åt dig. Du markerar texten, kopierar den och klistrar in den på ett nytt ställe. Originalet blir kvar där det var."
+            }
           },
           {
             "title": "Din tur",
-            "text": "I Chrome: öppna Vad är internet? och markera telefonraden. Tryck Ctrl+C. Byt sedan till Anteckningar och tryck Ctrl+V.",
+            "text": {
+              "default": "Öppna Vad är internet? i Chrome, markera telefonraden och tryck Ctrl+C. Klicka sedan i Anteckningar och tryck Ctrl+V.",
+              "guided": "I Chrome klickar du på genvägen Vad är internet?. Leta upp raden med ett telefonnummer. Tryck ned vänster musknapp precis före första tecknet, håll kvar och dra till slutet av raden – texten blir blåmarkerad. Håll ned Ctrl och tryck C. Klicka sedan på Anteckningars ikon i aktivitetsfältet, klicka i den vita ytan och tryck Ctrl+V. Raden klistras in.",
+              "independent": "Kopiera telefonraden från sidan Vad är internet? i Chrome till Anteckningar.",
+              "child.guided": "Öppna Vad är internet? i Chrome. Dra med musen över raden med telefonnumret så att den blir blå. Tryck Ctrl+C. Byt till Anteckningar, klicka i den vita ytan och tryck Ctrl+V. Där är den!"
+            },
             "hints": [
               "Klicka på genvägen Vad är internet? i Chrome.",
               "Tryck ned musknappen i början av telefonraden och dra till slutet så att raden blir markerad.",
               "Tryck Ctrl+C för att kopiera.",
               "Byt till Anteckningar genom att klicka på dess ikon i aktivitetsfältet.",
               "Klicka i Anteckningars vita yta och tryck Ctrl+V."
-            ]
+            ],
+            "nudge": "Texten måste vara markerad innan datorn vet vad den ska kopiera."
           },
           {
             "title": "Klart",
@@ -2562,18 +3286,28 @@
         "steps": [
           {
             "title": "Ångra",
-            "text": "Ctrl+Z ångrar det du nyss gjorde. Ctrl+Y gör om det du ångrade. Det fungerar i nästan alla program."
+            "text": {
+              "default": "Ctrl+Z ångrar det du nyss gjorde. Ctrl+Y gör om det du ångrade. Det fungerar i nästan alla program.",
+              "short": "Ctrl+Z ångrar, Ctrl+Y gör om.",
+              "child": "Ctrl+Z är som en tidsmaskin: den tar bort det du nyss gjorde. Ångrade du för mycket tar Ctrl+Y tillbaka det. Det fungerar i nästan alla program, så du behöver aldrig vara rädd för att göra fel."
+            }
           },
           {
             "title": "Din tur",
-            "text": "I Anteckningar: skriv en kort mening, tryck Ctrl+Z för att ångra och Ctrl+Y för att göra om.",
+            "text": {
+              "default": "Skriv en kort mening i Anteckningar. Tryck Ctrl+Z för att ångra och sedan Ctrl+Y för att göra om.",
+              "guided": "Klicka i den vita ytan i Anteckningar och skriv några ord. Håll sedan ned Ctrl längst ned till vänster på tangentbordet och tryck Z. Det du skrev försvinner. Håll ned Ctrl igen och tryck Y. Texten kommer tillbaka.",
+              "independent": "Skriv en mening i Anteckningar, ångra den och gör om den.",
+              "child.guided": "Skriv några ord i Anteckningar. Tryck Ctrl+Z – pang, borta! Tryck Ctrl+Y – tillbaka igen!"
+            },
             "hints": [
               "Klicka i Anteckningars vita yta.",
               "Skriv några ord.",
               "Håll ned Ctrl och tryck Z. Det du skrev försvinner.",
               "Håll ned Ctrl och tryck Y. Texten kommer tillbaka.",
               "Skriv → Ctrl+Z → Ctrl+Y. Du hittar också Ångra under Redigera."
-            ]
+            ],
+            "nudge": "Det finns ett kortkommando för att ta tillbaka det du nyss gjorde."
           },
           {
             "title": "Klart",
@@ -2607,7 +3341,11 @@
         "steps": [
           {
             "title": "Urklippet",
-            "text": "Det du kopierar eller klipper ut läggs i urklippet – ett tillfälligt minne. Där ligger det tills du kopierar något nytt. På en riktig dator visar Windows-tangenten + V tidigare kopierat."
+            "text": {
+              "default": "Det du kopierar eller klipper ut läggs i urklippet – ett tillfälligt minne. Där ligger det tills du kopierar något nytt. På en riktig dator visar Windows-tangenten + V tidigare kopierat.",
+              "short": "Urklippet håller det du senast kopierade eller klippte ut.",
+              "child": "Urklippet är datorns korttidsminne. Det du kopierar sparas där en stund, tills du kopierar något nytt. Det är därför du kan klistra in samma sak flera gånger."
+            }
           },
           {
             "title": "Klart",
@@ -2635,7 +3373,11 @@
         "steps": [
           {
             "title": "Filändelser",
-            "text": "Filändelsen är bokstäverna efter den sista punkten i filnamnet, till exempel .pdf eller .jpg. Den berättar vilken sorts fil det är. Windows döljer ofta ändelsen – i Utforskaren visar du den med Visa → Visa → Filnamnstillägg. I övningsdatorn visas den alltid."
+            "text": {
+              "default": "Filändelsen är bokstäverna efter den sista punkten i filnamnet, till exempel .pdf eller .jpg. Den berättar vilken sorts fil det är. Windows döljer ofta ändelsen – i Utforskaren visar du den med Visa → Visa → Filnamnstillägg. I övningsdatorn visas den alltid.",
+              "short": "Filändelsen, som .pdf eller .jpg, visar vilken sorts fil det är.",
+              "child": "Bokstäverna efter sista punkten i ett filnamn är som en etikett. .jpg betyder att det är en bild, .pdf ett dokument som ska se likadant ut överallt och .txt en enkel text. Då vet du vilket program som kan öppna filen."
+            }
           },
           {
             "title": "Klart",
@@ -2663,18 +3405,28 @@
         "steps": [
           {
             "title": "Var hamnar filen?",
-            "text": "Allt du laddar ned i webbläsaren hamnar i mappen Hämtade filer, om du inte själv väljer något annat. Att veta var filen ligger är lika viktigt som att veta vad den heter."
+            "text": {
+              "default": "Allt du laddar ned i webbläsaren hamnar i mappen Hämtade filer, om du inte själv väljer något annat. Att veta var filen ligger är lika viktigt som att veta vad den heter.",
+              "short": "Nedladdat hamnar i Hämtade filer.",
+              "child": "När du laddar ned något måste det hamna någonstans. Om du inte väljer själv lägger datorn det i mappen Hämtade filer. Kommer du ihåg det, så hittar du alltid det du har laddat ned."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Ladda ned guide.txt i Chrome och hitta sedan filen i Hämtade filer.",
+            "text": {
+              "default": "Ladda ned guide.txt via genvägen Ladda ned en guide i Chrome. Klicka sedan på Visa i mapp för att se filen i Hämtade filer.",
+              "guided": "I Chrome klickar du på genvägen Ladda ned en guide och sedan på knappen Ladda ned guide.txt. Uppe till höger visas rutan Senaste nedladdningar. Klicka på Visa i mapp i den rutan. Utforskaren öppnas på mappen Hämtade filer, och där ligger guide.txt.",
+              "independent": "Ladda ned guide.txt i Chrome och hitta sedan filen i Hämtade filer.",
+              "child.guided": "Ladda ned guide.txt i Chrome. Klicka på Visa i mapp i rutan som dyker upp. Nu ser du var filen hamnade: i Hämtade filer!"
+            },
             "hints": [
               "Klicka på genvägen Ladda ned en guide i Chrome och ladda ned guide.txt.",
               "Rutan Senaste nedladdningar visas uppe till höger.",
               "Klicka på Visa i mapp – eller öppna Utforskaren och klicka på Hämtade filer.",
               "Den gula ramen visar Hämtade filer i Utforskaren.",
               "Ladda ned guide.txt → Visa i mapp. Filen guide.txt ligger i Hämtade filer."
-            ]
+            ],
+            "nudge": "Fundera på vilken mapp nedladdningar brukar hamna i."
           },
           {
             "title": "Klart",
@@ -2702,18 +3454,28 @@
         "steps": [
           {
             "title": "PDF",
-            "text": "PDF är ett format för dokument som ska se likadana ut överallt – fakturor, kvitton och blanketter. På en riktig dator öppnas PDF-filer ofta i webbläsaren Microsoft Edge."
+            "text": {
+              "default": "PDF är ett format för dokument som ska se likadana ut överallt – fakturor, kvitton och blanketter. På en riktig dator öppnas PDF-filer ofta i webbläsaren Microsoft Edge.",
+              "short": "PDF-filer ser likadana ut överallt. Du kan zooma och spara en kopia.",
+              "child": "En PDF är ett dokument som ser exakt likadant ut på alla datorer, som ett papper som har fotograferats. Kvitton, fakturor och blanketter är ofta PDF-filer."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna faktura.pdf, zooma in och spara en kopia med Spara som.",
+            "text": {
+              "default": "Dubbelklicka på faktura.pdf i Dokument, zooma in med plusknappen och spara en kopia med Spara som.",
+              "guided": "I Utforskaren, i mappen Dokument, dubbelklickar du på faktura.pdf. Filen öppnas i PDF-läsaren. Klicka på plusknappen högst upp för att zooma in, så att texten blir större. Klicka sedan på Spara som uppe till höger. Behåll namnet faktura-kopia.pdf och klicka på Spara.",
+              "independent": "Öppna faktura.pdf, förstora texten och spara en kopia.",
+              "child.guided": "Dubbelklicka på faktura.pdf. Klicka på plus så att texten blir större. Klicka på Spara som och sedan på Spara."
+            },
             "hints": [
               "Dubbelklicka på faktura.pdf i Dokument.",
               "PDF-filen öppnas i ett eget fönster.",
               "Klicka på plusknappen för att zooma in.",
               "Klicka på Spara som och sedan på Spara.",
               "faktura.pdf → + → Spara som → behåll namnet faktura-kopia.pdf → Spara."
-            ]
+            ],
+            "nudge": "Börja med att öppna filen som har ändelsen .pdf."
           },
           {
             "title": "Klart",
@@ -2741,18 +3503,28 @@
         "steps": [
           {
             "title": "Skärmbild",
-            "text": "En skärmbild är en bild av det som syns på skärmen. Med Skärmklippverktyget väljer du själv vilken del som ska med. På en riktig dator öppnar Windows-tangenten + Shift + S samma verktyg direkt."
+            "text": {
+              "default": "En skärmbild är en bild av det som syns på skärmen. Med Skärmklippverktyget väljer du själv vilken del som ska med. På en riktig dator öppnar Windows-tangenten + Shift + S samma verktyg direkt.",
+              "short": "Skärmklippverktyget tar en bild av en del av skärmen.",
+              "child": "En skärmbild är som ett foto av skärmen. Med Skärmklippverktyget ritar du en ruta runt det du vill ha med, och sedan sparar du bilden."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Ta en skärmbild med Skärmklippverktyget och spara den i Bilder.",
+            "text": {
+              "default": "Klicka på Nytt i Skärmklippverktyget, dra en ruta över det du vill ha med och spara bilden i Bilder.",
+              "guided": "Skärmklippverktyget är öppet. Klicka på knappen Nytt uppe till vänster i verktyget. Skärmen blir lite mörkare. Tryck ned vänster musknapp där rutan ska börja, håll kvar och dra till motsatt hörn. Släpp knappen. Bilden visas i verktyget. Klicka på Spara – rutan Spara som öppnas med mappen Bilder vald – och klicka på Spara igen.",
+              "independent": "Ta en skärmbild med Skärmklippverktyget och spara den i Bilder.",
+              "child.guided": "Klicka på Nytt. Skärmen blir mörk. Tryck, håll och dra en ruta över det du vill ta bild på, och släpp. Klicka på Spara två gånger. Klart!"
+            },
             "hints": [
               "Klicka på Nytt i Skärmklippverktyget.",
               "Skärmen blir mörkare. Tryck ned musknappen och dra en ruta över det du vill ha med.",
               "Släpp musknappen. Bilden visas i verktyget.",
               "Klicka på Spara. Rutan Spara som öppnas med mappen Bilder vald.",
               "Nytt → dra en ruta → släpp → Spara → Spara."
-            ]
+            ],
+            "nudge": "Verktyget har en knapp för att börja ett nytt klipp."
           },
           {
             "title": "Klart",
@@ -2780,18 +3552,28 @@
         "steps": [
           {
             "title": "ZIP",
-            "text": "En ZIP-fil är ett paket med flera filer i. Innan du arbetar med filerna packar du upp – extraherar – paketet till en vanlig mapp."
+            "text": {
+              "default": "En ZIP-fil är ett paket med flera filer i. Innan du arbetar med filerna packar du upp – extraherar – paketet till en vanlig mapp.",
+              "short": "Packa upp en ZIP-fil med Extrahera alla.",
+              "child": "En ZIP-fil är som ett paket som har flera saker inuti. Innan du kan använda sakerna packar du upp paketet. Det kallas att extrahera."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Högerklicka på Bilder.zip i Hämtade filer, välj Extrahera alla och klicka på Extrahera.",
+            "text": {
+              "default": "Högerklicka på Bilder.zip i Hämtade filer, välj Extrahera alla och klicka på Extrahera.",
+              "guided": "Utforskaren visar Hämtade filer. Leta upp Bilder.zip – en gul mapp med ett blixtlås. Högerklicka på den. Välj Extrahera alla i menyn som öppnas. En ruta visar var filerna hamnar. Klicka på Extrahera. En vanlig mapp med bilderna öppnas.",
+              "independent": "Packa upp Bilder.zip i Hämtade filer.",
+              "child.guided": "Högerklicka på Bilder.zip, mappen med ett blixtlås. Välj Extrahera alla och klicka på Extrahera. Nu är paketet uppackat!"
+            },
             "hints": [
               "Bilder.zip ligger i Hämtade filer.",
               "Högerklicka på Bilder.zip.",
               "Välj Extrahera alla i snabbmenyn. En ruta visar var filerna hamnar.",
               "Den gula ramen visar filerna i Hämtade filer.",
               "Högerklick på Bilder.zip → Extrahera alla → Extrahera. Mappen Bilder öppnas."
-            ]
+            ],
+            "nudge": "Det finns ett val i snabbmenyn för att packa upp."
           },
           {
             "title": "Klart",
@@ -2819,7 +3601,11 @@
         "steps": [
           {
             "title": "Webbsida eller program?",
-            "text": "En webbsida visas inne i webbläsaren och har en webbadress. Ett installerat program körs i ett eget fönster och finns i Start-menyn."
+            "text": {
+              "default": "En webbsida visas inne i webbläsaren och har en webbadress. Ett installerat program körs i ett eget fönster och finns i Start-menyn.",
+              "short": "Webbsidor visas i webbläsaren. Program har ett eget fönster.",
+              "child": "En webbsida bor inne i webbläsaren och har en adress som börjar med till exempel www. Ett program som är installerat i datorn öppnas i ett eget fönster och finns i Start-menyn."
+            }
           },
           {
             "title": "Klart",
@@ -2847,7 +3633,11 @@
         "steps": [
           {
             "title": "Inloggning",
-            "text": "När du loggar in kopplas webbläsaren till ditt konto. På en dator som andra också använder ska du alltid logga ut när du är klar – det räcker inte att stänga fliken."
+            "text": {
+              "default": "När du loggar in kopplas webbläsaren till ditt konto. På en dator som andra också använder ska du alltid logga ut när du är klar – det räcker inte att stänga fliken.",
+              "short": "Logga ut på datorer som andra använder.",
+              "child": "När du loggar in visar du att det är du. På en dator som andra också använder, som i skolan eller på biblioteket, ska du alltid logga ut när du är klar. Annars kan nästa person komma åt ditt konto."
+            }
           },
           {
             "title": "Klart",
@@ -2875,7 +3665,11 @@
         "steps": [
           {
             "title": "Lösenordshanterare",
-            "text": "En lösenordshanterare kommer ihåg dina lösenord åt dig och fyller i dem. Då kan du ha ett eget starkt lösenord för varje tjänst och behöver bara komma ihåg ett huvudlösenord."
+            "text": {
+              "default": "En lösenordshanterare kommer ihåg dina lösenord åt dig och fyller i dem. Då kan du ha ett eget starkt lösenord för varje tjänst och behöver bara komma ihåg ett huvudlösenord.",
+              "short": "En lösenordshanterare kommer ihåg dina lösenord.",
+              "child": "En lösenordshanterare är som ett kassaskåp för lösenord. Den kommer ihåg alla dina lösenord, och du behöver bara kunna ett: det som öppnar kassaskåpet."
+            }
           },
           {
             "title": "Klart",
@@ -2903,18 +3697,28 @@
         "steps": [
           {
             "title": "Installera",
-            "text": "Ett program installeras med en installationsfil, ofta en .exe-fil. Windows frågar först om programmet får göra ändringar. Du tar bort ett program under Inställningar → Appar – inte genom att ta bort en ikon."
+            "text": {
+              "default": "Ett program installeras med en installationsfil, ofta en .exe-fil. Windows frågar först om programmet får göra ändringar. Du tar bort ett program under Inställningar → Appar – inte genom att ta bort en ikon.",
+              "short": "Installera med installationsfilen. Avinstallera i Inställningar → Appar.",
+              "child": "Att installera betyder att flytta in ett nytt program i datorn. Windows frågar först om det är okej. Vill du ta bort programmet igen gör du det i Inställningar, inte genom att slänga ikonen."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Installera Övningsprogram från Hämtade filer och avinstallera det sedan i Inställningar.",
+            "text": {
+              "default": "Dubbelklicka på Övningsprogram-Setup.exe i Hämtade filer och gå igenom installationen. Avinstallera sedan programmet i Inställningar → Appar.",
+              "guided": "I Utforskaren, i Hämtade filer, dubbelklickar du på Övningsprogram-Setup.exe. Windows frågar om appen får göra ändringar – läs och klicka på Ja. Klicka Nästa, välj Jag godkänner avtalet, klicka Nästa två gånger, sedan Installera och Slutför. Öppna sedan Inställningar från Start och klicka på Appar. Klicka på de tre prickarna bredvid Övningsprogram, välj Avinstallera och bekräfta.",
+              "independent": "Installera Övningsprogram från Hämtade filer och avinstallera det sedan i Inställningar.",
+              "child.guided": "Dubbelklicka på Övningsprogram-Setup.exe och svara Ja. Klicka dig igenom med Nästa, Installera och Slutför. Gå sedan till Inställningar → Appar, klicka på de tre prickarna vid Övningsprogram och välj Avinstallera."
+            },
             "hints": [
               "Dubbelklicka på Övningsprogram-Setup.exe i Hämtade filer. Svara Ja på Windows fråga.",
               "Klicka Nästa, välj Jag godkänner avtalet, klicka Nästa två gånger, Installera och Slutför.",
               "Öppna Inställningar från Start och välj Appar.",
               "Klicka på de tre prickarna vid Övningsprogram och välj Avinstallera.",
               "Setup.exe → Ja → Nästa → godkänn → Nästa → Nästa → Installera → Slutför → Inställningar → Appar → ⋯ → Avinstallera → Avinstallera."
-            ]
+            ],
+            "nudge": "Installationen börjar med en fil som ligger där nedladdningar hamnar."
           },
           {
             "title": "Klart",
@@ -2942,18 +3746,28 @@
         "steps": [
           {
             "title": "Skriv ut",
-            "text": "I utskriftsrutan väljer du skrivare, antal kopior och sidor. Skrivaren Microsoft Print to PDF skriver inte på papper – den skapar en PDF-fil och frågar var den ska sparas."
+            "text": {
+              "default": "I utskriftsrutan väljer du skrivare, antal kopior och sidor. Skrivaren Microsoft Print to PDF skriver inte på papper – den skapar en PDF-fil och frågar var den ska sparas.",
+              "short": "Microsoft Print to PDF skapar en PDF-fil i stället för papper.",
+              "child": "När du skriver ut väljer du vilken skrivare som ska användas. Microsoft Print to PDF är en låtsasskrivare: i stället för ett papper skapar den en PDF-fil som du sparar i datorn."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Klicka Skriv ut i PDF-läsaren, välj Microsoft Print to PDF och spara utskriften.",
+            "text": {
+              "default": "Klicka på Skriv ut i PDF-läsaren, välj Microsoft Print to PDF som skrivare och klicka på Skriv ut. Spara sedan filen.",
+              "guided": "Klicka på Skriv ut uppe till höger i PDF-läsaren. Utskriftsrutan öppnas. Längst upp till vänster finns listan Skrivare – klicka på den och välj Microsoft Print to PDF. Klicka sedan på den blå knappen Skriv ut. Rutan Spara utskriften som öppnas. Klicka på Spara.",
+              "independent": "Skriv ut fakturan till en PDF-fil.",
+              "child.guided": "Klicka på Skriv ut. I listan Skrivare väljer du Microsoft Print to PDF. Klicka på Skriv ut och sedan på Spara."
+            },
             "hints": [
               "Klicka på Skriv ut uppe till höger i PDF-läsaren.",
               "Utskriftsrutan visar vilken skrivare som är vald.",
               "Öppna listan Skrivare och välj Microsoft Print to PDF.",
               "Klicka Skriv ut. Rutan Spara utskriften som öppnas.",
               "Skriv ut → Skrivare: Microsoft Print to PDF → Skriv ut → Spara."
-            ]
+            ],
+            "nudge": "Det spelar roll vilken skrivare som är vald."
           },
           {
             "title": "Klart",
@@ -2981,18 +3795,28 @@
         "steps": [
           {
             "title": "Molnet",
-            "text": "Molnlagring som OneDrive sparar filer på internet och synkroniserar dem mellan dina enheter. En fil som ligger i OneDrive-mappen finns kvar även om datorn går sönder."
+            "text": {
+              "default": "Molnlagring som OneDrive sparar filer på internet och synkroniserar dem mellan dina enheter. En fil som ligger i OneDrive-mappen finns kvar även om datorn går sönder.",
+              "short": "Filer i OneDrive sparas på internet och finns kvar om datorn går sönder.",
+              "child": "Molnet betyder att filerna sparas på internet i stället för bara i din dator. Då finns de kvar även om datorn går sönder, och du kan nå dem från andra enheter."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Flytta rapport.docx från Dokument till OneDrive med Klipp ut och Klistra in.",
+            "text": {
+              "default": "Markera rapport.docx i Dokument, klicka på Klipp ut, öppna OneDrive i vänsterspalten och klicka på Klistra in.",
+              "guided": "Utforskaren visar Dokument. Klicka en gång på rapport.docx. Klicka på Klipp ut – saxen – högst upp. Titta i spalten till vänster och klicka på OneDrive, som har ett blått moln. Klicka sedan på Klistra in högst upp. Filen flyttas till OneDrive.",
+              "independent": "Flytta rapport.docx från Dokument till OneDrive.",
+              "child.guided": "Klicka på rapport.docx och sedan på saxen. Klicka på OneDrive med det blå molnet till vänster, och klicka på Klistra in. Nu bor filen i molnet!"
+            },
             "hints": [
               "rapport.docx ligger i Dokument.",
               "Markera filen och klicka på Klipp ut.",
               "Klicka på OneDrive i vänsterspalten.",
               "Den gula ramen visar OneDrive i vänsterspalten.",
               "rapport.docx → Klipp ut → OneDrive → Klistra in."
-            ]
+            ],
+            "nudge": "Det är samma sätt att flytta som du har gjort förut, fast till en annan plats."
           },
           {
             "title": "Klart",
@@ -3020,18 +3844,28 @@
         "steps": [
           {
             "title": "Dialogrutor",
-            "text": "En dialogruta stoppar upp och ställer en fråga. Läs frågan innan du klickar. Spara behåller ändringarna, Spara inte kastar dem och Avbryt tar dig tillbaka utan att något händer."
+            "text": {
+              "default": "En dialogruta stoppar upp och ställer en fråga. Läs frågan innan du klickar. Spara behåller ändringarna, Spara inte kastar dem och Avbryt tar dig tillbaka utan att något händer.",
+              "short": "Läs frågan i dialogrutan innan du klickar.",
+              "child": "Ibland stannar datorn och frågar något i en liten ruta. Läs frågan först! Spara betyder behåll, Spara inte betyder släng, och Avbryt betyder att du ångrar dig och går tillbaka."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Skriv något i Anteckningar, stäng fönstret med krysset och välj Spara inte.",
+            "text": {
+              "default": "Skriv några ord i Anteckningar, stäng fönstret med krysset och välj Spara inte i rutan som visas.",
+              "guided": "Klicka i den vita ytan i Anteckningar och skriv några ord. Klicka sedan på krysset längst upp till höger i Anteckningars fönster. En ruta visas med frågan Vill du spara ändringarna i Namnlös?. Läs frågan. Den här gången klickar du på Spara inte. I verkligheten väljer du Spara om du vill behålla texten.",
+              "independent": "Skriv något i Anteckningar och stäng programmet utan att spara.",
+              "child.guided": "Skriv några ord. Klicka på krysset uppe till höger. En ruta frågar om du vill spara – läs den! Klicka på Spara inte den här gången."
+            },
             "hints": [
               "Skriv några ord i Anteckningar så att dokumentet har osparade ändringar.",
               "Klicka på krysset uppe till höger i Anteckningar.",
               "Läs frågan: Vill du spara ändringarna i Namnlös?",
               "Den gula ramen visar krysset.",
               "Skriv → krysset → Spara inte. I verkligheten väljer du Spara om du vill behålla texten."
-            ]
+            ],
+            "nudge": "Programmet frågar något när du försöker stänga utan att ha sparat."
           },
           {
             "title": "Klart",
@@ -3059,7 +3893,11 @@
         "steps": [
           {
             "title": "Aviseringar",
-            "text": "Aviseringar dyker upp nere till höger och försvinner av sig själva. Klicka på klockan i aktivitetsfältet för att se dem igen. En popup inne på en webbsida som påstår att datorn har virus är inte en Windows-avisering."
+            "text": {
+              "default": "Aviseringar dyker upp nere till höger och försvinner av sig själva. Klicka på klockan i aktivitetsfältet för att se dem igen. En popup inne på en webbsida som påstår att datorn har virus är inte en Windows-avisering.",
+              "short": "Aviseringar visas nere till höger. Klicka på klockan för att se dem igen.",
+              "child": "Aviseringar är små meddelanden från Windows som dyker upp nere till höger och sedan försvinner. Om en webbsida plötsligt säger att datorn har virus är det inte Windows som pratar – stäng sidan."
+            }
           },
           {
             "title": "Klart",
@@ -3087,7 +3925,11 @@
         "steps": [
           {
             "title": "Senaste filer",
-            "text": "Start-menyn visar filer du har använt nyligen under Rekommenderas. Många program har också en lista med senaste filer. Filen ligger fortfarande kvar i sin vanliga mapp."
+            "text": {
+              "default": "Start-menyn visar filer du har använt nyligen under Rekommenderas. Många program har också en lista med senaste filer. Filen ligger fortfarande kvar i sin vanliga mapp.",
+              "short": "Start-menyn visar nyligen använda filer under Rekommenderas.",
+              "child": "Datorn kommer ihåg vilka filer du har använt nyss. I Start-menyn, under Rekommenderas, ser du dem. Filen ligger ändå kvar i sin vanliga mapp – listan är bara en genväg."
+            }
           },
           {
             "title": "Klart",
@@ -3115,7 +3957,11 @@
         "steps": [
           {
             "title": "Markera text",
-            "text": "Text måste markeras innan den kan kopieras eller ändras. Dra med musen över texten, dubbelklicka på ett ord eller håll Shift och använd piltangenterna. Ctrl+A markerar allt."
+            "text": {
+              "default": "Text måste markeras innan den kan kopieras eller ändras. Dra med musen över texten, dubbelklicka på ett ord eller håll Shift och använd piltangenterna. Ctrl+A markerar allt.",
+              "short": "Markera text genom att dra, dubbelklicka eller använda Shift och pilarna.",
+              "child": "Innan du kan kopiera eller ändra text måste du visa datorn vilken text du menar. Det kallas att markera. Du kan dra med musen över texten, dubbelklicka på ett ord eller trycka Ctrl+A för att ta allt."
+            }
           },
           {
             "title": "Klart",
@@ -3143,18 +3989,28 @@
         "steps": [
           {
             "title": "Fästa program",
-            "text": "Ett fäst program har sin ikon i aktivitetsfältet även när det är stängt. Du fäster det genom att högerklicka på appen i Start och välja Fäst i Aktivitetsfältet."
+            "text": {
+              "default": "Ett fäst program har sin ikon i aktivitetsfältet även när det är stängt. Du fäster det genom att högerklicka på appen i Start och välja Fäst i Aktivitetsfältet.",
+              "short": "Högerklicka på appen i Start och välj Fäst i Aktivitetsfältet.",
+              "child": "Program du använder ofta kan du sätta fast i raden längst ned. Då finns de alltid där och väntar, även när de är stängda. Det kallas att fästa."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Start, högerklicka på Google Chrome och välj Fäst i Aktivitetsfältet.",
+            "text": {
+              "default": "Öppna Start, högerklicka på Google Chrome och välj Fäst i Aktivitetsfältet.",
+              "guided": "Klicka på Start-knappen – de fyra blå rutorna längst ned. Under Fäst i Start-menyn letar du upp Google Chrome, den färgglada runda ikonen. Högerklicka på den. En meny öppnas. Klicka på Fäst i Aktivitetsfältet. Chromes ikon ligger nu kvar längst ned även när programmet är stängt.",
+              "independent": "Fäst Google Chrome i Aktivitetsfältet.",
+              "child.guided": "Öppna Start. Högerklicka på Google Chrome, den färgglada runda ikonen. Välj Fäst i Aktivitetsfältet. Nu sitter Chrome fast längst ned!"
+            },
             "hints": [
               "Öppna Start med Windows-symbolen i aktivitetsfältet.",
               "Leta upp Google Chrome under Fäst.",
               "Högerklicka på Google Chrome.",
               "Den gula ramen visar Start-knappen.",
               "Start → högerklicka på Google Chrome → Fäst i Aktivitetsfältet."
-            ]
+            ],
+            "nudge": "Valet finns i snabbmenyn för appen."
           },
           {
             "title": "Klart",
@@ -3188,18 +4044,28 @@
         "steps": [
           {
             "title": "Fäst fönster",
-            "text": "Drar du ett fönster hela vägen till skärmens vänstra eller högra kant fyller det halva skärmen. Då kan du ha två program bredvid varandra."
+            "text": {
+              "default": "Drar du ett fönster hela vägen till skärmens vänstra eller högra kant fyller det halva skärmen. Då kan du ha två program bredvid varandra.",
+              "short": "Dra ett fönster till skärmkanten så fyller det halva skärmen.",
+              "child": "Om du vill se två program samtidigt kan du dela skärmen på mitten. Dra ett fönster hela vägen till vänster kant och ett annat till höger kant, så får de varsin halva."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Dra Chrome till vänster skärmkant och Anteckningar till höger skärmkant.",
+            "text": {
+              "default": "Dra Chrome i den tomma ytan högst upp till vänster skärmkant. Dra sedan Anteckningar i namnlisten till höger skärmkant.",
+              "guided": "I Chrome tar du tag i den tomma ytan bredvid flikarna högst upp. Håll vänster musknapp nere och dra hela vägen till skärmens vänstra kant. När pekaren når kanten visas en ram – släpp då. Ta sedan tag i namnlisten högst upp i Anteckningar och dra hela vägen till höger kant. Släpp. Nu har du två fönster sida vid sida.",
+              "independent": "Lägg Chrome och Anteckningar sida vid sida, med Chrome till vänster.",
+              "child.guided": "Ta tag i Chrome högst upp och dra hela vägen till vänster kant, och släpp. Ta tag i Anteckningar och dra hela vägen till höger kant, och släpp. Nu delar de skärmen!"
+            },
             "hints": [
               "I Chrome tar du tag i den tomma ytan bredvid flikarna högst upp.",
               "Håll musknappen nere och dra hela vägen till vänster kant. Släpp när pekaren når kanten.",
               "Ta tag i namnlisten högst upp i Anteckningar.",
               "Dra Anteckningar hela vägen till höger kant och släpp.",
               "Chrome → vänster kant. Anteckningar → höger kant."
-            ]
+            ],
+            "nudge": "Fönster kan fylla halva skärmen om du drar dem tillräckligt långt."
           },
           {
             "title": "Klart",
@@ -3231,18 +4097,28 @@
         "steps": [
           {
             "title": "USB-minne",
-            "text": "Ett USB-minne visas som en egen enhet i Utforskaren. Mata alltid ut det innan du drar ur det, så att inget som håller på att sparas går förlorat."
+            "text": {
+              "default": "Ett USB-minne visas som en egen enhet i Utforskaren. Mata alltid ut det innan du drar ur det, så att inget som håller på att sparas går förlorat.",
+              "short": "USB-minnet syns i Utforskaren. Mata ut det innan du drar ur det.",
+              "child": "Ett USB-minne är en liten pinne som kan bära filer mellan datorer, som en ryggsäck för filer. När den sitter i datorn syns den i Utforskaren. Innan du drar ut den säger du till datorn – det kallas att mata ut – så att inget går sönder."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Kopiera rapport.pdf från USB-enhet (E:) till Dokument och mata sedan ut USB-minnet.",
+            "text": {
+              "default": "Öppna USB-enhet (E:), kopiera rapport.pdf och klistra in den i Dokument. Högerklicka sedan på USB-enhet (E:) och välj Mata ut.",
+              "guided": "Titta i spalten till vänster i Utforskaren och klicka på USB-enhet (E:). Klicka en gång på rapport.pdf och sedan på Kopiera högst upp. Klicka på Dokument i vänsterspalten och sedan på Klistra in. Högerklicka nu på USB-enhet (E:) i vänsterspalten och välj Mata ut. Windows säger till när det är säkert att ta ut minnet.",
+              "independent": "Kopiera rapport.pdf från USB-minnet till Dokument och ta sedan bort USB-minnet på ett säkert sätt.",
+              "child.guided": "Klicka på USB-enhet (E:) till vänster. Kopiera rapport.pdf, gå till Dokument och klistra in. Högerklicka sedan på USB-enhet (E:) och välj Mata ut."
+            },
             "hints": [
               "Klicka på USB-enhet (E:) i Utforskarens vänsterspalt.",
               "Markera rapport.pdf och klicka Kopiera.",
               "Klicka på Dokument och sedan på Klistra in.",
               "Högerklicka på USB-enhet (E:) i vänsterspalten.",
               "Välj Mata ut. Windows säger när det är säkert att ta bort enheten."
-            ]
+            ],
+            "nudge": "Innehållet på USB-minnet hittar du på samma ställe som andra mappar."
           },
           {
             "title": "Klart",
@@ -3270,7 +4146,11 @@
         "steps": [
           {
             "title": "Uttag",
-            "text": "USB-A är rektangulärt och USB-C är litet och avlångt med rundade kanter. HDMI används för skärmar. Kontakten ska gå in lätt – tvinga den aldrig."
+            "text": {
+              "default": "USB-A är rektangulärt och USB-C är litet och avlångt med rundade kanter. HDMI används för skärmar. Kontakten ska gå in lätt – tvinga den aldrig.",
+              "short": "USB-A är rektangulärt, USB-C litet och rundat, HDMI är för skärmar.",
+              "child": "Datorns uttag har olika former, ungefär som pusselbitar. USB-A är fyrkantigt, USB-C är litet med rundade kanter och HDMI används för att koppla in en skärm. Kontakten ska glida in lätt – tryck aldrig hårt."
+            }
           },
           {
             "title": "Klart",
@@ -3298,18 +4178,28 @@
         "steps": [
           {
             "title": "Wi‑Fi",
-            "text": "Under Inställningar → Nätverk och internet ser du nätverken i närheten. Välj ditt nätverk, klicka Anslut och skriv nätverkets lösenord – i Windows kallat nätverkssäkerhetsnyckel."
+            "text": {
+              "default": "Under Inställningar → Nätverk och internet ser du nätverken i närheten. Välj ditt nätverk, klicka Anslut och skriv nätverkets lösenord – i Windows kallat nätverkssäkerhetsnyckel.",
+              "short": "Välj nätverk, klicka Anslut och skriv nätverkssäkerhetsnyckeln.",
+              "child": "Wi‑Fi är internet utan sladd. Datorn kan se flera nätverk omkring sig. Du väljer rätt nätverk och skriver dess lösenord, som Windows kallar nätverkssäkerhetsnyckel."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Anslut till HemmaNet. Nätverkssäkerhetsnyckeln är datorskolan.",
+            "text": {
+              "default": "Klicka på HemmaNet i listan Tillgängliga nätverk, klicka Anslut, skriv datorskolan och klicka Nästa.",
+              "guided": "Inställningar visar Nätverk och internet. Under Wi‑Fi finns listan Tillgängliga nätverk. Klicka på HemmaNet. Raden blir större och en knapp som heter Anslut visas – klicka på den. En ruta för nätverkssäkerhetsnyckeln dyker upp. Klicka i den, skriv datorskolan och klicka på Nästa.",
+              "independent": "Anslut till HemmaNet. Nätverkssäkerhetsnyckeln är datorskolan.",
+              "child.guided": "Klicka på HemmaNet i listan. Klicka på Anslut. Skriv lösenordet datorskolan i rutan och klicka på Nästa."
+            },
             "hints": [
               "Du är redan på Nätverk och internet. Listan Tillgängliga nätverk finns under Wi‑Fi.",
               "Klicka på HemmaNet i listan.",
               "Klicka Anslut. En ruta för nätverkssäkerhetsnyckeln visas.",
               "Den gula ramen visar HemmaNet.",
               "HemmaNet → Anslut → skriv datorskolan → Nästa. Det går också via Wi‑Fi-pilen i snabbinställningarna."
-            ]
+            ],
+            "nudge": "Leta efter en lista med nätverk som finns i närheten."
           },
           {
             "title": "Klart",
@@ -3337,18 +4227,28 @@
         "steps": [
           {
             "title": "Bluetooth",
-            "text": "Bluetooth ansluter tillbehör som hörlurar och möss utan sladd. Du lägger till en ny enhet en gång – sedan ansluter den av sig själv."
+            "text": {
+              "default": "Bluetooth ansluter tillbehör som hörlurar och möss utan sladd. Du lägger till en ny enhet en gång – sedan ansluter den av sig själv.",
+              "short": "Lägg till en Bluetooth-enhet en gång, sedan ansluter den själv.",
+              "child": "Bluetooth kopplar ihop saker utan sladd, till exempel hörlurar. Första gången introducerar du dem för varandra med Lägg till enhet. Sedan känner de igen varandra och kopplar ihop sig själva."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Lägg till headsetet via Lägg till enhet.",
+            "text": {
+              "default": "Kontrollera att Bluetooth är På, klicka Lägg till enhet, välj Bluetooth och sedan Headset.",
+              "guided": "Inställningar visar Bluetooth och enheter. Kontrollera först att strömbrytaren för Bluetooth står på På. Under Enheter finns knappen Lägg till enhet – klicka på den. I rutan som öppnas klickar du på Bluetooth. Datorn letar efter enheter. Klicka på Headset när det dyker upp, och sedan på Klart.",
+              "independent": "Anslut headsetet med Bluetooth.",
+              "child.guided": "Se till att Bluetooth är På. Klicka på Lägg till enhet och sedan på Bluetooth. När Headset dyker upp klickar du på det, och sedan på Klart."
+            },
             "hints": [
               "Du är redan på Bluetooth och enheter. Kontrollera att Bluetooth är På.",
               "Klicka Lägg till enhet under Enheter.",
               "Välj Bluetooth i rutan som visas.",
               "Den gula ramen visar knappen Lägg till enhet.",
               "Lägg till enhet → Bluetooth → Headset → Klart."
-            ]
+            ],
+            "nudge": "En ny enhet läggs till med en knapp under Enheter."
           },
           {
             "title": "Klart",
@@ -3376,18 +4276,28 @@
         "steps": [
           {
             "title": "Inför ett samtal",
-            "text": "Volymen ställer du under System → Ljud eller i snabbinställningarna. Om appar får använda kameran och mikrofonen bestämmer du under Sekretess och säkerhet."
+            "text": {
+              "default": "Volymen ställer du under System → Ljud eller i snabbinställningarna. Om appar får använda kameran och mikrofonen bestämmer du under Sekretess och säkerhet.",
+              "short": "Volym under System → Ljud. Kamera och mikrofon under Sekretess och säkerhet.",
+              "child": "Hur högt det låter ställer du med ett reglage. Om program får använda kameran och mikrofonen bestämmer du själv – det är dina ögon och öron på nätet, så de har egna strömbrytare."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Höj volymen till minst 40 och slå på kamera och mikrofon för appar.",
+            "text": {
+              "default": "Dra volymreglaget under Ljud till minst 40. Öppna sedan Sekretess och säkerhet och slå på Kamera och Mikrofon.",
+              "guided": "Inställningar visar System. Under Ljud finns ett volymreglage – dra den runda knappen åt höger tills siffran är minst 40. Klicka sedan på Sekretess och säkerhet i spalten till vänster. Där finns strömbrytare för Kamera och Mikrofon. Klicka på dem så att båda står på På.",
+              "independent": "Höj volymen till minst 40 och slå på kamera och mikrofon för appar.",
+              "child.guided": "Dra volymreglaget åt höger tills det står minst 40. Klicka på Sekretess och säkerhet till vänster och slå på Kamera och Mikrofon."
+            },
             "hints": [
               "Du är på System. Dra volymreglaget under Ljud till minst 40.",
               "Klicka på Sekretess och säkerhet i vänsterspalten.",
               "Slå på Kamera med strömbrytaren.",
               "Slå på Mikrofon med strömbrytaren.",
               "System → Ljud: volym ≥ 40 → Sekretess och säkerhet → Kamera På → Mikrofon På."
-            ]
+            ],
+            "nudge": "Ljud och integritet finns på två olika sidor i Inställningar."
           },
           {
             "title": "Klart",
@@ -3415,7 +4325,11 @@
         "steps": [
           {
             "title": "Skrivare",
-            "text": "När du skriver ut läggs ett utskriftsjobb i en kö. Om inget kommer ut: kontrollera vilken skrivare som är vald, papper, sladd eller Wi‑Fi – innan du klickar Skriv ut igen."
+            "text": {
+              "default": "När du skriver ut läggs ett utskriftsjobb i en kö. Om inget kommer ut: kontrollera vilken skrivare som är vald, papper, sladd eller Wi‑Fi – innan du klickar Skriv ut igen.",
+              "short": "Kommer inget ut: kontrollera skrivare, papper och anslutning innan du skriver ut igen.",
+              "child": "När du skriver ut ställer sig utskriften i en kö och väntar på sin tur. Om inget papper kommer ut: kolla att rätt skrivare är vald, att det finns papper och att skrivaren är ansluten. Tryck inte på Skriv ut många gånger."
+            }
           },
           {
             "title": "Klart",
@@ -3443,7 +4357,11 @@
         "steps": [
           {
             "title": "Batteriet",
-            "text": "Batterinivån syns nere till höger. När den är låg ansluter du laddaren. Energisparläge i snabbinställningarna gör att batteriet räcker längre."
+            "text": {
+              "default": "Batterinivån syns nere till höger. När den är låg ansluter du laddaren. Energisparläge i snabbinställningarna gör att batteriet räcker längre.",
+              "short": "Batterinivån syns nere till höger. Energisparläge förlänger batteritiden.",
+              "child": "Nere till höger visar en liten batteribild hur mycket ström som finns kvar. När den börjar ta slut kopplar du in laddaren. Energisparläge gör att batteriet räcker längre."
+            }
           },
           {
             "title": "Klart",
@@ -3471,7 +4389,11 @@
         "steps": [
           {
             "title": "Två skärmar",
-            "text": "En extern skärm eller projektor kan visa samma bild som datorn (Dubblera) eller ge dig extra yta (Utöka). Windows-tangenten + P växlar mellan lägena."
+            "text": {
+              "default": "En extern skärm eller projektor kan visa samma bild som datorn (Dubblera) eller ge dig extra yta (Utöka). Windows-tangenten + P växlar mellan lägena.",
+              "short": "Dubblera visar samma bild, Utöka ger extra yta.",
+              "child": "Du kan koppla in en extra skärm eller en projektor. Antingen visar den samma bild som datorn (Dubblera), eller så blir skärmen större så att du får mer plats (Utöka)."
+            }
           },
           {
             "title": "Klart",
@@ -3499,18 +4421,28 @@
         "steps": [
           {
             "title": "Felmeddelanden",
-            "text": "Ett felmeddelande berättar ofta både vad som gick fel och vad du kan göra. Läs hela texten innan du väljer en knapp."
+            "text": {
+              "default": "Ett felmeddelande berättar ofta både vad som gick fel och vad du kan göra. Läs hela texten innan du väljer en knapp.",
+              "short": "Läs hela felmeddelandet innan du väljer en knapp.",
+              "child": "Ett felmeddelande är datorn som försöker förklara vad som gick fel. Läs hela texten, även om den känns krånglig. Ofta står det både vad problemet är och vad du kan göra."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Klicka på rapport.pdf i Rapportvisaren, läs felmeddelandet och välj Stäng.",
+            "text": {
+              "default": "Klicka på rapport.pdf i Rapportvisaren. Läs hela felmeddelandet och klicka sedan på Stäng.",
+              "guided": "Rapportvisaren är öppen. Under Senaste filer finns rapport.pdf – klicka en gång på den. En ruta med ett felmeddelande visas. Läs först rubriken och sedan hela texten. Den förklarar att filen används av ett annat program. Klicka sedan på knappen Stäng.",
+              "independent": "Ta reda på varför rapport.pdf inte går att öppna i Rapportvisaren, och stäng sedan felmeddelandet.",
+              "child.guided": "Klicka på rapport.pdf. En ruta med ett fel kommer fram. Läs allt i rutan – där står vad som hände. Klicka sedan på Stäng."
+            },
             "hints": [
               "Klicka på rapport.pdf under Senaste filer i Rapportvisaren.",
               "Läs rubriken och hela förklaringen i rutan som visas.",
               "Meddelandet säger att filen används av ett annat program – det är orsaken.",
               "Den gula ramen visar filen.",
               "rapport.pdf → läs → Stäng. Försök igen hjälper inte förrän det andra programmet är stängt."
-            ]
+            ],
+            "nudge": "Felet visas när du försöker öppna en av filerna."
           },
           {
             "title": "Klart",
@@ -3538,18 +4470,28 @@
         "steps": [
           {
             "title": "Starta om",
-            "text": "Starta om stänger Windows och startar det igen – det löser många tillfälliga problem och behövs efter uppdateringar. Stäng av lämnar datorn avstängd. Spara alltid ditt arbete först."
+            "text": {
+              "default": "Starta om stänger Windows och startar det igen – det löser många tillfälliga problem och behövs efter uppdateringar. Stäng av lämnar datorn avstängd. Spara alltid ditt arbete först.",
+              "short": "Spara först. Starta om löser många problem och behövs efter uppdateringar.",
+              "child": "Att starta om är som att datorn tar en kort tupplur och vaknar pigg igen. Det löser många små problem och behövs efter uppdateringar. Spara alltid det du håller på med först."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Läs informationen i Windows Update och klicka Starta om nu.",
+            "text": {
+              "default": "Läs informationen i Windows Update och klicka på Starta om nu.",
+              "guided": "Inställningar visar Windows Update. Läs rutan högst upp: den säger att datorn måste startas om för att uppdateringarna ska installeras. Läs också påminnelsen om att spara ditt arbete först. Klicka sedan på den blå knappen Starta om nu.",
+              "independent": "Starta om datorn så att uppdateringarna installeras.",
+              "child.guided": "Läs vad det står högst upp i Windows Update. Kom ihåg att spara först! Klicka sedan på Starta om nu."
+            },
             "hints": [
               "Du är redan på Windows Update.",
               "Läs att en omstart krävs för att uppdateringarna ska installeras.",
               "Läs påminnelsen om att spara ditt arbete först.",
               "Den gula ramen visar knappen Starta om nu.",
               "Windows Update → Starta om nu."
-            ]
+            ],
+            "nudge": "Läs vad Windows Update vill att du ska göra."
           },
           {
             "title": "Klart",
@@ -3577,18 +4519,28 @@
         "steps": [
           {
             "title": "Programmet svarar inte",
-            "text": "Ibland slutar ett program svara. Börja med det minst drastiska: vänta. Hjälper inte det stänger du programmet och startar det igen."
+            "text": {
+              "default": "Ibland slutar ett program svara. Börja med det minst drastiska: vänta. Hjälper inte det stänger du programmet och startar det igen.",
+              "short": "Vänta först. Hjälper det inte, stäng programmet och starta det igen.",
+              "child": "Ibland fastnar ett program och svarar inte. Då ska du först vänta en stund – det kanske bara tänker. Om det fortfarande inte svarar stänger du det och startar det igen."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Klicka på krysset i Rapportvisaren och välj Vänta på programmet. Klicka sedan på krysset igen och välj Stäng programmet. Starta därefter Rapportvisaren igen från Start.",
+            "text": {
+              "default": "Klicka på krysset i Rapportvisaren och välj Vänta på programmet. Klicka på krysset igen och välj Stäng programmet. Starta sedan Rapportvisaren från Start.",
+              "guided": "Klicka på krysset uppe till höger i Rapportvisaren. En ruta säger att programmet inte svarar. Börja med att klicka på Vänta på programmet. Programmet svarar fortfarande inte, så klicka på krysset en gång till och välj Stäng programmet. Öppna sedan Start, skriv Rapportvisaren och tryck Retur.",
+              "independent": "Rapportvisaren svarar inte. Ge den en chans, stäng den sedan och starta den igen.",
+              "child.guided": "Klicka på krysset. Välj först Vänta på programmet. Hjälpte det inte? Klicka på krysset igen och välj Stäng programmet. Öppna sedan Rapportvisaren igen från Start."
+            },
             "hints": [
               "Klicka på krysset uppe till höger i Rapportvisaren.",
               "I rutan som visas väljer du först Vänta på programmet.",
               "Programmet svarar fortfarande inte. Klicka på krysset igen.",
               "Välj Stäng programmet.",
               "Öppna Start, skriv Rapportvisaren och tryck Retur."
-            ]
+            ],
+            "nudge": "Börja med det minst drastiska du kan göra."
           },
           {
             "title": "Klart",
@@ -3616,7 +4568,11 @@
         "steps": [
           {
             "title": "Aktivitetshanteraren",
-            "text": "Aktivitetshanteraren visar alla program som körs. Där kan du avsluta ett program som har hängt sig och inte går att stänga på vanligt sätt. Du öppnar den med Ctrl+Shift+Esc."
+            "text": {
+              "default": "Aktivitetshanteraren visar alla program som körs. Där kan du avsluta ett program som har hängt sig och inte går att stänga på vanligt sätt. Du öppnar den med Ctrl+Shift+Esc.",
+              "short": "Aktivitetshanteraren (Ctrl+Shift+Esc) kan avsluta ett program som har hängt sig.",
+              "child": "Aktivitetshanteraren är som en lista över allt datorn håller på med just nu. Har ett program fastnat helt kan du avsluta det därifrån. Du öppnar den med tre tangenter: Ctrl, Shift och Esc."
+            }
           },
           {
             "title": "Klart",
@@ -3644,7 +4600,11 @@
         "steps": [
           {
             "title": "Kontrollera i tur och ordning",
-            "text": "1. Är Wi‑Fi på och anslutet? Titta nere till höger. 2. Fungerar en annan webbplats? 3. Fungerar internet på andra enheter? 4. Först då: starta om routern."
+            "text": {
+              "default": "1. Är Wi‑Fi på och anslutet? Titta nere till höger. 2. Fungerar en annan webbplats? 3. Fungerar internet på andra enheter? 4. Först då: starta om routern.",
+              "short": "Kontrollera Wi‑Fi, en annan sida och andra enheter innan du startar om routern.",
+              "child": "Fungerar inte internet? Var en detektiv och kontrollera en sak i taget: Är Wi‑Fi på? Fungerar en annan sida? Har andra i huset internet? Först sist startar du om routern, den lilla lådan som ger internet."
+            }
           },
           {
             "title": "Klart",
@@ -3672,7 +4632,11 @@
         "steps": [
           {
             "title": "Inget ljud?",
-            "text": "Kontrollera i tur och ordning: är ljudet avstängt (mute)? Är volymen uppe? Är rätt högtalare eller hörlurar vald? Är ljudet på i själva programmet?"
+            "text": {
+              "default": "Kontrollera i tur och ordning: är ljudet avstängt (mute)? Är volymen uppe? Är rätt högtalare eller hörlurar vald? Är ljudet på i själva programmet?",
+              "short": "Kontrollera ljud av, volym, vald högtalare och programmets eget ljud.",
+              "child": "Hörs inget? Kontrollera en sak i taget: Är ljudet avstängt? Är volymen uppskruvad? Är rätt högtalare eller hörlurar valda? Och är ljudet på i programmet du använder?"
+            }
           },
           {
             "title": "Klart",
@@ -3700,7 +4664,11 @@
         "steps": [
           {
             "title": "Fullt utrymme",
-            "text": "När lagringen börjar bli full varnar Windows. Under Inställningar → System → Lagring ser du vad som tar plats. Börja med Hämtade filer och Papperskorgen – inte okända systemmappar."
+            "text": {
+              "default": "När lagringen börjar bli full varnar Windows. Under Inställningar → System → Lagring ser du vad som tar plats. Börja med Hämtade filer och Papperskorgen – inte okända systemmappar.",
+              "short": "Se vad som tar plats under System → Lagring. Börja med Hämtade filer och Papperskorgen.",
+              "child": "Datorns minne kan bli fullt, som en garderob. Då varnar Windows. Rensa först bland sådant du vet vad det är, som Hämtade filer och Papperskorgen. Rör inte mappar du inte känner igen."
+            }
           },
           {
             "title": "Klart",
@@ -3728,18 +4696,28 @@
         "steps": [
           {
             "title": "Länkens meny",
-            "text": "Högerklickar du på en länk i Chrome kan du kopiera själva adressen eller öppna länken i en ny flik – utan att lämna sidan du är på."
+            "text": {
+              "default": "Högerklickar du på en länk i Chrome kan du kopiera själva adressen eller öppna länken i en ny flik – utan att lämna sidan du är på.",
+              "short": "Högerklicka på en länk för att kopiera den eller öppna den i ny flik.",
+              "child": "Länkar har en egen snabbmeny. Högerklickar du på en länk kan du kopiera adressen, till exempel för att skicka den till någon, eller öppna länken i en ny flik utan att lämna sidan du är på."
+            }
           },
           {
             "title": "Din tur",
-            "text": "Öppna Sökresultat. Högerklicka på en länk och välj Kopiera länkadress. Högerklicka sedan igen och välj Öppna länk i ny flik.",
+            "text": {
+              "default": "Öppna Sökresultat. Högerklicka på en blå länk och välj Kopiera länkadress. Högerklicka sedan igen och välj Öppna länk i ny flik.",
+              "guided": "Klicka på genvägen Sökresultat på Chromes startsida. Lägg pekaren direkt på en blå länktext – pekaren blir en hand. Tryck på höger musknapp. Välj Kopiera länkadress i menyn. Högerklicka sedan på en länk igen och välj Öppna länk i ny flik. En ny flik öppnas högst upp.",
+              "independent": "Kopiera adressen till en länk i Sökresultat och öppna en länk i en ny flik.",
+              "child.guided": "Öppna Sökresultat. Högerklicka på en blå länk och välj Kopiera länkadress. Högerklicka igen och välj Öppna länk i ny flik."
+            },
             "hints": [
               "Klicka på genvägen Sökresultat på Chromes startsida.",
               "Högerklicka direkt på den blå länktexten – inte bredvid.",
               "Välj Kopiera länkadress.",
               "Högerklicka på en länk igen och välj Öppna länk i ny flik.",
               "Sökresultat → högerklick på blå länk → Kopiera länkadress → högerklick igen → Öppna länk i ny flik."
-            ]
+            ],
+            "nudge": "Länkar har fler val än att bara klicka på dem."
           },
           {
             "title": "Klart",
@@ -3774,7 +4752,11 @@
         "steps": [
           {
             "title": "Hotspot",
-            "text": "En mobil hotspot gör telefonen till ett tillfälligt Wi‑Fi-nätverk. Datorn ansluter till det som till vilket Wi‑Fi som helst. Tänk på att det använder telefonens mobildata."
+            "text": {
+              "default": "En mobil hotspot gör telefonen till ett tillfälligt Wi‑Fi-nätverk. Datorn ansluter till det som till vilket Wi‑Fi som helst. Tänk på att det använder telefonens mobildata.",
+              "short": "En mobil hotspot gör telefonen till ett Wi‑Fi-nätverk.",
+              "child": "En mobil kan dela sitt internet med datorn. Då blir mobilen ett litet Wi‑Fi-nätverk som datorn kan ansluta till. Det använder mobilens surf, så fråga först om det är okej."
+            }
           },
           {
             "title": "Klart",
@@ -3802,7 +4784,11 @@
         "steps": [
           {
             "title": "Beskriv problemet",
-            "text": "Skriv ned vad du gjorde, vad du väntade dig och vad som hände – och exakt vad felmeddelandet säger. En skärmbild hjälper mycket. Lämna aldrig ut ditt lösenord."
+            "text": {
+              "default": "Skriv ned vad du gjorde, vad du väntade dig och vad som hände – och exakt vad felmeddelandet säger. En skärmbild hjälper mycket. Lämna aldrig ut ditt lösenord.",
+              "short": "Skriv ned vad som hände och felmeddelandet. Lämna aldrig ut lösenordet.",
+              "child": "Innan du ber någon om hjälp: skriv ned vad du gjorde och vad som hände, och ta gärna en skärmbild av felmeddelandet. Då blir det lättare att hjälpa dig. Ditt lösenord behöver ingen få veta."
+            }
           },
           {
             "title": "Klart",
@@ -3830,7 +4816,11 @@
         "steps": [
           {
             "title": "Säkerhetskopior",
-            "text": "En säkerhetskopia – backup – är en extra kopia på ett annat ställe, till exempel i OneDrive eller på en extern hårddisk. Viktiga filer ska finnas på minst två ställen."
+            "text": {
+              "default": "En säkerhetskopia – backup – är en extra kopia på ett annat ställe, till exempel i OneDrive eller på en extern hårddisk. Viktiga filer ska finnas på minst två ställen.",
+              "short": "Ha viktiga filer på minst två ställen.",
+              "child": "En säkerhetskopia är en extra kopia som du sparar på ett annat ställe, till exempel i OneDrive. Om något händer med datorn finns dina viktiga filer kvar."
+            }
           },
           {
             "title": "Klart",

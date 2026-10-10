@@ -98,13 +98,11 @@ store.completeLesson("windows-001-start");
 recommendation = store.recommendLesson(lessons);
 assert(recommendation && recommendation.id, "Recommendation missing after completing in-progress lesson");
 
-// Phase 10 - learner modes.
-store.setMode("child");
-assert(store.profile().mode === "child", "Child mode not set");
-store.setMode("fast");
-assert(store.profile().mode === "fast", "Fast mode not set");
+// Phase 10 - how the learner is taught. Short explanations no longer skip the introduction:
+// the amount of explanation changes, not what the lesson covers.
+store.setLearning({ audience: "child", depth: "short" });
+assert(store.learningProfile().audience === "child" && store.learningProfile().depth === "short", "Learning settings not set");
 
-// Fast mode should enter an interactive lesson on its exercise.
 let loadedScenario = null;
 const lessonRuntime = {
   loadScenario: function (id) { loadedScenario = id; },
@@ -114,7 +112,7 @@ const lessonRuntime = {
 const lessonEngine = new window.DatorskolanLessonEngine(lessons, store);
 lessonEngine.start("internet-001-address", lessonRuntime);
 assert(loadedScenario === "internet-address-01", "Lesson did not load scenario");
-assert(lessonEngine.currentStep().type === "exercise", "Fast mode should skip to exercise");
+assert(lessonEngine.currentStep().type === "instruction", "Short explanations must still start with the introduction");
 
 // Persistence and review aging.
 function memoryStorage(initial) {
@@ -129,12 +127,12 @@ function memoryStorage(initial) {
 
 const persistentStorage = memoryStorage();
 const persistentStore = new window.DatorskolanProgressStore(persistentStorage);
-persistentStore.setMode("child");
+persistentStore.setLearning({ audience: "child" });
 persistentStore.startLesson("internet-001-address");
 persistentStore.completeLesson("internet-001-address");
 
 const reloadedStore = new window.DatorskolanProgressStore(persistentStorage);
-assert(reloadedStore.profile().mode === "child", "Learner mode did not persist");
+assert(reloadedStore.learningProfile().audience === "child", "Learning settings did not persist");
 assert(reloadedStore.lesson("internet-001-address").status === "completed", "Lesson progress did not persist");
 
 const staleState = reloadedStore.snapshot();

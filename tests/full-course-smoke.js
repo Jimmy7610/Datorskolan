@@ -65,10 +65,10 @@ assert(lessons.filter(function (lesson) { return lesson.moduleId === "devices"; 
 assert(lessons.filter(function (lesson) { return lesson.moduleId === "troubleshooting"; }).length >= 8, "Troubleshooting module incomplete");
 
 var progress = new window.DatorskolanProgressStore(null);
-progress.setMode("child");
-assert(progress.profile().mode === "child", "Child mode did not persist in store");
-progress.setMode("fast");
-assert(progress.profile().mode === "fast", "Fast mode did not persist in store");
+progress.setLearning({ audience: "child" });
+assert(progress.learningProfile().audience === "child", "Audience did not persist in store");
+progress.setLearning({ depth: "short" });
+assert(progress.learningProfile().depth === "short" && progress.learningProfile().audience === "child", "Settings must change independently");
 
 var recommendation = progress.recommendLesson(lessons);
 assert(recommendation && recommendation.id, "Adaptive recommendation missing");

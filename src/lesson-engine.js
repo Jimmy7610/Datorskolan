@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  var Pedagogy = window.DatorskolanPedagogy;
+
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
   }
@@ -39,6 +41,38 @@
     }.bind(this);
   };
 
+  // The learner's settings (audience, support, depth). A "clearer help" offer accepted on an exercise
+  // raises the support for that exercise only; the saved setting never changes by itself.
+  LessonEngine.prototype.profile = function () {
+    var profile = this._progress.learningProfile ? this._progress.learningProfile() : Pedagogy.normalizeProfile(null);
+    if (this._active && this._active.supportOverride) profile.support = this._active.supportOverride;
+    return profile;
+  };
+
+  function freshStepState(active) {
+    active.hintLevel = 0;
+    active.hintRung = -1;
+    active.attemptsOnStep = 0;
+    active.validatorPassed = false;
+    active.feedback = null;
+    active.supportOverride = null;
+    active.helpOfferDismissed = false;
+    active.stepStartedAt = Date.now();
+  }
+
+  function newActive(lesson, stepIndex) {
+    var active = { id: lesson.id, title: lesson.title, moduleId: lesson.moduleId, stepIndex: stepIndex, status: "running", startedAt: Date.now() };
+    freshStepState(active);
+    return active;
+  }
+
+  // How much help the learner had on this exercise, for the skill model (0 = none, 5 = full solution).
+  LessonEngine.prototype._assistLevel = function () {
+    var rung = this._active.hintRung;
+    var used = rung < 0 ? 0 : Math.max(1, rung);
+    return this.profile().support === "guided" ? Math.max(3, used) : used;
+  };
+
   LessonEngine.prototype._notify = function () {
     var snapshot = this.active();
     this._listeners.slice().forEach(function (fn) { fn(snapshot); });
@@ -57,32 +91,21 @@
       this._progress.introduceSkill(skillId);
     }, this);
 
-    var profile = this._progress.profile ? this._progress.profile() : { mode: "standard" };
     var alreadyStrong = lesson.skills.length > 0 && lesson.skills.every(function (skillId) {
       var skill = this._progress.skill(skillId);
       return skill.status === "independent" || skill.status === "mastered";
     }, this);
 
+    // Someone who already masters every skill in the lesson goes straight to the exercise.
     var startIndex = 0;
-    if (profile.mode === "fast" || alreadyStrong) {
+    if (alreadyStrong) {
       var firstExercise = lesson.steps.findIndex(function (step) {
         return step.type === "exercise";
       });
       if (firstExercise >= 0) startIndex = firstExercise;
     }
 
-    this._active = {
-      id: lesson.id,
-      title: lesson.title,
-      moduleId: lesson.moduleId,
-      stepIndex: startIndex,
-      hintLevel: 0,
-      attemptsOnStep: 0,
-      validatorPassed: false,
-      feedback: null,
-      status: "running",
-      startedAt: Date.now()
-    };
+    this._active = newActive(lesson, startIndex);
 
     if (startIndex > 0) {
       this._progress.setLessonStep(lesson.id, startIndex);
@@ -115,18 +138,8 @@
     var stepIndex = Math.max(0, Math.min(saved.stepIndex, lesson.steps.length - 1));
     if (lesson.steps[stepIndex].type === "completion" && stepIndex > 0) stepIndex -= 1;
 
-    this._active = {
-      id: lesson.id,
-      title: lesson.title,
-      moduleId: lesson.moduleId,
-      stepIndex: stepIndex,
-      hintLevel: 0,
-      attemptsOnStep: 0,
-      validatorPassed: false,
-      feedback: { kind: "resumed", messageKey: "learn.feedback.resumed" },
-      status: "running",
-      startedAt: Date.now()
-    };
+    this._active = newActive(lesson, stepIndex);
+    this._active.feedback = { kind: "resumed", messageKey: "learn.feedback.resumed" };
 
     this._progress.recordEvent({
       type: "lesson.resumed",
@@ -169,16 +182,13 @@
 
     if (step.type === "exercise" && !this._isCurrentExerciseComplete()) {
       this._active.attemptsOnStep += 1;
-      var retryProfile = this._progress.profile ? this._progress.profile() : { mode: "standard" };
-      this._active.feedback = {
-        kind: "try-again",
-        messageKey: retryProfile.mode === "child" ? "learn.feedback.tryAgainChild" : "learn.feedback.tryAgain"
-      };
+      // The panel picks the wording for the learner's audience and help level (learn.feedback.tryAgain.*).
+      this._active.feedback = { kind: "try-again", messageKey: "learn.feedback.tryAgain" };
 
       lesson.skills.forEach(function (skillId) {
         this._progress.recordSkillAttempt(skillId, {
           success: false,
-          hintLevel: this._active.hintLevel
+          hintLevel: this._assistLevel()
         });
       }, this);
 
@@ -206,10 +216,7 @@
     }
 
     this._active.stepIndex += 1;
-    this._active.hintLevel = 0;
-    this._active.attemptsOnStep = 0;
-    this._active.validatorPassed = false;
-    this._active.feedback = null;
+    freshStepState(this._active);
     this._progress.setLessonStep(lesson.id, this._active.stepIndex);
 
     var nextStep = lesson.steps[this._active.stepIndex];
@@ -225,49 +232,81 @@
     if (!this._active) return null;
     if (this._active.stepIndex > 0) {
       this._active.stepIndex -= 1;
-      this._active.hintLevel = 0;
-      this._active.validatorPassed = false;
-      this._active.feedback = null;
+      freshStepState(this._active);
       this._progress.setLessonStep(this._active.id, this._active.stepIndex);
       this._notify();
     }
     return this.active();
   };
 
+  // Next rung on the hint ladder for the learner's help level (see src/pedagogy.js). The panel resolves
+  // the text from the rung, so it follows the learner's audience setting.
   LessonEngine.prototype.requestHint = function () {
     if (!this._active) return null;
     var step = this.currentStep();
     if (!step || step.type !== "exercise") return null;
 
-    this._active.hintLevel = Math.min(5, this._active.hintLevel + 1);
+    var support = this.profile().support;
+    var ladder = Pedagogy.ladder(support);
+    if (this._active.hintLevel >= ladder.length) return clone(this._active.feedback);
 
-    var hintText = "";
-    if (Array.isArray(step.hints) && step.hints.length) {
-      hintText = step.hints[Math.min(this._active.hintLevel - 1, step.hints.length - 1)];
-    }
-
-    this._active.feedback = {
-      kind: "hint",
-      level: this._active.hintLevel,
-      text: hintText
-    };
+    var rung = ladder[this._active.hintLevel];
+    this._active.hintLevel += 1;
+    this._active.hintRung = Math.max(this._active.hintRung, rung);
+    this._active.feedback = { kind: "hint", rung: rung, level: this._active.hintLevel, max: ladder.length };
 
     this._progress.recordEvent({
       type: "hint.used",
       lessonId: this._active.id,
       skillId: this._definitions[this._active.id].skills[0] || null,
-      metadata: {
-        stepIndex: this._active.stepIndex,
-        hintLevel: this._active.hintLevel
-      }
+      metadata: { stepIndex: this._active.stepIndex, hintLevel: this._active.hintLevel, rung: rung, support: support }
     });
 
-    if (this._runtime && this._runtime.setLearningHighlight) {
-      this._runtime.setLearningHighlight(this._active.hintLevel >= 4 ? step.visualTarget || null : null);
-    }
-
+    this._applyHighlight();
     this._notify();
     return clone(this._active.feedback);
+  };
+
+  LessonEngine.prototype.hintsRemaining = function () {
+    if (!this._active) return 0;
+    return Math.max(0, Pedagogy.ladder(this.profile().support).length - this._active.hintLevel);
+  };
+
+  // Show or hide the yellow frame for the current step and help level.
+  LessonEngine.prototype._applyHighlight = function () {
+    if (!this._runtime || !this._runtime.setLearningHighlight || !this._active) return;
+    var step = this.currentStep();
+    var visible = step && this._active.status === "running" &&
+      Pedagogy.highlightVisible(step.type, this.profile().support, this._active.hintRung);
+    this._runtime.setLearningHighlight(visible ? step.visualTarget || null : null);
+  };
+
+  /* ---------- Adaptive help: offered, never forced ---------- */
+
+  LessonEngine.prototype.shouldOfferMoreHelp = function (now) {
+    var step = this.currentStep();
+    if (!step || step.type !== "exercise") return false;
+    return Pedagogy.shouldOfferMoreHelp(this._active, this.profile().support, now || Date.now());
+  };
+
+  // "Yes, show me clearer help": guided help for this exercise only.
+  LessonEngine.prototype.acceptMoreHelp = function () {
+    if (!this._active) return null;
+    this._active.supportOverride = "guided";
+    this._active.hintLevel = 0;
+    this._active.feedback = { kind: "help", messageKey: "learn.help.accepted" };
+    this._progress.recordEvent({ type: "help.accepted", lessonId: this._active.id, metadata: { stepIndex: this._active.stepIndex } });
+    this._applyHighlight();
+    this._notify();
+    return this.active();
+  };
+
+  LessonEngine.prototype.declineMoreHelp = function () {
+    if (!this._active) return null;
+    this._active.helpOfferDismissed = true;
+    this._progress.recordEvent({ type: "help.declined", lessonId: this._active.id, metadata: { stepIndex: this._active.stepIndex } });
+    this._notify();
+    return this.active();
   };
 
   LessonEngine.prototype.observe = function (type, payload) {
@@ -349,7 +388,7 @@
       var before = this._progress.skill(skillId);
       this._progress.recordSkillAttempt(skillId, {
         success: true,
-        hintLevel: this._active.hintLevel
+        hintLevel: this._assistLevel()
       });
 
       if (before.status === "needs_review" && this._progress.recordRetentionSuccess) {
@@ -372,11 +411,7 @@
   LessonEngine.prototype._completeLesson = function () {
     var lesson = this._definitions[this._active.id];
     this._active.status = "completed";
-    var completionProfile = this._progress.profile ? this._progress.profile() : { mode: "standard" };
-    this._active.feedback = {
-      kind: "lesson-complete",
-      messageKey: completionProfile.mode === "child" ? "learn.feedback.completeChild" : "learn.feedback.complete"
-    };
+    this._active.feedback = { kind: "lesson-complete", messageKey: "learn.feedback.complete" };
 
     this._progress.completeLesson(lesson.id);
     this._progress.recordEvent({

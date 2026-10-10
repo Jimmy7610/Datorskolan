@@ -79,8 +79,8 @@
 
 .fw *,.fw *::before,.fw *::after{box-sizing:border-box}
 /* Zero-specificity reset so component classes (for example .fw-button-accent) always win. */
-.fw :where(button,input,select,textarea){font:inherit;color:inherit}
-.fw :where(button){cursor:default}
+:where(.fw) :where(button,input,select,textarea){font:inherit;color:inherit}
+:where(.fw) :where(button){cursor:default}
 .fw h1,.fw h2,.fw h3,.fw h4,.fw p,.fw ul,.fw ol,.fw dl,.fw dd{margin:0}
 .fw ul,.fw ol{padding:0;list-style:none}
 .fw img{display:block}
@@ -1677,9 +1677,30 @@
 .coach-muted{color:#475569;font-size:14px;line-height:1.45}
 .coach-eyebrow{color:#1d4ed8;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 
-.coach-segmented{display:inline-flex;padding:3px;border:1px solid #94a3b8;border-radius:8px;background:#fff}
-.coach-segmented button{min-height:36px;padding:0 12px;border:0;border-radius:6px;background:transparent;color:#475569;font-weight:600}
-.coach-segmented button[aria-checked="true"]{background:#2563eb;color:#fff}
+/* How you learn: one summary line that opens into three described choices. */
+.coach-settings{border:1px solid #cbd5e1;border-radius:10px;background:#fff}
+.coach-settings-summary{display:grid;gap:6px;width:100%;padding:10px 12px;border:0;border-radius:10px;background:transparent;text-align:left;cursor:pointer}
+.coach-settings-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.coach-settings-title{color:#0f172a;font-weight:700}
+.coach-settings-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.coach-settings-summary:hover{background:#f8fafc}
+.coach-settings-item{display:grid;gap:0;min-width:0}
+.coach-settings-item .coach-label{font-size:13px;line-height:18px;text-transform:uppercase;letter-spacing:.04em}
+.coach-settings-item strong{color:#0f172a;font-size:16px;line-height:22px}
+.coach-settings-action{color:#1d4ed8;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.coach-settings-body{display:grid;gap:14px;padding:4px 12px 14px;border-top:1px solid #e2e8f0}
+.coach-choice{display:grid;gap:4px;margin:0;padding:0;border:0}
+.coach-choice legend{margin-top:10px;margin-bottom:4px;padding:0;color:#0f172a;font-weight:700}
+.coach-choice-option{display:grid;grid-template-columns:20px minmax(0,1fr);align-items:start;gap:10px;padding:6px 8px;border-radius:8px}
+.coach-choice-option:has(input:checked){background:#eff6ff}
+.coach-choice-option input{width:20px;height:20px;margin:2px 0 0;accent-color:#2563eb}
+.coach-choice-option label{display:grid;gap:2px;cursor:pointer}
+.coach-choice-option strong{font-size:16px}
+.coach-choice-option small{color:#475569;font-size:14px;line-height:1.45}
+.coach-why{padding:10px 12px;border-radius:8px;background:#f8fafc;color:#334155}
+.coach-offer{display:grid;gap:10px;padding:12px;border:1px solid #c4b5fd;border-radius:10px;background:#f5f3ff;color:#3b0764}
+.coach-offer p{font-size:16px;line-height:1.5}
+.coach-offer-actions{display:flex;flex-wrap:wrap;gap:8px}
 
 .coach-next{
   display:grid;
@@ -1744,7 +1765,7 @@
 .coach-feedback.is-empty{display:none}
 .coach-feedback.is-success,.coach-feedback.is-lesson-complete{border:1px solid #86efac;background:#f0fdf4;color:#166534}
 .coach-feedback.is-try-again{border:1px solid #fcd34d;background:#fffbeb;color:#92400e}
-.coach-feedback.is-hint,.coach-feedback.is-resumed{border:1px solid #bfdbfe;background:#eff6ff;color:#1e3a8a;font-weight:400}
+.coach-feedback.is-hint,.coach-feedback.is-resumed,.coach-feedback.is-help{border:1px solid #bfdbfe;background:#eff6ff;color:#1e3a8a;font-weight:400}
 
 .coach-actions{display:flex;flex-wrap:wrap;gap:8px}
 .coach-actions .button{flex:1 1 auto;min-height:48px;padding:0 16px}

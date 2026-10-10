@@ -81,8 +81,10 @@
       var stepText = (text.steps && text.steps[index]) || {};
       var composed = clone(step);
       if (stepText.title) composed.title = stepText.title;
-      composed.text = stepText.text || "";
+      // Text may be a plain string or an object with teaching variants (see src/pedagogy.js).
+      composed.text = stepText.text ? clone(stepText.text) : "";
       if (stepText.hints) composed.hints = stepText.hints.slice();
+      if (stepText.nudge) composed.nudge = clone(stepText.nudge);
       return composed;
     });
 

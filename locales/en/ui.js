@@ -95,7 +95,7 @@
     "landing.footer.privacy": "Privacy and storage",
 
     "reset.title": "Start over from the beginning?",
-    "reset.description": "All progress saved on this device will be deleted: completed lessons, your course level and your choices on the practice computer.",
+    "reset.description": "All progress saved on this device will be deleted: completed lessons and your choices on the practice computer. The language and how you want to learn (mode, help and explanations) are kept.",
     "reset.warning": "This cannot be undone.",
     "reset.confirm": "Yes, delete and start over",
 
@@ -103,9 +103,9 @@
     "privacy.intro": "Datorskolan works without an account and without sending your information anywhere.",
     "privacy.item.noAccount": "You do not need to sign in or give any personal details.",
     "privacy.item.noTracking": "We use no cookies, no analytics and no tracking.",
-    "privacy.item.localStorage": "Your progress, your language choice and your choices on the practice computer are stored in your browser's local storage (localStorage) on this device. They are never sent to a server.",
+    "privacy.item.localStorage": "Your progress, your language choice, how you want to learn and your choices on the practice computer are stored in your browser's local storage (localStorage) on this device. They are never sent to a server.",
     "privacy.item.thirdParty": "Everything except the Chrome logo comes from Datorskolan's own website. The Chrome logo is shown directly from Google, so Google sees your IP address, just as with any normal website visit.",
-    "privacy.item.delete": "You can delete everything with the “Start over” button, or by clearing site data in your browser.",
+    "privacy.item.delete": "You delete your progress with the “Start over” button. To delete everything, including the language and settings, clear the site data in your browser.",
 
     /* ---------- Simulator: shared ---------- */
     "app.simulatorLabel": "Practice computer running Windows 11",

@@ -61,7 +61,7 @@ assert(importantFakewin <= 3, "fakewin.css uses !important " + importantFakewin 
 
 // Element resets in the simulator must have zero specificity, otherwise they beat component classes
 // (this once turned the text on every blue accent button dark: 2.7:1 contrast).
-assert(fakewin.indexOf(".fw :where(button,input,select,textarea){font:inherit;color:inherit}") >= 0, "Simulator form-element reset must use :where()");
+assert(fakewin.indexOf(":where(.fw) :where(button,input,select,textarea){font:inherit;color:inherit}") >= 0, "Simulator form-element reset must have zero specificity (:where around both parts)");
 assert(!/\.fw (button|input|select|textarea)[^{]*\{[^}]*color:inherit/.test(fakewin), "Simulator must not reset form-element colours with element selectors (specificity bug)");
 assert(/\.fw-button-accent\{[^}]*color:var\(--fw-text-on-accent\)/.test(fakewin) && /--fw-text-on-accent:#ffffff/.test(fakewin), "Accent buttons must use white text");
 

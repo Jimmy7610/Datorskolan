@@ -3,7 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { load, assert, ROOT } = require("./helpers/load");
-load(["src/progress-store.js"]);
+load(["src/pedagogy.js", "src/progress-store.js"]);
 
 function memoryStorage() {
   const data = {};
@@ -15,15 +15,16 @@ function memoryStorage() {
 }
 
 const store = new window.DatorskolanProgressStore(memoryStorage());
-store.setMode("child");
+store.setLearning({ audience: "child", support: "independent", depth: "short" });
 store.startLesson("example");
 store.completeLesson("example");
 store.recordSkillAttempt("skill.example", { success: true, hintLevel: 0 });
-assert(store.profile().mode === "child", "Precondition: mode not changed");
+assert(store.learningProfile().audience === "child", "Precondition: audience not changed");
 assert(store.lesson("example").status === "completed", "Precondition: lesson not completed");
 
 const reset = store.reset();
-assert(reset.userProfile.mode === "standard", "Reset must restore standard mode");
+assert(JSON.stringify(reset.userProfile.learning) === JSON.stringify({ audience: "child", support: "independent", depth: "short" }),
+  "Reset keeps how the learner wants to be taught (a preference, like the language)");
 assert(Object.keys(reset.lessons).length === 0, "Reset must remove lesson progress");
 assert(Object.keys(reset.skills).length === 0, "Reset must remove skill progress");
 assert(reset.events.length === 0, "Reset must remove progress events");
