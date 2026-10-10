@@ -650,6 +650,16 @@
 .fw-start-list-item img{width:24px;height:24px}
 
 .fw-start-best{width:100%;min-height:72px;background:rgba(255,255,255,.6)}
+/* Search: results on the left, best match details and actions on the right (Windows 11). */
+.fw-start-search-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.fw-start-detail{display:grid;justify-items:center;gap:4px;padding:20px 16px 12px;border-radius:var(--fw-radius);background:rgba(255,255,255,.6);text-align:center}
+.fw-start-detail-icon img{width:64px;height:64px}
+.fw-start-detail-name{margin-top:8px;font-size:16px;font-weight:600}
+.fw-start-detail small{color:var(--fw-text-2);font-size:12px}
+.fw-start-detail-actions{display:grid;justify-self:stretch;gap:2px;margin-top:12px;padding-top:12px;border-top:1px solid var(--fw-stroke)}
+.fw-start-detail-actions button{display:flex;align-items:center;gap:12px;min-height:36px;padding:0 12px;border:0;border-radius:var(--fw-radius-control);background:transparent;text-align:left}
+.fw-start-detail-actions button:hover{background:var(--fw-subtle-hover)}
+@media (max-width:720px){.fw-start-search-layout{grid-template-columns:1fr}.fw-start-detail{display:none}}
 .fw-start-best img{width:40px;height:40px}
 .fw-start-best>span:last-child{display:grid}
 
@@ -1698,6 +1708,8 @@
 .coach-icon-button img{width:20px;height:20px}
 
 .coach-body{display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;overflow:auto;padding:16px}
+/* The panel scrolls as a whole; nothing in it (like the progress bar) may be squeezed to zero height. */
+.coach-body>*{flex-shrink:0}
 
 .coach-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border:1px solid #e2e8f0;border-radius:10px;background:#f1f5f9}
 .coach-tabs button{min-height:40px;border:0;border-radius:7px;background:transparent;color:#475569;font-weight:600}
@@ -1715,6 +1727,12 @@
 .coach-settings-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 .coach-settings-title{color:#0f172a;font-weight:700}
 .coach-settings-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.coach-settings.is-compact .coach-settings-summary{grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:10px;padding:10px 12px}
+.coach-settings.is-compact .coach-settings-head{display:contents}
+.coach-settings.is-compact .coach-settings-title{grid-column:1;grid-row:1;font-size:14px}
+.coach-settings.is-compact .coach-settings-items{display:block;grid-column:2;grid-row:1;min-width:0}
+.coach-settings.is-compact .coach-settings-action{grid-column:3;grid-row:1;font-size:14px}
+.coach-settings-inline{color:#334155;font-size:14px}
 .coach-settings-summary:hover{background:#f8fafc}
 .coach-settings-item{display:grid;gap:0;min-width:0}
 .coach-settings-item .coach-label{font-size:13px;line-height:18px;text-transform:uppercase;letter-spacing:.04em}
@@ -1729,6 +1747,8 @@
 .coach-choice-option label{display:grid;gap:2px;cursor:pointer}
 .coach-choice-option strong{font-size:16px}
 .coach-choice-option small{color:#475569;font-size:14px;line-height:1.45}
+.coach .coach-step-list{display:grid;gap:6px;margin:0;padding-left:26px;list-style:decimal;font-size:17px;line-height:1.5}
+.coach .coach-step-list li::marker{color:#1d4ed8;font-weight:700}
 .coach-why{padding:10px 12px;border-radius:8px;background:#f8fafc;color:#334155}
 .coach-offer{display:grid;gap:10px;padding:12px;border:1px solid #c4b5fd;border-radius:10px;background:#f5f3ff;color:#3b0764}
 .coach-offer p{font-size:16px;line-height:1.5}
@@ -1748,7 +1768,7 @@
 .coach-next-cta{justify-self:start;margin-top:6px;padding:6px 16px;border-radius:8px;background:#2563eb;color:#fff;font-weight:700}
 
 .coach-overall{display:grid;gap:8px}
-.coach-progress{height:8px;overflow:hidden;border-radius:4px;background:#e2e8f0}
+.coach-progress{flex:none;height:8px;overflow:hidden;border-radius:4px;background:#e2e8f0}
 .coach-progress i{display:block;height:100%;border-radius:4px;background:#2563eb}
 
 .coach-section-title{margin-top:4px;font-size:16px}

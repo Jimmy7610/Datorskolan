@@ -237,6 +237,7 @@
     "notepad.menu.edit": "Edit",
     "notepad.menu.view": "View",
     "notepad.new": "New",
+    "notepad.open": "Open...",
     "notepad.saveAs": "Save as",
     "notepad.closeWindow": "Close window",
     "notepad.undo": "Undo",

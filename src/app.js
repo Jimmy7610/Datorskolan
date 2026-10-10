@@ -1214,6 +1214,7 @@
       panel.appendChild(h("div", { class: "fw-start-search" }, [h("span", { html: ui.glyph("search", 16) }), input]));
 
       var body = h("div", { class: "fw-start-body" });
+      var startBody = body;
       panel.appendChild(body);
 
       function results(query) {
@@ -1282,14 +1283,31 @@
       }
 
       function drawResults(query) {
+        var body = startBody;
         body.replaceChildren();
         var matches = results(query);
         if (!matches.length) {
           body.appendChild(h("p", { class: "fw-start-empty", role: "status", text: t("start.noResults", { query: query }) }));
           return;
         }
+        // Windows 11 search: results on the left, the best match described on the right with its actions.
+        var resultsColumn = h("div", { class: "fw-start-results" });
+        var detail = h("div", { class: "fw-start-detail" });
+        var resultsHost = body;
+        body = resultsColumn;
         body.appendChild(h("div", { class: "fw-start-section-head" }, [h("h2", { text: t("start.bestMatch") })]));
         var best = matches[0];
+        var pinnedStart = isPinnedToStart(best);
+        var pinnedBar = isPinnedToTaskbar(best);
+        detail.appendChild(h("span", { class: "fw-start-detail-icon", html: ui.icon(apps[best].iconKey, 64) }));
+        detail.appendChild(h("strong", { class: "fw-start-detail-name", text: appTitle(best) }));
+        detail.appendChild(h("small", { text: t("start.app") }));
+        detail.appendChild(h("div", { class: "fw-start-detail-actions", role: "group", aria: { label: appTitle(best) } }, [
+          h("button", { type: "button", data: { ui: "start-detail-open" }, on: { click: function () { openApp(best); } } }, [h("span", { html: ui.glyph("open", 16) }), h("span", { text: t("menu.open") })]),
+          h("button", { type: "button", on: { click: function () { setPin("pinnedStart", best, !pinnedStart, pinnedStart ? "shell.startUnpinned" : "shell.startPinned"); } } }, [h("span", { html: ui.icon("pin", 16) }), h("span", { text: t(pinnedStart ? "menu.unpinStart" : "menu.pinToStart") })]),
+          h("button", { type: "button", on: { click: function () { setPin("pinnedTaskbar", best, !pinnedBar, pinnedBar ? "shell.taskbarUnpinned" : "shell.taskbarPinned"); } } }, [h("span", { html: ui.icon("pin", 16) }), h("span", { text: t(pinnedBar ? "menu.unpinTaskbar" : "menu.pinTaskbar") })])
+        ]));
+        resultsHost.appendChild(h("div", { class: "fw-start-search-layout" }, [resultsColumn, detail]));
         body.appendChild(h("button", {
           type: "button",
           class: "fw-start-best",

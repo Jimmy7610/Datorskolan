@@ -45,6 +45,11 @@ assert(JSON.stringify(Pedagogy.normalizeProfile({ audience: "robot", support: "f
 assert(I18n.t(Pedagogy.variantKey(I18n, "learn.feedback.tryAgain", { audience: "child", support: "guided", depth: "short" })) === I18n.t("learn.feedback.tryAgain.child.guided"), "Interface messages have variants too");
 assert(Pedagogy.variantKey(I18n, "learn.feedback.tryAgain", { audience: "adult", support: "normal", depth: "short" }) === "learn.feedback.tryAgain", "Interface variant falls back to the base key");
 
+/* ---------- Guided instructions are shown one action per line ---------- */
+assert(Pedagogy.splitSteps("Klicka på Arkiv och välj Spara som. Skriv plan.txt som namn. Klicka på Spara.").length === 3, "Guided text splits into sentences");
+assert(Pedagogy.splitSteps("Skriv plan.txt och tryck Ctrl+S.").length === 1, "File names and shortcuts never split a sentence");
+assert(Pedagogy.splitSteps("Klicka på Vad är internet? och se vad som händer.").length === 1, "A question mark inside a link name does not split");
+
 /* ---------- Hint ladder ---------- */
 assert(Pedagogy.ladder("independent").join() === "0,1,2,3,4,5", "Independent starts with a general nudge");
 assert(Pedagogy.ladder("normal").join() === "1,2,3,4,5", "Normal starts at where");

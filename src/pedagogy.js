@@ -164,6 +164,13 @@
     return !!(stuckByChecks || stuckByHints || stuckByTime);
   }
 
+  // Splits a guided instruction into its sentences so it can be shown one action per line.
+  // Breaks only after . ! ? followed by a capital letter, so "plan.txt" or "Ctrl+S." mid-sentence stay intact.
+  function splitSteps(text) {
+    if (!text) return [];
+    return text.split(/(?<=[.!?])\s+(?=[\p{Lu}\d"“])/u).map(function (s) { return s.trim(); }).filter(Boolean);
+  }
+
   // Old progress (one "mode" setting) → the new three settings. "Fast" was never an audience.
   function migrateMode(mode) {
     if (mode === "child") return { audience: "child", support: "normal", depth: "normal" };
@@ -187,6 +194,7 @@
     detailSections: detailSections,
     showWhy: showWhy,
     shouldOfferMoreHelp: shouldOfferMoreHelp,
+    splitSteps: splitSteps,
     migrateMode: migrateMode
   };
 })(typeof window !== "undefined" ? window : globalThis);

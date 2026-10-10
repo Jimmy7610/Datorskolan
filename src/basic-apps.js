@@ -368,6 +368,25 @@
     });
   }
 
+  // File > Open (Ctrl+O): the shared Open dialog; unsaved text is offered a save first, as in Windows.
+  function openNotepadDocument(ctx) {
+    var s = ctx.state;
+    function choose() {
+      showOpenDialog(ctx, {
+        initialFolder: notepadNode(ctx) ? notepadNode(ctx).parentId : "documents",
+        onOpen: function (node) {
+          s.notepadFileId = node.id;
+          s.notepadDraft = node.content || "";
+          s.notepadDirty = false;
+          ctx.emit("notepad.opened", { id: node.id, name: node.name });
+          ctx.refreshApp("notepad");
+        }
+      });
+    }
+    if (s.notepadDirty) confirmUnsaved(ctx, choose, null);
+    else choose();
+  }
+
   function newNotepadDocument(ctx) {
     var s = ctx.state;
     function reset() {
@@ -447,6 +466,7 @@
       menuButton("notepad.menu.file", function () {
         return [
           { label: t("notepad.new"), shortcut: "Ctrl+N", action: function () { newNotepadDocument(ctx); } },
+          { label: t("notepad.open"), shortcut: "Ctrl+O", ui: "notepad-open", action: function () { openNotepadDocument(ctx); } },
           "sep",
           { label: t("common.save"), shortcut: "Ctrl+S", ui: "notepad-save", action: function () { saveNotepad(ctx, false); } },
           { label: t("notepad.saveAs"), shortcut: "Ctrl+Shift+S", ui: "notepad-save-as", action: function () { saveNotepad(ctx, true); } },
@@ -529,6 +549,7 @@
       if (key === "y") ctx.emit("notepad.redo", {});
       if (key === "s") { e.preventDefault(); saveNotepad(ctx, e.shiftKey); }
       if (key === "n") { e.preventDefault(); newNotepadDocument(ctx); }
+      if (key === "o") { e.preventDefault(); openNotepadDocument(ctx); }
       if (key === "+" || key === "=") { e.preventDefault(); zoom(10); }
       if (key === "-") { e.preventDefault(); zoom(-10); }
       if (key === "0") { e.preventDefault(); s.notepadZoom = 100; ctx.refreshApp("notepad"); }

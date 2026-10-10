@@ -237,6 +237,7 @@
     "notepad.menu.edit": "Redigera",
     "notepad.menu.view": "Visa",
     "notepad.new": "Ny",
+    "notepad.open": "Öppna...",
     "notepad.saveAs": "Spara som",
     "notepad.closeWindow": "Stäng fönster",
     "notepad.undo": "Ångra",

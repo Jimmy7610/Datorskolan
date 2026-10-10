@@ -31,7 +31,8 @@
     var open = state.learningSettingsOpen === where;
     var regionId = "coach-settings-" + where;
 
-    var box = h("section", { class: "coach-settings" + (open ? " is-open" : ""), aria: { label: t("learn.settings.title") } });
+    var compact = where === "lesson" && !open;
+    var box = h("section", { class: "coach-settings" + (open ? " is-open" : "") + (compact ? " is-compact" : ""), aria: { label: t("learn.settings.title") } });
     var summary = h("button", {
       type: "button",
       class: "coach-settings-summary",
@@ -44,7 +45,11 @@
       h("span", { class: "coach-settings-action", text: open ? t("learn.settings.done") : t("learn.settings.change") })
     ]));
     var items = h("span", { class: "coach-settings-items" });
-    Object.keys(Pedagogy.DIMENSIONS).forEach(function (name) {
+    if (compact) {
+      // During a lesson: one quiet line ("Vuxen · Guidad · Normal"), so the step keeps the attention.
+      items.appendChild(h("span", { class: "coach-settings-inline", text: Object.keys(Pedagogy.DIMENSIONS).map(function (name) { return t("learn." + name + "." + profile[name]); }).join(" · ") }));
+    }
+    Object.keys(compact ? {} : Pedagogy.DIMENSIONS).forEach(function (name) {
       items.appendChild(h("span", { class: "coach-settings-item" }, [
         h("span", { class: "coach-label", text: t("learn.setting." + name) }),
         h("strong", { text: t("learn." + name + "." + profile[name]) })
@@ -350,9 +355,19 @@
 
     var card = h("section", { class: "coach-step is-" + step.type, aria: { labelledby: "coach-step-title" } });
     var typeKey = STEP_TYPES.indexOf(step.type) >= 0 ? "learn.stepType." + step.type : null;
-    card.appendChild(h("span", { class: "coach-step-type", text: typeKey ? t(typeKey) : step.type }));
-    card.appendChild(h("h3", { id: "coach-step-title", tabindex: "-1", text: text(step.title, profile) || text(lesson.title, profile) }));
-    card.appendChild(h("p", { class: "coach-step-text", text: text(step.text, profile) }));
+    var typeLabel = typeKey ? t(typeKey) : step.type;
+    var stepTitle = text(step.title, profile) || text(lesson.title, profile);
+    // The label says what kind of step this is; it is left out when the heading already says the same ("Din tur").
+    if (ctx.I18n.lower(typeLabel) !== ctx.I18n.lower(stepTitle)) card.appendChild(h("span", { class: "coach-step-type", text: typeLabel }));
+    card.appendChild(h("h3", { id: "coach-step-title", tabindex: "-1", text: stepTitle }));
+    var stepText = text(step.text, profile);
+    var sentences = Pedagogy.splitSteps(stepText);
+    if (step.type === "exercise" && profile.support === "guided" && sentences.length > 1) {
+      // Guided help: one thing at a time, as a numbered list.
+      card.appendChild(h("ol", { class: "coach-step-list" }, sentences.map(function (sentence) { return h("li", { text: sentence }); })));
+    } else {
+      card.appendChild(h("p", { class: "coach-step-text", text: stepText }));
+    }
 
     // Detailed explanations also say WHY the thing exists, in the introduction.
     if (Pedagogy.showWhy(step.type, profile.depth) && lesson.detail && lesson.detail.use) {
