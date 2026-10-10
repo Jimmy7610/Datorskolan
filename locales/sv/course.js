@@ -632,7 +632,7 @@
             "title": "Klara alla sex moment",
             "text": {
               "default": "Gör alla sex moment i övningsfönstret: flytta, klicka, dubbelklicka, högerklicka, scrolla och dra och släpp. Listan visar vad som är klart.",
-              "guided": "Övningsfönstret har sex rutor, en för varje sak du har tränat. Ta dem en i taget. Rör pekaren i rutan Flytta. Klicka en gång på Klick. Klicka två gånger snabbt på Dubbelklick. Tryck med höger knapp på Högerklick. Rulla hjulet ned och upp i Scrolla. Dra till sist rutan Dra till Släpp här. Listan under rutorna bockar av det du har gjort.",
+              "guided": "Övningsfönstret har sex rutor, en för varje sak du har tränat. Ta dem en i taget. Rör pekaren i rutan Flytta. Klicka en gång på rutan Klick. Dubbelklicka på rutan Dubbelklick. Högerklicka på rutan Högerklick. Rulla hjulet ned och upp i rutan Scrolla. Dra till sist rutan Dra till rutan Släpp här. Listan under rutorna bockar av det du har gjort.",
               "independent": "Flytta, klicka, dubbelklicka, högerklicka, scrolla och dra och släpp i övningsfönstret.",
               "child.guided": "Det finns sex rutor, en för varje musknep du kan. Börja med Flytta och gå sedan vidare en ruta i taget. Listan under rutorna visar vad du redan klarat. Kan du få alla sex?"
             },
@@ -1872,7 +1872,7 @@
             "title": "Din tur",
             "text": {
               "default": "Klicka på en länk eller en av de runda genvägarna på webbsidan.",
-              "guided": "Titta på den stora vita ytan i webbläsaren – det är själva webbsidan. Flytta pekaren långsamt över de runda genvägarna mitt på sidan. Lägg märke till att pekaren blir en hand – det betyder att du pekar på en länk. Klicka en gång, till exempel på Vad är internet?. Sidan byts och adressen i adressfältet ändras.",
+              "guided": "Titta på den stora vita ytan i webbläsaren – det är själva webbsidan. Flytta pekaren långsamt över de runda genvägarna mitt på sidan. Lägg märke till att pekaren blir en hand – det betyder att du pekar på en länk. Klicka en gång, till exempel på ”Vad är internet?”. Sidan byts och adressen i adressfältet ändras.",
               "independent": "Följ en länk på sidan i webbläsaren.",
               "child.guided": "Flytta pilen över de runda bilderna mitt på sidan. Blir pilen en hand? Då är det en länk! Klicka på Vad är internet? och se vad som händer."
             },
@@ -2646,9 +2646,9 @@
             "title": "Din tur",
             "text": {
               "default": "Öppna sidan Vad är internet? och klicka på stjärnan längst till höger i adressfältet.",
-              "guided": "Startsidan går inte att bokmärka, så öppna först en sida: klicka på genvägen Vad är internet?. Titta sedan på adressfältet högst upp. Längst till höger inne i fältet finns en liten stjärna. Klicka en gång på den. Stjärnan blir blå och sidan sparas i bokmärkesraden under adressfältet.",
+              "guided": "Startsidan går inte att bokmärka, så öppna först en sida: klicka på genvägen ”Vad är internet?”. Titta sedan på adressfältet högst upp. Längst till höger inne i fältet finns en liten stjärna. Klicka en gång på den. Stjärnan blir blå och sidan sparas i bokmärkesraden under adressfältet.",
               "independent": "Bokmärk en webbsida.",
-              "child.guided": "Klicka på Vad är internet?. Hitta den lilla stjärnan längst till höger i den långa rutan högst upp. Klicka på stjärnan – nu blir den blå och sidan är sparad!"
+              "child.guided": "Klicka på ”Vad är internet?”. Hitta den lilla stjärnan längst till höger i den långa rutan högst upp. Klicka på stjärnan – nu blir den blå och sidan är sparad!"
             },
             "hints": [
               "Startsidan kan inte bokmärkas – öppna först en sida, till exempel Vad är internet?",
@@ -2769,7 +2769,7 @@
             "title": "Din tur",
             "text": {
               "default": "Öppna Eriks mejl, klicka på Vidarebefordra, skriv anna@example.com i Till och klicka på Skicka.",
-              "guided": "Klicka på mejlet från Erik Lund. Ovanför mejlet till höger finns knappen Vidarebefordra. Klicka på den. Ett nytt mejl öppnas med Eriks text redan i. Klicka i fältet Till och skriv anna@example.com. Klicka sedan på Skicka.",
+              "guided": "Klicka på mejlet från Erik Lund. Ovanför mejlet till höger finns knappen Vidarebefordra. Klicka på den. Ett nytt mejl öppnas, och Eriks text finns redan med. Klicka i fältet Till och skriv anna@example.com. Klicka sedan på Skicka.",
               "independent": "Vidarebefordra Eriks mejl till någon annan.",
               "child.guided": "Klicka på mejlet från Erik Lund i listan i mitten. Klicka på Vidarebefordra ovanför mejlet till höger. Skriv anna@example.com i rutan Till. Klicka på Skicka."
             },
@@ -3241,7 +3241,7 @@
             "title": "Din tur",
             "text": {
               "default": "Öppna Vad är internet? i webbläsaren, markera telefonraden och tryck Ctrl+C. Klicka sedan i Anteckningar och tryck Ctrl+V.",
-              "guided": "I webbläsaren klickar du på genvägen Vad är internet?. Leta upp raden med ett telefonnummer. Tryck ned vänster musknapp precis före första tecknet, håll kvar och dra till slutet av raden – texten blir blåmarkerad. Håll ned Ctrl och tryck C. Klicka sedan på Anteckningars ikon i aktivitetsfältet, klicka i den vita ytan och tryck Ctrl+V. Raden klistras in.",
+              "guided": "I webbläsaren klickar du på genvägen ”Vad är internet?”. Leta upp raden med ett telefonnummer. Tryck ned vänster musknapp precis före första tecknet, håll kvar och dra till slutet av raden – texten blir blåmarkerad. Håll ned Ctrl och tryck C. Klicka sedan på Anteckningars ikon i aktivitetsfältet, klicka i den vita ytan och tryck Ctrl+V. Raden klistras in.",
               "independent": "Kopiera telefonraden från sidan Vad är internet? i webbläsaren till Anteckningar.",
               "child.guided": "Öppna Vad är internet? i webbläsaren. Dra med musen över raden med telefonnumret så att den blir blå. Tryck Ctrl+C. Byt till Anteckningar, klicka i den vita ytan och tryck Ctrl+V. Där är den!"
             },
@@ -3854,7 +3854,7 @@
             "title": "Din tur",
             "text": {
               "default": "Skriv några ord i Anteckningar, stäng fönstret med krysset och välj Spara inte i rutan som visas.",
-              "guided": "Klicka i den vita ytan i Anteckningar och skriv några ord. Klicka sedan på krysset längst upp till höger i Anteckningars fönster. En ruta visas med frågan Vill du spara ändringarna i Namnlös?. Läs frågan. Den här gången klickar du på Spara inte. I verkligheten väljer du Spara om du vill behålla texten.",
+              "guided": "Klicka i den vita ytan i Anteckningar och skriv några ord. Klicka sedan på krysset längst upp till höger i Anteckningars fönster. En ruta visas med frågan ”Vill du spara ändringarna i Namnlös?”. Läs frågan. Den här gången klickar du på Spara inte. I verkligheten väljer du Spara om du vill behålla texten.",
               "independent": "Skriv något i Anteckningar och stäng programmet utan att spara.",
               "child.guided": "Skriv några ord. Klicka på krysset uppe till höger. En ruta frågar om du vill spara – läs den! Klicka på Spara inte den här gången."
             },

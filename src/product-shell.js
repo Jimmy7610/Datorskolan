@@ -49,9 +49,10 @@
 
   /* ---------- Rendering ---------- */
 
+  // Counting needs only the language-neutral structure, not the composed lesson texts.
   function courseStats() {
     var course = window.DatorskolanCourse;
-    var lessons = course ? course.lessons() : [];
+    var lessons = window.DatorskolanLessons || [];
     var modules = course ? course.moduleOrder() : [];
     return { lessons: lessons, modules: modules };
   }

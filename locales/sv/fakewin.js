@@ -147,8 +147,6 @@
     "explorer.new": "Nytt",
     "explorer.newMenu.folder": "Mapp",
     "explorer.newMenu.textDocument": "Textdokument",
-    "explorer.newFolder": "Ny mapp",
-    "explorer.newTextDocument": "Nytt textdokument",
     "explorer.cut": "Klipp ut",
     "explorer.copy": "Kopiera",
     "explorer.paste": "Klistra in",

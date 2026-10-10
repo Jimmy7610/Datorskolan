@@ -593,7 +593,7 @@
             "title": "Complete all six parts",
             "text": {
               "default": "Do all six parts in the practice window: move, click, double-click, right-click, scroll and drag and drop. The list shows what is done.",
-              "guided": "The practice window has six boxes, one for each thing you have practised. Take them one at a time. Move the pointer in the Move box. Click Click once. Click twice quickly on Double-click. Press Right-click with the right button. Roll the wheel down and up in Scroll. Finally, drag the Drag box to Drop here. The list under the boxes ticks off what you have done.",
+              "guided": "The practice window has six boxes, one for each thing you have practised. Take them one at a time. Move the pointer in the Move box. Click the Click box once. Double-click the Double-click box. Right-click the Right-click box. Roll the wheel down and up in the Scroll box. Finally, drag the Drag box to the Drop here box. The list under the boxes ticks off what you have done.",
               "independent": "Move, click, double-click, right-click, scroll and drag and drop in the practice window.",
               "child.guided": "There are six boxes, one for each mouse trick you know. Start with Move and then go on one box at a time. The list under the boxes shows what you have already done. Can you get all six?"
             },
@@ -2166,7 +2166,7 @@
             "title": "Your turn",
             "text": {
               "default": "Click a link or one of the round shortcuts on the web page.",
-              "guided": "Look at the large white area in the browser – that is the web page itself. Move the pointer slowly over the round shortcuts in the middle of the page. Notice that the pointer turns into a hand – that means you are pointing at a link. Click once, for example on What is the internet?. The page changes and the address in the address bar changes.",
+              "guided": "Look at the large white area in the browser – that is the web page itself. Move the pointer slowly over the round shortcuts in the middle of the page. Notice that the pointer turns into a hand – that means you are pointing at a link. Click once, for example on “What is the internet?”. The page changes and the address in the address bar changes.",
               "independent": "Follow a link on the page in the browser.",
               "child.guided": "Move the arrow over the round pictures in the middle of the page. Does the arrow turn into a hand? Then it's a link! Click What is the internet? and see what happens."
             },
@@ -2458,9 +2458,9 @@
             "title": "Your turn",
             "text": {
               "default": "Open the page What is the internet? and click the star at the far right of the address bar.",
-              "guided": "The start page can't be bookmarked, so first open a page: click the shortcut What is the internet?. Then look at the address bar at the top. At the far right inside the box there is a small star. Click it once. The star turns blue and the page is saved in the bookmarks bar below the address bar.",
+              "guided": "The start page can't be bookmarked, so first open a page: click the shortcut “What is the internet?”. Then look at the address bar at the top. At the far right inside the box there is a small star. Click it once. The star turns blue and the page is saved in the bookmarks bar below the address bar.",
               "independent": "Bookmark a web page.",
-              "child.guided": "Click What is the internet?. Find the little star at the far right of the long box at the top. Click the star – now it turns blue and the page is saved!"
+              "child.guided": "Click “What is the internet?”. Find the little star at the far right of the long box at the top. Click the star – now it turns blue and the page is saved!"
             },
             "hints": [
               "The start page can't be bookmarked – first open a page, for example What is the internet?",
@@ -3241,7 +3241,7 @@
             "title": "Your turn",
             "text": {
               "default": "Open What is the internet? in the browser, select the phone line and press Ctrl+C. Then click in Notepad and press Ctrl+V.",
-              "guided": "In the browser, click the shortcut What is the internet?. Find the line with a phone number. Press the left mouse button just before the first character, keep holding and drag to the end of the line – the text is highlighted in blue. Hold Ctrl and press C. Then click Notepad's icon in the taskbar, click in the white area and press Ctrl+V. The line is pasted in.",
+              "guided": "In the browser, click the shortcut “What is the internet?”. Find the line with a phone number. Press the left mouse button just before the first character, keep holding and drag to the end of the line – the text is highlighted in blue. Hold Ctrl and press C. Then click Notepad's icon in the taskbar, click in the white area and press Ctrl+V. The line is pasted in.",
               "independent": "Copy the phone line from the What is the internet? page in the browser into Notepad.",
               "child.guided": "Open What is the internet? in the browser. Drag the mouse over the line with the phone number so it turns blue. Press Ctrl+C. Switch to Notepad, click in the white area and press Ctrl+V. There it is!"
             },
@@ -3854,7 +3854,7 @@
             "title": "Your turn",
             "text": {
               "default": "Type a few words in Notepad, close the window with the cross and choose Don't save in the box that appears.",
-              "guided": "Click in the white area in Notepad and type a few words. Then click the cross at the top right of the Notepad window. A box appears asking Do you want to save changes to Untitled?. Read the question. This time, click Don't save. In real life you choose Save if you want to keep the text.",
+              "guided": "Click in the white area in Notepad and type a few words. Then click the cross at the top right of the Notepad window. A box appears asking “Do you want to save changes to Untitled?”. Read the question. This time, click Don't save. In real life you choose Save if you want to keep the text.",
               "independent": "Type something in Notepad and close the program without saving.",
               "child.guided": "Type a few words. Click the cross at the top right. A box asks if you want to save – read it! Click Don't save this time."
             },

@@ -147,8 +147,6 @@
     "explorer.new": "New",
     "explorer.newMenu.folder": "Folder",
     "explorer.newMenu.textDocument": "Text Document",
-    "explorer.newFolder": "New folder",
-    "explorer.newTextDocument": "New text document",
     "explorer.cut": "Cut",
     "explorer.copy": "Copy",
     "explorer.paste": "Paste",
