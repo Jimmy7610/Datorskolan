@@ -685,7 +685,8 @@ body.school-mode .site{display:none}
   .site-header{position:static;grid-template-columns:1fr;justify-items:start}
   .site-header-actions{justify-self:stretch;flex-wrap:wrap;justify-content:flex-start}
   .header-cta{display:none}
-  .site-tabs{justify-self:stretch;overflow-x:auto}
+  .site-tabs{justify-self:stretch;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-tabs button{white-space:normal;padding:var(--space-2) var(--space-3)}
   .brand-copy small{display:none}
   .step-grid,.facts{grid-template-columns:1fr}
   .facts{max-width:none}

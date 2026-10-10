@@ -1774,6 +1774,17 @@
   .fw-print{grid-template-columns:1fr}
 }
 
+/* Phones: the centred taskbar no longer fits between the edges, so it flows left to right and the clock shows only the time. */
+@media (max-width:520px){
+  .fw-taskbar{grid-template-columns:auto minmax(0,1fr) auto}
+  .fw-tb-center{justify-content:flex-start}
+  .fw-tb-clock>*:last-child{display:none}
+}
+/* Narrowest phones: hide the taskbar search button (search is still in Start), as Windows lets you do. */
+@media (max-width:360px){
+  .fw-tb-search{display:none}
+}
+
 @media (max-height:620px){
   .fw-start{height:calc(100% - 24px)}
 }
