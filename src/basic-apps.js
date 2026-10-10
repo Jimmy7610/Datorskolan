@@ -513,8 +513,10 @@
       updatePosition();
       ctx.emit("notepad.input", { length: area.value.length });
       if (!wasDirty) {
-        var title = document.querySelector(".fw-app-notepad .fw-titlebar-text");
-        if (title) title.textContent = notepadTitle(ctx);
+        var tab = document.querySelector(".fw-app-notepad .fw-titlebar-tab");
+        if (tab) tab.classList.add("is-dirty");
+        var win = document.querySelector(".fw-app-notepad");
+        if (win) win.setAttribute("aria-label", notepadTitle(ctx));
       }
     });
     area.addEventListener("keyup", updatePosition);
@@ -652,6 +654,7 @@
     calculatorInput: calculatorInput,
     renderNotepad: renderNotepad,
     notepadTitle: notepadTitle,
+    notepadDocName: notepadDocName,
     saveNotepad: saveNotepad,
     showSaveAs: showSaveAs,
     showOpenDialog: showOpenDialog,

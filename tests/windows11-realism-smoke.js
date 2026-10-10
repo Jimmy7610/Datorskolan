@@ -20,7 +20,7 @@ assert(ui.FLUENT_ROOT === "./assets/icons/fluent/", "Unexpected Fluent asset roo
 
 Object.keys(ui.fluentIcons).forEach(function (name) {
   const markup = ui.icon(name, 24);
-  assert(markup.indexOf("assets/icons/fluent/") >= 0, "System icon is not Fluent-backed: " + name);
+  assert(/assets\/icons\/fluent(-color|-derived)?\//.test(markup), "System icon is not Fluent-backed: " + name);
   assert(fs.existsSync(path.join(ROOT, "assets/icons/fluent", ui.fluentIcons[name])), "Missing Fluent asset file: " + ui.fluentIcons[name]);
   assert(/alt="" aria-hidden="true"/.test(markup), "Icons are decorative and must be hidden from assistive tech: " + name);
 });
@@ -31,6 +31,36 @@ assert(fs.existsSync(path.join(ROOT, "assets/icons/fluent/LICENSE")), "Fluent li
 const source = fs.readFileSync(path.join(ROOT, "assets/icons/fluent/SOURCE.md"), "utf8");
 assert(source.indexOf("microsoft/fluentui-system-icons") >= 0 && source.indexOf("08130c218d6bb87767d6d5616d9afcea651146c7") >= 0, "Fluent provenance not documented");
 assert(fs.existsSync(path.join(ROOT, "docs/38-ASSETS-AND-LICENSES.md")), "Asset and licence inventory missing");
+
+// Colour icons: Microsoft's own colour set, or Fluent filled shapes recoloured (documented as derived).
+assert(ui.ICON_ROOT === "./assets/icons/", "Unexpected icon root");
+["fluent-color", "fluent-derived"].forEach(function (dir) {
+  const license = fs.readFileSync(path.join(ROOT, "assets/icons", dir, "LICENSE"), "utf8");
+  assert(license.indexOf("MIT") >= 0 && license.indexOf("Microsoft Corporation") >= 0, dir + " LICENSE missing or wrong");
+  assert(fs.existsSync(path.join(ROOT, "assets/icons", dir, "SOURCE.md")), dir + " SOURCE.md missing");
+});
+const colorSources = {
+  "fluent-color": fs.readFileSync(path.join(ROOT, "assets/icons/fluent-color/SOURCE.md"), "utf8"),
+  "fluent-derived": fs.readFileSync(path.join(ROOT, "assets/icons/fluent-derived/SOURCE.md"), "utf8")
+};
+Object.keys(ui.colorIcons).forEach(function (name) {
+  const ref = ui.colorIcons[name];
+  const dir = ref.split("/")[0];
+  assert(colorSources[dir] !== undefined, "Colour icon outside a documented folder: " + name + " → " + ref);
+  ["-small.svg", "-large.svg"].forEach(function (suffix) {
+    const file = ref.split("/")[1] + suffix;
+    assert(fs.existsSync(path.join(ROOT, "assets/icons", dir, file)), "Missing colour icon file: " + dir + "/" + file);
+    assert(colorSources[dir].indexOf("`" + file + "`") >= 0, "Colour icon not documented in " + dir + "/SOURCE.md: " + file);
+    if (dir === "fluent-derived") {
+      assert(fs.readFileSync(path.join(ROOT, "assets/icons", dir, file), "utf8").indexOf("Derived from Microsoft Fluent UI System Icons (MIT)") >= 0, "Derived icon is not marked as derived: " + file);
+    }
+  });
+  assert(ui.icon(name, 16).indexOf(ref + "-small.svg") >= 0 && ui.icon(name, 48).indexOf(ref + "-large.svg") >= 0, "Colour icon size selection broken: " + name);
+});
+// Tray icons stay monochrome, like Windows 11.
+["wifi", "speaker", "battery"].forEach(function (name) {
+  assert(!ui.colorIcons[name], "Tray icon " + name + " must stay monochrome like Windows 11");
+});
 
 // No emoji or ad-hoc Unicode pictographs as icons anywhere in the simulator.
 fs.readdirSync(path.join(ROOT, "src")).filter(function (n) { return /\.js$/.test(n); }).forEach(function (name) {

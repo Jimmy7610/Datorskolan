@@ -7,21 +7,26 @@
 
   var WIFI_KEY = "datorskolan";
 
+  // Same pages, order and colour icons as the Windows 11 Settings navigation.
   var PAGES = [
+    ["home", "home"],
     ["system", "desktop"],
-    ["bluetooth", "bluetooth"],
-    ["network", "wifi"],
-    ["personalization", "image"],
+    ["bluetooth", "bluetooth-color"],
+    ["network", "globe"],
+    ["personalization", "personalization"],
     ["apps", "apps-list"],
-    ["accessibility", "school"],
+    ["accounts", "person"],
+    ["time", "clock"],
+    ["gaming", "gaming"],
+    ["accessibility", "accessibility"],
     ["privacy", "shield"],
-    ["update", "sync"]
+    ["update", "update"]
   ];
 
   function ensure(state) {
     if (!state.settings) {
       state.settings = {
-        page: "system",
+        page: "home",
         wifiEnabled: true,
         wifiNetwork: null,
         wifiExpanded: null,
@@ -257,13 +262,25 @@
       return wrap;
     }
 
-    if (s.page === "system") {
+    function hero() {
       main.appendChild(h("div", { class: "settings-hero" }, [
         h("div", { class: "settings-hero-device", html: ctx.icon("laptop", 48) }),
         h("div", {}, [h("strong", { text: t("settings.system.deviceName") }), h("small", { text: t("settings.system.deviceModel") })]),
         h("div", { class: "settings-hero-status" }, [h("span", { html: ctx.icon("wifi", 16) }), h("span", { text: s.wifiNetwork || t("settings.wifi.notConnected") })]),
         h("div", { class: "settings-hero-status" }, [h("span", { html: ctx.icon("sync", 16) }), h("span", { text: s.updatePending ? t("settings.update.attention") : t("settings.update.upToDate") })])
       ]));
+    }
+
+    if (s.page === "home") {
+      hero();
+      main.appendChild(h("h2", { class: "settings-section-title", text: t("settings.home.recommended") }));
+      card({ iconKey: "globe", title: t("settings.page.network"), description: s.wifiNetwork ? t("settings.wifi.connectedTo", { network: s.wifiNetwork }) : t("settings.wifi.notConnected"), ui: "settings-home-network", onClick: function () { go("network"); } });
+      card({ iconKey: "bluetooth-color", title: t("settings.page.bluetooth"), description: t("settings.bt.devicesDesc"), ui: "settings-home-bluetooth", onClick: function () { go("bluetooth"); } });
+      card({ iconKey: "personalization", title: t("settings.personal.background"), description: t("settings.personal.backgroundDesc"), ui: "settings-home-personalization", onClick: function () { go("personalization"); } });
+    }
+
+    if (s.page === "system") {
+      hero();
       card({ iconKey: "desktop", title: t("settings.system.display"), description: t("settings.system.displayDesc") });
 
       var volume = h("input", { type: "range", min: "0", max: "100", value: String(s.volume), aria: { label: t("settings.system.volume") }, data: { ui: "settings-volume" } });
@@ -382,6 +399,21 @@
       });
       card({ iconKey: "apps-list", title: t("settings.apps.installed"), description: t("settings.apps.installedDesc") }, [h("div", { class: "settings-sub settings-app-list" }, rows)]);
       card({ iconKey: "apps-list", title: t("settings.apps.defaults"), description: t("settings.apps.defaultsDesc") });
+    }
+
+    if (s.page === "accounts") {
+      card({ iconKey: "person", title: t("settings.accounts.yourInfo"), description: t("shell.userName") + " · " + t("settings.localAccount") });
+      card({ glyph: "lock", title: t("settings.accounts.signIn"), description: t("settings.accounts.signInDesc") });
+    }
+
+    if (s.page === "time") {
+      card({ iconKey: "clock", title: t("settings.time.dateTime"), description: t("settings.time.dateTimeDesc") });
+      card({ iconKey: "globe", title: t("settings.time.language"), description: t("settings.time.languageDesc", { language: t("settings.time.languageName") }) });
+    }
+
+    if (s.page === "gaming") {
+      card({ iconKey: "gaming", title: t("settings.gaming.gameMode"), description: t("settings.gaming.gameModeDesc") });
+      card({ iconKey: "image", title: t("settings.gaming.captures"), description: t("settings.gaming.capturesDesc") });
     }
 
     if (s.page === "accessibility") {

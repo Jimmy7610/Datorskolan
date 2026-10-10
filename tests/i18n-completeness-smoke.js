@@ -49,7 +49,7 @@ used.forEach(function (key) {
 });
 
 // Dynamic key families must be complete.
-const pages = ["system", "bluetooth", "network", "personalization", "apps", "accessibility", "privacy", "update"];
+const pages = ["home", "system", "bluetooth", "network", "personalization", "apps", "accounts", "time", "gaming", "accessibility", "privacy", "update"];
 const mouseModes = ["move", "target", "click", "double", "right", "scroll", "hold", "drag", "final"];
 [
   ["settings.page.", pages],

@@ -1,7 +1,12 @@
 /*
   Windows 11 UI kit for FakeWin: icons, glyphs, DOM helper and persisted shell state (pinned apps).
 
-  Icons: Microsoft Fluent UI System Icons (MIT) in assets/icons/fluent/, see SOURCE.md.
+  Icons: Microsoft Fluent UI System Icons (MIT).
+    assets/icons/fluent-color/    Microsoft's color icons, unmodified (apps, Settings, Mail, Home, OneDrive …)
+    assets/icons/fluent-derived/  Microsoft's filled shapes recolored to Windows 11 colours where Microsoft
+                                  publishes no color version (folder, Recycle Bin, Notepad, Calculator …)
+    assets/icons/fluent/          monochrome icons for the system tray and commands (monochrome in Windows 11 too)
+  See docs/38-ASSETS-AND-LICENSES.md and each folder's SOURCE.md.
   Chrome: Google's official Chrome logo, loaded from Google (not redistributed in this repo).
   Glyphs: the few simple geometric shapes Windows draws with its Segoe Fluent Icons system font
   (caption buttons, chevrons, search). That font cannot be redistributed, so the shapes are drawn
@@ -12,6 +17,52 @@
 
   var STORAGE_KEY = "datorskolan.fakewin.shell.v1";
   var FLUENT_ROOT = "./assets/icons/fluent/";
+  var ICON_ROOT = "./assets/icons/";
+
+  // Colour app and file icons: "<folder>/<name>" → <name>-small.svg (≤ 24px) or <name>-large.svg.
+  var colorIcons = {
+    start: "fluent-derived/start",
+    person: "fluent-color/person",
+    clock: "fluent-color/clock",
+    gaming: "fluent-derived/gaming",
+    explorer: "fluent-derived/folder",
+    folder: "fluent-derived/folder",
+    "folder-documents": "fluent-derived/folder",
+    pictures: "fluent-derived/pictures",
+    recycle: "fluent-derived/recycle-bin",
+    calculator: "fluent-derived/calculator",
+    notepad: "fluent-derived/notepad",
+    photos: "fluent-color/image",
+    mail: "fluent-color/mail",
+    settings: "fluent-color/settings",
+    "text-file": "fluent-color/document-text",
+    document: "fluent-color/document",
+    pdf: "fluent-derived/document-pdf",
+    zip: "fluent-derived/folder-zip",
+    "image-file": "fluent-color/image",
+    image: "fluent-color/image",
+    home: "fluent-color/home",
+    download: "fluent-derived/downloads",
+    snipping: "fluent-derived/snipping",
+    onedrive: "fluent-color/cloud",
+    "usb-drive": "fluent-derived/usb-stick",
+    "this-pc": "fluent-color/laptop",
+    laptop: "fluent-color/laptop",
+    desktop: "fluent-derived/desktop",
+    globe: "fluent-color/globe",
+    "apps-list": "fluent-color/apps-list",
+    installer: "fluent-color/apps-list",
+    shield: "fluent-color/shield",
+    headphones: "fluent-color/headphones",
+    personalization: "fluent-color/paint-brush",
+    "bluetooth-color": "fluent-derived/bluetooth",
+    accessibility: "fluent-derived/accessibility",
+    update: "fluent-color/arrow-sync",
+    calendar: "fluent-color/calendar",
+    warning: "fluent-color/warning",
+    error: "fluent-color/error-circle",
+    success: "fluent-color/checkmark-circle"
+  };
   var CHROME_LOGO_URL = "https://www.google.com/chrome/static/images/chrome-logo-m100.svg";
 
   var fluentIcons = {
@@ -33,6 +84,7 @@
     school: "graduation.svg",
     flask: "beaker.svg",
     home: "home.svg",
+    pin: "pin.svg",
     wifi: "wifi.svg",
     speaker: "speaker.svg",
     battery: "battery.svg",
@@ -77,6 +129,12 @@
     size = size || 24;
     // Chrome is a Google product brand, not a Microsoft Fluent system icon.
     if (name === "chrome") return chromeIcon(size, className);
+    if (colorIcons[name]) {
+      return '<img class="win11-icon fluent-icon ' + esc(className || "") +
+        '" src="' + ICON_ROOT + colorIcons[name] + (size <= 24 ? "-small" : "-large") + '.svg"' +
+        ' width="' + size + '" height="' + size +
+        '" alt="" aria-hidden="true" draggable="false">';
+    }
     var fileName = fluentIcons[name] || "document.svg";
     return '<img class="win11-icon fluent-icon ' + esc(className || "") +
       '" src="' + FLUENT_ROOT + esc(fileName) +
@@ -263,6 +321,8 @@
     FLUENT_ROOT: FLUENT_ROOT,
     CHROME_LOGO_URL: CHROME_LOGO_URL,
     fluentIcons: fluentIcons,
+    colorIcons: colorIcons,
+    ICON_ROOT: ICON_ROOT,
     icon: icon,
     glyph: glyph,
     captionGlyph: captionGlyph,

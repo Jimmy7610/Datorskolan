@@ -481,7 +481,7 @@
 
     /* Navigation pane */
     var pane = h("nav", { class: "explorer-pane", aria: { label: t("explorer.navigationPane") } });
-    function paneItem(id, iconKey, group) {
+    function paneItem(id, iconKey, group, pinned) {
       var node = vfs.get(id);
       if (!node) return;
       var item = h("button", {
@@ -501,16 +501,22 @@
             ctx.openMenu({ kind: id === "usb-drive" ? "removable-drive" : "explorer-nav", itemId: id, x: e.clientX, y: e.clientY, items: items });
           }
         }
-      }, [h("span", { class: "explorer-pane-icon", html: ctx.icon(iconKey, 16) }), h("span", { text: ctx.displayName(node) })]);
+      }, [
+        h("span", { class: "explorer-pane-icon", html: ctx.icon(iconKey, 16) }),
+        h("span", { class: "explorer-pane-label", text: ctx.displayName(node) }),
+        // Windows 11 marks folders pinned to Quick access with a pin on the right.
+        pinned ? h("span", { class: "explorer-pane-pin", title: t("explorer.pinned"), html: ctx.icon("pin", 16) }) : null
+      ]);
       if (id !== "home") dropTarget(ctx, item, id);
       group.appendChild(item);
     }
     var groupHome = h("div", { class: "explorer-pane-group" });
     paneItem("home", "home", groupHome);
     var groupFolders = h("div", { class: "explorer-pane-group" });
-    paneItem("documents", "folder-documents", groupFolders);
-    paneItem("pictures", "pictures", groupFolders);
-    paneItem("downloads", "download", groupFolders);
+    // Same order as Windows 11's pinned folders: Downloads, Documents, Pictures.
+    paneItem("downloads", "download", groupFolders, true);
+    paneItem("documents", "folder-documents", groupFolders, true);
+    paneItem("pictures", "pictures", groupFolders, true);
     var groupCloud = h("div", { class: "explorer-pane-group" });
     paneItem("onedrive", "onedrive", groupCloud);
     var groupDevices = h("div", { class: "explorer-pane-group" });
@@ -719,6 +725,7 @@
   window.DatorskolanExplorerApp = {
     render: render,
     windowTitle: windowTitle,
+    currentFolderId: function (ctx) { return ex(ctx).folderId; },
     navigate: navigate,
     extractDialog: extractDialog,
     confirmEmptyRecycleBin: confirmEmptyRecycleBin,

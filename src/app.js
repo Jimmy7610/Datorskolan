@@ -345,10 +345,11 @@
     /* ---------- App registry ---------- */
 
     var apps = {
-      explorer: { titleKey: "app.explorer", iconKey: "explorer", w: 880, h: 540, render: function () { return window.DatorskolanExplorerApp.render(ctx); }, title: function () { return window.DatorskolanExplorerApp.windowTitle(ctx); } },
+      explorer: { titleKey: "app.explorer", iconKey: "explorer", tabbed: true, tabIconKey: function () { return nodeIconKey(vfs.get(window.DatorskolanExplorerApp.currentFolderId(ctx))); }, w: 880, h: 540, render: function () { return window.DatorskolanExplorerApp.render(ctx); }, title: function () { return window.DatorskolanExplorerApp.windowTitle(ctx); } },
       "recycle-bin": { titleKey: "app.recycleBin", iconKey: "recycle", w: 800, h: 480, alias: "explorer" },
       calculator: { titleKey: "app.calculator", iconKey: "calculator", w: 340, h: 520, minW: 320, minH: 440, render: function () { return window.DatorskolanBasicApps.renderCalculator(ctx); } },
-      notepad: { titleKey: "app.notepad", iconKey: "notepad", w: 700, h: 480, render: function () { return window.DatorskolanBasicApps.renderNotepad(ctx); }, title: function () { return window.DatorskolanBasicApps.notepadTitle(ctx); } },
+      notepad: { titleKey: "app.notepad", iconKey: "notepad", w: 700, h: 480, render: function () { return window.DatorskolanBasicApps.renderNotepad(ctx); }, title: function () { return window.DatorskolanBasicApps.notepadTitle(ctx); },
+        tabbed: true, tabTitle: function () { return window.DatorskolanBasicApps.notepadDocName(ctx); }, tabDirty: function () { return !!state.notepadDirty; } },
       photos: { titleKey: "app.photos", iconKey: "photos", w: 720, h: 500, render: function () { return window.DatorskolanBasicApps.renderPhotos(ctx); } },
       settings: { titleKey: "app.settings", iconKey: "settings", w: 960, h: 640, render: function () { return window.DatorskolanSettingsApp.render(ctx); } },
       browser: { titleKey: "app.browser", iconKey: "chrome", w: 1000, h: 660, chromeless: true, render: function () { return window.DatorskolanChromeApp.render(ctx); } },
@@ -688,11 +689,20 @@
           if (slot) slot.appendChild(captionButtons(win));
           node.appendChild(body);
         } else {
-          handle = h("header", { class: "fw-titlebar" }, [
-            h("span", { class: "fw-titlebar-icon", html: ui.icon(app.iconKey, 16) }),
-            h("span", { class: "fw-titlebar-text", text: title }),
-            captionButtons(win)
-          ]);
+          var heading = [
+            h("span", { class: "fw-titlebar-icon", html: ui.icon(app.tabIconKey ? app.tabIconKey() : app.iconKey, 16) }),
+            h("span", { class: "fw-titlebar-text", text: app.tabbed && app.tabTitle ? app.tabTitle() : title })
+          ];
+          if (app.tabbed) {
+            // File Explorer and Notepad in Windows 11 show the folder or document as a tab in the title bar.
+            // Closing the only tab closes the window. An unsaved Notepad tab shows a dot instead of the X.
+            heading = [h("div", { class: "fw-titlebar-tab" + (app.tabDirty && app.tabDirty() ? " is-dirty" : "") }, heading.concat([
+              h("button", { type: "button", class: "fw-titlebar-tab-close", title: t("window.closeTab"), aria: { label: t("window.closeTab") },
+                html: '<span class="fw-titlebar-tab-dot" aria-hidden="true"></span>' + ui.captionGlyph("close"),
+                on: { click: function (e) { e.stopPropagation(); closeWindow(win.id); } } })
+            ])), h("span", { class: "fw-titlebar-fill" })];
+          }
+          handle = h("header", { class: "fw-titlebar" + (app.tabbed ? " is-tabbed" : "") }, heading.concat([captionButtons(win)]));
           node.appendChild(handle);
           node.appendChild(body);
         }
