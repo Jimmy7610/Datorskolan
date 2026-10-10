@@ -1815,6 +1815,8 @@
       }
     }, 20000);
 
+    // Continue a lesson that was open before the page was reloaded (or the language was changed).
+    if (lessonEngine.resume(learningRuntimeApi)) state.coachOpen = true;
     render();
 
     var api = {

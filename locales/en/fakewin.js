@@ -755,6 +755,7 @@
     "learn.feedback.tryAgain": "Not quite yet. Try again or press Help.",
     "learn.feedback.tryAgainChild": "Almost! Try once more or press Help.",
     "learn.feedback.complete": "The lesson is complete. Well done!",
+    "learn.feedback.resumed": "Welcome back! You are on the same step as before. The practice computer has started again from the lesson's starting point.",
     "learn.feedback.completeChild": "Great job! The mission is complete.",
     "learn.practiceIntro": "Practise freely without a lesson. Choose a task and the practice computer gets ready.",
     "learn.practiceActive": "Current practice",

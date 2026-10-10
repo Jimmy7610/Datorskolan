@@ -119,8 +119,23 @@
     progress.startedAt = nowIso();
     progress.completedAt = null;
     this._state.lessons[lessonId] = progress;
+    this._state.activeLessonId = lessonId;
     this._save();
     return clone(progress);
+  };
+
+  // The lesson that was open when the page was closed or reloaded, so it can continue where the learner was.
+  ProgressStore.prototype.activeLesson = function () {
+    var id = this._state.activeLessonId;
+    var progress = id && this._state.lessons[id];
+    if (!progress || progress.status !== "in_progress") return null;
+    return { lessonId: id, stepIndex: progress.currentStep || 0 };
+  };
+
+  ProgressStore.prototype.clearActiveLesson = function () {
+    if (!this._state.activeLessonId) return;
+    delete this._state.activeLessonId;
+    this._save();
   };
 
   ProgressStore.prototype.setLessonStep = function (lessonId, stepIndex) {
@@ -136,6 +151,7 @@
     progress.status = "completed";
     progress.completedAt = nowIso();
     this._state.lessons[lessonId] = progress;
+    if (this._state.activeLessonId === lessonId) delete this._state.activeLessonId;
     this._save();
     return clone(progress);
   };

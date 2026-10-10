@@ -98,7 +98,48 @@
     return this.active();
   };
 
+  // Continue the lesson that was in progress before a reload. Each lesson has at most one exercise and
+  // its scenario is loaded fresh, so continuing at the saved step always starts from a valid state.
+  LessonEngine.prototype.resume = function (runtime) {
+    var saved = this._progress.activeLesson ? this._progress.activeLesson() : null;
+    if (!saved) return null;
+    var lesson = this._definitions[saved.lessonId];
+    if (!lesson || !runtime) {
+      if (this._progress.clearActiveLesson) this._progress.clearActiveLesson();
+      return null;
+    }
+
+    this._runtime = runtime;
+    if (lesson.scenarioId && runtime.loadScenario) runtime.loadScenario(lesson.scenarioId);
+
+    var stepIndex = Math.max(0, Math.min(saved.stepIndex, lesson.steps.length - 1));
+    if (lesson.steps[stepIndex].type === "completion" && stepIndex > 0) stepIndex -= 1;
+
+    this._active = {
+      id: lesson.id,
+      title: lesson.title,
+      moduleId: lesson.moduleId,
+      stepIndex: stepIndex,
+      hintLevel: 0,
+      attemptsOnStep: 0,
+      validatorPassed: false,
+      feedback: { kind: "resumed", messageKey: "learn.feedback.resumed" },
+      status: "running",
+      startedAt: Date.now()
+    };
+
+    this._progress.recordEvent({
+      type: "lesson.resumed",
+      lessonId: lesson.id,
+      metadata: { stepIndex: stepIndex, scenarioId: lesson.scenarioId || null }
+    });
+
+    this._notify();
+    return this.active();
+  };
+
   LessonEngine.prototype.stop = function () {
+    if (this._progress.clearActiveLesson) this._progress.clearActiveLesson();
     if (this._active) {
       this._progress.recordEvent({
         type: "lesson.stopped",

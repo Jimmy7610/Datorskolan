@@ -22,7 +22,7 @@ src/course.js               Slår ihop struktur + texter för valt språk.
 src/vfs.js                  Virtuellt filsystem (ingen riktig fil rörs).
 src/scenario-engine.js      Laddar scenarier och kontrollerar mål mot händelser.
 src/lesson-engine.js        Lektionsflöde, ledtrådar, feedback (som språknycklar).
-src/progress-store.js       Framsteg i localStorage.
+src/progress-store.js       Framsteg i localStorage, inklusive pågående lektion och steg.
 
 src/win11-ui.js             Ikoner, glyfer, DOM-hjälparen h(), fästa appar.
 src/app.js                  Övningsdatorns kärna: state, händelser, fönsterhanterare, skrivbord,
@@ -56,6 +56,10 @@ src/product-shell.js        Webbplatsen runt övningsdatorn: flikar, språkval, 
 - Valet sparas i `localStorage` (`datorskolan.locale.v1`) och sätter `<html lang>`.
 - På startsidan byts språket direkt utan omladdning (`translateDom`).
 - Övningsdatorn byggs när den öppnas första gången. Byter man språk inne i coachpanelen laddas sidan om och öppnas direkt i övningsdatorn (via en flagga i `sessionStorage`), eftersom VFS-filer och scenarier skapas med namn på det valda språket.
+
+## Fortsätta en lektion efter omladdning
+
+`ProgressStore` sparar vilken lektion som pågår (`activeLessonId`) och vilket steg eleven är på. När övningsdatorn startar anropar `app.js` `LessonEngine.resume()`. Den laddar lektionens scenario från början och fortsätter på samma steg, med meddelandet `learn.feedback.resumed`. Det fungerar eftersom varje lektion har högst en övning, och övningen alltid utgår från scenariots startläge. Avslutar eleven lektionen, eller blir den klar, glöms den pågående lektionen. Samma mekanism gör att lektionen fortsätter efter ett språkbyte.
 
 ## Lägga till ett språk
 

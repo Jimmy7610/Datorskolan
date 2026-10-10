@@ -755,6 +755,7 @@
     "learn.feedback.tryAgain": "Inte riktigt än. Försök igen eller tryck på Hjälp.",
     "learn.feedback.tryAgainChild": "Nästan! Prova en gång till eller tryck på Hjälp.",
     "learn.feedback.complete": "Lektionen är klar. Bra gjort!",
+    "learn.feedback.resumed": "Välkommen tillbaka! Du fortsätter på samma steg. Övningsdatorn har börjat om från lektionens startläge.",
     "learn.feedback.completeChild": "Bra jobbat! Uppdraget är klart.",
     "learn.practiceIntro": "Öva fritt utan lektion. Välj en uppgift, så förbereds övningsdatorn.",
     "learn.practiceActive": "Pågående övning",
