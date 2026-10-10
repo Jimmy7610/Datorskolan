@@ -60,8 +60,8 @@
       wide: true,
       className: "fw-print-dialog",
       title: t("print.title"),
+      // Windows 11 print dialog: settings on the left, page preview on the right.
       body: h("div", { class: "fw-print" }, [
-        h("div", { class: "fw-print-preview", aria: { hidden: "true" } }, [invoicePage(ctx, true)]),
         h("div", { class: "fw-print-options" }, [
           h("label", { class: "fw-field", for: "fw-print-printer" }, [h("span", { text: t("print.printer") })]),
           printer,
@@ -71,7 +71,8 @@
           orientation,
           h("label", { class: "fw-field", for: "fw-print-pages" }, [h("span", { text: t("print.pages") })]),
           pages
-        ])
+        ]),
+        h("div", { class: "fw-print-preview", aria: { hidden: "true" } }, [invoicePage(ctx, true)])
       ]),
       buttons: [
         { label: t("print.print"), primary: true, ui: "print-confirm", action: function () {

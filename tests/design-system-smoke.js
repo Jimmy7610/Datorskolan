@@ -59,6 +59,12 @@ const importantFakewin = (fakewin.match(/!important/g) || []).length;
 assert(importantSite <= 1, "site.css uses !important " + importantSite + " times");
 assert(importantFakewin <= 3, "fakewin.css uses !important " + importantFakewin + " times");
 
+// Element resets in the simulator must have zero specificity, otherwise they beat component classes
+// (this once turned the text on every blue accent button dark: 2.7:1 contrast).
+assert(fakewin.indexOf(".fw :where(button,input,select,textarea){font:inherit;color:inherit}") >= 0, "Simulator form-element reset must use :where()");
+assert(!/\.fw (button|input|select|textarea)[^{]*\{[^}]*color:inherit/.test(fakewin), "Simulator must not reset form-element colours with element selectors (specificity bug)");
+assert(/\.fw-button-accent\{[^}]*color:var\(--fw-text-on-accent\)/.test(fakewin) && /--fw-text-on-accent:#ffffff/.test(fakewin), "Accent buttons must use white text");
+
 // Retired experimental palettes must not return.
 ["#07101d", "arcane", "#a855f7", "#7c3aed", "--lp-violet"].forEach(function (old) {
   assert(site.toLowerCase().indexOf(old) < 0 && fakewin.toLowerCase().indexOf(old) < 0, "Retired palette value is back: " + old);

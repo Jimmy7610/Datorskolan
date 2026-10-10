@@ -78,6 +78,7 @@ Följande har **inte** kunnat testas i den här miljön och ska inte räknas som
 | Windows 11 | Datorskolan | Varför |
 |---|---|---|
 | Kommandoraden i Utforskaren visar Klipp ut/Kopiera/Klistra in/Byt namn/Ta bort som ikoner utan text | Ikon + text | Nybörjare känner inte igen ikonerna. Texten är samma ord som Windows använder i verktygstipset. |
+| Snabbmenyn för filer visar Klipp ut, Kopiera, Byt namn, Dela och Ta bort som en rad med ikoner överst | Samma kommandon som rader med text och kortkommando | Samma skäl som för kommandoraden. Orden är exakt de som Windows visar i verktygstipsen. |
 | Filnamnstillägg döljs som standard | Visas alltid | Kursen lär ut filtyper. Synliga tillägg är också ett vanligt säkerhetsråd (till exempel `faktura.pdf.exe`). Lektionen förklarar hur tillägg visas i riktiga Windows. |
 | Papperskorgen syns inte i Utforskarens navigeringsfönster | Papperskorgen finns längst ned i navigeringsfönstret | Så att lektionerna går att genomföra utan att flytta fönster. Det motsvarar Windows-inställningen "Visa alla mappar". |
 | Tryckt (pressed) accentknapp: ljusare blå med 85 % vit text | Mörkare blå med helvit text | Kontrast ≥ 4,5:1 även i tryckt läge. |

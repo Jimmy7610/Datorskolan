@@ -827,7 +827,7 @@
                 ? { label: t("explorer.emptyRecycleBin"), disabled: vfs.list("recycle-bin").length === 0, action: function () { window.DatorskolanExplorerApp.confirmEmptyRecycleBin(ctx); } }
                 : { label: t("menu.pinToStart"), disabled: true },
               "sep",
-              { label: t("menu.properties"), shortcut: "Alt+Enter", action: function () { window.DatorskolanExplorerApp.showProperties(ctx, vfs.get(item.folderId)); } }
+              { label: t("menu.properties"), shortcut: "Alt+" + t("key.enter"), action: function () { window.DatorskolanExplorerApp.showProperties(ctx, vfs.get(item.folderId)); } }
             ]
           });
         });

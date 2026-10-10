@@ -301,7 +301,7 @@
         { label: t("explorer.rename"), glyph: "rename", shortcut: "F2", disabled: locked, action: function () { startRename(ctx, node); } },
         { label: t("explorer.delete"), iconKey: "delete", shortcut: t("key.delete"), disabled: locked, action: function () { remove(ctx); } },
         "sep",
-        { label: t("menu.properties"), shortcut: "Alt+Enter", action: function () { showProperties(ctx, node); } }
+        { label: t("menu.properties"), shortcut: "Alt+" + t("key.enter"), action: function () { showProperties(ctx, node); } }
       ]);
     }
     ctx.openMenu({ kind: "vfs-item", itemId: node.id, x: x, y: y, items: items });
